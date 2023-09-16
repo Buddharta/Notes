@@ -1,0 +1,808 @@
+#+title: Notas de Probabilidad y Procesos Estocásticos
+#+author: Carlos Eduardo artínez Aguilar
+#+LANGUAGE: esp
+#+OPTIONS: tex:t
+#+SETUPFILE: ~/Templates/latex-export.org
+
+* Historia y repaso elemental de probabilidades.
+
+\noindent La historia de la probabilidad como rama matemática comienza con Fermat cuando investiga los problemas que un amigo apostador de Pascal le propone. Desde los tiempos de Bernoulli (1713) se conocian resultados como la ley (débil) de los grandes números, sin embargo no es hasta el siglo veinte que se considera una base axiomática basada en la teoría de la medida para la teoria probabilística que se encuentra una demostración rigurosa del la ley de los grandes números y el teorema del límite central. Más aún, existen dos vertientes ideológicas distintas de la teoría de la probabilidad
+
++ Una es la Probabilidad ``objertiva'', la cual se basa en la axiomatización dada por la teoría de la medida, la cual fue detallada por Kolmogorov y postula a la probabilidad como el resultado que permite calcular los ``outcomes'' de una serie de experimentos los cuales son en teoría infinitamente repetibles (von Mises).
+
++ La otra es la Probabilidad "subjetiva", propuesta por Keynes, la cual busca responder preguntas como: ``¿Mañana va a lloverá?'' o ``Existe vida en saturno?'' Su influencia mayor está dada por la escuela bayesiana de estadística.
+
+** Medida y probabilidad.
+
+\noindent Entenderemos un /espacio de probabilidad/ como un espacio de medida $(\Omega,\Sigma,\textbf{P})$ con medida uno, es decir un conjunto con una /sigma-álgebra/ $\Sigma$ y una medida *P*, tal que, el espacio total tenga medida $\textbf{P}(X)=1$. Se le denomina a los conjuntos medibles de un espacio de probabilidad como /eventos/ y a dicha medida le llamamos /medida de probabilidad/, así mismo se le denomina al espacio total $X$ como /espacio de muestras/. Así la medida de probabilidad *P* evaluada en un evento $E$, $\textbf{P}(E)$ es naturalmente la probabilidad del evento $E$ y a un evento de probabilidad cero se le conoce como /evento nulo/.
+
+Así un espacio de probabilidad $(\Omega,\Sigma,\textbf{P})$, donde $\Omega$ es un conjunto $\Sigma$ es una sigma-algebra y *P* es una medida de probabilidad, es decir $\Sigma$ cumple que
+
++ $\emptyset\in\Sigma$ y $\Omega\in\Sigma$
++ $A\in\Sigma$ implica $\Omega\setminus A\in\Sigma$
++ $\{A_n\}\subset\Sigma$ entonces $\bigcup A_n\in\Sigma$
+
+Además *P* es una medida de probabilidad, es decir que cumple:
+
++ $\textbf{P}(A)\geq 0$
++ $\textbf{P}(\Omega)=1$
++ Si $\{A_n\}\subset\Sigma$ es tal que $A_n\cap A_{n+1}=\emptyset$, entonces $\textbf{P}(\bigcup A_n)=\sum_{n=1}^{\infty} \textbf{P}(A_n)$
+
+\begin{def.}
+Dado un conjunto $\Omega$, decimos que una familia de subconjuntos $\mathrm{F}$ de $\Omega$
+    + Es un $\pi$ sistema, si es cerrado bajo intersecciones finitas.
+
+    + Es un $\lambda$ sistema o sistema de Dynkin si cumple
+      - $\Omega\in\mathrm{F}$
+      - $A,B\in\mathrm{F}$ y $A\subset B$, entonces $A\setminus B\in\mathrm{F}$
+      - Si $\{A_n\}_{n\in\nat}\subset\mathrm{F}$ es una sucesion creciente, entonces $\bigcup_{n\in\nat}A_n\in\mathrm{F}$
+
+\end{def.}
+\begin{lema}
+    Una familia $\Sigma$ de subconjuntos de un conjunto $\Omega$ es una $\sigma$ álgebra si y sólo si es un $\pi$ sistema y $\lambda$ sistema.
+\end{lema}
+\begin{def.}
+Sea $\mathrm{F}$ una familia de subconjuntos de $\Omega$
+    + Definimos a la $\sigma$ álgebra generada por $\mathrm{F}$ como la $\sigma$ álgebra más chica que contiene a $\mathrm{F}$, esto es equivalente a la intersección de todas las $\sigma$ álgebras que contienen a $\mathrm{F}$ y se denotará por $\sigma(\mathrm{F})$.
+    + De forma similar el $\lambda$ sistema generado por $\mathrm{F}$ se denota $\lambda(\mathrm{F})$ y es el $\lambda$ sistema más chico que contiene a $\mathrm{F}$.
+\end{def.}
+\begin{teorema}[Teorema de clases monótonas de Sierpinsky]
+Sea $\mathrm{F}$ un $\pi$ sistema de sunconjuntos de $\om$ y $\mathrm{G}$ un $\lambda$ sistema tal que $\mathrm{F}\subset\mathrm{G}$, entonces $\sigma(\mathrm{F})\subset\mathrm{G}$ o equivalentemente $\lambda(\mathrm{F})=\sigma(\mathrm{F})$
+\end{teorema}
+\noindent\dem Como una $\sigma$ álgebra es un $\pi$ sistema y $\lambda$ sistema, entonces $\lambda(\mathrm{F})\subset\sigma(\mathrm{F})$. Por lo tanto si demostramos que $\lambda(\mathrm{F})$ es una $\sigma$ álgebra, entonces el teorema estaría demostrado, así sólos hay que ver que $\lambda(\mathrm{F})$ es un $\pi$ sistema. Sea $C\in\mathrm{F}$, entonces definimos
+\[
+    \mathrm{G}_{1}:=\{A\in\lambda(\mathrm{F})\,\vert\,A\cap C\in\lambda(\mathrm{F})\}.
+\]
+\noindent Veamos que $\mathrm{G}_1$ es un $\lambda$ sistema
++ Como $\om\cap C=C\in\lambda(\mathrm{F})$, entonces $\om\in\mathrm{F}$
++ Si $A,B\in\mathrm{G}_1$ con $A\subset B$, entonces $A\cap C\subset B\cap C\in\lambda(\mathrm{F})$ y como es $\lambda$ sistema por definición, entonces $A\cap C\setminus B\cap C=(A\setminus B)\cap C\in\lambda(\mathrm{F})$
++ De igual manera, si  $\{A_n\}\subset\mathrm{G}_1$ es una sucesión creciente de subconjuntos, entonces $\bigcup A_n\cap C\in\lambda(\mathrm{F})$ y por lo tanto $\bigcup A_n\mathrm{G}_1$.
+Por lo tanto $D_1$ es un $\lambda$ sistema contenido en $\lambda(\mathrm{F})$ que contiene a $\mathrm{F}$ pues éste es un $\pi$ sistema, así $\lambda(\mathrm{F})\subset\mathrm{G}_1$, por lo tanto $C\cap A\in\lambda(\mathrm{F})$ para todo $C\in\mathrm{F}$ y $A\in\lambda(\mathrm{F})$. Similarmente, si tomamos $A\in\lambda(\mathrm{F})$ fija, definimos
+\[
+    \mathrm{G}_2=\{B\in\lambda(\mathrm{F})\,\vert\,B\cap A\in\lambda(\mathrm{F})\},
+\]
+\noindent se puede demostrar que $\mathrm{G}_2$ es un $\lambda$ sistema que contiene a $\mathrm{F}$, entonces $\lambda(\mathrm{F})\subset\mathrm{G}_2$, así $\lambda(\mathrm{F})$ contiene intersecciones finitas y por lo tanto es una $\sigma$ álgebra.
+\qed\\
+\begin{cor}
+Sea $(\om,\sig,\prob)$ un espacio de probabilidad tal que $\sig=\sigma(\mathrm{F})$ si $\mu_1$ y $\mu_2$ son medidas en $\sig$ tales que $\mu_1=\mu_2$ en $\mathrm{F}$, entonces $\mu_1=\mu_2$.
+\end{cor}
+\obs A partir de estos resultados se puede demostrar el teorema de extensión de Caratheodory.
+\eje Si *P* y *Q* son dos probabilidades en $(\Omega,\Sigma)$, se puede ver que
+\[
+    \mathrm{F}=\{A\in\Sigma\,\vert\,\textbf{P}(A)=\textbf{Q}(A)\}
+\]
+es un $\lambda$ sistema, entonces si un $\pi$ sistema contenido en $\mathrm{F}$ que genera a $\Sigma$, entonces *P* y *Q* son iguales.
+
+Similarmente entendemos por /variable aleatoria/ como una función medible $X:\Omega\rightarrow\mathbb{R}$ en un espacio de probabilidad que cumple lo siguiente;
+\[
+    \mathbb{P}\Big(\{z\in\Omega\,\vert\, |X(z)|=\infty\}\Big)=0.
+\]
+Si un evento tiene como complemento un evento nulo, en otra palabras, si el evento tiene probabilidad 1 diremos que el evento es /casi seguro/.
+
+\eje El ejemplo prototípico son los intervalos finitos de números reales cuya sigma álgebra es el álgebra de los conjuntos /borelianos/ o los /medibles de lebesgue/ y la medida de Lebesgue reescalada para medir exactamente 1.
+
+\obs Dada una sucesión $\{x_n\}_{n\in\nat}$ denotaremos $x_n\downarrow x$ o $x_n\uparrow x$ si $x_{n+1}\leq x_n$ y $x_{n+1}\geq x_n$ $\lim_{n\rightarrow\infty}x_n=x$ respectivamente. Aplicaremos la misma notación para eventos $\{A_n\}_{n\in\nat}\subset\sig$.\\
+Existen construcciones conjuntistas que son más útiles en el sentido probabilístico, por ejemplo si $\{A_n\}_{n\in\nat}$ es una sucesión de eventos aletorios definimos los conjuntos $\{A_n\text{ i.o.}\}$ y $\{A_n\text{ ult.}\}$ dónde i.o significa ``infinitely often'' y ult ``ultimately'', éstos términos se refieren a el comportamiento de las colas de la sucesión de los eventos
+\begin{align*}
+\{A_n\text{ i.o.}\}=\Big\{\sum_{n\in\nat}1_{A_n}=\infty\Big\}=\bigcap_{n\in\nat}\bigcup_{k\geq n}A_k,\\
+\{A_n\text{ ult.}\}=\Big\{\sum_{n\in\nat}1_{A_n}<\infty\Big\}=\bigcup_{n\in\nat}\bigcap_{k\geq n}A_k.
+\end{align*}
+\noindent Notemos que esto se puede expresar en términos de funciones indicadoras como
+\[
+1_{\{A_n\text{ i.o.}\}}=\limsup_{n\rightarrow\infty}1_{A_n} \hspace{0.3cm} 1_{\{A_n\text{ ult.}\}}=\liminf_{n\rightarrow\infty}1_{A_n}.
+\]
+\noindent Ahora por la /desigualdad de Fatou/ se cumple lo siguiente con respecto a las probabilidades de estos conjuntos
+\[
+\prob(1_{\{A_n\text{ i.o.}\}})\geq\limsup_{n\rightarrow\infty}\prob(A_n)\hspace{0.3cm} \prob({\{A_n\text{ ult.}\}})\leq\liminf_{n\rightarrow\infty}\prob(A_n).
+\]
+\noindent Por la subaditividad y continuidad de la probabilidad se obtiene
+\[
+ \prob(\{A_n\text{ i.o.}\})=\lim_{n\rightarrow\infty}\prob(\bigcup_{k\geq n} A_k)\leq\lim_{n\rightarrow\infty}\sum_{k\geq n}\prob(A_k).
+\]
+\obs Si $\sum_{n\in\nat}\prob(A_n)$ entonces las colas tienden a cero y por lo tanto $\prob(\{A_n\text{ i.o.}\})=0$. Esto corresponde a la parte fácil del lema de /Borel-Cantelli/ que veremos en el futuro.
+
+\begin{def.}
+Dado un espacio de probabilidad $(\om,\sig,\prob)$, un espacio medible $(E,S)$ y un conjunto arbitrario $T$, el cual llamaremos a partir de ahora como un \emph{índice arbitrario o abstracto}, es posible definir el espacio medible $E^{T}:=\{f:T\rightarrow E\}$ con la sigma álgebra definida por los mapeos de evaluación, definidos para cada $t\in T$ como $\pi_t:E^{T}\rightarrow E$, $\pi_t(f):=f(t)$. Así si $X:\om\rightarrow E^{T}$ es un elemento aleatorio, se define la función $X(t,\omega)=\pi_t\circ X$, donde $X:T\times\om\rightarrow E$, a esta función le llamaremos un \emph{proceso aleatorio}. Si $T$ es de cardinalidad numerable diremos que $X$ es un proceso de tiempo discreto y si $T$ es de cardinalidad mayor a la numerable, diremos que $X$ es de tiempo continuo.
+\end{def.}
+\obs Un proceso $X:T\times\om\rightarrow E$ es aleatorio (medible) si y solo si para toda $t\in T$, $X_t:\om\rightarrow E$ definida por $X_t(\omega):=X(t,\omega)$ es medible.
+
+*** Medidas con signo
+
+Además de medidas de probabilidad, existen las /medidas con signo/ es decir, si $(\Omega,\Sigma)$ es un espacio medible, entonces una función $\nu:\Sigma\rightarrow\re$ es una medida con signo si cumple
+
++ $\nu(\emptyset)=0$.
++ $\nu$ toma a lo más uno de los valores $\infty$ o $-\infty$.
++ Si $\{A_n\}\subset\Sigma$ es una sucesión de conjuntos disjuntos, entonces $\nu(\bigcup A_n)=\sum_{n=1}^{\infty} \nu(A_n)$, donde entendemos que para valores finitos la convergencia es absoluta.
+
+\eje Un ejemplo que utilizaremos todo el tiempo es la medida con signo definida por una variable aleatoria $X:\Omega\rightarrow\re$
+\[
+    \nu(A)=\int_{A} X d\textbf{P}=\esp(X1_{A}),
+\]
+en el caso de una variable aleatoria *positiva*, con esperanza finita (o esperanza 1), le llamaremos /distribución de probabilidad/, pero habrá más información sobre estas probabilidades en una sección futura.
+\begin{def.}
+Sea $(\om,\sig,\mu)$ un espacio de medida y $\nu$ una medida con signo, decimos que $\nu$ es absolutamente continua con respecto a $\mu$ (denotado $\nu<<\mu$) si $\mu(A)=0$, entonces $\nu(A)=0$.
+\end{def.}
+\noindent Una medida con signo $\nu$, definida por una variable aleatoria $X$ es absolutamente continua con respecto a la probabilidad *P*. Para cualquier función medible $f:\Omega\rightarrow\re$ *siempre* podemos descomponerla de la siguiente manera $f=f^{+}-f^{-}$, donde $f^{\pm}=\pm f 1_{E^{\pm}}$ y $E^{\pm}=\{x\in\Omega\,\vert\,\pm f >0\}$. De la misma manera una medida con signo definida por $f$, $\nu$ se descompone en $\nu^{\pm}$.
+
+** Esperanza
+\noindent Asi mismo entenderemos a la /esperanza/ de una variable aleatoria como la integral de dicha funcion medible, es decir
+\begin{equation}
+    \esp(f(z))=
+    \begin{cases}
+        & \sum_{i} p_i f(z)\\
+        & \int_{\Omega}f(z)d\mu
+    \end{cases}
+\end{equation}
+Comunemente se define la probabilidad condicional de un evento $A$ con respecto a otro evento $B$ como la siguiente fórmula
+\[
+    \prob(A|B)=\frac{\prob(A\cap B)}{\prob(B)},
+\]
+\noindent sinembargo comunmente se utiliza el concepto más general de /esperanza condicional/
+\begin{def.}
+    Si $(\Omega,\Sigma,\prob)$ es un espacio de probabilidad, $X:\Omega\rightarrow\re$ es una variable aleatoria inegrable y $\mathrm{T} \subset\Sigma$ es una sigma sub álgebra, entonces decimos que una funcion $Y:\Omega\rightarrow\re$ es una /esperanza/ condicional si cumple lo siguiente.
+      + $Y$ es $\mathrm{T}$ medible
+      + $\esp(|Y|)<\infty$
+      + $\esp(X 1_A)=\esp(Y1_A)$ para todo $A\in\mathrm{T}$
+    se denotará a la esperanza condicional de $X$ con respecto a $\mathrm{T}$ como $\esp(X|\mathrm{T})$.
+\end{def.}
+\noindent\dem Podemos demostrar la existencia de la esperanza condicional por medio del teorema de Radon-Nikodym (1930)
+\begin{teorema}[Radon-Nikodym]
+    Sea $(\Omega,\Sigma)$ un espacio medible y $\mu:\Omega\rightarrow\re$ una medida ($\sigma$) finita y $\nu$ una medida con signo ($\sigma$) finita tal que $\nu$ sea absolutamente continua con respecto a $\mu$, entonces existe $f:\Omega\rightarrow\re$ funcion medible tal que
+\begin{equation}
+    \nu(A)=\int_{A} f d\mu \hspace{0.5cm}\forall A\in\Sigma,
+\end{equation}
+además la función $f$ es única casi donde quiera, a esta función se le conoce como *derivada de Radon-Nikodym* y usualmente se denota
+\[
+    f=\frac{d\nu}{d\mu}[\mu].
+\].
+\end{teorema}
+\noindent Así la existencia de la esperanza condicional proviene de la derivada de Radon-Nikodym de la medida con signo definida por $X$, para el álgebra $\mathrm{F}$, es decir
+\[
+    \nu{\pm}(A)=\int_{A}X^{\pm}d\textbf{P}\hspace{0.5cm}\nu=\nu^{+}-\nu^{-},
+\]
+\noindent la cual es absolutamente continua con respecto a la medida de probabilidad *P*, entonces definimos $Y=\frac{d\nu}{d\textbf{P}}[\textbf{P}]$, así simplemente verificamos que en efecto es una esperanza condicional. Por Radon-Nykodym, $Y$ es medible, ahora
+
++ $\esp(|Y|)=\int_{\om}|Y|d\textbf{P}=\int_{\om}|X|d\textbf{P}<\infty$
++ $\esp(X1_A)=\int_{A}Xd\textbf{P}=\nu(A)=\int_{A}Yd\textbf{P}=\esp(Y1_A)$.
+
+Algunas propiedades de la esperanza condicional son las siguientes:
+
++ Linealidad: para todas $a,b\in\re$ y $X,Y$ *v.a* $\esp(aX+bY|\mathrm{F})=a\esp(X|\mathrm{F})+b\esp(Y|\mathrm{F})$.
++ Monotonía: si $X\geq0$, entonces $\esp(Y|\mathrm{F})\geq 0$.
++ Si $X$ es $\mathrm{F}$ medible, entonces $\esp(X|\mathrm{F})=X$.
++ Propiedad de Torre: Si $\mathrm{G}\subset\mathrm{F}\subset\sig$, entonces:
+  \[
+        \esp(\esp(X|\mathrm{F})|\mathrm{G})=\esp(\esp(X|\mathrm{G})|\mathrm{F})=\esp(X|\mathrm{G})
+  \]
+
+Más aún la esperanza condicional hereda las propiedades que son resultados comunes de la teoría de la integración, por ejemplo
++ Convergencia monótona: Si $\{X_n\}_{n\in\nat}$ es una sucesión de *v.as* no negativas que converge monótonamente $X_N\uparrow X$, entonces $\esp(X|\mathrm{F})=\lim\esp(X_n|\mathrm{F})$.
++ Convergencia dominada: Si $\{X_n\}_{n\in\nat}$ es una sucesión de *v.as* convergente $X_n\rightarrow X$, tal que las *v.as* sean integrables, no negativas y se encuentren dominadas por $|X_n|\leq Y$ tal que $\esp(Y|\mathrm{F})<\infty$,  entonces $\esp(X|\mathrm{F})=\lim\esp(X_n|\mathrm{F})$.
++ Desigualdad de Jensen: Si $f:\re\rightarrow\re$ es una función convexa (cóncava) y $X$ es una variable aleatoria, entonces $\esp(f(X)|\mathrm{F})\geq\esp(X|\mathrm{F})$ (resp $\esp(f(X)|\mathrm{F})\leq\esp(X|\mathrm{F})$)
+
+*** Distribuciones de probabilidad
+\noindent Consideremos $(\om,\sig,\prob)$ un espacio de probabilidad y sea $(E,S)$ un espacio medible y $\xi:\om\rightarrow E$ una función medible, a esta función le llamremos /elemento aleatorio/ así existe una función $\xi^{*}:S\rightarrow\sig$, definida como $\xi^{*}(B)=\xi^{-1}(B)$, entonces es posible definir una medida de probabilidad en $(\xi^{*})^{-1}(\sig)$, definida por $\prob\circ\xi^{*}(B)=\prob(\xi^{*}(B))$, a la medida $\prob\circ\xi^{*}$, le llamaremos una /distribución/ de probabilidad y usualmente no distinguiremos entre una medida de probabilidad y una distribución incluso en la absencia de un elemento aleatorio.
+\obs Cuando $E=\re$ y $S=B_{\re}$, un elemento aleatorio es una variable aleatoria y cuando $E=\re^{d}$ y $S=B_{\re^{d}}$ un elemento aleatorio se le conoce como /vector aleatorio/.
+\begin{def.}{Función de una distribución}
+Dado un espacio de probabilidad $(\om,\sig,\prob)$ y un elemento medible $\xi:\om\rightarrow E$, definimos la \textit{función} de distribución como la función $F_{\xi}:\re\rightarrow[0,1]$
+\[
+    F_{\xi}(\alpha)=\prob\circ\xi^{*}(-\infty,\alpha]=\prob(\xi\leq\alpha)
+\]
+\end{def.}
+\noindent *Algunas propidades:* Supongamos que $F$ es la función de distribución asociada a una variable aleatoria $X$, entonces.
+ 1. $F:\re\rightarrow[0,1]$ es no decreciente, es decir $F(x)\leq F(y)$ siempre que $x\leq y$.
+ 2. \(\lim_{x\rightarrow\infty}F(x)=1\) y $\lim_{x\rightarrow -\infty}F(x)=0$.
+ 3. $F$ es continua por la derecha.
+\dem La demostración de estos hechos es evidente, el único que no es inmediatemente obvio es el punto número tres, para esto notamos que si tenemos la susesión $\{x+1/n\}$, entonces por convergencia monónona tenemos que
+\[
+    \lim_{n\rightarrow\infty}\prob\Big(X\leq x+\frac{1}{n}\Big)=\prob\Big(X\leq x\Big)
+\]
+\noindent *Existencia:* Ahora supongamos que $F$ es una función que cumple las propiedades 1.,2. y 3., entonces similar a la existencia de Lebesgue, es posible construir una medida $\nu:\mathbb{B}_{\re}\rightarrow\re^{+}$ tal que $\nu((-\infty,x])=F(x)$. A la medida $\nu$ se le conoce como la medida de Lebesgue-Stieltjes de $F$.
+\eje *(La representación de Skorokhod de una variable aleatoria con una función de distribución prescrita en el intervalo [0,1])*\\
+Supongamos que $F:\re\rightarrow[0,1]$ cumple con las propiedades 1.,2. y 3., como antes, entonces construimos una variable aleatoria en $([0,1],\mathbb{B}[0,1],\lambda)$, donde $\lambda$ es la medida de Lebesgue. Definimos
+\begin{align*}
+    X^{+}(\omega):=\inf\{\,z\,\vert\,F(z)>\omega\}=\sup\{\,y\,\vert\,F(y)\leq\omega\}\\
+    X^{-}(\omega):=\inf\{\,z\,\vert\,F(z)\geq\omega\}=\sup\{\,y\,\vert\,F(y)<\omega\}.
+\end{align*}
+Observemos que por definición de $X^{-}$, si $\omega\leq F(c)$, entonces $X^{-}(\omega)\leq c$. Ahora, si $z>X^{-}(\omega)$, entonces $F(z)\geq\omega$, entonces por continuidad a la derecha de $F$, $F(X^{-}(\omega))\geq\omega$ y por lo tanto
+\[
+     X^{-}(\omega)\leq c \implies \omega\leq F(X^{-}(\omega))\leq F(c)
+\]
+Por lo tanto tenemos que $\{\,\omega\,\vert\,X^{-}(\omega)\leq c\}=\{\,\omega\,\vert\,\omega\leq F(c)\}$ lo que implica que
+\[
+    \prob(X\leq c)=\prob(\omega\leq F(c))=\int_{-\infty}^c F(x)\,dx=F(c)
+\]
+\qed
+\obs $X^{+}$ tiene la mimsa función de distribución ya que
+\[
+$\prob(X^{-} = X^{+})=1$.
+\]
+\eje *(Distribuciones binomiales)*
+** Independencia
+\noindent Nos enfocaremos en indepencenia de $\sigma$ álgebras y describimos a partir de este la noción usual de independencia.
+\begin{def.}{Independencia}
+Sea $(\om,\sig,\prob)$ un espacio de probabilidad, decimos que una familia de sub $\sigma$ álgebras $\{\mathrm{F}_i\}_{i\in I}$ son \emph{independientes} si para cualquier $\{i_1,\dots,i_n\}\subset I$ subconjunto fininto, se tiene que
+\begin{equation}\label{indepen}
+    \prob(A_{i_1}\cap\dots\cap A_{i_n})=\prod_{j=1}^n\prob(A_{i_j})\hspace{0.2cm}A_{i_j}\in\mathrm{F}_{i_j}.
+\end{equation}
+Similarmente a los eventos que cumplan con la ecuación \ref{indepen}, les llamaremos eventos \emph{independientes}.
+\end{def.}
+\begin{def.}{Variables aleatorias independientes.}
+Decimos que las variables aleatorias $\{X_i\}_{i\in I}$ en un espacio de probabilidad $(\om,\sig,\prob)$ son \emph{independientes} si \[\{\sigma(X_i)\}_{i\in I}\] son independientes. Se denotará la relación de independencia entre $X$ e $Y$ como $X\upvDash Y$ y no distinguiremos entre variables aleatorias y $\sigma$ álgebras, e incluso denotaremos $X\upvDash\mathrm{F}$ cuando una variable aleatoria sea indepeniente de una sub $\sigma$ álgebra.
+\end{def.}
+En términos de de /eventos independientes/ como sabemos la ecuación que se cumple es
+\[
+    \prob(A_{i_1}\cap\dots\cap A_{i_n})=\prod_{j=1}^n\prob(A_{i_j}),
+\]
+\noindent queremos generalizar este tipo de ecuaciones pero en el sentido de $\pi$ sistemas en lugar de en nuestro sentido original de $\sigma$ álgebras ya que estas son más complicadas de usar. Por lo que el siguiente lema es muy útil para este tipo de cuestiones
+\begin{lema}
+Sean $\mathrm{G}$ y $\mathrm{H}$ sub sigma álgebras de $\sig$ y sean $I$ y $J$ $\pi$ sistemas tales que
+\[
+    \sigma(I)=\mathrm{G},\quad\sigma(J)=\mathrm{H}.
+\]
+Entonces $\mathrm{G}$ y $\mathrm{H}$ son independientes si y solo si
+\[
+    \prob(A\cap B)=\prob(A)\prob(B)\quad A\in J,\,B\in J
+\]
+\end{lema}
+\dem
+Es claro que si las $\sigma$ álgebra son independientes entonces los $\pi$ sistemas son independientes. Por lo que sólo es necesario demostrar que si los $\pi$ sistemas son independientes entonces las $\sigma$ álgebras lo son, entonces dadas $A\in I$ y $B\in J$ fijos, definimos las siguientes medidas finitas
+\[
+    C\mapsto\prob(A\cap C)\quad C\mapsto\prob(B)\prob(C).
+\]
+\noindent Como ambas medidascoinciden en $I$ y $J$, por el lema de clases monótonas coincide en $\sigma(I)=\mathrm{G}$ y $\sigma(J)=\mathrm{H}$ y por lo tanto el lema es válido.
+\qed\\
+\begin{cor}
+Ahora si $X$ e $Y$ son variables aleatorias en un espacio de probabilidad $(\om,\sig,\prob)$ tales que para todo $\{x,y\}\subset\re$ se cumple
+\[
+    \prob(\{X\leq x\}\cap\{Y\leq y\}):=\prob(X\leq x\,,\, Y\leq y)=\prob(X\leq x)\prob(Y\leq y)
+\]
+entonces $X$ e $Y$ son variables aleatorias independientes
+\end{cor}
+\dem
+Esto es claro de la proposición anterior debido a que la familia de conjuntos $\{X^{-1}(-\infty,x]\,\vert\,x\in\re\}$ es un $\pi$ sistema para $\sigma(X)$ para toda \textbf{v.a} $X$, así del lema anterior se sigue el resultado.
+\qed\\
+\obs En términos de la esperanza conicional, si $X \upvDash\mathrm{F}$, entonces $\esp(X|\mathrm{F})=\esp(X)$, además $Y=\esp(X)$ es $\mathrm{F}$ medible pues
+\[
+    \forall A\in\mathrm{F}\hspace{0.3cm}\esp(X1_A)=\esp(X)\prob(A)=Y\esp(1_A)=\esp(Y1_A)
+\]
+\begin{prop}
+Sea $(\om,\sig,\prob)$ espacio de probabilidad, $\mathrm{F}\subset\sig$ sub $\sigma$ álgebra y $X,Y$ \texrbf{v.a.} tal que $X$ sea $\mathrm{F}$ medible, entonces para toda $\varphi:\re\times\re\rightarrow\re$ Borel medible, se cumple
+\[
+\esp(\varphi(X,Y)|\mathrm{F})=\int_{y\in\re}\varphi(X,y)\prob_Y(dy)=\esp(\varphi(x,Y))|_{x\in\re}
+\]
+\end{prop}
+\begin{lema}[Borel-Cantelli]\label{bor-can}
+Sea $\{E_n\}$ una sucesión de eventos indpendientes en un espacio de probabilidad $(\om,\sig,\prob)$, entonces si
+\begin{equation}
+\sum_{n=1}^{\infty}\prob(E_n)=\infty\quad\text{implica}\quad\prob(\{E_n,\,\text{i.o }\})=\prob(\,\limsup E_n\,)
+\end{equation}
+\end{lema}
+\dem Primero, sabemos que se cumple
+\[
+    \om\setminus(\limsup E_n)=\liminf \{\om\setminus E_n\}=\bigcup_{m\in\nat}\bigcap_{n\geq m}(\om\setminus E_n).
+\]
+\noindent Ahora si $p_n=\prob(E_n)$, entonces por independencia se cumple que
+\[
+    \prob\Big(\bigcap_{n\geq m}(\om\setminus E_n)\Big)=\prod_{n\geq m}(1-p_n).
+\]
+Por monotonía de ambos lados de la ecuación, al tomar el límite cuando $r\uparrow\infty$ y la condición $\{r\geq n\geq m\}$, obtenemos gracias a la independencia lo siguiente. Para cada $x\geq 0$, $1-x\leq\exp(-x)$, así como la serie de los $p_n$ es divergente por hipótesis, entonces
+\[
+    \prod(1-p_n)\leq\esp\Big(-\sum_{n\geq m}p_n\Big)=0.
+\]
+\noindent Por lo que $\prob(\{\om\setminus\limsup E_n\})=0$ \qed
+\eje
+** TODO Tipos de convergencia,Teoremas límite, Ley fuerte de los grandes números y teorema del límite central.
+
+* Procesos estocáticos: Temario del curso
+
++ Existencia de procesos y Martingalas
++ Cadenas de Markov (discretas y continuas)
++ Procesos de Poisson y renovacion
++ Movimiento Browniano
+
+** Procesos estocáticos
+Estudian eventos que evolucionan el tiempo (discreto o continuo), es decir tenemos una varible aleatoria que representa un estado en el sistema al tiempo $t$, digamos $X(t)$. Todo va a ser modelado en el mismo espacio de probabilidad $(\Omega,\Sigma,\textbf{P})$
+\begin{def.}
+Un procesos estocáticos es una colección de variables aleatorias $\{X_{t}\}_{t\in T}$, donde $T$ le llamamos /espacio de parámetros/.
+\[
+    X_{t}:(\Omega,\Sigma,\textbf{P})\rightarrow(X,S)
+\]
+Estas funciones toman valores en un espacio medible, llamado /espacio de estados/.
+
+Podemos pensar que nuestro proceso es una funcion de dos variables
+\[
+    X:T\times(\Omega,\Sigma,\textbf{P})\rightarrow(X,S)
+\]
+\end{def.}
+Se clasifican los procesos estocácticos dependiendo de si el espacio de parámetros es *discreto* o *continuo*, similarmente se clasifican si el espacio de estados es *discreto* o *continuo*.
+
+*** TODO Relaciones de dependencia
+# TERMINAR:
++ Procesos de varibles aletorias independientes
+  \[
+   s\neq t\hspace{1cm} X_t\upvDash X_s\hspace{1cm}\{X_n\}_{n\geq 0} .
+  \]
++ Procesos con crecimientos independientes
+  \[
+   \forall 0\leq s\leq t\leq r\leq u\hspace{1cm} X_t-X_s\upvDash X_u-X_r.
+  \]
+  además si $\{X_n\}_{n\geq 0}$ son variables aleatorias independientes, entonces
+  \[
+    Y_n=\sum_{j=1}^n X_j
+  \]
+  tiene crecimientos independientes.
++ Procesos que cumplen la propiedad de Markov, intuitivamente esto quiere decir que estos procesos son independientes el pasado y el futuro dado el presente. Es decir si $\Sigma_t=\sigma(X_u\,u\leq t)$ es la sigma-álgebra generada por $X_u$ (la cual pensamos como el álgebra del pasado) y $\overline{\Sigma_t}=\sigma(X_u\,u\geq t)$ es la sigma-algebra del futuro, entonces $\{ X_t,\,t\geq 0\}$ cumple la propiedad de Markov si para todo $A\in\Sigma_t$ y $B\in\overline{\Sigma_t}$, emtomces
+  \[
+       \textbf{P}(AB|X_t)=\textbf{P}(A|X_t)\textbf{P}(B|X_t).
+  \]
+  El futuro independiente del pasado si para todo $A\in\Sigma$, se cumple que
+  \[
+        \mathbb{E}(X_{s+t}\in A\,|\,\Sigma_t)=\mathbb{E}(X_{s+t}\in A\,|\,X_t)
+  \]
+  Usando funciones medibles:
+  \[
+        \mathbb{E}(f(X_{s+t})\,|\,\Sigma_t)=\mathbb{E}(f(X_{s+t})\,|\,X_t)\,\forall f \text{ medible}.
+  \]
+  + Martingala: Es decir $\{X_t,\,t\geq0\}$ es integrable si $\mathbb{E}(X_{t+s}|X_t)$ y el pasado no dice nada del futuro.
+  + Trayectorias continuas o cadlag $X_t=B_t$ es movimiento browniano.
+  + Incrementos Gaussianos: Para todo
+
+\begin{def.}
+    Una familia de funciones $\mathfrak{H}=\{f:\Omega\rightarrow\re\}$ es una clase monotona si
+    + $1\in\mathfrak{H}$
+    + $\forall a,b\in\re\,f,g\in\mathfrak{H}$, entonces $af+bg\in\mathfrak{H}$
+    + contiene sus límites no decrecientes de funciones positivas y acotadas
+\end{def.}
+\begin{teorema}[De clases monótonas funcional]
+Si una clase de funciones $\mathfrak{H}$ es una clase monótona y $\mathrm{F}$ es un $\pi$ sistema que genera a $\Sigma$, tal que $1_A\in\mathfrak{H}$ para todo $A\in\mathrm{F}$, entonces $\mathfrak{H}$ contiene a todas las funciones medibles y acotadas.
+\end{teorema}
+\dem Sea $\mathrm{G}=\{A\in\mathrm{F}\,\vert\,1_A\}$, asi $\mathrm{F}\subset\mathrm{G}$, veamos que $\mathrm{G}$ es un $\lambda$ sistema
+    + $1_{\Omega}\in\mathfrak{H}$ claramente, así $\Omega\in\mathrm{G}$
+    + Sea $A\subset B$ conjuntos en $\mathrm{G}$, como $1_{B\setminus A}=1_B-1_A\in\mathfrak{H}$ por lienalidad así $B\setminus A\in\mathfrak{H}$
+    + Sea $\{A_n\}$ una sucesion creciente de conjuntos en $\mathfrak{H}$ y $A=\bigcup A_n$ como $1_A$ es acotada y límite creciente de $1_{A_n}$ así $A\in\mathfrak{H}$
+ Por el teorema de clases monónonas, por hipótesis $\mathfrak{H}$ contiene las funciones características de todo conjunto medible y por linealidad todas las funciones simples y por monotonía todas las funciones medibles acotadas.\\
+ \obs En el teorema anterior se puede precindir de la hipótesis de acotamiento.
+
+ \begin{cor}{Tarea}
+Sea $X:(\Omega,\Sigma,\prob)\rightarrow(E,\xi)$ medible y $\mathrm{T}\subset\Sigma$ una sub sigma álgebra genrada por una familia numerable de funciones $\{Y_n\}$, donde $Y_n:(\Omega,\Sigma,\prob)\rightarrow(Z,\tau)$. Sea $f:E\rightarrow\re$ medible, entonces una variable aleatoria $U$ que es $\mathrm{T}$ medible y acotada es $U=\esp(f|\mathrm{T})$ si y sólo si para todo $n\in\nat$ y $f_1,\dots,f_n:(Z,\mathrm{T})\rightarrow\re$ medibles y acotadas, se cumple
+\[
+\esp(f(X)\prod f_i(Y_i))=\esp(U\prod f_i(Y_i))
+\]
+ \end{cor}
+\obs $X:(\om,\sig,\prob)\rightarrow(E,S)$ una variable aleatoria y $\mathrm{T}\subset\sig$ sub álgebra, entonces la esperanza condicional de una función medible $f:E\rightarrow\re$ siempre está bien definida por medio de
+\[
+\esp(f(X)|\mathrm{T})
+\]
+\begin{def.}
+ Dada una *v.a* $X:\Omega\rightarrow E$ y $mathrm{T}\subset\sig$ es una sub álgebra, definimos la ley $X$ condicionada a $\mathrm{T}$ como
+ \[
+ \prob_{X|\mathrm{T}}(B)=\esp(1_B|\mathrm{T}).
+ \]
+\end{def.}
+\obs Para cada $B\in S$ fija, la función $\esp(1_B|\mathrm{T})(w)$ es una *v.a* $\mathrm{T}$ medible, pero no necesariamente una probabilidad.
+\begin{def.}
+Sean $(E,S)$ y $(F,T)$ espacios medibles, decimos que una función $Q:E\times T\rightarrow\re$ es una medida de transisción si cumple
+  + $\forall\,B\in T$ fija $Q(w,B)$ es S medible
+  + $\forall\, w\in E$ fija $Q(w,B)$ es una medida en $(F,T)$
+Si $Q(w,F)=1$ para toda $w$, decimos que $Q$ es una probabilidad de transición.
+\end{def.}
+\begin{def.}
+Decimos que $\prob_{X|\mathrm{T}}(\cdot)$ si existe una probabilidad de transición $Q$ tal que
+\[
+    \esp(1_B(X)|\mathrm{T})(w)=Q(w,B)
+\]
+\end{def.}
+Recordamos que un espacio medible es separable si la $\sigma$ álgebra se puede definir por un número numerable de conjuntos, el ejemplo prototípico son los reales.
+\begin{teorema}[Teorema de Jirina]
+Sea $(\om,\sig,\prob)$ un espacio de probabilidad y $\mathrm{T}\subset\sig$ una sub álgebra, sea $X:\om\rightarrow E$ una *v.a* tal que $(E,S)$ sea separable, entonces existe una probabilidad de transición $Q:\om\rightarrow E$ tal que $Q(w,B)$ es una esperanza condicional
+\end{teorema}
+\dem Lo demostramos para $E=\re$. Sea $r\in\rac$ y definimos $C_r=\esp(1_{\{x\leq r\}} | \mathrm{T})$, así claramente $C_r$ es una *v.a* $\mathrm{T}$ medible, entonces por monotonia $C_r\leq C_q$ si $r<q$, asi si definimos
+\[
+    \om_{r,q}=\{\omega\in\om\,\vert\,C_{r}\leq C_q\},
+\]
+\noindent asi $\om_{r,q}\in\mathrm{T}$ y $\prob(\om_{r,q})=1$. Entonces $\om_0=\bigcap_{r < q\in\rac}\om_{r,q}\in\mathrm{T}$, además $\prob(\om_0)=1$. Ahora para $w\in\om_0$, la función $C_{\cdot}:\rac\rightarrow\re$ es no decreciente y no negativa, por lo que es posible extenderla a todo $\re$. Notamos que $C_{\cdot}$ está acotada por 1 y es continua a la izquierda y los límites por la derecha existen, por lo tanto $w\in\om_0$ y por lo tanto $C_{\cdot}$ es una distribución en $\re$. Ahora definimos
+\[
+    F(w,x):=1_{\om_0}C_x+1_{\om_0}(w)1_{x\geq0}.
+\]
+Para cada $w\in\om$ fija, $F(w,x)$ es una distribución, entonces existe una medida de probabilidad $Q(w,\cdot)$ en $\re$ tal que $F(w,x)=Q(w,(-\infty,x])$. Así para $x\in\re$ fija $F(w,x)$ es una *v.a* $\mathrm{T}$ medible. Enconces como $\mathrm{C}=\{(-\infty,x]\,\vert\,x\in re\}$ es un $\pi$ sistema, así por el treorema de clases monóntanas, entonces $Q(x,B)$ es una probabilida de transición, sólo falta ver que es una esperanza condicional. Si $B=(-\infty,r]$ con $r\in\rac$.
+
+** Construccion de medidas de probabilidad a partir de dos probabilidades.
++ Una construccion es a travez de la medida producto.
++ Otra es con la probabilidad de transición.
+
+\begin{def.}
+  Sean $(E,S)$ y $(F,T)$ espacios medibles y sea $\mu$ una probabilidad en $(E,S)$ y $Q:E\times T\rightarrow\re$ una probabilidad de transicion de $E$ a $F$. Definimos una probabilidad en $(E\times F,S \otimes T)$ como
+  \[
+    \pi(A\times B)=\int_{E}\mu(dx)1_A(x)Q(x,B)=\int_{E}\mu(dx)1_A(x)\int_{F}Q(x,dy)1_B(y)
+  \]
+  \end{def.}
+El teorema de clases monónotonas funcional $f,:E\times F\rightarrow\re$ medible, se tiene que
+\[
+\int f d\pi=\int_{E\times F}\pi(dx,dy)f(x,y)=\int_{E}\mu(dx)\int_{F}Q(x,dy)f(x,y).
+\]
+Dicho de otra manera tenemos,
+\[
+    \prob_1(dx)\prob_2(dy)=\pi(dx.dy)=\mu Q(x,dy),
+\]
+\noindent lo cual se puede interpretar como que $\pi$ es la drisribucion conjunta de $X$ y $Y$, $\mu$ la distribución de $X$ y $Q(x,dy)$ la probabilidad condicional de $Y$ dado $X$. Existe la versión inversa de este problema y se conoce como el problema de desintegración.
+\begin{teorema}[Teorema de desintegración]
+Sea $\pi$ una probabilidad en $(E\times F,S \otimes T)$, supongamos que $T$ es separable, entonces existe una medida de probabilidad $\mu$ en $(E,S)$ y una probabilidad de transición $Q$ entre $(E,S)$ a $(F,T)$ tal que
+\[
+    \pi(dx,dy)=\mu(dx)Q(x,dy)
+\]
+\end{teorema}
+
+Aplicamos inducción para encontrar un espacio con $n$ variables aleatorias y la extensión numerable de esto fue realizada por /Clonescu-Tulcea/ y la extensión no numerable fue hecha por /Kolmogorov/ la cual llevó a la definición de la propiedad de Kolmogorov.
+Sea $T$ n conjunt de parámetros (el cual usualmente lo pensaremos como tiempo) y sea $(E_t,\sig_t)$ un espacio medible para todo $t\in T$.
+\begin{def.}
+Definimos el espacio producto como $\prod_{t\in T}E_t$ como un producto de Tychonoff, es decir la sigma álgebra se define por medio de los conjuntos llamados *rectángulos*
+\[
+    \times_{t\in T} A_t=\{x\in E_t\,\vert\,x_t\in A_t\forall t\in T\},
+\]
+\noindent donde $A_t\in\sig$ y además requerimos que $A_t=E_t$ para a lo más una cantidad finita de $t\in T$. Así denotamos por $\bigotimes_{t\in T}\sig_t$ a la sigma álgebra generada por los rectángulos.
+\end{def.}
+Observamos que $\bigotimes_{t\in T}\sig_t$ es la sigma álgebra más chica generada por las proyecciones $\pi_s:\prod_{t\in T}E_t\rightarrow E_s$. Ahora sólo tenemos que definir una probabilidad en este espacio. Primero suponemos que $T=\nat$, así tomamos $\mu$ una probabilidad en $(E_0,\sig_0)$ y sea $\kappa_1$ una probabilidad de transición de $(E_0,\sig_0)$ a $(E_1,\sig_1)$, luego inductivamente definimos $\kappa_{n+1}$ como la probabilidad de transición de $(F^{0},\sig^{0})=(E_0\times\dots\times E_{n},\sig_0\otimes\dots\otimes\sig_n)$ a $(E_{n+1},\sig_{n+1})$, así $\mu(A)$ es la probabilidad de que ocurra $A$ y dado $(x_0,\dots,x_n)$, $\kappa_{n+1}((x_0,\dots,x_n);A)$ modela la probabilidad de que el $n+1$ resultado esté en $A$ dado que ya sucedió $(x_0,\dots,x_n)$. Sean $Y_n$ los primeros $n$ resultados, entonces $Y_n$ es un elemento de $(F^{0},\sig^{0})$, el cual tiene medida de probabilidad
+\[
+    \pi_n(dx_0,\dots,dx_n)=\mu(dx_0)\kappa_1(x_0;dx_1)\kappa_2(x_0,x_1;dx_2)\dots\kappa_n(x_0,\dots,x_n;dx_n).
+\]
+\noindent Por lo que queremos un espacio de probabilidad $(\om,\sig,\prob)$ donde todas las $(Y_n)$ sean elementos. Si definimos
+\[
+    (\om,sig)=\prod_{n\in\nat}(E_n,\sig_n),
+\]
+entonces definimos $Y_n:(\om,\sig)\rightarrow(F^{0},\sig^{0})$ como la proyeccion $Y_n(\omega)=(\omega_1,\dots,\omega_n)$, así definimos a la sigma álgebra generada por $Y_n$ como $\mathrm{F}_n$, notamos que si $A\in\mathrm{F}_n$, entonces exite un $B\in\sig^{0}$ tal que $A=B\times E_{n+1}\times\dots$. Ahora queremos una *P* tal que $\prob(A)=\pi_n(B)$, al conjunto $\{\pi_n(B)\,\vert\,n\in\nat\,B\in\mathrm{F}\}$ se les llama /disribuciones finito dimenionales/.
+\begin{teorema}
+Existe una única medida de probabilidad $\prob$ es $(\om,\sig)$ tal que $\prob(A)=\pi_n(B)$ para todo $B\in\mathrm{F}_n$
+\end{teorema}
+\noindent\dem Definimos $\sig^{0}=\bigcup_{n\in\nat}\mathrm{F}_n$, entonces probamos lo siguiente:
+1. $\sig^{0}$ es un álgebra
+2. $\sig^{0}$ es un $\pi$ sistema
+3. $\sigma(\sig^{0})=\sig=\sigma(\textbf{rectangulos})$
+#TERMINAR: VER FOTOS EN EL ONEPLUS y ver Kallenberg
+\eje Se puede afirmar la existencia de una infinidad de variables aleatorias independientes. Para cada $n\in\nat$ definimos en $(\om_n,\sig_n,\prob_n)$ el espacio de probabilidad por medio de
+\[
+    \kappa_{n+1}(x_0,\dots,x_n;A)=\prob_{n+1}(A).
+\]
+\noindent Así existe un único espacio de probabilidad $(\om,\sig,\prob)$ espacio de probabilidad como previamente lo definimos y $X_n(\omega)=\omega_n$ con $\omega\in\om$
+\eje *Cadenas de Markov* sea $(E,\mathrm{F})$ espacio medible, así definimos $(E_n,\mathrm{F}_n)=(E,\mathrm{F})$ para toda $n$. Sea $\mu$ una probabilidad en $(E,\mathrm{F})$ y tomamos una probabilidad de transición $Q(x,dy)$, entonces $\kappa_{n+1}(x_0,\dots,x_n;A)=Q(x_n;A)$. Si queremos una cadena con espacio de estados finita nos dan $\prob_{x,y}=\prob(X_1|x_0=x$, entonces
+\[
+       Q(x,A)=\sum_{y\in A}\prob_{x,y}.
+\]
+** Construccion de procesos para tiempo continuo
+Sea $(E,\mathrm{F})$ un espacio medible separable y sea $J\subset T$ finito, entonces podemos construir un espacio de probabilidad $(E^{J},\mathrm{F}^{J},\pi^{J})$. Ahora queremos construir un espacio de probabilidad $(\om,\sig,\prob)$ tal que $(\om,sig)=(\prod_{t\in T}E,\bigotimes_{t\in T}\mathrm{F})$, para esto necesitamos la condición de consistencia
+#ver fotos
+\begin{def.}
+Decimos que una familia $\{\pi_J\,\vert\,J\subset T\,\text{finito}\}$ es consistente si para todo $K\subset J\subset T$ com $J$ finito
+$\pi_K(A)=\pi_J(R_{J,K})^{-1}(A))$
+\end{def.}
+\begin{teorema}{Extensión de Kolmogorov}
+Supongamos que $(E,\mathrm{F})$ es un espacio medible separable con $\{\pi_J\,\vert\, J\subset K\,\text{finito}\}$ consistente, entonces existe una única medida de probabilidad $\prob$ en $(\om,\sig)$ tal que $\prob(X_J\in A)=\pi_J(A)$ para todo $A\in\mathrm{F}^J$ con $J\subset T$ finito.
+\end{teorema}
+\noindent\dem Definimos $I_f=\{J\subset T\,\vert\,J\,\text{finito}\}$ y $I_c=\{J\subset T\,\vert\,J\,\text{numerable infinito}\}$, tomamos $J\in I_c$, así $J=\{t_0,\dots,t_n,\dots\}$ y sea $J=\{t_0,\dots,t_n\}$, inductivamente el teorema de desintegración implica que existe una medida $\mu_0(A)=\pi_{J_0}(A)\,A\in\mathrm{F}$ y una sucesión de probabilidades de transición $\{\kappa_n\}_{n\in\nat}$ de $(E^{J_{n-1}},\mathrm{F}^{J_{n-1}})$ a $(E,\mathrm{F})$, digamos
+\[
+    \pi_{J_n}(dx_0,\dots,dx_n)=\mu_0(dx_0)\kappa_1(x_0;dx_1)\dots\kappa(x_0,\dots,x_{n-1};dx_{n}),
+\]
+\noindent entonces el teorema de Ionescu-Tulcea, existe $\prob_J$ en $(E^J,\mathrm{F}^J)$ tal que $\prob_J(R^{-1}_{J,J_{n}}(A))=\pi_{J_n}(A)$ para toda $n\in\nat$ y $A\in\mathrm{F}^{J_n}$. Así tenemos $\prob_J$ para toda $J\in I_c$, veamos que es consistente, si $L\subset J$ con $J,L\in I_c$, veamos que $\prob_L(R^{-1}_{L,J}(A))=\pi_{L}(A)$ para toda $A\in\mathrm{F}^{L}$, así sea $H\in\mathrm{F}^{L}$, entonces existe $n\in\nat$ y $B\in L_n=\{s_0,\dots,s_n\}$ tal que $H=R^{-1}_{L_{n},L}(B)$, por lo tanto $\prob_L(R^{-1}_{L,L_{n}}(B))=\pi_{L}(H)=\pi_{L_{n}}(B)$, ahora como $L\subset J$, exite $m\in\nat$ talque $L_n\subset J_m$ y por consistencia tenemos
+\begin{eqnarray}
+    & \pi_{L_{n}}(R^{-1}_{J_{m},L_{n}}(B))=\pi_{L_{n}}(B)=\prob_J(R^{-1}_{J,J_{m}}R^{-1}_{J_{m},L_{n}}(B))=\\
+    & \prob_{J}(R^{-1}_{J,L_{n}}(B))=\prob_{J}(R^{-1}_{J,L}R^{-1}_{L,L_{n}}(B))=\prob_{J}(R^{-1}_{J,L}(H)).
+\end{eqnarray}
+\noindent como la familia de rectangulos genera a $\mathrm{F}^L$, entonces la ecuaciones anteriores son válidas para todo $H\in\mathrm{F}^L$. Ahora en el caso general por propieadades básicas de $\sigma$ álgebras, si $H \in\sig$, entonces existe $J\in I_c$ tal que para toda $t\in J$ $A_t=E$, es decir sus colas son totales y $H=R^{-1}_{T,J}(B)$ con $B\in\mathrm{F}^J$. Así definimos $\prob(H)=\prob_J(B)$ y por consitencia esto es suficiente pues la familia de rectángulos es un $\pi$ sistema que genera a $\sig$.
+
+\eje *Familias de Markov a tiempo continuo* Sea $T=[0,\infty)$ y $\mu$ una probabilidad en $(E,\mathrm{F})$, para cada $s<t\in\re^{+}$ tomamos una probabilidad de transición $\prob_{s,t}$ de $(E,\mathrm{F})$ en sí mismo y llamamos $\mu_0$ a la probabilidad inicial y diremos que $\prob_{s,t}(x;A)$ es la probabilidad condicional a que $X_t\in A$ dado $X_s=x$. Tomamos $J=(0<t_1<t_2\dots<t_n)$ y definimos
+\[
+    \pi_J(dx_0,\dots,dx_n)=\mu_0(dx_0)\prob_{0,t_1}(x_0;dx_1)\dots\prob_{t_{n-1},t_n}(x_{n-1;dx_n}).
+\]
+La consistencia en este caso equivale a las /ecuaciones de Chapman-Kolmogorov/
+\[
+    \prob_{s,t}(x;B)=\int_E\prob_{s,u}(x,dy)\prob_{u,t}(y;B)
+\]
+\noindent $B\in\mathrm{F}$, $s<u<t$. Si definimos $\mathrm{F}_t=\sigma(X_u\,|\,u\leq t)$ como
+\[
+    X_u:(\om,sig)\rightarrow(E,\mathrm{F})\hspace{0.3cm}X_u(\omega)=\omega_0
+\]
+\noindent entonces $\prob(X_0\in A)=\mu(A)$ y $\prob(X_t\in A\,|\,\mathrm{F}_s)=\prob_{s,t}(X_s,A)$ lo cual interpretamos como la probabilidad de si en el tiempo pasado $s$, ¿Cuál es la probabilidad de al tiempo $t$ estar en $A$? Le llamamos a $A(X_t,x\geq 0)$ , /procesos de Markov con probabilidades de transición/. Si $\prob_{s,t}=\prob_{t-s}$, es decir que sólo depende de la distancia, le llamamos /proceso de Markov homogeneo/ y en este caso las ecuaciones de Chapman-Kolmogorov se reducen a
+\[
+    \prob_t\prob_s=\prob_s\prob_t=\prob_{s+t}\hspace{0.3cm}\{\prob_t\}_{t\in\re^+}\,\text{semigrupo de transición}.
+\]
+Usualmente esto se hace con *matrices de Markov*
+* Martingales
+# ver los libros de Lawler, Williams y Durrett
+\noindent Esta teoría intuitivamente se puede pensar como la teoría de "juegos justos", es decir son juegos donde no puedes ganar dinero apostando.
+\begin{def.}{Martingalas}
+Sea $\{X_n\,\vert\,n\in\nat\}$ una sucesión de *v.a*, decimos que ésta es /martingala, submartingala o subramartingala/ si
+\[
+    \esp(X_n|\{X_0,\dots,X_m\})=X_m\hspace{0.3cm}\esp(X_n|\{X_0,\dots,X_m\})\geq X_m\hspace{0.3cm}\esp(X_n|\{X_0,\dots,X_m\})\leq X_m
+\]
+respectivamente.
+\end{def.}
+\noindent Las siguientes son propiedades últiles de las martingalas
+
++ Si $N$ es un tiempo finito, entonces $\esp(X_N)=\esp(X_0)$
++ Si $\{X_n\}$ es submartingala tal que $\sup_{n\in\nat}\esp(X^{pm}_n)<\infty$, emtonces converge *c.d.*
+
+\begin{def.}{Filtración}
+Sea $(\om,\sig,\prob)$ un espacio de probabilidad, una filtración es una familia creciente de sub $\sigma$ álgebras, es decir
+\[
+    \{\mathrm{F}_n\subset\sig\}_{n\in\nat}\hspace{0.3cm}\mathrm{F}_m\subset\mathrm{F}_n\,n<m.
+\]
+\end{def.}
+\begin{def.}
+Sea $(\om,\sig,\prob)$ un espacio de probabilidad, $\{\mathrm{F}_n\subset\sig\}_{n\in\nat}$ una filtración y $\{X_n\}_{n\in\nat}$ una familia de *v.as*, decimos que esta familia es
++ Adaptada si cada $X_n$ es $\mathrm{F}_n$ medible
++ Subadaptada si cada $X_n$ es $\mathrm{F}_{n-1}$ medible
+\end{def.}
+\noindent \obs Sea $(\om,\sig,\prob)$ un espacio de probabilidad y $\{X_n\}_{n\in\nat}$ una familia de *v.as*, podemos definir una filtración adaptada llamada /filtración natural/ por medio de
+\[
+    \mathrm{F}_n=\sigma(X_0,\dots,X_n)
+\]
+\begin{def.}
+Sea $(\om,\sig,\prob)$ un espacio de probabilidad, $\{\mathrm{F}_n\subset\sig\}_{n\in\nat}$ una filtración. Decimos que una familia de *v.as* $\{X_n\}_{n\in\nat}$, es martingala con respecto a $\{\mathrm{F}_n\}_{n\in\nat}$ si
++ Si $\{X_n\}$ es adaptada a $\{\mathrm{F}_n\}$
++ $\esp(|X|_{n})<\infty$
++ $\esp(X_{n}|\mathrm{F_m})=X_m$ para cada $m\leq n$ (adaptar para sub y supra martingala)
+\end{def.}
+\obs:
+1. $\{X_n\}$ es martingala si y sólo si es sub y supra martingala.
+2. Si $\{X_n\}$ es submartingala, entonces $\{-X_n\}$ es supra martingala.
+3. Como una martingala es $\mathrm{F}_n$ adaptada, entonces $\esp(X_n1_A)=\esp(X_m1_A)$ para toda $A\in\mathrm{F}$.
+4. Si $\{X_n\}$ es submartingala, entonces $\esp(\esp(X_n|\mathrm{F}_m))=\esp(X_n)$ con $m<n$ de forma creciente, el resultado es similar para supramartingala.
+5. Demostrar que $\{X_n\}$ es martingala, basta ver que es adapatada e integrable con $\esp(X_{n+1}|\mathrm{F}_n)=X_n$ para toda $n$ por recursión sobre $m$ y la propiedad de la torre, el resultado para sub y supramartingala es análogo.
+
+\begin{teorema}
+Sea $\{X_n\}_{n\in\nat}$ una $\{\mathrm{F}_n\}$ maringala y sea $\varphi:\re\rightarrow\re$ convexa creciente tal que $\esp(\varphi(X_n))<\infty$, entonces $\{\varphi(X_n)\}_{n\in\nat}$ es submartingala
+\end{teorema}
+\noindent\dem Como $\varphi$ es convexa creaciente, es continua y por lo tanto Borel medible así $\varphi(X_n)$ es $\mathrm{F}_n$ medible, entonces por la desigualdad de Jensen
+\[
+    \esp(\varphi(X_{n+1})|\mathrm{F}_n)\geq\varphi(\esp(X_{n+1}|\mathrm{F}_n))=\varphi(X_n)
+\]
+\noindent ya que $\{X_n\}$ es martingala, así si $\varphi$ es creciente, tenemos el resultado.
+\begin{cor}
+Si $\{X_n\}$ es martingala y $\esp(|X_n|^p)<\infty$, entonces
+\begin{itemize}
+\item $\{X_{n}^p\}$ es submartingala
+\item $\{|X_n|\}$ es submartingala
+\item $\{X_{n}^+\}$ es submartingala
+\end{itemize}
+\end{cor}
+
+\eje
+1. Si $X$ es una *v.a* integrable y $\{\mathrm{F}_n\}$ es una fitración, entonces $X_n=\esp(X|\mathrm{F}_n)$ es maringala.
+2. *Caminata aleatoria simétrica*: Sean $\{\epsilon_i\}$ *v.as* independientes e integrables de media nula $\esp(\epsilon_i)=0$, entonces
+   \[
+        X_n=\sum_{i=0}^{n}\epsilon_i\hspace{0.3cm}\text{es martingala con respecto a } \mathrm{F}_n=\sigma(\epsilon_0,\dots,\epsilon_n)
+   \]
+   Claramente $X_n$ es $mathrm{F}_n$ medible además sucede que
+   \[
+        \esp(|X_n|)\leq\sum_{i=1}^{n}\esp(|\epsilon_i|)<\infty.
+   \]
+ Ahora si $m<n$, sucede que
+    \[
+         \esp(X_n|\mathrm{F}_m)=\esp(\sum_{i=1}^m\epsilon_i+\sum_{i=m}^n\epsilon_i|\mathrm{F}_m)=X_m+\sum_{i=m}\esp(\epsilon_i)=X_m
+    \]
+ Si $\{\epsilon_i\}$ son independientes, integrables y $\esp(\epsilon_i)<0$ o $\esp(\epsilon_i)>0$ ,entonces
+ \[
+    X_n=\sum_{i=0}^n\epsilon_i\hspace{0.3cm}\text{es martingala o submartingala respectivamente}.
+ \]
+ \noindent Más general si $\{\epsilon_i\}$ son variables aleatorias independientes e integrables entonces
+ \[
+    X_n=\sum_{i=1}^n\epsilon_i-\esp(\epsilon_i)\hspace{0.3cm}\text{es martingala}.
+ \]
+
+3. Sean $\{\epsilon_i\}_{i\in\nat}$ *v.a* independientes e intregrables con la misma distribución (resumido usualmente como *i.i.d*). Sea $\mu_i=\esp(\epsilon_i)$ y $\sigma_{\epsilon_i}^2=\esp((\epsilon_i-\mu_i)^2)$ la esperanza y /la varianza/ de la variable $\epsilon_i$ respectivamente, laos cuales resumimos en  $\mu=\sum_{i=0}^n\mu_i$ y $\sigma^2=\sum_{i=0}^n\sigma_i^2$, entonces
+   \[
+        Y_n=(\sum_{i=0}^n\epsilon_i-n\mu_i)^2-n\sigma^2\hspace{0.3cm}\text{es martingala}.
+   \]
+   \noindent Con respecto a $\mathrm{F}_n=\sigma(\epsilon_0,\dots,\epsilon_n)$, esto es pues claramente $Y_n$ es $\mathrm{F}_n$ medilbe además de que
+   \[
+        \esp(|Y_n|)\leq\sum_{i=0}^n\esp((\epsilon_i-n\mu)^2)+n\sigma^2=(2n+1)\sigma^2<\infty.
+   \]
+   \noindent Ahora si $m\leq n$, calculamos
+   \[
+        \esp(Y_n|\mathrm{F}_m)=\esp((S_m+\sum_{i=m+1}^n\epsilon_i-n\mu)^2-n\sigma^2|\mathrm{F}_m),
+   \]
+   \noindent donde $S_m=\sum_{i=0}^m\epsilon_i$, así si expandimos el binomio al cuadrado $((S_m-m\mu)+(\sum_{i=m+1}^n\epsilon_i-(n-m)\mu))^2$, entonces
+   \begin{align*}
+        &\esp(Y_n|\mathrm{F}_m)\\
+        &=\esp((S_m-m\mu)^2+2(S_m-m\mu)(\sum_{i=m+1}^n\epsilon_i-(n-m)\mu)+(\sum_{i=m+1}^n\epsilon_i-(n-m)\mu)^2-n\sigma|\mathrm{F}_m)\\
+        &=(S_m-m\mu)^2+2(S_m-m\mu)\esp(\sum_{i=m+1}^n\epsilon_i-(n-m)\mu))+\esp((\sum_{i=m+1}^n\epsilon_i-(n-m)\mu)^2)-n\sigma^2\\
+        &= Y_n,
+   \end{align*}
+   \noindent ya que $S_m-m\mu$ es $\mathrm{F}_m$ medible y $\sum_{i=m+1}^n\epsilon_i-(n-m)\mu$ es independiente a $\mathrm{F}_m$ y por lo tanto $\{Y_n\}_{n\in\nat}$ es martingala.
+4. *Urna de Polya*:
+
+##TAREA:
+
+\eje Sea $\{X_n\}$ una maringala o submartingala y $\{\mathrm{F}_n\}$ una filtración con $T$ un tiempo de paro asociado. Veamos que
+\[
+    \mathrm{F}_T=\{A\in\sig\,\vert\,A\cap\{T\leq n\}\in\mathrm{F}_n\,\forall n\in\nat\}.
+\]
+\noindent es una sub $\sigma$ álgebra llamada la $\sigma$ álgebra detenida. Más aún se cumple que
++ T es $\mathrm{F}_T$ medible
++ Si T es finito, entonces $X_T$ es $\mathrm{F}$ medible.
++ Si $S\leq T$ es un tiempo de paro acotado, entonces $\mathrm{F}_S\subset\mathrm{F}_T$ y $X_S,X_T$ son $L_1(\om,\sig,\prob)$ y \[\esp(X_T|\mathrm{F_s})=X_S\].
++ Más aún si $\{X_n\}$ es un proceso $\{\mathrm{F}_n\}$ adaptado con $X_n\in L_1(\om,\sig,\prob)$ para todo $n\in\nat$ y para todo $S\leq T$ tiempos de paro acotados se cumple $\esp(X_S)=\esp(X_T)$, entonces $X$ es martingala.
+
+** Desigualdades Maximales
+##TERMINAR(ver fotos)
+Dado un proceso $\{X_n\}$ podemos definir el proceso maximal
+\begin{equation}
+    X_n^{*}=\max_{0\leq m\leq n}X_m.
+\end{equation}
+\begin{teorema}{Desigualdad Maximal de Doob}
+Sea $\{X_n\}$ submartingala no negativa, entonces para toda $\lambda\in\re^+$
+\[
+\lambda\prob(X_n^*\geq\lambda)\leq\esp(X_n1_{X_n^*\geq\lambda})\leq\esp(X_n).
+\]
+\end{teorema}
+\noindent\dem Sea $n\in\nat$ fija, entonces definimos
+\[
+T:=\min_{0\leq k\leq n}\{X_k\geq\lambda\},
+\]
+y definimos $S$ el mínimo entre $T$ y $n$, entonces $S$ es un tiempo de paro acotado aplicado. Como $X_n$ es submartingala, entonces
+$\esp(X_S)\leq\esp(X_n)$. Notamos que $\{S<T\}$ implica $T=\infty$ y $S=n$, así para toda $0\leq k \leq n$, $X_k<\lambda$ y $X_k^{*}<\lambda$. Ahora si $\{S=T\}=\{S=n\}\cap\{X_n^{*}<\lambda\}$, entonces
+\begin{align*}
+\esp(X_n)\geq\esp(X_S)=\esp(X_S1_{S<T})+\esp(X_S1_{S=T})\geq\esp(X_n1_{X_n^*<\lambda})+\lambda\prob(X_n^*\geq\lambda).
+\end{align*}
+\begin{teorema}{Desigualdad $L_p$ de Doob}
+\end{teorema}
+\noindent\dem Recordamos que
+\[
+    \esp(Y^p)=\int py^{p-1}\prob(Y\geq y)dy.
+\]
+Así si $Y=X_n^*$, por Fubini y la desigualdad maximal de Doob obtenemos
+\begin{align*}
+\esp((X_n^*)^p)=\int py^{p-1}\prob(X_n^*\geq y)dy\leq.
+    \int py^{p-1}y^{-1}\esp(X_n1_{X_n^*\geq y})dy\int=py^{p-1}y^{-1}\esp(X_n1_{X_n^*\geq y})dy.
+\end{align*}
+Con Hölder y despejando sale.
+*** Convergencia de submartingalas.
+#TERMINAR(ver fotos)
+
+
+
+
+
+
+
+
+\begin{def.}
+Sea $\{\mathrm{F}_n\}_{n\in\nat}$ una sucesión decreciente de $\sigma$ álgebras decimos que sucesión de variables aleatorias $\{X_n\}$, es \emph{martingala reversa} si se cumple lo siguiente
++ $X_n$ es $\mathrm{F}_n$ medible
++ $X_n\in L_1(\om,\sig,\prob)$
++ $\esp(X_n|\mathrm{F}_{n+1})=X_{n+1}$
+\end{def.}
+\obs $X_n=\esp(X_0|\mathrm{F}_n)$
+\begin{teorema}{Convergencia de martingalas reversas}
+Sea $X_n$ una $\{\mathrm{F}_n\}$ martingala reversa, entonces $X_n$ converge casi siempre y en $L_1$ a $X=\esp(X_0|\cap\mathrm{F}_n)$
+\end{teorema}
+\noindent\dem Denotamos por $D_{[a,b]}(X_0,X_1,\dots)$ al número de cruces hacia abajo en el intervalo $[a,b]$ por las variables $\{X_n\}$, más aún $D_{[a,b]}^n(X_0,\dots,X_n)$ es el número de cruces hacia abajo al tiempo $n$. Sea $m\in\nat$ y $Y^{(m)}_n=-X_{\max\{m-n,0\}}$ y $\mathrm{H}^{(m)}_n=\mathrm{F}_{\max\{m-n,0\}}$. Notemos que $\{\mathrm{H}^{(m)}_n\}$ es filtración, con esto, vemos que $\{Y_{n}^{(m)}\}$ es martingala. Sea $n\in\nat$
+\begin{align*}
+       \esp(Y_{n+1}^{(m)}|\mathrm{H}_n)=& \esp(-X_{m-n+1}^{(m)}|\mathrm{F}_{m-n})\\
+                                        & \esp(X_0|\mathrm{ F}_0)=-X_{m-n}\\
+                                        = -X_0.
+\end{align*}
+\noindent notemos que $D_{[a,b]}^{n}(X_{0},\dots,X_{n})=D_{[a,b]}^{n}(Y_{0},\dots,Y_{n})$, así por la desigualdad de Doob para $\{Y_{n}^{(m)}\}$, tenemos
+\[
+\esp(D_{[a,b]}^n(X_0,\dots,X_n))=\esp(D_{[a,b]}^n(Y_0,\dots,Y_n))\leq
+                \frac{1}{(b-a)}(\esp(|Y_n^{(m)}|)+|b|]=\frac{1}{(b-a)}[\esp(|X_0|)+|b|)<\infty
+\]
+\noindent así $D$ es finita casi dondequiera e integrable, por lo tanto existe $X=\lim_{n\rightarrow\infty}X_n$, además $\{X_n=\esp(X_0|\mathrm{F}_n)\}$ es uniformemente integrable y la convergencia de $X$ es en $L_1$. Falta ver que $X=\esp(X_0|\cap\mathrm{F}_n)$. Como $\mathrm{F}_n\subset\mathrm{F}_m$ si $m\leq n$y sabemos que $X_n$ es $\mathrm{F}_n$ medible, entonces es $\mathrm{F}_m$ medible y por lo tanto para toda $m\leq n$ $X=\lim_{n\rightarrow\infty}$X_{n+m}$, así $X$ es $\mathrm{F}_m$ medible para toda $m$ y por lo tanto es $\cap\mathrm{F}_n$ medible.
+\qed
+\obs Sea $A\in\mathrm{F}_m$, por lo tanto $\esp(X_01_A)\esp(X_n1_A)\rightarrow\esp(X1_A)$ y por lo tanto $X$ es esperanza condicional de $X_0$ con respecto a $\cap\mathrm{F}_n$.
+
+** Extensión a tiempos continuos
+#Ver fotos
+\begin{def.}
+Una filtración a tiempo continuo es una familia de sub $\sigma$ álgebras $\{\mathrm{F}_t\}_{t\in\re^{+}}$ tales que $\mathrm{F}_s\subset\mathrm{F_t}$ para $s\leq t$
+\end{def.}
+\begin{def.}
+Una familia de sub $\sigma$ álgebras $\{\mathrm{F}_t\}_{t\in\re^{+}}$ es continua a la derecha si $\mathrm{F}_t=\cap_{s\geq t}\mathrm{F_s}$.
+\end{def.}
+
+** Cadenas de Markov
+\begin{def.}
+    Sea $X=\{X_n\}_{n\in\nat}$ un proceso, definimos $\mathrm{F}_n=\sigma(X_0,\dots,X_n)$ y $\mathrm{G}_n=\sigma(X_n, X_{n+1}\dots)$, decimos que $X$ cumple con la propiedad si para toda variable $Y$ que sea $\mathrm{G}_n$ medible y acotada, se cumple
+    \[
+        \esp(Y|\mathrm{F}_n)=\esp(Y|X_n)
+    \]
+\end{def.}
+\begin{prop}
+    Sea $X=\{X_n\}_{n\in\nat}$ un proceso con espacio de estado numerable, entonces $X$ cumple con la propiedad de Markov si y sólo si para toda $n\in\nat$ y $\{i_0,\dots,i_n\}\subset E$ tales que $\prob(i_0,\dots,i_n)>0$ se cumple
+\[
+    \prob(i_{n+1}|i_0,\dots,i_n)=\prob(i_{n+1}|i_n)
+\]
+\end{prop}
+\noindent\dem *Clases monótonas*
+\begin{def.}
+Para cada $n\in\nat$ definimos $P_{i,j}=\prob(X_n=j|X_{n-1}i)$
+\end{def.}
+\begin{lema}
+Sea $\{X_n\}$ una cadena de Markov. Si $\{i_0,\dots,i_n\}\subset E$
+\[
+    \prob(i_0,\dots,i_n)=\prob(i_0)P_{i_0,i_1}^{(1)}P_{i_0,i_1}^{(1)}\dots P_{i_0,i_1}^{(1)}
+\]
+\noindent\dem
+\begin{align*}
+    \prob(i_0,\dots,i_n)=\text{haz los pasos intermedios usando que es Markov para separar las probabilidades.}
+\prob(i_0)P_{i_0,i_1}^{(1)}P_{i_0,i_1}^{(1)}\dots P_{i_0,i_1}^{(1)}
+\end{align*}
+\end{lema}
+#TERMINAR(creo que faltó una clase, checa el libro)
+** Propiedad de Markov y propiedad de Markov fuerte
+\obs Denotamos por $Markov(\lambda p)$ a una cadena de Markov con dirtibución inicial $\lambda$ y matriz de transición $P$.
+\begin{teorema}
+Sea $\{X_n\}$ una cadena de Markov $Markov(\lambda p)$, entonces condicionalmente a $X_m$, el proceso $\{X_{n+m}\}$ es $Markov(\delta_i p)$ e indepandiente de $\{X_0,\dots X_m\}$, es decir
+\[
+\esp(f(X_{n+m})|\mathrm{F}_m)=\esp_{X_m}(f(X_n)).
+\]
+\end{teorema}
+\noindent\dem Sea $A\in\mathrm{F}_m=\sigma(X_0,\dots,X_m)$ tenemos que demonstrar que
+\[
+    \esp(f(X_{n+m})1_A|X_m)=\esp(f(X_{n+m})X_m)\prob(A).
+\]
+Entonces por el teorema de clases monótonas
+\[
+\prob(X_0,\dots,X_m,X_{m+1},\dots,X_{n+m})=\delta_i(j_0)\prob(X_0,\dots,X_m)P_{j_0j_1}P_{j_1j_2}\dots P_{j_nj_{n+1}}.
+\]
+así
+\[
+    \prob(A, f(X_{n+m})|X_m)=\frac{1}{\prob(X_m)\prob()}\prob(X_m,A)\prob(A,X_m,X_{m+1},\dots,X_{n+m})\prob(X_m,A)
+\]
+así por la propiedad de Markov tenemos que
+\[
+\prob(X_m,A)\prob(A,X_m,X_{m+1},\dots,X_{n+m})\prob(X_m,A)=\delta_i(j_m)P_{j_nj_{n+1}}P_{j_{n+1}j_{n+2}\dots}P_{j_{n+m-1}j_{n+m}}
+\]
+\begin{teorema}{Propiedad de Markov fuerte}
+Sea $\{X_n\}$ una cadena $Markov(\lambda p)$ y sea $T$ un tiempo de paro. Entonces condicionalmente a $T<\infty$ y $X_T=i$, el proceso $\{X_{n+T}\}$ es $Markov(\delta p)$ y es independiente de $\{X_0,\dots,X_T\}$
+\end{teorema}
+\noindent\dem Sea $A\in$ $\mathrm{F}$, entonces $A\cap\{T=m\}\in\mathrm{F}_m$. Por la propiedad de Markov para $m$ tenemos
+\[
+\prob(X_T=j_0,X_{T+1}=j_1,\dots,X_{T+n}=j_n)\cap A\cap\{T=m\}\cap\{X_T=i\}=\prob_i(X_0=j_0,\dots,X_n=j_n)\prob(A\cap\{T=m\}\cap\{X_T=i\})
+\]
+\noindent si sumamos sobre las $m$, obenemos
+\[
+    \prob(\{X_T=j_0,\dots,X_{T+n}\}\cap A\cap\{X_T\}\cap\{T<\infty\})=\prob_i(X_T=j_0,\dots,X_{T+n}=j_n)\prob(A\cap\{X_T\}\cap\{T<\infty\})
+\]
+\noindent ahora si dividimos entre $\prob(\{T<\infty\}\cap\{X_T=i\})$, tenemos
+\[
+    \prob(\{X_T=j_0,\dots,X_{T+n}\}, A,\{T<\infty\},\{X_T=i\})=\prob_i(X_0=j_0,\dots,X_{n}=j_n)\prob(A|,\{T<\infty\},\{X_T=m\})
+\]
+Así si nuestro proceso es en el espacio producto que definimos previamente, podemos definir una función de traslación $\Theta_m:\om\rightarrow\om$, donde $\omega\in\om$, entonces $\omega=(\omega_n)_{n\in\nat}$, así $\Theta(\omega_n)=(\omega_{n+m})$ y por lo tanto tenemos que
+\[
+\esp(f\circ\Theta_m|\mathrm{F})=\esp_{X_m}(f)
+\]
+asi para $T$, tenemos
+\[
+\esp(f\circ\Theta_T|\mathrm{F})=\esp_{X_T}(f)
+\]
+si tomamos $f=1_{X_0=j_0,\dots,X_{m+n}=j_n}$ tenemos el resultado. \qed
+\eje *(Principio de Reflexión)* Sea $S_n$ una caminata aleatoria simétrica $\prob(X_i=1)=\prob(X_i=-1)=1/2$, donde $S_0=0$, $S_n=X_1+\dots+X_n$. Entonces para todo natural $a$, se tiene que
+\[
+\prob(\sup_{m\leq n}\{S_m\geq a\})\leq\prob(S_n\geq a)
+\]
+\noindent Sea
+
+
+
+\begin{thebibliography}{3}
+\bibitem{Lawler} Lawler G,F,. (2006) \textit{Introduction to Stochastic Processes}, Chapman and Hall.
+
+\bibitem{Resnik} Resnik, S (1992) \textit{Adventures in Stochastic Processes} Birkhäuser.
+
+\bibitem{Kallenberg} Kallenber, O,. (1997) \textit{Foundations of Modern Probability}, Springer-Verlag.
+
+\bibitem{Williams} William, D. (1991) \textit{Probability with Martingales} Cambridge University Press.
+
+\bibitem{Durrett} Durrett,   \textit{Probability Theory and Examples}
+
+\bibitem{Kingman} Kingman, J.F.C \textit{Poisson Processes}, Oxford Studies in Probability.
+
+\bibitem{Revuz-Yor} Revuz D., Yor M., \textit{Continuous Martingales and Brownian Motions}, Max-Planck-Institut f\"ur Matematik, Germany.
+
+\bibitem{Hoff-Jorg} Hoffman, Jorgensen, \textit{Probability with a view towards Statistics}, IMPA Monographs, Springer International Publishing, Switzerland.
+
+\bibitem{Billingsley} Billingsley P., \textit{Probability and Measure}, Springer-Verlag.
+
+\bibitem{Chow-Teicher} Chow, Y.S., Teicher (1980) \textit{Probability Theory: Independence, Interchangability and Martingales}, Springer-Verlag.
+\end{thebibliography}

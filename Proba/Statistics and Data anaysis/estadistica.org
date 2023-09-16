@@ -1,0 +1,5 @@
+#+title: Notas de Estadistica
+#+author: Carlos Eduardo artínez Aguilar
+#+OPTIONS: tex:t
+#+LaTeX_CLASS: article
+#+LaTeX_CLASS_OPTIONS: [letterpaper]

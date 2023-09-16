@@ -1,0 +1,8 @@
+#+title: Elliptic Curves
+
+* Elliptic Curves
+Bhargava Birch Swinneron-Dyer conjecture:
+Criterio de Hasse Minkowsky
+Mordell's Theorem
+
+Demostrar que toda curva elliptica es un grupo.

@@ -1,0 +1,131 @@
+#+title: Clases Características
+#+author: Carlos Eduardo Martínez Aguilar
+#+LANGUAGE: esp
+#+OPTIONS: tex:t
+#+SETUPFILE: ~/Templates/latex-export.org
+
+* Preliminares
+
+** Haces vectoriales complejos.
+\begin{def.}
+Un haz vectorial complejo $\xi$ de dimensión compleja $n$ sobre un espacio topológico base $B$, consiste de una espacio topológico $E$ y una proyección continua $\pi:E\rightarrow B$ tal que para cada $b\in B$, la imagen inversa $\pi^{-1}(b):=E_b$ sea un espacio vectorial complejo y tal que exista una vecindad $U_b\subset B$ de $b$ tal que $\pi^{-1}(U_b)$ sea homeomorfa a $U_b\times\co^{n}$ que conmuta con la proyección sobre la segunda componente de $U_b\times\co^{n}$ y tal que dicho homeomorfismo sea lineal en las fibras $\{b\}\times\co^{n}$
+\end{def.}
+
+Una versión equivalente es utilizando *estructuras complejas*, una estructura compleja en un haz vectorial *real* de dimensión $2n$, $(E,B,\pi)$ es un morfismo de haces vectoriales reales
+\[
+    J:E\rightarrow E, \hspace{0.5cm} J^2=-id_E
+\]
+Se observa que un haz vectorial complejo de rango $n$ tiene un grupo de estructura dado por $\mathrm{GL}(n,\co)$ lo cual se refleja en el siguiente resultado
+\begin{lema}
+    Sea $\xi$ un haz vectorial complejo sobre un espacio base $B$, entonces el haz real subayacente tiene una orientación canónica.
+\end{lema}
+\dem Sea $V$ cualquier espacio vectoarial complejo de dimensión finita y sea $\{\alpha_1,\dots,\alpha_n\}$ una base de $V$ en $\co$ y notemos que $\{\alpha_{1},i \alpha_{1},\alpha_{2},i\alpha_{2},\dots,\alpha_{n},i\alpha_{n}\}$ es una base para el espacio real subyacente $V_{\re}$. Ahora como el grupo $\mathrm{GL}(n,\co)$ es conexo, entonces siempre es posible pasar de una base a otra por medio de una deformación continua (curva continua de bases) sin alterar la orientación. Aplicando esto a las fibras del haz obtenemos el resultado. \qed
+
+* Cohomología de DeRham
+Dada una variedad diferenciable $M$ de dimensión $n$, existe un complejo dado por el espacio las k-formas difernciables en $M$, las cuales denotamos por $\Omega(M)^{k}$ y la derivada exterior $d:\Omega(M)^{k}\rightarrow\Omega(M)^{k+1}$ para $0 \leq k \leq n$. Así el complejo de DeRham se define como
+\[
+    0 \rightarrow\Omega^{0}(M)\rightarrow\Omega^{1}(M)\rightarrow\cdots\rightarrow\Omega^{n}(M)\rightarrow 0.
+\]
+Como es bien sabido que $d\circ d=0$, para cada $0\leq k\leq n$ se define es $k$-ésimo grupo de cohomología de DeRham como
+\begin{equation}
+    H^{k}(M):=B_{k}(M)/Z_{k+1}(M)=\mathrm{im}(d_k)/\ker(d_{k+1})
+\end{equation}
+Denotaremos por $H^{*}(M)$ al anillo asociado al complejo de DeRham en  $M$, es decir
+\begin{equation}
+    H^{*}(M)=\bigoplus_{k=0}^{n} H^{k}(M)
+\end{equation}
+
+* La clase de Euler para haces vectoriales orientados
+\noindent Recordemos que un espacio vectorial $V$ tiene dos posibles ordenaciones dependiendo del signo del determinante de la matriz de cambio de base, es decir dada una base su clase de orientación es la calse de equivalencia de cambios de base con determinante positivo. Similarmente una orientación para un haz vectorial $\xi=(E,B,F,\pi)$ es una función que asocia a cada fibra una orientación de tal forma que para cada $b\in B$ exista $b\in U_b\subset B$ abierto tal que $\pi^{-1}\cong U_b\times\re^{n}$ donde el isomorfismo preserva la orientación en las fibras. Ahora en términos de topología algebraica, de manera similar podemos ordenar n-simplejos $\Delta_n$ ordenando sus vértices de forma natural $\{a_0,\dots,a_n\}$ y tomando clases de equivalencia por medio de los signos de las permutaciones de éstos que preserven adyacencias. Estas dos nociones de ordenamiento están relacionados claramente por lo siguiente; cualquier encaje lineal del n-simplejo $\Delta$ en un espacio vectorial $V$ de dimensión $n$ que envíe el baricentro de $\Delta_n$ a $0$, digamos $\sigma:\Delta_n\rightarrow V$, otorga una orientación a $V$ por medio de tomar los vectores correspondientes a las  restas de los vectores vértices. Observenos que ésta orientación para $V$ corresponde a la elección de uno de los dos generadores de homología singular en $H_n(V,V_0;\zah/2\zah)$, donde $V_0=\partial(\sigma(\Delta_n))$. Similarmente $\sigma(\Delta_n)\in H_n(V,V_0,\zah)$ y es el generador canónico, llamemos a éste por $\mu_V$, además existe un generador de la cohomología reducida $u_V\in H^{n}(V,V_0;\zah)$ tal que $u_V(\mu_V)=1$.
+Ahora en el caso de una orientación en un haz vectorial de rango $n$, $\xi=(E,B,F,\pi)$, en cada fibra $E_b=\pi^{-1}(b)\cong F$ tenemos un generador preferido, digamos
+\[
+    u_F\in H^{n}(F,F_0;\zah),\quad F_0\text{ es la frontera del simplejo canónico.}
+\]
+\noindent la cual por la condición de compatibilidad es la restricción de una clase
+\[
+    u\in H^{n}(\pi^{-1}(U),\pi^{-1}(U)_0;\zah)\quad \pi^{-1}(U_b)_0=\bigcup_{b\in U}(E_b)_0.
+\]
+\noindent Ahora sea $\{U_{\alpha}\}$ es una cubierta localmente finita de trivializaciones locales y $\{\rho_{\alpha}\}$ una partición de la unidad subordinada a dicha cubierta, además sea $u_{\alpha}\in H^{n}(\pi^{-1}(U_{\alpha}),\pi^{-1}(U_{\alpha})_0;\zah)$, definimos
+\[
+    u=\sum_{\alpha}\rho_{\alpha}u_{\alpha}\in H^{n}(E,E_0;\zah)
+\]
+donde
+\[
+    E_0=\bigcup_{b\in B}(E_b)_0.
+\]
+Entonces, la inclusión $(E,\emptyset)\rightarrow(E,E_0)$ define un morfismo llamado morfismo de restricción $H^{*}(E,E_0;\zah)\rightarrow H^{*}(E;\zah)$, el cual denotamos por $\omega\mapsto\omega|_E$. Así obtenemos una nueva clase de cohomología
+\[
+    e(\xi)=u|_E\in H^{n}(E;\zah),
+\]
+\noindent la cual llamaramos la *clase de Euler* de $\xi$. Observanos que como los espacios vectoriales son contraibles a $0$, el espacio $E$ es contraible a su sección cero, la cual es homeomorfa a $B$ y por invarianza homotópica
+\[
+    H^{n}(E;\zah)\cong H^{n}(B;\zah).
+\]
+\noindent Por lo cual regularmente pensaremos que $e(\xi)\in H^{n}(B;\zah)$.
+\obs Si se invierte la orietación de $\xi$, entonces $e(\xi)\mapsto -e(\xi)$
+\begin{prop}
+Si $\xi_1 = E_1\rightarrow B_1$ y $\xi_2=E_2\rightarrow B_2$ son haces vectoriales y $f:B_1\rightarrow B_2$ es un mapeo suave tal que conmuta con un morfismo de haces $E_1\rightarrow E_2$, entonces $e(\xi_2)=f^{*}(\xi_1)$
+\end{prop}
+Como corolario de esta última proposición notamos que para un haz trivial $\xi$ se tiene que $e(\xi)=0$. Pues $\xi_2$ se puede pensar como un haz sobre un punto.
+\obs Si $\xi$ es un haz de rango impar, $e(\xi)+e(\xi)=0$ pues $(b,v)\mapsto(b,-v)$ es un morfismo del haz que invierte orientación, entonces $e(\xi)=-e(\xi)$.
+\begin{prop}
+Si el haz vectorial orientado $\xi$ posee una sección que nunca se anula, entonces la clase de Euler se anula $e(\xi)=0$.
+\end{prop}
+\dem Sea $s:B\rightarrow E$ una sección que no se anula, así la composición son la proyección $\pi\circ s=id_B$. Por lo tanto la composición en los grupos de cohomología obtenemos lo mismo
+\[
+    H^n(B)\rightarrow H^n(E)\rightarrow H^n(B)\quad s^*\circ\pi^*=id_{H^n(B)}
+\]
+Ahora por definición el primer homo morfismo $\pi^*$ manda $e(\xi)$ en $u|_E$. Además como s(B)\subset E_0 (pues podemos multiplicar por una función no cero adecuada), entonces $(u|_E)|{E_0}$ es cero ya que la composición
+\[
+    H^n(E,E_0)\rightarrow H^n(E)\rightarrow H^n(E_0)
+\]
+\noindent es cero. Por lo que $e(\xi)=s^{*}(0)=0$ \qed
+* Clases de Chern
+\noindent Se muestra unicidad de las clases de Chern como clase característica compleja en el sentido de que cualquier transformación natural de haces vectoriales complejos al anillo de cohomología es un polinomio de las clases de Chern. Además se muestra la relación entre las clases de Chern y la clase de Euler en el caso de haces de líneas complejas (escencialmente son lo mismo).
+
+** La primera clase de Chern de un haz de líneas complejo
+\noindent Como sabemos un haz vectorial complejo es un haz fibrado con grupo de estructura $\mathrm{GL}(n,\co)$, más aún analogamente a lo que sucede con haces vectoriales reales, donde es posible reducir el grupo de estructura al grupo ortogonal $\mathrm{O}(n)$. Por medio del uso de métricas hermiteanas, es posible reducir la estructura de un haz vectorial al grupo unitario $\mathrm{U}(n)$. Ahora como vimos en el caso de un haz vectorial complejo de $n$, este es un haz vectorial real de rango $2n$. Como $\mathrm{U}(1)$ es isomorfo a $\mathrm{SO}(2)$, esto significa que existe una regla biunívoca entre haces vectoiales reales de rango 2 orientados y haces de líneas complejas. Así se define la primera clase de Chern sobre un haz de líneas complejas $L$ como la clase de Euler del haz de planos correspondiente, es decir
+\[
+    c_1(L):=e(L_{\re})\in H^2(M)
+\]
+Ahora sean $L_1$ y $L_2$ haces de líneas complejas con funciones de transición (o cociclos) en una misma cubierta en común (refinamiento de ambas cubiertas) $\{g^{1}_{\alpha\beta}\}$ y $\{g^{2}_{\alpha\beta}\}$, entonces como sabemos, el producto tensorial $L_1\bigotimes L_2$ tiene como funciones de transición a $\{g^{1}_{\alpha\beta}*g^{2}_{\alpha\beta}\}$, entonces demostramos que
+\[
+    c_1(L_1\bigotimes L_2)=c_1(L_1)+c_1(L_2).
+\]
+\dem Como hemos dicho, un haz de líneas tiene una estructura $\mathrm{U}(1)\cong\mathrm{SO}(2)$, así las funciones de transición $g_{\alpha\beta}$ las podemos pensar como $g_{\alpha\beta}:U_{\alpha}\cap U_{\beta}\rightarrow\mathrm{SO}(2)$. Ahora $\mathrm{SO}(2)$ es isomorfo al grupo unitario, pensaremos a los punto de éste como expresiones $e^{i\theta}$, así el cambio de argumento nos dice que
+\[
+    \theta_{\alpha}-\theta_{\beta}=\pi^{*}\log(g_{\alpha\beta}).
+\]
+Donde $\pi:L\rightarrow M$ es la proyección del haz, $\theta_{\alpha}$ representa a la función de ángulos (trivialización) en $U_{\alpha}$ y analogamente $\theta_{\beta}$ en $U_{\beta}$, el cambio de argumento se expresa como $\varphi_{\alpha\beta}$ o más precisamente
+\[
+    \theta_{\beta}=\theta_{\alpha}+\pi^{*}\varphi_{\alpha\beta},\quad\varphi_{\alpha\beta}:U_{\alpha}\cap U_{\beta}\rightarrow\re
+\]
+entonces
+\[
+    \pi^{*}\varphi_{\alpha\beta}=-\pi^{*}\log(g_{\alpha\beta})
+\]
+y como $\pi$ es de rango máximo, lo que es lo mismo que $\pi_{*}$ es suprayectiva, entonces $\pi^{*}$ es inyectiva, entonces
+\[
+    \varphi_{\alpha\beta}=-\log(g_{\alpha\beta})
+\]
+Ahora la clase de Euler se puede obtener localmente como
+\[
+    e(L)=\frac{1}{2\pi}d\varphi_{\alpha\beta}.
+\]
+Por lo que si $\{\rho_{\alpha}\}$ es una partición de la unidad subordinada a $\{U_{\alpha}\}$, entonces de lo anterior se deduce que
+\begin{equation}\label{eq-euler}
+    e(L)=-\frac{1}{2\pi i}\sum_{\gamma}d[\rho_{\gamma}d\log(g_{\gamma\alpha})].
+\end{equation}
+Así para $L_1$ tenemos los cociclos $\{g^{1}_{\alpha\beta}\}$ y para $L_2$ tenemos $\{g^{2}_{\alpha\beta}\}$, entonces $L_1\bigotimes L_2$ tiene por cociclos $\{g^{1}_{\alpha\beta}g^{2}_{\alpha\beta}\}$, por lo tanto
+\begin{align*}
+    e(L_1\bigotimes L_2)=-\frac{1}{2\pi i}\sum_{\gamma}d[\rho_{\gamma}d\log(g^{1}_{\gamma\alpha}g^{2}_{\gamma\alpha})]=\\
+    -\frac{1}{2\pi i}\sum_{\gamma}d[\rho_{\gamma}d\big(\log(g^{1}_{\gamma\alpha})+\log(g^{2}_{\gamma\alpha})\big)]=e(L_1)+e(L_2)
+\end{align*}
+\qed
+\begin{prop}
+La clase de Euler y por lo tanto la primera clase de Chern es functorial, es decir si $f:N\rightarrow M$ es un mapeo $C^{\infty}$ y $E$ es un haz vectorial de rango dos sobre $M$, entonces
+\[
+    e(f^{-1}E)=f^{*}e(E).
+\]
+\end{prop}
+\dem Es claro de la ecuación \ref{eq-euler}
