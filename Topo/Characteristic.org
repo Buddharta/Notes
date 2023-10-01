@@ -129,3 +129,8 @@ La clase de Euler y por lo tanto la primera clase de Chern es functorial, es dec
 \]
 \end{prop}
 \dem Es claro de la ecuación \ref{eq-euler}
+\eje *Haz de Líneas tautológico en $P(V)$:* Si $V$ es un espacio vectorial complejo de dimensión $n$, claramente la varidad proyectiva definida por $V$, $P(V)$ tiene un haz de líneas propio (dado por dios), conocido como el /Haz de líneas tautológico/
+\[
+    S=\{(l,v)\in P(V)\times V \,|\, v\in l \}
+\]
+con la proyección en la primera entrada como proyección del haz.
