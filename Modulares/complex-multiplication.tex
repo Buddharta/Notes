@@ -1,0 +1,399 @@
+\documentclass[letterpaper]{report}
+%\usepackage{pst-node}
+\usepackage{tikz-cd} 
+\usepackage{amsmath}
+\usepackage{float}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage[spanish,activeacute]{babel}
+\usepackage{amscd}
+\usepackage{fancyhdr}
+\usepackage{graphicx}
+\usepackage{color}
+\usepackage{transparent}
+\usepackage{makeidx}
+\usepackage{afterpage}
+
+\makeindex
+
+\newtheorem{teorema}{Teorema}[chapter]
+\newtheorem{prop}[teorema]{Proposici\'on}
+\newtheorem{cor}[teorema]{Corolario}
+\newtheorem{lema}[teorema]{Lema}
+\newtheorem{obs}{Observaci\'on}
+\newtheorem{def.}{Definici\'on}[chapter]
+\newtheorem{afir}{Afirmaci\'on}
+
+
+\renewcommand{\figurename}{Figura}
+\renewcommand{\chaptername}{\Large  \sc Cap\'{\i}tulo}
+\renewcommand{\indexname}{\'{I}ndice anal\'{\i}tico}
+\renewcommand{\bibname}{Bibliograf\'{\i}a}
+\newcommand{\dem}{{\sc Demostraci\'on. }}
+
+\newcommand{\rac}{\ensuremath{ \mathbb Q }}
+\newcommand{\nat}{\ensuremath{ \mathbb N }}
+\newcommand{\dbz}{\ensuremath{ \mathbb Z }}
+\newcommand{\co}{\ensuremath{\mathbb C }}
+\newcommand{\hc}{\ensuremath{\widehat{\mathbb C} }}
+\newcommand{\con}{\ensuremath{\mathbb{C}^{n}}}
+\newcommand{\hil}{\ensuremath{\mathcal H }}
+\newcommand{\re}{\ensuremath{\mathbb R }}
+\newcommand{\cp}{\ensuremath{\mathbb{CP}}}
+\newcommand{\rp}{\ensuremath{\mathbb{RP}}}
+\newcommand{\sph}{\ensuremath{\mathbb{S}}}
+
+\newcommand{\Oan}{\ensuremath{\mathcal{O}}}
+\newcommand{\Ad}{\ensuremath{\mathbb{A}}}
+\newcommand{\specKn}{\ensuremath{Spec\,K[x_1,\cdots ,x_n]}}
+\newcommand{\specLn}{\ensuremath{Spec\,L[x_1,\cdots ,x_n]}}
+\newcommand{\specRn}{\ensuremath{Spec\,R[x_1,\cdots ,x_n]}}
+\newcommand{\specKm}{\ensuremath{Spec\,K[x_1,\cdots ,x_m]}}
+\newcommand{\specQn}{\ensuremath{Spec\,\mathbb{Q}[x_1,\cdots ,x_k]}}
+\newcommand{\specRen}{\ensuremath{Spec\,\mathbb{R}[x_1,\cdots ,x_k]}}
+\newcommand{\specCn}{\ensuremath{Spec\,\mathbb{C}[z_1,\cdots ,z_k]}}
+
+\newcommand{\nuc}{\ensuremath{\mathcal{N}}}
+\newcommand{\hip}{\ensuremath{\mathbb H}}
+\newcommand{\hd}{\ensuremath{\mathbf{H}_{\delta}}}  
+
+\newcommand{\bg}{\ensuremath{\overline \Gamma}}
+\newcommand{\ga}{\ensuremath{\Gamma}}
+\newcommand{\fb}{\ensuremath{\overline f}}
+\newcommand{\la}{\ensuremath{\lambda}}
+\newcommand{\La}{\ensuremath{\Lambda}}
+\newcommand{\bt}{\ensuremath{\overline T}}
+\newcommand{\li}{\ensuremath{\mathbb{L}}}
+\newcommand{\ord}{\ensuremath{\mathbb{O}}}
+
+\newcommand{\pslz}{\ensuremath{PSL(2,\mathbb Z) }}
+\newcommand{\pslr}{\ensuremath{PSL(2,\mathbb R) }}
+\newcommand{\pslc}{\ensuremath{PSL(2,\mathbb C) }}
+\newcommand{\qed}{\ensuremath{\hspace*{0em plus 1fill}\blacksquare}}
+
+
+\begin{document}
+
+\begin{titlepage}
+\begin{center}
+%\vspace*{-3cm}
+%\makebox{\includegraphics[height=3cm]{unam.jpg}} 
+%\vspace*{1cm}
+
+%\LARGE\textbf{UNIVERSIDAD NACIONAL AUT'ONOMA DE MEXICO}
+%\vspace*{0.3cm}
+
+%\large PROGRAMA DE MAESTR'IA Y DOCTORADO EN CIENCIAS MATEM'ATICAS Y DE LA ESPECIALIZACI'ON EN ESTAD'ISTICA APLICADA
+%\vspace*{2cm}
+
+\LARGE\textbf{VARIEDADES ABELIANAS, MULTIPLICACIÓN COMPLEJA Y FORMAS MODULARES}
+\vspace*{0.5cm}
+
+%\large NOTAS PARA EVALUACIÓN
+%\vspace*{2.5cm}
+
+%\small \textbf{PRESENTA:}
+%\vspace*{0.2cm}
+
+\small CARLOS EDUARDO MART'INEZ AGUILAR
+%\vspace*{0.2cm}
+
+%\small DIRECTOR: DR. ADOLFO GUILLOT SANTIAGO
+%\vspace*{0.2cm}
+
+%\small \textbf{INSTITUTO DE MATEM'ATICAS UNAM}
+%\vspace*{2.5cm}
+
+%\small CIUDAD UNIVERSITARIA, ENERO DE 2019
+
+%\tableofcontents
+ 
+\end{center}
+\end{titlepage} 
+
+\chapter{Variedades Abelianas}
+\begin{def.}
+Entenderemos por una variedad grupo como una variedad no singular (afín, proyectiva, analítica o abstracta) $G$ con una estructura de grupo tales que los mapeos que la definen
+$$m:G\times G\rightarrow G\hspace{0.2cm}(x,y)\mapsto\, xy,\hspace{0.4cm} i:G\rightarrow G\hspace{0.2cm} x\mapsto x^{-1}$$
+\noindent están definidos en todo $G$ y racionales.  Diremos que la variedad grupo $G$ esta definida sobre un campo $K$ si $(G,m,i)$ están definios sobre $K$. Nosotros  diremos que  $G$ es una \textit{variedad abeliana} si $G$ es una variedad proyectiva.
+\end{def.}
+Es posible demostrar que toda variedad abeliana es conmutativa con su producto, por lo que utilizaremos notación aditiva para estas. Toda subvariedad de una variedad abeliana que herede la estructura de grupo tiene una estructura de variedad abeliana propia y por lo tanto diremos que es una subvariedad abeliana. Diremos que una variedad abeliana es \textit{simple} si la unica subvariedad abeliana que tiene es $\lbrace 0\rbrace$.
+
+Si $G$ y $H$ son variedades abelianas, un \textit{homomorfimo} de variedades abelianas es un mapeo racional $\varphi:G\rightarrow H$ que sea a su vez morfismo de grupos, es decir
+
+$$\varphi(x+y)=\varphi(x)+\varphi(y)\hspace{0.2cm}\forall\lbrace x,y\rbrace.$$
+
+Denotamos por $Hom(G,H)$ al conjunto de homomorfimos entre dos variedades abelianas y llamaremos \textit{grupo de endomorfismos} a $End(G) = Hom(G,G)$, es un resultado básico que $Hom(G,H)$ es un grupo abeliano libre de rango finito y que si $G$ y $H$ están definidos sobre $K$, entonces $Hom(G,H)$ esta definido sobre una extensión separable de $\rac$. Así definimos 
+$$Hom_{\rac}(G.H):=Hom(G,H)\otimes_{\dbz}\rac,\hspace{0.5cm}End_{\rac}:=End\otimes_{\dbz}\rac.$$
+
+Claramente $End(G)_{\rac}$ tiene una estructura de algebra sobre $\rac$ con una unidad dada por $Id_G$.\\
+
+Para dos variedades abelianas $A$ y $B$ de la misma dirección existe un homomorfismo $A\rightarrow B$ si y sólo si existe uno $B\rightarrow A$, en cuyo caso decimos que $A$ y $B$ son \textit{isogeneos} y cuales quiera de los morfimos mencionados se les llama una \textit{isogenía}. Dada $\lambda\in Hom(A,B)$ con $A$ y $B$ de la misma dimensión, $K$ el campo de definición de $A$ y $B$, y $x$ un punto gen'erico de $A$ sobre $K$ y $\lambda$ una isogenía, definimos
+
+$$\nu(\lambda)=[K(x)\,:\,K(\lambda\,x)],$$
+$$\nu_s(\lambda)=[K(x)\, :\, K(\lambda\,x)]_s,\hspace{0.2cm}\nu_i(\lambda)=[K(x)\,:\,K(\lambda\,x)],$$
+
+de otra forma definimos $\nu(\lambda)=\nu_s(\lambda)=\nu_i(\lambda)=0$. Estos número no dependen de la elección  de $K$ y $x$. Si $\lambda$ es una isogenía entonces $\nu_s(\lambda)$ es el orden de $Ker(\lambda)$ . Para cada isogenía $\lambda:A\rightarrow B$ existe un único elemento $\lambda'$ de $Hom_{\rac}(B,A)$ tal que 
+
+$$\lambda\,\lambda'=Id_A\hspace{0.2cm}\text{y también}\lambda'\,\lambda=Id_B,$$
+
+\noindent es decir que $\lambda$ es un isomorfismo y  $\lambda'=\lambda^{-1}$.
+
+\subsection{Representación $l$-ádica de homorfismos} 
+\noindent Dada una variedad abeliana $A$ y un primo racional $l\in\dbz$ definimos
+
+\begin{equation}
+	\mathfrak{g}_{l}(A)=\bigcup_{\alpha=1}^{\infty}Ker(l^{\alpha}Id_A).
+\end{equation}
+
+\noindent Si A es de dimensión $n$ y $l$ no es la característica del campo de definición de $A$, entonces $\mathfrak{g}_l(A)$ es isomorfo a $\mathfrak{M}$, el cual consiste de la suma directa de $2n$ copias de $\rac_l/\dbz_l$. Llamamos a cualquier isomorfismo entre $\mathfrak{g}_l(A)$ y $\mathfrak{M}$ un sistema de coordenadas $l$-ádicas de $\mathfrak{g}_l(A)$. Pensaremos a un elemento de $\mathfrak{M}$ como un vector columna. Así si $B$ es otra variedad abelliana de dimensión $m$ y $\lambda:A\rightarrow B$ es un homomorfismo, entonces existe una matriz $M(\lambda)\in \mathcal{M}(2n\times 2m,\dbz)$ que representa un morfismo $M(\lambda):\mathfrak{g}_l(A)\rightarrow\mathfrak{g}_l(B)$ dado por 
+
+\begin{center}
+	\begin{tikzcd}
+		\mathfrak{g}_l(A)  \dar{\mathfrak{m}_A} \rar{\lambda} & \mathfrak{g}_l(A)  \dar{\mathfrak{m}_B} \\
+		\mathfrak{M}_A \rar{M(\lambda)} & \mathfrak{M}_B
+	\end{tikzcd}
+\end{center}
+
+\noindent donde $\mathfrak{m}_A$ y $\mathfrak{m}_B$ son los isomorfismos entre $\mathfrak{g}_l(A)$ y $\mathfrak{M}_A$ y $\mathfrak{g}_l(B)$ y $\mathfrak{M}_B$ respectivamente. Así si fijamos los isomrfismos, tenemos una correspondencia $\lambda\mapsto M(\lambda)$, que puede extenderse a un único mapeo $\rac$- lineal de $Hom_{\rac}(A,B)$ en $M(2n\times 2m,\rac_l)$, la cual llamamos la representación $l$-ádica de $Hom_{\rac}(A,B)$ con respecto de $\mathfrak{m}_A$ y $\mathfrak{m}_B$.
+En particular si $A=B$, tenemos un morfismo de anilllos entre $End_{\rac}(A)$ y $M(4n^2,\rac_l)$.\\
+Si denotamos por $M_l$ a la representación $l$-ádica de $End_{\rac}(A)$ y tomamos $\xi\in End_{\rac}(A)$, entonces definimos el polinomio característico de $\xi$ como el polinomio caracteístico de $M_l(\xi)$, resulta que éste no depende de las coordenadas $l$-ádicas escogidas. Si escribimos el polinomio característico de $\xi\in End_{\rac}(A)$ como 
+
+$$P(X)=X^{2n}+a_1X^{2n-1}+\cdots+a_{2n},$$
+
+\noindent entonces $a_i\in\rac\,\forall\,1\leq i\leq 2n$, además resulta que 
+
+$$P(\xi)=\xi^{2n}+a_1\xi^{2n-1}+\cdots+a_{2n}Id_A=0.$$
+
+\noindent Más aún si $\xi\in End(A)$, entonces $a_i\in\dbz$. Con esto también podemos definir la traza y el determinante de $\xi$ como
+
+$$tr(\xi)=tr(M_l(\xi)),\hspace{0.3cm}\nu(\xi)=det(M_l(\xi)),$$
+\noindent respectivamente.
+
+\subsection*{Teoría analítica de variedades abelianas}
+
+\subsubsection*{Funciones theta y formas de Riemann (o de polarización)}
+
+\noindent Sea $D\subset\co^n$ un subgrupo discreto aditivo de rango $2n$, entonces $\co^n/D$ es un toro complejo.
+\begin{def.}
+Decimos que una función meromorfa $f:\co^n\rightarrow\co$ es una \textit{función theta} en $\co^n$ si se cumple
+\begin{equation}
+	f(z+d)=f(z)\exp [l_d(z)+c_d] ,\hspace{0.2cm}\forall d\in D,
+\end{equation} 
+\noindent donde $l_d:\co^n\rightarrow\co$ es una forma $\co$-linear y $c_d\in\co$, ambos dependen de $d$.
+\end{def.}
+Para determinar los valores de $l_d$ y $c_d$ de la definición, hacemos uso de las formas de Riemann, también llamadas formas de polarización.
+\begin{def.} 
+Decimos que una forma $\re$-bilinear $E(x,y)$ en $\co^n$ con valores reales, es una \textit{forma de Riemann} en $\co^n/D$ si satisface las siguientes condiciones:
+\begin{enumerate}
+	\item[i)] $E(x,y)\in\dbz$ para todo $\lbrace x,y\rbrace\subset D$.
+	\item[ii)]$E(x,y)=-E(y,x).$
+	\item[iii)]La forma bilineal $(x,y)\mapsto E(x,iy)$ es simétrica, postitiva definida pero no necesariamente no degenerada.
+\end{enumerate}
+\end{def.}  
+Es posible demostrar que existen dos $\re$-formas bilineales con valores en $\co$, $H$ y $H_0$ y una forma bilinearcon valores en $\re$, $\beta$ todas definidas en $\co^n$  y que se relacionan con la función theta $f$ de la siguiente forma
+\begin{equation}
+	f(z+d)=f(z)\exp \big\lbrace2\pi i \big[H(d,z)+\frac{1}{2}H_0(d,d)+\beta(d)\big]\big\rbrace.
+\end{equation}
+\noindent Donde
+\begin{align}
+	& H_0(u,v)  =  H_0(v,u) \hspace{0.3cm}  \forall \,\lbrace u,v\rbrace\subset\co^n \\
+	& H(d_1,d_2)  \equiv H_0(d_1,d_2) \mod\dbz\hspace{0.3cm}\forall\,\lbrace d_1,d_2\rbrace\subset D.
+\end{align}
+Así definimos
+$$E(x,y)=H(x,y)-H(y,x),$$
+
+\noindent la cual llamaremos la forma de polarización definida por $f$. Si $f$ es holomorfa, entonces $E$ es una forma de Riemann en $\co^n/D$ y llamamos a $E$ como la forma de Riemann definida por $f$. Decimos que una función theta es \textit{normalizada} si $H$ es semi-hermiteana y $\beta$ es real valuada, en cuyo caso
+\begin{equation}
+	H(x,y)=\frac{1}{2}\big[E(x,y)-iE(x,iy)\big].
+\end{equation}
+Por otro lado si $E(x,y)$ es una forma de Riemann en $\co^n/D$, entonces existe una función theta holomorfa en $\co^n/D$ tal que $E$ es su forma de Riemann asociada.
+
+Si $f$ es una dunción theta en $\co^n/D$, entonces el divisor de $f$, $div(f)$ es un divisor analítico en $\co^n/D$. De la misma manera en que hay una correspondencia entre funciones theta y formas de Riemann, hay una correxpondencia entre funciones theta y divisores. Si $X$ es un divisor anaítico de $\co^n/D$, entonces existe una función theta $f$ tal que $X=div(f)$. Así un divisor $X$ define a su vez una forma de Riemann, la cual denortaremos por $E(X)$.
+
+Existe un resultado básico de variedades abelianas que dice que $\co^n/D$ es una variedad abeliana si y sólo si existe una forma de Riemann no degenerada en $\co^n/D$.
+
+Dada una variedad abeliana sobre $\co$ $A$, existe un isomorfismo analítico $\theta$ entre $A$ y un toro complejo $\co^n/D$. Llamamos $(\co^n,\theta)$ un sistema de coordenadas analítico para $A$. Si $X$ es un divisor analitico de $A$ entonces $\theta(X)$ es un divisor analítico de $\co^n/D$, llamaremos $E(X)=E(\theta(X))$ la forma de Riemann definida por $X$. Resulta que $E(X)=E(Y)$ si y sólo si $X$ y $Y$ son algebraicamente equivalentes.
+
+\subsubsection{Representaciones analíticas y racionales}
+Sean $A_1$ y $A_2$ variedades abelianas definidas sobre $\co$, sean $(\co^n/D_1,\theta_1)$ y $(\co^m/D_2,\theta_2)$ sistemas de coordenadas anaíticas para $A_1$ y $A_2$ respectivamente. Consideramos un homomorfismo $\lambda:A_1\rightarrow A_2$. Asi existe un mapeo lineal $\Lambda:\co^n\rightarrow\co^m$ tal que 
+
+$$\theta_2\circ\lambda=\Lambda\circ\theta_1,$$
+
+\noindent esto quiere decir que $\Lambda$ satisface que $\Lambda(D_1)\subset D_2$. Similarmente cualquier mapeo lineal de $\co^n$ en $\co^m$ que mande $D_1$ dentro de $D_2$ define un homomorfismo de $A_1$ en $A_2$. Con respecto al sistema de coordendas $(z_1,\cdots,z_n)$ y $(w_1,\cdots,w_m)$, $\Lambda$ se representa con una matriz con ceficientes complejos  de $m\times n$ dimensiones, $S=(s_{ij})$, si pensamos a las coordenadas como funciones tenemos que
+
+$$w_i\circ\Lambda=\sum_{j=1}^n s_{ij}z_j\hspace{0.2cm}\forall\, 1\leq i\leq m.$$
+
+El mapeo $\lambda\mapsto\Lambda$ se puede extender de manera única a una representación en $Hom_{\rac}(A_1,A_2)$ la cual llamamos \textit{representación analítica} con respecto a los sistemas analíticos de coordenadas $\theta_1$ y $\theta_2$. 
+
+Ahora sea:
+
+$$\omega_j=d\,z_j\circ\theta_1,\hspace{0.2cm}\eta_i=d\,w_i\circ\theta_2.$$
+
+Podemos ver facilmente que $\lbrace \omega_1,\cdots,\omega_n\rbrace$ es una base de $\mathfrak{D}_0(A_1)$ el espacio de las 1-formas invariantes a la izquierda en $A_1$, tambíen es claro que $\lbrace \eta_1,\cdots,\eta_m\rbrace$ es una base de $\mathfrak{D}_0(A_2)$, claramente
+
+$$\delta\lambda(\eta_i)=\sum_{j=1}^n s_{ij}\omega_j\hspace{0.2cm}\forall\, 1\leq i\leq m.$$
+
+Esto muestra que $S$ es la matriz transpuesta a $\delta\lambda$ con respecto a las bases $\lbrace\omega_j\rbrace$ y $\lbrace\eta_i\rbrace$.
+Sean $\lbrace u_i,\cdots,u_{2n}\rbrace$ y $\lbrace v_1,\cdots,v_{2m}\rbrace$ bases de $D_1$ y $D_2$ respectivamente (como $\dbz$-módulos libres), $\Lambda$ es un morfismo entre $D_1$ y $D_2$, entonces existe una matriz $M=(a_{ij})\in M(2n\times 2m,\dbz)$ tal que
+$$\Lambda(u_j)=\sum_{i=1}^{2m} a_{ij} v_i\hspace{0.2cm}\forall\, 1\leq j\leq 2n.$$
+
+Igual que antes las correspondencia $\lambda\mapsto M$ se extiende de manera única a una representación de $Hom_{\rac}(A_1,A_2)$, la cual llamamos la representación racional de $Hom_{\rac}(A_1,A_2)$ con respecto a $\lbrace u_j\rbrace$ y $\lbrace v_i\rbrace$. Se puede verificar que la representación $l$-'adica es equivalente a la representación racional de $End_{\rac}(A)$. Sea $U$ la matriz de $n\times 2n$ cuyos vectores columna son $\lbrace u_j\rbrace$ y sea $V$ la matriz con vectores columna $\lbrace v_i\rbrace$ ,entonces con la notación anterior:
+
+$$SU=VM,$$
+
+\noindent así sucede que
+\begin{equation}
+	\begin{pmatrix}
+		S & 0\\
+		0 & \overline{S}
+	\end{pmatrix}
+		\begin{pmatrix}
+		U\\
+		\overline{U}
+	\end{pmatrix}
+	=
+		\begin{pmatrix}
+		V\\
+		\overline{V}
+	\end{pmatrix}M,
+\end{equation}
+\noindent donde la línea significa conjugación compleja, así si $A_1=A_2$, $D_1=D_2$, $\theta_1=\theta2$ y $U=V$, entonces como la matriz 
+$\begin{pmatrix}
+		U\\
+		\overline{U}
+\end{pmatrix}$,
+es invertible, entonces $M$ es equivallente a la suma directa de $S$ y $\overline{S}$.
+\section{Variedades abelianas con multiplicación compleja}
+
+Sea $R$ una $\rac$-álgebra simple y $Z$ su centro, supongamos que $[R:Z]=f^2$, además supongamos que $[Z\,:\,\rac]=d$, entonces $R$ tiene $d$ representaciones irreducibles no equivalentes en la cerradura de $\rac$ que son de grado $f$. Diremos que una representación $S$ de $R$ en una extensión de $\rac$ es una \textit{reprecentación reducida} si es equivalente a la suma direcra de dichas $d$ representaciones irreducibles. Si $S$ es una representación reducida, el polinomio característico de $S(\alpha)$ tiene coeficientes racionales para toda $\alpha\in R$. Definimos para $\alpha\in R$
+
+\begin{equation}
+	N(\alpha)=det\,S(\alpha),\hspace{0.2cm}Tr(\alpha)=tr\,S(\alpha),
+\end{equation}
+\noindent la \textit{norma reducida} y \textit{traza reducida} respectivamente, éstas son independientes de la elección de $S$.
+\begin{lema}\label{lema1}
+Sea $R$ un álgebra simple sobre $\rac$ y $S$ una representación de $R$ en una extensión de $\rac$. Supongamos que para cada $\alpha$, el polinomio característico de $S(\alpha)$ tiene coeficientes racionales, entonces $S$ es equivalente a la suma de múltiples representaciones reducidas de $R$ y una $0$-representación.
+\end{lema}
+\dem Sean $\lbrace S_i\rbrace,\hspace{0.1cm}1\leq i\leq d$ las representaciones irreducibles no equivalentes de $R$ en la cerradura algebraica $L$ de $\rac$ en la extensión. Así  $S$ es equivalente a la suma directa de las representaciones $m_i S_i$ más una $0$- representación, donde los $m_i$ denotan las mulltiplicidades. Sean $\sigma_i\hspace{0.1cm}1\leq i\leq d$ los isomorfismos del centro de $R$, $Z$ en $L$, entonces tras reordenamiento (si es necesario) $S_i(\alpha)$ es una matriz diagonal $\alpha^{\sigma_i}Id_{f}$ para $\alpha\in Z\hspace{0.1cm}\forall1\leq i\leq d$. Por lo tanto el polinomio característioco de $S(\alpha )$ es de la forma
+
+$$p(x)=\prod_{i=1}^d(x-\alpha^{\sigma_i})^{m_if}.$$
+
+Por nuestras hipótesis los $m_i$ son iguales y tenemos el resultado. \qed
+\begin{prop}\label{prop1}
+Sea $A$ una variedad abeliana de dimensión $n$ y $\mathfrak{S}\subset End_{\rac}(A)$ una subálgebra conmutativa y semi simple, entonces tenemos que 
+
+$$[\mathfrak{S}\,:\,\rac]\leq 2n.$$
+
+\noindent Si $[\mathfrak{S}\,:\,\rac]=2n$, entonces el conmutador de $\mathfrak{S}$ en $End_{\rac}(A)$ coincide con $\mathfrak{S}$.
+\end{prop}
+\dem Sean $K_i$ las componentes simples de $\mathfrak{S}$. Como $\mathfrak{S}$ es conmutativo, cada $K_i$ es un campo. Sean $d_i=[K_i\,:\,\rac]$ y sea $S_i$ una representación reducida para $K_i$, sea $l$ un primo distinto a la característica del campo que define $A$ y consideremos $M_l$ una representación $l$-ádica de $End_{\rac}(A)$. Por \ref{lema1}, la restricción de $M_l$ a $K_i$ es equivalente a la suma directa $m_i S_i$ y una $0$-representación. Similarmente la restricción de $M_l$ en $\mathfrak{S}$ es equivalente la suma de $m_i S_i$ y una $0$-representación. Como $M_l$ es una representación fiel, entonces los $m_i$ son positivos. Por lo tanto 
+
+$$2n\geq\sum_{i}m_i d_i\geq\sum_{i}d_i=[\mathfrak{S}\,:\,\rac].$$
+
+Ahora supongamos que $2n=[\mathfrak{S}\,:\,\rac]$ y supongamos que $\mathfrak{S}'$ es el conmutador de $\mathfrak{S}$ en $End_{\rac}(A)$. Así es posible encontrar una matríz $P$ con coeficientes en la cerradura algbraica de $\rac_l$ tal que $PM_l(\xi)P^{-1}$ es una matriz diagonal para cada $\xi\in\mathfrak{S}$. Como $[\mathfrak{S}\,:\,\rac]=2n$, existe un elemento $\alpha\in\mathfrak{S}$ tal que los componente diagonales de $PM_l(\alpha)P^{-1}$ sean distintos. Como para toda $\eta\in\mathfrak{S}'$, $PM_l(\eta)P^{-1}$ conmuta con $PM_l(\alpha)P^{-1}$, entonces $PM_l(\eta)P^{-1}$ es una matriz diagonal para toda $\eta\in\mathfrak{S}'$, esto implica que $\mathfrak{S}'$ es un álgebra conmutativa semi simple. entonces lo que acabamos de probar muestra que $[\mathfrak{S}\,:\,\rac]\leq2n$, por lo tanto  $\mathfrak{S}=\mathfrak{S}'$. \qed
+\begin{prop}\label{prop2}
+Sea $A$ una variedad abeliana de dimensión $n$, y sea $R$ una subálgebra simple de $End_{\rac}(A)$ y $Z$ el centro de $R$ con
+
+$$[R\,:\,Z ]=f^2,\hspace{0.3cm}[Z\,:\,\rac]=d.$$
+
+\noindent Supongase que $R$ contiene a la identidad. Entonces $fd|2n$ y si escribimos $2n=fdm$, tenemos que para cada $\alpha\in R$ se cumple
+
+$$\nu(\alpha)=N(\alpha)^m,\hspace{0.3cm}tr(\alpha)=mTr(\alpha).$$
+\end{prop}
+\dem Sea $S$ una representación reducida de $R$ y sea $l$ primo distinto a la característica del campo de definición de $A$, sea $M_l$ representación $l$-ádica de $End(A)_l$ . Por \ref{lema1} la restricción de $M_l$ a $R$ es equivalente a un múltiplo  $mS$ con $m\in\dbz$, así $2n=fdm$ y el polinomio característico de $M_l(\alpha)$ es la $m$-ésima potencia de el se $S(\alpha)$. \qed
+
+\begin{prop}\label{prop3}
+Sea $A$ variedad abeliana de dimensión $n$. Si $End_{\rac}(A)$ contiene un campo $F$ de grado $2n$ sobre $\rac$, entonces $A$ es isogéneo a un producto \hbox{$B\times\cdots\times B$} con $B$ variedad abeliana simple. El conmutador de $F$ en $End_{\rac}(A)$ coincida con $F$ y además
+
+$$\nu(\alpha)=N_{F/\rac}(\alpha),\hspace{0.3cm}tr(\alpha)=Tr_F/\rac(\alpha).$$
+\end{prop}
+\noindent Véase \cite{shimura}[p. 37]
+\begin{prop}\label{prop4}
+Sean $A$, $B$ y $F$ como en la proposición anterior, sea $m$ la dimensión de $B$ y $h$ el número de veces que aparece $B$ en el producto isogeneo a $A$. Sea $K$ el centro de $End_{\rac}(B)$, entonces $K$ es un subcampo de $F$ y si 
+
+$$[K\,:\,\rac]=f,\hspace{0.3cm}[End_{\rac}(B)\,:\,K]=g^2,$$
+
+\noindent  entonces sucede que $2n=fgh$, $2m=fg$.
+\end{prop}
+De lo anterios se y el el siguente resultado, podremos saber mucho sobre la estructura de las variedades abelianas
+\begin{prop}\label{prop5}
+Sea $B$ una variedad abeliana simple y $K$ el centro de $End_{\rac}(B)$, entonces $K$ es un campo totalmente real o una extensión totalmente imaginaria cuadrática de un campo totalmente real.
+\end{prop}
+\begin{cor} Si seguimos la notación de la proposicón \ref{prop4} y suponemos que la característica del campo que define a $A$ es cero, entonces $End_{\rac}(B)=K$.
+\end{cor}
+\dem Si la característica es $0$, consideramos una representación racional de $End_{\rac}(B)$ de grado $2m$ (la dimensión de $B$). Como $End_{\rac}(B)$ es un álgebra con divisón, el grado cualquier representación de $End_{\rac}(B)$ es divisble por $[End_{\rac}(B)\,:\,\rac]=fg^2$, así como $2m=fg$, entonces $g=1$ y $End_{\rac}(B)=K$. \qed
+
+\subsection*{Tipos CM}
+\begin{def.}
+Sea $R$ un álgebra sobre $\rac$ con unidad $1$, definimos una variedad abeliana de tipo ($R$) como el par $(A,\iota)$, donde $A$  es una variedad abeliana y $\iota:R\rightarrow End_{\rac}(A)$ es un isomorfismo de álgebras. Frecuentemente usaremos sólo $A$ en lugar de $(A,\iota)$.
+\end{def.}
+
+Sea $F$ un campo numérico algebraico y $(A,\iota)$ una variedad abeliana de dimensión $n$ de tipo $(F)$. Como sabemos por la proposición \ref{prop2} $[F\,:\,\rac]$ divide a $2n$, entonces investigamos cuando $[F\,:\,\rac]=2n$, además asumiremos que la característica de $F$ es $0$. En dado caso $A$ es isomorfo a un toro complejo y así tenemos una representación racional de $A$, $M$ y una representación analítica $S$ de $End_{\rac}(A)$ proveniente de el sistema de coordenadas analíticas. $M$ es de grado $2n$, y $S$ es de grado $n$, además $M\cong S\oplus\overline{S}$.
+Sean \hbox{$\lbrace\varphi_1,\cdots,\varphi_{2n}\rbrace$} los isomorfismos de $F$ en $\co$, entonces por el lema \ref{lema1}, la representación $M$ restringida a $F$ es equivalente a la suma directa de $\varphi_i$, así podemos reordenar a los $\varphi_i$ de tal forma que $S$ sea la suma directa de \hbox{$\lbrace\varphi_1,\cdots,\varphi_{n}\rbrace$} y $\overline{S}$ es equivalente a la suma directa de \hbox{$\lbrace\varphi_{n+1},\cdots,\varphi_{2n}\rbrace$} y por lo tanto éste ultimo conjunto es igual a \hbox{$\lbrace\overline{\varphi_1},\cdots,\overline{\varphi_{n}}\rbrace$}. Más aún observamos que $F$ es totalmente imaginario, así decimos que $(A,\iota)$ es de tipo \hbox{$(F; \lbrace\varphi_1,\cdots,\varphi_{n}\rbrace)$}. Ahora $S$ es equivalente a representación de $End_{\rac}(A)$ por formas diferenciales invariantes, por lo que podemos encontrar $n$ $1$-formas difereneciales invariantes en $A$ tales que para cada $\alpha\in F$,
+
+$$\delta_{\iota}(\alpha)=\alpha^{\varphi_i}\omega_i\hspace{0.2cm}\forall\,1\leq i\leq n.$$
+
+Por otra lado, dadas dichas $\omega_i$, entonces $(A,\iota)$ es de tipo $(F:\lbrace \varphi_i\rbrace)$ y las $\omega_i$ forman una base para $\mathfrak{D}_0$.
+
+Ahora consideremos $K$ el centro de $End_{\rac}(A)$ que también es el centro de $End_{\rac}(B)$, donde $B$ es una subvariedad abeliana de $A$ determinada en la misma forma que en la proposición \ref{prop3}. Por la proposición \ref{prop5} $K$ es totalmente real o una extensión cuadrática imaginaria de un campo totalmente real, además  por la proposiciones \ref{prop4} y el corolario de \ref{prop5}, tenemos que $[K\,:\,\rac]=2\, \dim(B)$, lo que significa que podemos aplicar a $B$ y $K$ lo que hemos hecho con  $A$ y $F$, lo que significa que $K$ tiene que ser totalmente imaginario. Sea $S'$ una representación analítica de $End_{\rac}(B)$, entonces $A$ es isogenea al producto de $h$ copias de $B$ y la restricción de $S$ a $K$ es equivallente al producto de $h$ copias de $S'$. Por lo tanto la restricción de \hbox{$\lbrace\varphi_1,\cdots,\varphi_{n}\rbrace$} a $K$ nos dan $f/2$ isomorfismos  \hbox{$\lbrace\psi_1,\cdots,\psi_{f/2}\rbrace$} de $K$ a un subcampo de $\co$, cada uno repetido $h$ veces, donde $f=[K\,:\,\rac]$, además $S'$ es equivalente a las suma directa de los $\psi_j$ y éstos no son conjudagos complejos uno de los demás.
+
+\begin{def.}
+Dado un campo numérico algebraico $F$ de grado $2n$ y $n$ distintos isomorfismos  \hbox{$\lbrace\varphi_1,\cdots,\varphi_{n}\rbrace$} de $F$ en $\co$, decimos que el par \hbox{$(F;\lbrace\varphi_1,\cdots,\varphi_{n}\rbrace)$} es de tipo CM (complex multiplication) si existe una variedad abeliana de dimensión $n$ de tipo $(F:\lbrace\varphi_i\rbrace)$.
+\end{def.}
+\begin{teorema}\label{teoremaCM}
+El par $(F;\lbrace\varphi_i\rbrace)$ es de tipo CM si y solo sí $F$ contiene a dos campos $K$ y $K_0$ que satisfacen las siguientes condiciones:
+\begin{enumerate}
+	\item[(CM 1)] $K_0$ es totalmente real y $K$ es una extensión cuadrática totalmente imaginaria de $K_0$
+	\item[(CM 2)] Ninguno de los isomorfismos $\varphi_i$ son conjugados complejos entre ellos. 
+\end{enumerate} 
+\end{teorema}
+\subsection*{El reflex de un tipo CM}
+\noindent A partir de ahora todos los campos que aparezcan son subcampos de $\co$.
+\begin{lema}\label{lemaCM}
+Sea $L$ una extensión de Galois de $\rac$ y $G$ el grupo de Galois de dicha extensíon, sea también $\rho\in G$ el elemento que manda a cada $\xi\in L$ a su conjugado complejo, es decir $\xi^{\rho}=\overline{\xi}$. Sean $K$ y $K_0$ subcampos de $L$ tales que $[K\,:\,K_0]=2$, y $H$, $H_0$ los subgrupos de $G$ correspondientes, entonces las siguientes condiciones son equivalentes
+\begin{enumerate}
+	\item[i)] $K_0$ es un campo totalmente real y $K$ es totalmente imaginario
+	\item[ii)] $H_0=H\cup\sigma\rho\sigma^{-1}$ para toda $\sigma\in G.$
+\end{enumerate}
+\noindent si estas condiciones se satisfacen, entonces se tiene que 
+
+$$
+\rho H\tau=H\tau\rho=\sigma\rho\sigma{-1}H\tau=H\tau\sigma\rho\sigma^{-1}
+,\hspace{0.3cm}\forall\,\lbrace\sigma,\tau\rbrace\subset G.
+$$
+\end{lema} 
+Véase \cite{shimura}[p.60]
+\begin{prop}
+Sea $F$ una extensión de $\rac$ de grado $n$ y  \hbox{$\lbrace\varphi_1,\cdots,\varphi_{n}\rbrace$} un conjunto de $n$ isomorfismos de $F$ a $\co$ distintos. Sea $L$ una extensión de Galois de $\rac$ que contiene a $F$ y $G$ el grupo de galois de $L/\rac$. Denotamos por $\rho$ al elemento de $G$ correspondiente a la conjugación compleja como antes y consideramos $S$ el conjunto de todos los elementos de $G$ que inducen algún $\varphi_i$ en $F$. Entonces $(F;\lbrace\varphi_i\rbrace)$ es un tipo CM si y sólo si tenemos 
+
+$$G=S\cup S\sigma\rho\sigma^{-1},\hspace{0.2cm}S\sigma\rho\sigma^{-1}=\sigma\rho\sigma^{-1}S\hspace{0.3cm}\forall\,\sigma\in G.$$
+\end{prop}
+\noindent Como podemos apreciar la proposición anterio junto com el lema \ref{lemaCM} son una forma de recontextualizar el teorema \ref{teoremaCM}.
+
+\subsubsection{Tipos CM primitivos} 
+\noindent Diremos que un tipo CM es primitivo si la variedad abeliana de dicho tipo es simple (recordemos que las variedades abelianas del mismo tipo CM son isogéneas). El siguiente resultado es un criterio para la primitividad de un tipo CM
+\begin{prop}
+Dado un tipo CM $(F;\lbrace\varphi_i\rbrace)$, sean $L$, $G$, $\rho$, $S$ como en la proposición anterior y $H_1$ el subgrupo de $G$ que corresponde a $F$. Sea
+$$H:=\lbrace\gamma\in G\,\big\vert\,\gamma S=S\rbrace.$$
+\noindent Entonces $(F;\lbrace\varphi_i\rbrace)$ es primitivo si y sólo si $H_1=H'$
+\end{prop} 
+La siguiente proposición es a su vez la definición de el campo reflex de un tipo CM y la afirmación de que éste es primitivo, junto con una descripcíon del mismo
+\begin{prop}
+Sean $(F;\lbrace\varphi_i\rbrace)$, $L$, $G$, $\rho$, $S$ como en la proposición anterior, definimos
+\begin{equation}
+	S^*:=\lbrace\sigma^{-1}\,\big\vert\,\sigma\in S\rbrace,\hspace{0.3cm}
+	H^*:=\lbrace\gamma\,\big\vert\,\gamma\in G,\,\gamma S^*=S^*\rbrace.
+\end{equation}
+\noindent Sea $K^*$ el subcampo de $L$ correspondiente al subgrupo $H^*$ y $\lbrace\psi_j\rbrace$ el conjunto de los isomorfimos de $K^*$ a $\co$ correspondientes a elementos de $S^*$. Entonces $(K^*;\lbrace\psi_j\rbrace)$ es un tipo CM primitivo y
+\begin{equation}
+	K^*=\rac\Big(\sum_{i}\xi^{\varphi_i}\,\vert\,\xi\in F\Big).
+\end{equation}
+\noindent $(K^*;\lbrace\psi_j\rbrace)$ esta deteminado únicamente por $(K;\lbrace\varphi\rbrace)$ y es independiente de la elección de $L$. A $(K^*;\lbrace\psi_j\rbrace)$ le llamamos el campo reflex de $(K;\lbrace\varphi\rbrace)$.
+\end{prop}
+\begin{thebibliography}{99}
+\bibitem{stein}{\sc Stein, W.,} {\it Algebraic Number Theory a Computaional Approach}
+\bibitem{weil}{\sc Weil, A.,} {\it Foundations of Algebraic Geometry}
+\bibitem{shimura}{\sc Shimura, G.,}{\it Abelian Varieties with Complex Multiplication and Modular Functions, Princeton University Press}
+\end{thebibliography}
+\end{document}

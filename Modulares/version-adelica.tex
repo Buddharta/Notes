@@ -1,0 +1,426 @@
+\documentclass[letterpaper]{report}
+%\usepackage{pst-node}
+\usepackage{tikz-cd} 
+\usepackage{amsmath}
+\usepackage{float}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage[spanish,activeacute]{babel}
+\usepackage{amscd}
+\usepackage{fancyhdr}
+\usepackage{graphicx}
+\usepackage{color}
+\usepackage{transparent}
+\usepackage{makeidx}
+\usepackage{afterpage}
+
+\makeindex
+
+\newtheorem{teorema}{Teorema}[chapter]
+\newtheorem{prop}[teorema]{Proposici\'on}
+\newtheorem{cor}[teorema]{Corolario}
+\newtheorem{lema}[teorema]{Lema}
+\newtheorem{obs}{Observaci\'on}
+\newtheorem{def.}{Definici\'on}[chapter]
+\newtheorem{afir}{Afirmaci\'on}
+
+
+\renewcommand{\figurename}{Figura}
+\renewcommand{\chaptername}{\Large  \sc Cap\'{\i}tulo}
+\renewcommand{\indexname}{\'{I}ndice anal\'{\i}tico}
+\renewcommand{\bibname}{Bibliograf\'{\i}a}
+\newcommand{\dem}{{\sc Demostraci\'on. }}
+
+\newcommand{\rac}{\ensuremath{ \mathbb Q }}
+\newcommand{\nat}{\ensuremath{ \mathbb N }}
+\newcommand{\dbz}{\ensuremath{ \mathbb Z }}
+\newcommand{\co}{\ensuremath{\mathbb C }}
+\newcommand{\hc}{\ensuremath{\widehat{\mathbb C} }}
+\newcommand{\con}{\ensuremath{\mathbb{C}^{n}}}
+\newcommand{\hil}{\ensuremath{\mathcal H }}
+\newcommand{\re}{\ensuremath{\mathbb R }}
+\newcommand{\cp}{\ensuremath{\mathbb{CP}}}
+\newcommand{\rp}{\ensuremath{\mathbb{RP}}}
+\newcommand{\sph}{\ensuremath{\mathbb{S}}}
+
+\newcommand{\Oan}{\ensuremath{\mathcal{O}}}
+\newcommand{\Ad}{\ensuremath{\mathbb{A}}}
+\newcommand{\specKn}{\ensuremath{Spec\,K[x_1,\cdots ,x_n]}}
+\newcommand{\specLn}{\ensuremath{Spec\,L[x_1,\cdots ,x_n]}}
+\newcommand{\specRn}{\ensuremath{Spec\,R[x_1,\cdots ,x_n]}}
+\newcommand{\specKm}{\ensuremath{Spec\,K[x_1,\cdots ,x_m]}}
+\newcommand{\specQn}{\ensuremath{Spec\,\mathbb{Q}[x_1,\cdots ,x_k]}}
+\newcommand{\specRen}{\ensuremath{Spec\,\mathbb{R}[x_1,\cdots ,x_k]}}
+\newcommand{\specCn}{\ensuremath{Spec\,\mathbb{C}[z_1,\cdots ,z_k]}}
+
+\newcommand{\nuc}{\ensuremath{\mathcal{N}}}
+\newcommand{\hip}{\ensuremath{\mathbb H}}
+\newcommand{\hd}{\ensuremath{\mathbf{H}_{\delta}}}  
+
+\newcommand{\bg}{\ensuremath{\overline \Gamma}}
+\newcommand{\ga}{\ensuremath{\Gamma}}
+\newcommand{\fb}{\ensuremath{\overline f}}
+\newcommand{\la}{\ensuremath{\lambda}}
+\newcommand{\La}{\ensuremath{\Lambda}}
+\newcommand{\bt}{\ensuremath{\overline T}}
+\newcommand{\li}{\ensuremath{\mathbb{L}}}
+\newcommand{\ord}{\ensuremath{\mathbb{O}}}
+
+\newcommand{\pslz}{\ensuremath{PSL(2,\mathbb Z) }}
+\newcommand{\pslr}{\ensuremath{PSL(2,\mathbb R) }}
+\newcommand{\pslc}{\ensuremath{PSL(2,\mathbb C) }}
+\newcommand{\qed}{\ensuremath{\hspace*{0em plus 1fill}\blacksquare}}
+
+
+\begin{document}
+
+\begin{titlepage}
+\begin{center}
+%\vspace*{-3cm}
+%\makebox{\includegraphics[height=3cm]{unam.jpg}} 
+%\vspace*{1cm}
+
+%\LARGE\textbf{UNIVERSIDAD NACIONAL AUT'ONOMA DE MEXICO}
+%\vspace*{0.3cm}
+
+%\large PROGRAMA DE MAESTR'IA Y DOCTORADO EN CIENCIAS MATEM'ATICAS Y DE LA ESPECIALIZACI'ON EN ESTAD'ISTICA APLICADA
+%\vspace*{2cm}
+
+\LARGE\textbf{VERSIÓN ADÉLICA}
+\vspace*{0.5cm}
+
+%\large NOTAS PARA EVALUACIÓN
+%\vspace*{2.5cm}
+
+%\small \textbf{PRESENTA:}
+%\vspace*{0.2cm}
+
+\small CARLOS EDUARDO MART'INEZ AGUILAR
+%\vspace*{0.2cm}
+
+%\small DIRECTOR: DR. ADOLFO GUILLOT SANTIAGO
+%\vspace*{0.2cm}
+
+%\small \textbf{INSTITUTO DE MATEM'ATICAS UNAM}
+%\vspace*{2.5cm}
+
+%\small CIUDAD UNIVERSITARIA, ENERO DE 2019
+
+%\tableofcontents
+ 
+\end{center}
+\end{titlepage} 
+
+\chapter{Adeles}
+\begin{def.}
+Una valuación en un campo $K$ es una función $\vert\cdot\vert:K\rightarrow\re^{+}$ que safisface los siguientes axiomas
+
+\begin{itemize}
+\item[i)] $\vert a\vert=0$ si y sólo si $a=0$.
+\item[ii)] $\vert a\,b\vert = \vert a\vert\,\vert b\vert$ para todo $\lbrace a,b\rbrace\subset K$
+\item[iii)] Existe $C\in\re^{+}$ tal que $\vert 1+a \vert\leq C$ para todo $a\in K$
+\end{itemize}
+\end{def.}
+
+\noindent Observamos que por la segunda propiedad $\vert 1\vert=\vert 1\vert\,\vert 1\vert$, por lo tanto $\vert 1\vert=1$ además si $w\in K$ es raiz de la unidad $w^n=1$, entonces $\vert w\vert=1$.\\
+
+La valuación trivial se define por $\chi_{K\setminus\lbrace 0\rbrace}:K\rightarrow\re^{+}$
+\begin{equation}
+	\chi_{K\setminus\lbrace 0\rbrace}(x)=
+	    \begin{cases}
+      		0, & \text{if}\ x=0 \\
+      		1, & \text{en otro caso}.
+    	\end{cases}
+\end{equation}
+\noindent excluimos la valuación trivial de nuestro estudio. Así definimos dos tipos distintos de valuaciones: decimos que una valuacion es no arquimideana si 
+\begin{equation}
+	\vert a+b\vert\leq\max\lbrace\vert a\vert,\vert b\vert\rbrace.
+\end{equation}
+\noindent y por lo tanto diremos que una valuacíon es arquimideana en otro caso (observamos que la condición de no arquimidenidad es equivalente a que $C=1$).\\
+
+Las valuaciones definen una norma en el campo $K$ y por lo tanto una distancia dada por $\vert x-y\vert$, así diremos que dos valuaciones son equivalentes si definen la misma topología en $K$, más precisamente, dos valuaciones $\nu_1,\nu_2$ son equivalentes si existen \hbox{$\lbrace c_1,c_2\rbrace\subset\re^{+}$} tales que
+$$c_1\,\nu_1\leq \nu_2	\hspace{1cm}	c_2\,\nu_2\leq\nu_1$$
+\noindent a las clases de equivalecia bajo esta relación les llamaremos \textit{lugares}.
+
+\begin{teorema}[Ostrowski]
+En $\rac$ sólo existen dos tipos distintos de lugares, el lugar del valor absoluto usual en $\rac$, $\vert\cdot\vert$ y los lugares no arquimideamos correspondientes a las valuaciones $p$-ádicas $\vert\cdot\vert_p$ para $p$ primo definidas por
+\begin{equation}
+	\vert u\,p^n\vert_p:=p^{-n},\hspace{0.3cm}\text{donde}\hspace{0.5cm}u\in\rac,\,u=\frac{a}{b},\,(a,p)=(b,p)=1.
+\end{equation}
+\noindent A estas valuaciones también les llamamos \textbf{finitas}. 
+\end{teorema}
+
+\begin{def.}
+Un campo global es un campo $K$ dentro de las siguientes dos categorias distintas
+\begin{itemize}
+	\item $K$ es una extensión finita de $\rac$ (también llamdo campo numérico)
+	\item $K$ es una estensión finita y separable de $\mathbb{F}(\tau)$, con $\mathbb{F}$ un campo finito y $\tau$ es tracendental sobre $\mathbb{F}$, es decir $\mathbb{F}(\tau)\cong Frac(\mathbb{F}[X])$.
+\end{itemize}
+\end{def.}
+
+\noindent\textit{Nota.-} Dada una valuación $\nu$ en un campo $K$, denotamos por $K_{\nu}$ al campo correspondiente a la completación métrica de $K$.
+
+\begin{def.}[Anillo de valuación]
+Decimos que un dominio entero $R$ es un anillo de valuación si para su campo de fracciones $F=Frac(R)$ sucede que para todo $x\in F$ sucede que $x\in R$ o $x^{-1}\in R$.\\
+
+Para $K$ un campo y $\nu$ una valuación no arquimideana, el anillo de valuación de la completación $K_{\nu}$ es'ta dado por
+\begin{equation}
+	\Oan_{\nu}:=\lbrace x\in K_{\nu}\mid \vert x\vert\leq 1\rbrace.
+\end{equation}
+\end{def.}
+
+En general para una valuación $\nu$ denotaremos por $\Oan_{\nu}$ a su anillo de valuación, en caso de las valuaciones p-ádicas escribimos $\Oan_{p}$.
+
+\begin{def.}[Anillo de adeles]
+Sea $K$ un campo global, definimos el anillo de adeles de $K$ como el subanillo de $\prod_{\nu} K_{\nu}$ definido por el producto topológico restringido
+\begin{equation}
+	\Ad_{K}:=\prod_{\nu\,\text{valuación}}(K_{\nu},\Oan_{\nu})\subset\prod_{\nu} K_{\nu}
+\end{equation}
+\noindent definido como el conjunto de $(a_\nu)$ tales que $a_{\nu}\in\Oan_{\nu}$ salvo un número finito de lugares. La estructura de anillo se define entrada a entrada
+$$(x\,y)_{\nu}:=x_{\nu}\,y_{\nu}\hspace{0.5cm}(x+y)_{\nu}:=x_{\nu}+y_{\nu}$$
+\noindent a un elemento invertible de $\Ad_{K}$ le llamaremos idele.
+\end{def.}
+Observamos que existe un encaje de $K$ en $\Ad_{K}$ por medio de $\varphi:K\rightarrow\Ad_{K}$ $\varphi(x)=(x,x,x,\cdots)$
+\subsection{Espacios adélicos y variedades algebraicas}
+
+\noindent Sea $V$ una variedad algebraica definida sobre un campo $K$ y sea $L$ una extensión de $K$, denotamos por $V_L$ a los puntos de $L$  que son racionales sobre $K$, es decir los ceros de polinomios con coeficientes en $K$ con coordenadas en $L$. Sabemos que $V$ admite una cubierta finita de abiertos de Zariski, es decir que $V$ se puede cubrir con un número finito de variedades afines definidas sobre $K$, así
+
+$$V=\bigcup_i\varphi_i(V_i),$$  
+\noindent donde $V_i$ es una variedad afín $V_i=\specKn/I$ y $\varphi_i$ es un isomorfimo entre $V_i$ y un abierto de $V$. Así tenemos que
+
+$$V_L=\bigcup_i\varphi_i(V_{i,L}),$$
+\noindent en particular para $\nu$ una valuacion en $K$ y $K_{\nu}$ con la $\nu$ topología, tenemos que 
+
+$$V_{K_{\nu}}=\bigcup_i\varphi_i(V_{i,K_{\nu}})$$
+\noindent es localmente compacto.Por lo tanto  definimos
+
+\begin{equation}
+	[V,\varphi_i,V_i]_{\Oan_{\nu}}=\bigcup_i\varphi_i(V_{i,\Oan_{\nu}}),
+\end{equation} 
+\noindent donde $V_{i,\Oan_{\nu}}$ es el subconjunto compacto de $V_{K_{\nu}}$ con coordenadas en $\Oan_{\nu}$ y así $[V,\varphi_i,V_i]_{\Oan_{\nu}}$ es un subconjunto compacto de $V_{K_{\nu}}$, con esto definimos el espacio adélico asociado a $V$ como el producto topológico restringido
+\begin{equation}
+	V_{\Ad_{K}}:=\prod_{\nu\,\text{valuación}}(V_{K_{\nu}},[V,\varphi_i,V_i]_{\Oan_{\nu}})\subset\prod_{\nu}V_{K_{\nu}}.
+\end{equation}
+Cuando $V$ es \textbf{completo}, se puede demostrar que $V_{\Ad_{K}}$ y $V_{K_{\nu}}$ son compactos y por lo tanto $[V,\varphi_i,V_i]_{\Oan_{\nu}}=V_{\Oan_{\nu}}$
+
+\begin{teorema}\label{morf_adel}
+Sean $V=\bigcup_i \varphi_i(V_i)$ y $W=\bigcup_j \psi_j(W_j)$ variedades algebraicas definidas sobre $K$ y sea $F:V\rightarrow W$ un morfismo de variedades algebraicas definido sobre $K$, entonces existe un conjunto finito de valuaciones tal que $F$ mapea $[V,\varphi_i,V_i]_{\Oan_{\nu}}$ en $[W,\psi_j,W_j]_{\Oan_{\nu}}$. 
+\end{teorema}
+\noindent\dem Para demostrar esto es suficiente considerar el caso cuando $V$ es afín ya que podemos continuar el argumento a una cubierta de variedades afines. Para cada $j$ sea \hbox{$F_j=\psi^{-1}_j\circ F:V\rightarrow W_j$}, ahora $F$ es representable por funciones racionales $R_{j\,k}$ en coordenadas de $V$, donde $1\leq k\leq dim(W_j)$. Sea $\mathfrak{a}_j\subset K[X]$ el ideal consistente de todos los polinomios $A(x)$ tales que
+
+$$A(x)\,R_{j\,k}(x)=Q_{k}(x)\in K[x],$$
+\noindent para todo $k$ con $x$ punto genérico de $V$ sobre $K$, entonces es claro que $F_j$ está definido en $x_1\in V$ si y sólo si no es un cero de $\mathfrak{a}_j$. Como $F$ está bien definido en todo $V$, entonces por lo menos un $F_j$ está definido en un $x_1$ cualquiera, lo que significa que que no existe un cero común de $\sum_j\,\mathfrak{a}_j$, es decir
+
+$$(1)=\sum_j\,\mathfrak{a}_j.$$
+\noindent Por lo tanto podemos escribir $1=\sum_j\,A_j$ con 
+$$A_j(x)R_{j\,k}(x)=Q_{j\,k}(x)\in K[x].$$
+\noindent Sea $S$ el conjunto de todas las $\nu$ tal que algún coeficiente de $\lbrace A_j,Q_{j\,k}\rbrace$ no sea $\nu$ entero. Para cualquier $x_1\in V_{\Oan_{\nu}}$,  fuera de $S$, entonces $A_j(x_1)$ es una $\nu$-unidad para algún $j=j_1$ y asi $R_{j_1\,k}(x_1)=Q_{j_1\,k}(x_1)/A_{j_1}(x_1)$ está en $\Oan_{\nu}$ para toda $k$.\qed 
+\begin{cor}
+Si $F:V\rightarrow W$ es un isomorfismo, entonces 
+
+$$F([V,\varphi_i,V_i]_{\Oan_{\nu}})=[W,\psi,W_j]_{\Oan_{\nu}}$$
+\noindent para casi toda $\nu$.
+\end{cor}
+
+Con esto notamos que la definición de $[V,\varphi_i,V_i]_{\Oan_{\nu}}$ es casi intrínseca y que si aplicamos el resultado con la identidad en $V$ obtenemos que la definición de $V_{\Ad_{K}}$ es independiente de la la cubierta afín (coordenadas). Además de lo anterior, obtenemos que para cada morfismo $F:V\rightarrow W$ determina una función continua \hbox{$F_{\Ad_{K}}:V_{\Ad_{K}}\rightarrow W_{\Ad_{K}}$}.   
+
+De lo anterior es posible definir un functor 
+\begin{equation}
+	\mathcal{A}:{\mathcal{V}ar}_K\rightarrow\Ad_{K}\,Spc
+\end{equation}
+Entre la categoría de variedades algebraicas sobre $K$ y la categoría de espacios adélicos. Es claro que si $F:V\rightarrow W$ y $G:W\rightarrow X$, entonces $\mathcal{A}(F):=F_{\Ad_{K}}$ es functorial, es decir \hbox{$(G\circ F)_{\Ad_{K}}=G_{\Ad_{K}}\circ F_{\Ad_{K}}$}. Si $V$ es una subvariedad de $W$, entonces el mapeo inclusión $\iota:V\rightarrow W$, entonces se puede demostrar que al aplicarle el fuctor $\mathcal{A}(\iota)=\iota_{\Ad_{K}}$ es un encaje cerrado. Además sucede que \hbox{$(V\times W)_{\Ad_{K}}\cong V_{\Ad_{K}}\times W_{\Ad_{K}}$}, por lo tanto el functor $\mathcal{A}$ tiene varias propiedades interesante para su estudio, por ejemplo  existe la siguiente condición que asegura la suprayectividad de \hbox{$F_{\Ad_{K}}:V_{\Ad_{K}}\rightarrow W_{\Ad_{K}}$}
+
+\begin{teorema}\label{supra}
+Sea $F:V\rightarrow W$ un morfismo de variedades algebraicas definidas sobre $K$. Si sucede que para cada $p\in W$ existe $\phi_p:W\rightarrow V$ morfismo racional sobre $K$ tal que $F\circ\phi_p=id_W$ (i.e $\phi_p$ es una sección local de $F$), entonces \hbox{$F_{\Ad_{K}}:V_{\Ad_{K}}\rightarrow W_{\Ad_{K}}$} es suprayectiva. 
+\end{teorema}   
+\noindent\dem Para cada $p\in W$ sea $\phi_p$ la función mencionada en la declaración del teorema y $D(\phi_p)$ el abierto de $W$ donde esta definida. Así tenemos una cubierta abierta de $W$  dada por $\lbrace D(\phi_p)\rbrace_{p\in W}$, los cuales por la racionalidad de $\phi_p$ son isomorfos a variedades afines. Así podemos escribir $W$ como una unión finita (Noeterianidad) $W=\bigcup_j\,\psi_j(W_j)$ con $W_j$ variedad afin tal que en cada $\psi_j(W_j)$ hay una sección global $\psi_j$. Así definimos \hbox{$G_j=\phi_j\circ\psi_j:W_j\rightarrow V$} el cual es un morfismo que cumple $F\circ G_j=\psi_j$, así por el teorema \ref{morf_adel} existe un subconjunto finito $S$ de valuaciones tal que 
+
+$$G_j(W_{j,\Oan_{\nu}})\subset[V,\varphi_i,V_i]_{\Oan_{\nu}}\hspace{0.2cm}\forall\,j$$
+siempre y cuando $\nu$ esté fuera de $S$. Sea $p=(p_{\nu})\in W_{\Ad_{K}}$ con $p_{\nu}\in\psi_{j(\nu)}(W_{j(\nu)})$, por definición de $W_{\Ad_{K}}$ exite un conjunto finito $S\subset T$ tal que $p_{\nu}\in\psi_{j(\nu)}(W_{j(\nu)})$ para $\nu$ fuera de $T$, así definimos $q=q_{\nu}=\psi_{j(\nu)}(p_{\nu})$, así si $\nu$ no está en $T$, entonces 
+
+$$q_{\nu}\in\psi_{j(\nu)}(W_{\nu\,\Oan_{\nu}})\subset[V,\varphi_i,V_i]_{\Oan_{\nu}},$$
+\noindent así $q_{\nu}$ está bien definido y $F(q_{\nu})=p_{\nu}$, es decir $F_{\Ad_{K}}(q)=p$ \qed 
+\begin{obs}
+Este teorema es inmediatamente aplicable al caso de acciones de grupos algebraicos. Sea $X=H/G$ donde $G$ es un grupo algebraico y $H$ es una variedad algebraica (ambas sobre $K$), entonces el teorema \ref{supra} implica que en muchos casos al aplicar el functor $\mathcal{A}$ a $\pi:H\rightarrow X$, obtendemos una función suprayectiva $\pi_{\Ad_{K}}:H_{\Ad_{K}}\rightarrow H_{\Ad_{K}}/G_{\Ad_{K}}$. 
+\end{obs}
+
+\chapter{Restricciones de Weil}
+\noindent Sea $L/K$ una extensión separable de grado $d$ sobre $K$ y sean $\Ad_{K}$, $\Ad_L$ sus respectivos anillos de adeles. Toda valuación $\omega$ en $L$ determina una valuación $\nu$ en $K$ por medio de restricción, esto lo denotamos por $\omega/\nu$. Como la extensión de $K$ es de grado $d$, hay a lo más $d$ valuaciones $\omega$ tal que $\omega/\nu$. Además podemos identificar $K_{\nu}$ como la cerradura de $K$ en $L_{\omega}$, para valuaciones discretas sucede que \hbox{$\Oan_{\nu}=K_{\nu}\cap\Oan_{\omega}$}, también es claro que el mapeo \hbox{$(a_{\nu})\mapsto(a_{\omega})$} con $\omega/\nu$ es una inyección $\Ad_K\hookrightarrow\Ad_L$. 
+
+Supongmos ahora que $L/K$ es normal con grupo de Galois $Gal(L/K)=\ga$, entonces la acción de $\ga$ en $L$ es continua en la $\nu$-topología, como $L$ es denso en 
+
+$$\prod^m_{i=1}L_{\omega_i}\hspace{0.2cm}\text{donde}\,\,\,\omega_i/\nu,$$
+
+\noindent podemos extender continuamente la acción a este producto y por lo tanto podemos extender la acción continuamente a todo $\Ad_{L}$. Notamos que $\Ad_K$ son los puntos invariantes de $\Ad_{L}$ bajo la acción de $\ga$. Además si una variedad algebraica $V$ está definida sobre $K$, también está definida sobre $L$ y por lo tanto $V_{\Ad_K}$ se encaja canonicamente en $V_{\Ad_{L}}$. Si $L$ es normal sobre $K$, el grupo de Galois $\ga$ actúa de forma natural en $V_{\Ad_{L}}$ y claramente $V_{\Ad_K}$ es el conjunto de puntos invarintes bajo la acción de $\ga$.
+
+Ahora nuestro propósito para definir la reducción de escalares, es encontrar una variedad $W$ sobre $K$ tal que para dada una variedad $V$ sobre $L$ tengamos que $V_{\Ad_L}\cong W_{\Ad_K}$ de forma canónica, para hacer esto usaremos una contrucción de tipo algebraico-geométrica.
+
+Sean $V$ y $W$ variedades definidas sobre $L$ y $K$ respectivamente ($L/K$ no necesariamente normal). Sea $\varphi:W\rightarrow V$ un mapeo sobre $L$ y sea $\Sigma:=\lbrace\sigma_1,\cdots,\sigma_d\rbrace$, el conjunto de encajes de $L$ en $\overline{K}$ (cerradura algebraica), con esto podemos definir $\varphi^{\sigma_i}:W\rightarrow V^{\sigma_i}$ para toda $i\in\lbrace 1,\cdots,d\rbrace$, donde $V^{\sigma_i}$ es la imagen de $V$ bajo $\sigma_i$, vista como subconjunto de $V_L$, así podemos definir
+
+$$
+	(\varphi^{\sigma_1},\cdots,\varphi^{\sigma_d}):W\rightarrow V^{\sigma_1}\times\cdots\times V^{\sigma_d}
+		\hspace{0.3cm}
+			w\mapsto(\varphi^{\sigma_i}(w))_{i\in\lbrace 1,\cdots,d\rbrace}.
+$$
+Si este mapeo es un encaje llamamos al par $(W,\varphi)$ como \textit{la variedad obtenida de $V$ por restricción de $L$ a $K$} y lo denoratemos por $(W,\varphi)=Res_{L/K}(V)$ o $W=Res_{L/K}(V)$.
+
+Demostramos que este espacio es \textbf{único} debido a que la restricción tiene la siguiente propiedad universal:
+
+Sea $X$ una variedad algebraica sobre $K$ y sea $f:X\rightarrow V$ un morfimos definido sobre $L$, entonces existe un único $\psi:X\rightarrow Res_{L/K}(V)$ definido sobre $K$ tal que $f=\varphi\circ\phi$, de hecho
+
+\begin{equation}
+	\begin{tikzcd}
+    	X \arrow{d}{\psi} \arrow{r}{f} & V \\
+    	Res_{L/K}(V) \arrow{ur}{\varphi} & {}
+	\end{tikzcd}
+		\hspace{0.3cm}\phi=(\varphi^{\sigma_1},\cdots,\varphi^{\sigma_{d-1}})^{-1}\circ(f^{\sigma_1},\cdots,f^{\sigma_{d}}),
+\end{equation}
+\noindent por lo tanto  $\phi$ esta definida sobre $K$ y es única. La \textbf{existencia} se sigue del siguiente teorema
+
+\begin{teorema}
+Sean $V$ y $Res_{L/K}(V)=(W,\varphi)$ como antes, sea también $V'$ definido sobre $L$. Si $V'$ es una subvaridad algebraica o un abierto de Zariski de $V$, entonces existe $Res_{L/K}(V')=(W',\varphi')$. Además si $V_1$ y $V_2$ tienen restricciones $(W_1,\varphi_1)$ y $(W_2,\varphi)$ respectivamente, entonces
+
+$$(W_1\times W_2,\,\varphi_1\times\varphi_2)=Res_{L/K}(V_1\times V_2)$$  
+\end{teorema}
+Si $V$ tiene estructuras adicionales como la de grupo, entonces el morfimo $\varphi$ y $Res(V)_{L/K}$ preservan dicha estructura. Por ejemplo sea $V=G_m:=L^*$ el grupo multiplicativo de unidades de $L$ uno dimensional, entonces $W=Res(V)_{L/K}$ es un grupo de dimensión $d=[L:K]$ definido sobre $K$. La multiplicación esta definida sobre $K$ como la multiplicación en $L*$ vista como una tranformación $K$-lineal.  
+
+\chapter{Superficies modulares de Hilbert y espacios adélicos}
+\noindent Sea $K$, una extensión finita de $\rac$, denotamos por $S_f$ al conjunto de lugares finitos de $K$, respectivamente $S_{\infty}$ será el cunjunto de lugares infinitos de $K$, denotamos $\Ad_K$ al anillo de adeles de $K$ y por $\Ad_K^*$ al grupo de ideles de $K$. El grupo de ideles contiene al grupo de unidades $K^*$, definimos el \textit{idele class group} de $K$ como 
+\begin{equation}
+	\mathcal{C}l(\Ad_K):=\Ad_K^*/K^*.
+\end{equation}
+Resulta que podemos recuperar el \textit{class group} clásico de elemento absolutamente positivos
+$$
+	\mathcal{C}l(\Ad_K)\,\Big(\prod_{p\in S_f}\Oan_p\Big)
+	\Big(\prod_{\nu\in S_{\inf}}\re^{+}\Big)\cong
+	\mathcal{C}l^{+}(K).
+$$
+Sea $G=Res_{K/\rac}(GL(2,K))$ la restricción sobre $\rac$ del grupo matrices invertibles $2\times2$ con coeficientes en $K$, así definimos 
+
+$$G(\re)=\prod_{\nu\in S_{\infty}}GL(2,\re),$$
+además definimos el morfismo de grupos $h_0:\co^*\rightarrow G(\re)$ definido por
+
+\begin{equation}
+	x+iy\mapsto
+	\bigg(
+		\begin{pmatrix}
+			x & -y\\
+			y & x
+		\end{pmatrix},
+		\cdots,
+		\begin{pmatrix}
+			x & -y\\
+			y & x
+		\end{pmatrix}		
+	\bigg).
+\end{equation}
+\noindent El centralizador de $h_0$ en $G(\re)$ es
+$$
+	K_{\infty}=
+	\Bigg\lbrace
+		\bigg(
+		\begin{pmatrix}
+			x_1 & -y_1\\
+			y_1 & x_1
+		\end{pmatrix},
+		\cdots,
+		\begin{pmatrix}
+			x_n & -y_n\\
+			y_n & x_n
+		\end{pmatrix}
+		\bigg)\,
+		\bigg\vert\,
+		\lbrace x_i,y_i\rbrace\subset\re\,\forall i\in\lbrace 1,\cdots,n\rbrace		
+	\Bigg\rbrace.
+$$
+\noindent Notamos que $K_{\infty}$ es un subgrupo conexo de $G(\re)$ isomorfo al tangente del toro $n$-dimensional. Más aún el cociente $G(\re)/K_{\infty}$ es una variedad real de dimensión $2n$ con $2^n$ componentes conexas permutadas por 
+$$
+	\pi_0(G(\re))=G(\re)/G(\re)^0\cong(\dbz/2\,\dbz)^n.
+$$
+Podemos darle a $G(\re)/K_{\infty}$ una estructura de variedad compleja por medio de la siguiente identificación
+$$
+G(\re)/K_{\infty}\rightarrow(\co\setminus\re)^n\hspace{0.3cm}g\mapsto(g_1(i),\cdots,g_n(i)).
+$$
+\noindent La acción de $\epsilon_j\in\pi_0(G(\re))$ es la conjugación compleja en la coordenada $j$-ésima, donde
+$$
+	\epsilon_j=
+			\bigg(
+			Id_2,
+			\cdots,
+			\begin{pmatrix}
+				-1 & 0\\
+				0 & 1
+			\end{pmatrix},
+			\cdots,
+			Id_2
+			\bigg).
+$$
+Denotamos por $\Ad^{fin}_K$ al subanillo de $\Ad_K$ de adeles finitos, es decir que sólo se consideran las valuaciones no arquimideanas en el producto reducido. Así tenemos que
+$$
+G(\Ad_K)/K_{\infty}=(G(\re)/K_{\infty})\times G(\Ad^{fin}_K).
+$$
+\noindent Este cociente también tiene una estuctura compleja debido a la acción izquierda de $G_{fin}=G(\Ad^{fin}_K)$ en $G(\Ad)/K_{\infty}$.
+
+El grupo $G(\Ad_K)$ es un grupo topológico con la topología que determina que el subbgrupo
+$$
+	\prod_{\nu\in S_f}GL(2,\Oan_{\nu})\times G(\re)^0,
+$$
+sea abierto. Ahora consideramos un subgrupo compacto $C_{fin}$ de $G_{fin}$ y considermos el cociente
+$$
+	X_{C_{fin}}:=G(\rac)\backslash G(\Ad_K)/K_{\infty}C_{fin}.
+$$
+Para anallizar este cociente utilizamos el mapeo $G(\Ad_K)\rightarrow\Ad^*_{K}$ definido por el determinante en cada entrada, esto induce el mapeo
+$$
+	G(\rac)\backslash G(\Ad_K)/K_{\infty}C_{fin}\rightarrow\Ad^*_K/K^*\,det(G(\re)^0C_{fin}).
+$$
+Donde escogemos $\lbrace g_1,\cdots,g_m\rbrace\subset G_{fin}$ tal que $\lbrace det(g_i)\rbrace$ forma un conjunto completo de representantes de $\Ad^*_K/K^*\,det(G(\re)^0C_{fin})$, entonces
+\begin{teorema}
+\begin{equation}
+G(\Ad_K)=\bigcup_{j=1}^m G(\rac)g_jG(\re)^0K_{fin}
+\end{equation}
+\end{teorema}
+\begin{teorema}
+Podemos identificar:
+\begin{equation}
+	G(\rac)\backslash G(\Ad_K)/K_{\infty}C_{fin}=\bigcup^m_{j=1}\ga_j\backslash\hip^n
+\end{equation}
+donde $\ga_j=g_j\big(G(\re)^0K_{fin}\big)g_j^{-1}\cap G(\rac)$ 
+\end{teorema}
+\dem Como sabemoss por el teorema anterior
+\begin{align}
+	X_{C_{fin}}:&=G(\rac)\backslash G(\Ad_K)/K_{\infty}C_{fin}\\
+				&=G(\rac)\bigg\backslash\bigcup_{j=1}^mG(\rac)g_jG(\re)^0C_{fin}/K_{\infty}C_{fin}\\
+				&=\bigcup^m_{j=1}g_j\big(G(\re)^0C_{fin}\big)g_j^{-1}\cap G(\rac)\backslash(G(\re)^0/K_{\infty})\\
+				&=\bigcup^m_{j=1}\ga_j\backslash\hip^n.
+\end{align}\qed\\
+Si hacemos esto en el caso de $C_0=\prod_{\nu\in S_{fin}}GL(2,\Oan_{\nu})$
+\begin{cor}
+$G(\rac)\backslash G(\Ad_K)/K_{\infty}C_0$ se puede identificar con
+$$
+\bigcup_{\mathfrak{a}}\ga(\mathfrak{a}\oplus\Oan_K)\backslash\hip^n,
+$$
+\noindent donde $\mathfrak{a}$ corre sobre todos los representantes en $\mathcal{C}l^{+}(K)$.
+\end{cor}
+\dem Sabemos que los componentes de $G(\rac)\backslash G(\Ad_K)/K_{\infty}C_0$ están en correspondencia uno a uno con $\Ad_K^*/K^*det(G(\re)^0C_o)\cong\mathcal{C}l^{+}(K)$ (igual que el caso real) y el resultado se sigue del teorema anterior.\qed 
+
+Esto explica el por qué consideramos todas las superficies $\ga(\mathfrak{a}\oplus\Oan)/\hip^2$, en gran parte consideramos propiedades geométricas de $G(\rac)\backslash G(\Ad_K)/K_{\infty}C_0$, sin embargo al considerar las propiedades aritméticas de este espacio es imperativo hablar de adeles.
+
+Sean $C_1$ y $C_2$ subgrupos abiertos y compactos de $G(\Ad_K^{fin})$ y sea $g\in G(\Ad_K^{fin})$ tal que $g^{-1}C_1g\subset C_2$, entonces existe un morfismo \textbf{natural}
+\begin{equation}
+	I_{C_1\,C_2}:X_{C_1}\rightarrow X_{C_2},
+\end{equation} 
+dado por la multiplicación a la derecha por $g$ que cumple
+\begin{itemize}
+	\item[i)] $I_{C_3\,C_2}(h)I_{C_2\,C_2}(g)=I_{C_3\,C_1}(gh)$ para toda $g,h$
+	\item[ii)] $I_{C_1\,C_1}=Id_{X_{C_1}}$
+	\item[iii)] Si $C_1\subset C_2$ es un subgrupo normal entonces $C_2/C_1$ actúa en $X_{C_1}$ y $I_{C_1\,C_2}(1)$ induce un isomorfismo
+
+		$$X_{C_{1}}/(C_2/C_1)\cong X_{C_{2}}.$$
+\end{itemize}
+
+\begin{thebibliography}{99}
+\bibitem{stein}{\sc Stein, W.,} {\it Algebraic Number Theory a Computaional Approach}
+\bibitem{weil}{\sc Weil, A.,} {\it Adeles and Algebraic Groups,1982 Birkhauser}
+\bibitem{vandergeer}{\sc Van Der Geer, G.,}{\it Hilbert Modular Surfaces, Springer-Verlag}
+\end{thebibliography}
+\end{document}
