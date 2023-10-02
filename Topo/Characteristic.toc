@@ -1,7 +1,0 @@
-\babel@toc {spanish}{}\relax 
-\contentsline {section}{\numberline {1}Preliminares}{1}{section.1}%
-\contentsline {subsection}{\numberline {1.1}Haces vectoriales complejos.}{1}{subsection.1.1}%
-\contentsline {section}{\numberline {2}Cohomología de DeRham}{2}{section.2}%
-\contentsline {section}{\numberline {3}La clase de Euler para haces vectoriales orientados}{2}{section.3}%
-\contentsline {section}{\numberline {4}Clases de Chern}{4}{section.4}%
-\contentsline {subsection}{\numberline {4.1}La primera clase de Chern de un haz de líneas complejo}{4}{subsection.4.1}%
