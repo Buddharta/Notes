@@ -1,5 +1,281 @@
 #+title: Notas de Estadistica
 #+author: Carlos Eduardo artínez Aguilar
 #+OPTIONS: tex:t
-#+LaTeX_CLASS: article
-#+LaTeX_CLASS_OPTIONS: [letterpaper]
+#+LANGUAGE: esp
+#+SETUPFILE: ~/Templates/latex-export.org
+** Medida y probabilidad.
+
+\begin{def.}
+Una /sigma-álgebra/ sobre un conjunto $\Omega$ es una colección de subconjuntos de $\Omega$, la cual denotamos por $\Sigma$ y cumple lo siguiente
++ $\emptyset\in\Sigma$ y $\Omega\in\Sigma$
++ $A\in\Sigma$ implica $\Omega\setminus A\in\Sigma$
++ $\{A_n\}_{n\in\nat}\subset\Sigma$ entonces $\bigcup_{n\in\nat} A_n\in\Sigma$
+A los elementos de $\Sigma$ se les llama como /conjuntos medibles/ o para la probabilidad /eventos/ y al par $(\Omega,\Sigma)$ se le llama un espacio medible.
+\end{def.}
+
+\eje Se define a la $\sigma$ álgebra generada por $\mathrm{F}$ como la $\sigma$ álgebra más chica que contiene a $\mathrm{F}$, esto es equivalente a la intersección de todas las $\sigma$ álgebras que contienen a $\mathrm{F}$ y se denotará por $\sigma(\mathrm{F})$.
+
+\eje Un ejemplo típico de espacio medible es el comjunto de números reales $\Omega=\re$ y la sigma álgebra generado por los intervalos abiertos, también conocida como la sigma-álgebra de Borel (en escencia son conjuntos complicados del tipo $F_{\sigma}$ y $G_{\delta}$).
+
+\obs Dado un conjunto $\Omega$ y una sigma álgebra $\Sigma$ y $U\subset\Omega$ siempre existe la sub-sigma-álgebra
+\[
+    \Sigma(U)=\{U\cap E\,|\,E\in\Sigma\}
+\]
+
+\begin{def.}
+\noindent Entenderemos un /espacio de probabilidad/ como un espacio de medida $(\Omega,\Sigma,\textbf{P})$ con medida uno, es decir un conjunto con una /sigma-álgebra/ $\Sigma$ y una medida *P*, tal que sea una medida de probabilidad, es decir que cumple:
+
++ $\textbf{P}(A)\geq 0$
++ $\textbf{P}(\Omega)=1$
++ Si $\{A_n\}\subset\Sigma$ es tal que $A_n\cap A_{n+1}=\emptyset$, entonces $\textbf{P}(\bigcup A_n)=\sum_{n=1}^{\infty} \textbf{P}(A_n)$
+\end{def.}
+
+Se le denomina a los conjuntos medibles de un espacio de probabilidad como /eventos/ y a dicha medida le llamamos /medida de probabilidad/, así mismo se le denomina al espacio total $X$ como /espacio de muestras/. Así la medida de probabilidad *P* evaluada en un evento $E$, $\textbf{P}(E)$ es naturalmente la probabilidad del evento $E$ y a un evento de probabilidad cero se le conoce como /evento nulo/. Si un evento tiene como complemento un evento nulo, en otra palabras, si el evento tiene probabilidad 1 diremos que el evento es /casi seguro/.
+
+\eje El ejemplo prototípico son los intervalos finitos de números reales cuya sigma álgebra es el álgebra de los conjuntos /borelianos/ o los /medibles de lebesgue/ y la medida de Lebesgue reescalada para medir exactamente 1 $P([a,b])=1/(b-a)\lambda$, donde $\lambda$ es la medida de lebesque usual.
+
+\eje La forma más simple de definir una probabilidad es mediante una función positiva en un conjunto que se quiera medir, uno de los ejemplos más importantes para la teoría de la probabilidad es /distribución gausiana/ definida en todos los reales:
+
+\[
+    f(x)=\frac{1}{\sigma\sqrt{2\pi}}e^{(\frac{x-\mu}{\sigma})^2}\quad \prob(x)=\int_{t\leq x}f(t)dt
+\]
+
+\begin{def.}
+Dado un espacio de probabilidad $(\om,\sig,\mu)$ y una varible aleatoria no-negativa $X:\om\rightarrow \re$ y de integral finita (no necesareamente continua en el sentido usual), se define la /distribución de probabilidad/ con función de densidad definida por $X$ como
+\[
+\prob(E)=\int_E Xd\mu
+\]
+\end{def.}
+
+\begin{def.}
+Dado una probabilidad en los reales $(\re,\mathbb{B}_{\re},\prob)$ y una varible aleatoria no-negativa, se define la /función de probabilidad/ relacionada a $\prob$ como
+\[
+        f(x)=\prob(\{t\,|\,t\leq x\})
+\]
+\end{def.}
+\eje En el caso de la distribución gaussiana, la fuanción de probabilidad fue definida como
+\[
+    \prob(x)=\int_{t\leq x}\frac{1}{\sigma\sqrt{2\pi}}e^{(\frac{t-\mu}{\sigma})^2}dt =
+    \int_{-\infty}^{x}\frac{1}{\sigma\sqrt{2\pi}}e^{(\frac{t-\mu}{\sigma})^2}dt
+\]
+
+
+
+
+
+
+
+
+
+
+\obs Dada una sucesión $\{x_n\}_{n\in\nat}$ denotaremos $x_n\downarrow x$ o $x_n\uparrow x$ si $x_{n+1}\leq x_n$ y $x_{n+1}\geq x_n$ $\lim_{n\rightarrow\infty}x_n=x$ respectivamente. Aplicaremos la misma notación para eventos $\{A_n\}_{n\in\nat}\subset\sig$.\\
+Existen construcciones conjuntistas que son más útiles en el sentido probabilístico, por ejemplo si $\{A_n\}_{n\in\nat}$ es una sucesión de eventos aletorios definimos los conjuntos $\{A_n\text{ i.o.}\}$ y $\{A_n\text{ ult.}\}$ dónde i.o significa ``infinitely often'' y ult ``ultimately'', éstos términos se refieren a el comportamiento de las colas de la sucesión de los eventos
+\begin{align*}
+\{A_n\text{ i.o.}\}=\Big\{\sum_{n\in\nat}1_{A_n}=\infty\Big\}=\bigcap_{n\in\nat}\bigcup_{k\geq n}A_k,\\
+\{A_n\text{ ult.}\}=\Big\{\sum_{n\in\nat}1_{A_n}<\infty\Big\}=\bigcup_{n\in\nat}\bigcap_{k\geq n}A_k.
+\end{align*}
+\noindent Notemos que esto se puede expresar en términos de funciones indicadoras como
+\[
+1_{\{A_n\text{ i.o.}\}}=\limsup_{n\rightarrow\infty}1_{A_n} \hspace{0.3cm} 1_{\{A_n\text{ ult.}\}}=\liminf_{n\rightarrow\infty}1_{A_n}.
+\]
+\noindent Ahora por la /desigualdad de Fatou/ se cumple lo siguiente con respecto a las probabilidades de estos conjuntos
+\[
+\prob(1_{\{A_n\text{ i.o.}\}})\geq\limsup_{n\rightarrow\infty}\prob(A_n)\hspace{0.3cm} \prob({\{A_n\text{ ult.}\}})\leq\liminf_{n\rightarrow\infty}\prob(A_n).
+\]
+\noindent Por la subaditividad y continuidad de la probabilidad se obtiene
+\[
+ \prob(\{A_n\text{ i.o.}\})=\lim_{n\rightarrow\infty}\prob(\bigcup_{k\geq n} A_k)\leq\lim_{n\rightarrow\infty}\sum_{k\geq n}\prob(A_k).
+\]
+\obs Si $\sum_{n\in\nat}\prob(A_n)$ entonces las colas tienden a cero y por lo tanto $\prob(\{A_n\text{ i.o.}\})=0$. Esto corresponde a la parte fácil del lema de /Borel-Cantelli/ que veremos en el futuro.
+
+\begin{def.}
+Dado un espacio de probabilidad $(\om,\sig,\prob)$, un espacio medible $(E,S)$ y un conjunto arbitrario $T$, el cual llamaremos a partir de ahora como un \emph{índice arbitrario o abstracto}, es posible definir el espacio medible $E^{T}:=\{f:T\rightarrow E\}$ con la sigma álgebra definida por los mapeos de evaluación, definidos para cada $t\in T$ como $\pi_t:E^{T}\rightarrow E$, $\pi_t(f):=f(t)$. Así si $X:\om\rightarrow E^{T}$ es un elemento aleatorio, se define la función $X(t,\omega)=\pi_t\circ X$, donde $X:T\times\om\rightarrow E$, a esta función le llamaremos un \emph{proceso aleatorio}. Si $T$ es de cardinalidad numerable diremos que $X$ es un proceso de tiempo discreto y si $T$ es de cardinalidad mayor a la numerable, diremos que $X$ es de tiempo continuo.
+\end{def.}
+\obs Un proceso $X:T\times\om\rightarrow E$ es aleatorio (medible) si y solo si para toda $t\in T$, $X_t:\om\rightarrow E$ definida por $X_t(\omega):=X(t,\omega)$ es medible.
+
+*** Medidas con signo
+
+Además de medidas de probabilidad, existen las /medidas con signo/ es decir, si $(\Omega,\Sigma)$ es un espacio medible, entonces una función $\nu:\Sigma\rightarrow\re$ es una medida con signo si cumple
+
++ $\nu(\emptyset)=0$.
++ $\nu$ toma a lo más uno de los valores $\infty$ o $-\infty$.
++ Si $\{A_n\}\subset\Sigma$ es una sucesión de conjuntos disjuntos, entonces $\nu(\bigcup A_n)=\sum_{n=1}^{\infty} \nu(A_n)$, donde entendemos que para valores finitos la convergencia es absoluta.
+
+\eje Un ejemplo que utilizaremos todo el tiempo es la medida con signo definida por una variable aleatoria $X:\Omega\rightarrow\re$
+\[
+    \nu(A)=\int_{A} X d\textbf{P}=\esp(X1_{A}),
+\]
+en el caso de una variable aleatoria *positiva*, con esperanza finita (o esperanza 1), le llamaremos /distribución de probabilidad/, pero habrá más información sobre estas probabilidades en una sección futura.
+\begin{def.}
+Sea $(\om,\sig,\mu)$ un espacio de medida y $\nu$ una medida con signo, decimos que $\nu$ es absolutamente continua con respecto a $\mu$ (denotado $\nu<<\mu$) si $\mu(A)=0$, entonces $\nu(A)=0$.
+\end{def.}
+\noindent Una medida con signo $\nu$, definida por una variable aleatoria $X$ es absolutamente continua con respecto a la probabilidad *P*. Para cualquier función medible $f:\Omega\rightarrow\re$ *siempre* podemos descomponerla de la siguiente manera $f=f^{+}-f^{-}$, donde $f^{\pm}=\pm f 1_{E^{\pm}}$ y $E^{\pm}=\{x\in\Omega\,\vert\,\pm f >0\}$. De la misma manera una medida con signo definida por $f$, $\nu$ se descompone en $\nu^{\pm}$.
+
+** Esperanza
+\noindent Asi mismo entenderemos a la /esperanza/ de una variable aleatoria como la integral de dicha funcion medible, es decir
+\begin{equation}
+    \esp(f(z))=
+    \begin{cases}
+        & \sum_{i} p_i f(z)\\
+        & \int_{\Omega}f(z)d\mu
+    \end{cases}
+\end{equation}
+Comunemente se define la probabilidad condicional de un evento $A$ con respecto a otro evento $B$ como la siguiente fórmula
+\[
+    \prob(A|B)=\frac{\prob(A\cap B)}{\prob(B)},
+\]
+\noindent sinembargo comunmente se utiliza el concepto más general de /esperanza condicional/
+\begin{def.}
+    Si $(\Omega,\Sigma,\prob)$ es un espacio de probabilidad, $X:\Omega\rightarrow\re$ es una variable aleatoria inegrable y $\mathrm{T} \subset\Sigma$ es una sigma sub álgebra, entonces decimos que una funcion $Y:\Omega\rightarrow\re$ es una /esperanza/ condicional si cumple lo siguiente.
+      + $Y$ es $\mathrm{T}$ medible
+      + $\esp(|Y|)<\infty$
+      + $\esp(X 1_A)=\esp(Y1_A)$ para todo $A\in\mathrm{T}$
+    se denotará a la esperanza condicional de $X$ con respecto a $\mathrm{T}$ como $\esp(X|\mathrm{T})$.
+\end{def.}
+\noindent\dem Podemos demostrar la existencia de la esperanza condicional por medio del teorema de Radon-Nikodym (1930)
+\begin{teorema}[Radon-Nikodym]
+    Sea $(\Omega,\Sigma)$ un espacio medible y $\mu:\Omega\rightarrow\re$ una medida ($\sigma$) finita y $\nu$ una medida con signo ($\sigma$) finita tal que $\nu$ sea absolutamente continua con respecto a $\mu$, entonces existe $f:\Omega\rightarrow\re$ funcion medible tal que
+\begin{equation}
+    \nu(A)=\int_{A} f d\mu \hspace{0.5cm}\forall A\in\Sigma,
+\end{equation}
+además la función $f$ es única casi donde quiera, a esta función se le conoce como *derivada de Radon-Nikodym* y usualmente se denota
+\[
+    f=\frac{d\nu}{d\mu}[\mu].
+\].
+\end{teorema}
+\noindent Así la existencia de la esperanza condicional proviene de la derivada de Radon-Nikodym de la medida con signo definida por $X$, para el álgebra $\mathrm{F}$, es decir
+\[
+    \nu{\pm}(A)=\int_{A}X^{\pm}d\textbf{P}\hspace{0.5cm}\nu=\nu^{+}-\nu^{-},
+\]
+\noindent la cual es absolutamente continua con respecto a la medida de probabilidad *P*, entonces definimos $Y=\frac{d\nu}{d\textbf{P}}[\textbf{P}]$, así simplemente verificamos que en efecto es una esperanza condicional. Por Radon-Nykodym, $Y$ es medible, ahora
+
++ $\esp(|Y|)=\int_{\om}|Y|d\textbf{P}=\int_{\om}|X|d\textbf{P}<\infty$
++ $\esp(X1_A)=\int_{A}Xd\textbf{P}=\nu(A)=\int_{A}Yd\textbf{P}=\esp(Y1_A)$.
+
+Algunas propiedades de la esperanza condicional son las siguientes:
+
++ Linealidad: para todas $a,b\in\re$ y $X,Y$ *v.a* $\esp(aX+bY|\mathrm{F})=a\esp(X|\mathrm{F})+b\esp(Y|\mathrm{F})$.
++ Monotonía: si $X\geq0$, entonces $\esp(Y|\mathrm{F})\geq 0$.
++ Si $X$ es $\mathrm{F}$ medible, entonces $\esp(X|\mathrm{F})=X$.
++ Propiedad de Torre: Si $\mathrm{G}\subset\mathrm{F}\subset\sig$, entonces:
+  \[
+        \esp(\esp(X|\mathrm{F})|\mathrm{G})=\esp(\esp(X|\mathrm{G})|\mathrm{F})=\esp(X|\mathrm{G})
+  \]
+
+Más aún la esperanza condicional hereda las propiedades que son resultados comunes de la teoría de la integración, por ejemplo
++ Convergencia monótona: Si $\{X_n\}_{n\in\nat}$ es una sucesión de *v.as* no negativas que converge monótonamente $X_N\uparrow X$, entonces $\esp(X|\mathrm{F})=\lim\esp(X_n|\mathrm{F})$.
++ Convergencia dominada: Si $\{X_n\}_{n\in\nat}$ es una sucesión de *v.as* convergente $X_n\rightarrow X$, tal que las *v.as* sean integrables, no negativas y se encuentren dominadas por $|X_n|\leq Y$ tal que $\esp(Y|\mathrm{F})<\infty$,  entonces $\esp(X|\mathrm{F})=\lim\esp(X_n|\mathrm{F})$.
++ Desigualdad de Jensen: Si $f:\re\rightarrow\re$ es una función convexa (cóncava) y $X$ es una variable aleatoria, entonces $\esp(f(X)|\mathrm{F})\geq\esp(X|\mathrm{F})$ (resp $\esp(f(X)|\mathrm{F})\leq\esp(X|\mathrm{F})$)
+
+*** Distribuciones de probabilidad
+\noindent Consideremos $(\om,\sig,\prob)$ un espacio de probabilidad y sea $(E,S)$ un espacio medible y $\xi:\om\rightarrow E$ una función medible, a esta función le llamremos /elemento aleatorio/ así existe una función $\xi^{*}:S\rightarrow\sig$, definida como $\xi^{*}(B)=\xi^{-1}(B)$, entonces es posible definir una medida de probabilidad en $(\xi^{*})^{-1}(\sig)$, definida por $\prob\circ\xi^{*}(B)=\prob(\xi^{*}(B))$, a la medida $\prob\circ\xi^{*}$, le llamaremos una /distribución/ de probabilidad y usualmente no distinguiremos entre una medida de probabilidad y una distribución incluso en la absencia de un elemento aleatorio.
+\obs Cuando $E=\re$ y $S=B_{\re}$, un elemento aleatorio es una variable aleatoria y cuando $E=\re^{d}$ y $S=B_{\re^{d}}$ un elemento aleatorio se le conoce como /vector aleatorio/.
+\begin{def.}{Función de una distribución}
+Dado un espacio de probabilidad $(\om,\sig,\prob)$ y un elemento medible $\xi:\om\rightarrow E$, definimos la \textit{función} de distribución como la función $F_{\xi}:\re\rightarrow[0,1]$
+\[
+    F_{\xi}(\alpha)=\prob\circ\xi^{*}(-\infty,\alpha]=\prob(\xi\leq\alpha)
+\]
+\end{def.}
+\noindent *Algunas propidades:* Supongamos que $F$ es la función de distribución asociada a una variable aleatoria $X$, entonces.
+ 1. $F:\re\rightarrow[0,1]$ es no decreciente, es decir $F(x)\leq F(y)$ siempre que $x\leq y$.
+ 2. \(\lim_{x\rightarrow\infty}F(x)=1\) y $\lim_{x\rightarrow -\infty}F(x)=0$.
+ 3. $F$ es continua por la derecha.
+\dem La demostración de estos hechos es evidente, el único que no es inmediatemente obvio es el punto número tres, para esto notamos que si tenemos la susesión $\{x+1/n\}$, entonces por convergencia monónona tenemos que
+\[
+    \lim_{n\rightarrow\infty}\prob\Big(X\leq x+\frac{1}{n}\Big)=\prob\Big(X\leq x\Big)
+\]
+\noindent *Existencia:* Ahora supongamos que $F$ es una función que cumple las propiedades 1.,2. y 3., entonces similar a la existencia de Lebesgue, es posible construir una medida $\nu:\mathbb{B}_{\re}\rightarrow\re^{+}$ tal que $\nu((-\infty,x])=F(x)$. A la medida $\nu$ se le conoce como la medida de Lebesgue-Stieltjes de $F$.
+\eje *(La representación de Skorokhod de una variable aleatoria con una función de distribución prescrita en el intervalo [0,1])*\\
+Supongamos que $F:\re\rightarrow[0,1]$ cumple con las propiedades 1.,2. y 3., como antes, entonces construimos una variable aleatoria en $([0,1],\mathbb{B}[0,1],\lambda)$, donde $\lambda$ es la medida de Lebesgue. Definimos
+\begin{align*}
+    X^{+}(\omega):=\inf\{\,z\,\vert\,F(z)>\omega\}=\sup\{\,y\,\vert\,F(y)\leq\omega\}\\
+    X^{-}(\omega):=\inf\{\,z\,\vert\,F(z)\geq\omega\}=\sup\{\,y\,\vert\,F(y)<\omega\}.
+\end{align*}
+Observemos que por definición de $X^{-}$, si $\omega\leq F(c)$, entonces $X^{-}(\omega)\leq c$. Ahora, si $z>X^{-}(\omega)$, entonces $F(z)\geq\omega$, entonces por continuidad a la derecha de $F$, $F(X^{-}(\omega))\geq\omega$ y por lo tanto
+\[
+     X^{-}(\omega)\leq c \implies \omega\leq F(X^{-}(\omega))\leq F(c)
+\]
+Por lo tanto tenemos que $\{\,\omega\,\vert\,X^{-}(\omega)\leq c\}=\{\,\omega\,\vert\,\omega\leq F(c)\}$ lo que implica que
+\[
+    \prob(X\leq c)=\prob(\omega\leq F(c))=\int_{-\infty}^c F(x)\,dx=F(c)
+\]
+\qed
+\obs $X^{+}$ tiene la mimsa función de distribución ya que
+\[
+$\prob(X^{-} = X^{+})=1$.
+\]
+\eje *(Distribuciones binomiales)*
+** Independencia
+\noindent Nos enfocaremos en indepencenia de $\sigma$ álgebras y describimos a partir de este la noción usual de independencia.
+\begin{def.}{Independencia}
+Sea $(\om,\sig,\prob)$ un espacio de probabilidad, decimos que una familia de sub $\sigma$ álgebras $\{\mathrm{F}_i\}_{i\in I}$ son \emph{independientes} si para cualquier $\{i_1,\dots,i_n\}\subset I$ subconjunto fininto, se tiene que
+\begin{equation}\label{indepen}
+    \prob(A_{i_1}\cap\dots\cap A_{i_n})=\prod_{j=1}^n\prob(A_{i_j})\hspace{0.2cm}A_{i_j}\in\mathrm{F}_{i_j}.
+\end{equation}
+Similarmente a los eventos que cumplan con la ecuación \ref{indepen}, les llamaremos eventos \emph{independientes}.
+\end{def.}
+\begin{def.}{Variables aleatorias independientes.}
+Decimos que las variables aleatorias $\{X_i\}_{i\in I}$ en un espacio de probabilidad $(\om,\sig,\prob)$ son \emph{independientes} si \[\{\sigma(X_i)\}_{i\in I}\] son independientes. Se denotará la relación de independencia entre $X$ e $Y$ como $X\upvDash Y$ y no distinguiremos entre variables aleatorias y $\sigma$ álgebras, e incluso denotaremos $X\upvDash\mathrm{F}$ cuando una variable aleatoria sea indepeniente de una sub $\sigma$ álgebra.
+\end{def.}
+En términos de de /eventos independientes/ como sabemos la ecuación que se cumple es
+\[
+    \prob(A_{i_1}\cap\dots\cap A_{i_n})=\prod_{j=1}^n\prob(A_{i_j}),
+\]
+\noindent queremos generalizar este tipo de ecuaciones pero en el sentido de $\pi$ sistemas en lugar de en nuestro sentido original de $\sigma$ álgebras ya que estas son más complicadas de usar. Por lo que el siguiente lema es muy útil para este tipo de cuestiones
+\begin{lema}
+Sean $\mathrm{G}$ y $\mathrm{H}$ sub sigma álgebras de $\sig$ y sean $I$ y $J$ $\pi$ sistemas tales que
+\[
+    \sigma(I)=\mathrm{G},\quad\sigma(J)=\mathrm{H}.
+\]
+Entonces $\mathrm{G}$ y $\mathrm{H}$ son independientes si y solo si
+\[
+    \prob(A\cap B)=\prob(A)\prob(B)\quad A\in J,\,B\in J
+\]
+\end{lema}
+\dem
+Es claro que si las $\sigma$ álgebra son independientes entonces los $\pi$ sistemas son independientes. Por lo que sólo es necesario demostrar que si los $\pi$ sistemas son independientes entonces las $\sigma$ álgebras lo son, entonces dadas $A\in I$ y $B\in J$ fijos, definimos las siguientes medidas finitas
+\[
+    C\mapsto\prob(A\cap C)\quad C\mapsto\prob(B)\prob(C).
+\]
+\noindent Como ambas medidascoinciden en $I$ y $J$, por el lema de clases monótonas coincide en $\sigma(I)=\mathrm{G}$ y $\sigma(J)=\mathrm{H}$ y por lo tanto el lema es válido.
+\qed\\
+\begin{cor}
+Ahora si $X$ e $Y$ son variables aleatorias en un espacio de probabilidad $(\om,\sig,\prob)$ tales que para todo $\{x,y\}\subset\re$ se cumple
+\[
+    \prob(\{X\leq x\}\cap\{Y\leq y\}):=\prob(X\leq x\,,\, Y\leq y)=\prob(X\leq x)\prob(Y\leq y)
+\]
+entonces $X$ e $Y$ son variables aleatorias independientes
+\end{cor}
+\dem
+Esto es claro de la proposición anterior debido a que la familia de conjuntos $\{X^{-1}(-\infty,x]\,\vert\,x\in\re\}$ es un $\pi$ sistema para $\sigma(X)$ para toda \textbf{v.a} $X$, así del lema anterior se sigue el resultado.
+\qed\\
+\obs En términos de la esperanza conicional, si $X \upvDash\mathrm{F}$, entonces $\esp(X|\mathrm{F})=\esp(X)$, además $Y=\esp(X)$ es $\mathrm{F}$ medible pues
+\[
+    \forall A\in\mathrm{F}\hspace{0.3cm}\esp(X1_A)=\esp(X)\prob(A)=Y\esp(1_A)=\esp(Y1_A)
+\]
+\begin{prop}
+Sea $(\om,\sig,\prob)$ espacio de probabilidad, $\mathrm{F}\subset\sig$ sub $\sigma$ álgebra y $X,Y$ \texrbf{v.a.} tal que $X$ sea $\mathrm{F}$ medible, entonces para toda $\varphi:\re\times\re\rightarrow\re$ Borel medible, se cumple
+\[
+\esp(\varphi(X,Y)|\mathrm{F})=\int_{y\in\re}\varphi(X,y)\prob_Y(dy)=\esp(\varphi(x,Y))|_{x\in\re}
+\]
+\end{prop}
+\begin{lema}[Borel-Cantelli]\label{bor-can}
+Sea $\{E_n\}$ una sucesión de eventos indpendientes en un espacio de probabilidad $(\om,\sig,\prob)$, entonces si
+\begin{equation}
+\sum_{n=1}^{\infty}\prob(E_n)=\infty\quad\text{implica}\quad\prob(\{E_n,\,\text{i.o }\})=\prob(\,\limsup E_n\,)
+\end{equation}
+\end{lema}
+\dem Primero, sabemos que se cumple
+\[
+    \om\setminus(\limsup E_n)=\liminf \{\om\setminus E_n\}=\bigcup_{m\in\nat}\bigcap_{n\geq m}(\om\setminus E_n).
+\]
+\noindent Ahora si $p_n=\prob(E_n)$, entonces por independencia se cumple que
+\[
+    \prob\Big(\bigcap_{n\geq m}(\om\setminus E_n)\Big)=\prod_{n\geq m}(1-p_n).
+\]
+Por monotonía de ambos lados de la ecuación, al tomar el límite cuando $r\uparrow\infty$ y la condición $\{r\geq n\geq m\}$, obtenemos gracias a la independencia lo siguiente. Para cada $x\geq 0$, $1-x\leq\exp(-x)$, así como la serie de los $p_n$ es divergente por hipótesis, entonces
+\[
+    \prod(1-p_n)\leq\esp\Big(-\sum_{n\geq m}p_n\Big)=0.
+\]
+\noindent Por lo que $\prob(\{\om\setminus\limsup E_n\})=0$ \qed
+\eje

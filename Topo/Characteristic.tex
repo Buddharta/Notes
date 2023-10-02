@@ -1,4 +1,4 @@
-% Created 2023-09-25 Mon 15:20
+% Created 2023-10-01 dom 16:03
 % Intended LaTeX compiler: pdflatex
 \documentclass[letterpaper]{article}
 \usepackage[utf8]{inputenc}
@@ -73,7 +73,7 @@
  pdftitle={Clases Características Latex Export},
  pdfkeywords={},
  pdfsubject={},
- pdfcreator={Emacs 27.1 (Org mode 9.6)}, 
+ pdfcreator={Emacs 29.1 (Org mode 9.7)}, 
  pdflang={Esp}}
 \begin{document}
 
@@ -82,10 +82,10 @@
 
 
 \section{Preliminares}
-\label{sec:orgca78634}
+\label{sec:orgd152b08}
 
 \subsection{Haces vectoriales complejos.}
-\label{sec:orge3904dd}
+\label{sec:orgab440a3}
 \begin{def.}
 Un haz vectorial complejo \(\xi\) de dimensión compleja \(n\) sobre un espacio topológico base \(B\), consiste de una espacio topológico \(E\) y una proyección continua \(\pi:E\rightarrow B\) tal que para cada \(b\in B\), la imagen inversa \(\pi^{-1}(b):=E_b\) sea un espacio vectorial complejo y tal que exista una vecindad \(U_b\subset B\) de \(b\) tal que \(\pi^{-1}(U_b)\) sea homeomorfa a \(U_b\times\co^{n}\) que conmuta con la proyección sobre la segunda componente de \(U_b\times\co^{n}\) y tal que dicho homeomorfismo sea lineal en las fibras \(\{b\}\times\co^{n}\)
 \end{def.}
@@ -101,7 +101,7 @@ Se observa que un haz vectorial complejo de rango \(n\) tiene un grupo de estruc
 \dem Sea \(V\) cualquier espacio vectoarial complejo de dimensión finita y sea \(\{\alpha_1,\dots,\alpha_n\}\) una base de \(V\) en \(\co\) y notemos que \(\{\alpha_{1},i \alpha_{1},\alpha_{2},i\alpha_{2},\dots,\alpha_{n},i\alpha_{n}\}\) es una base para el espacio real subyacente \(V_{\re}\). Ahora como el grupo \(\mathrm{GL}(n,\co)\) es conexo, entonces siempre es posible pasar de una base a otra por medio de una deformación continua (curva continua de bases) sin alterar la orientación. Aplicando esto a las fibras del haz obtenemos el resultado. \qed
 
 \section{Cohomología de DeRham}
-\label{sec:org6235c1f}
+\label{sec:org57af329}
 Dada una variedad diferenciable \(M\) de dimensión \(n\), existe un complejo dado por el espacio las k-formas difernciables en \(M\), las cuales denotamos por \(\Omega(M)^{k}\) y la derivada exterior \(d:\Omega(M)^{k}\rightarrow\Omega(M)^{k+1}\) para \(0 \leq k \leq n\). Así el complejo de DeRham se define como
 \[
     0 \rightarrow\Omega^{0}(M)\rightarrow\Omega^{1}(M)\rightarrow\cdots\rightarrow\Omega^{n}(M)\rightarrow 0.
@@ -116,7 +116,7 @@ Denotaremos por \(H^{*}(M)\) al anillo asociado al complejo de DeRham en  \(M\),
 \end{equation}
 
 \section{La clase de Euler para haces vectoriales orientados}
-\label{sec:org14aca99}
+\label{sec:orgd87db53}
 \noindent Recordemos que un espacio vectorial \(V\) tiene dos posibles ordenaciones dependiendo del signo del determinante de la matriz de cambio de base, es decir dada una base su clase de orientación es la calse de equivalencia de cambios de base con determinante positivo. Similarmente una orientación para un haz vectorial \(\xi=(E,B,F,\pi)\) es una función que asocia a cada fibra una orientación de tal forma que para cada \(b\in B\) exista \(b\in U_b\subset B\) abierto tal que \(\pi^{-1}\cong U_b\times\re^{n}\) donde el isomorfismo preserva la orientación en las fibras. Ahora en términos de topología algebraica, de manera similar podemos ordenar n-simplejos \(\Delta_n\) ordenando sus vértices de forma natural \(\{a_0,\dots,a_n\}\) y tomando clases de equivalencia por medio de los signos de las permutaciones de éstos que preserven adyacencias. Estas dos nociones de ordenamiento están relacionados claramente por lo siguiente; cualquier encaje lineal del n-simplejo \(\Delta\) en un espacio vectorial \(V\) de dimensión \(n\) que envíe el baricentro de \(\Delta_n\) a \(0\), digamos \(\sigma:\Delta_n\rightarrow V\), otorga una orientación a \(V\) por medio de tomar los vectores correspondientes a las  restas de los vectores vértices. Observenos que ésta orientación para \(V\) corresponde a la elección de uno de los dos generadores de homología singular en \(H_n(V,V_0;\zah/2\zah)\), donde \(V_0=\partial(\sigma(\Delta_n))\). Similarmente \(\sigma(\Delta_n)\in H_n(V,V_0,\zah)\) y es el generador canónico, llamemos a éste por \(\mu_V\), además existe un generador de la cohomología reducida \(u_V\in H^{n}(V,V_0;\zah)\) tal que \(u_V(\mu_V)=1\).
 Ahora en el caso de una orientación en un haz vectorial de rango \(n\), \(\xi=(E,B,F,\pi)\), en cada fibra \(E_b=\pi^{-1}(b)\cong F\) tenemos un generador preferido, digamos
 \[
@@ -162,11 +162,11 @@ Ahora por definición el primer homo morfismo \(\pi^*\) manda \(e(\xi)\) en \(u|
 \]
 \noindent es cero. Por lo que \(e(\xi)=s^{*}(0)=0\) \qed
 \section{Clases de Chern}
-\label{sec:org92250d1}
+\label{sec:org284594b}
 \noindent Se muestra unicidad de las clases de Chern como clase característica compleja en el sentido de que cualquier transformación natural de haces vectoriales complejos al anillo de cohomología es un polinomio de las clases de Chern. Además se muestra la relación entre las clases de Chern y la clase de Euler en el caso de haces de líneas complejas (escencialmente son lo mismo).
 
 \subsection{La primera clase de Chern de un haz de líneas complejo}
-\label{sec:org98fbbc7}
+\label{sec:org573ec38}
 \noindent Como sabemos un haz vectorial complejo es un haz fibrado con grupo de estructura \(\mathrm{GL}(n,\co)\), más aún analogamente a lo que sucede con haces vectoriales reales, donde es posible reducir el grupo de estructura al grupo ortogonal \(\mathrm{O}(n)\). Por medio del uso de métricas hermiteanas, es posible reducir la estructura de un haz vectorial al grupo unitario \(\mathrm{U}(n)\). Ahora como vimos en el caso de un haz vectorial complejo de \(n\), este es un haz vectorial real de rango \(2n\). Como \(\mathrm{U}(1)\) es isomorfo a \(\mathrm{SO}(2)\), esto significa que existe una regla biunívoca entre haces vectoiales reales de rango 2 orientados y haces de líneas complejas. Así se define la primera clase de Chern sobre un haz de líneas complejas \(L\) como la clase de Euler del haz de planos correspondiente, es decir
 \[
     c_1(L):=e(L_{\re})\in H^2(M)
@@ -216,4 +216,5 @@ La clase de Euler y por lo tanto la primera clase de Chern es functorial, es dec
 \[
     S=\{(l,v)\in P(V)\times V \,|\, v\in l \}
 \]
+con la proyección en la primera entrada como proyección del haz.
 \end{document}
