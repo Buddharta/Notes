@@ -1,0 +1,288 @@
+% Created 2023-11-01 Wed 10:26
+% Intended LaTeX compiler: pdflatex
+\documentclass[letterpaper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{longtable}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{capt-of}
+\usepackage{hyperref}
+\usepackage{lmodern} % Ensures we have the right font
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{amsmath, amsthm, amssymb, amsfonts, amssymb, amscd}
+\usepackage[table, xcdraw]{xcolor}
+\usepackage{mdsymbol}
+\usepackage{tikz-cd}
+\usepackage{float}
+\usepackage[spanish, activeacute, ]{babel}
+\usepackage{color}
+\usepackage{transparent}
+\graphicspath{{./figs/}}
+\usepackage{makeidx}
+\usepackage{afterpage}
+\usepackage{array}
+\usepackage{pst-node}
+\newtheorem{teorema}{Teorema}[section]
+\newtheorem{prop}[teorema]{Proposici\'on}
+\newtheorem{cor}[teorema]{Corolario}
+\newtheorem{lema}[teorema]{Lema}
+\newtheorem{def.}{Definici\'on}[section]
+\newtheorem{afir}{Afirmaci\'on}
+\newtheorem{conjetura}{Conjetura}
+\renewcommand{\figurename}{Figura}
+\renewcommand{\indexname}{\'{I}ndice anal\'{\i}tico}
+\newcommand{\zah}{\ensuremath{ \mathbb Z }}
+\newcommand{\rac}{\ensuremath{ \mathbb Q }}
+\newcommand{\nat}{\ensuremath{ \mathbb N }}
+\newcommand{\prob}{\textbf{P}}
+\newcommand{\esp}{\mathbb E}
+\newcommand{\eje}{{\newline \noindent \sc \textbf{Ejemplo. }}}
+\newcommand{\obs}{{\newline \noindent \sc \textbf{Observación. }}}
+\newcommand{\dem}{{\noindent \sc Demostraci\'on. }}
+\newcommand{\bg}{\ensuremath{\overline \Gamma}}
+\newcommand{\ga}{\ensuremath{\Gamma}}
+\newcommand{\fb}{\ensuremath{\overline F}}
+\newcommand{\la}{\ensuremath{\Lambda}}
+\newcommand{\om}{\ensuremath{\Omega}}
+\newcommand{\sig}{\ensuremath{\Sigma}}
+\newcommand{\bt}{\ensuremath{\overline T}}
+\newcommand{\li}{\ensuremath{\mathbb{L}}}
+\newcommand{\ord}{\ensuremath{\mathbb{O}}}
+\newcommand{\bs}{\ensuremath{\mathbb{S}^1}}
+\newcommand{\co}{\ensuremath{\mathbb C }}
+\newcommand{\con}{\ensuremath{\mathbb{C}^n}}
+\newcommand{\cp}{\ensuremath{\mathbb{CP}}}
+\newcommand{\rp}{\ensuremath{\mathbb{RP}}}
+\newcommand{\re}{\ensuremath{\mathbb R }}
+\newcommand{\hc}{\ensuremath{\widehat{\mathbb C} }}
+\newcommand{\slz}{\ensuremath{\mathrm{SL}(2,\mathbb Z) }}
+\newcommand{\slr}{\ensuremath{\mathrm{SL}(2,\mathbb R) }}
+\newcommand{\slc}{\ensuremath{\mathrm{SL}(2,\mathbb C) }}
+\newcommand{\pslz}{\ensuremath{\mathrm{PSL}(2,\mathbb Z) }}
+\newcommand{\pslr}{\ensuremath{\mathrm{PSL}(2,\mathbb R) }}
+\newcommand{\pslc}{\ensuremath{\mathrm{PSL}(2,\mathbb C) }}
+\newcommand{\hd}{\ensuremath{\mathbb H^2}}
+\newcommand{\hol}{\ensuremath{\mathrm{Hol}}}
+\newcommand{\mdlr}{\ensuremath{\mathpzc{M}}}
+\author{Carlos Eduardo artínez Aguilar}
+\date{\today}
+\title{Curvas Elípticas y formas modulares Latex Export}
+\hypersetup{
+ pdfauthor={Carlos Eduardo artínez Aguilar},
+ pdftitle={Curvas Elípticas y formas modulares Latex Export},
+ pdfkeywords={},
+ pdfsubject={},
+ pdfcreator={Emacs 27.1 (Org mode 9.6)}, 
+ pdflang={Esp}}
+\begin{document}
+
+\maketitle
+\tableofcontents
+
+
+\section{Introducción}
+\label{sec:org8993bad}
+El propósito de estas notas es exponer las relaciones entre las formas modulares y las curvas elípticas, comenzaremos definiendo el orbifold modular y el álgebra graduada de las formas modulares (formas automorfas sobre el orbifold modular), comenzando desde las funciones generadoras de ésta álgebra, las llamadas \emph{series de Einsenstein}. Veremos que los espacios de formas modulares son de dimensón finita y posteriormente se muestra la relación entre el orbifold modular y las formas modulares con las curvas elípticas, donde el orbifold modular representa al espacio moduli conforme de curvas elípicas (latices).
+\subsection{Definiciones básicas}
+\label{sec:org13593e5}
+
+Comenzamos con la definición del grupo modular
+\begin{def.}
+El \textbf{grupo modular} es el grupo de matrices con entradas enteras y determinante uno.
+\begin{equation}
+    \slz=\Big\{ \begin{pmatrix}a & b\\ c & d \end{pmatrix} \,:\,\{a,b,c,d\}\subset\zah,\,ad-bc=1\Big\}
+\end{equation}
+\end{def.}
+Este grupo es generado por las matrices
+\[
+    \begin{pmatrix}1 & 1\\ 0 & 1 \end{pmatrix}\quad\begin{pmatrix}0 & -1\\ 1 & 0 \end{pmatrix},
+\]
+y es isomorfo módulo \(\pm I\) al grupo de transformaciones de Möbius con coeficientes enteros
+\[
+    \pslz=\big\{z\mapsto\frac{az+b}{cz+d}\quad\{a,b,c,d\}\subset\zah,\,ad-bc=1\big\}.
+\]
+El cual actua en la esfera de Riemann \(\co\cup\{\infty\}\) donde se extiende de manera natural a la transformacion de tal forma que \(-d/c\) se mapea a \(\infty\) e \(\infty\) se mapea a \(a/c\). Sin embargo nos restingiremos a la accion de este grupo en el subconjunto invariante
+\[
+    \hd=\{z\in\co\,:\,\Im(z)>0\}.
+\]
+En términos de los generadores, el grupo \(\pslz\) está gnerado por las transformaciones correspondientes a las matrices previamente mencionadas
+\[
+    z\mapsto z+1\quad z\mapsto\frac{-1}{z}
+\]
+\begin{def.}
+Sea \(k\in\zah\). Una función meromorfa \(f:\hd\rightarrow\co\) es debilmente modular de peso \(k\) si
+\[
+    f(T(z))=(cz+d)^{k}f(z)\quad\text{para } T=\begin{pmatrix}a & b\\ c & d \end{pmatrix}\in\slz.
+\]
+\end{def.}
+\obs Una función meromorfa \(f\) es debilmente modular de peso \(k\) si y solo si
+\[
+    f(z+1)=f(z)\quad\text{y}\quad f(-1/z)=z^{k}f(z).
+\]
+Esto es por el hecho de que debilmente modularidad de un a función meromorfa es equivalente a invarianza bajo la acción de \(\slz\) donde
+\begin{align*}\label{accion-mod}
+        \Phi_k:\slz\times\hol(\hd)\rightarrow\hol(\hd)\\
+        \Big(T=\begin{pmatrix}a & b\\ c & d \end{pmatrix},f\Big)\mapsto T^{*}[f](z)=(cz+d)^{-k}f\Big(\frac{az+b}{cz+d}\Big).
+\end{align*}
+Es decir, las formas debilmente modulares de peso \(k\) son el conjunto de funciones meromorfas que cumplen
+\[
+    \phi(T,f)=f\quad T\in\slz.
+\]
+En este sentido las formas debilmente modulares de peso \(0\) son las funciones invariantes bajo la acción natural del grupo debilmente modular. Similarmente las formas debilmente modulares de peso \(k=2\) son las formas diferenciales de \(\hd\) que pasan al cosiente \(\hd/\pslz\), ya que la derivada de una transformación de möbius es
+\[
+    T'(z)=\Big(\frac{az+b}{cz+d}\Big)'=\frac{1}{(cz+d)^2}.
+\]
+Continuando con esta interpreteción, las formas debilmente modulares son secciones en los haces de líneas
+\[
+    s:\hd/\pslz\rightarrow L^{k},
+\]
+donde \(L^k\) es el \(k\) ésimo producto tensorial haz de líneas de uno formas sobre el orbifold modular. Observamos que si lo que se acaba de exponer es verdad, entonces las formas debilmente modulares son todas de peso par \(k=2r\).
+\obs La acción \ref{accion-mod} es claramente lineal y por lo tanto el conjunto de funciones meromorfas invariantes es un espacio vectorial complejo. Más aún si \(f\) es una forma debilmente modular de peso \(k\) y \(g\) es una forma debilmente modular de peso \(l\), entonces \(fg\), es una forma debilmente modular de peso \(k+l\).
+\begin{def.}
+Diremos que una forma debilmente modular, es \textbf{modular} si es holomorfa en \(\hd\) y en \(\infty\).
+\end{def.}
+Ahora esto quiere decir que las formas modulares son funciones holomorfas en \(\hd\) y en el infinito \(\infty\) que a su vez son invariantes bajo las traslaciones enteras \(z\mapsto z+1\). Esto quiere decir que si \(f\) es una forma modular, entonce \(f\) admite una expansion en \emph{series de Fourier} del estilo
+\[
+    f(x)=\sum^{\infty}_{n=0}a_nq^{n}\quad q=e^{2\pi iz}
+\]
+Esto es por la equivalencia entre una funcion holomorfa en \(\hd\) y en \(\infty\) y una función holomorfa en \(\Delta=\{|z|< 1\}\) por medio de \(g(q)=f(\log(q)/2\pi i)\). Donde \(z\mapsto e^{2\pi i z}\) mapea \(\hd\) en \(\Delta\setminus\{0\}\) y el comportamiento de \(g\) en cero es el mismo que el de \(f\) en el infinito ya que \(z\rightarrow\infty\) implica \(q\rightarrow 0\) pues \(|q|=e^{-2\pi\Im(z)}\), lo que significa que \(g\) tiene una singularidad remobible en \(0\) y su serie de Laurent (Taylor) corresponde a la serie de fourier de \(f\).
+Denotaremos al espacio de formas modulares de peso \(k\) como \(\mdlr_{k}(\slz)\), la holomorficidad en el infinito nos perimitirá demostrar que este espacio es de dimensión finita. Más aún denotaremos al álgebra (graduada) de formas modulares como
+\[
+    \mdlr(\slz)=\bigoplus_{k\in\zah}\mdlr_{k}(\slz).
+\]
+Ahora claramente las funciones constantes son formas modulares de peso \(0\), sin embargo si queremos encontrar un ejemplo más interesante podemos hacer lo siguiente
+\eje Si promediamos la función constante \(1\) por medio de la acción \ref{accion-mod} obtendremos una función invariante bajo la acción del grupo. Maś aún ésta será holomorfa en \(\hd\) y en el infinito porque la acción es propiamente discontinua y las transformaciones de möbius son holomorfas. Es decir definimos
+\[
+    G_k(z)=\sum_{T\in\pslz}\Phi_k(T,1)=\sum_{(c,d)\in\zah^2\setminus\{(0,0)\}}\frac{1}{(cz+d)^k}.
+\]
+A esta funcion se le conoce como la \emph{serie de Einsenstein} de peso \(k\). De esta definición \(G_k\) es claramente invariante bajo la acción \(\Phi_k\), faltaría probar que \(G_k\) es holomorfa en \(\hd\) y acotada en el infinito.
+Ahora veamos su serie de Fourier, primero recordamos la identidad
+\[
+ \frac{1}{z}+\sum_{d=1}^{\infty}\Big(\frac{1}{z-d}+\frac{1}{z+d}\Big)=\pi\cot\pi z=\pi i-2\þi\sum_{m=0}^{\infty}q^m,\quad q=e^{1\pi i z}.
+\]
+Lo que nos lleva (derivando subsecuentemente) a la siguiente identidad
+\[
+    \sum_{d\in\zah}^{\infty}\frac{1}{(z+d)^{k}}=\frac{(-2\pi)^k}{(k-1)!}\sum_{m=0}^{\infty}q^m.
+\]
+Así para calcular la serie de fourier de \(G_k(z)\) separamos en dos sumas
+\[ G_k(z)=\sum_{(c,d)\in\zah^2\setminus\{(0,0)\}}\frac{1}{(cz+d)^k}=\sum_{d\neq 0}\frac{1}{d^k}+2\sum_{c=1}^{\infty}\Big(\sum_{d\in\zah}\frac{1}{(cz+d)^k}\Big),
+\]
+Así por lo anterior más la definición de la función \emph{zeta de Riemann}
+
+\begin{align*}
+ G_k(z)=2\zeta(k)+2\frac{(2\pi i)^k}{(k-1)!}\sum_{c=1}^{\infty}\Big(\sum_{m=1}m^{k-1}q^{cm}\Big)=&\\
+2\zeta(k)+2\frac{(2\pi i)^k}{(k-1)!}\sum_{n=1}^{\infty}\sigma_{k-1}(n)q^{n},
+\end{align*}
+Donde \(\sigma_k(n)\) es la función aritmética
+\[
+    \sigma_{k-1}(n)=\sum_{m|n,m>0}m^{k-1}.
+\]
+Definimos la \emph{serie de Einsenstein} normalizada como
+\[
+    E_k(z)=\frac{1}{2\zeta(k)}G_k(z)
+\]
+\subsection{La finita dimensionalidad de \(\mdlr(\slz)\)}
+\label{sec:org9367fa3}
+\noindent Probaremos la finita dimensionalidad de \(\mdlr_{k}(\slz)\) con un argumento que aplicable para cualquier \(\mdlr_{k}(\ga)\) donde \(\ga\) es cualquier grupo \emph{Fuchsiano} que no definiremos, ni las formas modulares sobre dichos grupos, pero las definiciones previamente dadas son válidas salvo un mínimo número de ajustes. Por lo tanto para las siguientes proposiciones escribiremos todo en términos de un grupo abstracto \(\ga\) pero asumiremos siempre que \(\ga=\slz\)
+\begin{def.}
+Definimos el orden de un cero de \(f:\hd\rightarrow\co\), forma modular en un punto \(p\in\hd/\ga\), denotadom por \(ord_p(f)\) como
+\[
+ ord_p(f)=ord_z(f),\quad p=\ga(z).
+\]
+\end{def.}
+Es decir, debido a la invarianza bajo la acción de \(\ga\), el orden se una zero en \(\hd\) es igual al orden en cualquier punto se su clase.
+Entonces consideremos el polígono fundamental de \(\slz\)
+\[
+    \mathfrak{F}=\{z\in\hd\,:\, \Re(z)\in[-1/2,1/2],\,|z|\geq 1\}.
+\]
+\noindent Entonces en \(\partial\mathfrak{F}\) existen cuatro tipos distintos de puntos
+\begin{enumerate}
+\item Puntos genéricos con estabilizador trivial.
+\item \(w_1=i\) Cuyo estabilizador es \(\langle S(z)=-1/z \rangle\cong\zah/2\zah\)
+\item \(w_2=\{\pm 1/2+i\sqrt{3}/2\}\) Cuyo estabilizador es  \(\langle ST \rangle\cong\zah/3\zah\), \(T(z)=z+1\)
+\item \(w_3=\infty\) Cuyo estabilizador es \(\langle T\rangle\cong\zah\)
+\end{enumerate}
+Por lo que el orden del estabilizador de un punto finito es \(1,2\) o \(3\). Ahora para incorporar a \(\infty\) hacemos la siguiente compactificación
+\[
+    \overline{\hd/\pslz}=\hd/\pslz\cup\{\infty\}.
+\]
+Además, similarmente a lo que hicimos previamente, para estudiar homolorficidad alrededor de \(\infty\), podemos pensar en el disco perforado \(D=\{q\in\co\,:\,0<|q|<e^{-2\pi r}\}\). También como \(\Phi(\slz,\infty)=\rac\cup\{\infty\}\), podemos pensar a la compactificación como
+\[
+    \overline{\hd/\pslz}=\overline{\hd}/\pslz,\quad\text{donde }\overline{\hd}=\hd\cup\rac\cup\{\infty\}.
+\]
+Entonces, si \(f\) es una forma modular, el orden \(ord_{\infty}(f)\) se define como el entero más chico tal que\(a_n\neq0\) en la expansión de fourier
+\[
+    f(z)=\sum_{n=0}a_nq^n\quad q=e^{2\pi iz}
+\]
+\begin{prop}
+Sea $f$ una forma modular no cero de peso $k$, entonces si $n_p$ denota el orden del estabilizador en el punto \(p\in\hd\), entonces
+\begin{equation}\label{mod-dim}
+\sum_{p\in\hd/\pslz}\frac{1}{n_p}ord_p{f}+ord_{\infty}(f)=\frac{k}{12}
+\end{equation}
+\end{prop}
+\dem Sea \(D=\mathfrak{F}\setminus\bigcup_{k=0}^{m}D_{\epsilon_j}(z_j)\), donde \(\{z_j\}_{j=1}^m\) son los ceros de \(f\) en \(\mathfrak{F}\) y \(z_0=\infty\), además \(D_{\epsilon_{j}}(z_j)\) es el disco de radio \(\epsilon_j\) con centro en \(z_j\) para \(j\in\{1,\dots,m\}\) y
+\[
+    D_{\epsilon_0}(\infty)=\{z\in\hd\,:\,q=e^{2\pi iz},\,q\in D_{\epsilon_0}(0)\setminus\{0\}\},
+\]
+de tal forma que
+\[
+    \bigcap_{j=0}^{m} D_{\epsilon_j}(z_j)=\emptyset.
+\]
+Ahora por el teorema del cambio de argumento, como \(f\) no tiene polos ni ceros en \(D\)
+\[
+    \int_{\partial D}\dfrac{d}{dz}\log(f(z))dz=Z(f)-P(f)=0.
+\]
+Sin embargo al calcular las siguientes integrales
+\begin{align*}
+    \int_{\partial D_{\epsilon_0}(\infty)}\dfrac{d}{dz}\log(f(z))dz=2\pi i ord_{\infty}(f)&\\
+    \int_{\partial \bigcup_{j=1}^{m} D_{\epsilon_j}(z_j)}\dfrac{d}{dz}\log(f(z))dz=2\pi i\sum_{z_j}\frac{ord_{p}(f)}{n_p}.
+\end{align*}
+Por último las inegrales a lo largo de las lineas verticales \(\pm1/2+it\) se anulan y la integral del arco del triángulo es \(\pi i k/6=2\pi i/12\). Así si se integra la mitad del arco y se aplica la transformación \(S(z)=-1/z\), por invarianza se obtiene
+\[
+    \dfrac{\log(f(S(z)))}{dz}=\dfrac{\log(f(z))}{dz}+\frac{k}{z}.
+\]
+Por lo tanto es claro que
+\[
+    \int_{\partial D}\dfrac{d}{dz}\log(f(z))dz=2\pi i\Big(\sum_{p\in\hd/\pslz}\frac{ord_p(f)}{n_p}+ord_{\infty}(f)-k/12\Big)=0.
+\]
+\qed
+\begin{cor}
+La dimensión de $\mdrl(\slz)$ es cero para $k<0$ o $k=2r+1$, mientras tanto para $k=2r$ se tiene
+\[
+    \dim(\mdrl_k(\slz))\leq
+\begin{cases}
+    [k/12]+1,\quad\text{si }k\nequiv 2\mod 12&\\
+    [k/12],\quad\text{si }k\equiv 2\mod 12\\
+\end{cases}
+\]
+\end{cor}
+\dem Sea \(m=[k/12]+1\) y sean \(\{p_1,\dots,p_m\}\subset\hd/\pslz\) puntos no elípticos, entonces dadas cuales quiera \(m\) formas modulares \(\{f_1,\dots,f_{m+1}\}\subset\mdlr_k(\slz)\), podemos encontrar una combinación lineal
+\[
+    f=\sum_{k=1}^{m+1}\alpha_kf_k\quad\text{tal que}\quad f(p_j)=0,\,\forall j\in\{1,\dots,m\}.
+\]
+Pues tenemos un sistema de \(m\) ecuaciones con \(m+1\) variables. Pero esto implica que
+\[
+    \sum_{p\in\hd/\pslz} \frac{ord_p(f)}{n_p}+ord_{\infty}(f)\geq m>\frac{k}{12}.
+\]
+Por lo tanto \(f\equiv0\) y \(\dim(\mdlr_k(\slz))\leq m\). Ahora si \(k\equiv2\mod12\) se puede mejorar la estimación de la dimension notando que para que se cumpla \ref{mod-dim}, es necesario por lo menos un cero simple en \(i\) y un cero doble en \(e^{2\pi/3}\) para contribuir \(7/6\) a la suma, por lo que \(k/12-7/6=m-1\) y  por lo tanto \(\dim(\mdlr_k(\slz))\leq m-1\).\qed
+\obs En el caso de un grupo Fuchsiano \(\ga\) tal que \(\hd/\ga\) tiene volumen finito \(V<\infty\), entonces
+\[
+    \dim(\mdlr_k(\ga))\leq \frac{kV}{4\pi}+1,
+\]
+entonces el factor 1/12 original proviene del volumen del orbifold modular.
+\subsection{Formas cuspidales y la función discriminante}
+\label{sec:org8c549c6}
+\begin{def.}
+Una \textbf{forma cuspidal} de peso \(k\) es una forma modular de peso \(k\) tal que su expresion en serie de Fourier tiene como primer coeficiente cero \(a_0=0\). Es decir
+\[
+    f(z)=\sum_{n=1}a_nq^n.
+\]
+Denotaremos el conjunto de formas cuspidales como \(\mathpzc{S}_k\big(\slz\big)\)
+\end{def.}
+\end{document}
