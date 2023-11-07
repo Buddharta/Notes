@@ -1,0 +1,332 @@
+\documentclass[letterpaper]{report}
+%\usepackage{pst-node}
+\usepackage{tikz-cd} 
+\usepackage{amsmath}
+\usepackage{float}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage[spanish,activeacute]{babel}
+\usepackage{amscd}
+\usepackage{fancyhdr}
+\usepackage{graphicx}
+\usepackage{color}
+\usepackage{transparent}
+\usepackage{makeidx}
+\usepackage{afterpage}
+
+\makeindex
+
+\newtheorem{teorema}{Teorema}[chapter]
+\newtheorem{prop}[teorema]{Proposici\'on}
+\newtheorem{cor}[teorema]{Corolario}
+\newtheorem{lema}[teorema]{Lema}
+\newtheorem{obs}{Observaci\'on}
+\newtheorem{def.}{Definici\'on}[chapter]
+\newtheorem{afir}{Afirmaci\'on}
+
+
+\renewcommand{\figurename}{Figura}
+\renewcommand{\chaptername}{\Large  \sc Cap\'{\i}tulo}
+\renewcommand{\indexname}{\'{I}ndice anal\'{\i}tico}
+\renewcommand{\bibname}{Bibliograf\'{\i}a}
+\newcommand{\dem}{{\sc Demostraci\'on. }}
+
+\newcommand{\nat}{\ensuremath{ \mathbb N }}
+\newcommand{\dbz}{\ensuremath{ \mathbb Z }}
+\newcommand{\co}{\ensuremath{\mathbb C }}
+\newcommand{\hc}{\ensuremath{\widehat{\mathbb C} }}
+\newcommand{\con}{\ensuremath{\mathbb{C}^{n}}}
+\newcommand{\hil}{\ensuremath{\mathcal H }}
+\newcommand{\re}{\ensuremath{\mathbb R }}
+\newcommand{\cp}{\ensuremath{\mathbb{CP}}}
+\newcommand{\rp}{\ensuremath{\mathbb{RP}}}
+\newcommand{\sph}{\ensuremath{\mathbb{S}}}
+
+\newcommand{\nuc}{\ensuremath{\mathcal{N}}}
+\newcommand{\cuat}{\ensuremath{\mathbb H}}
+\newcommand{\hd}{\ensuremath{\mathbb{H}^{2}}}  
+
+\newcommand{\bg}{\ensuremath{\overline \Gamma}}
+\newcommand{\ga}{\ensuremath{\Gamma}}
+\newcommand{\fb}{\ensuremath{\overline f}}
+\newcommand{\la}{\ensuremath{\lambda}}
+\newcommand{\La}{\ensuremath{\Lambda}}
+\newcommand{\bt}{\ensuremath{\overline T}}
+\newcommand{\li}{\ensuremath{\mathbb{L}}}
+\newcommand{\ord}{\ensuremath{\mathbb{O}}}
+
+\newcommand{\pslz}{\ensuremath{PSL(2,\mathbb Z) }}
+\newcommand{\pslr}{\ensuremath{PSL(2,\mathbb R) }}
+\newcommand{\pslc}{\ensuremath{PSL(2,\mathbb C) }}
+\newcommand{\modk}{\ensuremath{M_k(\Gamma)}}
+\newcommand{\qed}{\ensuremath{\hspace*{0em plus 1fill}\blacksquare}}
+
+
+\begin{document}
+
+
+\begin{titlepage}
+\begin{center}
+%\vspace*{-3cm}
+%\makebox{\includegraphics[height=3cm]{unam.jpg}} 
+%\vspace*{1cm}
+
+%\LARGE\textbf{UNIVERSIDAD NACIONAL AUT'ONOMA DE MEXICO}
+%\vspace*{0.3cm}
+
+%\large PROGRAMA DE MAESTR'IA Y DOCTORADO EN CIENCIAS MATEM'ATICAS Y DE LA ESPECIALIZACI'ON EN ESTAD'ISTICA APLICADA
+%\vspace*{2cm}
+
+\LARGE\textbf{FORMAS MODULARES Y SERIES $\mathcal{L}$}
+\vspace*{.5cm}
+
+\large NOTAS PARA EVALUACIÓN
+\vspace*{2.5cm}
+
+%\small \textbf{PRESENTA:}
+%\vspace*{0.2cm}
+
+\small CARLOS EDUARDO MART'INEZ AGUILAR
+%\vspace*{0.2cm}
+
+%\small DIRECTOR: DR. ADOLFO GUILLOT SANTIAGO
+%\vspace*{0.2cm}
+
+%\small \textbf{INSTITUTO DE MATEM'ATICAS UNAM}
+%\vspace*{2.5cm}
+
+%\small CIUDAD UNIVERSITARIA, ENERO DE 2019
+
+%\tableofcontents
+ 
+\end{center}
+\end{titlepage} 
+
+\section{Eigenformas de Hecke y series $\mathcal{L}$}
+
+\noindent Demostraremos que el espacio de formas modulares es generado por formas modulares cuyos coeficientes de Fourier son cuasi multiplicativos y que dichas formas modulares tienen asociados una serie de Dirichlet (serie $\mathcal{L}$) la cual es posible expresar como producto de Euler y además cumplen una ecuacion funcional similar a la funci'on zeta de Riemann que les permite ser continuadas anal'itiamente.\\ 
+
+Denotaremos por $\hd$ al semiplano superior en $\co$, es decir \hbox{$\hd=\lbrace z\in\co\,\vert\,\Im(z)>0\rbrace$} donde $\Im(z)$ denota la parte imaginaria de $z$. El subgrupo de isomet'ias hiperb'olicas con coeficientes enteros conocido como grupo modular lo denotaremos por
+
+$$\ga = \pslz = SL(2,\dbz)/\lbrace\pm Id\rbrace.$$ 
+
+Entenderemos por \textit{función modular} a una función holomorfa $f:\hd\rightarrow\co$ que sea $\ga$-invariante y definimos una \textit{forma modular de peso $k$} como una función $f:\hd\rightarrow\co$ tal que
+
+\begin{equation}\label{modular}
+f\Big(\frac{az+b}{cz+d}\Big) = (cz+d)^{k}f(z).
+\end{equation}
+
+Así denoratemos por $M_k(\ga)$ al espacio vectorial de dichas formas modulares de peso $k$ y por $M_{\ast}(\ga)$ al anillo de todas las formas modulares, diremos que $f\in\modk$ es una forma cuspidal si $\vert f(it)\vert$ es de orden sub exponencial $O(e^{-t})$ para $t\in\re^{+}$, entonces denotaremos por $S_k(\ga)$ al espacio de formas cuspidales de peso $k$ sobre $\ga$. Ahora como sabemos $z\mapsto z+1\in\ga$, entonces \ref{modular} para $f\in\modk$ sabemos que $f$ tiene una expresión en series de Fourier
+
+\begin{equation}
+f(z) = \sum_{n=0}^{\infty}a_n\,q^n\hspace{0.2cm}\textrm{donde}\,q=e^{2\pi\,z}.
+\end{equation}
+
+Por lo tanto es sencillo definir fromas modulares en términos de sus series de Fourier, por ejemplo definimos a función discmiminante $\Delta$ como
+
+\begin{equation}
+\Delta(z):=q \prod_{n=1}^{\infty}(1-q^n)^{24}=\sum_{n=1}^{\infty}\tau(n)q^n.
+\end{equation} 
+
+Donde $\tau(n)$ es la función \textit{tau} de Ramanujan, los primeros valores de esta serie son
+
+$$
+\Delta(z)=q-24q^2+252q^3-1472q^4+4830q^5-6048 q^6+\ldots
+$$
+
+\subsection{Teoría y operadores de Hecke}
+
+\begin{def.}
+Para cada entero $m\geq 1$ definimos al operador linear de Hecke $T_m:\modk\rightarrow\modk$ como:
+
+\begin{equation}
+T_m(f)[z]:=m^{k-1}\sum_{\gamma\in\mathcal{M}_m/\ga}\Big(\frac{\Im(\gamma(z))}{\Im(z)}\Big)^k f(\gamma(z)).
+\end{equation} 
+
+Donde $\mathcal{M}_m$ es el conjunto de matrices de determinante $m$ y $\ga$ actúa sobre $\mathcal{M}_m$ por medio de multiplicación a la izquierda.
+\end{def.}
+
+\noindent Observamos que $T_m$ esta bien definida y es una suma finita, lo que significa $T_m(f)$ es holomorfa y modular de peso $k$, esto es debido a que una matriz de determinante $m$ siempre tiene un representante bajo la acción de $\ga$ de la forma
+
+$$
+\begin{pmatrix}
+a & b \\
+0 & d 
+\end{pmatrix}
+\hspace{0.5cm}\textrm{donde}\hspace{0.2cm}ad=m,\hspace{0.2cm}0\leq b < d.
+$$
+
+Esto es debido a que si 
+
+$$
+\begin{pmatrix}
+A & B \\
+C & D 
+\end{pmatrix}\in\mathcal{M}_m\hspace{0.2cm}\textrm{es decir}\hspace{0.2cm} AD-CB=m,$$
+
+\noindent entonces definimos  $c=C/(A,c)$ y $d=-D/(a,c)$, donde $(x,y)$ es el máximo com'un divisor entre $x$ e $y$. Así $c$ y $d$ son primos relativos y por lo tanto existen $a$ y $b$ enteros tales que $ad-bc=1$ y entonces sucede que
+
+$$
+\begin{pmatrix}
+a & b \\
+c & d 
+\end{pmatrix}\in\ga\hspace{0.2cm}\textrm{con}\hspace{0.2cm} cA+dC=0.   
+$$
+
+Por lo tanto el producto de las matrices es de la forma
+
+$$
+\begin{pmatrix}
+a & b \\
+c & d 
+\end{pmatrix}\begin{pmatrix}
+A & B \\
+C & D 
+\end{pmatrix}=\begin{pmatrix}
+\alpha & \beta \\
+0 & \delta 
+\end{pmatrix},   
+$$
+
+\noindent entonces necesareamente se tiene que cumplir que $\alpha\delta=m$, además un cálculo sencillo muestra que $0\leq\beta<\delta$. Esto demuestra que la suma asociada a $T_m$ es finita y por lo tanto $T_m(f)$ esta bien definida y es holomorfa y claramente modular de peso $k$. No solo esto, si no que podemos escibir $T_m(f)$ como
+
+\begin{equation}
+T_m(f)[z]=m^{k-1}\sum_{ad=m\,\, a,d>0}\frac{1}{d^k}\sum_{b \mod d}f\Big(\frac{az+b}{d}\Big),
+\end{equation} 
+
+\noindent notamos que claramente $T_m$ es lineal, entonces de esta expresión podemos escribir a $T_m(f)$ en términos de su serie de Fourier como
+
+\begin{equation}
+T_m(f)=\sum_{d\vert m}\Big(\frac{m}{d}\Big)^{k-1}\sum_{d\vert n,\,n\in\nat}a_n\,q^{\frac{mn}{d^2}}
+=\sum_{n=0}^{\infty}\Big(\sum_{r\vert(m,n),\,r>0}r^{k-1}a_{\frac{mn}{r^2}}\Big)q^n.
+\end{equation}
+
+Una consecuencia de esto es que de esta expresión es claro que los operadores $\lbrace T_m\rbrace_{m\in\nat}$ conmutan, así sabemos que si son diagonalizables, entonces son mutuamente diagonalizables con la misma base (cosa que veremos a continuación). Observamos que si definimos 
+
+\begin{equation}\label{sigma}
+\sigma_{k}(m)=\sum_{d\vert m}d^k,\hspace{0.2cm}\textrm{donde}\hspace{0.2cm}m\in\nat,
+\end{equation}
+
+\noindent entonces notamos que los primeros términos en la serie de Fourier de $T_m(f)$ son $\sigma_{k-1}(m)\,a_0+a_m\,q$, así si $f$ es una forma cuspidal, entonces $a_0=0$ y por lo tanto $T_m(f)$ también es una forma cuspidal. Por lo que $T_m:S_k(\ga)\rightarrow S_k(\ga)$, en particular en el caso de $k=12$, $S_{12}(\ga)$ es de dimensión 1, por lo que para $\Delta\in S_{12}(\ga)$ tenemos que $T_m(\Delta)=\lambda\,\Delta$ para toda $m\in\nat$, es decir que $\Delta$ es un vector propio de $T_m$ para toda $m$, además el primer coefficiente de $T_m(\Delta)$ es $\tau(m)$ y el primer coeficiente de $\Delta$ es 1, lo que quiere decir que
+
+$$T_m(\Delta)=\tau(m)\Delta.$$
+
+\noindent Por lo tanto los valores de la función $\tau$ son son valores propios de $T_m$ para toda $m$, así por las definiciónes de $T_m$ y el hecho de que conmutan, obtenemos
+
+$$\tau(m)\,\tau(n) = \sum_{r\vert(n,m)}r^{11}\tau\Big(\frac{mn}{r^2}\Big).$$
+
+Similarmente si $f\in\modk$ es una forma modular cuspidal que es vector propio simulteneamente de $T_m$ para toda $m\in\nat$, diremos que $f$ es una \textit{eigenforma de Hecke}, entonces el mismo argumento muestra que $a_m=\lambda_m\,a_1$ donde $\lambda_m$ es el valor propio de $T_m$, entonces si normalizamos $a_1 = 1$ tenemos que
+
+$$T_m(f)= a_m\,f,$$
+
+\noindent y por lo tanto $\lbrace a_n\rbrace$ tiene la propiedad cuasimultiplicativa 
+
+$$a_m a_n = \sum_{r\vert(n,m)}r^{k-1}a_{mn/r^2},$$
+
+\noindent la cual es multiplicativa cuando $n$ y $m$ son primos relativos; $a_n\,a_m=a_{nm}$ si $(n,m)=1$. Para demostrar que las eigenformas de Hecke generan al espacio de formas modulares introducimos el producto interno de Petersson.
+
+\begin{def.}\label{petersson}
+Definimos el producto interno de Petersson como la funcioón bilineal $\langle\cdot ,\cdot\rangle_k:\modk\times S_k(\ga)\rightarrow\co$ dada por
+
+\begin{equation}
+\langle f , g\rangle_k = \int_{\mathcal{F}}f(z)\overline{g(z)}\Im(z)^{k-2}dx\,dy,
+\end{equation} 
+
+donde $\mathcal{F}$ es la región fundamental de $\ga$, es decir
+
+$$\mathcal{F}=\Big\lbrace z\in\hd\,\Big\vert\,\frac{-1}{2}\leq\Re(z)\leq\frac{1}{2},\hspace{0.2cm}\vert z\vert > 1\Big\rbrace,$$
+
+$\Re(z)$ denota la parte real de z.
+\end{def.}
+
+Es claro de la definición que si reemplazamos $\modk$ por $S_k(\ga)$ en la primera entrada $\langle\cdot ,\cdot\rangle_k$ es un producto interno. Además se puede demostrar que para toda $m\in\nat$ se cumple que
+
+$$\langle T_m(f),g\rangle_k=\langle f,T_m(g)\rangle_k\hspace{0.2cm}\forall f,g\in S_k(\ga).$$
+
+Así el teorema espectral y el hecho de que los operadores de Hecke conmutan nos asegura que existe una base de eigenformas de Hecke para $S_k(\ga)$ para toda $k$, lo cual demuestra que las eigenformas de Hecke junto con la función modular constante 1 generan al espacio de formas modulares $M_{\ast}(\ga)$.
+
+\begin{def.}[Series $\mathcal{L}$ de Hecke]\label{hecke-l}
+Dada una eigenforma de Hecke $f$ de peso $k$ con serie de Fourier 
+
+$$f(z) = \sum_{n=1}^{\infty}a_n\,q^n,$$
+
+definimos la serie $\mathcal{L}$ de Hecke asociada a $f$ como
+
+\begin{equation}
+\mathcal{L}(f,s)=\sum_{n=1}^{\infty}\frac{a_n}{n^s}.
+\end{equation}
+\end{def.}
+
+Observamos que la propiedad cuasimultiplicativa de los coeficientes $\lbrace a_n\rbrace{n\in\nat}$ aplicada a las potencias de primos $n=p^r$ implica que
+
+$$
+a_{p^{m+1}}=a_{p^m}\,a_p-p^{m-1}a_{p^{m-1}},
+$$
+
+\noindent aplicando inducción a esto podemos deducir que
+
+\begin{equation}\label{primos}
+a_{p^{m+1}}=\sum_{r=0}^{\lceil\frac{m+1}{2}\rceil}(-1)^r \binom{m+1-r}{r} p^{r(k-1)}a_p^{m-2r},
+\end{equation}
+
+\noindent esto nos permite encontrar un producto de Euler para $\mathcal{L}(f,s)$. Primero como los coeficientes son multiplicativos en primos relativos, por el teorema fundamental de la artim'etica tenemos que
+
+$$
+\mathcal{L}(f,s)=\sum_{n=1}^{\infty}\frac{a_n}{n^s}=
+\prod_{\textrm{p primo}}\Big(\sum_{m=0}^{\infty}\frac{a_{p^m}}{p^{ms}}\Big).
+$$
+
+Ahora demostramos que (\ref{primos}) implica que la suma $1+a_p/p+a_p^2/p^2+\ldots$ es igual a $(1-a_p\,p^{-s}+p^{k-1-2s})^{-1}$, esto es debido a que
+
+$$
+\sum_{m=0}^{\infty}a_{p^m}z^{m}=\frac{1}{1-a_p+p^{k-1}z^2}.
+$$
+
+\noindent Para demostrar esto desarrollamos en serie geométrica a $(1-a_p+p^{k-1}z^2)^{-1}$
+
+\begin{align*}
+&\frac{1}{1-a_p+p^{k-1}z^2} 
+= \sum_{m=0}^{\infty}(a_p+p^{k+1}z^2)^m \\
+& = \sum_{m=0}^{\infty}\sum_{l=0}^m(-1)^l\binom{m}{l}a_p^{m-l}z^{m-l}\,p^{l(k+1)}z^{2l} \\
+& = \sum_{m=0}^{\infty}\Big(\sum_{l=0}^{\lceil\frac{m}{2}\rceil}(-1)^l\binom{m+1-l}{l}a_p^{m-2l}p^{l(k+1)}\Big)z^{m}\\ 
+& = \sum_{m=0}^{\infty}a_{p^m}z^{m}.
+\end{align*}
+
+Por lo tanto toda serie $\mathcal{L}$ asociada a una eigeinforma de Hecke $f$ de peso $k$ tiene un producto de Euler
+
+\begin{equation}
+\mathcal{L}(f,s)=\sum_{n=1}^{\infty}\frac{a_n}{n^s}=
+\prod_{\textrm{p primo}}\frac{1}{1-a_p\,p^{-s}+p^{k-1-2s}}.
+\end{equation} 
+
+Con esto y el principio de reflexión de Schwarz podemos continuar analíticamente $\mathcal{L}(f,s)$ a $\co$ salvo polos, proseguimos a derivar la ecuación funcional para $\mathcal{L}(f,s)$, para esto seguimos el mismo prosedimiento que Riemann. Sea $\ga(z)$ la función gamma
+
+$$\ga(z)=\int_0^{\infty}t^{s-1}e^{-t}\,dt,$$
+
+\noindent reemplazamos $t$ con $\lambda\,t$ donde $\lambda\in\re^{+}$ para obtener $\ga(z)=\lambda^{s}\int_{\re^{+}}t^{s-1}e^{-\lambda t}\,dt$, por lo tanto
+
+$$\lambda^{-s}=\frac{\int_0^{\infty}t^{s-1}e^{-\lambda t}}{\ga(z)}.$$
+
+Aplicamos esto a $\lambda = 2\pi n$ para toda $n\in\dbz^{+}$ y sumamos para obtener
+
+\begin{equation}
+(2\pi)^{-s}\ga(z)\,\mathcal{L}(f,s)=
+\sum_{n=1}^{\infty}a_n\int_0^{\infty}t^{s-1}e^{-2\pi nt}\,dt=
+\int_0^{\infty}t^{s-1}f(it)\,dt,
+\end{equation}
+
+\noindent como $f$ es una forma cuspidal y $f(-1/z)=z^k f(z)$, la integral converge y por lo tanto $\mathcal{L}(f,s)$ se puede extender analíticamente, además obtenemos la ecuación funcional
+
+\begin{equation}
+\mathcal{L}(f,k-s)=(-1)^{\frac{k}{2}}\mathcal{L}(f,s)
+\end{equation}
+
+\begin{thebibliography}{99}
+
+\bibitem{zagier}{\sc Zagier, D.,} {\it Elliptic Modular Forms and Their Applications, a part of The 1-2-3 Modular Forms Lectures at Summer School in Nordfjordeid, Norway, Springer-Verlag, 2008.}
+\bibitem{ogg}{\sc Ogg, A.,} {\it Modular Forms and Dirichlet Series, Mathematics lecture note series, Benjamin,
+1969.}
+
+\end{thebibliography}
+%\printindex
+\end{document}
