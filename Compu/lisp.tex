@@ -1,0 +1,50 @@
+% Created 2023-11-02 jue 18:04
+% Intended LaTeX compiler: pdflatex
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{longtable}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{capt-of}
+\usepackage{hyperref}
+\author{Caros Eduardo Martínez Aguilar}
+\date{\today}
+\title{Notas de Lisp}
+\hypersetup{
+ pdfauthor={Caros Eduardo Martínez Aguilar},
+ pdftitle={Notas de Lisp},
+ pdfkeywords={},
+ pdfsubject={},
+ pdfcreator={Emacs 29.1 (Org mode 9.7)}, 
+ pdflang={English}}
+\begin{document}
+
+\maketitle
+\tableofcontents
+
+
+\section{Introducción}
+\label{sec:org5b037e8}
+Lisp es uno de los lenguajes de programación más antiguos que existen, fue creado en 1958 por John McCarthy en el MIT y es pionero de muchas tecnicas de porgramacion moderna como recursión, programación dinámica, calculo lambda. Fue el primer lenguaje interpretado sin necesitar de un compilador, además de tener tipado dinámico y recolector de basura. Su nombre proviene de List Processor ya que la estructura de datos básica es la lista ligada, donde cada elemento de la lista tiene dos punteros, uno lamado ``CAR'' que apunta a os datos y otro ``CDR'' que apunta a siguiente elemento de la lista, al final existe un puntero ``NIL''.
+Las expresiones en lisp se conocen como ``s-expression'' y toda expresión en lisp va entre paréntesis y por lo general son de la forma (operador operandos), donde un operador es unaa función y los operandos son datos aceptados por la función.
+Una de las partes más poderosas de lisp es su poder de creación de MACROS, que es tan poderoso como para crear lenguajes dentro de lisp mismo.
+Al ser un lenguaje tan viejo, no sigue conveciones de UNIX como ``\n'' para nueva linea o ``\%s'' en formatos de strings. En su lugar se usa ``\textasciitilde{}\%'' y ``\textasciitilde{}A'' respectivamente. Además al ser un lenguaje interpretado y dinámico, es muy común el uso de un REPL (Read Eval Print Loop) y por tanto al encontrarse con un error, es posible modificar el código y reintentar desde donde se había quedado el programa y de hecho es posible descompilar una función esspecífica, simplemente en el REPL se escribe
+\#+BEGIN\textsubscript{SRC} ``\#'<nombre-de-funcion>'' \#+END\textsubscript{SRC}.
+\subsection{Sintaxis básica}
+\label{sec:orgc4a5724}
+Todo en LISP esa entre paréntesis, de tal forma que los bloques básicos para todo programa son de la forma
+\begin{verbatim}
+(operador datos)
+\end{verbatim}
+Por ejemplo la suma de de dos números se escribe
+\begin{verbatim}
+(+ a b) ;;suma de numeros en abstracto, por ejemplo en el REPL al evaluar la siguiente expresion obetnemos algo del estilo
+>(+ 2 3)
+5 (3 bits, #x5, #o5, #b101)
+\end{verbatim}
+\end{document}

@@ -1,0 +1,47 @@
+MY PROJECT -*- mode: org -*-
+
+#+TITLE: Notas Nix Org
+#+AUTHOR: Carlos Martinez
+#+STARTUP:SHOWALL
+* nix-language
+Nix as a language is a domain specific language for building nix packages.
+It is a lazy evaluated functional language, meaning functions are pure mathematical functions with determinat outputs given an input
+and functions only evaluate when they are called.
+
+** Derivarions
+Derivations are the way nix builds packages, in a functional way nix takes te source code and dependecies as input and spits-out a derivation which is the unique
+way to build that package that the nix daemon inputs to bould the package.
+Derivations are hased and cashed which makes them unique and also makes it so that the packages do not need to be build form source always if you dont want to
+nix can use the cashed package instead of boulding it.
+
+** Language Types:
+
++ Null :: null
++ Bool :: true and false
++ Integer :: 1 2 3
++ Float :: 1.234
++ Strings :: "some ${type} string"
++ Sets :: Hash maps: {a;b;c},
++ Lists :: [123 "hola" 1.32]
++ Path :: /hello/world
+
+  
+* nix-shell
+
+Let’s go through what this command does.
+nix shell is a nix subcommand that is used to run a shell with some packages available in $PATH.
+Those packages can be specified as arguments in the “installable” format. Each installable contains two parts:
+the URL (github:nixos/nixpkgs/master in this case) an an “attribute path” (hello here).
+
+** There are a few URL schemes supported:
+
++ github:owner/repo/[revision or branch] ::
++ gitlab:owner/repo/[revision or branch] :: for public repositories on github.com and gitlab.com; note that that the branch name cannot contain slashes.
++ https://example.com/path/to/tarball.tar.gz :: for tarballs.
++ git+https://example.com/path/to/repo.git ::
++ git+ssh://example.com/path/to/repo.git :: for plain git repositories (you can, of course, use this for GitHub and GitLab).
+
+You can specify the branch or revision by adding ?ref=<branch name here file:///path/to/directory or /path/to/directory or
+./path/to/relative/directory for a local directory.flake-registry-value for a value from a flake registry.
+
+So, there are some other ways to get the same shell:

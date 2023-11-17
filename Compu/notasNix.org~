@@ -1,0 +1,17 @@
+MY PROJECTS    -*- mode: org; -*-
+
+#+title: Notas Nix Org
+#+author: Carlos Martinez
+
+*nix-shell
+
+Let’s go through what this command does. nix shell is a nix subcommand that is used to run a shell with some packages available in $PATH. Those packages can be specified as arguments in the “installable” format. Each installable contains two parts: the URL (github:nixos/nixpkgs/master in this case) and an “attribute path” (hello here).
+
+There are a few URL schemes supported:
+
+github:owner/repo/[revision or branch] and gitlab:owner/repo/[revision or branch] (for public repositories on github.com and gitlab.com; note that that the branch name cannot contain slashes).
+https://example.com/path/to/tarball.tar.gz for tarballs.
+git+https://example.com/path/to/repo.git and git+ssh://example.com/path/to/repo.git for plain git repositories (you can, of course, use this for GitHub and GitLab). You can specify the branch or revision by adding ?ref=<branch name here>.
+file:///path/to/directory or /path/to/directory or ./path/to/relative/directory for a local directory.
+flake-registry-value for a value from a flake registry (I won’t talk about flake registries in this article).
+So, there are some other ways to get the same shell:

@@ -5,7 +5,7 @@
 #+SETUPFILE: ~/Templates/latex-export.org
 
 * Introducción
-El propósito de estas notas es exponer las relaciones entre las formas modulares y las curvas elípticas, comenzaremos definiendo el orbifold modular y el álgebra graduada de las formas modulares (formas automorfas sobre el orbifold modular), comenzando desde las funciones generadoras de ésta álgebra, las llamadas /series de Einsenstein/. Veremos que los espacios de formas modulares son de dimensón finita y posteriormente se muestra la relación entre el orbifold modular y las formas modulares con las curvas elípticas, donde el orbifold modular representa al espacio moduli conforme de curvas elípicas (latices).
+El propósito de estas notas es exponer las relaciones entre las formas modulares y las curvas elípticas, comenzaremos definiendo el orbifold modular y el álgebra graduada de las formas modulares (formas automorfas sobre el orbifold modular), comenzando desde las funciones generadoras de ésta álgebra, las llamadas /series de Eisenstein/. Veremos que los espacios de formas modulares son de dimensón finita y posteriormente se muestra la relación entre el orbifold modular y las formas modulares con las curvas elípticas, donde el orbifold modular representa al espacio moduli conforme de curvas elípicas (latices).
 ** Definiciones básicas
 
 Comenzamos con la definición del grupo modular
@@ -42,10 +42,12 @@ Sea $k\in\zah$. Una función meromorfa $f:\hd\rightarrow\co$ es debilmente modul
     f(z+1)=f(z)\quad\text{y}\quad f(-1/z)=z^{k}f(z).
 \]
 Esto es por el hecho de que debilmente modularidad de un a función meromorfa es equivalente a invarianza bajo la acción de $\slz$ donde
-\begin{align*}\label{accion-mod}
+\begin{equation}\label{mod-acc}
+\begin{align*}
         \Phi_k:\slz\times\hol(\hd)\rightarrow\hol(\hd)\\
         \Big(T=\begin{pmatrix}a & b\\ c & d \end{pmatrix},f\Big)\mapsto T^{*}[f](z)=(cz+d)^{-k}f\Big(\frac{az+b}{cz+d}\Big).
 \end{align*}
+\end{equation}
 Es decir, las formas debilmente modulares de peso $k$ son el conjunto de funciones meromorfas que cumplen
 \[
     \phi(T,f)=f\quad T\in\slz.
@@ -59,7 +61,7 @@ Continuando con esta interpreteción, las formas debilmente modulares son seccio
     s:\hd/\pslz\rightarrow L^{k},
 \]
 donde $L^k$ es el $k$ ésimo producto tensorial haz de líneas de uno formas sobre el orbifold modular. Observamos que si lo que se acaba de exponer es verdad, entonces las formas debilmente modulares son todas de peso par $k=2r$.
-\obs La acción \ref{accion-mod} es claramente lineal y por lo tanto el conjunto de funciones meromorfas invariantes es un espacio vectorial complejo. Más aún si $f$ es una forma debilmente modular de peso $k$ y $g$ es una forma debilmente modular de peso $l$, entonces $fg$, es una forma debilmente modular de peso $k+l$.
+\obs La acción \ref{mod-acc} es claramente lineal y por lo tanto el conjunto de funciones meromorfas invariantes es un espacio vectorial complejo. Más aún si $f$ es una forma debilmente modular de peso $k$ y $g$ es una forma debilmente modular de peso $l$, entonces $fg$, es una forma debilmente modular de peso $k+l$.
 \begin{def.}
 Diremos que una forma debilmente modular, es *modular* si es holomorfa en $\hd$ y en $\infty$.
 \end{def.}
@@ -77,10 +79,10 @@ Ahora claramente las funciones constantes son formas modulares de peso $0$, sin 
 \[
     G_k(z)=\sum_{T\in\pslz}\Phi_k(T,1)=\sum_{(c,d)\in\zah^2\setminus\{(0,0)\}}\frac{1}{(cz+d)^k}.
 \]
-A esta funcion se le conoce como la /serie de Einsenstein/ de peso $k$. De esta definición $G_k$ es claramente invariante bajo la acción $\Phi_k$, faltaría probar que $G_k$ es holomorfa en $\hd$ y acotada en el infinito.
+A esta funcion se le conoce como la /serie de Eisenstein/ de peso $k$. De esta definición $G_k$ es claramente invariante bajo la acción $\Phi_k$, faltaría probar que $G_k$ es holomorfa en $\hd$ y acotada en el infinito.
 Ahora veamos su serie de Fourier, primero recordamos la identidad
 \[
- \frac{1}{z}+\sum_{d=1}^{\infty}\Big(\frac{1}{z-d}+\frac{1}{z+d}\Big)=\pi\cot\pi z=\pi i-2\þi\sum_{m=0}^{\infty}q^m,\quad q=e^{1\pi i z}.
+ \frac{1}{z}+\sum_{d=1}^{\infty}\Big(\frac{1}{z-d}+\frac{1}{z+d}\Big)=\pi\cot\pi z=\pi i-2\þi\sum_{m=0}^{\infty}q^m,\quad q=e^{2\pi i z}.
 \]
 Lo que nos lleva (derivando subsecuentemente) a la siguiente identidad
 \[
@@ -99,7 +101,7 @@ Donde $\sigma_k(n)$ es la función aritmética
 \[
     \sigma_{k-1}(n)=\sum_{m|n,m>0}m^{k-1}.
 \]
-Definimos la /serie de Einsenstein/ normalizada como
+Definimos la /serie de Eisenstein/ normalizada como
 \[
     E_k(z)=\frac{1}{2\zeta(k)}G_k(z)
 \]
@@ -133,7 +135,7 @@ Entonces, si $f$ es una forma modular, el orden $ord_{\infty}(f)$ se define como
 \[
     f(z)=\sum_{n=0}a_nq^n\quad q=e^{2\pi iz}
 \]
-\begin{prop}
+\begin{prop}\label{mod-cero}
 Sea $f$ una forma modular no cero de peso $k$, entonces si $n_p$ denota el orden del estabilizador en el punto \(p\in\hd\), entonces
 \begin{equation}\label{mod-dim}
 \sum_{p\in\hd/\pslz}\frac{1}{n_p}ord_p{f}+ord_{\infty}(f)=\frac{k}{12}
@@ -166,9 +168,9 @@ Por lo tanto es claro que
 \]
 \qed
 \begin{cor}
-La dimensión de $\mdrl(\slz)$ es cero para $k<0$ o $k=2r+1$, mientras tanto para $k=2r$ se tiene
+La dimensión de $\mdlr(\slz)$ es cero para $k<0$ o $k=2r+1$, mientras tanto para $k=2r$ se tiene
 \[
-    \dim(\mdrl_k(\slz))\leq
+    \dim(\mdlr_k(\slz))\leq
 \begin{cases}
     [k/12]+1,\quad\text{si }k\nequiv 2\mod 12&\\
     [k/12],\quad\text{si }k\equiv 2\mod 12\\
@@ -189,11 +191,124 @@ Por lo tanto \(f\equiv0\) y \(\dim(\mdlr_k(\slz))\leq m\). Ahora si \(k\equiv2\m
     \dim(\mdlr_k(\ga))\leq \frac{kV}{4\pi}+1,
 \]
 entonces el factor 1/12 original proviene del volumen del orbifold modular.
+\begin{cor}
+El espacio \(\mdlr_{12}(\slz)\) tiene dimensión menor o igual a \(2\) y si \(\{f,g\}\subset\mdlr(\slz)\) son lineamente independentes, entonces a función
+\[
+        \varphi:\overline{\hd}/\pslz\rightarrow\cp^{1}\quad z\mapsto\frac{f(z)}{g(z)}.
+\]
+Es un biholomorfismo.
+\end{cor}
+\dem Caramente \(\dim(\mdlr_{12}(\pslz))\leq2\). Ahora si \(f,g\) son dos formas moduares de peso \(12\) linearmente independientes, entonces para todas \(\lambda,\mu\in\co^{2}\setminus\{(0,0)\}\), la forma modular \(h=\lambda f-\mu g\) tiene exactamente un cero en \(\overline{\hd/\pslz}\) pues en la proposición \ref{mod-cer} \(k/12=1\). Por lo tanto \(\varphi\) toma cada valor \((\lambda:\mu)\in\cp^1\) y toma el valor infinito como poo simple en el cero de \(g\).\qed
+\noindent Ahora veremos quiénes son $f$ y $g$.
+\begin{prop}
+El anillo graduado
+\[
+    \mdlr_{*}(\slz)=\bigoplus_{k\in\nat}\mdlr_k(\slz),
+\]
+es el anillo libre generado por las series de Eisenstein \(\{E_4,E_6\}\). En particular \(\mdlr_{12}(\slz)=\langle E_4^{3},E_6^{2}\rangle\)
+\end{prop}
+\dem Veamos que \(\{E_4,E_6\}\) son algebraicamente independientes. Primero notamos que \(\{E_4^{3},E_6^{2}\}\subset\mdlr_{12}(\slz)\) no pueden ser proporcionaes una a la otra, pues si \(E_6^2(z)=\lambda E_4^3(z)\) para alguna $\lambda\in\co$, entonces \(f(z)=E_6(z)/E_4(z)\) es una forma modular de peso $2$ que satisface \(f^2=\lambda E_4\) y \(f^3=E_6/\lambda\) es holomorfa pues una función cuyo cuadrado es holomorfa no tiene polos. Esto es imposibe pues
+\[
+    \dim(\mdlr_2(\slz))=0.
+\]
+\noindent Por la proposición \ref{mod-dim}. Por lo tanto \(\{E_4^{3},E_6^{2}\}\) son linealmente independientes. Ahora cuales quiera dos formas moduares del mismo peso y linealmente independientes \(\{f_1,f_2\}\) son algebraicamente independientes. Pues si \(p\in\co[x,y]\) es tal que \(p(f_1,f_2)\equiv0\), entonces \(p_d(f_1,f_2)\equiv0\) para toda componente homogenea de $p$ de grado $d$. Pero $p_d(f_1,f_2)/f_2^d=P(f_1/f_2)$ para algún \(P\in\co[z]\) y como \(P\) tiene un número finito de raices, entonces $p_d(f_1,f_2)\equiv0$ impica \(f_1/f_2\) es constante y por lo tanto \(f_1,f_2\) serían linealmente dependientes. Ahora en general, si \(f\in\mdlr_k(\slz)\) podemos dividir por \(E_4^m\) para \(m\) o sufiecientemente grande y obtenemos el resultado.
+\qed
+\begin{cor}
+La desigualdad de a dimensión \(\mdlr_k(\slz)\) es una igualdad para toda \(k\in2\nat\) y \(\dim(\mdlr_{2r+1}(\slz)=0)\).
+\end{cor}
+\eje La dimensionalidad de ciertos espacios de formas modulares permiten revelar ciertas identidades de las series de Eisenstein, por ejemplo \(\mdlr_4\), \(\mdlr_6\), \(\mdlr_{8}\), \(\mdlr_10\), y \(\mdlr_{14}\) son unidimensionales, lo que permite demostrar las siguientes equivalencias
+\begin{align*}
+E_4^2=E_8,\quad E_4E_6=E_{10}\\
+E_6E_8=E_4E_{10}=E_{14}
+\end{align*}
+\noindent mediante la evaluación en un punto. Estas equivalencias implican las siguientes identidades de las funciones de divisores.
+\begin{align*}
+\sum_{j=1}^{n-1}\sigma_3(j)\sigma_3(n-j)=\frac{1}{120}(\sigma_7(n)-\sigma_3(n))\\
+\sum_{j=1}^{n-1}\sigma_3(j)\sigma_9(n-j)=\frac{1}{2640}(\sigma_{13}(n)-11\sigma_9(n)+10\sigma_3(n))
+\end{align*}
 ** Formas cuspidales y la función discriminante
 \begin{def.}
 Una *forma cuspidal* de peso $k$ es una forma modular de peso $k$ tal que su expresion en serie de Fourier tiene como primer coeficiente cero $a_0=0$. Es decir
 \[
     f(z)=\sum_{n=1}a_nq^n.
 \]
-Denotaremos el conjunto de formas cuspidales como \(\mathpzc{S}_k\big(\slz\big)\)
+Denotaremos el conjunto de formas cuspidales como \(\mathrm{S}_k\big(\slz\big)\)
 \end{def.}
+\noindent Así una forma modular $f$, es cuspidal si \(\lim_{z\rightarrow\infty}f(z)=0\). El nombre cuspidal proviene de que el punto \(\infty\) geometricamente corresponde a las cúspides de los coientes de $\hd$. El conjunto de formas cuspidales de peso \(k\), \(\mathrm{S}_k\big(\slz\big)\) claramente es un subespacio del espacio de formas modulares de peso \(k\). Más aún el álgebra graduada de formas cuspidales
+\[
+    \mathrm{S}_{*}\big(\slz\big)=\bigoplus_{k\in\nat}\mathrm{S}_k\big(\slz\big),
+\]
+\noindent es un ideal del anillo de formas modulares \(\mdlr_{*}(\slz)\). Esto es muy sencillo de ver si notamos que la función
+\[
+    \phi:\mdlr_{*}(\slz)\rightarrow\co\quad f\mapsto\lim_{z\rightarrow\infty}f(z),
+\]
+\noindent es un caracter del ágebra.
+*** La serie de Eisenstein de peso 2 y la función discriminante
+\noindent Como vimos las series de Eisenstein de peso \(2\) son triviales sin embargo es posible definir
+\begin{align*}
+ \mathbb{G}_2(z)=\frac{-1}{24}+\sum_{n=1}^{\infty}\sigma_1(n)q^n=\frac{-1}{24}+q+3q^2+4q^3+7q^4+\dots\\
+ \mathrm{G}_2(z)=-4\pi^1\mathbb{G}_2(z),\quad E_2(z)=\frac{6}{\pi^2}\mathrm{G}_2(z).
+\end{align*}
+La cual, simiar a las series de Eisenstein comunes, se definen como
+\[
+\mathrm{G}_2(z)=\frac{1}{2}\sum_{n\neq 0}\frac{1}{n^2}+\frac{1}{2}\sum_{m\neq0}^{\infty}\Big(\sum_{n\in\zah}\frac{1}{(mz+n)^2}\Big),
+\]
+la única diferencia con respecto a las series de Eisenstein usuales es que no tenemos convergencia absoluta y por o tanto no es posible intercambiar las dobles sumas, lo que implica lo siguiente
+\begin{equation}
+\mathrm{G}_2\Big(\frac{az+b}{cz+d}\Big)=(cz+d)^2G_2(z)-ic\pi(cz+d).\quad\forall z\in\hd,\forall\begin{pmatrix}a & b\\ c & d \end{pmatrix}\in\slz
+\end{equation}
+\eje *La función discriminante:* Sean
+\[
+    g_2(z)=60G_4(z),\quad g_3(z)140G_6(z).
+\]
+\obs Estas funciones corresponden a los coeficientes \(g_2\) y \(g_3\) que definen nuestras curvas elípticas.
+
+\noindent Se define la función discriminante como
+\begin{equation}
+    \begin{align*}
+        \Delta:\hd\rightarrow\co\quad\Delta(z)=((g_2(z))^3-27(g_3(z))^2\\
+        \text{equivalentemente}\quad \Delta(z)=\frac{1}{1728}((E_4(z))^3-(E_6(z))^2)
+    \end{align*}
+\end{equation}
+Esta función es una forma moduar cuspidal de peso \(12\). Existen muchas maneras de representar a la función discriminante sin embargo la que muestra de forma inmediata que es una forma cuspida es la siguiente
+\begin{equation}\label{delta}
+    \Delta(z)=e^{2\pi iz}\prod_{n=1}^{\infty}(1-e^{2\pi niz})^{24}=q\prod_{n=1}^{\infty}(1-q^n)^{24}.
+\end{equation}
+Como \(|e^{2\pi niz}|<1\) para \(z\in\hd\), los términos en el producto nunca se anulan y se aproximan exponencialmente rápido a \(1\), por lo tanto el producto converge a una funcion holomorfa no nula en \(\hd\).
+\begin{prop}
+La función \(\Delta\) definida por el producto en \ref{delta} es una forma modular de peso \(12\) claramente cuspidal y por lo tanto las expresiones para representar a esta funcion coinciden.
+\end{prop}
+\dem Como claramente \(\Delta(z)\neq0\), si obtenemos la derivada logarimica de \(\Delta\) obtenemos
+\[
+\frac{1}{2\pi i}\dfrac{d}{dz}\log(\Delta(z))=1-24\sum_{n=1}^{\infty}\frac{ne^{2\pi niz}}{1-e^{2\pi niz}}.
+\]
+Ahora escribimos \(e^{2\pi i z}=q\) y nos fijamos en la siguiente serie geométrica
+\[
+\frac{q^n}{1-q^n}=\sum_{k=1}^{\infty}q^{kn}.
+\]
+Así a derivada logaritmica se convierte en la siguiente suma
+\[
+ \frac{1}{2\pi i}\dfrac{d}{dz}\log(\Delta(z))=1-24\sum_{n=1}^{\infty}\frac{q^n}{1-q^n}=1-24\sum_{n=1}^{\infty}\sum_{k=1}^{\infty}q^{kn},
+\]
+\noindent si agrupamos la doble suma como antes, obtenemos
+\[
+\frac{1}{2\pi i}\dfrac{d}{dz}\log(\Delta(z))=1-24\sum_{n=1}^{\infty}\sigma_1(n)q^n=E_2(z).
+\]
+Entonces podemos comprobar la invarianza modular de $\Delta$ por medio de la siguiente derivada logaritmica
+\begin{equation}
+\frac{1}{2i\pi}\dfrac{d}{dz}\log\Big(\frac{\Delta\big(\frac{az+b}{cz+d}\big)}{(cz+d)^{12}\Delta(z)}\Big)=
+&\frac{E_2\Big(\frac{az+b}{cz+d}\Big)}{(cz+d)^2}-E_2(z)-\frac{12c}{2i\pi(cz+d)}.\\
+\end{equation}
+\noindent Esto quiere decir que
+\[
+    \Phi(T,\Delta(z))=C(T)\Delta(z)\quad\forall z\in\hd,\forall T=\begin{pmatrix}a & b\\ c & d \end{pmatrix}\in\slz.
+\]
+Ahora es facil ver que \(C(T_1\circ T_2)=C(T_1)C(T_2)\) pues $\Phi$ es una acción de grupos. Ahora sólo falta ver que \(C(T)=1\) y como $C$ es mutiplicativa, es suficiente con que suceda para los generadores. Primero si \(T(z)=z+1\) es claro por la definición de \(\Delta\), entonces sólo falta mostrar que lo mismo sucede para \(S(z)=-1/z\), como \(\Delta(i)\neq0\)
+\[
+\Delta(i)=\Delta(S(i))=C(S)i^{12}\Delta(i).
+\]
+\qed
+\eje Con la función \(\Delta(z)\), defininimos el invariante $j$ como
+\[
+j(z)=\frac{E_4(z)^3}{\Delta(z)}=\frac{1}{q}+744+196884q+21493760q^2+\dots
+\]
