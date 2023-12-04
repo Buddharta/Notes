@@ -28,8 +28,10 @@
 \newtheorem{def.}{Definici\'on}[section]
 \newtheorem{afir}{Afirmaci\'on}
 \newtheorem{conjetura}{Conjetura}
+
 \renewcommand{\figurename}{Figura}
 \renewcommand{\indexname}{\'{I}ndice anal\'{\i}tico}
+
 \newcommand{\zah}{\ensuremath{ \mathbb Z }}
 \newcommand{\rac}{\ensuremath{ \mathbb Q }}
 \newcommand{\nat}{\ensuremath{ \mathbb N }}
@@ -39,14 +41,13 @@
 \newcommand{\obs}{{\noindent \sc \textbf{Observación. }}}
 \newcommand{\dem}{{\noindent \sc Demostraci\'on. }}
 \newcommand{\bg}{\ensuremath{\overline \Gamma}}
-\newcommand{\ga}{\ensuremath{\gamma}}
+\newcommand{\ga}{\ensuremath{\Gamma}}
 \newcommand{\fb}{\ensuremath{\overline F}}
 \newcommand{\la}{\ensuremath{\Lambda}}
 \newcommand{\om}{\ensuremath{\Omega}}
 \newcommand{\sig}{\ensuremath{\Sigma}}
 \newcommand{\bt}{\ensuremath{\overline T}}
 \newcommand{\li}{\ensuremath{\mathbb{L}}}
-\newcommand{\ord}{\ensuremath{\mathbb{O}}}
 \newcommand{\bs}{\ensuremath{\mathbb{S}^1}}
 \newcommand{\co}{\ensuremath{\mathbb C }}
 \newcommand{\con}{\ensuremath{\mathbb{C}^n}}
@@ -62,7 +63,10 @@
 \newcommand{\slz}{\ensuremath{\mathrm{SL}(2,\mathbb Z) }}
 \newcommand{\slr}{\ensuremath{\mathrm{SL}(2,\mathbb R) }}
 \newcommand{\slc}{\ensuremath{\mathrm{SL}(2,\mathbb C) }}
-\newcommand{\mdlr}{\ensuremath{\mathrm{M}}}
+\newcommand{\mdlr}{\ensuremath{\mathcal{M}}}
+\newcommand{\lnb}{\ensuremath{\mathcal{O}}}
+\newcommand{\Div}{\ensuremath{\mathrm{Div}}}
+\newcommand{\ord}{\ensuremath{\mathrm{ord}}}
 \newcommand{\hil}{\ensuremath{\mathcal H }}
 \newcommand{\sph}{\ensuremath{\mathbb{S}}}
 \newcommand{\nuc}{\ensuremath{\mathcal{N}}}
@@ -84,4 +88,126 @@
 
 
 \section{Introducción}
+\noindent Describiremos la variedad Jacobiana de una superficie de Riemann compacta \(\sig\) y la relación entre su geometría y las propiedades de las funciones en la superficie. Describiremos el teorema de Riemann y Abel sobre la construcción e interpretación de la variedad Jacobiana de \(\sig\), denotada por \(J(\sig)\) y su \emph{divisor theta} \(\theta(\sig)\). Veremos como las singularidades de dicho divisor theta codifican la información de ``El problema de Riemann-Roch'' para \(\sig\). Veremos el resultado clásico de Riemann, así como resultados más recientes como los de Andreotti-Mayer, Mumford y Kempf.
+\subsection{Divisores y el grupo de Picard}
+\begin{def.}
+  Un  divisor en una variedad \(X\) es una combinación lineal formal
+  \[
+    D=\sum a_{i}Y_{i}\quad a_{i}\in\zah,\,Y_{i}\subset X \text{ hipersuperficie irreducible.}
+  \]
+\noindent Más aún, diremos que \(D\) es efectivo si \(a_{i}>0\). Naturalmente hablamos del grupo de divisores, el cual es el grupo libre generado por las hipersuperficies irreducibles en \(X\), y éste lo denotamos como \(\Div(X)\).
+\end{def.}
+\obs Si \(Y\subset X\) es una hipersuperficie y \(x\in Y\). Entonces \(Y\) define un germen irreducible en \(x\), el cual denotamos por \(g\in\mathcal{O}_{X,x}\), es decir, localmente cerca de \(x\), existe una vecindad \(U_{x}\), tal que
+\[
+  Y\cap U_{x}=V(g):=\{x\in U_{x}\,:\,g(x)=0\}.
+\]
+\noindent Por lo tanto si \(f\) es una función meromorfa en una vecindad de \(x\), el orden de \(f\) en \(x\) es el entero \(\ord_{x}(f)\in\zah\) tal que se cumple la igualdad
+\[
+  f=g^{\ord(f)_{x}}h\quad\text{donde }h\in\mathcal{O}^{*}_{X,x}=\{\phi\in\mathcal{O}_{X,x}\,:\,\phi(x)\neq0\}.
+\]
+\noindent Donde \(\ord_{x}(f)\) es independiente de \(g\), esto es claro de la irreducibilidad de \(g\). Si \(Y\) es irreducible, entonces definimos
+\(\ord_{Y}(f):=\ord_{x}(f)\) con \(x\in Y\) cualquiera. Notamos que el orden es una función que satisface
+\[
+  \ord_{Y}(f_{1}f_{2})=\ord_{Y}(f_{1})+\ord_{Y}(f_{2}).
+\]
+Denotaremos por \(K(X)\) al conjunto de funciones meromorfas en \(X\).
+\begin{def.}
+  Sea \(f\in K(X)\), entonces asociaremos a \(f\) el siguiente divisor
+  \[
+    (f):=\sum_{Y}\ord_{Y}(f)Y=\sum_{\ord_{Y}(f)>0}\ord_{Y}(f)Y-\sum_{\ord_{Y}(f)<0}\ord_{Y}(f)Y=:Z(f)-P(f).
+  \]
+  \noindent Donde sumamos sobre todas las hipersuperficies irreducibles, llamaremos al los divisores \(Z(f)\) y \(P(f)\) \emph{el divisor cero} y \emph{el divisor de polos respectivamente}, ambos son divisores efectivos. Si \(D\in\Div(X)\) es tal que \(D=(f)\) para \(f\in K(X)\), diremos que \(D\) es un divisor \emph{efectivo}.
+\end{def.}
+Denotaremos por  \(\mathcal{K}_{X}\) al germen de funciones meromorfas, entonces claramente \(\mathcal{O}_{X}\subset\mathcal{K}_{X}\). Así generalizaremos la definición anterior para ahora poder definir divisores para secciones de haces de líneas
+\begin{prop}
+  Existe el siguiente isomorfismo natural
+  \[
+    H^{0}(X,\mathcal{K}^{*}_{X}/\mathcal{O}^{*}_{X})\cong\Div(X)\quad\text{donde }
+    H^{0}(X,\mathcal{K}^{*}_{X}/\mathcal{O}^{*}_{X}):=\{s:X\rightarrow\mathcal{K}^{*}_{X}/\mathcal{O}^{*}_{X}\}
+  \]
+\end{prop}
+\dem El isomorfismo consiste de definir para cada \(s\in H^{0}(X,\mathcal{K}^{*}_{X}/\mathcal{O}^{*}_{X})\) un divisor, para esto notamos que localmente \(s\) está dada por una función meromorfa. Las condiciones de cociclo aseguran que los órdenes de estas funciones son independientes de los representates de los cociclos, así
+\[
+  s\mapsto (s)=\sum_{Y}\ord_{Y}(s)Y\in\Div(X),
+\]
+\noindent está bien definido. Ahora si \(D\in\Div(X)\), entonces
+\[
+  D=\sum^{n}_{i=1}a_{i}Y_{i}\in\Div(X),
+\]
+\noindent ahora existe una cubierta abierta tal que
+\[
+  X=\bigcup_{i\in I}U_{i}\quad Y_{i}\cap U_{j}=V(g_{i,j}),\,g_{i,j}\in\mathcal{O}(U_{j})
+\]
+Es claro que las funciones
+\[
+  f_{j}:=\prod^{n}_{i=1}g^{a_{i}}_{i,j}\in\mathcal{K}^{*}_{X}(U_{j})
+\]
+\noindent definen una sección \(s\in H^{0}(X,\mathcal{K}^{*}_{X}/\mathcal{O}^{*}_{X})\).\qed
+
+\obs En geometría algebraica no siempre existe este isomorfismo, por lo tanto hay una distinción entre estos dos tipos de divisores, al grupo \(H^{0}(X,\mathcal{K}^{*}_{X}/\mathcal{O}^{*}_{X})\) se es conoce como los divisores \emph{Cartier}, y a los divisores \(\Div(X)\) se les conoce somo divisores de \emph{Weil}.
+\begin{def.}
+  El grupo de Picard de una variedad holomorfa \(X\), se define como el grupo de las clases de isomorfismos de haces de líneas en \(X\), el cual denotaremos por \(\mathrm{Pic}(X)\), donde el producto e inverso se definen por medio del producto tensorial y dualizacion respectivamente,  es decir
+  \[
+    \lnb_{1}+\lnb_{2}:=\lnb_{1}\otimes\lnb_{2}\hspace{0.2cm}\forall\,\{\lnb_{1},\lnb_{2}\}\subset\mathrm{Pic}(X)\quad\lnb^{-1}:=\lnb^{*}\hspace{0.2cm}\forall\,\lnb\in\mathrm{Pic}(X).
+  \]
+  \noindent Además el neutro es el \emph{haz de líneas trivial}
+  \[
+    \mathcal{O}(0):=\co\times X.
+  \]
+\end{def.}
+\obs Existe un isomorfismo natural \(\mathrm{Pic}(X)\cong H^{1}(X,\mathcal{O}^{*}_{X})\), dado por las condiciones de cociclo, esto es ciero para la cohomología de Cech.
+\begin{prop}
+  Existe un morfismo de grupos natural
+  \[
+    \Div(X)\rightarrow\mathrm{Pic}(X)\quad D\mapsto \lnb(D).
+  \]
+\end{prop}
+\dem Dado un divisor \(D=\sum a_{i}Y_{i}\in\Div(X)\), le corresponde una sección \(s\in H^{0}(X,\mathcal{K}^{*}_{X}/\mathcal{O}^{*}_{X})\), de tal manera que en una cubiertaa abierta se tiene que
+\[
+  X=\bigcup_{i\in I}U_{i}\quad s|_{U_{i}}=f_{i}\in\mathcal{K}^{*}(U_{i}),
+\]
+\noindent entonces definimos \(\lnb(D)\in\mathrm{Pic}(X)\) como el haz de líneas definido por las funciones de transición (cociclos)
+\[
+  \psi_{i,j}:=\frac{f_{i}}{f_{j}}\in H^{1}(U_{i}\cap U_{j},\mathcal{O}^{*}_{X}),
+\]
+\noindent entonces como claramente se cumplen las condiciones de cociclo, por lo que representan un elemento de \(\mathrm{Pic}(X)\). Ahora veamos que en efecto es un homomorfismo de grupos, supongamos \(\{D_{1},D_{2}\}\subset\Div(X)\) y \(\{f_{i}\},\{g_{i}\}\) son los correspondientes cociclos de \(\lnb(D_{1})\) y \(\lnb(D_{2})\) respectivamente, entonces los cociclos de \(D_{1}+D_{2}\) corresponden a \(\{f_{i}g_{i}\}\) (es posible que se necesita pasar por un refinamiento de las cubiertas). Por lo tanto es claro que \(\lnb(D_{1}+D_{2})=\lnb(D_{1})\otimes\lnb(D_{2})\). \qed
+\subsection{Superficies de Riemann compactas y el teorema de Riemann-Roch.}
+\noindent Sea \(\sig\) una superficie de Riemann compacta de género \(g\) y sea \(D=p_{1}+\cdots+p_{d}\), donde \(p_{i}\in\sig\) un divisor efectivo de grado \(d\) en \(\sig\). Entonces como hemos visto, existe un haz de líneas asociado, \(\lnb(D)\) en \(\sig\), con una sección \(\sigma\in H^{0}(X,\lnb(D))\) tal que \((\sigma)=D\). Definimos el espacio de funciones meromorfas en \(\sig\) \emph{dominadas} por \(D\) como
+\[
+  L(D)=\{f\in\mathcal{K}_{\sig}\,:\,(f)+D\geq0\}.
+\]
+Además, notamos que el morfismo
+\[
+  H^{0}(X,\lnb(D))\rightarrow L(D)   \quad \tau\mapsto\frac{\tau}{\sigma},
+\]
+\noindent es un isomorfismo (\(Z-P\)).
+
+\emph{El problema de ``Riemann-Roch''} es calcular el número
+\[
+  h^{0}(D)=\dim_{\co}H^{0}(\lnb(D)),
+\]
+es decir, contar el número de secciones independientes de un haz de líneas. La respuesta, diemuestra que este número es finito y como es de esperarse se encuentra en el resultado
+\begin{teorema}[Riemann-Roch]
+  Sea \(\sig\) una superficie de Riemann de género \(g\) y sea \(K\) el divisor cero de una 1-forma en \(\sig\), si denotamos por \(\lnb_{K}=\lnb(K)\) a su haz de líneas canónico, entonces para todo divisor \(D\) de grado \(d\) en \(\sig\),
+  \[
+    h^{0}(D)-h^{0}(K-D)=1-g+d.
+  \]
+  Más aún, si \(D=(\sigma)\), con \(\sigma\in H^{0}(\sig,\lnb_{D}) \), entonces \(\sigma\) nos da un isomorfismo
+  \[
+    H^{0}(\sig,\lnb_{K-D})\rightarrow L(-D)
+  \]
+
+\end{teorema}
+Sin embargo, esto no resuelve el problema de calcular \(h^{0}(D)\) ya que es simplemente una relación entre éste y \(h^{0}(K-D)\). Si se toma \(D=0\) o \(D=K\), se obtiene \(h^{0}(K)=g-1\) y \(\deg(K)=2g-2\) respectivamente. Más aún, como los divisores de funciones meromorfas tienen grado cero, \((f)+D\geq0\) es imposible para \(D\) de grados negativos, lo que aignifica que \(d<0\) implica \(h^{0}(D)=0\). Similarmente \(d>2g-2\) implica \(h^{0}(D)=1-g+d\). Por lo que el problema de Riemann-Roch es especiallmente interesante para divisores con grado \(0<d<2g-2\) y la variedad Jacobiana y la función theta de Riemann son herramientas fundamentales para esto.
+\section{La Jacobiana de \(\sig\)}
+\noindent Comenzamos recordando que si \(\{\omega_{1},\dots,\omega_{g}\},g\geq2\) es una base de 1-formas diferenciales para el espacio \(H^{0}(\sig,\lnb_{K})\), y \(p\in\sig\) es un punto cualquiera, el vector \((\omega_{1}(p),\dots\omega_{g}(p))\in\co^{g}\) está bien definido independientemente de la base salvo un múltiplo escalar y claramente nunca es nulo, es decir, define un mapeo
+\[
+  \phi_{K}:\sig\rightarrow\cp^{g-1}\quad p\mapsto[\omega_{1}(p):\dots:\omega_{g}(p)],
+\]
+\noindent el cual es un encaje, de \(\sig\) en una curva \(\ga\) de grado \(2g-2\) que genera \(\cp^{g-1}\). Excepto en el caso de que \(\sig\) sea una superficie \emph{``hiperelíptica''}, esto quiere decir que \(\sig\) admite una  1-forma meromorfa con dos polos,en cuyo caso \(\phi_{K}\) es un mapeo dos a uno sobre una curva \(\ga\) de grado \(g-1\) isomorfa a \(\cp^{1}\).
+Como \(\phi_{K}\) se puede definir independientemente de la base, tenemos
+\[
+  \phi_{K}:\sig\rightarrow\cp(H^{0}(\sig,\lnb_{K}))\quad\phi_{K}(p)=\{\omega\,:\,\omega(p)=0\}=\ker(ev_{p}),
+\]
+\noindent donde tomamos el punto de vista dual y a cada 1-forma \(\omega\) la identificamos con una funcional lineal y su hiperplano generado corta con la curva encajada \(\ga=\phi_{k}(\sig)\) en el divisor \(K=(\omega)=Z(\omega)\).
 \end{document}
