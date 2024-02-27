@@ -1,6 +1,4 @@
-
 \documentclass[letterpaper]{article}
-
 \usepackage{tikz-cd}
 \usepackage{amsmath}
 \usepackage{float}
@@ -72,7 +70,7 @@
 \newcommand{\nuc}{\ensuremath{\mathcal{N}}}
 \newcommand{\cuat}{\ensuremath{\mathbb H}}
 \newcommand{\modk}{\ensuremath{M_k(\Gamma)}}
-
+\newcommand{\jac}{\ensuremath{\mathrm{J}(\sig)}}
 \author{Carlos Eduardo Martínez Aguilar}
 \date{\today}
 \title{La Jacobiana de una superficie de Riemann y sus funciones theta.}
@@ -88,7 +86,7 @@
 
 
 \section{Introducción}
-\noindent Describiremos la variedad Jacobiana de una superficie de Riemann compacta \(\sig\) y la relación entre su geometría y las propiedades de las funciones en la superficie. Describiremos el teorema de Riemann y Abel sobre la construcción e interpretación de la variedad Jacobiana de \(\sig\), denotada por \(J(\sig)\) y su \emph{divisor theta} \(\theta(\sig)\). Veremos como las singularidades de dicho divisor theta codifican la información de ``El problema de Riemann-Roch'' para \(\sig\). Veremos el resultado clásico de Riemann, así como resultados más recientes como los de Andreotti-Mayer, Mumford y Kempf.
+\noindent Describiremos la variedad Jacobiana de una superficie de Riemann compacta \(\sig\) y la relación entre su geometría y las propiedades de las funciones en la superficie. Describiremos el teorema de Riemann y Abel sobre la construcción e interpretación de la variedad Jacobiana de \(\sig\), denotada por \(\mathrm{J}(\sig)\) y su \emph{divisor theta} \(\theta(\sig)\). Veremos como las singularidades de dicho divisor theta codifican la información de ``El problema de Riemann-Roch'' para \(\sig\). Veremos el resultado clásico de Riemann, así como resultados más recientes como los de Andreotti-Mayer, Mumford y Kempf.
 \subsection{Divisores y el grupo de Picard}
 \begin{def.}
   Un  divisor en una variedad \(X\) es una combinación lineal formal
@@ -116,7 +114,7 @@ Denotaremos por \(K(X)\) al conjunto de funciones meromorfas en \(X\).
   \[
     (f):=\sum_{Y}\ord_{Y}(f)Y=\sum_{\ord_{Y}(f)>0}\ord_{Y}(f)Y-\sum_{\ord_{Y}(f)<0}\ord_{Y}(f)Y=:Z(f)-P(f).
   \]
-  \noindent Donde sumamos sobre todas las hipersuperficies irreducibles, llamaremos al los divisores \(Z(f)\) y \(P(f)\) \emph{el divisor cero} y \emph{el divisor de polos respectivamente}, ambos son divisores efectivos. Si \(D\in\Div(X)\) es tal que \(D=(f)\) para \(f\in K(X)\), diremos que \(D\) es un divisor \emph{efectivo}.
+  \noindent Donde sumamos sobre todas las hipersuperficies irreducibles, llamaremos al los divisores \(Z(f)\) y \(P(f)\) \emph{el divisor cero} y \emph{el divisor de polos respectivamente}, ambos son divisores efectivos. Si \(D\in\Div(X)\) es tal que \(D=(f)\) para \(f\in K(X)\), diremos que \(D\) es un divisor \emph{principal}.
 \end{def.}
 Denotaremos por  \(\mathcal{K}_{X}\) al germen de funciones meromorfas, entonces claramente \(\mathcal{O}_{X}\subset\mathcal{K}_{X}\). Así generalizaremos la definición anterior para ahora poder definir divisores para secciones de haces de líneas
 \begin{prop}
@@ -145,6 +143,14 @@ Es claro que las funciones
 \noindent definen una sección \(s\in H^{0}(X,\mathcal{K}^{*}_{X}/\mathcal{O}^{*}_{X})\).\qed
 
 \obs En geometría algebraica no siempre existe este isomorfismo, por lo tanto hay una distinción entre estos dos tipos de divisores, al grupo \(H^{0}(X,\mathcal{K}^{*}_{X}/\mathcal{O}^{*}_{X})\) se es conoce como los divisores \emph{Cartier}, y a los divisores \(\Div(X)\) se les conoce somo divisores de \emph{Weil}.
+\begin{def.}
+  Definimos el grado de un divisor como el morfismo de grupos abelianos \(\deg:Div(X)\rightarrow\zah\)
+  \[
+    D=\sum_{i}a_{i}Y_{i}\,\mapsto\,\deg(D)=\sum_{i}a_{i}.
+  \]
+ Un divisor es \emph{efectivo} si \(D\geq0\), es decir \(a_{i}\geq0\) para toda \(i\).
+\end{def.}
+
 \begin{def.}
   El grupo de Picard de una variedad holomorfa \(X\), se define como el grupo de las clases de isomorfismos de haces de líneas en \(X\), el cual denotaremos por \(\mathrm{Pic}(X)\), donde el producto e inverso se definen por medio del producto tensorial y dualizacion respectivamente,  es decir
   \[
@@ -198,16 +204,115 @@ es decir, contar el número de secciones independientes de un haz de líneas. La
   \]
 
 \end{teorema}
-Sin embargo, esto no resuelve el problema de calcular \(h^{0}(D)\) ya que es simplemente una relación entre éste y \(h^{0}(K-D)\). Si se toma \(D=0\) o \(D=K\), se obtiene \(h^{0}(K)=g-1\) y \(\deg(K)=2g-2\) respectivamente. Más aún, como los divisores de funciones meromorfas tienen grado cero, \((f)+D\geq0\) es imposible para \(D\) de grados negativos, lo que aignifica que \(d<0\) implica \(h^{0}(D)=0\). Similarmente \(d>2g-2\) implica \(h^{0}(D)=1-g+d\). Por lo que el problema de Riemann-Roch es especiallmente interesante para divisores con grado \(0<d<2g-2\) y la variedad Jacobiana y la función theta de Riemann son herramientas fundamentales para esto.
+Sin embargo, esto no resuelve el problema de calcular \(h^{0}(D)\) ya que es simplemente una relación entre éste y \(h^{0}(K-D)\). Si se toma \(D=0\) o \(D=K\), se obtiene \(h^{0}(K)=g\) y \(\deg(K)=2g-2\) respectivamente. Más aún, como los divisores de funciones meromorfas tienen grado cero, \((f)+D\geq0\) es imposible para \(D\) de grados negativos, lo que significa que \(d<0\) implica \(h^{0}(D)=0\). Similarmente \(d>2g-2\) implica \(h^{0}(D)=1-g+d\). Por lo que el problema de Riemann-Roch es especialmente interesante para divisores con grado \(0<d<2g-2\) y la variedad Jacobiana y la función theta de Riemann son herramientas fundamentales para esto.
 \section{La Jacobiana de \(\sig\)}
-\noindent Comenzamos recordando que si \(\{\omega_{1},\dots,\omega_{g}\},g\geq2\) es una base de 1-formas diferenciales para el espacio \(H^{0}(\sig,\lnb_{K})\), y \(p\in\sig\) es un punto cualquiera, el vector \((\omega_{1}(p),\dots\omega_{g}(p))\in\co^{g}\) está bien definido independientemente de la base salvo un múltiplo escalar y claramente nunca es nulo, es decir, define un mapeo
+\noindent Comenzamos recordando que si \(\{\omega_{1},\dots,\omega_{g}\},\,g\geq2\) es una base de 1-formas diferenciales para el espacio \(H^{0}(\sig,\lnb_{K})\), y \(p\in\sig\) es un punto cualquiera, el vector \((\omega_{1}(p),\dots,\omega_{g}(p))\in\co^{g}\) está bien definido independientemente de la base salvo un múltiplo escalar y claramente nunca es nulo, es decir, define un mapeo
 \[
   \phi_{K}:\sig\rightarrow\cp^{g-1}\quad p\mapsto[\omega_{1}(p):\dots:\omega_{g}(p)],
 \]
-\noindent el cual es un encaje, de \(\sig\) en una curva \(\ga\) de grado \(2g-2\) que genera \(\cp^{g-1}\). Excepto en el caso de que \(\sig\) sea una superficie \emph{``hiperelíptica''}, esto quiere decir que \(\sig\) admite una  1-forma meromorfa con dos polos,en cuyo caso \(\phi_{K}\) es un mapeo dos a uno sobre una curva \(\ga\) de grado \(g-1\) isomorfa a \(\cp^{1}\).
+\noindent el cual es un encaje, de \(\sig\) en una curva \(\ga\) de grado \(2g-2\) que genera \(\cp^{g-1}\). Excepto en el caso de que \(\sig\) sea una superficie \emph{``hiperelíptica''}, esto quiere decir que \(\sig\) admite una  1-forma meromorfa con dos polos, en cuyo caso \(\phi_{K}\) es un mapeo dos a uno sobre una curva \(\ga\) de grado \(g-1\) isomorfa a \(\cp^{1}\).
 Como \(\phi_{K}\) se puede definir independientemente de la base, tenemos
 \[
   \phi_{K}:\sig\rightarrow\cp(H^{0}(\sig,\lnb_{K}))\quad\phi_{K}(p)=\{\omega\,:\,\omega(p)=0\}=\ker(ev_{p}),
 \]
 \noindent donde tomamos el punto de vista dual y a cada 1-forma \(\omega\) la identificamos con una funcional lineal y su hiperplano generado corta con la curva encajada \(\ga=\phi_{k}(\sig)\) en el divisor \(K=(\omega)=Z(\omega)\).
+Ahora sean \(\{\alpha_{1},\dots,\alpha_{g},\beta_{1},\dots,\beta_{g}\}\) una base simpléctica de la homología entera, es decir una base \(H_{1}(\sig,\zah)\) como se ve en la figura.
+\begin{figure}[htb]
+\begin{center}
+\includegraphics[height=5cm,width=10cm]{dibujo-2.pdf}
+  \caption{Superficie con ciclos generadores.}
+  \label{fig:base-simp}
+\end{center}
+\end{figure}
+
+Entonces existe una única base \(\{\omega_{1},\dots,\omega_{g}\}\) de \(H^{0}(\sig,\lnb_{K})\) tal que
+\[
+  \Big(\int_{\alpha_{i}}\omega_{j}\Big)=(\delta_{i,j})=\mathrm{I}_{g}.
+\]
+Además definimos la siguiente matriz
+\[
+  \tau=(\tau_{i,j})=\Big(\int_{\beta_{i}}\omega_{j}\Big),
+\]
+la cual es una matriz simétrica compleja de \(g\times g\) con parte imaginaria positiva definida. Si \(\Lambda\) es la latiz entera en \(\co^{g}\) generada por las \(2g\) columnas de la matriz \(\mathrm{I}\tau\), entonces
+\begin{def.}
+  La variedad Jacobiana de \(\sig\) es el toro compacto complejo
+  \[
+    \mathrm{J}(\sig)=\co^{g}/\Lambda.
+  \]
+\end{def.}
+\obs Intrinsecamente esto significa que
+\[
+  \mathrm{J}(\sig)=H^{0}(\sig,\lnb_{K})^{*}/H_{1}(\sig,\zah)
+\]
+\subsection{El mapeo de Abel}
+\noindent Para cada punto base \(p_{0}\in\sig\), existe \(u_{0}:\sig\rightarrow\mathrm{J}(\sig)\) definida por
+\[
+  u_{0}(p)=\Big(\int^{p}_{p_{0}}\omega_{1},\dots,\int^{p}_{p_{0}}\omega_{g}\Big)\mod\Lambda.
+\]
+Esta es una herramienta para usar \(\mathrm{J}(\sig)\) para estudiar \(\sig\) y viceversa.\\
+Si \hbox{\(\sig^{d}=\sig\times\cdots\times\sig\)}, entonces definimos
+\[
+  \sig_{d}=\sig^{d}/S_{d}\quad S_{d}=\mathrm{Sym}(I_{d}=\{1,\dots,d\})=\{\sigma:I_{d}\rightarrow I_{d}\,|\,\sigma\text{ biyectiva}\},
+\]
+\noindent donde la acción de \(S_{d}\) esta dada por las permutaciones de las coordenadas
+\[
+  \sigma(z_{1},\dots,z_{j},\dots,z_{d})=(z_{\sigma(1)},\dots,z_{\sigma(j)},\dots,z_{\sigma(d)}).
+\]
+\noindent Este espacio es el espacio natural de parámetros para los divisores efectivos de grado \(d\). Entonces el mapeo de Abel se define como la extensión natural de \(u_{0}\) a \(\sig_{d}\), es decir
+\[
+  U_{0}(p_{1},\dots,p_{d})=\sum^{d}_{j=1}u_{0}(p_{j})= \sum^{d}_{j=1}\Big(\int^{p_{j}}_{p_{0}}\omega_{1},\dots,\int^{p_{j}}_{p_{0}}\omega_{g}\Big)\mod\Lambda.
+\]
+\obs Tanto \(\sig_{d}\) como \(\sig^{d}\) son varidades compactas complejas y holomorfas de dimensión \(d\) y como el mapeo de Abel es holomorfo en coordenadas, entonces es holomorfo globalmente, sin embargo para algunos cálculos se usará \(\sig^{d}\) a pesar de que \(\sig_{d}\) se relaciona de manera más directa con los divisores. En este sentido a cada punto en \([D]=[p_{1},\cdots,p_{d}]\in\sig_{d}\), le corresponde un único divisor de grado \(d\) en \(\sig\), simplemente asociamos a \([D]\) la suma \(D=p_{1}+\cdots+p_{d}\) la cual queda unicamente determinada pues los puntos de \(\sig_{d}\) son identificados bajo permutaciones. Por lo que denotaremos a los puntos de \(\sig_{d}\) como divisores \(D=p_{1}+\cdots+p_{d}\), así es claro que \(u_{0}\) es el mapeo de Abel de divisores de grado uno mientras que \(U_{0}\) es el caso general.
+\subsubsection{La derivada del mapeo de Abel}
+Primero notamos que para cada \(u\in\jac\) el espacio tangente proyectivizado es  naturalmente isomorfo a
+\[
+  \cp(T_{u}\jac)\cong\cp(T_{0}\jac)\cong\cp(H^{0}(\sig,\lnb_{K})^{*}).
+\]
+\noindent Luego, para cada \(p\in\sig\) la imagen del espacio \(u_{0*}(T_{p}\sig)\), es simplemente la imagen de las derivadas de los componentes de \(u_{0}\), las cuales por el teorema fundamental del cálculo son \((\omega_{1}(p),\dots,\omega_{g}(p))=\phi_{K}(p)\), la imágen canónica de \(p\) en \(\cp(H^{0}(\sig,\lnb_{K})^{*})\). Por lo tanto la derivada del mapeo del mapeo de Abel es el mapeo canónico. En el caso del mapeo de Abel en \(\sig_{d}\), consideramos un divisor \(D=p_{1}+\dots+ p_{d}\in\sig_{d}\), la imagen de \(U_{0*}(T_{D}\sig_{d})\) en \(\cp(T_{0}\jac)=\cp^{g-1}\) es el espacio generado por
+\[
+  \{\phi_{K}(p_{1}),\dots,\phi_{K}(p_{d})\}.
+\]
+\noindent En particular \(U_{0*}\) tiene rango \(d\) en \(D\) si y sólo dichos puntos son linealmente independientes en \(\cp^{g-1}\) si y sólo si se encuentran contenidos en \(g-d\) hiperplanos independientes, sí y sólo si los puntos son distintos y \(h^{0}(K-D)=g-d\).
+\subsection{La función theta de Riemann}
+\noindent Los mapeos de Abel son mapeos \(\sig\rightarrow\jac\), en este sentido, es natural preguntarse por mapeos ``fuera'' o que ``salgan'' de \(\jac\), para esto la función theta de Riemann es una función natural. Supongamos que fijamos una base simpléctica para la homología y su base asociada en \(H^{0}(\sig,\lnb_{K})\), la función theta depende de esta elección unicamente por traslaciones en \(\jac\).
+\begin{def.}
+  Sea \(\tau\) la matriz previamente definida, con \(\tau=\tau^{t}\) y \(Im(\tau)\) positiva definida, entonces definimos \(\theta_{\sig}:\co^{g}\rightarrow\co\)
+  \[
+    \theta_{\sig}(z)=\sum_{n\in\zah^{g}}\exp(i\pi((n^{t}\tau n)+2n^{t}z)).
+  \]
+  \noindent Esta es una función meromorfa, cuyo divisor cero es periódico con respecto a la latiz \(\Lambda\) y por lo tanto define un divisor \(\theta(\sig)\subset\jac\)
+\end{def.}
+Ahora, si recordamos el mapeo de Piccard \(Div(\sig)\rightarrow\mathrm{Pic}(\sig)\), este claramente es suprayectivo pues podemos tomar el divisor generado de los cociclos locales, esto quiere decir que
+\[
+  \mathrm{Pic}(\sig)\cong Div(\sig)/H\quad H=\{\lnb_{D}\cong\sig\times\co\iff\deg(D)=0\iff D=(f),\,f\in\mathcal{K}^{*}_{\sig}\}.
+\]
+Entonces, como discutimos previamente \(\cp(H^{0}(X,\lnb_{D}))\cong |D|\subset\sig_{d}\) donde \(|D|\) es el conjunto de clases de divisores de la forma \(D+(f)\). Por lo tanto el problema de Riemann-Roch es el problema de entender la dimensión de las fibras del mapeo de Piccard.
+\[
+  v_{k}:\sig_{d}\rightarrow\mathrm{Pic}^{k}(\sig)\quad D\mapsto\lnb(D).
+\]
+\noindent Donde, \(\mathrm{Pic}^{k}(\sig)=\{\text{Clases de isomorfismo de haces de grado }k\}\)
+\begin{teorema}[Abel]
+  Existe un isomorfismo natural entre \(\mathrm{Pic}^{0}(\sig)\) y \(\jac\) tal que bajo cualquier elección de punto base \(p_{0}\in\sig\), los mapeos de Abel y Piccard \(U_{0}:\sig_{d}\rightarrow\jac\) y \(v_{0}:\sig_{d}\rightarrow\mathrm{Pic}^{0}(\sig)\) respectivamente, donde \(v_{0}(D)=\lnb(D-d*p_{0})\)  hacen conmutar el diagrama
+  \begin{equation}
+    \begin{tikzcd}
+    \sig_{d} \arrow{r}{u_{0}} \arrow[swap]{dr}{v_{0}} & \jac \arrow{d}{\cong} \\
+                                                & \mathrm{Pic}^{0}(\sig)
+    \end{tikzcd}
+\end{equation}
+\end{teorema}
+\noindent Es decir que la variedad de Piccard \(\mathrm{Pic}^{0}(\sig)\) no solo es un grupo sino que hereda la estructura de toro complejo de \(\jac\), lo cual hace al mapeo de Piccard holomorfo.
+\begin{teorema}[Riemann]
+  Dada una elección de las bases de homología simplecticas enteras y de la matriz \(\tau\) y por ende de la función \(\theta_{\sig}\), existe una raiz cuadrada \(\kappa\in\mathrm{Pic}^{g-1}(\sig)\) del haz de líneas canónico \(K\in\mathrm{Pic}^{2g-2}(\sig)\), tal que el isomorfismo
+  \[
+    \mathrm{Pic}^{g-1}(\sig)\cong\mathrm{Pic}^{0}(\sig)=\jac,
+  \]
+  dado por la traslación por \(\kappa\) mapea \(W_{g-1}=v_{g-1}(\sig_{d})\) isomorficamente en \(\theta(\sig)\).
+\end{teorema}
+\begin{cor}[Lema intrínseco de Riemann]
+  Sea \(D\in\sig_{g}\) un divisor efectivo, defina el mapedo de Piccard modificado como
+  \[
+    \sigma_{D}:\sig\to\mathrm{Pic}(\sig)\quad p\mapsto\sigma_{D}(p)=\lnb(D-p).
+  \]
+  Entonces se tiene que \(h^{0}(D)>1\) y \(\sigma_{D}(\sig)\subset W_{g-1}\) o \(h^{0}(D)=1\) y el divisor de intersección es \(\sigma_{D}(\sig) W_{g-1}=D\).
+  \end{cor}
 \end{document}
