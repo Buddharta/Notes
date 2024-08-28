@@ -1,0 +1,781 @@
+\include{encabezado}
+
+\chapter{Espacios Cubrientes}
+
+Como se vio en el cap\'itulo anterior, utilizando algunas propiedades de espacios cubrientes pudimos calcular el grupo fundamental de la circunferencia. En este cap\'itulo haremos exactamente lo contrario, es decir, deduciremos propiedades de los espacios cubrientes a trav\'es del grupo fundamental.\\
+Cuando tengamos una proyecci\'on cubriente $p:X \rightarrow Y$, durante toda esta secci\'on, asumiremos que tanto $X$ como $Y$ son conexos y localmente conexos por trayectorias.
+La teor\'ia de proyecciones cubrientes es de gran importancia no s\'olo en la topolog\'ia, sino en diversas ramas de las matem\'aticas como el An\'alisis Complejo, la Geometr\'ia Diferencial y la Teor\'ia de los Grupos de Lie entre otras.\\
+
+Uno de los resultados m\'as importantes que vamos a mostrar en este cap\'itulo es que si $p: \widetilde{X} \rightarrow X$ es una proyecci\'on cubriente, entonces el problema de existencia de un "levantamiento" de una funci\'on continua $f:A \rightarrow X$ a una funci\'on $ \widetilde{f} :A \rightarrow \widetilde{X}$, tiene soluci\'on completa en t\'erminos de los grupos fundamentales de $A$, $X$ y $\widetilde{X}$\\
+
+\begin{definition}\label{VecAdmisible}
+Sea $p: \widetilde{X} \rightarrow X$ una funci\'on continua, se dice que un conjunto abierto $U \subset X$ est\'a \textbf{uniformemente} cubierto por $p$, si
+
+
+ $$p^{-1}(U)= \bigsqcup_{\alpha \in A} V_{\alpha}$$ 
+
+donde los $V_{\alpha}$ son subconjuntos abiertos disjuntos dos a dos tal que $p \vert_{V_{\alpha}}:V_{\alpha} \rightarrow U$ sea un homeomorfismo, en cuyo caso llamaremos a $U$ \textbf{vecindad admisible}.\\
+ \end{definition}
+
+En general la representaci\'on disjunta $p^{-1}(U)= \bigsqcup_{\alpha \in A} V_{\alpha}$ no es \'unica, pero si $U$ es conexo por trayectorias, entonces existe solamente una forma de representar a $p^{-1}(U)$ como uni\'on disjunta de abiertos $V_{\alpha}$ tal que cada $V_{\alpha}$ sea homeomorfa por medio de $p$ a $U$.\\
+
+Si $U$ es conexo por trayectorias, entonces las vecindades $V_{\alpha}$ son simplemente las componentes conexas por trayectorias de $p^{-1}(U)$. En efecto, pues cada $V_{\alpha}$ es abierto en $\widetilde{X}$ y por lo tanto en $p^{-1}(U)$ y como las $V_{\alpha}$ son disjuntas dos a dos significa que son cerrados en $p^{-1}(U)= \bigsqcup_{\alpha \in A} V_{\alpha}$ adem\'as, los $V_{\alpha}$ son conexos por trayectorias al ser homeomorfos a $U$, lo que significa que las $V_{\alpha}$ son las componentes conexas por trayectorias de $p^{-1}(U)$.\\
+
+Con el concepto de vecindad admicible ya definido obtenemos la siguiente definici\'on:\\
+
+\begin{definition}\label{proy cubr}
+A una funci\'on continua $p: \widetilde{X} \rightarrow X$ se le llama funci\'on (o proyecci\'on) \textbf{cubriente} si $\forall x \in X$ existe una vecindad $U$ admisible (Definici\'on (\ref{VecAdmisible})). Al espacio $ \widetilde{X}$ se le llama cubriente de X por medio de p y a X se le conoce como la base de la proyecci\'on cubriente.\\
+\end{definition}
+
+ \begin{example}
+La funci\'on exponencial 
+$e:\mathbb R \rightarrow \mathbb S^{1}$ 
+definida por:
+ $$e(t)= e^{2 \pi i t}, t \in \mathbb R$$ 
+Es cubriente  tomando $U_{1}=\mathbb S^{1} \setminus \lbrace -1 \rbrace $ 
+como vecindad admisible para puntos en la circunferencia distintos de $-1$, pues 
+
+$$e^{-1}(U_{1})= \bigsqcup_{n \in \mathbb Z}(n-1/2,n+1/2)$$ 
+
+y la restricci\'on $e:(n-1/2,n+1/2) \rightarrow U_{1}$ 
+es un homemorfismo. De forma an\'aloga tomando 
+$U_{2}=\mathbb S^{1} \setminus \lbrace 1 \rbrace$ vemos que esta vecindad es admisible.\\
+\end{example}
+
+\begin{example}
+Sea $n \in \mathbb{Z} \setminus \lbrace 0 \rbrace$ definimos la funci\'on $p_n:\mathbb S^{1} \rightarrow \mathbb S^{1}$ como:
+$$p_n(z):=z^n$$
+Queda al lector comprobar que $p_n$ es cubriente $\forall n \in \mathbb{Z} \setminus \lbrace 0 \rbrace$.\\
+\end{example}
+
+En uno de los ejercicios del cap\'itulo se le pedir\'a al lector probar que el producto de proyecciones cubriente es tambi\'en una proyecci\'on cubriente. Con esto en mente podemos examinar el siguiente ejemplo bastante interesante:
+
+\begin{example}
+Recordando la funci\'on exponencial $e:\mathbb{C} \rightarrow \mathbb{C} \backslash \lbrace 0 \rbrace$ definida por:
+$$ e^z:=1+z+z^2/2!+z^3/3!+...$$
+Es una proyecci\'on cubriente, pues tomando $z \in \mathbb{C}, z=x+iy$ sabemos por los cursos b\'asicos de Variable Compleja que $e^z=e^{x+iy}=e^x e^{iy}$. Ahora, sabemos que:\\
+
+$e^x: \mathbb R \rightarrow \mathbb{R^{+}} $ es un homemorfismo (que claramente es cubriente) y que\\
+
+$e^{iy}: \mathbb R \rightarrow \mathbb S^1 $ es cubriente\\
+Como $\mathbb R \times \mathbb R$ es homemorfo a $\mathbb{C}$, entonces la funci\'on $e^x \times e^{iy} :\mathbb{C} \rightarrow \mathbb{R^{+}} \times \mathbb S^{1}$ es una proyecci\'on cubriente. Ahora nada m\'as hay que notar que tenemos un homeomorfismo $\phi :\mathbb{R^{+}} \times \mathbb S^1 \rightarrow \mathbb{C}\setminus \lbrace 0 \rbrace$ dado por: 
+$$\phi(\rho,e^{i \theta}):= \rho e^{i \theta}$$
+Se queda como ejerecicio al lector verificar que en efecto $\phi$ es un homeomorfismo. Con esto tenemos que la funci\'on $e^z$ es cubriente.\\
+\end{example}
+
+\begin{example}(Lemiscata (o figura ocho))
+Sean $X=\lbrace (z,w) \in \mathbb S^1\times S^1 \: | \: z=1 \quad o \quad w=1 \rbrace$ y $\widetilde{X}=\lbrace(x,y)\in \mathbb R^2 \: | \: x \in \mathbb{Z} \quad o \quad y \in \mathbb{Z} \rbrace$\\
+
+Definimos: $p:\widetilde{X} \rightarrow X$ por:
+
+$$p(x,y)=(e^{2\pi i x},e^{2\pi i y})$$
+
+
+\begin{figure}[h]
+\begin{center}
+      \includegraphics*[scale=.3]{lemisc}
+\end{center}
+\caption{Proyecci\'on sobre la Lemiscata}
+\end{figure} 
+
+
+Es una proyecci\'on cubriente.
+\end{example}
+
+\begin{definition}\label{HomeoLocal}
+Una funci\'on continua $f:X \rightarrow Y$ se llama un \textbf{homeomorfismo local} si $\forall x \in X$ se tiene que $x$ posee una vecindad $U$ tal que $f(U)$ es abierto en $Y$ y
+
+$$f \vert_{U}:U \rightarrow f(U)$$
+
+es un homeomorfismo.\\
+
+\end{definition}
+ 
+De la definici\'on es f\'acil notar que toda proyecci\'on cubriente es un homeomorfismo local, pues si $p:\widetilde{X} \rightarrow X$ es una proyecci\'on cubriente, si nos tomamos un $\widetilde{x} \in \widetilde{X}$, entonces, si nos fijamos en su proyecci\'on$p(\widetilde{x})=x$. Como $p$ es cubriente nos tomamos $U$ una vecindad admisible de $x$, entonces $p^{-1}=\bigsqcup_{i \in I}V_i$ donde tenemos que $\forall i \in I$ los $V_i$ son abiertos en $\widetilde{X}$ y adem\'as $p \vert_{V_i}:V_i \rightarrow U$ es un homeomorfismo. Ahora $\widetilde{x} \in V_j$ para alguna $j \in I$ pues $p(\widetilde{x})=x \in U$ como los $V_i$ son abiertos $\forall i \in I$ tenemos que $V_j$ es la vecindad deseada.\\
+Con esto tenemos que todas la propiedades de homeomorfismos locales tambi\'en son propiedades de las proyecciones cubrientes. La siguente proposici\'on nos otorgar\'a una de estas propiedades.\\
+
+\begin{proposition}\label{ProyAb}
+Todo homeomorfismo local $f:X \rightarrow Y$ es una funci\'on abierta.\\
+\end{proposition}
+
+\begin{proof} 
+Sea $V \subset X$ abierto y sea $y \in f(V)$, entonces $y=f(v)$ para alg\'un $v \in V$, como $f$ es homeomorfismo local entonces existe $U \subset X$ abierto tal que $v \in U$, $f(U)$ es abierto en $Y$ y $f \vert_{U}:U \rightarrow f(U)$ es un homeomorfismo. 
+Ahora nos tomamos a $U \cap V$ que es abierto en $U$, como $f$ es un homemorfismo restringido a $U$, entonces $f(U \cap V)$ es abierto en $f(U)$. Ahora $f(U)$ es abierto en $Y$, entonces se infiere que $f(U \cap V)$ es abierto en $Y$, adem\'as ten\'iamos que $v \in V$ y $v \in U$ por lo que $y=f(v)\in f(U \cap V) \subset f(V)$, lo que implica que $f(V)$ es abierto en Y que es lo que quer\'iamos.\\
+\end{proof}
+
+\begin{corollary}
+Toda proyecci\'on cubriente es una funci\'on abierta.\\
+\end{corollary}
+
+%%%Hay que profundizar en esta obsrevación%%%%
+
+Observemos que no todo homeomorfismo local es una proyecci\'on cubriente. En efecto, sea $f:(0,2) \rightarrow \mathbb S^1$ dada por:
+
+$$ f(t)= e^{2 \pi i t}$$
+
+entonces $f$ es un homeorfismo local, pero no es cubriente porque si nos tomamos a $1 \in \mathbb S^1$, este punto no tiene vecindades admisibles pues siempre podemos escojer $U$ una vecindad de $1$ que sea conexa y lo suficientemente peque\~na tal que $f^{-1}(U)$ consista en tres componentes, las cuales solamente una es homeomorfa a $U$ por medio de $f$.\\ 
+
+%%%INSTERAR FIGURA%%%
+
+El ejemplo anterior tambi\'en nos dice que no siempre la restricci\'on de un mapeo cubriente es cubriente. La siguiente proposici\'on nos dice en qu\'e tipo de conjuntos la restricci\'on de un mapeo cubriente es cubriente.
+
+
+\begin{proposition}\label{SubProyCub}
+
+Sea $p: \widetilde{X} \rightarrow X$ una proyecci\'on cubriente y sea $A \subset X$ un subconjunto conexo y localmente conexo por trayectorias. Si $\widetilde{A}$ es una componente conexa por trayectorias de $p^{-1}(\widetilde{A})$, entonces la restricci\'on: 
+$$p \vert_{\widetilde{A}}:\widetilde{A} \rightarrow A$$ 
+es una proyecci\'on cubriente.\\
+
+\end{proposition}
+
+\begin{proof} 
+Para cada $a \in A$ escogemos una vecindad $U$ admisible conexa por trayectorias, entonces:
+
+$$p^{-1}(U)=\bigcup_{i \in I}U_i$$ 
+
+Donde $U_i \cap U_j= \varnothing$ si $i \neq j$ y cada $U_i$ es homeomorfo a $U$ por medio de $p$, observemos que cada $U_i$ es una componente conexa por  trayectorias de $p^{-1}(U)$, entonces $p^{-1}(U \cap A)=\bigsqcup_{i \in I}(U_i \cap p^{-1}(A))$ donde es claro que $p$ restringida a cada $U_i \cap p^{-1}(A)$ es un homeomorfismo.\\ 
+Ahora como A es localmente conexo por trayectorias, podemos encontrar para cada $a\in A$ una vecindad $V$ conexa por trayectorias tal que $a\in V \subset (A \cap U)$ entonces $p^{-1}(V)=\bigsqcup_{i \in I}V_i \subset \bigsqcup_{i \in I} U_i \cap p^{-1}(A) \subset p^{-1}(A)$, puesto que cada $V_i$ es homeomorfo por medio de $p$ a $V$, tenemos que cada $V_i$ es conexo por trayectorias, entonces si $V_i \cap \widetilde{A} \neq \varnothing$ como $V_i$ es conexo por trayectorias y $\widetilde{A}$ es una componente conexa por trayectorias, sucede que $V_i \subset \widetilde {A}$ por lo que $p^{-1}(V) \cap \widetilde{A} = \bigsqcup_{i \in J} V_i$ donde $J \subset I$ lo que dice que $p \vert_{\widetilde{A}}:  \widetilde{A} \rightarrow A$ es cubriente.\\
+\end{proof}
+
+\begin{theorem}
+Las Cardinalidades de todas las fibras de una proyecci\'on cubriente $p: \widetilde{X} \rightarrow X$ coinciden si $X$ es conexo.\\
+\end{theorem}
+
+\begin{proof}
+Sea $x \in X$ denotamos como 
+
+$$A=\lbrace y \in X \: \mid \: \vert p^{-1}(y) \vert= \vert p^{-1}(x)\vert \rbrace$$
+
+Notemos que $A \neq \varnothing$ pues $x \in A$. Nuestra  afirmaci\'on es que $A$ es un conjunto abierto y cerrado. En efecto, si $y \in A$, como $p$ es cubriente, entonces $y$ tiene una vecindad $U$ admisible, lo que significa que: 
+
+$$p^{-1}(U)=\bigsqcup_{i \in I}V_i$$ 
+
+Tal que los $V_i$ son homeomorfos a $U$ por medio de $p$. Ahora es claro que $\forall z \in U$ la fibra de $z$ tiene cardinalidad $\vert I \vert$ pues cada $V_i$ tiene exactamente un elemento de la fibra de $z$, como tenemos exactamente $\vert I \vert$ vecindades, se sigue que $\vert p^{-1}(z) \vert = \vert p^{-1}(y) \vert = \vert p^{-1}(x) \vert =\vert I \vert$ lo cual nos dice que $y \in U \subset A$. Lo que demuestra que $A$ es abierto en $X$, de manera completamente an\'aloga $X \setminus A$ es abierto pues si $w \in X \setminus A$, entonces $\vert p^{-1}(w) \vert \neq \vert p^{-1}(x) \vert$ entonces si nos tomamos una vecindad admisible $V$ de $w$ tenemos por el mismo argumento que $\forall v \in V$ la fibra de $v$ tiene cardinalidad $\vert p^{-1}(w) \vert$ por lo tanto $X \setminus A$ es abierto, como $X$ es conexo y $A \neq \varnothing$ entonces $A=X$\\  
+
+\end{proof}
+
+\begin{definition}
+Sea $p: \widetilde{X} \rightarrow X$ una proyecci\'on cubriente con $X$ conexo. El cardinal $\vert p^{-1}(x) \vert$, $x \in X$, se llama el \textbf{n\'umero de hojas} de $\widetilde{X}$ sobre $X$.\\
+
+\end{definition}
+
+
+\section{Levantamiento de Trayectorias}
+
+\textbf{Problema de levantamiento}: Supongamos que $X$, $\widetilde{X}$ y $A$ son tres espacios topol\'ogicos, y que $p: \widetilde{X} \rightarrow X$ es una funci\'on continua y suprayectiva. Supongamos tambi\'en que tenemos una funci\'on continua $f: A \rightarrow X$ ¿ser\'a posible encontrar una funci\'on $\widetilde{f} : A  \rightarrow \widetilde{X}$ continua que conmute el diagrama? 
+
+
+$$ \xymatrix{    & \widetilde{X} \ar[d]^{p}\\
+              A \ar@{-->}[ru]^{\widetilde{f}} \ar[r]^{f} & X} $$
+
+
+
+(i.e. que se cumple que $p \circ \widetilde{f}= f$)\\
+Esta pregunta puede tener o no una respuesta afirmativa. Cuando en efecto exista tal funci\'on $\widetilde{f}$, diremos que esta funci\'on es un levantamiento de $f$.\\
+En esta secci\'on responderemos esta pregunta en el caso en el que la funci\'on $p$ sea un mapeo cubriente.\\
+Recordemos que los casos cuando $f$ es una trayectoria o una homotop\'ia la respuesta es afirmativa. Estas afirmaciones ya fueron demostradas previamente, aqu\'i nadam\'as las mencionamos como un recoradatorio:\\ 
+
+\begin{theorem}\label{LevanTray}
+
+Sea $p:\widetilde{X} \rightarrow X$ un proyecci\'on cubriente, $x_0 \in X$ y $\widetilde x_0 \in p^{-1}(x_0)$. Entonces toda trayectoria $f:I \rightarrow X$ con $f(0)=x_0$ tiene un \'unico levantamiento $\widetilde{f}: I \rightarrow \widetilde{X}$ tal que $\widetilde{f}(0)= \widetilde x_0$.\\
+
+$$ \xymatrix{    & \widetilde{X} \ar[d]^{p}\\
+              I \ar@{-->}[ru]^{\widetilde{f}} \ar[r]^{f} & X} $$\\
+
+\end{theorem}
+ 
+\begin{theorem}\label{LevanHomo}
+
+Sea $p:\widetilde{X} \rightarrow X$ un proyecci\'on cubriente, $x_0 \in X$ y $\widetilde x_0 \in p^{-1}(x_0)$. Entonces toda homotop\'ia $F:I \times I \rightarrow X$ con $F(0,0)=x_0$ tiene un \'unico levantamiento $\widetilde{F}: I \times I \rightarrow \widetilde{X}$ tal que $\widetilde{F}(0,0)= \widetilde x_0$.M\'as a\'un, si $F$ es relativa a $\lbrace 0,1 \rbrace$, entonces $\widetilde{F}$ tambi\'en lo es.\\
+
+$$ \xymatrix{    & \widetilde{X} \ar[d]^{p}\\
+              I \times I \ar@{-->}[ru]^{\widetilde{F}} \ar[r]^{F} & X} $$\\
+
+\end{theorem}
+
+\begin{theorem}[Monodromia]\label{Monodromia}
+Sea $p:\widetilde{X} \rightarrow X$ un proyecci\'on cubriente, $x_0,x_1 \in X$, $f$ y $g$ dos 
+trayectorias en $X$ entre $x_0$ y $x_1$. Sean $\widetilde{f}$ y $\widetilde{g}$ levantamientos de $f$ y 
+$g$ respectivamente tales que: $\widetilde{f}(0) = \widetilde x_0 = \widetilde{g}(0)$. Si $f$ y $g$ son 
+homot\'opicas, entonces tambi\'en lo son $\widetilde{f}$ y $\widetilde{g}$, en particular $\widetilde{f}
+(1)=\widetilde{g}(1)$.\\
+
+\begin{figure}[h]
+\begin{center}
+      \includegraphics*[scale=.5]{monodromia}
+\end{center}
+\caption{Teorema de Monodromia}
+\end{figure} 
+
+
+
+
+\end{theorem}
+
+\begin{corollary}\label{ProyMono}
+
+Si $p:\widetilde{X} \rightarrow X$ es una proyecci\'on cubriente, $\widetilde{x} \in \widetilde{X}$ y $x=p(\widetilde{x})$, entonces su homomorfismo inducido 
+$p_*: \pi(\widetilde{X},\widetilde{x}) \rightarrow \pi (X,x)$ es un monomorfismo y la imagen de $p_*$ es el subgrupo de $\pi (X,x)$ que consta de las clases de homotop\'ia de lazos en $(X,x)$, cuyos levantamientos en $(\widetilde{X}, \widetilde{x})$ son lazos.\\ 
+
+\end{corollary}
+
+\begin{proof}
+
+Sea $\widetilde{\gamma_0}$ un lazo en $(\widetilde{X},\widetilde{x})$ tal que $[\widetilde{\gamma_0}] \in Kerp_*$, entonces existe una homotop\'ia $\gamma_t:\widetilde{\gamma_0} \simeq e_x$ donde $e_x$ es el lazo constante en x.\\
+Por el teorema del levantamiento de homotop\'ias, existe una homotop\'ia $\widetilde{\gamma_t}$ tal que $p \circ \widetilde{\gamma_t}=\gamma_t$.\\
+Ahora, el lazo $\widetilde{\gamma_1}$ es el levantamiento de $e_x$ y como los levantamientos son \'unicos, entonces $\widetilde{\gamma_1}$ es el lazo constante $e_{\widetilde{x}}$. Consecuentemente $[\widetilde{\gamma_0}]=[e_{\widetilde{x}}]= 0$ en $\pi(\widetilde{X},\widetilde{x})$ por lo que $p_*$ es un monomorfismo.\\
+
+Ahora sea $[\beta] \in Imp_*$ queremos demostrar que el levantamiento de $\beta$ es un lazo en $(\widetilde{X},\widetilde{x})$, como $[\beta] \in Imp_*$, entonces $[\beta]=[p \circ \widetilde{\alpha}]$ para alg\'un lazo $\widetilde{\alpha}$ de $(\widetilde{X},\widetilde{x})$, lo que significa que $\beta \simeq p\circ \alpha$. Si $\widetilde{\alpha}$ es el levantamiento de $p \circ \widetilde{\alpha}$ en $(\widetilde{X},\widetilde{x})$, entonces si denotamos como $\widetilde{\beta}$ al levantamiento de $\beta$, por el Teorema de Monodromia, los levantamientos $\widetilde{\alpha}$ y $\widetilde{\beta}$ son homot\'opicos y sucede que: $\widetilde{\beta}(1)=\widetilde{\alpha}(1)=\widetilde{\alpha}(0)=x$ es decir $\widetilde{\beta}$ es un lazo.\\ 
+
+\end{proof}
+
+\section{Levantamiento de Funciones Arbitrarias}
+
+El problema de levantar funciones continuas arbitrarias en general no es posible, como veremos a continuaci\'on en el siguiente ejemplo:\\
+
+\begin{example} 
+
+Afirmamos que la funci\'on identidad: 
+
+$$Id:\mathbb S^1 \rightarrow \mathbb S^1$$
+
+No tiene levantamiento respecto a la proyecci\'on exponencial. Esto es debido a que si suponemos que $\varphi$ es un levantamiento de $Id$, entonces es facil comprobar que $\varphi$ tiene que ser inyectiva. Lo que implica que $\varphi: \mathbb S^1 \rightarrow \varphi(\mathbb S^1) \subset \mathbb{R}$ es un homeomorfismo puesto que $\varphi$ es cerrada, esto se sigue de que $\mathbb S^1$ es compacto-Hausdorff y $\mathbb{R}$ es Hausdorff.\\
+Esto significa que $\varphi(\mathbb S^1) \subset \mathbb{R}$ al ser compacto y conexo tiene que ser necesariamente un intervalo cerrado de la forma $[a,b],a<b$, con esto ya hemos llegado a una contadicci\'on, pues no es posible que la circunferencia sea homeomorfa a un intervalo cerrado. 
+
+
+$$ \xymatrix{    & \mathbb{R} \ar[d]^{exp}\\
+              \mathbb S^1 \ar@{-->}[ru]^{\varphi} \ar[r]^{Id} & \mathbb S^1} $$
+
+
+
+
+\end{example}
+
+El ejemplo anterior nos indica que si queremos resolver el problema del levantamiento de funciones es necesario buscar condiciones necesarias y suficientes para saber cu\'ando es posible levantar una funci\'on $f:A \rightarrow X$, donde $X$ es la base de una proyecci\'on cubriente $p:\widetilde{X} \rightarrow X$.\\
+El siguiente teorema (que es uno de los teoremas m\'as largos y dif\'iciles de las secci\'on) nos mostrar\'a el hecho interesante de que el problema del levantamiento tiene soluci\'on en t\'erminos de los grupos fundamentales de los espacios en cuesti\'on. Esto es un ejemplo t\'ipico de los m\'etodos que se utilizan en la topolog\'ia algebraica, donde normalmente se reducen problemas topol\'ogicos a problemas puramente algebraicos m\'as f\'aciles de responder.\\ 
+
+\begin{theorem}[Levantamiento de funciones]\label{LevantFunc}
+
+Sean $p:\widetilde{X} \rightarrow X$ una proyecci\'on cubriente, A un espacio conexo y localmente conexo por trayectorias y $f:A \rightarrow X$ una funci\'on continua, entonces dados los puntos $a_0 \in A$, $x_0 \in X$ y $\widetilde{x_0} \in \widetilde{X}$ tales que $f(a_0)=x_0=p(\widetilde{x_0})$, entonces existe un levantamiento $\widetilde{f}:A \rightarrow \widetilde{X}$ si y s\'olo si:
+
+$$f_*(\pi(A,a_0))\subset p_*(\pi(\widetilde{X},\widetilde{x_0})$$
+
+Adem\'as por la conexidad de $A$ sabemos que dicho levantamiento es \'unico.\\ 
+
+
+
+\end{theorem}
+
+\begin{proof}
+
+($\Rightarrow$) Sea $\widetilde{f}$ un levantamiento de $f$, entonces tenemos el siguiente diagrama conmutativo de grupos:\\ 
+
+
+$$ \xymatrix{    & \pi(\widetilde{X},\widetilde{x_0}) \ar[d]^{p_*}\\
+              \pi(A,a_0) \ar[ru]^{\widetilde{f_*}} \ar[r]^{f_*} & \pi(X,x_0)} $$
+
+
+
+Lo que nos dice que $f_*(\pi(A,a_0))= p_*(\widetilde{f}_* (\pi(A,a_0))) \subset p_*(\pi(\widetilde{X},\widetilde{x_0})$, probando as\'i la necesidad de la condici\'on.\\
+
+
+\begin{figure}[h]
+\begin{center}
+      \includegraphics*[scale=.5]{levanf}
+\end{center}
+\caption{Levantamiento de $f$}
+\end{figure} 
+
+
+($\Leftarrow$) Ahora para probar la suficiencia, construiremos el levantamiento de $f$ definiendo una funci\'on $\widetilde{f}:A \rightarrow \widetilde{X}$ como sigue: Sea $a \in A$, como A es conexo por trayectorias elegimos una trayectoria $\alpha: a_0 \sim a$, entonces $f \circ \alpha$ es una trayectoria que comienza en $x_0$. Por el Teorema de Levantamiento de trayectorias, existe un levantamiento $\widetilde{\alpha}$ de $f \circ \alpha$ tal que $\widetilde{\alpha}(0)=\widetilde{x_0}$, definimos:
+
+$$ \widetilde{f}(a):= \widetilde{\alpha}(1)$$
+
+Veamos que en efecto $\widetilde{f}$ est\'a bien definida, es decir, que $\widetilde{f}(a)$ no depende de las elecci\'on  de la trayectoria $\alpha$.\\
+Sea $\beta: a_0 \sim a$ otra tayectoria que une a $a_0$ con $a$, y sea $\widetilde{\beta}$ el levantamiento de la curva $f \circ \beta$ que comienza en $\widetilde{x_0}$, queremos probar que $\widetilde{\alpha}(1) = \widetilde{\beta}(1)$.\\
+
+Observemos que $\alpha * \overline{\beta}$ es un lazo en $(\widetilde{X},\widetilde{x_0})$. Por hip\'otesis tenemos que $[f(\alpha * \overline{\beta})] \in p_*(\pi(\widetilde{X},\widetilde{x_0}))$, entonces por el Corolario (\ref{ProyMono}) el levantamiento de $f(\alpha * \overline{\beta})$ es un lazo en $(\widetilde{X},\widetilde{x_0})$.\\
+
+Observemos que $f(\alpha * \overline{\beta}) = (f \circ \alpha)* (\overline{f \circ \beta})$. Ahora si $\omega$ es el levantamiento de $f(\alpha * \bar{\beta})$ tenemos que $p \circ \omega = (f \circ \alpha)* (\overline{f \circ \beta})$.\\
+
+Proseguimos en dividir a $\omega$ como el producto de dos trayectorias de la siguiente manera: $\omega = \omega_1 * \omega_2$, donde $\omega_1(t)=\omega (t/2), t \in [0,1]$, $\omega_2 (t)= \omega (1/2 + t/2), t \in [0,1]$, entonces para cada $t \in [0,1]$ tenemos que $t/2 \in [0,1/2]$, y por lo tanto $p \circ \omega_1 (t)=p \circ \omega(t/2) \simeq (f \circ \alpha)* \overline{(f \circ \beta)}(t/2) = f \circ \alpha(2t/2)= f \circ \alpha (t)$. Esto significa que $\omega_1$ es el levantamiento de $f \circ \alpha$ en $(\widetilde{X},\widetilde{x_0})$, como $\widetilde{\alpha}$ es tambi\'en levantamiento de $f \circ \alpha$ en $(\widetilde{X},\widetilde{x_0})$, tenemos por la unicidad de los levantamientos que $\omega_1 = \widetilde{\alpha}$, en particular nos fijamos en los puntos $\omega(1/2)= \omega_1(1)=\widetilde{\alpha}(1)$.\\
+
+
+\begin{figure}[h]
+\begin{center}
+      \includegraphics*[scale=.5]{isoproy}
+\end{center}
+\caption{Continuidad de $\widetilde{f}$}
+\end{figure} 
+
+
+
+
+De forma \'analoga $\omega_2$ es el levantamiento de $\overline{f \circ \beta}$. En efecto $p \circ \omega_2 (t)= p \circ \omega(1/2 + t/2) \simeq (f \circ \alpha)* \overline{(f \circ \beta)}(1/2 + t/2) =  \overline{(f \circ \beta)}(2(1/2 + t/2) -1)= \overline{(f \circ \beta)}(t)$, pues $1/2+t/2 \in [1/2,1]$, esto es esquivalente a $p \circ \overline{\omega_2}(t)=p \circ \omega_2(1-t)= \overline{(f \circ \beta)}(1-t)= f \circ \beta (t)$. As\'i $\overline{\omega_2}$ es levantamiento de $f \circ \beta$ que comienza en $\widetilde{x_0}$, por lo que $\widetilde{\beta}= \overline{\omega_2}$ con lo cual tenemos que 
+$\widetilde{\beta}(1)=\overline{\omega_2}(1)=\omega_2(0)=\omega(1/2)=\omega_1(1)=\widetilde{\alpha}(1)$, por lo que la funci\'on $\widetilde{f}:A \rightarrow \widetilde{X}$ est\'a bien definida. Adem\'as notemos que $p \circ \widetilde{f}(a)= p \circ \widetilde{\alpha}(1)=f \circ \alpha (1)= f(a) a \in A$ y $\widetilde{f}(a_0) = \widetilde{x_0}$, mostrando que $\widetilde{f}$ es la funci\'on que levanta a $f$, s\'olo falta demostrar que $\widetilde{f}$ es continua.\\
+
+Sea $a \in A$ y $O$ una vecindad del punto $\widetilde{f}(a)$ en $\widetilde{X}$. Necesitamos encontrar una vecindad $W$ de $a$ tal que $\widetilde{f}(W) \subset O$. Sea $\alpha:a_0 \sim a$ una trayectoria entre $a$ y $a_0$, por como definimos $\widetilde{f}$, si $\widetilde{\alpha}$ es el levantamiento de $f \circ \alpha$ que comienza en $x_0$, entonces $\widetilde{f}(a) = \widetilde{\alpha}(1)$. Como por hip\'otesis $X$ es localmente conexo por trayectorias, tomemos $U$ una vecindad conexa por trayectorias de $f(a)$ que adem\'as sea una vecindad admisible de $f(a)$, entonces como $\widetilde{f}$ levanta a $f$, $\widetilde{f}(a) \in p^{-1}(f(a))$, entonces sea $V_0$ la componente de $p^{-1}(U)$ que contiene a $\widetilde{f}(a)$. Sin p\'erdida de generalidad podemos suponer que $V_0 \subset O$, ya que si esto no ocurriera nada m\'as las intersectamos y a la vecindad resultante la proyectamos y esta proyecci\'on va a ser admisible en $X$. As\'i la restricci\'on $p_0:= p \vert_{V_0}: V_0 \rightarrow U$ es un encaje. Ahora, por la continuidad de $f$ en $a$ y por la conexidad por trayectorias local de $A$, existe una vecindad conexa por trayectorias $W$ de $a$ tal que $f(W) \subset U$. Afirmamos que $\widetilde{f}(W) \subset V_0$, con lo que el resultado quedarar\'ia demostrado.\\
+
+Dado $y \in W$, se elige una trayectoria $\gamma$ contenida en $W$ que una el punto $a$ con el punto $y$. 
+Como $\widetilde{f}$ est\'a bien definida, $\widetilde{f}(y)$ se puede obtener a trav\'es de $\gamma$. Puesto que la trayectoria $f \circ \gamma$ se encuentra contenida en $U$, la trayectoria 
+$\delta= p_0^{-1} \circ f \circ \gamma$ es un levantamiento de $f \circ \gamma$ que parte de $\widetilde{f}(a)$, lo que significa que $\widetilde{\alpha} * \delta$ es el levantamiento de $f \circ (\alpha * \gamma)$ que parte de $\widetilde{x_0}$ y que acaba en $\delta (1) \in V_0$. Ahora por definici\'on $\widetilde{f}(y)=\alpha * \delta (1)= \delta (1) \in V_0 \subset O$, por consiguiente $\widetilde{f}(W) \subset V_0 \subset O$ que era lo que quer\'iamos.\\
+
+\end{proof}
+
+
+\section{Clasificaci\'on de espacios cubrientes}
+
+
+
+\begin{definition}
+
+Sean $p_1:X_1 \rightarrow X$ y $p_2: X_2 \rightarrow X$ dos proyecciones cubrientes. A una funci\'on continua $h:X_1 \rightarrow X_2$ se le llama \textbf{morfismo cubriente} si $p_2 \circ h = p_1$.\\
+
+Si adem\'as $h$ es un homeomorfismo, entonces $h$ es un \textbf{isomorfismo de espacios cubrientes}.\\
+
+\end{definition}
+
+Desde el punto de vista de la teor\'ia de espacios cubrientes, a dos espacios cubrientes sobre una misma base se les considera id\'enticos se existe un isomorfismo entre ellos.\\
+El siguinte teorema nos dir\'a cu\'ando podemos decir que dos espacios cubrientes son isomorfos.\\
+
+\begin{theorem}\label{Iso}
+
+Sean $p_1: X_1 \rightarrow X$ y $p_2: X_2 \rightarrow X$ proyecciones cubrientes, $x_1 \in X_1$, $x_2 \in X_2$ tales que $p_1(x_1)=p_2(x_2)$, entonces existe un isomorfismo $h:X_1 \rightarrow X_2$ con $h(x_1)=x_2$ si y s\'olo si 
+
+$$p_{1*}(\pi (X_1,x_1))= p_{2*}(\pi(X_2,x_2))$$
+
+\end{theorem}
+
+\begin{proof}
+($\Rightarrow$)Se sigue de que $p_2 \circ h = p_1$ implica que $p_{2*} \circ h_* = p_{1*}$ y que $h_*$ es un isomorfismo de grupos.\\
+
+($\Leftarrow$)Es natural asumir que se va a utilizar el Teorema de Levantamiento de funciones (\ref{LevantFunc}), entonces aplicamos dicho teorema a la funci\'on $p_2: X_2 \rightarrow X$. Como $p_1$ es una proyecci\'on cubriente y ocurre que $p_{2*}(\pi(X_2,x_2)) \subset p_{1*}(\pi (X_1,x_1))$, entonces por el Teorema de Levantamiento de funciones existe una funci\'on continua $h: X_2 \rightarrow X_1$ tal que $p_1 \circ h= p_2$ y $h(x_1)=x_2$, entonces $h$ es un morfismo de espacios cubrientes.\\
+
+
+$$ \xymatrix{    & X_1 \ar[d]^{p_1}\\
+              X_2 \ar@{-->}[ru]^h \ar[r]^{p_2} & X} $$
+
+
+Invirtiendo los papeles de $p_1$ y $p_2$, de forma an\'aloga como $p_{1*}(\pi (X_1,x_1)) \subset p_{2*}(\pi(X_2,x_2))$ obtenemos un morfismo cubriente $k: X_1 \rightarrow X_2$ tal que $k(x_1)=x_2$, entonces consideramos la funci\'on $k \circ h: X_1 \rightarrow X_1$.\\
+La funci\'on $k \circ h$ cumple que es un levantamiento de $p_1$, ya que $p_1 \circ (k \circ h)= (p_1 \circ k) \circ h = p_2 \circ h = p_1$, adem\'as $(k \circ h)(x_1)=x_1$. Por otro lado la funci\'on identidad $Id_{X_1}$ tambi\'en es un levantamiento de $p_1$, pues $p_1= P_1 \circ Id$ y tambi\'en cumple que $Id(x_1)=(x_1)$, entonces por el Teorema de unicidad de levantamientos tenemos que $k\circ h= Id_{X_1}$. De forma an\'aloga obtenemos que $h \circ k = Id_{X_2}$ con lo que aseguramos que $h$ y $k$ son isomorfismos cubrientes.\\ 
+
+$$ \xymatrix{    & X_1 \ar[d]^{p_1}\\
+              X_1 \ar@{-->}[ru]^{k \circ h} \ar[r]^{p_1} & X} $$
+
+
+\end{proof}
+
+\begin{proposition}\label{Conj}
+
+Sea $p:\widetilde{X} \rightarrow X$ una proyecci\'on cubriente, $x \in X$ y $a,b \in p^{-1}(x)$, entonces $p_*(\pi(\widetilde{X},a))$ y $p_*(\pi(\widetilde{X},b))$ son grupos conjugados de $\pi(X,x)$.\\
+
+M\'as a\'un, dado $w \in p^{-1}(x)$, todo subgrupo conjugado con $p_*(\pi(\widetilde{X},w))$ es igual al subgrupo $p_*(\pi(\widetilde{X},z))$ para alg\'un $z \in p^{-1}(x)$.
+
+\end{proposition}
+
+\begin{proof}
+Sea $\alpha: a \sim b$ una trayectoria que una a los puntos $a$ y $b$, entonces sabemos que la funci\'on 
+
+$$\Gamma_{\alpha}:\pi(\widetilde{X},a) \rightarrow \pi(\widetilde{X},b)$$ 
+
+tal que 
+
+$$\Gamma_{\alpha}([\gamma])=[\alpha * \gamma * \overline{\alpha}]$$ 
+
+Es un isomorfismo de grupos. Ahora consideremos el lazo $p \circ \alpha$ en $(X,x)$ que define el isomorfismo
+
+$$\varphi: \pi(X,x) \rightarrow \pi (X,x)$$ 
+
+dado por 
+
+$$ \varphi([\gamma]):=[p \circ \alpha][\gamma][p \circ \alpha]^{-1}$$
+
+y el siguiente diagrama conmuta:\\ 
+
+$$ \xymatrix{ \pi(\widetilde{X},a) \ar[r]^{\Gamma_{\alpha}} \ar[d]^{p_*}   & \pi(\widetilde{X},b) \ar[d]^{p_*}\\
+              \pi(X,x) \ar[r]^{\varphi} & \pi(X,x)} $$
+
+Esto demuestra que los subgrupos $p_*(\pi(\widetilde{X},a))$ y $p_*(\pi(\widetilde{X},b))$ son conjugados en $\pi(X,x)$, es decir que\\ 
+
+$[p \circ \alpha]p_*(\pi(\widetilde{X},a))[p \circ \alpha]^{-1}= p_*(\pi(\widetilde{X},b))$.
+
+Ahora para demostrar la segunda afirmaci\'on, supongamos que
+
+$$H=[\gamma]p_*(\pi(\widetilde{X},a))[\gamma]^{-1}$$
+
+donde $[\gamma] \in \pi(X,x)$.\\
+
+Sea $\widetilde{\gamma}$ el levantamiento de $\gamma$ que comienza en $a$ y sea $b=\widetilde{\gamma}(1)$, entonces de la primera parte de la proposici\'on se sigue que $p_*(\pi(\widetilde{X},b))$\\
+
+\begin{figure}[h]
+\begin{center}
+      \includegraphics*[scale=.2]{proytrayec}
+\end{center}
+\caption{Proyecci\'on de una trayectoria conectando dos puntos en la misma fibra}
+\end{figure} 
+
+
+
+\end{proof}
+
+\begin{theorem}
+
+Sean $p_1: X_1 \rightarrow X$ y $p_2: X_2 \rightarrow X$ dos proyecciones cubrientes y $x_1 \in X_1, x_2 \in X_2, x \in X$ tales que $p_1(x_1)=x=p_2(x_2)$, entonces existe un isomorfismo $h: X_1 \rightarrow X_2$ si y s\'olo si $p_{1*}(\pi(X_1,x_1))$ y $p_{2*}(\pi(X_2,x_2))$ son conjugados.\\ 
+
+\end{theorem}
+
+\begin{proof}
+($\Rightarrow$) Sea $h: X_1 \rightarrow X_2$ un isomorfismo cubriente, denotemos como $y_2=h(x_1)$. Por hip\'otesis $y_2,x_2 \in p^{-1}(x)$, como $h: X_1 \rightarrow X_2$ es un isomorfismo, significa que $p_{2*}(\pi(X_2,y_2))= p_{1*}(\pi(X_1,x_1))$; pero por la proposic\'on (\ref{Conj}) como $y_2,x_2 \in p^{-1}_{2*}(x)$ (pues $p_1=p_2 \circ h$), entonces $p_{2*}(\pi(X_2,y_2))$ y $p_{2*}(\pi(X_2,x_2))$ son conjugados lo que se traduce en que los grupos $p_{2*}(\pi(X_2,x_2))$ y $p_{1*}(\pi(X_1,x_1))$ son conjugados.\\
+
+($\Leftarrow$)Si los grupos $p_{2*}(\pi(X_2,x_2))$ y $p_{1*}(\pi(X_1,x_1))$ son conjugados, entonces por la Proposici\'on (\ref{Conj}) existe $z \in p^{-1}_1(x)$ tal que 
+
+$$p_{2*}(\pi(X_2,x_2))=p_{1*}(\pi(X_1,z))$$
+
+Pero por el Teorema (\ref{Iso}), existe un isomorfismo cubriente $h:X_1 \rightarrow X_2$ tal que $h(x_1)=z$\\
+\end{proof}
+
+\begin{definition}[El Cubriente Universal]
+Sea $X$ un espacio topol\'ogico, y $p: \widetilde{X} \rightarrow X$ una proyecci\'on cubriente, si $\widetilde{X}$ es conexo por trayectorias, entonces se dice que $\widetilde{X}$ es un \textbf{cubriente universal}.
+\end{definition}
+
+
+\section{El Grupo de Deslizamientos}
+
+A lo largo de esta secci\'on, supondremos que $p:\widetilde{X} \rightarrow X$ es una proyecci\'on cubriente, $\widetilde{x} \in \widetilde{X}$ y $x=p(\widetilde{x}) \in X$, comenzamos con la definici\'on b\'asica de esta secci\'on: 
+
+\begin{definition}
+
+Un \textbf{deslizamiento} es un homeomorfismo $h:\widetilde{X} \rightarrow \widetilde{X}$ tal que si $p:\widetilde{X} \rightarrow X$ es una proyecci\'on cubriente, entonces $p \circ h= p$.\\
+
+\end{definition}
+
+En otras palabras, un deslizamiento es un Isomorfismo de un espacio cubriente en s\'i mismo, o tambi\'en, un deslizamiento es un levantamiento de la proyecci\'on cubriente dada. Otro nombre que se utiliza para los deslizamientos en la literatura matem\'atica es el de \textbf{Trasformaci\'on Cubriente}.\\
+
+Es evidente que el conjunto de todos los deslizamientos de $p:\widetilde{X} \rightarrow X$, al que denotaremos $D(p)$, constituye un \textbf{grupo} con respecto a la composici\'on de funciones. M\'as adelante probaremos que el grupo $D(p)$ est\'a completamente determinado por el grupo $\pi(X,x)$ y su subgrupo $p_*(\pi (\widetilde{X},\widetilde{x}))$.\\
+
+De la definici\'on se sigue que un deslizamiento $h: \widetilde{X} \rightarrow \widetilde{X}$ tiene que enviar todo punto $a \in p^{-1}(x)$ de una fibra a otro punto de la misma, es decir, que la fibra de un punto $x \in X$ es invariante bajo deslizamientos, es decir que el deslizamiento $h$ permuta elementos de la fibra.\\
+
+Una pregunta que surge naturalmente es: dados dos puntos $a,b \in p^{-1}(x)$, ¿se puede encontrar un deslizamiento $h:\widetilde{X} \rightarrow \widetilde{X}$ tal que $h(a)=b$? Resulta que este no es el caso, pero encontrar un ejemplo de esto resulta bastante dif\'icil.
+
+\begin{definition}
+
+Una proyecci\'on cubriente $p:\widetilde{X} \rightarrow \widetilde{X}$ se dice que es \textbf{normal}, si para cada $x \in X$ y cada $a,b \in p^{-1}(x)$, existe un \textbf{deslizamiento} $h \in D(p)$ tal que $h(a)=b$.\\
+
+\end{definition}  
+
+\begin{theorem}\label{DescripDesliz}
+Sea $p: \widetilde{X} \rightarrow X$ una proyecci\'on cubriente, $x_0 \in X$ y $\widetilde{x_0} \in p^{-1}(x_0)$, entonces:\\
+
+\begin{description}
+
+\item[i)]$p: \widetilde{X} \rightarrow X$ es normal si y s\'olo si $p_*(\pi(\widetilde{X},\widetilde{x_0}))$ es un subgrupo normal de $\pi(X,x_0)$\\
+
+\item[ii)]$D(p) \approx N(p_*(\pi(\widetilde{X},\widetilde{x_0})))/p_*(\pi (\widetilde{X},\widetilde{x_0}))$, donde $N(p_*(\pi(\widetilde{X},\widetilde{x_0})))$ es el normalizador de $p_*(\pi (\widetilde{X},\widetilde{x_0}))$\\
+\end{description}
+\end{theorem}
+
+\begin{proof}
+\textbf{i)} Por definici\'on $p_*(\pi(\widetilde{X}, \widetilde{x_0}))$ es normal si y s\'olo si
+
+$$[\alpha]p_*(\pi(\widetilde{X},\widetilde{x_0}))[\alpha]^{-1}= p_*(\pi(\widetilde{X},\widetilde{x_0}))$$
+
+$\forall [\alpha]\in \pi(X,x_0)$. Sea $\widetilde{\alpha}$ el levantamiento de $\alpha$ en $(\widetilde{X},\widetilde{x_0})$ y sea $\widetilde{x_1} = \widetilde{\alpha}(1)$, entonces por la proposici\'on (\ref{Conj}):
+
+$$[\alpha]p_*(\pi(\widetilde{X},\widetilde{x_0}))[\alpha]^{-1}=p_*(\pi(\widetilde{X},\widetilde{x_1}))$$
+
+As\'i $p_*(\pi(\widetilde{X},\widetilde{x_0}))$ es normal si y s\'olo si
+
+\begin{equation}
+[\alpha]p_*(\pi(\widetilde{X},\widetilde{x_0}))[\alpha]^{-1}=p_*(\pi(\widetilde{X},\widetilde{x_1}))
+\end{equation}
+
+Para cualquier $\widetilde{x_1} \in \widetilde{X}$ que sea el fin de alg\'un levantamiento $\widetilde{\alpha}$ de un lazo $\alpha$. Pero como $\widetilde{X}$ es conexo por trayectorias, estos puntos cubren a toda la fibra $p^{-1}(x_0)$, pues si conectamos a cualesquiera dos puntos en $p^{-1}(x_0)$ con una trayectoria y la proyectamos, obtenemos un lazo en $(X,x)$. Por lo tanto $p_*(\pi(\widetilde{X},\widetilde{x_0}))$ es un subgrupo normal si y s\'olo si la igualdad (1) se da para cualquier $\widetilde{x_1} \in p^{-1}(x_0)$. Por el Teorema de isomorfismos entre espacios cubrientes(\ref{Iso}) la igualdad (1) ocurre si y s\'olo si existe un isomorfismo (que en este caso es un deslizamiento) $\psi: \widetilde{X} \rightarrow \widetilde{X}$ tal que $\psi(\widetilde{x_1})=\widetilde{x_0}$ para cualesquiera $\widetilde{x_0}, \widetilde{x_1} \in p^{-1}(x_0)$, lo cual es la definici\'on de proyecci\'on normal.\\
+
+\textbf{ii)} Definimos una funci\'on:
+
+$$ \varphi: p_*(\pi(\widetilde{X},\widetilde{x_0})) \rightarrow D(p) $$
+
+de la siguiente manera: Sea $[\alpha]\in N(p_*(\pi(\widetilde{X},\widetilde{x_0})))$, entonces por lo mencionado anteriormente 
+
+$$[\alpha]p_*(\pi(\widetilde{X},\widetilde{x_0}))[\alpha]^{-1}=p_*(\pi(\widetilde{X},\widetilde{x_1}))$$
+
+donde $x_1=\widetilde{\alpha}(1)$ con $\widetilde{\alpha}$ el levantamiento de $\alpha$. Como vimos anteriormente, la igualdad (1) implica la existencia de un \'unico deslizamiento $\mu \in D(p)$ tal que 
+$\mu(\widetilde{x_0})=\widetilde{x_1}$. Definimos $\varphi([\alpha])=\mu$, por la unicidad del levantamiento $\mu$ y por el Teorema de Levantamiento de Trayectorias $\varphi$ est\'a bien definida, verifiquemos que $\varphi$ es un epimorfismo.\\
+Sean $[\alpha],[\beta]\in N(p_*(\pi(\widetilde{X},\widetilde{x_0})))$, $\varphi([\beta])= \nu$ y $\varphi([\alpha])= \mu$, consideremos $\widetilde{\beta}$ y $\widetilde{\alpha}$ los levantamientos de $\beta$ y $\alpha$ cuyo punto de inicio sea $\widetilde{x_0}$, llamemos $\widetilde{y_1}=\widetilde{\beta}(1)=\nu(x_0)$, entonces el lazo $\alpha * \beta$ se levanta en la trayectoria $\widetilde{\alpha} *(\mu \circ \widetilde{\beta})$ ya que 
+$p (\circ \widetilde{\alpha} *(\mu \circ \widetilde{\beta}))=(p \circ \widetilde{\alpha}) *(p \circ \mu \circ \widetilde{\beta})= \alpha *( p \circ \widetilde{\beta}) = \alpha * \beta $, pues como $\mu$ es un deslizamiento $p \circ \mu = p$. As\'i $\widetilde{\alpha} *(\mu \circ \widetilde{\beta})$ es el levantamiento de $\alpha * \beta$ que comienza en el punto $\widetilde{x_0}$ y termina en el punto $\mu(\widetilde{\beta}(1))=\mu(\widetilde{y_1})=\mu(\nu(\widetilde{x_0}))= \mu \circ \nu (\widetilde{x_0})$. Por definici\'on $\varphi([\alpha][\beta])$ es el \'unico deslizamiento de $p$ que manda el punto $\widetilde{x_0}$ al t\'ermino del levantamiento 
+$\widetilde{\alpha * \beta}= \widetilde{\alpha} *(\mu \circ \widetilde{\beta})$, que es el punto $\mu \circ \nu(\widetilde{x_0})$, por lo tanto $\mu \circ \nu$ y $\varphi([\alpha][\beta])$ son levantamientos que coinciden en un punto ($\widetilde{x_0}$), lo que significa que $\varphi([\alpha][\beta])=\mu \circ \nu = \varphi([\alpha]) \circ \varphi([\beta])$, por lo tanto $\varphi$ es un homomorfismo.\\
+
+Ahora veamos que es suprayectivo. Sea $h \in D(p)$, si $h(\widetilde{x_0})= x_*$ y sea $\widetilde{\alpha}:\widetilde{x_0} \sim x_*$ una trayectoria que une $\widetilde{x_0}$ con  $x_*$, entonces por la proposici\'on (\ref{Conj}) 
+$p \widetilde{\alpha} = \alpha \in N(p_*(\pi(\widetilde{X},\widetilde{x_0}))$, adem\'as por definici\'on $\varphi(\alpha)= h$ por lo que $\varphi$ es suprayectiva.\\
+
+Ahora s\'olo veamos qui\'en es el Kernel de $\varphi$, 
+$Ker\varphi=\lbrace[\alpha]\in N(p_*(\pi(\widetilde{X},\widetilde{x_0}))) \vert \varphi([\alpha])=Id_{\widetilde{X}} \rbrace = \lbrace[\alpha]\in N(p_*(\pi(\widetilde{X},\widetilde{x_0}))) \vert \hbox{{\textit{El levantamiento de $\alpha$ es un lazo}}}  \rbrace = p_*(\pi(\widetilde{X},\widetilde{x_0}))$ la \'ultima igualdad se debe al corolario (\ref{ProyMono}), entonces por El Primer Teorema de Isomorfismos $D(p) \approx N(p_*(\pi(\widetilde{X},\widetilde{x_0})))/p_*(\pi (\widetilde{X},\widetilde{x_0}))$.\\ 
+\end{proof}
+
+\begin{corollary}
+Si $p$ es una proyeci\'on normal $D(p) \approx \pi(X,x_0)/p_*(\pi (\widetilde{X},\widetilde{x_0}))$
+\end{corollary}
+
+\begin{corollary}
+Si $p$ es una proyeci\'on normal y $\widetilde{X}$ es simplemente conexo, entonces $D(p) \approx \pi(X,x_0)$
+\end{corollary}
+
+
+\section{Acciones de Grupos}
+
+
+\begin{definition}
+
+Sea $X$  un conjunto y $G$ un grupo. Decimos que $G$ \textbf{act\'ua sobre $X$} (denotado $G \curvearrowright X$) y $X$ es un $G$-conjunto si existe una funci\'on
+
+$$ \alpha :G \times X \rightarrow X$$
+
+donde denotaremos como 
+
+$$ \alpha(g,x):= gx$$
+
+tal que cumple las siguientes condiciones:\\
+
+\begin{description}
+\item[i)]$ex=x, \forall x \in X$ donde $e$ denota al elemento neutro del Grupo
+
+\item[ii)]$(g*h)x=g(hx), \forall x \in X$ y $\forall g,h \in G$\\
+\end{description}
+
+Si $X$ es un espacio topol\'ogico y la acci\'on $ \alpha :G \times X \rightarrow X$ dotando a $G$ con la topolog\'ia discreta es continua, entonces decimos que X es un $G$-espacio.\\
+\end{definition}
+
+Notemos que si tenemos una acci\'on $\alpha$ de un grupo $G$ sobre un espacio $X$, las funciones $g:X \rightarrow X$ ($g \in G$ fija) dadas por: $g(x):= \alpha (g,x):=gx$, son homeomorfismos.
+
+\begin{definition}
+
+Sea $X$ un espacio topol\'ogico y $G$ un grupo tal que $G \curvearrowright X$ definimos los siguinetes conjuntos:
+
+\begin{description}
+\item[i)]$G(x):=\lbrace gx \: | \: g \in G \rbrace \subset X$ le llamamos la \textbf{\'orbita} de $x \in X$
+
+\item[ii)]$G_x:=\lbrace g \in G  \: | \:  gx=x \rbrace \leq G $ le llamamos el \textbf{estabilizador} de $x \in X$\\
+\end{description}
+
+Decimos que la acci\'on $G \curvearrowright X$ es libre si $G_x=\lbrace e \rbrace, \forall x \in X$.\\
+
+\end{definition}
+
+Se queda como ejercicio al lector verificar que $G_x$ es un subgrupo de $G, \forall x \in X$ y que las \'orbitas forman una partici\'on de $X$ bajo la relaci\'on de equivalencia $x \sim y \Leftrightarrow y=gx, g \in G$
+
+
+\begin{definition}
+
+Sea $G \curvearrowright X$ una acci\'on, con $X$ un espacio topol\'ogico, denotamos al conjunto de \'orbitas como:
+
+$$ X/G:=\lbrace G(x) \: | \: x \in X\rbrace $$
+
+Dotando a $X/G$ con la topolog\'ia cociente lo llamaremos \textbf{el espacio de \'orbitas de $G \curvearrowright X$} o simplemente \textbf{espacio orbital}.
+
+\end{definition}
+
+\begin{definition}
+
+Sea $X$ un $G$-espacio. Decimos que la acci\'on $G \curvearrowright X$ es propia, si para cada $x \in X$ existe una vecindad $V$ (a la que llamaremos vecindad peque\~na) que cumple $gV \cap hV= \varnothing$ para cualquier $g,h \in G$ con $g \neq h$, donde
+
+$$gV:=\lbrace gy \: | \: y \in V\rbrace $$
+
+\end{definition}
+
+Observemos de la definici\'on que toda acci\'on propia es libre. En efecto, si tomamos $x \in X$ y $V$ una vecindad peque\~na de $x$, entonces si $g \in G, g\neq e$, tenemos que $gx \in gV$. Como $V$ es peque\~na $gV \cap V= \varnothing$ por lo que se tiene que $gx \neq x$.\\
+
+En la literatura matem\'atica, las acciones propias tienen el desfortunado nombre de \textbf{acciones propiamente discontinuas} el cual no usaremos en este texto.
+
+Uno se puede preguntar sobre las propiedades de la proyecci\'on orbital $p: X \rightarrow X/G$ en particular uno se uede preguntar cu\'ando dicha funcion es cubriente, a continuaci\'on daremos condiciones necesaria y suficientes para que la proyecci\'on orbital sea cubriente, pero primero necesitamos una cuantos resultado preliminares.\\
+
+\begin{lemma}
+Sea $X$ un y $G \curvearrowright X$ una acci\'on, entonces la proyecci\'on orbital $p:X \rightarrow X/G$ es una funci\'on abierta. 
+\end{lemma} 
+
+\begin{proof}
+Sea $V$ abierto en $X$, queremos ver que $p(V)$ es abierto en $X/G$ con la topologi\'ia cociente, veamos que $p^{-1}(p(V))=\lbrace x \in X \: |  \: p(x) \in p(V)\rbrace = \lbrace x \in X \: | \: gx \in gV , g \in G \rbrace = \lbrace gx \: | \: x \in V, g \in G  \rbrace = \bigcup_{g \in G}gV$, como las funciones $g:X \rightarrow X, g \in G$ son homeomorfismos entonces $gV$ son abiertos en $X$ $\forall g \in G$, entonces por definici\'on de abierto en la topolog\'ia cociente $p(V)$ es abierto.\\ 
+\end{proof}
+
+
+\begin{theorem}\label{PropImplicCubr}
+Sea $X$ un $G$-espacio tal que $G \curvearrowright X$ sea propia, entonces la proyecci\'on orbital $p:X \rightarrow X/G$ es una proyecci\'on cubriente.
+\end{theorem}
+
+\begin{proof}
+Sea $x \in X$ y $V$ una vecindad peque\~na de $x$. Puesto que $p$ es un funci\'on continua y abierta, $p(V)$ es una vecindad del punto $G(x) \in X/G$ y adem\'as sabemos que 
+
+$$p^{-1}(p(V))= \bigcup_{g \in G} gV$$ 
+
+pero como $V$ es peque\~na $gV \cap hV = \varnothing, h \neq g$ por lo que la uni\'on es una uni\'on disjunta de abiertos, adem\'as la funci\'on $p \vert_{gV}:gV \rightarrow p(V)$ es continua, abierta y biyectiva, por lo tanto es un homeomorfismo.\\
+\end{proof}
+
+
+\begin{theorem}
+Sea $G$ un grupo finito y $X$ un espacio Hausdorff libre, si $G \curvearrowright X$ es una acci\'on libre, entonces tambi\'en es propia 
+\end{theorem}
+
+\begin{proof}
+Como $G$ es un grupo finito digamos que $G=\lbrace e= g_0,g_1,...,g_n\rbrace$, entonces sea $x \in X$, puesto que $X$ es de Hausdorff y la acci\'on $G \curvearrowright X$ es propia, existen vecindades
+
+$$U_0,U_1,...,U_n$$ 
+
+de los puntos $g_0x,g_1x,...,g_nx$ respectivamente tales que $U_0 \cap U_i =\varnothing$ para todo $1 \leq i \leq n$, entonces la intersecci\'on 
+
+$$ V:= \bigcap_{i=o}^n g^{-1}_iU_i$$
+
+es una vecindad de $x$ tal que $V \subset U_0$ pues $g^{-1}_0U_0=eU_0=U_0$.\\
+
+Luego $g_jV= g_j \bigcap_{i=o}^n g^{-1}_iU_i= \bigcap_{i=o}^n g_jg^{-1}_iU_i \subset U_j$, esto imploca que si tenemos $g_jV \cap g_k V= g_k((g_k^{-1}g_jV)\cap V)=(g_k(g_iV \cap  V))$ para alg\'un $0 \leq i \leq n$ como $g_iV \cap V \subset U_i \cap U_0$, si $k \neq j$, entonces $ 1 \leq i$ y por lo tanto $g_iV \cap V = \varnothing$ con lo cual $g_jV \cap g_kV= \varnothing$. As\'i $V$ es la vecindad peque\~na de $x$ y por lo tanto $G \curvearrowright X$ es propia.\\
+\end{proof}
+
+\begin{theorem}
+Sea $G \curvearrowright X$ una acci\'on libre sobre el $G$-espacio $X$, entonces la proyecci\'on orbital $p:X \rightarrow X/G$ es cubriente si y s\'olo si $G \curvearrowright X$ es propia.
+\end{theorem}
+
+\begin{proof}
+Como el regreso ya fue probado (Teorema \ref{PropImplicCubr}) s\'olo nesitamos probar la suficiencia. 
+
+Supongamos que $p:X \rightarrow X/G$ es cubriente. Dado $x \in X$, sea $U$ una vecindad de $p(x)$ tal que 
+
+$$ p^{-1}(U)= \bigsqcup_{i \in I}V_i$$
+
+y tal que la restricci\'on $p \vert_{V_i}:V_i \rightarrow U$ sea un homeomorfismo. Como $p(x)\in U$, existe una \'unica vecindad $V_i$ tal que $x \in V_i$. Afirmamos que $V_i$ es una vecindad peque\~na de $x$. En efecto, dado $g \in G, g \neq e$, si $y \in gV_i \cap V$, tenemos que $y=gv,y \in V_i$ para alg\'un $v \in V$, por lo que $p(y)=p(gv)=p(v)$ pero como $p \vert_{V_i}:V_i \rightarrow U$ es un homeomorfismo, en particular es inyectiva entonces $v=y$, lo que implica que $y=gy$ lo cual es imposible pues la acci\'on es libre, lo que significa que $gV_i \cap V_i=\varnothing$.\\  
+\end{proof}
+
+\begin{theorem}
+Sea $G \curvearrowright X$ una acci\'on propia con $X$ $G$-espacio global y localmente conexo por trayectorias, entonces se afirma lo siguiente:
+
+\begin{description}
+\item[i)]La proyecci\'on orbital $p:X \rightarrow X/G$ es una proyecci\'on cubriente normal.
+
+\item[ii)]$G$ es isomorfo al grupo de deslizamientos de $p:X \rightarrow X/G$
+
+\item[iii)]$G$ es isomorfo al cociente $\pi(X/G)/p_*(\pi(X))$
+\end{description}
+\end{theorem}
+
+\begin{proof}
+Por los Teoremas \ref{PropImplicCubr} y \ref{DescripDesliz} es suficiente con probar que $G \approx D(p)$ y que $p$ es una proyecci\'on normal.\\
+Sea $\varphi:G \rightarrow D(p)$ tal que $\varphi (g)(x):=g(x)=gx$, notemos que $\varphi(g)$ es siempre un deslizamiento. En effecto, pues si tomamos $g \in G$, como los puntos $x$ y $gx$ tienen la misma \'orbita para cualquier $x\in X$, tenemos que $p \circ \varphi(g) = p$, as\'i $\varphi (g) \in D(p) \forall g \in G$. Verifiquemos que $\varphi$ es un homomorfismo. Sean $g,h \in G$ y $x \in X$, entonces $\varphi(g*h)(x)=g*h(x)=g(h(x))=g \circ h (x)$, por lo tanto $\varphi(g*h)=\varphi(g)\circ \varphi(h)$ lo que significa que $\varphi$ es un homomorfismo, notemos que $\varphi$ inmediatamente es un monomorfismo pues por hip\'otesis la acci\'on  es propia. Falta probar que $\varphi$ es un epimorfismo, sea $h \in D(p)$ tal que $h(x_1)=x_2$, donde $x_1,x_2 \in X$, como $ph=p$, los puntos $x_1$ y $x_2$ est\'an en la misma \'orbita, por lo tanto existe $g \in G$ tal que $gx_1=x_2$. As\'i $\varphi(g)$ y $h$ son dos levantamientos de $p$ que coinciden en $x_1$, como $X$ es conexo $\varphi(g)=h$. Con esto no s\'olo probamos que $\varphi$ es un isomorfismo. Ahora si $p(x_1)=p(x_2)$, entonces $x_1,x_2$ est\'an en la misma \'orbita, por lo que existe $g \in G$ tal que $gx_1=x_2$, lo que implica que $\varphi(g)(x_1)=x_2$, como $\varphi(g) \in D(p)$, significa que $p$ es propia.\\
+\end{proof}
+
+\begin{corollary}
+Sea $p:X \rightarrow X/G$ la proyecci\'on orbital de una acci\'on $G \curvearrowright X$ propia, donde $X$ es simplemente conexo, entonces $\pi(X/G) \approx G$.\\
+\end{corollary}
+
+\begin{theorem}
+Sea $p:\widetilde{X} \rightarrow X$ una proyecci\'on cubriente. Si $\widetilde{X}$ es conexo y localmente conexo por trayectorias, entonces la acci\'on del grupo de deslizamientos $D(p)$ a $\widetilde{X}$ es propia.
+\end{theorem}
+
+\begin{proof}
+Sea $a \in \widetilde{X}$ y $U$ una vecindad admicible del punto $p(a) \in X$. Como $\widetilde{X}$ es localente conexo por trayectorias (y por lo tanto tambi\'en lo es $X$), podemos suponer que $U$ es conexa por trayectorias, entonces\\ 
+
+$$p^{-1}(U)=\bigsqcup_{i \in I}V_i$$
+ 
+Donde los $V_i$ son las componentes conexas por trayectorias de $p^{-1}(U)$. Sea $V_k$ la componente que contiene al punto $a$. Afirmamos que $V_k$ es la vecindad peque\~na de $a$. En efecto, sea $h \in D(p), h \neq Id_{\widetilde{X}}$. Verifiquemos que $h(V_k) \cap V_k = \varnothing$, como sabemos la acci\'on ejercida por el grupo de deslizamientos en $\widetilde{X}$ es libre, entonces $h(a) \neq a$, adem\'as sabemos que $ph(a)=p(a)$, lo que significa que $h(a) \in V_j$ para alg\'un $j \neq k \in I$, esto nos indica que $h(V_k) \cap V_j \neq \varnothing$. Como $V_k$ es conexa por trayectorias, entonces $h(V_k)$ es conexa por trayectorias, adem\'as sabemos que las $V_i$ son componentes conexas por trayectorias, lo que singifica que si $h(V_k) \cap V_j \neq \varnothing$ entonces $h(V_k) \subset V_j$. Como $V_k \cap V_j$ entonces se sigue inmediatamente que $h(V_k) \cap V_j = \varnothing$ que era lo que quer\'iamos.\\  
+\end{proof}
+
+Notemos que si $p:\widetilde{X} \rightarrow X$ es una proyecci\'on cubriente y consideramos la acci\'on de $D(p)$ en $\widetilde{X}$. Como para cada $g \in D(p)$ se cumple que $p \circ g=p$, concliumos que $p:\widetilde{X} \rightarrow X$ es constante en las fibras de la proyecci\'on orbital $\pi:\widetilde{X} \rightarrow \widetilde{X}/D(p)$. Por lo tanto por el Teorema de Transgreci\'on, existe $p':\widetilde{X}/D(p) \rightarrow X$ tal que el siguente diagrama conmuta:\\
+
+$$ \xymatrix{    & \widetilde{X} \ar[dl]_{\pi} \ar[d]^{p}\\
+             \widetilde{X}/D(p) \ar[r]^{p'} & X} $$
+
+Eso nos lleva al siguiente Teorema:\\
+
+\begin{theorem}
+Si $p:\widetilde{X} \rightarrow X$ es una proyecci\'on cubriente normal y $\widetilde{X}$ es global y localmente conexo por trayectorias, entonces la funci\'on $p':\widetilde{X}/D(p) \rightarrow X$ del diagrama es un homeomorfismo.\\ 
+\end{theorem}
+
+\begin{proof}
+Como $p$ es una funcion abierta (Proposici\'on\ref{ProyAb}), entonces la funci\'on $p'$ inducida por $p$ tambi\'en lo es ya que para todo abierto $U \subset \widetilde{X}/D(p)$, tenemos que $p'(U)=p(\pi^{-1}(U))$. Ahora como $p$ es normal tenemos que $p^{-1}(x),x \in X$ es una orbita bajo la acci\'on del grupo $D(p)$. Esto implica que $p'$ es biyectiva, por lo tanto como $p'$ es biyectiva, continua y abierta, entonces es un homeomorfismo.\\ 
+\end{proof}
+
+\begin{example}\label{mobius}(La banda de Moebius)
+Sea $X:= \mathbb{R} \times [0,1] \subset \mathbb{C}$, consideremos al grupo $G=\mathbb{Z}$ y a la funci\'on $\varphi:X \rightarrow X$ definida por:\\
+
+$\varphi(z)=\overline{z}+1+i, \quad \varphi^{-1}(z)=\overline{z}-1+i$\\
+
+Definamos la acci\'on $\mathbb{Z} \curvearrowright X$ de la siguiente forma:\\
+
+$n*z= \varphi^{n}(z)$, entonces el espacio de \'orbitas $X / \mathbb{Z}$ es la banda de Moebius. Queda al lector verificar que esta acci\'on es propia, pero como este es el caso podemos deducir que $\pi(X/\mathbb{Z}) \approx \mathbb{Z}$.
+\end{example}
+
+\begin{example}(El espacio proyectivo $\mathbb{RP}^{n}$)
+Sea $\mathbb Z_2 \curvearrowright \mathbb S^{n}$ la acci\'on antipodal, (i.e. tomando a $\mathbb Z_2=\lbrace -1,1 \rbrace$)   y $1*x=x, \quad -1*x=-x$.\\
+
+Definimos $\mathbb{RP}^{n}= \mathbb S^{n}/\mathbb Z_2$. Consecuentemenete, $\pi(\mathbb{RP}^{n}) \approx \mathbb Z_2$. 
+\end{example}
+
+\begin{example}(El espacio lenticular)
+Sean $p$, $q$ dos n\'umeros enteros primos relativos. Consideramos la acci\'on del grupo c\'iclico $\mathbb Z_p$ sobre $\mathbb S^3$ dada por:\\
+
+$\xi*(z,w):=(e^{2 \pi i/p}z,e^{2 \pi iq/p}w)$, donde $\mathbb Z_p=\lbrace 1,\xi,\xi^2,...,\xi^{p-1} \rbrace, \xi = e^{2 \pi i/p}$, $\mathbb S^3 \lbrace (z,w) \in \mathbb C^2 \: \mid \: |z|^2  + |w|^2=1 \rbrace$.\\
+
+Definimos $\mathbb{L}(p,q)= \mathbb S^3/\mathbb Z_p$ el espacio lenticular, se puede notar que $\pi(\mathbb{L}(p,q))\approx \mathbb Z_p$
+\end{example}
+
+\section{Ejercicios del Cap\'itulo}
+
+\begin{enumerate}
+
+\item Sean $\alpha \in \mathbb R \setminus \lbrace0\rbrace$ y $p:\mathbb{R} \rightarrow \mathbb S^1$ definida por $p(t) = e^{i\alpha t}$ para todo $t \in \mathbb{R}$. Demuestre que $p$ es una proyecci\'on cubriente.\\
+
+
+\item Sea $g: \mathbb C \setminus \lbrace 0 \rbrace \rightarrow  \mathbb C \setminus \lbrace 0 \rbrace$ definida por $g(z) = z^n$, donde n es un entero fijo distinto de 0.
+ 
+ \begin{enumerate}
+ 
+\item Demuestre que $g$ es una proyecci\'on cubriente.
+\item Pruebe que para cada $n \neq 0,1$; la funci\'on $g': \mathbb{C} \rightarrow \mathbb{C}$ dada por $g'(z) = z^n$ no es una proyecci\'on cubriente.\\
+
+ \end{enumerate}
+
+\item Sea $G$ un grupo y $X$ un $G$-espacio libre de Hausdorff. Demuestre que $G \curvearrowright X$ es propia si y s\'olo si para cualquier $x \in X$ existe una vecindad $U$ de $x$ tal que el conjunto
+
+$$ <U,U> := \lbrace g \in G \: | \: gU \cap U\rbrace $$ 
+
+es finito.\\
+
+\item Sean $p_1: X_1 \rightarrow X$ Y $p_2: X_2 \rightarrow X$ dos proyecciones cubrientes, decimos que $p_2$ \textbf{domina} a $p_1$ si existe un morfismo cubriente $h:X_2 \rightarrow X_1$. Utilizaremos $p_1 \leq p_2$ para decir que $p_1$ \textbf{domina} a $p_2$. Suponiendo que todos los espacios son conexos demustre que ($\leq$) es un orden parcial de proyecciones cubrientes.\\
+
+\item Para cada $f: \mathbb S^1 \rightarrow \mathbb S^1$ definimos el grado de $f$ como el grado de la composici\'on $f \circ e$, donde $e: I \rightarrow \mathbb S^1$ est\'a dada por $e(t) = e^{2 \pi it}$. Si $n$ es un entero distinto de cero y $p: \mathbb S^1  \rightarrow \mathbb S^1$ es la proyecci\'on cubriente dada por $p(z) = z^n$, demuestre que una funci\'on $f: \mathbb S^1 \rightarrow \mathbb S^1$ posee levantamiento si y s\'olo si su grado es m\'ultiplo de $n$.\\
+
+\item Demuestre que la acci\'on del grupo de deslizamientos de un espacio cubriente es propia.\\
+
+\item Demuestre que la acci\'on del ejemplo \ref{mobius} es propia.\\
+
+\item Demuestea que el grupo fundamental del espacio lente $\mathbb{L}(p,q)$ es isomorfo a $\mathbb Z_p$.\\
+
+\item Para cada grupo abeliano finitamente generado $G$, encuentra un espacio topol\'ogico $X$ y un punto $x_0 \in X$, tales que $\pi(X,x_0)$ sea isomorfo a $G$ (Hint: Utilize el Teorema Fundamental de los grupos abelianos finitamente genenerados).\\
+
+\item Sea $h: \mathbb{C} \rightarrow \mathbb{C}$ y $g: \mathbb{C} \rightarrow \mathbb{C}$ los homeomorfismos del plano complejo $\mathbb{C}$ definidos por:
+
+$$h(z)=z+i$$
+$$g(z)=\overline{z}+1/2+i$$
+
+Demuestre que:
+
+ \begin{enumerate}
+
+\item Tanto $g$ como $h$ son invertibles y cumplen que $g \circ h = h^{-1} \circ g$.\\
+
+\item $G=\lbrace h^m g^n \: | \: m,n \in \mathbb{Z} \rbrace$ es un grupo de homeomorfismos de $\mathbb{C}$ y la acci\'on $G \curvearrowright \mathbb{C}$ es propia.\\
+
+\item Demuestre que el espacio cociente $\mathbb{C}/G$ es homeomorfo a la botella de Klein $K^2$ (Hint: Encuentre un dominio fundamental de la acci\'on $G \curvearrowright \mathbb{C}$ que sea un rect\'angulo).\\
+
+\item Demuestre que $\pi(K^2) \approx G$.\\ 
+
+ \end{enumerate}
+
+\item Construya una proyecci\'on cubriente del toro sobre la botella de Klein tal que cada fibra
+tenga cardinalidad 2.\\
+
+\item Para cada natural $n \neq 0$, construya una proyecci\'on cubriente $p_n$ defnida en el toro con
+valores en la botella de Klein tal que cada fibra tenga cardinalidad $2n$.\\
+
+\item Para cada mapeo cubriente del ejercicio anterior, demuestre que la funci\'on identidad en la
+botella de Klein no posee un levantamiento al toro.\\
+
+\end{enumerate}
+
+\end{document}

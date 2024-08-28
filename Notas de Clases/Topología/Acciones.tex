@@ -1,0 +1,248 @@
+%%%%%%%%%29/oct/2008%%%%%%%%%%%%%%%%
+\chapter{Acciones de grupos}
+
+
+\section{Acciones de grupos en conjuntos y espacios}
+
+\begin{definition} Sean $G$ un grupo y $X$ un espacio topológico. Dotemos además a $G$ de la topología discreta. 
+Una \textbf{acción} de $G$ en $X$ es una función continua $\theta:G\times X\to X$
+(donde denotaremos $\theta(g,x)$ simplemente como $gx$) que satisface:
+\begin{enumerate}
+\item $g(hx)= (g\cdot h)x~~\forall x\in X,~\forall g,h\in G$, donde $\cdot$ es la operación de $G$.
+\item $ex=x~~\forall x\in X$, donde $e$ es el elemento neutro de $G$.
+\end{enumerate}
+Al espacio $X$ junto con la acción de $G$ se le denomina $G$-espacio.
+\end{definition}
+
+
+\begin{example}[Ejemplos]
+\begin{enumerate}
+	\item Cualquier grupo $G$ actúa en cualquier espacio $X$ de manera trivial haciendo
+  $gx=x\forall g\in G, \forall x\in X$
+	\item $G = \mathbb{Z}_2 = \{1,-1\}$, act\'ua en $X = \mathbb{S}^n$ mediante la multiplicaci\'on usual: $-1 \cdot x = -x$.
+	\item $G = \mathbb{Z}$ act\'ua en $X = \mathbb{R}$ por traslaciones enteras: $n \cdot x = n + x$. 
+	\item $G = \mathbb{Z} \times \mathbb{Z}$ act\'ua en $X = \mathbb{R}^2$ por $(m,n) \cdot (x,y) = (m+x,n+y)$. 
+	\item $G = \mathbb{Z}$ act\'ua en $X =\{(x,) \in \mathbb{R}^2 \:|\: -\frac{1}{2} \leq y \leq \frac{1}{2} \}$ por $m \cdot (x,y) = (m+x,(-1)^my)$.
+	\item Si $X$ es un grupo y $G\subset X$ un subgrupo, $G$ act\'ua en $X$ por traslaciones izquierdas: $g\cdot x = gx$.
+	\item Si adem\'as $H \subset X$ es subgrupo, $G$ act\'ua en las clases laterales derechas $X/H$ por las mismas traslaciones: $g\cdot xH = gxH$.
+\end{enumerate}
+\end{example}
+
+En este contexto, cada elemento $g$ del grupo actuante induce una transformación del espacio $X$ en sí mismo $\widetilde{g}:X\to X$ dada por $\widetilde{g}(x)=gx$. Esta transformación resulta ser un homeomorfismo, como se demuestra enseguida. A a ésta función se le suele llamar la \textbf{traslación} inducida por $g$.
+\begin{proposition} Sea $X$ un $G$-espacio. Para cada $g\in G$, la traslación $\tilde{g}:X\to X$ es un homeomorfismo.\end{proposition}
+\begin{proof} En primer lugar $\widetilde{g}$ es continua por ser la composición del encaje $h_g:X\to G\times X$ dado por $h_g(x)=(g,x)~\forall x\in X$, seguido de la acción $\theta:G\times X\to X$. De la definición de acción se sigue que para todo $g,h\in G$ se tiene que $\widetilde{g\circ h}=\widetilde{g}\circ\widetilde{h}$, y además $\widetilde{e}=\mathrm{Id}_X$, así
+$\widetilde{g}\circ\widetilde{g^{-1}}=\widetilde{g\circ g^{-1}}=\widetilde{e}=\mathrm{Id}_X$ y anánogamente $\widetilde{g^{-1}}\circ\tilde{g}$, de donde $\widetilde{g^{-1}}$ es la inversa de $\widetilde{g}$, y es a su vez continua por las mismas razones esgrimidas arriba. Podemos concluir que $\widetilde{g}$ es un homeomorfismo, como buscábamos demostrar. 
+\end{proof}
+
+Cabe resaltar aquí que del claro hecho de que para todo $g, h\in G$ se tiene que $\widetilde{g\cdot h}=\widetilde{g}\circ\tilde{h}$ y de la proposición anterior se desprende que la asociación $~:G\to \mathrm{Homeo}(X)$, dada por $~(g)=\widetilde{g}$ es de hecho un homomorfismo, donde $\mathrm{Homeo}(X)$ es el grupo de homeomorfismos de $X$ en sí mismo, con la composición como operación. Esta observación nos permite llegar a la siguiente
+\begin{definition} La acción de $G$ en $X$ se llama \textbf{efectiva} si el homomorfismo $~$
+es un monomorfismo. En otras palabras, si $\widetilde{g}=\mathrm{Id}_X$ implica que $g=e$.
+\end{definition}
+\begin{definition} Una acción de $G$ en $X$ se denomina \textbf{libre} si $\forall g\in G\setminus\{e\}$ y $x\in X$ se tiene que $gx\neq x$. 
+\end{definition}
+
+Es claro que toda acción libre es efectiva, pero existen numerosos ejemplos de acciones efectivas que no son libres.
+\begin{example}
+Sea $X=\mathbb{C}$ el plano complejo y $G=\mathbb{S}^1\subset\mathbb{C}$ la circunferencia unitaria vista como subespacio del plano complejo. Consideremos la acción de $\mathbb{S}^1$ en $C$ dada por la multiplicación usual $(z,w)\mapsto zw$. Esta acción es libre pues para $z_1\neq z_2\in\mathbb{S}^1$, $\widetilde{z_1}(1)=z_1\cdot 1=z_1\neq z_2=z_2\cdot 1=\widetilde{z_2}(1)$, por lo que $\widetilde{z_1}\neq\widetilde{z_2}$ y así el homomorfismo \textasciitilde es inyectivo.
+Sin embargo, para todo $z\in\mathbb{S}^1$, se tiene que $z\cdot 0=0$, por lo que la acción no puede ser libre.
+\end{example}
+
+
+\begin{definition} sea $X$ un $G$-espacio y $x\in X$. El conjunto $G(x)=\{gx\mid g\in G\}$
+se llama \textbf{órbita} de $x$.
+\end{definition}
+\begin{proposition} Si $G(x)\cap G(y)\neq\emptyset$, entonces $G(x)=G(y)$. Esto es, las órbitas costituyen una partición para $X$.
+\end{proposition}
+\begin{proof} 
+Supongamos que $G(x)\cap G(y)\neq\emptyset$. Entoces existen $g_1$ y $g_2$ en $G$ tales  que
+$g_1 x=g_2 y$. Se sigue que $g_1^{-1}(g_1 x)=g_1^{-1}(g_2 y)$ y por tanto $x=(g_1^{-1}\cdot g_2) y$, de donde $x\in G(y)$. Además, para todo $gx\in G(x)$, $gx=(g\cdot g_1^{-1}\cdot g_2) y~\in G(y)$, y en consecuencia $G(x)\subset G(y)$. Análogamente puede verificarse que $G(y)\subset G(x)$. 
+\end{proof}
+\begin{definition} La asociación $p:X\to X/G=\{G(x)\mid x\in X\}$ dada por $p(x)=G(x)$ se
+conoce como \textbf{proyección orbital} y el conjunto $X/G$ dotado de la topología cociente respecto a la proyección orbital es el \textbf{espacio de órbitas}.
+\end{definition}
+\begin{theorem}
+ Sea $X$ un $G$-espacio. Entonces la proyecci\'on orbital $p:X \to X/G$ es una funci\'on continua y abierta.
+\end{theorem}
+\begin{proof}\hfill
+
+\begin{enumerate}
+\item $p$ es continua por la definición de topología cociente.
+\item Verifiquemos que es abierta. Sea $V\subset X$ abierto. Entonces $p(V)$ es abierto sí y sólo si $p^{-1}(p(V))$ lo es. Ahora bien, se tiene que
+\begin{align*}
+p^{-1}(p(V)) & =\{x\in X\mid p(x)\in p(V)\} \\
+             & =\{x\in X\mid \exists v\in V\mbox{tal que} p(x)=p(v)\} \\
+             & =\{x\in X\mid \exists v\in V\mbox{tal que} G(x)=G(v)\} \\
+             & =\bigcup\limits_{v\in V} G(v) \\
+             & =\cup\{gv\mid g\in G, v\in V\} \\
+             & =\bigcup\limits_{g\in G} \widetilde{g}(V) \\
+             \end{align*}
+Como $V$ es abierto y $\widetilde{g}$ es homeomorfismo, $\widetilde{g}(V)$ es abierto ara todo $g\in G$, luego $\bigcup\limits_{g\in G} \widetilde{g}(V)=p^{-1}(p(V))$ es abierto, y consecuentemente
+p(V) es abierto.
+\end{enumerate}
+\end{proof}
+
+
+
+\begin{enumerate}
+	\item $\mathbb{R} / \mathbb{Z} \cong \mathbb{S}^1$.
+	\item $\mathbb{S}^n / \mathbb{Z}_2 \cong \mathbb{R}P^n$. 
+	\item $\mathbb{R}^2 / \mathbb{Z} \times \mathbb{Z} \cong \mathbb{T}^2$. 
+	\item $\{(x,y) \in \mathbb{R}^2 \:|\: -\frac{1}{2} \leq y \leq \frac{1}{2} \} / \mathbb{Z} \cong M^2$, la banda de M\"obius.
+\end{enumerate}
+
+
+
+\section{Acciones propiamente discontinuas}
+
+\begin{definition}
+ Sean $G$ un grupo y $X$ un $G$-espacio. Decimos que $X$ es \textbf{propiamente discontinuo} si cada $x \in X$ tiene una vecindad $V$ 
+ tal que $gV \cap g'V = \emptyset$ para cualesquiera elementos distintos $g,g' \in G$. En estas condiciones, se dirá que $V$ es una vecindad \textbf{ delgada} de $x$.
+\end{definition}
+
+\paragraph{Nota} Toda acci\'on propiamente discotinua es libre; el rec\'iproco es falso.
+
+\begin{theorem}
+ Sea $X$ un $G$-espacio propiamente discontinuo. Entonces la proyecci\'on orbital $p:X \to X/G$ es una funci\'on cubriente.
+\end{theorem}
+
+\begin{proof}
+ Sean $x \in X$ un punto cualquiera y $U$ su vecindad delgada. Como $p$ es abierta, $p(U)$ es una vecindad de la \'orbita $G(x)=p(x) \in X/G$.
+ Adem\'as, 
+ \[ p^{-1}(p(U)) = \bigcap_{g \in G} gU   \]
+ y $\{gU \:|\: g \in G \}$ es una familia disjunta por la elecci\'on de $U$. Claramente las restricciones $p|_{gU} : gU \to p(U)$ son homeomorfismos.
+\end{proof}
+
+\paragraph{Ejemplos}
+
+\begin{enumerate}
+	\item $\mathbb{R}$ es un $\mathbb{Z}$-espacio propiamente discontinuo: para $x \in \mathbb{R}$, $(x- \frac{1}{3},x+ \frac{1}{3})$ es una
+              vecindad delgada. La proyecci\'on orbital $\mathbb{R} \to \mathbb{R}/\mathbb{Z}$ coincide con la funci\'on cubriente 
+              $exp:\mathbb{R} \to \mathbb{S}^1$.
+	\item $\mathbb{S}^n$ es un $\mathbb{Z}_2$-espacio propiamente discontinuo: para $x \in \mathbb{S}^n$, 
+              $\{y \:|\: \|y -x \| < \frac{1}{2} \}$ es una vecindad delgada.
+              La proyecci\'on orbital $\mathbb{S}^n \to \mathbb{S}^n/\mathbb{Z}_2$ coincide con la funci\'on cubriente 
+              $\mathbb{S}^n \to \mathbb{R}P^n$.
+\end{enumerate}
+%%%%%%%%%29/oct/2008%%%%%%%%%%%%%%%%
+
+%%%%%%%%%5/nov/2008%%%%%%%%%%%%%%%%%
+
+\begin{theorem}
+ Sean $G$ un grupo finito y $X$ un $G$-espacio libre de Hausdorff. Entonces $X$ es propiamente discontinuo.
+\end{theorem}
+
+\begin{proof}
+ Supongamos que $G=\{1=g_0,g_1,\ldots,g_n\}$ y $x \in X$. Entonces los distintos puntos $x=1x, g_1x, \ldots, g_nx$ tienen vecindades mutuamente
+ ajenas $U_j, \; j=0,\ldots,n$. Sea $U = \bigcap_j g_j^{-1}U_j$ que es vecindad de $X$. Entonces para cada $g_i$,
+ \[ g_iU = \bigcap_j g_i(g_j^{-1}U) \subset U_i   \]
+ por lo que
+ \[ g_iU \cap g_jU = g_j(g_j^{-1}g_iU \cap U) = g_j^{-1}(g_kU \cap U)   \]
+ donde $g_k=g_j^{-1}g_i$. Pero $g_kU \subset U_k$ y $U \subset U_0$ de modo que
+ \[ g_iU \cap g_jU \subset g_j^{-1}(U_k \cap U_0) = \emptyset   \quad \text{si} \; g_k \neq 1    \]
+ y esto \'ultimo sucede si y solo si $g_i \neq g_j$. Esto termina la demostraci\'on. 
+\end{proof}
+
+\begin{theorem}
+ Sea $X$ un $G$-espacio conexo por trayectorias provisto de una acci\'on propia del grupo $G$. Sean $x_0 \in X$ y $y_0 = p(x_0) \in X/G$ donde
+ $p:X \to X/G$ es la proyecci\'on orbital. Entonces hay un homomorfismo del grupo fundamental $\pi(X/G,y_0)$ al grupo $G$.
+\end{theorem}
+
+\begin{proof}
+ Sea $[\alpha] \in \pi(X/G,y_0)$. Como $p:X \to X/G$ es una funci\'o cubriente, existe un \'unico levantamiento $\widetilde{\alpha}:I \to X$
+ del lazo $\alpha \in \Omega(X/G,y_0)$ tal que $\widetilde{\alpha}(0) = x_0$. De este modo $\widetilde{\alpha}(1) \in p^{-1}(y_0)=G(x_0)$
+ por lo que hay un $g \in G$ tal que 
+ \[ \widetilde{\alpha}(1)=gx_0   \]
+ De hecho, al ser $X$ un $G$-espacio libre, este $g$ es \'unico. Denotemos entonces a $g$ por $g_{[\alpha]}$ y definamos 
+ $\xi:\pi(X/G,y_0) \to G$ como
+ \[ \xi([\alpha]) = g_{[\alpha]}.   \]
+ 
+ Verifiquemos que $\xi$ es homomorfismo de grupos. Dados $[\alpha], [\beta] \in \pi(X/G,y_0)$, sean $\widetilde{\alpha}$ y $\widetilde{\beta}$
+ los \'unicos levantamientos de $\alpha$ y $\beta$ respectivamente que empiezan en $x_0$. Consideremos entonces la trayectoria en $X$
+ \[ \psi = \widetilde{\alpha}*g_{[\alpha]}\widetilde{\beta}   \]
+ Es claro que 
+ \[ p\psi = (p\widetilde{\alpha})*(p(g_{[\alpha]}\widetilde{\beta}) = \alpha*\beta   \]
+ y $\psi(0) = x_0$. As\'i que $\psi$ es el \'unico levantamiento de $\alpha*\beta$ que comienza en $x_0$, ie.  $\psi = \widetilde{\alpha*\beta}$.
+ Por consecuente,
+ \[ \psi(1) = g_{[\alpha]}\widetilde{\beta}(1) = g_{[\alpha]}(g_{[\beta]}x_0) = g_{[\alpha][\beta]}x_0   \]
+ Por otro lado, $\psi(1)= \widetilde{\alpha*\beta}(1) = g_{[\alpha*\beta]}x_0 = g_{[\alpha][\beta]}x_0$ por lo que
+ \[ \xi([\alpha][\beta]) = g_{[\alpha][\beta]} = g_{[\alpha][\beta]} = \xi([\alpha])\xi([\beta])   \]
+ como se quer\'ia demostrar.
+\end{proof}
+
+\begin{proposition}
+ El n\'ucleo del homomorfismo $\xi: \pi(X/G,y_0) \to G$ es $p_*(\pi(X,x_0)$.
+\end{proposition}
+
+\begin{proof}
+ Sea $[\alpha] \in \pi(X/G,y_0)$ tal que $\xi([\alpha]) = 1$. Entonces $\widetilde{\alpha}(1)=x_0$ donde $\widetilde{\alpha}$ es el levantamiento
+ de $\alpha$ que empieza en $x_0$. Tenemos entonces que $\widetilde{\alpha} \in \Omega(X,x_0)$ y $p\widetilde{\alpha}=\alpha$. Esto implica
+ que 
+ \[  [\alpha] = p_*([\widetilde{\alpha}]) \in p_*(\pi(X/G,y_0))   \].
+\end{proof}
+
+\begin{corollary}
+ Sea $X$ un espacio conexo por trayectorias. Entonces $\pi(X/G,y_0) / p_*(\pi(X,x_0))$ y $G$ son isomorfos.
+\end{corollary}
+
+\begin{proof}
+ Basta ver que $\xi:\pi(X/G,y_0) \to G$ es suprayectiva. Sea entonces $g \in G$. Sea $\alpha_g$ una  trayectoria de $x_0$ a $gx_0$ en $X$.
+ Entonces $[p\alpha_g] \in \pi(X/G,y_0)$ y por la definici\'on de $\xi$ tenemos
+ \[ \xi([p\alpha_g])x_0 = \widetilde{p\alpha_g}(1)  \]
+ donde $\widetilde{p\alpha_g}$ es el levantamiento de $p\alpha_g$ que empieza en $x_0$. Este levantamiento es sin embargo es tambi\'en $\alpha_g$,
+ por consiguiente
+ \[ \xi([p\alpha_g])x_0 = \alpha_g(1) = gx_0   \]
+ de donde $\xi([p\alpha_g]) = g$.
+\end{proof}
+
+\begin{corollary}
+ Si $X$ es simplemente conexo entonces $\pi(X/G,y_0) \cong G$.
+\end{corollary}
+
+
+Teniendo estas herramientas, el siguiente paso natural es reconstruir espacios de interés conocidos como espacios de órbitas bajo una acción propiamente discontinua, para así poder calcular sus grupos fundamentales. El siguiente lema resuelve una situación que encontraremos en algunos ejemp`los interesantes.
+\begin{lemma}
+Sean $X$ un $G$-espacio tal que $X/G$ es de Hausdorff, y $A$ un subconjunto compacto de $X$ tal que $G(A)=X$. Si en $A$ está definida una función cociente $q:A\to Z$ con las mismas fibras que la proyección orbital (i.e. $q(a_1)=q(a_2)$ si y sólo si $G(a_1)=G(a_2)$), entonces $Z$ es homeomorfo a $X/G$.
+\end{lemma}
+
+
+
+
+\begin{proof}
+Tenemos que $p|_A$,la restricción de la proyección orbital en $A$, es constante en las fibras de $q$, que es una identificación. Por el teorema de transgresión, existe una única función $f:Z\to X/G$ tal que $f\circ q=p|_A$, y esta función además resulta continua. Ésta función está dada por $f(q(a))=G(a)$, y es claro por nuestras hipoótesis que además es biyectiva.
+Se tiene además que $A$ es compacto y $X/G$ es de Hausdorff, por lo que $f$ además es cerrada, y por lo tanto, un homeomorfismo.  
+
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+\begin{example}
+\begin{enumerate}
+ 	\item $\pi(\mathbb{S}^{1}) \cong \mathbb{Z}$
+	\item Sean $\varphi:\mathbb{C} \to \mathbb{C}$ y $\psi:\mathbb{C} \to \mathbb{C}$ los homeomorfismos
+	      \[ \varphi(z) = z + i \quad \text{y} \quad \psi(z) = \overline{z} + i   \]
+	      Entonces $\psi \varphi = \varphi^{-1}\psi$. Si $G=\{\varphi^m\psi^n \; |\; m,n \in \mathbb{Z} \}$, entonces $G$ es un grupo que
+ 	      act\'ua propiamente en $\mathbb{C}$ y $\mathbb{C}/G$ es homeomorfo a la botella de Klein.
+	\item Sea $\xi:\mathbb{C} \to \mathbb{R}^5$ dada por 
+              \[ \xi(x+iy) = (\cos 2\pi y,\cos 4\pi x,\sin 4\pi x,\sin 2\pi y \cos 2\pi x, \sin 2\pi x \cos 2\pi y)-   \]
+              Entonces $\xi$ es un $G$-invariante, y $\mathbb{C}/G \cong \varphi(\mathbb{C})$.
+	\item Sea $\chi:\mathbb{R}^5 \to \mathbb{R}^5$ la funci\'on dada  como $\chi(p,q,r,s,t) = ((p+2)q,(p+2)r,s,t)$. Demostrar que la restricci\'on
+	      $\chi|_{\varphi(\mathbb{C}}:K^2 \to \mathbb{R}^2 \to \mathbb{R}^4$ es un encaje.
+	\item Sea $X = \mathbb{R} \times [0,1] \subset \mathbb{C}$. Si $T:X \to X, \; z \mapsto \overline{z} +i$ y $G=\{T^n\:|\: n \in \mathbb{Z}\}$,
+  	      probar que $X$ es un $G$-espacio y $X/G \cong M^2$. En particular, $\pi(M^2) = \mathbb{Z}$.
+	\item Sean $G=\mathbb{Z}_p$ y $\mathbb{S}^3 = \{(z:1,z_2) \in \mathbb{C}^2 \:|\: |z_1|^2 + |z_2|^2 = 1 \}$. Sea $q$ relativamente simple con $p$.
+ 	      Sea $h:\mathbb{S}^3 \to \mathbb{S}^3$,
+	      \[h(z_1,z_2) = (e^{\frac{2\pi i}{p}}z_1,e^{\frac{2\pi iq}{p}}z_2)   \]
+	      Entonces $h$ es un homeomorfismo con $h^p = 1$. Sea $n\cdot (z_1,z_2) = h^n(z_1,z_2)$ para $n \in \mathbb{Z}_p$. Esta acci\'on es
+	      propia y el espacio de \'orbitas $\mathbb{S}^3/\mathbb{Z}_p$ se llama \textbf{espacio de lentes} \'o $L(p,q)$. En particular
+              $L(2,1) = \mathbb{R}P^3$. \\
+              
+              De igual forma $\mathbb{Z}_p$ act\'ua en $\mathbb{S}^{2n+1} \subset \mathbb{C}^{n+1}$
+ \end{enumerate} 
+\end{example}

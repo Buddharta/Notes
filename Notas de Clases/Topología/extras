@@ -1,0 +1,28 @@
+
+
+
+
+%%%Prueba alternativa de que la top de conv. unif es más fuerte que la compacto-abierta.
+El teorema anterior, nos permite demostrar de una forma distinta a la del corolario~\ref{u mas fuerte que c} que la topología de la convergencia uniforme es más fuerte que la topología compacto-abierta.
+
+\begin{corollary} Sea $X$ un espacio topológico y $(Y,d)$ un espacio métrico.
+La topología de la convergencia uniforme en $C(X,Y)$ es más fuerte que la topología compacto-abierta.
+\end{corollary}
+
+\begin{proof}
+Definamos $\mathcal B$ como en el teorema~\ref{sub-base distinta}. Como $\mathcal B$ es sub-base para la topología compacto-abierta, es suficiente demostrar que cada elemento $B(K,f,\varepsilon)\in\mathcal B$ es abierto en $C_u(X,Y)$.
+
+Sea $g\in B(K,f,\varepsilon)$. Entonces $\sup \limits_{x\in K}d(f(x),g(x))=\delta<\varepsilon$. Llamemos $\eta=\varepsilon-\delta $ y consideremos la bola abierta con centro en $g$ y radio $\eta$, $O(g,\eta)\subset C_u(X,Y)$, y demostremos que
+\begin{equation}\label{contencion}
+g\in O(g,\eta)\subset B(K,f,\varepsilon).
+\end{equation} 
+
+Claramente $g\in O(g,\eta).$ Por otro lado, 
+$O(g,\eta)=\{h \:|\: \sup \limits_{x\in X}d(g(x),h(x))<\varepsilon\}\subset B(K,g,\eta)$.
+Así, para demostrar  (\ref{contencion}), es suficiente demostrar que $B(K,g,\eta)\subset B(K,f,\varepsilon)$.
+Sea $h\in  B(K,g,\eta)$. Entonces
+$$\sup_{x\in K}d(h(x),f(x))\leq\sup_{x\in K}d(h(x),g(x)) ~~+~~\sup_{x\in K}d(g(x),f(x))<\eta+\delta=\varepsilon-\delta+\delta=\varepsilon.$$
+Por lo tanto $h\in B(K,f,\varepsilon),$ lo cual prueba que
+$$O(g,\eta)\subset B(K,g,\eta)\subset B(K,f,\varepsilon).$$
+Así, podemos concluir que $g$ es punto interior de $B(K,f,\varepsilon)$ en $C_u(X,Y)$. Por lo tanto $B(K,f,\varepsilon)$ es abierto en $C_u(X,Y)$, lo cual prueba que la topología de la convergencia uniforme es más fuerte que la topología compacto-abierta.
+\end{proof}

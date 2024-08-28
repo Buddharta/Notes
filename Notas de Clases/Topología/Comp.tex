@@ -1,0 +1,1350 @@
+\chapter{Espacios Compactos}
+
+En este cap\'\i tulo hablaremos del concepto de compacidad.  Los espacios a los que llamaremos compactos gozan de una gran cantidad de propiedades interesantes y por ello juegan un papel muy importante dentro de la topolog\'ia.
+
+\section{Espacios Compactos}
+Antes de enunciar la definici\'on de  un espacio compacto, necesitamos introducir algunos nuevos conceptos.
+
+\begin{definition}
+ Sean $X$ un espacio topol\'ogico,  $\mathcal{U}=\{U_\alpha\}_{\alpha\in \mathcal{A}}$ una 
+ familia de subconjuntos de $X$.  Se dice que $\mathcal{U}$ es \textbf{cubierta} de $X$ si
+ $\bigcup\limits_{\alpha\in \mathcal{A}} U_\alpha=X$. Si adem\'as cada elemento 
+ $U_\alpha\in\mathcal{U}$ es un subconjunto abierto, diremos que $\mathcal{U}$ es una 
+ \textbf{cubierta abierta}.
+  
+ Por otro lado, si $\mathcal{V}=\{V_\beta\}_{\beta\in\mathcal{B}}$ es otra cubierta de $X$, 
+ diremos que $\mathcal{V}$ es \textbf{subcubierta} de $\mathcal{U}$, si 
+ $\mathcal{V}\subset \mathcal U$.
+\end{definition}
+  
+\begin{example} La colecci\'on $\mathcal{U}=\{[n,n+1]\}_{n\in\mathbb{Z}}$ es una cubierta para
+ la recta real; sin embargo, no es una cubierta abierta. Por otro  lado $\mathcal{V}=
+ \{(n-1,n+1)\}_{n\in\mathbb{Z}}$ s\'i es una cubierta abierta para $\mathbb{R}$.
+\end{example}
+  
+\begin{definition}
+ Un espacio topol{\'o}gico $X$ se llama \textbf{compacto}, si toda cubierta abierta 
+ $\mathcal{U}$ de $X$ posee una subcubierta finita.
+\end{definition}
+
+Veamos algunos ejemplos que ilustren la definici\'on anterior.
+
+\begin{example} 
+ Cualquier espacio topol\'ogico finito $X$ es compacto. En efecto, cualquier cubierta de $X$ 
+es finita, particularmente, toda cubierta abierta de $X$ es finita y por lo tanto $X$ es compacto.
+\end{example}
+
+
+\begin{example}
+ Sea $Z= \{0\}\cup\{1/n\}_{n\in \mathbb{N}}\subset\mathbb{R}$. Entonces $Z$ es compacto.
+ En efecto, si $\mathcal{U}=\{U_\alpha\}_{\alpha\in\mathcal{A}}$ es una cubierta abierta de  
+ $Z$, existe $\beta\in\mathcal{A}$, tal que $0\in U_\beta$. Entonces, existe $m\in\mathbb{N}$
+ tal que $\frac{1}{n}\in U_\beta$ para todo $n> m$. As\'i, s\'olo un  n\'umero finito de
+ elementos de $Z$ no est\'an en $U_\beta$. Por lo tanto,  podemos escojer un n\'umero finito de
+ elementos de $\mathcal{U}$, digamos $U_{\alpha_1},\dots ,U_{\alpha_k}$ de tal manera que cubran
+ a $Z\setminus U_\beta$. As\'i, $\{U_\beta\}\cup \{U_{\alpha_1},\dots, U_{\alpha_k}\}$ es una 
+ subcubierta finita de $\mathcal{U}$. Por lo tanto, $Z$ es compacto.
+\end{example}
+
+\begin{example}
+ La recta real no es un espacio compacto. Por ejemplo,  $\{(n-1,n+1)\}_{n\in\mathbb{Z}}$ es una
+ cubierta abierta de $\mathbb{R}$ la cual no posee subcubierta finita.
+\end{example}
+
+ En los cap\'itulos anteriores notamos que algunos conjuntos 
+ pueden poseer ciertas propiedades que les brinda la topolog\'ia del subespacio, 
+ que dejan de manifestarse cuando se trabaja con la topolog\'ia del espacio ambiente. 
+ Por ejemplo, un conjunto $A$ puede ser abierto en un subespacio $Y$ de un espacio 
+ topol\'ogico $X$ sin ser abierto en $X$. 
+
+Una propiedad interesantes de la compacidad es que es 
+independiente del espacio ambiente, como veremos a continuaci\'on.
+
+\begin{proposition}\label{compactos siempre}
+  Sean $X$ un espacio topol\'ogico y $Y$ un subespacio de $X$. Entonces $Y$ es compacto si y 
+ s\'olo si para toda  colecci\'on $\mathcal{U}=\{U_\alpha\}_{\alpha\in\mathcal{A}}$ de elementos abiertos de $X$ tal que $Y\subset \bigcup\limits_{\alpha\in\mathcal{A}}U_\alpha$, existe una subcolecci\'on finita $\{U_{\alpha_1},\dots, U_{\alpha_n}\}$ tal que
+ $Y\subset \bigcup\limits_{i=1}^n U_{\alpha_i}$.
+\end{proposition}
+
+\begin{proof}
+Supongamos que $Y$ es un espacio compacto. Sea $\mathcal{U}=\{U_\alpha\}_{\alpha\in\mathcal{A}}$
+ como en las hip\'otesis de la proposici\'on. Entonces, para cada $\alpha\in \mathcal{A}$, el
+ conjunto $U'_\alpha=U_\alpha\cap Y$ es abierto en $Y$, por lo que
+ $\mathcal{U}'=\{U_{\alpha}'\}_{\alpha\in\mathcal{A}}$ es una cubierta abierta de $Y$. Como $Y$
+ es compacto, existe una subcubierta finita $\{U'_{\alpha_1},\dots U'_{\alpha_n}\}$ de
+ $\mathcal{U}'$, y por lo tanto, el conjunto  $\{U_{\alpha_1},\dots U_{\alpha_n}\}$ es una
+ subcolecci\'on finita de $\mathcal{U}$ tal que $Y\subset \bigcup\limits_{i=1}^n U_{\alpha_i}$.
+  
+ Por otro lado, consideremos $\,\mathcal{U}=\{U_\alpha\}_{\alpha\in\mathcal{A}}$ una
+ cubierta abierta de $Y$. Para cada $U_\alpha$ existe un abierto $U'_\alpha$ en $X$ tal que
+ $U_\alpha=U'_\alpha\cap Y$. Por hip\'otesis, la colecci\'on 
+ $\{U'_\alpha\}_{\alpha\in\mathcal{A}}$ posee una subcolecci\'on finita,
+ $\{U'_{\alpha_1},\dots U'_{\alpha_n}\}$ tal que $Y\subset \bigcup\limits_{i=1}^n U'_{\alpha_i}$. Entonces los correspondientes
+ $\{U_{\alpha_1},\dots, U_{\alpha_n}\}$ constituyen una subcubierta finita de $\mathcal{U}$, por lo que $Y$ es compacto.
+\end{proof}
+
+\begin{theorem}\label{sub cerrado es compacto}
+ Sean $X$ un espacio compacto y $A$ un subconjunto cerrado de $X$. Entonces $A$ es
+ compacto.
+\end{theorem}
+
+\begin{proof}
+ En virtud de la proposici\'on \ref{compactos siempre}, basta demostrar que cualquier cubierta
+ de  $\mathcal{U}=\{U_\alpha\}_{\alpha\in \mathcal{A}}$ $A$ con abiertos de $X$ posee una subcubierta finita. Entonces $\mathcal{V}=\mathcal{U}\cup \{X\setminus A\}$ es una cubierta
+ abierta de $X$. Como $X$ es compacto, entonces existe una  subcubierta finita de $X$, digamos
+ $\{U_{\alpha_1},\dots U_{\alpha_n}\}\cup \{X\setminus A\}$. Notemos que 
+ $(X\setminus A)\cap A=\emptyset$, por lo que $A\subset \bigcup\limits_{i=1}^n U_{\alpha_i}$. 
+ As\'i, $\{U_{\alpha_1},\dots U_{\alpha_n}\}$ es una subcubierta finita de $\mathcal{U}$. Por lo
+ tanto $A$ es compacto.
+\end{proof}
+
+ El rec\'iproco del teorema \ref{sub cerrado es compacto} no es cierto. Por ejemplo, en un 
+ espacio topol\'ogico finito que no es $T_1$, cualquier subconjunto es compacto, sin ser necesariamente cerrado. Sin embargo,
+ esta situaci\'on cambia cuando pedimos que el espacio sea de Hausdorff. 
+
+\begin{proposition}\label{compT2}
+ Sea $X$ un espacio topol\'ogico de Hausdorff, y $A\subset X$  un subespacio compacto. Si
+  $b\in X\setminus A$, entonces existen dos abiertos disjuntos, $U$ y $V$,
+  tales que $A\subset U$ y $b\in V$.
+\end{proposition}
+
+\begin{proof}
+ Como $X\in T_2$, para cada $a\in A$, existen dos vecindades, $U_a$ y $ V_a$, de $a$ y $b$,
+ respectivamente, tales que $U_a\cap V_a=\emptyset$. Entonces $\{U_a\}_{a\in A}$ es una cubierta
+ para A. Pero A es compacto, entonces podemos encontrar una subcubierta finita 
+ $\{U_{a_1}, \dots U_{a_n}\}$. Sean
+ \[ U=\bigcup\limits _{i=1}^n U_{a_i}   \]
+ y  
+ \[ V=\bigcap\limits_{i=1}^n V_{a_i}.\]
+ Entonces $U$ y $V$ son dos abiertos en $X$. Adem\'as, $A\subset U$ y $b\in V$. Notemos que
+ $U_{a_i}\cap V_{a_i}=\emptyset$ para toda $i\in \{1,...n\}$. As\'i, $ U_{a_i}\cap V=\emptyset$,
+ para toda $i\in \{1,...n\}$, por lo que  $U\cap V=\emptyset$. Entonces, $U$ y $ V$ son las dos
+ vecindades que buscábamos. 
+\end{proof}
+De la proposición anterior se siguen los siguientes resultados importantes:
+
+\begin{theorem}\label{T_2 y compacto es cerrado}
+ Sea $X$ un espacio de Hausdorff. Si $A\subset X$ es compacto, entonces $A$ es cerrado en $X$.
+\end{theorem}
+
+\begin{proof}
+Sean $A$ un subespacio compacto de $X$ y $x\in X\setminus A$. Por la proposición \ref{compT2} 
+podemos hallar abiertos ajenos $W$, $U$ tales que $x\in W$ y $A\subset U$.
+Entonces $W\subset X\setminus A$, y por tanto $x$ es punto interior de $X\setminus A$. As\'i podemos concluir que $X\setminus A$ es abierto y consecuentemente $A$ es un subconjunto cerrado de $X$.
+\end{proof}
+
+\begin{proposition}\label{t2 y compacto es regular}
+ Sea $X$ un espacio compacto de Hausdorff. Entonces $X$ es regular.
+\end{proposition}
+
+\begin{proof}
+ Como $X$ es de Hausdorff, $X$ es $T_1$. Verifiquemos simplemente que $X$ sea $T_3$. Sean  $A$
+ un subconjunto cerrado de $X$ y $x\in X\setminus A$ un punto arbitrario. 
+ Como $A$ es cerrado en
+ el compacto $X$, en virtud del teorema~\ref{sub cerrado es compacto}, $A$ es compacto.
+ La proposición \ref{compT2} nos permite hallar abiertos ajenos $U$ y $V$ tales que $x\in U$
+ y $A\subset V$. Así, $X$ es $T_3$, como se quer\'ia demostrar.
+\end{proof}
+
+\begin{proposition}\label{t3 y compacto es t4}
+ Sea $X$ un espacio topol\'ogico regular. Si $X$ es compacto, entonces $X$ es normal.
+\end{proposition}
+
+\begin{proof}
+ Como  $X$ es un espacio regular, entonces $X$ es $T_1$, por lo que solo faltar\'ia demostrar
+ que $X$ es $T_4$. Sean $A$ y $B$ dos subconjuntos cerrados y ajenos de $X$. Como $X$ es regular,
+para cada $b\in B$ existen dos vecindades ajenas $V_b$ y $ U_b$, de $b$ y de $A$, 
+respectivamente. Entonces, $\{V_b\}_{b\in B}$ es una cubierta abierta para $B$. Pero $B$ es un 
+subconjunto cerrado en el compacto $X$. As\'i, en virtud del teorema 
+ \ref{sub cerrado es compacto}, $B$ es compacto. De esta manera, podemos asegurar que
+ $\{V_b\}_{b\in B}$ posee una subcubierta finita, $\{V_{b_1},\dots,V_{b_n}\}$. Definamos 
+ \[ V=\bigcup\limits _{i=1}^n V_{b_i}   \]
+ entonces $V$ es una vecindad de $B$. Por otro lado, consideremos la intersección
+ \[U=\bigcap\limits_{i=1}^n U_{b_i}.\]
+ Como  $U$ es intersecci\'on finita de conjuntos abiertos, $U$ es abierto. Adem\'as, para cada
+ $i\in \{1,...,n \}$, $A\subset U_{b_i}$, por lo que $A\subset U$. 
+
+ Por \'ultimo, observemos que para cada $i\in \{1,...,n\}$, $U_{b_i}\cap  V_{b_i}=\emptyset$.
+ As\'i, podemos concluir que  $U\cap V=\emptyset$. Entonces,  $U$ y $ V$ son dos vecindades
+ ajenas de $A$ y $B$, respectivamente. Por lo tanto, $X$ es $T_4$, como se quer\'ia mostrar.
+\end{proof}
+
+ Como consecuencia directa de las proposiciones \ref{t2 y compacto es regular} y \ref{t3 y compacto es t4}, tenemos el siguiente teorema.
+
+\begin{theorem}\label{t2 y c es t4}
+ Sea $X$ un espacio compacto de Hausdorff. Entonces $X$ es normal. 
+\end{theorem}
+
+\begin{proposition}\label{compacidad con cubiertas basicas}
+ Sea $X$ un espacio topol\'ogico. Entonces, los siguientes enunciados son equivalentes.
+\begin{enumerate}[(1)]
+\item $X$ es compacto.
+\item Si ${\mathcal{B}}$ es una base para la topolog\'ia de $X$, entonces toda 
+  cubierta de $X$ con elementos de $\mathcal{B}$ posee una subcubierta finita.
+ 
+\item Existe alguna base ${\mathcal{B}}$ para la topolog\'ia de $X$, tal que toda
+  cubierta de $X$ con elementos de $\mathcal{B}$ posee una subcubierta finita.
+
+\end{enumerate}
+\end{proposition}
+\begin{proof}\hfill
+
+$(1)\Rightarrow (2)$ 
+Es evidente, puesto que toda cubierta de $X$ con elementos de $\mathcal{B}$ es una cubierta abierta de $X$.
+ 
+ $(2)\Rightarrow (3)$ Es inmediato.
+ 
+ $(3)\Rightarrow (1)$ Sea $\mathcal{B}$ una base para la topolog\'ia de $X$, tal que toda cubierta de $X$ con elementos de $\mathcal{B}$ posee una subcubierta finita.
+   Sea $\mathcal{U}=\{U_{\alpha}\}_{\alpha\in \mathcal{A}}$ una cubierta abierta
+  de $X$. Como 
+   $\mathcal{B}$ es base, para cada $\alpha\in\mathcal{A}$ existe una familia 
+  $\{V_{\beta}\}_{\beta\in \mathcal{A}_\alpha}\subset \mathcal{B}$, tal que $U_\alpha=\bigcup\limits_{\beta\in\mathcal A_ {\alpha}}V_\beta$. 
+  
+  Si $\mathcal{H}=\bigcup\limits_{\alpha\in\mathcal A}\mathcal A_\alpha$, entonces $\mathcal{V}=\{V_{\beta}\}_{\beta\in\mathcal H}$ es una cubierta de $X$ con elementos de $\mathcal{B}$. Por hip\'otesis, $\mathcal{V}$ posee una subcubierta finita, $\{V_{\beta_1},\dots ,V_{\beta_n}\}$. Para cada $i\in\{1,\dots n\}$ eligamos $\alpha_{i}\in \mathcal {A}$, tal que $V_{\beta_i}\subset U_{\alpha_i}$. As\'i, $\{U_{\alpha_1},\dots U_{\alpha_n}\}$ es una subcubierta finita de $\mathcal{U}$, lo cual demuestra que $X$ es compacto.
+\end{proof}
+
+El siguiente teorema nos muestra una propiedad muy importante de los espacios compactos la cual tiene numerosas aplicaciones, como veremos a lo largo de este texto.
+\begin{theorem}\label{imagen continua de compactos}
+ Sean $X$ y $Y$ dos espacios topol\'ogicos y $f:X\to Y$ una funci\'on continua. Si $A\subset X$ es un subconjunto compacto, entonces $f(A)$ es compacto.
+\end{theorem}
+\begin{proof}
+  
+  Sea $\mathcal{U}=\{U_\alpha\}_{\alpha\in\mathcal{A}}$ una cubierta de $f(A)$ con abiertos de $Y$. Como $f$
+  es continua, entonces la colecci\'on $\mathcal{V}=\{f^{-1}(V_\alpha)\}_{\alpha\in\mathcal A}$ es una cubierta  de $A$ con abiertos de $X$. Como $A$ es compacto, $\mathcal{V}$ posee una subcubierta 
+  finita $\{f^{-1}(V_{\alpha_1}),\dots f^{-1}(V_{\alpha_n})\}$.  Por lo tanto, $\{V_{\alpha_1},\dots V_{\alpha_n}\}$ es una subcubierta finita de $\mathcal{U}$, de donde podemos concluir que $f(A)$ es compacto.
+\end{proof}
+Del teorema anterior, podemos deducir inmediatamente el siguiente corolario.
+\begin{corollary} La compacidad es un invariante topol\'ogico.
+\end{corollary}
+\begin{theorem}\label{funcion continua y biyectiva es de homeo} Sean $X$ y $Y$ dos espacios topol\'ogicos y
+   $f:X\to Y$ una funci\'on continua y biyectiva. Si  $X$ es compacto y $Y$ es de
+  Hausdorff, entonces $f$ es un homeomorfismo.
+\end{theorem}
+\begin{proof}
+ Basta demostrar que $f$ es una funci\'on cerrada. Sea $A$ un subconjunto cerrado de $X$. Como $X$ es compacto, del teorema~\ref{sub cerrado es compacto} se sigue que $A$ es compacto. Aplicando el teorema~\ref{imagen continua de compactos}, podemos concluir que $f(A)$ es compacto.
+ Pero $Y$ es de Hausdorff, por lo que, en virtud del teorema~\ref{T_2 y compacto es cerrado}, $f(A)$ es cerrado en $Y$. As\'i, podemos concluir que $f$ es una funci\'on cerrada, y por lo tanto es un homeomorfismo.
+  \end{proof}
+\begin{theorem} Sean $X$ un espacio topol\'ogico y $A$ y $B$ dos subconjuntos compactos.
+   Entonces $A\cup B$ es compacto.
+\end{theorem}
+\begin{proof}
+  Sea $\mathcal{U}=\{U_\alpha\}_{\alpha\in\mathcal{A}}$ una cubierta de $A\cup B$ con abiertos de $X$. Definamos 
+  $$\mathcal{U}_A=\{U_\alpha\in \mathcal{U}\mid U_\alpha\cap A\neq\emptyset\}$$ y $$\mathcal{U}_B=\{U_\alpha\in \mathcal{U}\mid U_\alpha\cap B\neq\emptyset\}.$$ Entonces $\mathcal{U}_A$ es una cubierta de $A$ con abiertos de $X$. Como $A$ es compacto, enontonces existe una subcubierta finita $\{U_{\alpha_1},\dots U_{\alpha_n}\}$. Análogamente, existe una subcubierta finita de $\mathcal{U}_B$, digamos $\{U_{\beta_1},\dots ,U_{\beta_m}\}$. As\'i, $\{U_{\alpha_1},\dots U_{\alpha_n}\}\cup \{U_{\beta_1},\dots U_{\beta_m}\}$ es una subcubierta finita de $\mathcal{U}$. De esta manera, podemos concluir que $A\cup B$ es un subconjunto compacto.
+\end{proof}
+El teorema anterior se puede generalizar inductivamente en el siguiente corolario:
+\begin{corollary}
+  Sea $\{A_i\}_{i=1}^n$ una familia finita de subconjuntos compactos de un espacio topol\'ogico $X$. Entonces
+  $\bigcup\limits_{i=1}^n A_i$ es compacto.
+\end{corollary}
+
+A continuaci\'on veremos algunas propiedades que tienen los subconjuntos compactos de la recta real.
+
+\begin{theorem}
+El intervalo $[a,b]\subset \mathbb{R}$, donde $a<b$, es un espacio compacto.
+\end{theorem}
+\begin{proof}
+  Sea $\mathcal{U}=\{U_\alpha\}_{\alpha\in \mathcal{A}}$ una cubierta abierta de
+  $[a,b]$. Consideremos el conjunto $$C=\{x\in[a,b]\mid\text{ existe subcubierta
+      finita para }[a,x]\}.$$ Notemos que   $C\neq\emptyset$ ya que $a\in C$. Entonces, C es un conjunto acotado y no vacío, luego existe  $\zeta=\sup C$. 
+
+Supongamos que $\zeta\neq b$, entonces
+  $\zeta\in [a,b)$. Como $\mathcal{U}$ es cubierta, existe $\beta\in\mathcal{A}$ tal que $\zeta \in U_\beta$. Pero $U_\beta$
+es abierto, por lo que existe $\varepsilon > 0$ tal que
+  $\zeta\in(\zeta-\varepsilon, \zeta+\varepsilon)\subset U_\beta$. Sea
+  $x\in (\zeta-\varepsilon,\zeta)\cap C$ y $y=\zeta +\varepsilon/2$.
+  Así, $[a,x]$ puede cubrirse por un número finito de elementos de $\mathcal{U}$, digamos
+  $\{U_{\alpha_1},\ldots U_{\alpha_n}\}$. Entonces $[a,x]\cup[x,y]=[a,y]$, y este puede ser 
+  cubierto por $\{U_\beta, U_{\alpha_1},\ldots U_{\alpha_n}\}$, lo cual es una subcubierta 
+  finita de $\mathcal{U}$. Por lo tanto $y\in C$. Pero esto es una contradicci\'on porque $y> \zeta$ y $\zeta$ es el supremo de $C$. 
+ Entonces $\zeta=b$. 
+  
+  Ahora demostremos que $b\in C$. Sabemos que existe $\ U_{\beta}\in\mathcal{U}$ tal que $b\in
+  U_{\beta}$. Como $U_\beta$ es abierto, existe $\varepsilon>0$, tal que $(b-\varepsilon,b]\subset U_{\alpha_0}$. Entonces podemos encontrar  $x\in(b-\varepsilon,b]\cap
+  C$, por lo que, $[a,x]$ est{\'a} cubierto por un n{\'u}mero finito de elementos de $\mathcal{U}$, 
+  digamos $\{U_{\alpha_1}, \dots ,U_{\alpha_n}\}$. Entonces $[a,b]=[a,x]\cup[x,b]$, está cubierto por
+  $\{U_{\beta}\}\bigcup \{U_{\alpha_1},\dots U_{\alpha_n}\}$, lo cual es una subcubierta finita de $\mathcal{U}$. Por lo tanto $[a,b]$ es compacto, como se quer\'ia demostrar.
+\end{proof}
+
+ \begin{corollary}\label{compacto acotado y cerrado}
+  Un subconjunto de la recta real es compacto si y sólo si es cerrado y acotado.
+\end{corollary}
+\begin{proof}
+  Supongamos que $A$ es compacto. 
+  Como $\mathbb {R}$ es un espacio de Hausdorff, y $A$ es compacto, entonces
+  $A$ es cerrado. Por otro lado, consideremos
+  $\mathcal{U}=\{(-n,n)\}_{n\in \mathbb {N}}. $ Entonces $\mathcal{U}$ es una cubierta de $A$ con abiertos de $\mathbb{R}$. Por lo tanto, podemos encontrar una subcubierta finita, 
+  digamos $ \{U_{n_1}, \dots,U_{n_m}\}$. Si $k=max\{n_i\mid i=1,...m\}$, entonces $A\subset (-k,k)$, por lo que $A$ es un conjunto acotado.
+  
+ Ahora supongamos que $A$ es cerrado y acotado. Entonces existe $k\in\mathbb {N}$
+  tal que 
+  $A\subset [-k,k]$. Como $[-k,k]$ es compacto (y por tanto es cerrado) entonces $A$ es
+  un subconjunto cerrado en $[-k,k]$. Aplicando el teorema~\ref{sub cerrado es compacto}, podemos concluir que $A$ es compacto.
+\end{proof}
+\begin{corollary}
+Sean $a,b\in\mathbb{R}$, tales que $a<b$. Entonces $[a,b]$ no es homeomorfo a $[a,b)$ ni a $(a,b)$.
+\end{corollary}
+\begin{proof}
+Sabemos que los conjuntos $[a,b)$ y $(a,b)$ no son cerrados en $\mathbb{R}$, entonces tampoco son compactos. Pero $[a,b]$ si es compacto, y como la compacidad es un invariante topol\'ogico,  $[a,b]$ no puede ser homeomorfo a $[a,b)$ ni a  $(a,b)$.
+\end{proof}
+
+
+
+
+\begin{proposition}
+  Sea $X$ un espacio topol\'ogico compacto, y $f:X\to{{\mathbb R}}$ una funci\'on continua.
+  Entonces $f$ es acotada. 
+\end{proposition}
+\begin{proof}
+  Por el teorema~\ref{imagen continua de compactos}, 
+   $f(X)$ es un subconjunto compacto de $\mathbb{R}$. As\'i, por el corolario~\ref{compacto acotado y cerrado} $f(X)$ es acotado, como se quer\'ia demostrar.
+\end{proof}
+\begin{proposition}\label{fun de compc alcanza los extremos}
+  Sean $X$ un espacio topol\'ogico compacto y $f:X\to\mathbb{R}$ una funci\'on continua. Entonces existen  $x_0$ y
+  $x_1$ en $X$, tales que $f(x_0)=\sup\limits _{x\in X}f(x)$ y $f(x_1)=\inf\limits_{x\in X}f(x)$.
+\end{proposition}
+\begin{proof}
+  Por el teorema~\ref{imagen continua de compactos},  $f(X)$ es un subconjunto compacto
+  de $\mathbb{R}$. Luego, aplicando el corolario~\ref{compacto acotado y cerrado} 
+  tenemos que $f(X)$ es cerrado y acotado. Adem\'as, si $X$ es no vacio, entonces 
+  $f(X)\neq\emptyset$. Por la propiedad del supremo, existe $\alpha=\sup\limits_{x\in X}f(X)$. Como el supremo de un conjunto siempre es un punto de adherencia, tenemos que $\alpha\in \overline{f(X)}=f(X)$. Entonces existe $x_0\in X$ tal que $f(x_0)=\alpha$.
+
+ De manera an\'aloga se demuestra que existe $x_1\in X$, tal que $f(x_1)=\inf\limits_{x\in X}f(x).$
+\end{proof}
+
+\begin{theorem}
+  Sean $X$ y $Y$ dos espacios topol\'ogicos. $X$ y $Y$ 
+son compactos si y solo si $X\times Y$ es compacto
+\end{theorem}
+\begin{proof}
+  Si $X\times Y$ es compacto, como las proyecci\'ones $\pi_X:X\times Y\to X$ y $\pi_Y:X\times Y\to Y$ son
+  funciones continuas, por el teorema~\ref{imagen continua de compactos} tenemos que $X=\pi_X(X\times Y)$ y $Y=\pi_Y(X\times Y)$ son compactos.
+  
+  Ahora, supongamos que $X$ y $Y$ son
+  compactos. Para demostrar que $X\times Y$ es compacto, en virtud de la proposici\'on~\ref{compacidad con cubiertas basicas}, basta demostrar que cualquier cubierta de $X\times Y$ con abiertos b\'asicos posee una subcubierta finita. 
+ Sean $\mathcal{U}$ una cubierta  de $X\times
+  Y$ formada por abiertos b\'asicos canónicos. Fijemos un punto arbitrario $x\in X$.  Para cada $(x,y)\in \{x\}\times
+  Y$ existe un elemento $$U_{xy}=W_{xy}\times V_{xy}\in \mathcal{U}$$ que
+  contiene a $(x,y)$. La colecci\'on $\{V_{xy}\}_{y\in Y}$ es una
+  cubierta abierta para $Y$. Pero $Y$ es compacto, entonces existe una subcubierta finita, digamos $\{V_{xy_1},\dots ,V_{xy_n}\}$. Consideremos el abierto $$O_{x}=\bigcap\limits_{i=1}^n W_{xy_i}.$$
+  entonces $O_{x}$ es una vecindad de $x$ en $X$. Adem\'as, $$\{x\}\times Y\subset O_{x}\times Y\subset\bigcup\limits_{i=1}^nU_{xy_i}$$ 
+Si repetimos este argumento para
+  cada $x \in X$, la familia  $\{O_x\}_{x\in X}$ constituye una cubierta abierta para $X$. Como $X$ es compacto, existe una subcubierta finita $\{O_{x_1},\dots ,O_{x_m}\}$.
+  
+  Recordemos que por cada $x_i$, existen $y_{i_1}, y_{i_2}\dots y_{i_{n_i}}\in Y$, y una colecci\'on finita de abiertos $\{U_{x_iy_{i_j}}=W_{x_iy_{i_j}}\times V_{x_iy_{i_j}}\}_{j=1}^{n_i}\subset \mathcal{U}$, tales que
+  $$O_{x_i}=\bigcap\limits_{j=1}^{n_i} W_{x_iy_{i_j}}$$
+   y 
+   $$O_{x_i}\times Y\subset \bigcup\limits_{j=1}^{n_i}U_{x_iy_{i_j}}.$$
+   Asi, la colecci\'on $\{U_{x_iy_{i_j}}\mid i=1,\dots m,~j=1,\dots n_i\}$ es una subcubierta finita de $\mathcal{U}$. Por lo tanto, $X\times Y$ es compacto, como se quer\'ia demostrar.
+\end{proof}
+
+A continuaci\'on, introduciremos un nuevo concepto que nos ayudar\'a a dar una útil  caracterizaci\'on de los espacios compactos.
+\begin{definition} Se dice que una familia ${\mathcal F}$ de subconjuntos de $X$ es \textbf{centrada}  o tiene
+  \textbf{la propiedad de intersecci\'on finita}, si para cada
+  subcolecci\'on 
+  finita $\{F_1,...,F_n\}\subset \mathcal{F}$, se tiene $\bigcap\limits_{i=1}^n F_i\neq\emptyset$.
+\end{definition}
+\begin{theorem}\label{compacidad y familias centradas}
+  Un espacio topol\'ogico $X$ es compacto si y s\'olo si toda familia centrada de subconjuntos cerrados de $X$ tiene
+  intersecci\'on no vac\'\i a.
+\end{theorem}
+\begin{proof}
+  Primero supongamos que $X$ es compacto, 
+  Sea ${\mathcal {F}}=\{F_\alpha\}_{\alpha\in\mathcal{A}}$ una
+ familia centrada de subconjuntos  cerrados de
+  $X$. Para cada $\alpha\in\mathcal{A}$, sea $U_\alpha=X\setminus F_\alpha$. As\'i, ${\mathcal
+  U}=\{U_\alpha\}_{\alpha\in\mathcal{A}}$ es  una colecci\'on de
+  subconjuntos abiertos de $X$. Supongamos que $\bigcap\limits_{\alpha\in\mathcal{A}}F_\alpha=\emptyset$. Entonces
+$$\bigcup\limits_{\alpha\in\mathcal{A}}U_\alpha=\bigcup\limits_{\alpha\in\mathcal{A}}(X\setminus F_\alpha)=X\setminus \Bigg{(}\bigcap\limits_{\alpha\in\mathcal{A}}F_\alpha\Bigg{)}=X.$$
+As\'i, $\mathcal{U}$ es una cubierta abierta de $X$, y como $X$ es compacto, tiene una subcubierta finita, digamos $\{U_{\alpha_1},\dots, U_{\alpha_n}\}$. De esta manera, tenemos que $X=\bigcup\limits_{i=1}^nU_{\alpha_i}$ o equivalentemente $\bigcap\limits_{i=1}^nF_{\alpha_i}=\emptyset.$ 
+
+Pero esto \'utimo es una contradicci\'on, pues $\mathcal{F}$ es una familia centrada. Entonces, podemos concluir que $\bigcap\limits_{\alpha\in\mathcal{A}}F_\alpha\neq\emptyset$, como se quer\'ia probar.
+
+ 
+  Ahora supongamos que cada familia  centrada de cerrados tiene intersecci\'on
+  no vac\'\i a. Sea  ${\mathcal U}=\{U_\alpha\}_{\alpha\in\mathcal{A}}$ una cubierta
+  abierta de $X$. Supongamos que $\mathcal{U}$ no tiene ninguna subcubierta
+  finita. Entonces, para cualquier familia $\{U_{\alpha_1},\dots, U_{\alpha_n}\}\subset \mathcal{U}$, tenemos que 
+\begin{equation}\label{eq familia centrada}
+X\setminus \bigcup\limits _{i=1}^{n}U_{\alpha_ i}\neq\emptyset.
+\end{equation}
+ Consideremos la familia de cerrados ${\mathcal F}=\{F_\alpha=X\setminus
+  U_\alpha\}_{\alpha\in\mathcal{A}}$. Entonces por  (\ref{eq familia centrada})  $\mathcal{F}$ 
+ es una familia centrada.  Por la hipótesis $\mathcal{F}$ tiene intersecci\'on no vac\'ia, i.e.,  $\bigcap\limits_{\alpha\in\mathcal{A}}F_\alpha\neq\emptyset$. Así, 
+$$X\setminus \bigcap\limits_{\alpha\in\mathcal{A}}F_\alpha=X\setminus\bigcup\limits_{\alpha\in\mathcal{A}}U_\alpha\neq\emptyset.$$ 
+Esto es una contradicci\'on, porque $\mathcal{U}$ es una cubierta de $X$. De esta manera, podemos concluir que ${\mathcal U}$ tiene una subcubierta finita, y por lo tanto, $X$ es compacto.
+\end{proof}
+
+\section{Teorema de Tychonoff}
+Anteriormente, hemos demostrado  que el producto de dos espacios topol\'ogicos compactos es compacto.
+Claramente, este resultado se generaliza inductivamente al caso de un número finito de espacios compactos. Sin embargo, el resultado es a\'un m\'as general. Resulta ser que el producto de una familia arbitraria de espacios compactos es  compacto. Para demostrar este importante  resultado, conocido como el teorema de Tychonoff, es necesario tener 
+presentes ciertas herramientas que nos servir\'an para la prueba.
+
+\begin{definition}
+Sea $X$ un conjunto no vac\'io y $\preceq  $ una relaci\'on 
+en $X$. Decimos que $\preceq $ es una \textbf{relaci\'on de orden}
+si se cumplen las siguientes propiedades:
+\begin{enumerate}
+\item $x\preceq  x$ (reflexividad).
+\item Si $x\preceq  y$ y $y\preceq  x$, entonces $x=y$ (antisimetr\'ia).
+\item Si $x\preceq  y$ y $y\preceq  z$, entonces $x\preceq  z$ (transitividad).
+\end{enumerate}
+El par $(X,\preceq )$ se  llama \textbf{conjunto parcialmente ordenado}.  Adem\'as, si 
+para cualquier par de puntos $x, y\in X$ o bien $x\preceq y$ \'o $y\preceq x$, entonces se  dice que $(X,\preceq)$ es un
+\textbf{conjunto linealmente ordenado} o \textbf{totalmente ordenado}.
+\end{definition}
+
+\begin{definition}
+
+\begin{enumerate}\item Sean $(X,\preceq) $ un conjunto parcialmente ordenado
+ y $a\in X$. Decimos que $a$ es \textbf{maximal}
+si no existe ningún $b\in X$ tal que $a\preceq b$ y $a\neq b$.
+
+
+ \item Sea  $A\subset X$.
+ Una \textbf{cota superior} de $A$ es un elemento $x\in X$, tal que para cualquier $a\in A$, $a\preceq x$.
+\end{enumerate}
+\end{definition}
+
+El siguiente lema es una de las m\'ultiples formas equivalentes del Axioma de Elecci\'on, el cual 
+ es muy importante en la teor\'ia de conjuntos, y es una herramienta b\'asica para el
+manejo de conjuntos infinitos. Para los fines de estas notas, nos limitaremos solamente a mencionar
+el lema, el cual es fundamental en la demostraci\'on del Teorema de Tychonoff.
+
+\begin{lemma}[Lema de Zorn]
+Sea $(X,\preceq)$ un conjunto parcialmente ordenado. Si cualquier
+subconjunto linealmente ordenado $A\subset X$ posee una cota 
+superior, entonces $X$ tiene un elemento maximal.
+\end{lemma}
+
+La \'ultima herramienta que necesitamos para la demostraci\'on del Teorema de Tychonoff es el 
+siguiente lema.
+
+\begin{lemma}\label{lemma para tychonoff}
+Sean $X$ un espacio topol\'ogico y ${\mathcal F}=\{F_\alpha\}_{\alpha\in\mathcal{A}}$ una familia centrada 
+de subconjuntos de X. Entonces, existe una familia centrada ${\mathcal G}$ de subconjuntos de $X$ 
+tal que ${\mathcal F}\subset{\mathcal G}$ y $\mathcal{G}$ es maximal con estas propiedades.
+Más precisamente, existe un elemento maximal $\mathcal{G}$ para $(\mathbb A,\subset)$, donde
+$$\mathbb{A}=\{{\mathcal H}\subset 2^X\mid 
+ {\mathcal F}\subset {\mathcal H}\text{ y } {\mathcal H} \text{ es centrada}\}$$
+y $\subset$ es la inclusión conjuntista. 
+
+\end{lemma}
+\begin{proof}
+Sean X un espacio topol\'ogico, ${\mathcal F}=\{F_\alpha\}_{\alpha\in\mathcal{A}}$ una familia centrada en $X$. Consideremos $\mathbb{A}=\{{\mathcal H}\subset 2^X\mid 
+ {\mathcal F}\subset {\mathcal H}\text{ y } {\mathcal H} \text{ es centrada}\}$.
+Claramente, el par $(\mathbb{A},\subset)$ es un conjunto parcialmente ordenado.
+ 
+Afirmamos que $(\mathbb{A},\subset)$ satisface las hip\'otesis del Lema de Zorn.
+En efecto, sea $\mathbb{B} \subset\mathbb{A}$   linealmente ordenado y              $ \mathcal{C}=\bigcup\limits_{\mathcal{B}\in \mathbb{B}}\mathcal{B}\subset 2^X$. Verifiquemos
+ que $\mathcal{C}\in \mathbb{A}$. Como $\mathcal{F}\subset \mathcal{B}$ para cualquier 
+ $\mathcal{B}\in \mathbb{B}$, entonces $\mathcal{F}\subset \mathcal{C}$. 
+ 
+ Demostremos que $\mathcal{C}$ es centrada.  Si $C_1,C_2,...,C_n\in \mathcal {C}$, para cada $i\in \{1,2,...,n\}$ existe 
+ $\mathcal{B}_i$, tal que $C_i\in \mathcal{B}_i$.   Como $\mathbb{B}$ es linealmente ordenado, existe $\mathcal{B}_k$ el
+ m\'aximo de todos los elementos $\mathcal{B}_1,\mathcal{B}_2,
+ ...\mathcal{B}_n$. Entonces, para toda $i\in \{1,2,...,n\}$, $C_i\in \mathcal{B}_i\subset
+ \mathcal{B}_k$. Como $\mathcal {B}_k$ es centrada, tenemos que $\bigcap\limits _{i=1}^n C_i\neq \emptyset$.
+ De esta manera podemos concluir que $\mathcal {C}$ es centrada, y por lo tanto, $\mathcal{C}\in \mathbb{A}$.
+ 
+ Notemos que  para cualquier $\mathcal{B}\in\mathbb{B}$, $\mathcal{B} \subset\mathcal{C}$ por lo que 
+ $\mathcal{C}$ es cota superior para $\mathbb{B}$.
+ Así que $(\mathbb{A},\subset)$ satisface las hipótesis del Lema de Zorn, y en consecuencia podemos garantizar que existe
+ $\mathcal{G}\in \mathbb{A}$ un elemento maximal. Es decir, existe una familia 
+  centrada $\mathcal{G}\subset 2^X$ tal que $\mathcal{F}\subset \mathcal{G}$ y $\mathcal{G}$ es maximal con estas propiedades.
+\end{proof}
+
+\begin{theorem}[De Tychonoff]
+Sea $\{X_\alpha\}_{\alpha\in \mathcal {A}}$ una familia de espacios  compactos. 
+Entonces el producto $X=\prod\limits _{\alpha\in \mathcal{A}} X_\alpha$ es compacto.
+\end{theorem}
+
+\begin{proof}
+Consideremos  una familia centrada $\mathcal {F}\subset 2^X$ de conjuntos cerrados.
+ En virtud del teorema~\ref{compacidad y familias centradas}, basta demostrar que $\mathcal{F}$ tiene intersecci\'on no vac\'ia.
+
+Por el lema~\ref{lemma para tychonoff}, sabemos que existe una familia centrada $\mathcal{G}$ de subconjuntos de $X$  
+tal que $\mathcal{F}\subset\mathcal{G}$ y ${\mathcal G}$ es maximal con estas propiedades. 
+
+La maximalidad de $\mathcal{G}$ implica las siguientes dos propiedades:
+\begin{enumerate}[(1)]
+\item La intersecci\'on de cualquier n\'umero finito de elementos de  $\mathcal{G}$, tambi\'en pertenece
+a $\mathcal{G}$. 
+
+
+\item Si un conjunto $A \subset X$ interseca a la intersecci\'on de cualquier n\'umero finito de elementos de 
+$\mathcal{G}$, entonces $A\in \mathcal{G}$.
+\end{enumerate}
+
+Para demostrar la primera propiedad consideremos una colecci\'on finita arbitraria
+ $\{G_1, \dots, G_n\}\subset \mathcal{G}$ y sea $H=\bigcap\limits _{i=1}^n G_i$. 
+Entonces, la familia
+$\mathcal{G} \cup \{ H \}$ tambi\'en es centrada y contiene a $\mathcal{F}$. Adem\'as, notemos que $\mathcal{G} \cup \{H\}
+\supset \mathcal{G}$. Entonces, por la maximalidad de $\mathcal {G}$, podemos concluir que 
+$\mathcal{G}=\mathcal{G} \cup \{H\}$, es decir, que $H\in\mathcal{G}$.
+
+Luego, para demostrar la segunda afirmaci\'on, notemos simplemente que si
+$A\subset X$ intersecta a la intersecci\'on de cualquier n\'umero finito de elementos de 
+$\mathcal{G}$, entonces la familia $\mathcal{G}\cup \{A\}$ tambi\'en es centrada y contiene
+a $\mathcal{F}$. Luego, la maximalidad de $\mathcal{G}$ nos asegura que 
+$A\in\mathcal{G}$.
+
+Para cada $\alpha\in\mathcal{A}$, sea $\pi_\alpha:X\to X_\alpha$ la $\alpha$-\'esima proyecci\'on. 
+Denotemos por $\mathcal{H}_\alpha$ a la siguiente familia
+$$\mathcal{H}_\alpha=\big\{\overline{\pi_\alpha(G)}\subset X_\alpha \: | \: G\in\mathcal{G}\big\}.$$ 
+Afirmamos que $\mathcal{H}_\alpha$ es una familia centrada en $X_\alpha$. En efecto, si  $\overline{\pi_{\alpha}(G_1)},\dots, \overline{\pi_{\alpha}(G_n)}$ son elementos de $\mathcal{H}_\alpha$, entonces  $\bigcap\limits_{i=1}^n G_i\neq \emptyset$ ya que $G_1,...G_n\in \mathcal{G}$ y
+ $\mathcal{G}$ es una familia centrada. As\'i 
+
+$$\emptyset\neq\bigcap\limits_{i=1}^n G_i\subset\overline{\bigcap\limits_{i=1}^n{ G_i}} .$$ 
+
+Por lo que $\pi_\alpha \Big{(}\overline{\bigcap\limits_{i=1}^nG_i}\Big{)}\neq\emptyset$. Luego, aplicando la continuidad de la funci\'on $\pi_\alpha$, tenemos que
+
+$$ \pi_\alpha\bigg{(}\overline{\bigcap\limits_{i=1}^n G_i}\bigg{)}\subset \overline{\pi_\alpha\bigg{(}\bigcap\limits_{i=1}^n G_i\bigg{)}}\subset \overline{\bigcap\limits_{i=1}^n\pi_{\alpha}(G_i)} \subset\bigcap_{i=1}^n\overline{\pi_\alpha(G_i)}.$$
+
+De donde podemos concluir inmediatamente que $\bigcap\limits_{i=1}^n\overline{\pi_\alpha(G_i)}\neq\emptyset$,
+ y por lo tanto, $\mathcal{H}_\alpha$ es una familia centrada 
+de subconjuntos cerrados en $X_\alpha$. Pero $X_\alpha$  es un espacio
+compacto,  por lo que podemos aplicar el teorema~\ref{compacidad y familias centradas} para encontrar un punto $x_\alpha\in\bigcap\limits_{G\in\mathcal{G}}\overline{\pi_\alpha(G)}$ para cada $\alpha\in\mathcal{A}$.
+Consideremos el punto  $x=\{x_\alpha\}_{\alpha\in\mathcal{A}}\in X$ y demostremos que $x\in \bigcap\limits_{G\in\mathcal{G}}\overline{G}$. 
+
+Sea $$U=\langle U_{\alpha_1},...,U_{\alpha_n}\rangle$$ 
+
+una vecindad b\'asica para $x$. Notemos que $U_{\alpha_i}$ es una vecindad del punto $x_{\alpha_i}\in \bigcap\limits_{G\in\mathcal{G}}\overline{\pi_{\alpha_i}(G)}$ en $X_{\alpha_i}$. Por consiguiente  $U_{\alpha_i}$ interseca a  $\pi_{\alpha_i}({G})$ para toda $G\in\mathcal{G}$. 
+As\'i, el conjunto $\langle U_{\alpha_i}\rangle= \prod\_{\alpha_i}^{-1}(U_{\alpha_i})$ interseca a cada uno de los elementos de $\mathcal{G}$. 
+En particular, si  $G_1, \dots G_n$ pertenecen a $\mathcal{G}$, entonces por la propiedad (1), $G=\bigcap\limits_{i=1}^n G_i\in\mathcal{G}$, y por lo tanto $\langle U_{\alpha_i}\rangle\cap G\neq\emptyset$. 
+Es decir, $\langle U_{\alpha_i} \rangle$ interseca cualquier intersecci\'on finita de elementos de $\mathcal{G}$. 
+Luego, por la propiedad (2), $\langle U_{\alpha_i}\rangle\in \mathcal{G}$ para
+cualquier $i\in\{1,...,n\}$. Usando nuevamente la afirmaci\'on (1), podemos concluir que la intersección 
+$\bigcap\limits_{i=1}^n \langle U_{\alpha_i}\rangle =\langle U_{\alpha_1}, \ldots U_{\alpha_n} \rangle $ pertenece a $\mathcal G$. Como $\mathcal{G}$ es centrada, tenemos 
+ $$ \langle U_{\alpha_1}, \ldots U_{\alpha_n} \rangle \cap G \neq \emptyset $$ 
+para cada $G \in \mathcal{G}$, as\'i que $x \in \overline{G}$ para cada $G \in \mathcal{G}$ ,y por tanto, $\bigcap \limits_{G\in\mathcal{G}}\overline{G} \neq\emptyset$. 
+Finalmente, como $\mathcal{F\subset G}$, tendremos
+\begin{align*}
+ \bigcap_{G\in\mathcal{G}} \overline{G}
+\subset   \bigcap_{F\in\mathcal{F}} \overline{F}=\bigcap_{F\in\mathcal{F}}F.
+\end{align*}
+De aquí se infiere que $\bigcap \limits_{F\in\mathcal{F}}F\neq\emptyset$.
+
+
+As\'i, la familia $\mathcal{F}$ tiene 
+intersecci\'on no vac\'ia, lo cual demuestra que $X$ es compacto.
+
+\end{proof}
+
+
+
+
+ 
+\section{Compacidad en espacios m\'etricos}
+
+
+
+
+\begin{definition}
+  Sean $(X,d)$ un espacio m{\'e}trico, $\varepsilon>0$ y $A \subset X$. 
+   Se dice que $A$ es \textbf{$\varepsilon$-denso} en $X$ o que es una $\varepsilon -$red para $X$, si
+\begin{equation*} 
+\bigcup_{a \in A} B(a,\varepsilon) = X  
+\end{equation*}
+donde $B(a,\varepsilon)$ denota la bola de radio $\varepsilon$ y centro en $a$.
+
+\medskip
+
+  
+Si para toda $\varepsilon>0$, existe una  $\varepsilon -$red finita $A_{\varepsilon}=\{a_{1},\dots,a_{n}\},$  entonces  diremos que el espacio $X$ es \textbf{totalmente acotado}. 
+\end{definition}
+
+\begin{proposition}\label{TAdiametro} Un espacio métrico es totalmente acotado si y sólo si para todo $\varepsilon >0$ 
+existe una colección finita $\{A_1,\ldots,A_n\}$ de subconjuntos de $X$  tales que $X=\overset{n}{\underset{i=1}{\bigcup}}A_i$ y 
+el diámetro de cada $A_i$ es menor o igual a $\varepsilon$.
+\end{proposition}
+\begin{proof}
+Supongamos que $X$ es totalmente acotado y fijemos $\varepsilon>0$. Entonces existe
+una $\frac{\varepsilon}{2}$-red finita $A_{\varepsilon/2}=\{a_1,\ldots,a_n\}$. Definiendo 
+$A_i=B(a_i,\varepsilon/2)$ para cada $i\in\{1,\ldots,n\}$ obtenemos la colección de subconjuntos de $X$ buscada.
+
+Recíprocamente, para cada $\varepsilon>0$ es posible escoger subconjuntos 
+no vacíos $A_1,\ldots,A_n$ de $X$ tales que $X=\overset{n}{\underset{i=1}{\bigcup}}A_i$ con
+diám $A_i\leq\varepsilon/2$ para toda $i\in\{1,\ldots,n\}$. Eligiendo para cada $i$ un punto 
+$a_i\in A_i$, tendremos que $A_i\subset B(a_i,\varepsilon)$, por lo que 
+$X\subset\overset{n}{\underset{i=1}{\bigcup}}B(a_i,\varepsilon)$, lo que nos permite concluir que $X$ es totalmente acotado.
+\end{proof}
+
+\begin{proposition} Sean $X$ un espacio métrico totalmente acotado y $A\subset X$. 
+Entonces $A$ es totalmente acotado.
+\end{proposition}
+\begin{proof}
+Sea $\varepsilon>0$. Por la proposición \ref{TAdiametro}, existen $X_1,\ldots,X_n$ subconjuntos de $X$  tales que $X=\overset{n}{\underset{i=1}{\bigcup}}X_i$ y  diám $X_i\leq\varepsilon$ para toda $i\in\{1,\ldots,n\}$. 
+Definiendo $A_i=X_i\cap A$,
+resulta claro que los conjuntos $A_1,\ldots,A_n$ satisfacen  $A=\overset{n}{\underset{i=1}{\bigcup}}A_i$ y 
+diám $A_i\leq\varepsilon$ para toda $i\in\{1,\ldots,n\}$. 
+Por la proposición \ref{TAdiametro}, $A$ es totalmente acotado.
+\end{proof}
+ 
+
+\begin{definition}
+  Sea $(X,d)$ un espacio m\'etrico. Una sucesi\'on,
+  $(x_{n})_{n\in\mathbb{N}} \subset X$,  se llama
+\textbf{fundamental} o de
+  \textbf{Cauchy}, si para toda 
+$\varepsilon>0$, existe $M \in \mathbb {N}$  tal que
+  si $ n \geq M $ y $ m \geq M$, entonces $ d(x_n,x_m)< \varepsilon$. 
+\end{definition}
+\begin{proposition}\label{s convergente es de cauchy} Sea $X$ un espacio m\'etrico y $(x_{n})_{n\in\mathbb{N}}\subset X$ una sucesi\'on 
+   convergente. Entonces   $(x_{n})_{n\in\mathbb{N}}$ es una sucesi\'on de Cauchy.
+\end{proposition}
+\begin{proof}
+  Sea $\varepsilon>0$ y $x=\lim\limits_{n\to\infty}x_n$. Por la definici\'on de convergencia,  existe 
+ $M\in {{\mathbb N}}$ tal que  si $n\geq M$ entonces $d(x_{n},x)<\varepsilon/2$. As\'i, para $n\geq M$ y $m\geq M$, se tiene  
+  $$d(x_{n},x_{m}) \leq
+  d(x_{n},x)+d(x,x_{m})<\varepsilon/2+\varepsilon/2=\varepsilon.$$
+  Por lo tanto $(x_{n})_{n\in\mathbb{N}}$ es una sucesi\'on de Cauchy.
+\end{proof}
+\begin{proposition}\label{p.subsucconv}
+  Sea $(x_{n})_{n\in\mathbb{N}}$ una sucesi\'on de
+  Cauchy en el espacio m\'etrico $(X,d)$. Si existe  una subsucesi{\'o}n $(x_{n_{k}})$  
+  que converge a un punto $x$, entonces $(x_{n})_{n\in\mathbb{N}}$ converge a $x$. 
+\end{proposition}
+\begin{proof}
+  Sea $\varepsilon>0$. Como $(x_{n_{k}})$ converge a $x$,
+  existe $M_{1}\in {{\mathbb N}}$ tal que si $n_k \geq M_{1}$, entonces
+  $d(x_{n_k},x)<\varepsilon/2$.  Como $(x_{n})_{\in\mathbb{N}}$ es de Cauchy,  existe $M_{2}\in {{\mathbb N}}$ tal que si $n
+  \geq M_{2}$ y $m
+  \geq M_{2}$,  entonces $d(x_{n}, x_{m})<\varepsilon/2$. 
+
+ Sea $M=\max\{M_{1},M_{2}\}$. Entonces, para $n \geq M $ y $n_k\geq M$ tendremos:
+ $$d(x_{n},x)\leq  d(x_n,x_{n_k})+d(x_{n_k},x)<\varepsilon/2+\varepsilon/2=\varepsilon.$$
+ Por lo tanto $(x_n)_{n\in\mathbb{N}}$ converge a $x$, como se quer\'ia demostrar.
+\end{proof}
+\begin{definition}
+  Se dice que un espacio m\'etrico $X$ es 
+\textbf{completo}, si cualquier sucesi\'on de
+  Cauchy en $X$ es convergente.
+\end{definition}
+
+\begin{example}
+El conjunto $\{0\}\cup\{\frac{1}{n}\}_{n\in\mathbb{N}}$ con la m\'etrica inducida de la recta real es un espacio completo. 
+\end{example}
+
+\begin{example} El conjunto $(0,1)$ con la m\'etrica inducida de la recta real no es un espacio completo. En efecto, la sucesi\'on $({1}/{n})_{n\in\mathbb{N}}$ es de Cauchy, pero no converge en $(0,1)$.
+\end{example}
+
+\begin{proposition}
+  Sean $(X,d)$ un espacio m\'etrico completo y $A\subset X$ un subconjunto cerrado. Entonces A es completo.
+\end{proposition}
+
+\begin{proof}
+  Sea $(x_{n})_{n\in\mathbb{N}}$ una sucesi\'on de Cauchy en $A$. Entonces  $(x_{n})_{n\in\mathbb{N}}$ es una
+  sucesi\'on de Cauchy en $X$ y como $X$ es completo, existe  $x=\lim\limits_{n\to
+    \infty}x_{n} \in X$. As\'i, $x$ es un punto de adherencia de $A$, y ya que $A$ es cerrado, $x\in A$, como se quería demostrar.
+\end{proof}
+\begin{proposition}
+  Sean $(X,d)$ un espacio m\'etrico y $A\subset X$ un subespacio completo. Entonces $A$
+  es cerrado.
+\end{proposition}
+\begin{proof}
+  Sea $a \in \overline A$. Como $X$ es primero numerable, podemos construir una sucesi\'on  contenida en $A$,  $(a_{n})_{n\in\mathbb{N}}$, tal que  $a = \lim\limits_{n \to \infty}a_{n}$. Como $(a_{n})_{n\in\mathbb{N}}$ es
+  una sucesi\'on convergente en $X$, por la proposici\'on~\ref{s convergente es de cauchy}, $(a_{n})_{n\in\mathbb{N}}$ es sucesi\'on  de Cauchy en $X$ y por lo tanto  $(a_{n})_{n\in\mathbb{N}}$ es sucesi\'on de Cauchy en $A$.
+  Pero  $A$ es completo, por lo que $(a_n)_{n\in\mathbb{N}}$ tiene un l\'imite en $A$. Pero una sucesi\'on convergente en un espacio métrico tiene un \'unico l\'imite, lo cual implica que $a\in A$. As\'i, $\overline{A}\subset A$, probando que $A$ es cerrado.
+  
+\end{proof}
+
+
+
+\begin{definition} Se dice que un espacio topol\'ogico
+  $X$ es  \textbf{secuencialente compacto},
+ si toda sucesi\'on en $X$
+  tiene una subsucesi\'on convergente.
+
+\end{definition}
+\begin{theorem}\label{sc sii ta y c}
+  Un espacio m\'etrico $(X,d)$ es secuencialmente compacto, si y
+  s\'olo si $(X,d)$ es totalmente acotado y completo.
+\end{theorem}
+\begin{proof}
+  Supongamos que $X$ es secuencialmente compacto.
+Para demostrar que $X$ es completo, consideremos  una sucesi\'on de Cauchy arbitraria, $(x_n)_{n\in\mathbb{N}}$ en $X$. Por hip\'otesis, existe una subsucesi\'on convergente, $(x_{n_{k}})_{k\in\mathbb{N}}$. En virtud de la proposici\'on \ref{p.subsucconv},
+  $(x_{n})_{n\in\mathbb{N}}$ tambi\'en converge. Por lo tanto,
+  $X$ es un espacio completo. 
+
+Demostraremos por contrapositiva que $X$ es 
+  totalmente acotado. Supongamos lo contrario. Entonces existe $ \varepsilon>0$ tal que
+  para cualquier subconjunto finito $\{x_1,x_2,...,x_n\}$ de $X$,  se tiene 
+   $$X\neq \bigcup\limits_{i=1}^{n}  B(x_{i},\varepsilon).$$
+ Para demostrar que $X$ no es secuencialmente compacto, construiremos una 
+sucesi\'on $(x_n)_{n\in\mathbb{N}}\subset X$ la cual no contendr\'a
+ninguna subsucesi\'on convergente. 
+
+Sea $x_1$ un punto  arbitrario de $X$. Entonces $$X\neq B(x_{1},\varepsilon) ,$$ por lo
+   que existe
+ $x_{2} \in X\setminus B(x_{1},\varepsilon)$. Pero $$X\neq B(x_{1},\varepsilon)\cup B(x_2,\varepsilon) ,$$ por lo que podemos encontrar un punto 
+   $$x_{3} \in X\setminus\big{(} B(x_{1},\varepsilon)\bigcup
+  B(x_{2},\varepsilon)\big{)}.$$
+ Continuando con este procedimiento, podemos encontrar 
+ una sucesi\'on  $x_{1},\dots,x_{n},\dots $  tal que para toda $n\in\mathbb{N}$,
+\begin{equation}\label{eq c.s.}
+ x_n\notin \bigcup\limits_{m<n}B(x_m,\varepsilon).
+\end{equation}
+
+ Afirmamos que la sucesi\'on $(x_n)_{n\in\mathbb{N}}$ no posee
+  ninguna subsucesi{\'o}n convergente. En efecto, notemos que  (\ref{eq c.s.}) implica  que para cualquier $n, m\in\mathbb{N}$, 
+\begin{equation}\label{eq d.n. c.}
+d(x_n, x_m)\geq \varepsilon. 
+\end{equation}
+De esta manera, 
+  si $(x_n)_{n\in\mathbb{N}}$ tuviera una subsucesi\'on convergente, esta ser\'ia de Cauchy, pero por la la desigualdad (\ref{eq d.n. c.}), eso es imposible. Por lo tanto $(x_n)_{n\in\mathbb{N}}$ no posee ninguna subsucesi\'on convergente. As\'i, llegamos a que $X$ no puede ser secuencialmente compacto, como se quer\'ia demostrar.
+
+  
+  Ahora supongamos que $(X,d)$ es totalmente acotado y
+  completo. Para demostrar que $X$ es secuencialmente compacto consideremos
+   una sucesi\'on arbitraria $(x_n)_{n\in\mathbb{N} }$ en $X$ y demostremos que contiene
+una subsucesi\'on convergente.
+
+Como $X$ es totalmente acotado, para cada $n\in\mathbb{N}$ podemos encontrar un conjunto ${1/n}$-denso, $A_{n}=\{a_{1}^{n},\dots,a_{p_{n}}^{n}\}$.
+  
+  Como  el conjunto  $A_{1}=\{a_{1}^{1},\dots,a_{p_{1}}^{1}\}$ es $1$-denso en $X$, tenemos que
+  $$X= \bigcup_{i=1}^{p_{1}} B(a_{i}^{1},1).$$  As\'i, existe $i\in \{1,\dots, p_1\}$ tal que la bola
+   $ B(a_{i}^{1},1)$  contiene un
+  n\'umero  infinito de
+  elementos de la sucesi\'on $(x_{n})_{n\in\mathbb{N}}$. Sea $C_1$ el conjunto de todos los t\'erminos de la sucesi\'on contenidos en $ B(a_{i}^{1},1)$.  Definamos
+$$n_1=\min\limits_{n\in\mathbb{N}}\{n~|~x_n\in C_1\},$$
+y consideremos el t\'ermino $x_{n_1}$ de la sucesi\'on $(x_{n})_{n\in\mathbb{N}}$.
+   Para $n=2$, consideremos  
+   $A_{2}=\{a_{1}^{2},\dots,a_{p_{2}}^{2}\}$. Entonces, $$X= \bigcup\limits_{i=1}^{p_{2}} B(x_{i}^{2},{1/2}),$$  y como $C_1$ es un conjunto infinito,  existe una bola, $ B(a_{i}^{2},{1/2})$,
+  que contiene un n{\'u}mero infinito de elementos de $C_1$. Sea $C_2=C_1\cap B(a_{i}^{2},{1/2})$, y definamos
+$$n_2=\min\limits_{n\in\mathbb{N}}\{n~|~x_n\in C_2 \text{ y }n>n_1\},$$
+y consideremos el t\'ermino $x_{n_2}$ de la sucesi\'on $(x_{n})_{n\in\mathbb{N}}$. Continuando con este procedimiento, para cada $k\in\mathbb{N}$, podemos encontrar $a_i^k\in A_k$ tal que la bola $B(x_i^k, {1/k})$ contiene una infinidad de t\'erminos del conjunto $C_{k-1}$. As\'i, si $C_k= B(x_i^k, {1/k})\cap C_k$ podemos definir 
+ $$n_k=\min\limits_{n\in\mathbb{N}}\{n\mid x_n\in C_k \text{ y }n>n_{k-1}\}.$$
+
+Notemos que $(x_{n_k})$ es una sucesi\'on  de Cauchy.
+ En efecto, dado $\varepsilon >0$, 
+existe $M
+\in\mathbb{N}$ tal que
+ ${1/M} < {\varepsilon/2}$.
+  Entonces, para $k,j>M$, existe 
+$a_i^M\in A_M$, tal que $x_{n_k}$, $x_{n_j}\in B(a_i^{M},{1/M})$. As\'i, 
+$$d(x_{n_k},x_{n_j})
+ \leq d(x_{n_k},a_i^M)+d(a_i^M,x_{n_j})< 
+{1/M}+{1/M}
+={2/M}<\varepsilon ,$$
+lo cual demustra que $(x_{n_k})$ es una sucesi\'on 
+de Cauchy. Y como $X$ es completo, $(x_{n_k})$ 
+converge. Por lo tanto $X$ es secuencialemte compacto.
+\end{proof}
+
+
+\begin{proposition}\label{ta es sep}
+  Sea $(X,d)$ un espacio m\'etrico totalmente acotado. Entonces $(X,d)$  es separable.
+\end{proposition}
+\begin{proof}
+  Como $X$ es totalmente acotado, para cada $n\in\mathbb{N}$, existe un conjunto $\frac{1}{n}-$denso, $A_n=\{a_1^n,a_2^n,\dots ,a_{p_n}^n\}$.
+    Consideremos el
+  conjunto $$A=\bigcup\limits_{n\in\mathbb{N}} A_n.$$   $A$ es uni\'on numerable de subconjuntos finitos,  y por tanto, 
+  es numerable. Ahora demostremos que $A$ es denso en $X$. Sea U un abierto cualquiera de X.  Entonces existe $\varepsilon>0$ tal que $B(x,\varepsilon)\subset U$, y podemos encontrar
+  $k\in {{\mathbb N}}$ tal que ${1/k}<\varepsilon$. Consideremos el conjunto $A_k$. Entonces $X=\bigcup\limits_{i=1}^{p_k}B(a_i^k{1/k})$, por lo que 
+ existe $a_{i}^{k}\in A_{k}$ tal que $x\in B(a_i^k,{1/k})$. As\'i, $d(x,a_i^k)<{1/k}$, y consecuentemente $$a_{i}^{k}\in B(x,{1/k})\subset B(x,\varepsilon)\subset U.$$
+Por lo tanto $A\cap U\neq \emptyset$, lo cual demuestra que
+  $A$ es denso en X. As\'i podemos concluir que  X es separable.
+\end{proof}
+
+\begin{definition} Se dice que un
+   espacio topol\'ogico $X$ es 
+ \textbf{numerablemente compacto}, si toda
+  cubierta abierta numerable de $X$ tiene subcubierta finita.
+\end{definition}
+
+\begin{theorem}\label{c nc y sc}
+ Sea  $(X,d)$ un espacio m\'etrico. Entonces, los siguientes enunciados son equivalentes:
+\begin{enumerate}[(1)]
+\item $(X,d)$ es compacto,
+\item $(X,d)$ es numerablemente compacto,
+\item $(X,d)$ es secuencialmente compacto.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}  \hfill{\,}  
+
+$(1)\Rightarrow (2)$ Es evidente.
+  \medskip
+  
+  $(2)\Rightarrow (3)$ En virtud del teorema~\ref{sc sii ta y c}, basta demostrar que $X$ es completo y totalmente acotado. Lo haremos por contradicci\'on.
+  
+Primero supongamos  que X no es completo.
+  Entonces existe una sucesi\'on de Cauchy, $(x_{n})_{n\in\mathbb{N}}$, la cual
+  no converge. Adem\'as, como $(x_{n})_{n\in\mathbb{N}}$ es de Cauchy, no puede contener ninguna subsucesi\'on convergente.   Consideremos el  conjunto:
+  $A=\{x_{1},x_{2},\dots\}\subset X$. Entonces, si $x\in X\setminus A$, como ninguna subsucesi\'on de $(x_n)_{n\in\mathbb N}$ converge a $x$, existe una vecindad $U$ de $x$, tal que $U\cap A=\emptyset$. Por lo tanto, $A$ es un subconjunto cerrado de $X$.
+An\'alogamente, para cada $n\in\mathbb{N}$, existe una vecindad $U_n$ del punto $x_n$, tal que $U_n\cap A=\{x_n\}$.  
+Sea $\mathcal{U}=\{U_n\}_{n\in\mathbb{N}}\cup \{X\setminus A\}$. Entonces $\mathcal{U}$ es una cubierta abierta numerable de $X$. Por $(2)$, existe una subcubierta finita, digamos $\{U_{n_1},\dots,U_{n_k}, X\setminus A\}$. Esto implica que 
+$A\subset U_1\cup\ldots\cup U_{n_k}$, lo cual es imposible porque $U_n\cap A=\{x_n\}$ para toda $n\in\mathbb N$.
+Esta contradicci\'on nos permite concluir que $X$ es un espacio completo.
+
+ Ahora supongamos que X no es totalmente
+  acotado. Entonces existe  $\varepsilon>0$ tal que para cualquier subconjunto finito, $\{a_1,\dots, a_n\}$, se tiene 
+
+$$X\neq \bigcup\limits_{i=1}^n B(a_i,\varepsilon).$$Sea $x_{1} \in X$  un punto fijo, entonces 
+ $X\neq B(x_{1},\varepsilon )$. Por lo tanto, existe $
+  x_{2}\in X\setminus B(x_{1},\varepsilon)$. Como $$X\neq B(x_{1},\varepsilon)
+  \cup B(x_{2},\varepsilon),$$ existe $x_{3} \in X\setminus \big(B(x_{1},\varepsilon)
+  \cup B(x_{2},\varepsilon)\big)$.  
+
+Continuando con este procedimiento, podemos construir el conjunto
+  $A=\{x_{1},x_{2},\dots x_n\dots \}$, el cual satisface la propiedad de 
+   que para toda $n,m\in\mathbb{N}$ con $n\neq m$, se tiene 
+
+\begin{equation}\label{eq de}
+d(x_{n},x_{m})\geq\varepsilon.
+\end{equation}
+
+  Consideremos la familia $\{B(x_n,\varepsilon/4)\}_{n\in\mathbb{N}}$. El hecho de que para $n\neq m$, 
+  $$B(x_{n},{\varepsilon/4})\bigcap B(x_{m},{\varepsilon/4})
+  =\emptyset,$$  nos garantiza que $A$ es un subconjunto cerrado, por lo que la familia
+     $\{B(x_n,{\varepsilon/4})\}_{n\in\mathbb{N}}\cup
+  \{X\setminus A\}$ es una cubierta abierta numerable para X. Por hip\'otesis, existe una subcubierta finita, digamos $\{B(x_{n_1},{\varepsilon/4}),\dots,  B(x_{n_k},{\varepsilon/4}), X\setminus A\}$. As\'i, si $x_m\notin \{x_{n_1},\ldots,x_{n_k}\}$, entonces  
+
+$$x_m\notin \big{(}X\setminus A\big{)}\cup\bigg{(}\bigcup\limits_{i=1}^k B(x_{n_i},{\varepsilon/4})\bigg{)}.$$
+
+  Por lo que $\{B(x_{n_1},{\varepsilon/4}),\dots,  B(x_{n_k},{\varepsilon/4}), X\setminus A\}$ no cubre a $X$. Esta contradicci\'on demuestra que $X$ es totalmente acotado.
+\medskip
+
+   $(3)\Rightarrow (2)$ Por contradicci\'on. Supongamos que $X$ no es numerablemente compacto. 
+   entonces existe una cubierta numerable de $X$,
+  $\{U_{n}\}_{n\in\mathbb{N}}$, la cual no posee ninguna subcubierta finita.
+  As\'i, existe $x_{1}\in X\setminus U_1$. De igual manera, podemos tomar un punto $x_2\in X\setminus (U_1\cup U_2)$. Continuando con este procedimiento, podemos formar una sucesi\'on 
+ $(x_n)_{n\in\mathbb{N}}$ con la propiedad de que 
+\begin{equation}\label{prop suc}
+x_m\notin \bigcup\limits_{i=1}^nU_n,~~\text{ para todo }m\geq n.
+\end{equation}
+ Como $X$ es secuencialmente compacto, 
+  existe una subsucesi\'on  $(x_{n_{k}})$ convergente.
+ 
+Sea $x=\lim\limits_{k\to\infty} x_{n_k}$. Entonces existe $m\in\mathbb{N}$, tal que $x\in U_m$. Por (\ref{prop suc}), si $n_k>m$ entonces
+$x_{n_k}\notin U_m$. Por otro lado, como $(x_{n_{k}})$ converge a $x$, 
+ existe $M\in {{\mathbb N}}$
+  tal que para toda $ n_{k}> M,$ $x_{n_{k}}\in U_{m}$. Entonces, si $n_k>M$ y $n_k>m$, $x_{n_k}\in U_m$ y  $x_{n_k}\notin U_m$. Esta contradicci\'on 
+ nos permite concluir que $X$ es
+  contablemente compacto.
+  
+  
+ $(2)\Rightarrow (1)$ Si $X$ es numerablemente compacto, por lo demostrado anteriormente, $X$ es secuencialmente compacto. Entonces  por el teorema~\ref{sc sii ta y c}, $X$ es totalmente
+  acotado y completo. Luego, por la proposici\'on~\ref{ta es sep} $X$ es separable. As\'i, en virtud de la proposici\'on~\ref{metricoseparable=metrico2numerable} $X$ es 
+segundo numerable. 
+Sea $\mathcal{B}=\{ V_{n}\}$, una base numerable para la topolog\'ia de  $X$.
+Para demostrar que $X$ es compacto, por el teorema~\ref{compacidad con cubiertas basicas},
+basta probar que cualquier cubierta de $X$ con elementos de $\mathcal{B}$ tiene subcubierta finita.
+Pero esto es evidente, porque cualquier cubierta con elementos de $\mathcal{B}$ es a lo m\'as numerable, y como $X$ es numerablemente compacto, posee una subcubierta finita. Por lo tanto $X$ es compacto.
+\end{proof}
+\begin{theorem}[El número de Lebesgue]
+Sea $(X,d)$ un espacio m\'etrico compacto, y   $\mathcal{U}=\{U_\alpha \}_{\alpha\in\mathcal{A}}$  una cubierta abierta
+de $X$. Entonces, existe $\delta > 0$ tal que para cualquier 
+ subconjunto $A$ de $X$, con ${\rm diam} ~A<\delta$, existe   $U_{\alpha }\in \mathcal{U}$
+tal que $A\subset U_{\alpha }$. 
+El n\'umero  $\delta$ recibe el nombre de \textbf{n\'umero de Lebesgue}.
+\end{theorem}
+\begin{proof}
+ Como $X$ es un espacio compacto, existe una subcubierta finita de $\mathcal{U}$, digamos $\{U_{\alpha _1},...,U_{\alpha_n}\}$.
+  Definamos la funci\'on $f:X\to\mathbb{R}$ por
+$$ f(x)=\max\big\{ d (x, X\setminus U_{\alpha _{i}})\mid i\in\{1,\ldots,n\}\big\}~\text{    para toda }x\in X.$$
+Como la distancia de un punto a un conjunto es una funci\'on continua (ver la demostraci\'on de la proposici\'on~\ref{lema urysohn para metricos}), y el máximo entre dos funciones continuas $h$ y $g$ puede expresarse como composición de funciones continuas en la forma
+$\max
+\{h(x),g(x)\}=\frac{1}{2}(f(x)+g(x)+|f(x)-g(x)|)$, podemos deducir por inducción que $f$ es continua.
+
+Afirmamos que para culaquier punto $x\in X$, $f(x)>0$.  En efecto, supongamos que 
+existe $x_0 \in X$ tal que $f(x_ 0)=0$, entonces, $d (x_0, X\setminus U_{\alpha _i})=0$ para cualquier
+$i\in \{1,...,n\}$. Como  $X\setminus U_{\alpha _i}$ es un subconjunto cerrado, tendr\'iamos que   $x_0\in X\setminus U_{\alpha _i}$ para toda $i\in \{1,...,n\}$. Entonces,
+$$x_0\notin \bigcup _{i=1}^n U_{\alpha _i}=X.$$ Esta contradicci\'on nos permite concluir que para cualquier $x\in X$, 
+\begin{equation}\label{des de num lebesgue}
+f(x)>0.
+\end{equation}
+Por otro lado,  como $X$ es compacto y $f$ es continua, $f$ alcanza sus valores extremos (vease proposici\'on~\ref{fun de compc alcanza los extremos}). En particular, existe
+$y\in X$ tal que $f(y)=\min\{f(x); x\in X\}$. 
+ Sea $\delta = f(y)$. Afirmamos que
+$\delta$ es el n\'umero que buscamos. En efecto, por~ (\ref{des de num lebesgue}), $\delta>0$. Por otra parte, si $A$ es un subconjunto de $X$, tal que $diam~ A <\delta$, y $a\in A$, 
+entonces $f(a)=d(a, X\setminus U_{\alpha_k})$ para algún $k\in\{1,\ldots,n\}$. Se sigue que 
+$A\subset B(a,\delta)\subset U_{\alpha_k}$.
+\end{proof}
+
+
+
+
+
+
+\section{Espacios Localmente Compactos}
+
+En esta secci\'on estudiaremos los espacios topol\'ogicos localmente compactos. Esta propiedad, aunque es m\'as d\'ebil que la compacidad, aporta al espacio topol\'ogico numerosas características deseables.
+\begin{definition}
+Sean $X$ un espacio topol\'ogico y  $x \in X$. Se dice que una vecindad $U$ de $x$ es \textbf{relativamente compacta} o \textbf{precompacta}
+si su cerradura $\overline{U}$ es compacta. Decimos que $X$ es \textbf{localmente compacto} si para cada punto $x \in X$ y cada vecindad $U$ de $x$, existe un abierto precompacto $V$ tal que $x\in V\subset\overline{V}\subset U$.
+\end{definition}
+
+
+Veamos algunos ejemplos que ilustren la definici\'on anterior.
+\begin{example}
+ El espacio euclidiano $\mathbb{R}^n$  es localmente compacto, ya que para cualquier $x \in
+\mathbb{R}^n$ y $r>0$,  la bola  $B(x,r)$ tiene cerradura compacta.
+\end{example}
+\begin{example}\label{esp disc es loc compc}
+Cualquier espacio topol\'ogico discreto $X$ es localmente compacto. En efecto,  para todo $x\in X$, la vecindad  $\{x\}$ es compacta.
+
+\end{example}
+Como ejemplo de un espacio no localmente compacto, tenemos el siguiente espacio.
+
+
+\begin{example} Sea $\ell_2$ el espacio de Hilbert introducido en el cap\'itulo 1. Entonces $\ell_2$ no es localmente compacto.
+ 
+ \begin{proof}
+Por contradicci\'on. Supongamos que existe una vecindad
+ $U$ del punto $0=(0,0,0,...)$, tal que $\overline{U}$
+es compacto.  Entonces, existe $r>0$ de modo que 
+$$B(0,r)=\{x\in l_2 ~\big|~ \parallel x \parallel<r\} \subset U.$$ 
+As\'i $\overline{B(0,r)}\subset \overline{U}$, y por el teorema~\ref{sub cerrado es compacto}, $\overline{B(0,r)}$ es compacto.
+
+ Como $\ell_2$ es un espacio m\'etrico, podemos usar el teorema~\ref{c nc y sc} para concluir que $\overline{B(0,r)}$ es secuencialmente compacto. Consideremos la sucesi\'on 
+$(x_n)_{n\in\mathbb{N}}$ dada por  $x_n= (0,0,...,0,{r},0,...)$ con ${r}$ en la $n$-\'esima coordenada. As\'i,  
+$\|x_n\|=r$, y  por lo tanto $x_n \in  \overline{B(0,r)}$ para todo $n\in
+\mathbb{N}$. Como $\overline{B(0,r)}$ es secuencialmente compacto, existe una subsucesi\'on convergente $(x_{n_k})$. Por la proposici\'on~\ref{s convergente es de cauchy}, dicha subsucesi\'on es de Cauchy. Pero para cualquier $n_k$ y $n_j$ tenemos
+ $$\|x_{n_k} - x_{n_j}\|=\sqrt 2 r,$$ por lo que $(x_{n_k})$ no puede ser sucesi\'on de Cauchy. Esta contradicci\'on nos permite concluir que $\ell_2$ no es localmente compacto.
+\end{proof}
+\end{example}
+
+
+\begin{example} El conjunto de los n\'umeros racionales con la topolog\'ia inducida de la recta real no es localmente compacto.
+\begin{proof} De hecho ningún punto $x\in\mathbb{Q}$ tiene una vecindad precompacta. Supongamos que $U$ es una vecindad de $x\in\mathbb{Q}$ tal que su cerradura $\overline{U}$ 
+en $\mathbb{Q}$ es compacta. Entonces existe un intervalo $(a,b)\subset\mathbb{R}$ tal que 
+$x\in(a,b)\cap\mathbb{Q}\subset[a,b]\cap\mathbb{Q}\subset \overline{U}$. Cabe observar que 
+$[a,b]\cap\mathbb{Q}$ es la cerradura del conjunto $(a,b)\cap\mathbb{Q}$ en $\mathbb{Q}$. Entonces, $[a,b]\cap\mathbb{Q}$ siendo un subconjunto cerrado del compacto $\overline{U}$, 
+es compacto. Por otro lado, un subconjunto compacto de la recta real $\mathbb{R}$ tiene que ser cerrado en $\mathbb{R}$. Por lo tanto $[a,b]\cap\mathbb{Q}$ es cerrado en $\mathbb{R}$, una contradicción.
+\end{proof}
+\end{example}
+
+\begin{proposition}\label{equiv cm loc}
+Sea $X$ un espacio de Hausdorff. Entonces $X$ es localmente compacto si y sólo si cada
+$x \in X$ tiene una  vecindad $U$ precompacta.
+\end{proposition}
+\begin{proof}
+Basta demostrar la suficiencia del enunciado. Supongamos que existe una vecindad  $U$ de $x$, tal que $\overline{U}$ es compacto, y sea $V$ una vecindad arbitraria de $x$.
+ Entonces, como $X$ es de Hausdorff, tambi\'en $\overline{U}$ es de Hausdorff. As\'i, aplicando el Teorema~\ref{t2 y compacto es regular} podemos inferir que   
+$\overline{U}$ es un espacio regular y por lo tanto $U$ es un espacio regular. Entonces existe una vecindad $W$ abierta en $\overline{U}$ tal que
+ $$x\in W\subset \overline{W} \subset {V \cap U},$$
+ 
+ \noindent donde $\overline{W}$ es la cerradura de $W$ en $\overline U$. Como $W$ está contenido en $U$ y es abierto en $\overline{U}$, inferimos que es abierto en $U$ y por tanto en $X$. Tenemos además que $\overline{W}$ es un subconjunto cerrado del compacto $\overline{U}$ y por lo tanto es compacto. Ya que $X$ es de Hausdorff y $\overline{W}$ es compacto, $\overline{W}$ debe ser cerrado en $X$, y por tanto $\overline{W}$ es también la cerradura de $W$ en $X$.  Vemos así que $W$ es una vecindad precompacta de $x$, y además $\overline{W}\subset V$, como se quería demostrar.
+\end{proof}
+
+\begin{corollary} Si $X$ es un espacio compacto y Hausdorff, entonces $X$ es localmente compacto.
+\end{corollary}
+
+\begin{corollary}\label{vecindad compacta del compacto}
+Sea $X$ un espacio de Hausdorff localmente compacto. Si $C\subset X$ es un conjunto compacto y $U$ es una vecindad de $C$, entonces existe un abierto $W$ tal que 
+$$C\subset W\subset\overline W\subset U$$
+y $\overline W$ es compacto.
+\end{corollary}
+\begin{proof} Por la compacidad local de $X$,
+para cada $x\in C$, podemos encontrar una vecindad $W_x$ de $x$ tal que $\overline W_x$ es compacto y $\overline {W_x}\subset V$. Consecuentemente, la familia $\{W_x\}_{x\in C}$ es una cubierta abierta para el compacto $C$ y por lo tanto podemos encontrar una subcubierta finita, digamos $W{x_1},\dots, W_{x_n}$. Entonces,
+
+$$C\subset \bigcup\limits_{i=1}^n W_{x_i}\subset\overline{\bigcup\limits_{i=1}^n W_{x_i}} =\bigcup\limits_{i=1}^n\overline{W_{x_i}}\subset V.$$
+As\'i, definimos $W=\bigcup\limits_{i=1}^n W_{x_i}$. Entonces su cerradura $\overline W=\bigcup\limits_{i=1}^n \overline{W_{x_i}}$ es compacta al ser unión finita de compactos, y por lo tanto $W$ cumple lo que se quer\'ia.
+\end{proof}
+
+\begin{proposition}\label{loccompabierto} Sea $X$ un espacio de Hausdorff y $D\subset X$ un subconjunto localmente compacto y denso en $X$. Entonces $D$ es abierto. 
+\end{proposition}
+\begin{proof}
+Sea $x\in D$. Entonces existe un abierto $U$ en $D$, tal que $x\in U$ y la cerradura en $D$ $[U]_D$ es compacta. Como $X$ es de Hausdorff, $[U]_D$ es cerrado en $X$, por lo que $[U]_D$ coincide con la cerradura $\overline{U}$ en $X$. Adem\'as, existe un abierto $W$ en $X$, tal que $W\cap D=U$.
+Por la proposici\'on \ref{U=Ucap A si U esab y A dens}, tenemos que
+$$\overline U=\overline {W\cap D}=\overline W.$$
+As\'i, $$x\in W\subset \overline W=\overline U\subset D.$$
+Por lo tanto, $D$ es un subconjunto abierto de $X$.
+\end{proof}
+
+La propiedad de ser un espacio localmente compacto solamente se hereda en algunos subconjuntos, como veremos a continuaci\'on.
+
+\begin{theorem} Sean $X$ un espacio de Hausdorff localmente compacto y $A\subset X$. Entonces $A$ es localmente compacto en cada uno de los siguientes casos:   
+\begin{enumerate}[(1)]
+\item  Si $A$ es cerrado.
+\item Si $A$ es abierto. 
+\item Si $A$ es la intersecci\'on de un subconjunto cerrado y un subconjunto abierto.
+\end{enumerate}
+\end{theorem}
+\begin{proof}\hfill
+
+\begin{enumerate}[(1)]
+\item Supongamos que $a \in A$. Entonces existe una vecindad de $a$, $U\subset X$ , tal que $\overline{U}$ es
+compacto. As\'i, $U\cap A$ es una vecindad de $a$ en $A$. Adem\'as,
+ $\overline{U \cap A} \subset \overline{U}$, por lo que $\overline{U \cap A}$ es compacto y por tanto, en virtud del la proposición \ref{equiv cm loc}, $A$ es localmente compacto.
+
+\item Sea $a \in A$.  Entonces $A$ es una vecindad de $a$ y por la proposici\'on ~\ref{equiv cm loc} existe una vecindad $U\subset X$ de $a$, tal que  $\overline {U}$ es
+compacto y 
+$$\overline U  \subset A.$$
+  As\'i, $U=U\cap A$ es una vecindad de $a$ en $A$  con cerradura compacta. Por lo tanto, $A$ es localmente compacto.
+  \item Supongamos que existe un abierto $U$ y un cerrado $C$, tal que $A=U\cap C$. Por el incisio (1), $C$ es localmente compacto. Ahora notemos que $A$ es un subconjunto abierto en $C$, por lo que aplicando el inciso (2), podemos concluir que $A$ es localmente compacto.
+\end{enumerate}
+\end{proof}
+
+Rec\'iprocamente, tiene lugar la siguiente proposici\'on.
+
+\begin{proposition}
+Sean $X$ un espacio de Hausdorff y $A \subset X$ un subconjunto localmente compacto. Entonces $A$ es la intersecci\'on de
+un subconjunto cerrado y un subconjunto abierto en $X$.
+\end{proposition}
+\begin{proof}
+ Sea $B=\overline{A}$ la cerradura de $A$ en $X$. Entonces $A$ es denso en $B$, y por la proposición \ref{loccompabierto} $A$ es abierto en $B$. Así, $A = B \cap C$ para algún conjunto $C \subset X$ abierto en $X$. Como $B$ es cerrado en $X$ y $C$ es abierto en $X$, la representación $A=B\cap C$ es la buscada.
+\end{proof}
+
+
+
+
+A diferencia de la compacidad, la compacidad
+local no se preserva bajo funciones continuas. Veamos un ejemplo. 
+
+\begin{example} Sean $\mathbb{Q}$ el conjunto de los n\'umeros racionales, $\tau_e$ la topolog\'ia inducida de la recta real, y $\tau_d$ la topolog\'ia discreta. Entonces la funci\'on identidad
+\begin{equation*}
+Id:(\mathbb{Q},\tau_d) \to (\mathbb{Q},\tau_e)
+\end{equation*}
+es una funci\'on continua. Adem\'as, $(\mathbb{Q},\tau_d)$ es un espacio localmente compacto, pero  $(\mathbb{Q},\tau_e)$ no lo es, según el Ejemplo~\ref{esp disc es loc compc}. 
+\end{example}
+
+Sin embargo, hay algunas funciones continuas que s\'i preservan la compacidad local, como lo veremos en la siguiente proposici\'on.
+\begin{proposition} Sean $X$ un espacio localmente compacto y $Y$ un espacio de Hausdorff.  Si existe una funci\'on $f: X \to Y$  continua,
+abierta y suprayectiva, entonces $Y$ es localmente compacto.
+\end{proposition}
+\begin{proof}
+Sea $y \in Y$. Como $f$ es suprayectiva, existe un punto $x \in X$ tal que $f(x)=y$. Luego, como $X$ es localmente compacto, existe una vecindad $U$ de $x$ tal que $\overline{U}$ es compacto. As\'i, debido a que $f$ es una funci\'on abierta, $f(U)$ es una vecindad de $y$. Por otro lado, como $f$ es continua, $f(\overline{U})$ es compacto  y como $Y$ es de Hausdorff, $f(\overline{U}) $ es cerrado. 
+As\'i, haciendo nuevamente uso de la continuidad, llegamos a que $f(\overline U)=\overline{f(U)}$. Así que
+
+\begin{equation*}
+y=f(x) \in f(U) \subset \overline{f(U)}
+\end{equation*}
+Por lo tanto, $\overline{f(U)}$ es compacto, y consecuentemente $Y$ es localmente compacto.
+\end{proof}
+
+\begin{theorem}
+Si $X$ es un espacio de Hausdorff localmente compacto, entonces $X$ es de
+Tychonoff.
+\end{theorem}
+\begin{proof}
+Evidentemente, $X\in T_1$, por lo que sólo demostraremos que $X\in T_{3\frac{1}{2}}$. 
+Sean $A$ un subconjunto cerrado y $x \in X\setminus A$. Entonces existe
+una vecindad  $U$ de $x$, tal que $\overline {U}$ es compacto y  $\overline{U}\subset  X
+\setminus A$.  Como $\overline {U}$ es un espacio compacto de 
+Hausdorff, por el corolario~\ref{t2 y c es t4}, $\overline{U}$  es normal.
+
+Consideremos los conjuntos cerrados  $\{x\}$ y $C=\overline {U}\setminus U$ de $\overline{U}$.
+Entonces existe una funci\'on continua $\lambda:\overline{U}\to [0,1]$ tal que $\lambda(x)=0$ y $\lambda(C)=\{1\}$. Definamos $f:X\to [0,1]$ por
+\begin{equation*}
+f(y)=\begin{cases}
+\lambda(y), &\text{ si }y\in \overline{U},\\
+1,&\text{ si }y\in X\setminus U.\\
+\end{cases}
+\end{equation*}
+
+Esta función está bien definida ya que la intersección $\overline U \cap (X\setminus U)$ es precisamente $C$, y $\lambda(C)=1$. Entonces $f$ es una funci\'on continua por ser la uni\'on de dos funciones continuas con dominios cerrados (v\'eanse los ejercicios del cap\'itulo 3). Adem\'as, $f(x)=0$ y $f(A)=1$. Por lo tanto, $X$ es un espacio de  Tychonoff.
+
+
+\end{proof}
+
+
+
+
+\section{Compactaciones}
+
+
+\begin{definition}
+Sea $X$ un espacio topol\'ogico. Un espacio compacto de Hausdorff  $cX$ se llama
+\textbf{compactaci\'on de $X$} si $X \subset cX$ y $\overline{X}=cX$. El conjunto $cX \setminus X$ recibe el nombre de \textbf{residuo}.
+\end{definition}
+
+
+Si $c_{1}X$ y $ c_{2}X$ son dos compactaciones de un espacio topol\'ogico $X$, diremos que 
+$c_{1}X \succeq c_{2}X$ si existe  una funci\'on continua $f:c_{1}X \to c_{2}X$
+ tal que $f(x)=x$, para todo $x\in X$. 
+Por otra parte, diremos que $c_{1}X$ y $ c_{2}X$ son equivalentes (denotado por $c_{1}X \sim c_{2}X$), si  existe  un homeomorfismo $h:c_{1}X \to c_{2}X$
+tal que $f(x)=x$, para todo $ x\in X$.
+
+Es evidente que   
+ $c_{1}X \sim c_{2}X$ si y sólo si $c_{1}X \succeq c_{2}X$ y $c_{2}X \succeq c_{1}X$.
+ 
+
+\subsection{Compactaci\'on de Alexsandroff} 
+\begin{theorem}[Compactaci\'on de Alexsandroff]
+ Sea $(X,\tau)$ un espacio localmente compacto de Hausdorff que no es compacto. Entonces
+existe un espacio compacto de Hausdorff, $\alpha X$, tal
+que X es subespacio de $\alpha X$ y  $|\alpha X \setminus X|=1$.
+
+Adem\'as, si $X'$ es otro espacio topol\'ogico que cumple estas condiciones, entonces
+existe un homeomorfismo $f:\alpha X\to X'$ tal que $f(x)=x$ para todo $x\in X$  
+
+
+ El espacio topol\'ogico $\alpha X$ recibe el nombre de  \textbf{compactaci\'on de
+Alexsandroff}.
+\end{theorem}
+\begin{proof} Denotemos por $\mu$ a la topología de $X$ y sea $\{*\}$ un punto que no pertenezca a $X$.
+
+Definamos
+$$\mathcal{B}_{*}=\{ \{*\} \cup ({X \setminus K})\mid K\subset X \text{ es  compacto } \}.$$
+
+Demostremos que  $\tau =\mu \cup \mathcal{B}_{*} $ es una topolog\'ia para $\alpha X$. 
+\begin{enumerate}[1]
+\item Claramente $\{\emptyset, \alpha X\}\subset\tau$.
+
+\item Si $\{U_{\alpha}\}_{\alpha\in A}\subset\tau$, y la familia $\{U_{\alpha}\}_{\alpha\in A}$ no contiene ningún elemento de $\mathcal{B}_{*}$, entonces $\bigcup\limits_{\alpha\in A} U_\alpha\in\mu\subset\tau$. Si la familia $\{U_{\alpha}\}_{\alpha\in A}$ contiene al menos un elemento de $\mathcal{B}_{*}$, digamos $\alpha X\setminus K$, entonces
+$$C=\alpha X\setminus \bigcup\limits_{\alpha\in A} U_\alpha\subset K.$$
+De esta forma vemos que $C$ es un cerrado en el compacto $K$, y por tanto compacto también. Así,$\bigcup\limits_{\alpha\in A} U_\alpha = \alpha X\setminus C\in \mathcal B_{*}\subset\tau$
+
+\item Si $U$, $V\in\tau$, tendremos que $U\cap V\in\tau$. En efecto, si $U$, $V\in\mu$, entonces $U\cap V\in\mu$. Si $U$, $V\in\mathcal{B}_{*}$, claramente $U\cap V\in\mathcal{B}_{*}$. 
+Por último, si $U\in\mu$ y $V\in\mathcal{B}_{*}$, entonces $U\cap V\in\mu$. 
+\end{enumerate}
+Con esto queda demostrado que $\tau$ es una topología en $\alpha X$.  
+
+	
+  Afirmamos que $(\alpha X, \tau)$ es el espacio topol\'ogico buscado.
+Es claro que  $|\alpha X \setminus X|=1$. Adem\'as la topolog\'ia del subespacio en $X$ coincide con la topología original de $X$. Por otro lado, es evidente que $X$ es denso en $\alpha X$, ya que $X$ no es compacto.  
+
+Demostremos que $\alpha X$ es compacto. Sea $\mathcal{U}$ una cubierta abierta  para $\alpha X$. Entonces existe $U_0\in\mathcal{U}$ tal que $*\in U_0$. As\'i, $X\setminus U_0$ es compacto, por lo que puede ser cubierto por un n\'umero finito de elementos de $\mathcal{U}$, digamos $\{U_1, \dots U_n\}$. As\'i, $\{U_0,U_1,\dots U_n\}$ es una subcubierta finita de $\mathcal{U}$, por lo que podemos conluir que $\alpha X$ es compacto.
+
+
+Nos falta demostrar que $\alpha X \in T_2$. En virtud de que $X\in T_2$ y $X$ es abierto en $\alpha X$, 
+es suficiente mostrar dos vecindades disjuntas de $*$ y de $x$, para todo  $x \in X$.
+Por ser $X$ localmente compacto, existe una vecindad $U$ de $x$,
+tal que $\overline{U}$ es compacto. Sea 
+$$V= \{*\}\cup(X \setminus
+{\overline{U}}) .$$
+Entonces $V$ es una vecindad de $*$ tal que
+$U \cap V = \emptyset$. Por lo tanto $\alpha X \in
+T_2$. Así, $\alpha X$ es la compactación buscada. 
+
+
+Ahora supongamos que existe una compactaci\'on $X'$ de $X$, tal que $X'$ es de Hausdorff y $|X'\setminus X|=1$. Entonces podemos expresar a $Y$ de la siguiente forma $$X'=X\cup{\{\star}\} ,$$ donde $\star$ es un punto que no pertenece a $X$. Para demostrar que $\alpha X$ y $X'$ son equivalentes, necesitamos exhibir un homeomorfismo $h: \alpha X \longrightarrow X'$, tal que
+ $h(x)=x$, para cualquier $x\in X$.
+
+Propongamos  $h: \alpha X \longrightarrow X'$ dada por
+
+\begin{equation*}
+h(x)=\begin{cases}
+x& \text { si }x\in X\\
+\star& \text{ si }z=*.\\
+\end{cases}
+\end{equation*}
+
+Evidentemente, $h$ es una funci\'on biyectiva. 
+Para demostrar que es una funci\'on continua, consideremos un conjunto $U\subset X'$ abierto en $X'$. 
+
+Si $\star \notin U$, entonces $U$ es abierto en $X$, por lo que  $h^{-1}(U)=U$  es abierto en $\alpha X$.
+Por otro lado, si 
+ $\star \in U$, entonces $K=X'\setminus U$ es cerrado en $X'$. 
+Como $X'$ es compacto, $K$ tambi\'en lo es. Adem\'as, $X'\setminus U\subset X$, por lo que $h^{-1}(X'\setminus U)=X\setminus U=K$. As\'i, $$h^{-1}(U)=\alpha X \setminus h^{-1}(X'\setminus
+U)= \alpha X \setminus (X'\setminus U)=\{*\}\cup (X\setminus K).$$  De esta manera, podemos concluir que $h^{-1}(U)$ es abierto en $X$ para todo abierto $U$ de $X'$. Por lo tanto $h$ es una funci\'on continua y biyectiva de un espacio compacto en un espacio de Hausdorff. As\'i, en virtud del teorema~\ref{funcion continua y biyectiva es de homeo}, $h$ es un homeomorfismo. 
+\end{proof}
+\begin{example}[Ejemplos]\begin{enumerate}
+\item Si $X=[0,1)$, entonces $\alpha X=[0,1]$. 
+\item Sea $X=(0,1)$, entonces  $\alpha X=\mathbb{S}^1$. 
+\end{enumerate}\end{example}
+
+
+Como consecuencia inmediata de la proposición \ref{loccompabierto}, obtenemos la siguiente proposición:
+\begin{proposition} Si $X$ es un espacio de Hausdorff localmente compacto y $cX$ es una compactaci\'on de $X$, 
+entonces $X$ es un subconjunto abierto de $c X$. 
+\end{proposition}
+
+
+\begin{proposition}
+Si $X$ es un espacio localmente compacto de Hausdorff,
+ entonces cualquier
+compactaci\'on de Hausdorff $cX$ de $X$, cumple que $cX \succeq \alpha
+X$.
+\end{proposition}
+\begin{proof} Sea $\alpha X=X\cup\{*\}$ la compactaci\'on de Alexsandroff de $X$.
+Definamos $f:c X\to \alpha X$ por 
+ \begin{equation}
+    f(z)=
+    \begin{cases}
+      * ,&\text{ si }z\notin X,\\
+      z ,&\text{ si } z\in X.\\
+    \end{cases}
+  \end{equation}
+Para completar la demostraci\'on, falta demostrar que $f$ es continua. 
+ Sea $U$ un conjunto abierto en $\alpha X$. Si $*\notin  U$ entonces 
+$$f^{-1}(U)=U\subset X.$$ 
+Como $U$ es abierto en $X$, y $X$ es abierto en $cX$, entonces $U$ es abierto en $cX$.
+Por otro lado, si $*\in U$, $\alpha X\setminus U$ es un subconjunto compacto de $X$. Se tiene que $f^{-1}(\alpha X\setminus U)=\alpha X\setminus U$ Asi, $$f^{-1}(U)= cX\setminus f^{-1}(\alpha
+X\setminus U)=cX\setminus (\alpha X\setminus U).$$ Pero $cX$ es de Hausdorff, entonces el compacto $\alpha X\setminus U$ es cerrado en $c X$, por lo que $f^{-1}(U)=cX\setminus (\alpha X\setminus U)$ es abierto en $cX$, como se quer\'ia demostrar.
+\end{proof}
+
+
+\subsection{Compactaci\'on de Stone-$\check C$ech}
+Anteriormente hemos hablado de la compactaci\'on de Alexsandroff, la cual es una compactaci\'on
+minimal y f\'acil de obtener. A continuaci\'on presentaremos la compactaci\'on de Stone-$\check C$ech,
+la cual  resulta ser una
+compactaci\'on maximal respecto a la relaci\'on $\succeq $. 
+
+Denotemos por $\mathbb I$ al intervalo $[0,1]$ con la topolog\'ia inducida de la recta real. Por otro lado, para un espacio topol\'ogico $X$, llamaremos $\mathcal{C}(X, \mathbb{I})$
+al  conjunto
+de todas las funciones continuas $f:X\to \mathbb{I}$. 
+
+Sea $X$ cualquier espacio de Tychonoff. Consideremos el producto
+ $$\prod_{f\in \mathcal{C}(X, \mathbb{I})}\mathbb{I}_f$$ 
+donde $\mathbb{I}_f=\mathbb{I}$ para toda $f\in \mathcal{C}(X, \mathbb{I})$. 
+Sea 
+
+\begin{equation*}
+\varphi:X\to \prod_{f\in \mathcal{C}(X, \mathbb{I})}\mathbb{I}_f
+\end{equation*}
+dada
+ por 
+\begin{equation}\label{eq encaje tychonoff}
+\varphi (x)_f=f(x) \text{ para todo } f\in C(X,\mathbb{I}).
+\end{equation}
+Entonces, seg\'un el teorema~\ref{teo encaje tychonoff}, $\varphi$ es un encaje topol\'ogico.
+
+\begin{theorem} Sea $X$ un espacio de Tychonoff. Consideremos el encaje $\varphi:X\hookrightarrow \prod\limits_{f\in \mathcal{C}(X, \mathbb{I})}\mathbb{I}_f$ definido en \rm{(\ref{eq encaje tychonoff})}. Entonces la cerradura $\beta X=\overline{\varphi (X)}$ es una compactaci\'on de $\varphi(X)$. Identificando a $X$ con $\varphi(X)$ por medio de $\varphi$, el espacio
+ $\beta X$ recibe el nombre de \textbf{compactaci\'on de Stone-$\check C$ech} de $X$.
+\end{theorem}
+\begin{proof}
+Como $\mathbb{I}_f$ es compacto para cualquier $f\in\mathcal{C}(X, \mathbb{I})$, aplicando el Teorema de Tychonoff, tenemos que $\prod\limits_{f\in \mathcal{C}(X, \mathbb{I})}\mathbb{I}_f$ es un espacio
+compacto. Entonces $\beta X$ es un subconjunto cerrado de un espacio  compacto, y en virtud del teorema~\ref{sub cerrado es compacto}, $\beta X$ es compacto.  Por otra parte, $X$ es homemorfo a $\varphi (X)$, entonces la construcci\'on de $\beta X$ nos garantiza que $X\cong \varphi(X)$ es denso en $\beta X.$  Por lo tanto $\beta X$ es  una compactaci\'on
+de $X$, como se quer\'ia demostrar.
+\end{proof}
+A continuaci\'on, demostraremos la siguiente propiedad central de la compactaci\'on de 
+Stone-$\check C$ech.
+\begin{theorem}\label{extension}
+Sea $X$ un espacio de Tychonoff y $B$ un espacio compacto de Hausdorff. Para cualquier funci\'on continua
+$g:X\to B$, existe otra funci\'on continua  $g^*:\beta X \to B$, tal que $g^*\circ \varphi=g$.
+\end{theorem}
+
+
+\begin{proof}
+Como $B$ es un espacio compacto de Hausdorff,  es de Tychonoff. As\'i, seg\'un la demostraci\'on del teorema \ref{teo encaje tychonoff},  podemos encajar $B$ en $\prod\limits _{h\in \mathcal{C} (B,\mathbb{I})}\mathbb{I}_h$, mediante la funci\'on producto diagonal
+\begin{equation*}
+\psi :B \to \prod _{h\in \mathcal{C} (B,\mathbb{I})}\mathbb{I}_h
+\end{equation*}
+dada por 
+$$\psi(y)_h=h(y), \text{ para toda } h\in \mathcal{C}(B,\mathbb{I}).$$
+Como $\psi$ es continua
+ y $B$ compacto, $\psi (B)$ es un subconjunto compacto del espacio de Tychonoff $\prod\limits _{h\in \mathcal{C} (B,\mathbb{I})}\mathbb{I}_h$. Entonces, $\psi (B)$ es cerrado.
+
+Por otro lado, notemos que para cualquier $h\in \mathcal{C} (B,\mathbb{I})$, la funci\'on $h\circ g:X\to \mathbb{I}$ pertenece
+a $\mathcal{C}(X,\mathbb{I})$. Sea
+\begin{equation*}
+G:\prod _{f\in \mathcal{C} (X,\mathbb{I})}\mathbb{I}_f \to \prod _{h\in \mathcal{C} (B,\mathbb{I})}\mathbb{I}_h
+\end{equation*}
+dada por
+$$G(t)_{h} =t _{h\circ g}, \text{ para todo } t=(t_f)\in \prod\limits_{f\in C(X,\mathbb{I})} \mathbb{I}_f$$
+
+Si $\pi_h:\prod\limits _{h\in \mathcal{C} (B,\mathbb{I})}\mathbb{I}_h\to \mathbb{I}_h$ es la proyeci\'on en la $h-$\'esima coordenada, entonces   es f\'acil ver que $$\pi_h\circ G=\pi_{h\circ g} .$$ As\'i, $\pi_h\circ G$ es una funci\'on continua para toda $h\in \mathcal{C}(B,\mathbb{I})$. Por lo tanto, en virtud del teorema~\ref{funciones continuas en productos}, $G$ es una funci\'on continua.  
+
+
+Notemos que para cualquier $x\in X$, 
+
+$$G(\varphi (x))_h=\varphi(x)_{h\circ g}=h\circ g(x)= \psi (g(x))_h,$$por lo que $G\circ\varphi =\psi \circ g.$
+
+Observemos que
+$G(\varphi(X))\subset \psi (B)$. Entonces, aplicando
+la continuidad de $G$ y recordando que $\psi (B)$ es cerrado, obtendremos
+\begin{align*}
+G(\beta X)=G(\overline{\varphi (X)})\subset \overline{G(\varphi (X))}\subset 
+\overline{\psi (B)}=\psi (B).
+\end{align*}
+
+Como $\psi$ es un encaje, existe la funci\'on inversa $\psi^{-1}:\psi(B)\to B$. Definamos $g^*:\beta X\to B$ como
+$g^*=\psi ^{-1}\circ G\mid _{\beta X}$. Entonces $g^*$ es continua por ser composici\'on de 
+funciones continuas. Por \'ultimo, notemos que para cualquier $x\in X$, 
+ $$(g^*\circ \varphi) (x)=\psi^{-1} ( G\mid _{\beta X}( \varphi (x)))=
+ \psi^{-1}(\psi ( g(x)))=g(x).$$
+ 
+ Por lo tanto $g^*$ es la funci\'on buscada.
+\end{proof}
+\begin{corollary}\label{cor prop stone chek}
+Sea $X$ un espacio de Tychonoff. Entonces, para cualquier funci\'on continua  $f:X\to \mathbb{I}$, existe  una extensión continua $f^*:\beta X\to \mathbb{I}$.
+\end{corollary}
+\begin{corollary} Sea $X$ un espacio de Tychonoff y $\beta X$ su compactaci\'on de Stone-$\check C$ech. Si $cX$ es una compactaci\'on cualquiera 
+de $X$, entonces $\beta X\succeq cX$. 
+\end{corollary}
+\begin{proof}
+Como $cX$ es una compactaci\'on de $X$, podemos suponer que $X\subset cX$ como subespacio denso.
+Por el teorema \ref{extension}, existe $c^*:\beta X\to cX$, continua, tal que $c^*(x)=x$ para
+toda $x\in X$. Entonces  $\beta X\succeq cX$, como se quer\'ia demostrar.
+\end{proof}
+La propiedad de maximalidad exhibida en el corolario anterior es de hecho otra caracterización de la compactación de Stone-$\check C$ech, como veremos enseguida.
+
+\begin{proposition} Si $bX$ es una compactación para $X$ tal que para cualquier otra compactación $cX$ de $X$ se tiene $bX\succeq cX$, entonces $bX$ es equivalente a $\beta X$
+\end{proposition}
+\begin{proof} En particular tendremos que $bX\succeq\beta X$, y como además sabemos que $\beta X\succeq bX$, podemos concluir que las compactaciones son equivalentes.
+\end{proof}
+
+Las compactaciones de Stone-$\check C$ech, son muy dif\'iciles de ver explícitamente. Sin embargo, los teoremas
+que hemos demostrado nos dan criterios para determinar cuando una compactación particular no es compactación de Stone-$\check C$ech,
+como veremos en el siguiente ejemplo.
+
+\begin{example}
+ Sea $X=(0,1]$, entonces $[0,1]\neq \beta X$. En efecto, la funci\'on 
+ $f:X\to [-1,1]$, dada por $f(x)=\sen (\frac{1}{x})$,
+no se puede extender continuamente a $[0,1]$. As\'i, por el corolario \ref{cor prop stone chek}, $[0,1]$ no es equivalente a $\beta X$ como compactación de $X$.
+
+\end{example}
+
+
+
+\section{Ejercicios del cap\'\i tulo}
+\begin{enumerate}
+\item Da un ejemplo de un espacio topol\'ogico que 
+contenga un subespacio compacto y no
+  cerrado. 
+\item Sea $S$ una sucesi\'on convergente en un espacio $X$. Probar que
+  $S$ junto con su punto l\'imite, es un espacio compacto.
+\item ?`Existe una biyecci\'on continua de  un espacio compacto de Hausdorff sobre el espacio de los n\'umeros  racionales?
+\item Demuestra que cualquier subespacio compacto de la l\'inea de Sorgenfrey es numerable
+(sugerencia: recuerda que cualquier funci\'on continua y biyectiva de un espacio compacto en
+un espacio de Hausdorff es un homeomorfismo).
+\item Probar que cualquier subespacio compacto de la recta de Sorgenfrey tiene 
+base numerable.
+\item Sea $X$ un espacio de Hausdorff y $U$ un subconjunto  abierto de $X$. Demostrar que si una familia $\{F_\alpha\}_{\alpha \in \mathcal{A}}$ de subconjuntos cerrados de $X$
+  contiene al menos un elemento compacto, (en particular, si X es compacto)
+  y si $\bigcap\limits_{\alpha \in \mathcal{A}} F_\alpha \subset U$, entonces existe un subconjunto finito
+  $\{\alpha _1, \alpha _2,...,\alpha _n\}\subset \mathcal{A}$, tal que $\bigcap_{i=1}^n F_{\alpha _i}\subset U$.
+\item Sean $F$ y $G$ dos subconjuntos compactos de $\mathbb{R}$. Demostrar que 
+los siguientes conjuntos son compactos:
+\begin{enumerate}
+\item $F+G=\{x+y\mid x\in F,~y\in G\}$.
+\item $F\cdot G=\{x\cdot y\mid x\in F, ~y\in G\}$.
+\end{enumerate}
+
+\item Sea $X$ un espacio compacto. Demostrar que todo subconjunto infinito tiene un punto de acumulaci\'on.
+\item Sean $X$ y $Y$ dos espacios compactos de Hausdorff. Probar que una funci\'on $f:X\to Y$ es continua si y solo si la
+gr\'afica $\{(x,f(x))\mid x\in X\}$ es cerrada en $X\times Y$.
+\item Sea $X$ un conjunto infinito. Demuestra que $X$ con la topolog\'ia cofinita es un espacio compacto ?`Ser\'a cierto si $X$ es no numerable y tiene la topolog\'ia conumerable?
+ \item  ?`Es posible encontrar en la recta real una familia no numerable de subconjuntos no numerables, compactos y ajenos dos a dos?
+ \item Sea $\mathbb{I}$ el conjunto de los n\'umeros irracionales con la topolog\'ia inducida de $\mathbb{R}$ ?`Es posible encontrar una familia no numerable de subconjuntos de $\mathbb{I}$, no numerables, compactos y ajenos dos a dos?
+ %aquï¿½ empiezan los de cap6
+ \item Demostrar que X es numerablemente compacto si y solo si cada funci\'on continua
+      $f:X\longrightarrow \mathbb {R}$ es cerrada. 
+%(considerada como mapeo de $X$ en $f(X)$).
+\item Si $X$ es un espacio numerablemente compacto, mostrar que cualquier biyecci\'on continua
+ de $X$ sobre un espacio 
+m\'etrico $Y$, es un homeomorfismo.
+\item Probar que el producto de un espacio compacto con un espacio numerablemente compacto es numerablemente
+compacto.
+\item Sean $(X,d)$ un espacio m\'etrico y $\rho:2^X\times
+  2^X\to\mathbb{R}$ dada por $$\rho(A,B)=\inf\{d(a,b)\mid a\in A, b\in
+  B\}.$$ Si $A$ y $B$ son subconjuntos ajenos y compactos de $X$, probar que $\rho(A,B)>0$.
+\item En el ejercicio anterior ?`es esencial que $A$ y $B$ sean compactos? Argumenta tu 
+respuesta.
+
+\item Da un ejemplo de un espacio topol\'ogico que sea
+localmente compacto y Hausdorff, pero no $T_4$.
+\item Da un ejemplo de un espacio $T_4$ que no sea hereditariamente $T_4$ 
+\item Demuestre que el producto finito de espacios localmente
+compactos es localmente compacto.
+\item Sea $\{X_\alpha\}_{\alpha\in\mathcal{A}}$ una familia de espacios topl\'ogicos localmente compactos. Demuestra que $\prod\limits_{\alpha\in\mathcal{A}}X_\alpha$ es localmente compacto si y solo si $X_\alpha$ es compacto para toda $\alpha\in\mathcal{A}$, salvo para un n\'umero finito de índices.
+\item Sean $X$ y $Y$ espacios completamente regulares. Si
+ $$X\subset Y\subset \beta X,$$ entonces $\beta Y$ es homeomorfo a $\beta X$.
+
+
+  \item Sean $\{X_s\}_{s\in\mathcal S}$ una familia de espacios topol\'ogicos y $X=\prod\limits_{s\in\mathcal S} X_s$. 
+	Considera $f:X\to\mathbb R$ una funci\'on continua y denota por $\pi_s:X\to X_s$ la proyecci\'on en la $s$-\'esima coordenada. Demuestra que para todo $\varepsilon>0$ existe un subconjunto finito $\mathcal S_0\subset\mathcal S$ tal que para todo par de puntos $x,y\in X$ tal que $\pi_s(x)=\pi_s(y)$  para todo $s\in\mathcal S_0$, se cumpla que
+$$|f(x)-f(y)|<\varepsilon.$$
+\item Sea $X$ un espacio compacto de Hausdorff y $f:X\to X$ una funci\'on continua. Demuestra que existe un conjunto cerrado no vac\'io $A\subset X$, tal que $f(A)=A$.
+\item Sea $(X,d)$ un espacio m\'etrico compacto y $f:X\to X$ una funci\'on.
+\begin{enumerate}
+\item Si $f$ es una isometr\'ia (es decir, si $d(x,y)=d(f(x),f(y))$), demuestra que $f$ es suprayectiva.
+\item Si $d(f(x),f(y))\geq d(x,y)$ para todo par de puntos $x,y\in X$, demuestra que $f$ es una isometr\'ia.
+\item Si  $d(x,y)\geq d(f(x),f(y))$ para todo par de puntos $x,y\in X$ y  $f$ es suprayectiva, demuestra que $f$ es una isometr\'ia.
+\end{enumerate}
+\item Sea $(X,d)$ un espacio m\'etrico completo y $f:X\to X$ una funci\'on. Supongamos que existe $\lambda\in (0,1)$ tal que para todo $x,y\in X$, se cumple que $d(f(x),f(y)\leq \lambda d(x,y)$. Demuestra que existe $x_0\in X$, tal que $f(x_0)=x_0$.
+\item Construye un ejemplo de un espacio $X$ y dos compactaciones $aX$ y $bX$ que sean homeomorfas mas no equivalentes.
+\end{enumerate}

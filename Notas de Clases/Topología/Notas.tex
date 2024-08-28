@@ -1,0 +1,65 @@
+\documentclass[12pt,reqno]{amsbook}
+\documentclass[12pt]{amsbook}
+\usepackage{latexsym,amssymb,amsmath}
+\usepackage[spanish]{babel}
+\usepackage{enumerate}
+\usepackage{graphicx}
+\usepackage{xypic}
+\usepackage{theorem}
+\usepackage{makeidx}
+\usepackage{color,soul}
+\usepackage[latin1]{inputenc}
+\newtheoremstyle{Normal}{5pt}{5pt}{\itshape}{}{\bfseries}{.}{.5em}{}
+\theoremstyle{Normal}
+\newcounter{Mio}[section]
+\newtheorem{definition}{Definici\'on}[section]
+\newtheorem{proposition}[definition]{Proposici\'on}
+
+\newtheorem{theorem}[definition]{Teorema}
+\newtheorem{corollary}[definition]{Corolario}
+\newtheorem{nota}[definition]{Nota}
+\newtheorem{lemma}[definition]{Lema}
+\newtheorem{property}[definition]{Propiedad}
+\newtheoremstyle{Ejemplos}{10pt}{10pt}{\slshape}{}{\bfseries}{.}{.5em}{
+\nopagebreak\hskip -.5em
+\hrulefill\rule{\textwidth}{1pt}\rule{1em}{1pt}\rule[-10pt]{1pt}{11pt}\\[-7pt]\nopagebreak#1 #2#3}
+\theoremstyle{Ejemplos}
+\renewcommand\theMio{\thesection.\arabic{Mio}}
+\newenvironment{example}[1][Ejemplo]{\refstepcounter{Mio}\par
+\nopagebreak\noindent\rule{\textwidth}{1pt}\rule{1em}{1pt}\rule[-8pt]{1pt}{9pt}\\[-6pt]\nopagebreak
+{\bfseries #1 \theMio. } }
+{\hfill\\[-6pt]\nopagebreak\rule{\textwidth}{1pt}\rule{1em}{1pt}\rule[0pt]{1pt}{8pt}\\[.5em]\nopagebreak\par}
+
+\graphicspath{{Imagenes/}}
+\numberwithin{section}{chapter}
+\textwidth=390pt
+\addtolength{\hoffset}{-1.5cm}
+\definecolor{lightblue}{rgb}{.70,.70,1}
+\sethlcolor{lightblue}
+\makeindex
+
+\begin{document}
+\title{Curso de  Topolog\'\i a }
+\author{{\bf Sergey A. Antonyan} \\
+
+\
+
+Facultad de Ciencias\\
+Universidad Nacional Aut\'onoma de M\'exico\\
+}
+ \maketitle \tableofcontents
+\part{Topolog\'\i a I}
+\include{EspMet}
+\include{EspTop}
+\include{FunCont}
+\include{AxSep}
+\include{Comp}
+\include{Conex}
+\part{Topolog\'\i a II}
+\include{ParaComp}
+\include{EspFun}
+\include{Acciones}
+\include{GrupFund}
+\include{EspCub}
+\printindex
+\end{document}

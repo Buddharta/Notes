@@ -1,0 +1,45 @@
+\documentclass[12pt]{amsbook}
+\usepackage{latexsym,amssymb,amsmath}
+\usepackage[spanish]{babel}
+\usepackage{enumerate}
+\usepackage{graphicx}
+\usepackage[all]{xy}
+%\usepackage{theorem}
+%Nuevo
+%\usepackage{makeidx}
+\usepackage{color,soul}
+%Nuevo
+\usepackage[latin1]{inputenc}
+\newtheoremstyle{Normal}{5pt}{5pt}{\itshape}{}{\bfseries}{.}{.5em}{}
+\theoremstyle{Normal}
+\newcounter{Mio}
+\newtheorem{definition}{Definici\'on}[section]
+\newtheorem{proposition}[definition]{Proposici\'on}
+\newtheorem{theorem}[definition]{Teorema}
+\newtheorem{corollary}[definition]{Corolario}
+\newtheorem{nota}[definition]{Nota}
+\newtheorem{lemma}[definition]{Lema}
+\newtheorem{property}[definition]{Propiedad}
+\newtheoremstyle{Ejemplos}{10pt}{10pt}{\slshape}{}{\bfseries}{.}{.5em}{
+\nopagebreak\hskip -.5em
+\hrulefill\rule{\textwidth}{1pt}\rule{1em}{1pt}\rule[-10pt]{1pt}{11pt}\\[-7pt]\nopagebreak#1 #2#3}
+\theoremstyle{Ejemplos}
+%\newtheorem{example}[definition]{Ejemplo}
+%\newtheorem{example}{
+%  \textbf{
+%    \hskip-45pt\vrule\rule[-10pt]{3pt}{10pt}\hrulefill\\
+%    Ejemplo}
+%}
+\newenvironment{example}[1][Ejemplo]{\par
+\nopagebreak\noindent\rule{\textwidth}{1pt}\rule{1em}{1pt}\rule[-8pt]{1pt}{9pt}\\[-6pt]\nopagebreak
+{\bfseries #1 \addtocounter{Mio}{1}\arabic{Mio}. } }
+{\hfill\\[-6pt]\nopagebreak\rule{\textwidth}{1pt}\rule{1em}{1pt}\rule[0pt]{1pt}{8pt}\\[.5em]\nopagebreak}
+
+
+\numberwithin{section}{chapter}
+\textwidth=390pt
+\addtolength{\hoffset}{-1.5cm}
+\definecolor{lightblue}{rgb}{.70,.70,1}
+\sethlcolor{lightblue}
+\makeindex
+\begin{document}

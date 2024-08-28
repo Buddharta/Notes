@@ -1,0 +1,92 @@
+\begin{theindex}
+
+  \item base, 39
+
+  \indexspace
+
+  \item cerradura, 34
+  \item Cilindro, 67
+  \item conjunto
+    \subitem abierto, 27
+    \subitem cerrado, 32
+    \subitem denso, 38
+    \subitem separable, 38
+
+  \indexspace
+
+  \item encaje
+    \subitem topol\'ogico, 66
+  \item espacio
+    \subitem producto, 66
+  \item espacios
+    \subitem topol\'ogicos, 27
+
+  \indexspace
+
+  \item funci\'on
+    \subitem abierta, 61
+    \subitem cerrada, 61
+    \subitem continua, 57
+      \subsubitem en un punto, 57
+
+  \indexspace
+
+  \item homeomorfismo, 63
+
+  \indexspace
+
+  \item interior, 30
+  \item invariante topol\'ogico, 65
+
+  \indexspace
+
+  \item numerable
+    \subitem primero, 47
+    \subitem segundo, 47
+
+  \indexspace
+
+  \item producto
+    \subitem cartesiano, 67
+    \subitem coordenada, 67
+    \subitem diagonal, 75
+    \subitem directo de funciones, 76
+    \subitem topol\'ogico, 68
+    \subitem Tychonoff, 68
+  \item proyecci\'on, 68
+  \item punto
+    \subitem adherencia, 34
+    \subitem cerradura, 34
+    \subitem frontera, 37
+    \subitem interior, 30
+
+  \indexspace
+
+  \item separa
+    \subitem puntos, 75
+    \subitem puntos de cerrados, 75
+  \item subbase, 44
+
+  \indexspace
+
+  \item tipo topol\'ogico, 65
+  \item topolog\'ia, 27
+    \subitem antidiscreta o trivial, 28
+    \subitem cofinita, 28
+    \subitem comparaci\'on, 29
+    \subitem conumerable, 29
+    \subitem de cajas, 67
+    \subitem discreta, 28
+    \subitem L\'inea de Sorgenfrey, 42
+    \subitem plano digital, 42
+    \subitem producto, 66, 68
+    \subitem recta digital, 42
+    \subitem Tychonoff, 68
+  \item Toro, 67
+
+  \indexspace
+
+  \item vecindad
+    \subitem de un punto, 30
+
+\end{theindex}
