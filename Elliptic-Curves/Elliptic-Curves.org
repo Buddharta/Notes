@@ -312,3 +312,7 @@ Ahora es facil ver que \(C(T_1\circ T_2)=C(T_1)C(T_2)\) pues $\Phi$ es una acci�
 \[
 j(z)=\frac{E_4(z)^3}{\Delta(z)}=\frac{1}{q}+744+196884q+21493760q^2+\dots
 \]
+A³+B³=C³
+|hi | bye|
+|---+----|
+| 0 |  1 |

@@ -1,4 +1,4 @@
-% Created 2023-05-04 Thu 21:07
+% Created 2024-02-01 Thu 12:23
 % Intended LaTeX compiler: pdflatex
 \documentclass[letterpaper]{article}
 \usepackage[utf8]{inputenc}
@@ -46,7 +46,7 @@
 \newcommand{\obs}{{\newline \noindent \sc \textbf{Observación. }}}
 \newcommand{\dem}{{\noindent \sc Demostraci\'on. }}
 \newcommand{\bg}{\ensuremath{\overline \Gamma}}
-\newcommand{\ga}{\ensuremath{\gamma}}
+\newcommand{\ga}{\ensuremath{\Gamma}}
 \newcommand{\fb}{\ensuremath{\overline F}}
 \newcommand{\la}{\ensuremath{\Lambda}}
 \newcommand{\om}{\ensuremath{\Omega}}
@@ -61,10 +61,15 @@
 \newcommand{\rp}{\ensuremath{\mathbb{RP}}}
 \newcommand{\re}{\ensuremath{\mathbb R }}
 \newcommand{\hc}{\ensuremath{\widehat{\mathbb C} }}
-\newcommand{\pslz}{\ensuremath{psl(2,\mathbb Z) }}
-\newcommand{\pslr}{\ensuremath{psl(2,\mathbb R) }}
-\newcommand{\pslc}{\ensuremath{psl(2,\mathbb C) }}
+\newcommand{\slz}{\ensuremath{\mathrm{SL}(2,\mathbb Z) }}
+\newcommand{\slr}{\ensuremath{\mathrm{SL}(2,\mathbb R) }}
+\newcommand{\slc}{\ensuremath{\mathrm{SL}(2,\mathbb C) }}
+\newcommand{\pslz}{\ensuremath{\mathrm{PSL}(2,\mathbb Z) }}
+\newcommand{\pslr}{\ensuremath{\mathrm{PSL}(2,\mathbb R) }}
+\newcommand{\pslc}{\ensuremath{\mathrm{PSL}(2,\mathbb C) }}
 \newcommand{\hd}{\ensuremath{\mathbb H^2}}
+\newcommand{\hol}{\ensuremath{\mathrm{Hol}}}
+\newcommand{\mdlr}{\ensuremath{\mathpzc{M}}}
 \author{Carlos Eduardo artínez Aguilar}
 \date{\today}
 \title{Notas de Probabilidad y Procesos Estocásticos Latex Export}
@@ -73,7 +78,7 @@
  pdftitle={Notas de Probabilidad y Procesos Estocásticos Latex Export},
  pdfkeywords={},
  pdfsubject={},
- pdfcreator={Emacs 27.1 (Org mode 9.6)}, 
+ pdfcreator={Emacs 28.1 (Org mode 9.5.2)}, 
  pdflang={Esp}}
 \begin{document}
 
@@ -81,8 +86,8 @@
 \tableofcontents
 
 
-\section{Historia y repaso elementa de probabilidades.}
-\label{sec:org56c8fcb}
+\section{Historia y repaso elemental de probabilidades.}
+\label{sec:org1ab7dcb}
 
 \noindent La historia de la probabilidad como rama matemática comienza con Fermat cuando investiga los problemas que un amigo apostador de Pascal le propone. Desde los tiempos de Bernoulli (1713) se conocian resultados como la ley (débil) de los grandes números, sin embargo no es hasta el siglo veinte que se considera una base axiomática basada en la teoría de la medida para la teoria probabilística que se encuentra una demostración rigurosa del la ley de los grandes números y el teorema del límite central. Más aún, existen dos vertientes ideológicas distintas de la teoría de la probabilidad
 
@@ -93,7 +98,7 @@
 \end{itemize}
 
 \subsection{Medida y probabilidad.}
-\label{sec:org360d1c3}
+\label{sec:org0a67c84}
 
 \noindent Entenderemos un \emph{espacio de probabilidad} como un espacio de medida \((\Omega,\Sigma,\textbf{P})\) con medida uno, es decir un conjunto con una \emph{sigma-álgebra} \(\Sigma\) y una medida \textbf{P}, tal que, el espacio total tenga medida \(\textbf{P}(X)=1\). Se le denomina a los conjuntos medibles de un espacio de probabilidad como \emph{eventos} y a dicha medida le llamamos \emph{medida de probabilidad}, así mismo se le denomina al espacio total \(X\) como \emph{espacio de muestras}. Así la medida de probabilidad \textbf{P} evaluada en un evento \(E\), \(\textbf{P}(E)\) es naturalmente la probabilidad del evento \(E\) y a un evento de probabilidad cero se le conoce como \emph{evento nulo}.
 
@@ -155,7 +160,7 @@ Por lo tanto \(D_1\) es un \(\lambda\) sistema contenido en \(\lambda(\mathrm{F}
     \mathrm{G}_2=\{B\in\lambda(\mathrm{F})\,\vert\,B\cap A\in\lambda(\mathrm{F})\},
 \]
 \noindent se puede demostrar que \(\mathrm{G}_2\) es un \(\lambda\) sistema que contiene a \(\mathrm{F}\), entonces \(\lambda(\mathrm{F})\subset\mathrm{G}_2\), así \(\lambda(\mathrm{F})\) contiene intersecciones finitas y por lo tanto es una \(\sigma\) álgebra.
-\qed\\\empty
+\qed\\
 \begin{cor}
 Sea $(\om,\sig,\prob)$ un espacio de probabilidad tal que $\sig=\sigma(\mathrm{F})$ si $\mu_1$ y $\mu_2$ son medidas en $\sig$ tales que $\mu_1=\mu_2$ en $\mathrm{F}$, entonces $\mu_1=\mu_2$.
 \end{cor}
@@ -174,7 +179,7 @@ Si un evento tiene como complemento un evento nulo, en otra palabras, si el even
 
 \eje El ejemplo prototípico son los intervalos finitos de números reales cuya sigma álgebra es el álgebra de los conjuntos \emph{borelianos} o los \emph{medibles de lebesgue} y la medida de Lebesgue reescalada para medir exactamente 1.
 
-\obs Dada una sucesión \(\{x_n\}_{n\in\nat}\) denotaremos \(x_n\downarrow x\) o \(x_n\uparrow x\) si \(x_{n+1}\leq x_n\) y \(x_{n+1}\geq x_n\) \(\lim_{n\rightarrow\infty}x_n=x\) respectivamente. Aplicaremos la misma notación para eventos \(\{A_n\}_{n\in\nat}\subset\sig\).\\\empty
+\obs Dada una sucesión \(\{x_n\}_{n\in\nat}\) denotaremos \(x_n\downarrow x\) o \(x_n\uparrow x\) si \(x_{n+1}\leq x_n\) y \(x_{n+1}\geq x_n\) \(\lim_{n\rightarrow\infty}x_n=x\) respectivamente. Aplicaremos la misma notación para eventos \(\{A_n\}_{n\in\nat}\subset\sig\).\\
 Existen construcciones conjuntistas que son más útiles en el sentido probabilístico, por ejemplo si \(\{A_n\}_{n\in\nat}\) es una sucesión de eventos aletorios definimos los conjuntos \(\{A_n\text{ i.o.}\}\) y \(\{A_n\text{ ult.}\}\) dónde i.o significa ``infinitely often'' y ult ``ultimately'', éstos términos se refieren a el comportamiento de las colas de la sucesión de los eventos
 \begin{align*}
 \{A_n\text{ i.o.}\}=\Big\{\sum_{n\in\nat}1_{A_n}=\infty\Big\}=\bigcap_{n\in\nat}\bigcup_{k\geq n}A_k,\\
@@ -200,7 +205,7 @@ Dado un espacio de probabilidad \((\om,\sig,\prob)\), un espacio medible \((E,S)
 \obs Un proceso \(X:T\times\om\rightarrow E\) es aleatorio (medible) si y solo si para toda \(t\in T\), \(X_t:\om\rightarrow E\) definida por \(X_t(\omega):=X(t,\omega)\) es medible.
 
 \subsubsection{Medidas con signo}
-\label{sec:orgc915f35}
+\label{sec:org533d4fc}
 
 Además de medidas de probabilidad, existen las \emph{medidas con signo} es decir, si \((\Omega,\Sigma)\) es un espacio medible, entonces una función \(\nu:\Sigma\rightarrow\re\) es una medida con signo si cumple
 
@@ -221,7 +226,7 @@ Sea \((\om,\sig,\mu)\) un espacio de medida y \(\nu\) una medida con signo, deci
 \noindent Una medida con signo \(\nu\), definida por una variable aleatoria \(X\) es absolutamente continua con respecto a la probabilidad \textbf{P}. Para cualquier función medible \(f:\Omega\rightarrow\re\) \textbf{siempre} podemos descomponerla de la siguiente manera \(f=f^{+}-f^{-}\), donde \(f^{\pm}=\pm f 1_{E^{\pm}}\) y \(E^{\pm}=\{x\in\Omega\,\vert\,\pm f >0\}\). De la misma manera una medida con signo definida por \(f\), \(\nu\) se descompone en \(\nu^{\pm}\).
 
 \subsection{Esperanza}
-\label{sec:orgb9cf0ec}
+\label{sec:org88a314c}
 \noindent Asi mismo entenderemos a la \emph{esperanza} de una variable aleatoria como la integral de dicha funcion medible, es decir
 \begin{equation}
     \esp(f(z))=
@@ -286,7 +291,7 @@ Más aún la esperanza condicional hereda las propiedades que son resultados com
 \end{itemize}
 
 \subsubsection{Distribuciones de probabilidad}
-\label{sec:org3d9d042}
+\label{sec:orgd366427}
 \noindent Consideremos \((\om,\sig,\prob)\) un espacio de probabilidad y sea \((E,S)\) un espacio medible y \(\xi:\om\rightarrow E\) una función medible, a esta función le llamremos \emph{elemento aleatorio} así existe una función \(\xi^{*}:S\rightarrow\sig\), definida como \(\xi^{*}(B)=\xi^{-1}(B)\), entonces es posible definir una medida de probabilidad en \((\xi^{*})^{-1}(\sig)\), definida por \(\prob\circ\xi^{*}(B)=\prob(\xi^{*}(B))\), a la medida \(\prob\circ\xi^{*}\), le llamaremos una \emph{distribución} de probabilidad y usualmente no distinguiremos entre una medida de probabilidad y una distribución incluso en la absencia de un elemento aleatorio.
 \obs Cuando \(E=\re\) y \(S=B_{\re}\), un elemento aleatorio es una variable aleatoria y cuando \(E=\re^{d}\) y \(S=B_{\re^{d}}\) un elemento aleatorio se le conoce como \emph{vector aleatorio}.
 \begin{def.}{Función de una distribución}
@@ -306,7 +311,7 @@ Dado un espacio de probabilidad \((\om,\sig,\prob)\) y un elemento medible \(\xi
     \lim_{n\rightarrow\infty}\prob\Big(X\leq x+\frac{1}{n}\Big)=\prob\Big(X\leq x\Big)
 \]
 \noindent \textbf{Existencia:} Ahora supongamos que \(F\) es una función que cumple las propiedades 1.,2. y 3., entonces similar a la existencia de Lebesgue, es posible construir una medida \(\nu:\mathbb{B}_{\re}\rightarrow\re^{+}\) tal que \(\nu((-\infty,x])=F(x)\). A la medida \(\nu\) se le conoce como la medida de Lebesgue-Stieltjes de \(F\).
-\eje \textbf{(La representación de Skorokhod de una variable aleatoria con una función de distribución prescrita en el intervalo [0,1])}\\\empty
+\eje \textbf{(La representación de Skorokhod de una variable aleatoria con una función de distribución prescrita en el intervalo [0,1])}\\
 Supongamos que \(F:\re\rightarrow[0,1]\) cumple con las propiedades 1.,2. y 3., como antes, entonces construimos una variable aleatoria en \(([0,1],\mathbb{B}[0,1],\lambda)\), donde \(\lambda\) es la medida de Lebesgue. Definimos
 \begin{align*}
     X^{+}(\omega):=\inf\{\,z\,\vert\,F(z)>\omega\}=\sup\{\,y\,\vert\,F(y)\leq\omega\}\\
@@ -325,8 +330,9 @@ Por lo tanto tenemos que \(\{\,\omega\,\vert\,X^{-}(\omega)\leq c\}=\{\,\omega\,
 \[
 $\prob(X^{-} = X^{+})=1$.
 \]
+\eje \textbf{(Distribuciones binomiales)}
 \subsection{Independencia}
-\label{sec:orgc713ac3}
+\label{sec:org9c1e0d0}
 \noindent Nos enfocaremos en indepencenia de \(\sigma\) álgebras y describimos a partir de este la noción usual de independencia.
 \begin{def.}{Independencia}
 Sea \((\om,\sig,\prob)\) un espacio de probabilidad, decimos que una familia de sub \(\sigma\) álgebras \(\{\mathrm{F}_i\}_{i\in I}\) son \emph{independientes} si para cualquier \(\{i_1,\dots,i_n\}\subset I\) subconjunto fininto, se tiene que
@@ -359,7 +365,7 @@ Es claro que si las \(\sigma\) álgebra son independientes entonces los \(\pi\) 
     C\mapsto\prob(A\cap C)\quad C\mapsto\prob(B)\prob(C).
 \]
 \noindent Como ambas medidascoinciden en \(I\) y \(J\), por el lema de clases monótonas coincide en \(\sigma(I)=\mathrm{G}\) y \(\sigma(J)=\mathrm{H}\) y por lo tanto el lema es válido.
-\qed\\\empty
+\qed\\
 \begin{cor}
 Ahora si $X$ e $Y$ son variables aleatorias en un espacio de probabilidad $(\om,\sig,\prob)$ tales que para todo $\{x,y\}\subset\re$ se cumple
 \[
@@ -369,7 +375,7 @@ entonces $X$ e $Y$ son variables aleatorias independientes
 \end{cor}
 \dem
 Esto es claro de la proposición anterior debido a que la familia de conjuntos \(\{X^{-1}(-\infty,x]\,\vert\,x\in\re\}\) es un \(\pi\) sistema para \(\sigma(X)\) para toda \textbf{v.a} \(X\), así del lema anterior se sigue el resultado.
-\qed\\\empty
+\qed\\
 \obs En términos de la esperanza conicional, si \(X \upvDash\mathrm{F}\), entonces \(\esp(X|\mathrm{F})=\esp(X)\), además \(Y=\esp(X)\) es \(\mathrm{F}\) medible pues
 \[
     \forall A\in\mathrm{F}\hspace{0.3cm}\esp(X1_A)=\esp(X)\prob(A)=Y\esp(1_A)=\esp(Y1_A)
@@ -401,10 +407,10 @@ Por monotonía de ambos lados de la ecuación, al tomar el límite cuando \(r\up
 \noindent Por lo que \(\prob(\{\om\setminus\limsup E_n\})=0\) \qed
 \eje
 \subsection{{\bfseries\sffamily TODO} Tipos de convergencia,Teoremas límite, Ley fuerte de los grandes números y teorema del límite central.}
-\label{sec:orgf8e4ba0}
+\label{sec:org4e146da}
 
 \section{Procesos estocáticos: Temario del curso}
-\label{sec:org321a3e0}
+\label{sec:org5f4bc1e}
 
 \begin{itemize}
 \item Existencia de procesos y Martingalas
@@ -414,7 +420,7 @@ Por monotonía de ambos lados de la ecuación, al tomar el límite cuando \(r\up
 \end{itemize}
 
 \subsection{Procesos estocáticos}
-\label{sec:orgc913e4e}
+\label{sec:orgbffff96}
 Estudian eventos que evolucionan el tiempo (discreto o continuo), es decir tenemos una varible aleatoria que representa un estado en el sistema al tiempo \(t\), digamos \(X(t)\). Todo va a ser modelado en el mismo espacio de probabilidad \((\Omega,\Sigma,\textbf{P})\)
 \begin{def.}
 Un procesos estocáticos es una colección de variables aleatorias \(\{X_{t}\}_{t\in T}\), donde \(T\) le llamamos \emph{espacio de parámetros}.
@@ -431,7 +437,7 @@ Podemos pensar que nuestro proceso es una funcion de dos variables
 Se clasifican los procesos estocácticos dependiendo de si el espacio de parámetros es \textbf{discreto} o \textbf{continuo}, similarmente se clasifican si el espacio de estados es \textbf{discreto} o \textbf{continuo}.
 
 \subsubsection{{\bfseries\sffamily TODO} Relaciones de dependencia}
-\label{sec:org524736b}
+\label{sec:org54ce3e6}
 \begin{itemize}
 \item Procesos de varibles aletorias independientes
 \[
@@ -482,7 +488,7 @@ Si una clase de funciones $\mathfrak{H}$ es una clase monótona y $\mathrm{F}$ e
 \item Sea \(A\subset B\) conjuntos en \(\mathrm{G}\), como \(1_{B\setminus A}=1_B-1_A\in\mathfrak{H}\) por lienalidad así \(B\setminus A\in\mathfrak{H}\)
 \item Sea \(\{A_n\}\) una sucesion creciente de conjuntos en \(\mathfrak{H}\) y \(A=\bigcup A_n\) como \(1_A\) es acotada y límite creciente de \(1_{A_n}\) así \(A\in\mathfrak{H}\)
 \end{itemize}
-Por el teorema de clases monónonas, por hipótesis \(\mathfrak{H}\) contiene las funciones características de todo conjunto medible y por linealidad todas las funciones simples y por monotonía todas las funciones medibles acotadas.\\\empty
+Por el teorema de clases monónonas, por hipótesis \(\mathfrak{H}\) contiene las funciones características de todo conjunto medible y por linealidad todas las funciones simples y por monotonía todas las funciones medibles acotadas.\\
 \obs En el teorema anterior se puede precindir de la hipótesis de acotamiento.
 
  \begin{cor}{Tarea}
@@ -531,7 +537,7 @@ Sea $(\om,\sig,\prob)$ un espacio de probabilidad y $\mathrm{T}\subset\sig$ una 
 Para cada \(w\in\om\) fija, \(F(w,x)\) es una distribución, entonces existe una medida de probabilidad \(Q(w,\cdot)\) en \(\re\) tal que \(F(w,x)=Q(w,(-\infty,x])\). Así para \(x\in\re\) fija \(F(w,x)\) es una \textbf{v.a} \(\mathrm{T}\) medible. Enconces como \(\mathrm{C}=\{(-\infty,x]\,\vert\,x\in re\}\) es un \(\pi\) sistema, así por el treorema de clases monóntanas, entonces \(Q(x,B)\) es una probabilida de transición, sólo falta ver que es una esperanza condicional. Si \(B=(-\infty,r]\) con \(r\in\rac\).
 
 \subsection{Construccion de medidas de probabilidad a partir de dos probabilidades.}
-\label{sec:orgd3d5bc1}
+\label{sec:orgb60366b}
 \begin{itemize}
 \item Una construccion es a travez de la medida producto.
 \item Otra es con la probabilidad de transición.
@@ -597,7 +603,7 @@ Existe una única medida de probabilidad $\prob$ es $(\om,\sig)$ tal que $\prob(
        Q(x,A)=\sum_{y\in A}\prob_{x,y}.
 \]
 \subsection{Construccion de procesos para tiempo continuo}
-\label{sec:org2bdd0ee}
+\label{sec:org55880a1}
 Sea \((E,\mathrm{F})\) un espacio medible separable y sea \(J\subset T\) finito, entonces podemos construir un espacio de probabilidad \((E^{J},\mathrm{F}^{J},\pi^{J})\). Ahora queremos construir un espacio de probabilidad \((\om,\sig,\prob)\) tal que \((\om,sig)=(\prod_{t\in T}E,\bigotimes_{t\in T}\mathrm{F})\), para esto necesitamos la condición de consistencia
 \#ver fotos
 \begin{def.}
@@ -636,7 +642,7 @@ La consistencia en este caso equivale a las \emph{ecuaciones de Chapman-Kolmogor
 \]
 Usualmente esto se hace con \textbf{matrices de Markov}
 \section{Martingales}
-\label{sec:org0f47b86}
+\label{sec:org55d0f5e}
 \noindent Esta teoría intuitivamente se puede pensar como la teoría de "juegos justos", es decir son juegos donde no puedes ganar dinero apostando.
 \begin{def.}{Martingalas}
 Sea \(\{X_n\,\vert\,n\in\nat\}\) una sucesión de \textbf{v.a}, decimos que ésta es \emph{martingala, submartingala o subramartingala} si
@@ -765,7 +771,7 @@ Si \(\{\epsilon_i\}\) son independientes, integrables y \(\esp(\epsilon_i)<0\) o
 \end{itemize}
 
 \subsection{Desigualdades Maximales}
-\label{sec:org28968fb}
+\label{sec:orgd0b8de0}
 \#\#TERMINAR(ver fotos)
 Dado un proceso \(\{X_n\}\) podemos definir el proceso maximal
 \begin{equation}
@@ -799,7 +805,7 @@ Así si \(Y=X_n^*\), por Fubini y la desigualdad maximal de Doob obtenemos
 \end{align*}
 Con Hölder y despejando sale.
 \subsubsection{Convergencia de submartingalas.}
-\label{sec:orgb386389}
+\label{sec:org95cb09e}
 \#TERMINAR(ver fotos)
 
 
@@ -837,7 +843,7 @@ Sea $X_n$ una $\{\mathrm{F}_n\}$ martingala reversa, entonces $X_n$ converge cas
 \obs Sea \(A\in\mathrm{F}_m\), por lo tanto \(\esp(X_01_A)\esp(X_n1_A)\rightarrow\esp(X1_A)\) y por lo tanto \(X\) es esperanza condicional de \(X_0\) con respecto a \(\cap\mathrm{F}_n\).
 
 \subsection{Extensión a tiempos continuos}
-\label{sec:org50bd890}
+\label{sec:org7e554cf}
 \#Ver fotos
 \begin{def.}
 Una filtración a tiempo continuo es una familia de sub \(\sigma\) álgebras \(\{\mathrm{F}_t\}_{t\in\re^{+}}\) tales que \(\mathrm{F}_s\subset\mathrm{F_t}\) para \(s\leq t\)
@@ -847,7 +853,7 @@ Una familia de sub \(\sigma\) álgebras \(\{\mathrm{F}_t\}_{t\in\re^{+}}\) es co
 \end{def.}
 
 \subsection{Cadenas de Markov}
-\label{sec:orgbaa0cb0}
+\label{sec:orgc954119}
 \begin{def.}
     Sea \(X=\{X_n\}_{n\in\nat}\) un proceso, definimos \(\mathrm{F}_n=\sigma(X_0,\dots,X_n)\) y \(\mathrm{G}_n=\sigma(X_n, X_{n+1}\dots)\), decimos que \(X\) cumple con la propiedad si para toda variable \(Y\) que sea \(\mathrm{G}_n\) medible y acotada, se cumple
     \[
@@ -877,7 +883,7 @@ Sea $\{X_n\}$ una cadena de Markov. Si $\{i_0,\dots,i_n\}\subset E$
 \end{lema}
 \#TERMINAR(creo que faltó una clase, checa el libro)
 \subsection{Propiedad de Markov y propiedad de Markov fuerte}
-\label{sec:org055ebeb}
+\label{sec:orga39e9d8}
 \obs Denotamos por \(Markov(\lambda p)\) a una cadena de Markov con dirtibución inicial \(\lambda\) y matriz de transición \(P\).
 \begin{teorema}
 Sea $\{X_n\}$ una cadena de Markov $Markov(\lambda p)$, entonces condicionalmente a $X_m$, el proceso $\{X_{n+m}\}$ es $Markov(\delta_i p)$ e indepandiente de $\{X_0,\dots X_m\}$, es decir

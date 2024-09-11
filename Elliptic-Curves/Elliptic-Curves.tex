@@ -1,31 +1,33 @@
-% Created 2023-11-08 mié 01:30
+% Created 2024-08-01 Thu 13:14
 % Intended LaTeX compiler: pdflatex
 \documentclass[letterpaper]{article}
-
-
-
-\usepackage{tikz-cd}
-\usepackage{amsmath}
-\usepackage{float}
-\usepackage[spanish,activeacute]{babel}
-\usepackage{amscd}
-\usepackage{fancyhdr}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
 \usepackage{graphicx}
+\usepackage{longtable}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{capt-of}
+\usepackage{hyperref}
+\usepackage{lmodern} % Ensures we have the right font
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{amsmath, amsthm, amssymb, amsfonts, amssymb, amscd}
+\usepackage[table, xcdraw]{xcolor}
+%\usepackage{mdsymbol}
+\usepackage{tikz-cd}
+\usepackage{float}
+\usepackage[spanish, activeacute, ]{babel}
 \usepackage{color}
 \usepackage{transparent}
-\usepackage{makeidx}
-\usepackage{afterpage}
-\usepackage{float}
-\usepackage{amsmath, amsthm, amssymb, amsfonts, amssymb, amscd}
+\graphicspath{{./figs/}}
 \usepackage{makeidx}
 \usepackage{afterpage}
 \usepackage{array}
 \usepackage{pst-node}
-\usepackage{hyperref}
-
-
-
-\graphicspath{{./figs/}}
 \newtheorem{teorema}{Teorema}[section]
 \newtheorem{prop}[teorema]{Proposici\'on}
 \newtheorem{cor}[teorema]{Corolario}
@@ -40,11 +42,11 @@
 \newcommand{\nat}{\ensuremath{ \mathbb N }}
 \newcommand{\prob}{\textbf{P}}
 \newcommand{\esp}{\mathbb E}
-\newcommand{\eje}{{\noindent \sc \textbf{Ejemplo. }}}
-\newcommand{\obs}{{\noindent \sc \textbf{Observación. }}}
+\newcommand{\eje}{{\newline \noindent \sc \textbf{Ejemplo. }}}
+\newcommand{\obs}{{\newline \noindent \sc \textbf{Observación. }}}
 \newcommand{\dem}{{\noindent \sc Demostraci\'on. }}
 \newcommand{\bg}{\ensuremath{\overline \Gamma}}
-\newcommand{\ga}{\ensuremath{\Gamma}}
+\newcommand{\ga}{\ensuremath{\gamma}}
 \newcommand{\fb}{\ensuremath{\overline F}}
 \newcommand{\la}{\ensuremath{\Lambda}}
 \newcommand{\om}{\ensuremath{\Omega}}
@@ -55,7 +57,6 @@
 \newcommand{\bs}{\ensuremath{\mathbb{S}^1}}
 \newcommand{\co}{\ensuremath{\mathbb C }}
 \newcommand{\con}{\ensuremath{\mathbb{C}^n}}
-\newcommand{\hol}{\ensuremath{\mathcal{H}ol}}
 \newcommand{\cp}{\ensuremath{\mathbb{CP}}}
 \newcommand{\rp}{\ensuremath{\mathbb{RP}}}
 \newcommand{\re}{\ensuremath{\mathbb R }}
@@ -68,25 +69,15 @@
 \newcommand{\slr}{\ensuremath{\mathrm{SL}(2,\mathbb R) }}
 \newcommand{\slc}{\ensuremath{\mathrm{SL}(2,\mathbb C) }}
 \newcommand{\mdlr}{\ensuremath{\mathrm{M}}}
-\newcommand{\hil}{\ensuremath{\mathcal H }}
-\newcommand{\sph}{\ensuremath{\mathbb{S}}}
-\newcommand{\nuc}{\ensuremath{\mathcal{N}}}
-\newcommand{\cuat}{\ensuremath{\mathbb H}}
-\newcommand{\modk}{\ensuremath{M_k(\Gamma)}}
-
-
-
-
-
-\author{Carlos Eduardo Martínez Aguilar}
+\author{Carlos Eduardo artínez Aguilar}
 \date{\today}
-\title{Curvas Elípticas y formas modulares}
+\title{Curvas Elípticas y formas modulares Latex Export}
 \hypersetup{
  pdfauthor={Carlos Eduardo artínez Aguilar},
  pdftitle={Curvas Elípticas y formas modulares Latex Export},
  pdfkeywords={},
  pdfsubject={},
- pdfcreator={Emacs 29.1 (Org mode 9.7)}, 
+ pdfcreator={Emacs 28.1 (Org mode 9.4.6)}, 
  pdflang={Esp}}
 \begin{document}
 
@@ -95,29 +86,31 @@
 
 
 \section{Introducción}
-\noindent El propósito de estas notas es exponer las relaciones entre las formas modulares y las curvas elípticas, comenzaremos definiendo el orbifold modular y el álgebra graduada de las formas modulares (formas automorfas sobre el orbifold modular), comenzando desde las funciones generadoras de ésta álgebra, las llamadas \emph{series de Eisenstein}. Veremos que los espacios de formas modulares son de dimensón finita y posteriormente se muestra la relación entre el orbifold modular y las formas modulares con las curvas elípticas, donde el orbifold modular representa al espacio moduli conforme de curvas elípicas (latices).
+\label{sec:org1871db7}
+El propósito de estas notas es exponer las relaciones entre las formas modulares y las curvas elípticas, comenzaremos definiendo el orbifold modular y el álgebra graduada de las formas modulares (formas automorfas sobre el orbifold modular), comenzando desde las funciones generadoras de ésta álgebra, las llamadas \emph{series de Eisenstein}. Veremos que los espacios de formas modulares son de dimensón finita y posteriormente se muestra la relación entre el orbifold modular y las formas modulares con las curvas elípticas, donde el orbifold modular representa al espacio moduli conforme de curvas elípicas (latices).
 \subsection{Definiciones básicas}
+\label{sec:org7cc319c}
 
-\noindent Comenzamos con la definición del grupo modular
+Comenzamos con la definición del grupo modular
 \begin{def.}
-El \textbf{grupo modular} es el grupo de matrices con entradas enteras y determinante uno
+El \textbf{grupo modular} es el grupo de matrices con entradas enteras y determinante uno.
 \begin{equation}
-    \slz=\Big\{ \begin{pmatrix}a & b\\ c & d \end{pmatrix} \,:\,\{a,b,c,d\}\subset\zah,\,ad-bc=1\Big\}.
+    \slz=\Big\{ \begin{pmatrix}a & b\\ c & d \end{pmatrix} \,:\,\{a,b,c,d\}\subset\zah,\,ad-bc=1\Big\}
 \end{equation}
 \end{def.}
 Este grupo es generado por las matrices
 \[
     \begin{pmatrix}1 & 1\\ 0 & 1 \end{pmatrix}\quad\begin{pmatrix}0 & -1\\ 1 & 0 \end{pmatrix},
 \]
-y es isomorfo módulo \(\pm \mathrm{I}\) al grupo de transformaciones de Möbius con coeficientes enteros
+y es isomorfo módulo \(\pm I\) al grupo de transformaciones de Möbius con coeficientes enteros
 \[
     \pslz=\big\{z\mapsto\frac{az+b}{cz+d}\quad\{a,b,c,d\}\subset\zah,\,ad-bc=1\big\}.
 \]
-El cual actua en la esfera de Riemann \(\co\cup\{\infty\}\), donde se extiende de manera natural a las transformaciones de tal forma que \(-d/c\) se mapea a \(\infty\), e \(\infty\) se mapea a \(a/c\). Sin embargo nos usualmente nos restringimos a la accion de este grupo en el subconjunto invariante
+El cual actua en la esfera de Riemann \(\co\cup\{\infty\}\) donde se extiende de manera natural a la transformacion de tal forma que \(-d/c\) se mapea a \(\infty\) e \(\infty\) se mapea a \(a/c\). Sin embargo nos restingiremos a la accion de este grupo en el subconjunto invariante
 \[
     \hd=\{z\in\co\,:\,\Im(z)>0\}.
 \]
-En términos de los generadores, el grupo \(\pslz\) es generado por las transformaciones correspondientes a las matrices previamente mencionadas, es decir
+En términos de los generadores, el grupo \(\pslz\) está gnerado por las transformaciones correspondientes a las matrices previamente mencionadas
 \[
     z\mapsto z+1\quad z\mapsto\frac{-1}{z}
 \]
@@ -127,15 +120,17 @@ Sea \(k\in\zah\). Una función meromorfa \(f:\hd\rightarrow\co\) es debilmente m
     f(T(z))=(cz+d)^{k}f(z)\quad\text{para } T=\begin{pmatrix}a & b\\ c & d \end{pmatrix}\in\slz.
 \]
 \end{def.}
-\obs Una función meromorfa \(f\), es debilmente modular de peso \(k\) si y sólo si
+\obs Una función meromorfa \(f\) es debilmente modular de peso \(k\) si y solo si
 \[
     f(z+1)=f(z)\quad\text{y}\quad f(-1/z)=z^{k}f(z).
 \]
 Esto es por el hecho de que debilmente modularidad de un a función meromorfa es equivalente a invarianza bajo la acción de \(\slz\) donde
-\begin{align*}\label{mod-acc}
+\begin{equation}\label{mod-acc}
+\begin{align*}
         \Phi_k:\slz\times\hol(\hd)\rightarrow\hol(\hd)\\
-        \Big(T=\begin{pmatrix}a & b\\ c & d \end{pmatrix},f\Big)\mapsto T^{*}[f](z)=(cz+d)^{-k}f\Big(\frac{az+b}{cz+d}\Big)&.
+        \Big(T=\begin{pmatrix}a & b\\ c & d \end{pmatrix},f\Big)\mapsto T^{*}[f](z)=(cz+d)^{-k}f\Big(\frac{az+b}{cz+d}\Big).
 \end{align*}
+\end{equation}
 Es decir, las formas debilmente modulares de peso \(k\) son el conjunto de funciones meromorfas que cumplen
 \[
     \phi(T,f)=f\quad T\in\slz.
@@ -148,15 +143,14 @@ Continuando con esta interpreteción, las formas debilmente modulares son seccio
 \[
     s:\hd/\pslz\rightarrow L^{k},
 \]
-donde \(L^k\) es el \(k\) k-ésimo producto tensorial del haz de líneas de uno formas sobre el orbifold modular. Observamos que si lo que se acaba de exponer es verdad, entonces las formas debilmente modulares son todas de peso par \(k=2r\).
-
-\obs La acción modular es claramente lineal y por lo tanto el conjunto de funciones meromorfas invariantes es un espacio vectorial complejo. Más aún si \(f\) es una forma debilmente modular de peso \(k\) y \(g\) es una forma debilmente modular de peso \(l\), entonces \(fg\), es una forma debilmente modular de peso \(k+l\).
+donde \(L^k\) es el \(k\) ésimo producto tensorial haz de líneas de uno formas sobre el orbifold modular. Observamos que si lo que se acaba de exponer es verdad, entonces las formas debilmente modulares son todas de peso par \(k=2r\).
+\obs La acción \ref{mod-acc} es claramente lineal y por lo tanto el conjunto de funciones meromorfas invariantes es un espacio vectorial complejo. Más aún si \(f\) es una forma debilmente modular de peso \(k\) y \(g\) es una forma debilmente modular de peso \(l\), entonces \(fg\), es una forma debilmente modular de peso \(k+l\).
 \begin{def.}
 Diremos que una forma debilmente modular, es \textbf{modular} si es holomorfa en \(\hd\) y en \(\infty\).
 \end{def.}
-Esto quiere decir que las formas modulares son funciones holomorfas en \(\hd\) y en el infinito \(\infty\) que a su vez son invariantes bajo las traslaciones enteras \(z\mapsto z+1\). Esto quiere decir que si \(f\) es una forma modular, entonce \(f\) admite una expansion en \emph{series de Fourier} del estilo
+Ahora esto quiere decir que las formas modulares son funciones holomorfas en \(\hd\) y en el infinito \(\infty\) que a su vez son invariantes bajo las traslaciones enteras \(z\mapsto z+1\). Esto quiere decir que si \(f\) es una forma modular, entonce \(f\) admite una expansion en \emph{series de Fourier} del estilo
 \[
-    f(x)=\sum^{\infty}_{n=0}a_nq^{n}\quad q=e^{2\pi iz}.
+    f(x)=\sum^{\infty}_{n=0}a_nq^{n}\quad q=e^{2\pi iz}
 \]
 Esto es por la equivalencia entre una funcion holomorfa en \(\hd\) y en \(\infty\) y una función holomorfa en \(\Delta=\{|z|< 1\}\) por medio de \(g(q)=f(\log(q)/2\pi i)\). Donde \(z\mapsto e^{2\pi i z}\) mapea \(\hd\) en \(\Delta\setminus\{0\}\) y el comportamiento de \(g\) en cero es el mismo que el de \(f\) en el infinito ya que \(z\rightarrow\infty\) implica \(q\rightarrow 0\) pues \(|q|=e^{-2\pi\Im(z)}\), lo que significa que \(g\) tiene una singularidad remobible en \(0\) y su serie de Laurent (Taylor) corresponde a la serie de fourier de \(f\).
 Denotaremos al espacio de formas modulares de peso \(k\) como \(\mdlr_{k}(\slz)\), la holomorficidad en el infinito nos perimitirá demostrar que este espacio es de dimensión finita. Más aún denotaremos al álgebra (graduada) de formas modulares como
@@ -164,47 +158,46 @@ Denotaremos al espacio de formas modulares de peso \(k\) como \(\mdlr_{k}(\slz)\
     \mdlr(\slz)=\bigoplus_{k\in\zah}\mdlr_{k}(\slz).
 \]
 Ahora claramente las funciones constantes son formas modulares de peso \(0\), sin embargo si queremos encontrar un ejemplo más interesante podemos hacer lo siguiente
-
-\eje Si promediamos la función constante \(1\) por medio de la acción modular obtendremos una función invariante bajo la acción del grupo. Maś aún ésta será holomorfa en \(\hd\) y en el infinito porque la acción es propiamente discontinua y las transformaciones de möbius son holomorfas, es decir definimos
+\eje Si promediamos la función constante \(1\) por medio de la acción \ref{accion-mod} obtendremos una función invariante bajo la acción del grupo. Maś aún ésta será holomorfa en \(\hd\) y en el infinito porque la acción es propiamente discontinua y las transformaciones de möbius son holomorfas. Es decir definimos
 \[
     G_k(z)=\sum_{T\in\pslz}\Phi_k(T,1)=\sum_{(c,d)\in\zah^2\setminus\{(0,0)\}}\frac{1}{(cz+d)^k}.
 \]
-A esta funcion se le conoce como la \emph{serie de Eisenstein} de peso \(k\). De esta definición \(G_k\) es claramente invariante bajo la acción \(\Phi_k\), más aún para \(k\geq2\), \(G_k\) es holomorfa en \(\hd\) y acotada en el infinito, pues tenemos convergencia absoluta en compactos.
+A esta funcion se le conoce como la \emph{serie de Eisenstein} de peso \(k\). De esta definición \(G_k\) es claramente invariante bajo la acción \(\Phi_k\), faltaría probar que \(G_k\) es holomorfa en \(\hd\) y acotada en el infinito.
 Ahora veamos su serie de Fourier, primero recordamos la identidad
 \[
- \frac{1}{z}+\sum_{d=1}^{\infty}\Big(\frac{1}{z-d}+\frac{1}{z+d}\Big)=\pi\cot\pi z=\pi i-2\pi\sum_{m=0}^{\infty}q^m,\quad q=e^{2\pi i z}.
+ \frac{1}{z}+\sum_{d=1}^{\infty}\Big(\frac{1}{z-d}+\frac{1}{z+d}\Big)=\pi\cot\pi z=\pi i-2\þi\sum_{m=0}^{\infty}q^m,\quad q=e^{2\pi i z}.
 \]
 Lo que nos lleva (derivando subsecuentemente) a la siguiente identidad
 \[
     \sum_{d\in\zah}^{\infty}\frac{1}{(z+d)^{k}}=\frac{(-2\pi)^k}{(k-1)!}\sum_{m=0}^{\infty}q^m.
 \]
 Así para calcular la serie de fourier de \(G_k(z)\) separamos en dos sumas
-\[
-  G_k(z)=\sum_{(c,d)\in\zah^2\setminus\{(0,0)\}}\frac{1}{(cz+d)^k}=\sum_{d\neq 0}\frac{1}{d^k}+2\sum_{c=1}^{\infty}\Big(\sum_{d\in\zah}\frac{1}{(cz+d)^k}\Big).
+\[ G_k(z)=\sum_{(c,d)\in\zah^2\setminus\{(0,0)\}}\frac{1}{(cz+d)^k}=\sum_{d\neq 0}\frac{1}{d^k}+2\sum_{c=1}^{\infty}\Big(\sum_{d\in\zah}\frac{1}{(cz+d)^k}\Big),
 \]
-Por lo anterior más la definición de la función \emph{zeta de Riemann}
+Así por lo anterior más la definición de la función \emph{zeta de Riemann}
 
 \begin{align*}
- G_k(z)=2\zeta(k)+2\frac{(2\pi i)^k}{(k-1)!}\sum_{c=1}^{\infty}\Big(\sum_{m=1}m^{k-1}q^{cm}\Big)=\\
-2\zeta(k)+2\frac{(2\pi i)^k}{(k-1)!}\sum_{n=1}^{\infty}\sigma_{k-1}(n)q^{n},&
+ G_k(z)=2\zeta(k)+2\frac{(2\pi i)^k}{(k-1)!}\sum_{c=1}^{\infty}\Big(\sum_{m=1}m^{k-1}q^{cm}\Big)=&\\
+2\zeta(k)+2\frac{(2\pi i)^k}{(k-1)!}\sum_{n=1}^{\infty}\sigma_{k-1}(n)q^{n},
 \end{align*}
-donde \(\sigma_k(n)\) es la función aritmética
+Donde \(\sigma_k(n)\) es la función aritmética
 \[
     \sigma_{k-1}(n)=\sum_{m|n,m>0}m^{k-1}.
 \]
 Definimos la \emph{serie de Eisenstein} normalizada como
 \[
-    E_k(z)=\frac{1}{2\zeta(k)}G_k(z).
+    E_k(z)=\frac{1}{2\zeta(k)}G_k(z)
 \]
 \subsection{La finita dimensionalidad de \(\mdlr(\slz)\)}
+\label{sec:org9e4cf29}
 \noindent Probaremos la finita dimensionalidad de \(\mdlr_{k}(\slz)\) con un argumento que aplicable para cualquier \(\mdlr_{k}(\ga)\) donde \(\ga\) es cualquier grupo \emph{Fuchsiano} que no definiremos, ni las formas modulares sobre dichos grupos, pero las definiciones previamente dadas son válidas salvo un mínimo número de ajustes. Por lo tanto para las siguientes proposiciones escribiremos todo en términos de un grupo abstracto \(\ga\) pero asumiremos siempre que \(\ga=\slz\)
 \begin{def.}
-Definimos el orden de un cero de \(f:\hd\rightarrow\co\), forma modular en un punto \(p\in\hd/\ga\), denotadom por \(\mathrm{ord}_p(f)\) como
+Definimos el orden de un cero de \(f:\hd\rightarrow\co\), forma modular en un punto \(p\in\hd/\ga\), denotadom por \(ord_p(f)\) como
 \[
- \mathrm{ord}_p(f)=\mathrm{ord}_z(f),\quad p=\ga(z).
+ ord_p(f)=ord_z(f),\quad p=\ga(z).
 \]
 \end{def.}
-Es decir, debido a la invarianza bajo la acción de \(\ga\), el orden se un cero en \(\hd\) es igual al orden en cualquier punto se su clase.
+Es decir, debido a la invarianza bajo la acción de \(\ga\), el orden se una zero en \(\hd\) es igual al orden en cualquier punto se su clase.
 Entonces consideremos el polígono fundamental de \(\slz\)
 \[
     \mathfrak{F}=\{z\in\hd\,:\, \Re(z)\in[-1/2,1/2],\,|z|\geq 1\}.
@@ -220,18 +213,18 @@ Por lo que el orden del estabilizador de un punto finito es \(1,2\) o \(3\). Aho
 \[
     \overline{\hd/\pslz}=\hd/\pslz\cup\{\infty\}.
 \]
-Además, similarmente a lo que hicimos previamente, para estudiar la holomorficidad alrededor de \(\infty\), podemos pensar en el disco perforado \(D=\{q\in\co\,:\,0<|q|<e^{-2\pi r}\}\) como las vecindades de \(\infty\). También como \(\Phi(\slz,\infty)=\rac\cup\{\infty\}\), podemos pensar a la compactificación como
+Además, similarmente a lo que hicimos previamente, para estudiar homolorficidad alrededor de \(\infty\), podemos pensar en el disco perforado \(D=\{q\in\co\,:\,0<|q|<e^{-2\pi r}\}\). También como \(\Phi(\slz,\infty)=\rac\cup\{\infty\}\), podemos pensar a la compactificación como
 \[
     \overline{\hd/\pslz}=\overline{\hd}/\pslz,\quad\text{donde }\overline{\hd}=\hd\cup\rac\cup\{\infty\}.
 \]
-Entonces, si \(f\) es una forma modular, el orden \(\mathrm{ord}_{\infty}(f)\) se define como el entero más chico tal que \(a_n\neq0\) en la expansión de fourier
+Entonces, si \(f\) es una forma modular, el orden \(ord_{\infty}(f)\) se define como el entero más chico tal que\(a_n\neq0\) en la expansión de fourier
 \[
     f(z)=\sum_{n=0}a_nq^n\quad q=e^{2\pi iz}
 \]
 \begin{prop}\label{mod-cero}
 Sea $f$ una forma modular no cero de peso $k$, entonces si $n_p$ denota el orden del estabilizador en el punto \(p\in\hd\), entonces
 \begin{equation}\label{mod-dim}
-\sum_{p\in\hd/\pslz}\frac{1}{n_p}\mathrm{ord}_p{f}+\mathrm{ord}_{\infty}(f)=\frac{k}{12}
+\sum_{p\in\hd/\pslz}\frac{1}{n_p}ord_p{f}+ord_{\infty}(f)=\frac{k}{12}
 \end{equation}
 \end{prop}
 \dem Sea \(D=\mathfrak{F}\setminus\bigcup_{k=0}^{m}D_{\epsilon_j}(z_j)\), donde \(\{z_j\}_{j=1}^m\) son los ceros de \(f\) en \(\mathfrak{F}\) y \(z_0=\infty\), además \(D_{\epsilon_{j}}(z_j)\) es el disco de radio \(\epsilon_j\) con centro en \(z_j\) para \(j\in\{1,\dots,m\}\) y
@@ -242,30 +235,30 @@ de tal forma que
 \[
     \bigcap_{j=0}^{m} D_{\epsilon_j}(z_j)=\emptyset.
 \]
-Ahora por el teorema del cambio de argumento, como \(f\) no tiene polos ni ceros en \(D\),
+Ahora por el teorema del cambio de argumento, como \(f\) no tiene polos ni ceros en \(D\)
 \[
     \int_{\partial D}\dfrac{d}{dz}\log(f(z))dz=Z(f)-P(f)=0.
 \]
 Sin embargo al calcular las siguientes integrales
 \begin{align*}
-    \int_{\partial D_{\epsilon_0}(\infty)}\dfrac{d}{dz}\log(f(z))dz=2\pi i \mathrm{ord}_{\infty}(f)\\
-    \int_{\partial \bigcup_{j=1}^{m} D_{\epsilon_j}(z_j)}\dfrac{d}{dz}\log(f(z))dz=2\pi i\sum_{z_j}\frac{\mathrm{ord}_{p}(f)}{n_p}.&
+    \int_{\partial D_{\epsilon_0}(\infty)}\dfrac{d}{dz}\log(f(z))dz=2\pi i ord_{\infty}(f)&\\
+    \int_{\partial \bigcup_{j=1}^{m} D_{\epsilon_j}(z_j)}\dfrac{d}{dz}\log(f(z))dz=2\pi i\sum_{z_j}\frac{ord_{p}(f)}{n_p}.
 \end{align*}
-Por último las integrales a lo largo de las lineas verticales \(\pm1/2+it\) se anulan y la integral del arco del triángulo es \(\pi i k/6=2\pi i/12\). Así si se integra la mitad del arco y se aplica la transformación \(S(z)=-1/z\), por invarianza se obtiene
+Por último las inegrales a lo largo de las lineas verticales \(\pm1/2+it\) se anulan y la integral del arco del triángulo es \(\pi i k/6=2\pi i/12\). Así si se integra la mitad del arco y se aplica la transformación \(S(z)=-1/z\), por invarianza se obtiene
 \[
     \dfrac{\log(f(S(z)))}{dz}=\dfrac{\log(f(z))}{dz}+\frac{k}{z}.
 \]
 Por lo tanto es claro que
 \[
-    \int_{\partial D}\dfrac{d}{dz}\log(f(z))dz=2\pi i\Big(\sum_{p\in\hd/\pslz}\frac{\mathrm{ord}_p(f)}{n_p}+\mathrm{ord}_{\infty}(f)-k/12\Big)=0.
+    \int_{\partial D}\dfrac{d}{dz}\log(f(z))dz=2\pi i\Big(\sum_{p\in\hd/\pslz}\frac{ord_p(f)}{n_p}+ord_{\infty}(f)-k/12\Big)=0.
 \]
 \qed
 \begin{cor}
-La dimensión de $\mdlr_{k}(\slz)$ es cero para $k<0$ o $k=2r+1$, mientras tanto para $k=2r$ se tiene
+La dimensión de $\mdlr(\slz)$ es cero para $k<0$ o $k=2r+1$, mientras tanto para $k=2r$ se tiene
 \[
     \dim(\mdlr_k(\slz))\leq
 \begin{cases}
-    [k/12]+1,\quad\text{si }k\not\equiv 2\mod 12&\\
+    [k/12]+1,\quad\text{si }k\nequiv 2\mod 12&\\
     [k/12],\quad\text{si }k\equiv 2\mod 12\\
 \end{cases}
 \]
@@ -276,25 +269,23 @@ La dimensión de $\mdlr_{k}(\slz)$ es cero para $k<0$ o $k=2r+1$, mientras tanto
 \]
 Pues tenemos un sistema de \(m\) ecuaciones con \(m+1\) variables. Pero esto implica que
 \[
-    \sum_{p\in\hd/\pslz} \frac{\mathrm{ord}_p(f)}{n_p}+\mathrm{ord}_{\infty}(f)\geq m>\frac{k}{12}.
+    \sum_{p\in\hd/\pslz} \frac{ord_p(f)}{n_p}+ord_{\infty}(f)\geq m>\frac{k}{12}.
 \]
-Por lo tanto \(f\equiv0\) y \(\dim(\mdlr_k(\slz))\leq m\). Ahora si \(k\equiv2\mod12\) se puede mejorar la estimación de la dimension notando que para que se cumpla \ref{mod-dim}, es necesario por lo menos un cero simple en \(i\) y un cero doble en \(e^{2\pi/3}\) para contribuir \(7/6\) a la suma. Por lo que \(k/12-7/6=m-1\) y  por lo tanto \(\dim(\mdlr_k(\slz))\leq m-1\).\qed
-
+Por lo tanto \(f\equiv0\) y \(\dim(\mdlr_k(\slz))\leq m\). Ahora si \(k\equiv2\mod12\) se puede mejorar la estimación de la dimension notando que para que se cumpla \ref{mod-dim}, es necesario por lo menos un cero simple en \(i\) y un cero doble en \(e^{2\pi/3}\) para contribuir \(7/6\) a la suma, por lo que \(k/12-7/6=m-1\) y  por lo tanto \(\dim(\mdlr_k(\slz))\leq m-1\).\qed
 \obs En el caso de un grupo Fuchsiano \(\ga\) tal que \(\hd/\ga\) tiene volumen finito \(V<\infty\), entonces
 \[
     \dim(\mdlr_k(\ga))\leq \frac{kV}{4\pi}+1,
 \]
 entonces el factor 1/12 original proviene del volumen del orbifold modular.
 \begin{cor}
-El espacio \(\mdlr_{12}(\slz)\) tiene dimensión menor o igual a \(2\) y si \(\{f,g\}\subset\mdlr_{12}(\slz)\) son lineamente independentes, entonces a función
+El espacio \(\mdlr_{12}(\slz)\) tiene dimensión menor o igual a \(2\) y si \(\{f,g\}\subset\mdlr(\slz)\) son lineamente independentes, entonces a función
 \[
         \varphi:\overline{\hd}/\pslz\rightarrow\cp^{1}\quad z\mapsto\frac{f(z)}{g(z)}.
 \]
 Es un biholomorfismo.
 \end{cor}
-\dem Claramente \(\dim(\mdlr_{12}(\pslz))\leq2\). Ahora si \(f,g\) son dos formas moduares de peso \(12\) linearmente independientes, entonces para todas \(\lambda,\mu\in\co^{2}\setminus\{(0,0)\}\), la forma modular \(h=\lambda f-\mu g\) tiene exactamente un cero en \(\overline{\hd/\pslz}\) pues en la proposición \ref{mod-cero} \(k/12=1\). Por lo tanto \(\varphi\) toma cada valor \((\lambda:\mu)\in\cp^1\) y toma el valor infinito como poo simple en el cero de \(g\).\qed
-
-Ahora veremos quiénes son \(f\) y \(g\).
+\dem Caramente \(\dim(\mdlr_{12}(\pslz))\leq2\). Ahora si \(f,g\) son dos formas moduares de peso \(12\) linearmente independientes, entonces para todas \(\lambda,\mu\in\co^{2}\setminus\{(0,0)\}\), la forma modular \(h=\lambda f-\mu g\) tiene exactamente un cero en \(\overline{\hd/\pslz}\) pues en la proposición \ref{mod-cer} \(k/12=1\). Por lo tanto \(\varphi\) toma cada valor \((\lambda:\mu)\in\cp^1\) y toma el valor infinito como poo simple en el cero de \(g\).\qed
+\noindent Ahora veremos quiénes son \(f\) y \(g\).
 \begin{prop}
 El anillo graduado
 \[
@@ -302,26 +293,27 @@ El anillo graduado
 \]
 es el anillo libre generado por las series de Eisenstein \(\{E_4,E_6\}\). En particular \(\mdlr_{12}(\slz)=\langle E_4^{3},E_6^{2}\rangle\)
 \end{prop}
-\dem Veamos que \(\{E_4,E_6\}\) son algebraicamente independientes. Primero notamos que \(\{E_4^{3},E_6^{2}\}\subset\mdlr_{12}(\slz)\) no pueden ser proporcionaes una a la otra, pues si \(E_6^2(z)=\lambda E_4^3(z)\) para alguna \(\lambda\in\co\), entonces \(f(z)=E_6(z)/E_4(z)\) es una forma modular de peso \(2\) que satisface \(f^2=\lambda E_4\) y \(f^3=E_6/\lambda\), además es holomorfa pues una función cuyo cuadrado es holomorfa no tiene polos. Esto es imposibe pues
+\dem Veamos que \(\{E_4,E_6\}\) son algebraicamente independientes. Primero notamos que \(\{E_4^{3},E_6^{2}\}\subset\mdlr_{12}(\slz)\) no pueden ser proporcionaes una a la otra, pues si \(E_6^2(z)=\lambda E_4^3(z)\) para alguna \(\lambda\in\co\), entonces \(f(z)=E_6(z)/E_4(z)\) es una forma modular de peso \(2\) que satisface \(f^2=\lambda E_4\) y \(f^3=E_6/\lambda\) es holomorfa pues una función cuyo cuadrado es holomorfa no tiene polos. Esto es imposibe pues
 \[
-    \dim(\mdlr_2(\slz))=0,
+    \dim(\mdlr_2(\slz))=0.
 \]
-\noindent por la proposición \ref{mod-dim}, por lo tanto \(\{E_4^{3},E_6^{2}\}\) son linealmente independientes. Ahora cuales quiera dos formas moduares del mismo peso y linealmente independientes \(\{f_1,f_2\}\) son algebraicamente independientes, pues si \(p\in\co[x,y]\) es tal que \(p(f_1,f_2)\equiv0\), entonces \(p_d(f_1,f_2)\equiv0\) para toda componente homogenea de \(p\) de grado \(d\). Pero \(p_d(f_1,f_2)/f_2^d=P(f_1/f_2)\) para algún \(P\in\co[z]\) y como \(P\) tiene un número finito de raices, entonces \(p_d(f_1,f_2)\equiv0\) impica \(f_1/f_2\) es constante y por lo tanto \(f_1,f_2\) serían linealmente dependientes. Ahora en general, si \(f\in\mdlr_k(\slz)\) podemos dividir por \(E_4^m\) para \(m\) o sufiecientemente grande y obtenemos el resultado.
+\noindent Por la proposición \ref{mod-dim}. Por lo tanto \(\{E_4^{3},E_6^{2}\}\) son linealmente independientes. Ahora cuales quiera dos formas moduares del mismo peso y linealmente independientes \(\{f_1,f_2\}\) son algebraicamente independientes. Pues si \(p\in\co[x,y]\) es tal que \(p(f_1,f_2)\equiv0\), entonces \(p_d(f_1,f_2)\equiv0\) para toda componente homogenea de \(p\) de grado \(d\). Pero \(p_d(f_1,f_2)/f_2^d=P(f_1/f_2)\) para algún \(P\in\co[z]\) y como \(P\) tiene un número finito de raices, entonces \(p_d(f_1,f_2)\equiv0\) impica \(f_1/f_2\) es constante y por lo tanto \(f_1,f_2\) serían linealmente dependientes. Ahora en general, si \(f\in\mdlr_k(\slz)\) podemos dividir por \(E_4^m\) para \(m\) o sufiecientemente grande y obtenemos el resultado.
 \qed
 \begin{cor}
 La desigualdad de a dimensión \(\mdlr_k(\slz)\) es una igualdad para toda \(k\in2\nat\) y \(\dim(\mdlr_{2r+1}(\slz)=0)\).
 \end{cor}
-\eje La dimensionalidad de ciertos espacios de formas modulares permiten revelar ciertas identidades de las series de Eisenstein, por ejemplo \(\mdlr_4\), \(\mdlr_6\), \(\mdlr_{8}\), \(\mdlr_{10}\), y \(\mdlr_{14}\) son unidimensionales, lo que permite demostrar las siguientes equivalencias
+\eje La dimensionalidad de ciertos espacios de formas modulares permiten revelar ciertas identidades de las series de Eisenstein, por ejemplo \(\mdlr_4\), \(\mdlr_6\), \(\mdlr_{8}\), \(\mdlr_10\), y \(\mdlr_{14}\) son unidimensionales, lo que permite demostrar las siguientes equivalencias
 \begin{align*}
 E_4^2=E_8,\quad E_4E_6=E_{10}\\
-E_6E_8=E_4E_{10}=E_{14},
+E_6E_8=E_4E_{10}=E_{14}
 \end{align*}
 \noindent mediante la evaluación en un punto. Estas equivalencias implican las siguientes identidades de las funciones de divisores.
 \begin{align*}
 \sum_{j=1}^{n-1}\sigma_3(j)\sigma_3(n-j)=\frac{1}{120}(\sigma_7(n)-\sigma_3(n))\\
-\sum_{j=1}^{n-1}\sigma_3(j)\sigma_9(n-j)=\frac{1}{2640}(\sigma_{13}(n)-11\sigma_9(n)+10\sigma_3(n)).
+\sum_{j=1}^{n-1}\sigma_3(j)\sigma_9(n-j)=\frac{1}{2640}(\sigma_{13}(n)-11\sigma_9(n)+10\sigma_3(n))
 \end{align*}
 \subsection{Formas cuspidales y la función discriminante}
+\label{sec:org8b3675b}
 \begin{def.}
 Una \textbf{forma cuspidal} de peso \(k\) es una forma modular de peso \(k\) tal que su expresion en serie de Fourier tiene como primer coeficiente cero \(a_0=0\). Es decir
 \[
@@ -329,7 +321,7 @@ Una \textbf{forma cuspidal} de peso \(k\) es una forma modular de peso \(k\) tal
 \]
 Denotaremos el conjunto de formas cuspidales como \(\mathrm{S}_k\big(\slz\big)\)
 \end{def.}
-Así una forma modular \(f\), es cuspidal si \(\lim_{z\rightarrow\infty}f(z)=0\). El nombre cuspidal proviene de que el punto \(\infty\) geometricamente corresponde a las cúspides de los coientes de \(\hd\). El conjunto de formas cuspidales de peso \(k\), \(\mathrm{S}_k\big(\slz\big)\) claramente es un subespacio del espacio de formas modulares de peso \(k\). Más aún el álgebra graduada de formas cuspidales
+\noindent Así una forma modular \(f\), es cuspidal si \(\lim_{z\rightarrow\infty}f(z)=0\). El nombre cuspidal proviene de que el punto \(\infty\) geometricamente corresponde a las cúspides de los coientes de \(\hd\). El conjunto de formas cuspidales de peso \(k\), \(\mathrm{S}_k\big(\slz\big)\) claramente es un subespacio del espacio de formas modulares de peso \(k\). Más aún el álgebra graduada de formas cuspidales
 \[
     \mathrm{S}_{*}\big(\slz\big)=\bigoplus_{k\in\nat}\mathrm{S}_k\big(\slz\big),
 \]
@@ -339,6 +331,7 @@ Así una forma modular \(f\), es cuspidal si \(\lim_{z\rightarrow\infty}f(z)=0\)
 \]
 \noindent es un caracter del ágebra.
 \subsubsection{La serie de Eisenstein de peso 2 y la función discriminante}
+\label{sec:org1742e6a}
 \noindent Como vimos las series de Eisenstein de peso \(2\) son triviales sin embargo es posible definir
 \begin{align*}
  \mathbb{G}_2(z)=\frac{-1}{24}+\sum_{n=1}^{\infty}\sigma_1(n)q^n=\frac{-1}{24}+q+3q^2+4q^3+7q^4+\dots\\
@@ -359,10 +352,12 @@ la única diferencia con respecto a las series de Eisenstein usuales es que no t
 \obs Estas funciones corresponden a los coeficientes \(g_2\) y \(g_3\) que definen nuestras curvas elípticas.
 
 \noindent Se define la función discriminante como
+\begin{equation}
     \begin{align*}
         \Delta:\hd\rightarrow\co\quad\Delta(z)=((g_2(z))^3-27(g_3(z))^2\\
         \text{equivalentemente}\quad \Delta(z)=\frac{1}{1728}((E_4(z))^3-(E_6(z))^2)
     \end{align*}
+\end{equation}
 Esta función es una forma moduar cuspidal de peso \(12\). Existen muchas maneras de representar a la función discriminante sin embargo la que muestra de forma inmediata que es una forma cuspida es la siguiente
 \begin{equation}\label{delta}
     \Delta(z)=e^{2\pi iz}\prod_{n=1}^{\infty}(1-e^{2\pi niz})^{24}=q\prod_{n=1}^{\infty}(1-q^n)^{24}.
@@ -390,229 +385,27 @@ Así a derivada logaritmica se convierte en la siguiente suma
 Entonces podemos comprobar la invarianza modular de \(\Delta\) por medio de la siguiente derivada logaritmica
 \begin{equation}
 \frac{1}{2i\pi}\dfrac{d}{dz}\log\Big(\frac{\Delta\big(\frac{az+b}{cz+d}\big)}{(cz+d)^{12}\Delta(z)}\Big)=
-\frac{E_2\Big(\frac{az+b}{cz+d}\Big)}{(cz+d)^2}-E_2(z)-\frac{12c}{2i\pi(cz+d)}.\\
+&\frac{E_2\Big(\frac{az+b}{cz+d}\Big)}{(cz+d)^2}-E_2(z)-\frac{12c}{2i\pi(cz+d)}.\\
 \end{equation}
 \noindent Esto quiere decir que
 \[
-    \Phi(T,\Delta(z))=C(T)\Delta(z)\quad\forall z\in\hd,\forall T=\begin{pmatrix}a & b\\ c & d \end{pmatrix}\in\slz,
+    \Phi(T,\Delta(z))=C(T)\Delta(z)\quad\forall z\in\hd,\forall T=\begin{pmatrix}a & b\\ c & d \end{pmatrix}\in\slz.
 \]
-\noindent es facil ver que \(C(T_1\circ T_2)=C(T_1)C(T_2)\) pues \(\Phi\) es una acción de grupos. Ahora sólo falta ver que \(C(T)=1\) y como \(C\) es mutiplicativa, es suficiente con que suceda para los generadores. Primero si \(T(z)=z+1\) es claro por la definición de \(\Delta\), entonces sólo falta mostrar que lo mismo sucede para \(S(z)=-1/z\), como \(\Delta(i)\neq0\)
+Ahora es facil ver que \(C(T_1\circ T_2)=C(T_1)C(T_2)\) pues \(\Phi\) es una acción de grupos. Ahora sólo falta ver que \(C(T)=1\) y como \(C\) es mutiplicativa, es suficiente con que suceda para los generadores. Primero si \(T(z)=z+1\) es claro por la definición de \(\Delta\), entonces sólo falta mostrar que lo mismo sucede para \(S(z)=-1/z\), como \(\Delta(i)\neq0\)
 \[
 \Delta(i)=\Delta(S(i))=C(S)i^{12}\Delta(i).
 \]
-\qed\\
+\qed
 \eje Con la función \(\Delta(z)\), defininimos el invariante \(j\) como
 \[
 j(z)=\frac{E_4(z)^3}{\Delta(z)}=\frac{1}{q}+744+196884q+21493760q^2+\dots
 \]
-
-Por lo tanto es sencillo definir fromas modulares
-
-\begin{equation}
-\Delta(z):=q \prod_{n=1}^{\infty}(1-q^n)^{24}=\sum_{n=1}^{\infty}\tau(n)q^n.
-\end{equation}
-
-Donde $\tau(n)$ es la función \textit{tau} de Ramanujan, los primeros valores de esta serie son
-
-$$
-\Delta(z)=q-24q^2+252q^3-1472q^4+4830q^5-6048 q^6+\ldots
-$$
-%%Aquí me quedé
-\subsection{Teoría y operadores de Hecke}
-
-\begin{def.}
-Para cada entero $m\geq 1$ definimos al operador linear de Hecke $T_m:\modk\rightarrow\modk$ como:
-
-\begin{equation}
-T_m(f)[z]:=m^{k-1}\sum_{\gamma\in\mathcal{M}_m/\ga}\Big(\frac{\Im(\gamma(z))}{\Im(z)}\Big)^k f(\gamma(z)).
-\end{equation}
-
-Donde $\mathcal{M}_m$ es el conjunto de matrices de determinante $m$ y $\ga$ actúa sobre $\mathcal{M}_m$ por medio de multiplicación a la izquierda.
-\end{def.}
-
-\noindent Observamos que $T_m$ esta bien definida y es una suma finita, lo que significa $T_m(f)$ es holomorfa y modular de peso $k$, esto es debido a que una matriz de determinante $m$ siempre tiene un representante bajo la acción de $\ga$ de la forma
-
-$$
-\begin{pmatrix}
-a & b \\
-0 & d
-\end{pmatrix}
-\hspace{0.5cm}\textrm{donde}\hspace{0.2cm}ad=m,\hspace{0.2cm}0\leq b < d.
-$$
-
-Esto es debido a que si
-
-$$
-\begin{pmatrix}
-A & B \\
-C & D
-\end{pmatrix}\in\mathcal{M}_m\hspace{0.2cm}\textrm{es decir}\hspace{0.2cm} AD-CB=m,$$
-
-\noindent entonces definimos  $c=C/(A,c)$ y $d=-D/(a,c)$, donde $(x,y)$ es el máximo com'un divisor entre $x$ e $y$. Así $c$ y $d$ son primos relativos y por lo tanto existen $a$ y $b$ enteros tales que $ad-bc=1$ y entonces sucede que
-
-$$
-\begin{pmatrix}
-a & b \\
-c & d
-\end{pmatrix}\in\ga\hspace{0.2cm}\textrm{con}\hspace{0.2cm} cA+dC=0.
-$$
-
-Por lo tanto el producto de las matrices es de la forma
-
-$$
-\begin{pmatrix}
-a & b \\
-c & d
-\end{pmatrix}\begin{pmatrix}
-A & B \\
-C & D
-\end{pmatrix}=\begin{pmatrix}
-\alpha & \beta \\
-0 & \delta
-\end{pmatrix},
-$$
-
-\noindent entonces necesariamente se tiene que cumplir que $\alpha\delta=m$, además un cálculo sencillo muestra que $0\leq\beta<\delta$. Esto demuestra que la suma asociada a $T_m$ es finita y por lo tanto $T_m(f)$ esta bien definida y es holomorfa y claramente modular de peso $k$. No solo esto, si no que podemos escibir $T_m(f)$ como
-
-\begin{equation}
-T_m(f)[z]=m^{k-1}\sum_{ad=m\,\, a,d>0}\frac{1}{d^k}\sum_{b \mod d}f\Big(\frac{az+b}{d}\Big),
-\end{equation}
-
-\noindent notamos que claramente $T_m$ es lineal, entonces de esta expresión podemos escribir a $T_m(f)$ en términos de su serie de Fourier como
-
-\begin{equation}
-T_m(f)=\sum_{d\vert m}\Big(\frac{m}{d}\Big)^{k-1}\sum_{d\vert n,\,n\in\nat}a_n\,q^{\frac{mn}{d^2}}
-=\sum_{n=0}^{\infty}\Big(\sum_{r\vert(m,n),\,r>0}r^{k-1}a_{\frac{mn}{r^2}}\Big)q^n.
-\end{equation}
-
-Una consecuencia de esto es que de esta expresión es claro que los operadores $\lbrace T_m\rbrace_{m\in\nat}$ conmutan, así sabemos que si son diagonalizables, entonces son mutuamente diagonalizables con la misma base (cosa que veremos a continuación). Observamos que si definimos
-
-\begin{equation}\label{sigma}
-\sigma_{k}(m)=\sum_{d\vert m}d^k,\text{ donde } m\in\nat,
-\end{equation}
-
-\noindent entonces notamos que los primeros términos en la serie de Fourier de $T_m(f)$ son $\sigma_{k-1}(m)\,a_0+a_m\,q$, así si $f$ es una forma cuspidal, entonces $a_0=0$ y por lo tanto $T_m(f)$ también es una forma cuspidal. Por lo que $T_m:S_k(\ga)\rightarrow S_k(\ga)$, en particular en el caso de $k=12$, $S_{12}(\ga)$ es de dimensión 1, por lo que para $\Delta\in S_{12}(\ga)$ tenemos que $T_m(\Delta)=\lambda\,\Delta$ para toda $m\in\nat$, es decir que $\Delta$ es un vector propio de $T_m$ para toda $m$, además el primer coefficiente de $T_m(\Delta)$ es $\tau(m)$ y el primer coeficiente de $\Delta$ es 1, lo que quiere decir que
-
-$$T_m(\Delta)=\tau(m)\Delta.$$
-
-\noindent Por lo tanto los valores de la función $\tau$ son son valores propios de $T_m$ para toda $m$, así por las definiciónes de $T_m$ y el hecho de que conmutan, obtenemos
-
-$$\tau(m)\,\tau(n) = \sum_{r\vert(n,m)}r^{11}\tau\Big(\frac{mn}{r^2}\Big).$$
-
-Similarmente si $f\in\modk$ es una forma modular cuspidal que es vector propio simulteneamente de $T_m$ para toda $m\in\nat$, diremos que $f$ es una \textit{eigenforma de Hecke}, entonces el mismo argumento muestra que $a_m=\lambda_m\,a_1$ donde $\lambda_m$ es el valor propio de $T_m$, entonces si normalizamos $a_1 = 1$ tenemos que
-
-$$T_m(f)= a_m\,f,$$
-
-\noindent y por lo tanto $\lbrace a_n\rbrace$ tiene la propiedad cuasimultiplicativa
-
-$$a_m a_n = \sum_{r\vert(n,m)}r^{k-1}a_{mn/r^2},$$
-
-\noindent la cual es multiplicativa cuando $n$ y $m$ son primos relativos; $a_n\,a_m=a_{nm}$ si $(n,m)=1$. Para demostrar que las eigenformas de Hecke generan al espacio de formas modulares introducimos el producto interno de Petersson.
-
-\begin{def.}\label{petersson}
-Definimos el producto interno de Petersson como la funcioón bilineal $\langle\cdot ,\cdot\rangle_k:\modk\times S_k(\ga)\rightarrow\co$ dada por
-
-\begin{equation}
-\langle f , g\rangle_k = \int_{\mathcal{F}}f(z)\overline{g(z)}\Im(z)^{k-2}dx\,dy,
-\end{equation}
-
-donde $\mathcal{F}$ es la región fundamental de $\ga$, es decir
-
-$$\mathcal{F}=\Big\lbrace z\in\hd\,\Big\vert\,\frac{-1}{2}\leq\Re(z)\leq\frac{1}{2},\hspace{0.2cm}\vert z\vert > 1\Big\rbrace,$$
-
-$\Re(z)$ denota la parte real de z.
-\end{def.}
-
-Es claro de la definición que si reemplazamos $\modk$ por $S_k(\ga)$ en la primera entrada $\langle\cdot ,\cdot\rangle_k$ es un producto interno. Además se puede demostrar que para toda $m\in\nat$ se cumple que
-
-$$\langle T_m(f),g\rangle_k=\langle f,T_m(g)\rangle_k\hspace{0.2cm}\forall f,g\in S_k(\ga).$$
-
-Así el teorema espectral y el hecho de que los operadores de Hecke conmutan nos asegura que existe una base de eigenformas de Hecke para $S_k(\ga)$ para toda $k$, lo cual demuestra que las eigenformas de Hecke junto con la función modular constante 1 generan al espacio de formas modulares $M_{\ast}(\ga)$.
-
-\begin{def.}[Series $\mathcal{L}$ de Hecke]\label{hecke-l}
-Dada una eigenforma de Hecke $f$ de peso $k$ con serie de Fourier
-
-$$f(z) = \sum_{n=1}^{\infty}a_n\,q^n,$$
-
-definimos la serie $\mathcal{L}$ de Hecke asociada a $f$ como
-
-\begin{equation}
-\mathcal{L}(f,s)=\sum_{n=1}^{\infty}\frac{a_n}{n^s}.
-\end{equation}
-\end{def.}
-
-Observamos que la propiedad cuasimultiplicativa de los coeficientes $\lbrace a_n\rbrace{n\in\nat}$ aplicada a las potencias de primos $n=p^r$ implica que
-
-$$
-a_{p^{m+1}}=a_{p^m}\,a_p-p^{m-1}a_{p^{m-1}},
-$$
-
-\noindent aplicando inducción a esto podemos deducir que
-
-\begin{equation}\label{primos}
-a_{p^{m+1}}=\sum_{r=0}^{\lceil\frac{m+1}{2}\rceil}(-1)^r \binom{m+1-r}{r} p^{r(k-1)}a_p^{m-2r},
-\end{equation}
-
-\noindent esto nos permite encontrar un producto de Euler para $\mathcal{L}(f,s)$. Primero como los coeficientes son multiplicativos en primos relativos, por el teorema fundamental de la artim'etica tenemos que
-
-$$
-\mathcal{L}(f,s)=\sum_{n=1}^{\infty}\frac{a_n}{n^s}=
-\prod_{\textrm{p primo}}\Big(\sum_{m=0}^{\infty}\frac{a_{p^m}}{p^{ms}}\Big).
-$$
-
-Ahora demostramos que (\ref{primos}) implica que la suma $1+a_p/p+a_p^2/p^2+\ldots$ es igual a $(1-a_p\,p^{-s}+p^{k-1-2s})^{-1}$, esto es debido a que
-
-$$
-\sum_{m=0}^{\infty}a_{p^m}z^{m}=\frac{1}{1-a_p+p^{k-1}z^2}.
-$$
-
-\noindent Para demostrar esto desarrollamos en serie geométrica a $(1-a_p+p^{k-1}z^2)^{-1}$
-
-\begin{align*}
-&\frac{1}{1-a_p+p^{k-1}z^2}
-= \sum_{m=0}^{\infty}(a_p+p^{k+1}z^2)^m \\
-& = \sum_{m=0}^{\infty}\sum_{l=0}^m(-1)^l\binom{m}{l}a_p^{m-l}z^{m-l}\,p^{l(k+1)}z^{2l} \\
-& = \sum_{m=0}^{\infty}\Big(\sum_{l=0}^{\lceil\frac{m}{2}\rceil}(-1)^l\binom{m+1-l}{l}a_p^{m-2l}p^{l(k+1)}\Big)z^{m}\\
-& = \sum_{m=0}^{\infty}a_{p^m}z^{m}.
-\end{align*}
-
-Por lo tanto toda serie $\mathcal{L}$ asociada a una eigeinforma de Hecke $f$ de peso $k$ tiene un producto de Euler
-
-\begin{equation}
-\mathcal{L}(f,s)=\sum_{n=1}^{\infty}\frac{a_n}{n^s}=
-\prod_{\textrm{p primo}}\frac{1}{1-a_p\,p^{-s}+p^{k-1-2s}}.
-\end{equation}
-
-Con esto y el principio de reflexión de Schwarz podemos continuar analíticamente $\mathcal{L}(f,s)$ a $\co$ salvo polos, proseguimos a derivar la ecuación funcional para $\mathcal{L}(f,s)$, para esto seguimos el mismo prosedimiento que Riemann. Sea $\ga(z)$ la función gamma
-
-$$\ga(z)=\int_0^{\infty}t^{s-1}e^{-t}\,dt,$$
-
-\noindent reemplazamos $t$ con $\lambda\,t$ donde $\lambda\in\re^{+}$ para obtener $\ga(z)=\lambda^{s}\int_{\re^{+}}t^{s-1}e^{-\lambda t}\,dt$, por lo tanto
-
-$$\lambda^{-s}=\frac{\int_0^{\infty}t^{s-1}e^{-\lambda t}}{\ga(z)}.$$
-
-Aplicamos esto a $\lambda = 2\pi n$ para toda $n\in\zah^{+}$ y sumamos para obtener
-
-\begin{equation}
-(2\pi)^{-s}\ga(z)\,\mathcal{L}(f,s)=
-\sum_{n=1}^{\infty}a_n\int_0^{\infty}t^{s-1}e^{-2\pi nt}\,dt=
-\int_0^{\infty}t^{s-1}f(it)\,dt,
-\end{equation}
-
-\noindent como $f$ es una forma cuspidal y $f(-1/z)=z^k f(z)$, la integral converge y por lo tanto $\mathcal{L}(f,s)$ se puede extender analíticamente, además obtenemos la ecuación funcional
-
-\begin{equation}
-\mathcal{L}(f,k-s)=(-1)^{\frac{k}{2}}\mathcal{L}(f,s)
-\end{equation}
-
-\begin{thebibliography}{99}
-
-\bibitem{zagier}{\sc Zagier, D.,} {\it Elliptic Modular Forms and Their Applications, a part of The 1-2-3 Modular Forms Lectures at Summer School in Nordfjordeid, Norway, Springer-Verlag, 2008.}
-\bibitem{ogg}{\sc Ogg, A.,} {\it Modular Forms and Dirichlet Series, Mathematics lecture note series, Benjamin,
-1969.}
-
-\end{thebibliography}
-%\printindex
-\end{document}
-
+A³+B³=C³
+\begin{center}
+\begin{tabular}{rr}
+hi & bye\\
+\hline
+0 & 1\\
+\end{tabular}
+\end{center}
 \end{document}
