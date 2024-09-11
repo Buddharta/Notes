@@ -1,0 +1,1357 @@
+
+%\include{encabezado}
+
+\chapter{Espacio de Funciones}
+
+Consideremos dos espacios topológicos $X$, $Y$, y denotemos por $Y^X$  al conjunto de todas las funciones $f:X\to Y$.  Esto es, $Y^X=\prod\limits_{x\in X}Y_x$ donde $Y_x=Y$ para todo $x\in X$.
+
+ Llamemos $C(X,Y)$, al subconjunto de $Y^X$ que consta de todas las funciones continuas $f:X\to Y$.
+Existen muchas maneras de dotar al conjunto $C(X,Y)$ de una topología, en este capítulo se estudiarán las más usuales, sus características, ventajas y relaciones.
+
+\section{Topología punto-abierta}
+Si $X$ y $Y$ son dos espacios topológicos, para cada punto $x\in X$ y para cada abierto $U\subset Y$ denotaremos por $M(x,U)$ al siguiente subconjunto de $C(X,Y)$:
+$$M(x,U)=\left\{f\in C(X,Y) \:|\: f(x)\in U\right\}.$$
+
+\begin{definition}
+Sean $X$ y $Y$ espacios topológicos. Llamemos $\Gamma$ a la colección
+$$\Gamma=\left\{M(x,U) \:|\: x\in X,U\text{ abierto en }Y\right\}.$$
+Como $\Gamma$ cubre al espacio $C(X,Y)$ (De hecho $C(X,Y)\in\Gamma$ ya que $C(X,Y)=M(x,Y)$
+para cualquier $x\in X$), existe una única topología en $C(X,Y)$ para la cual $\Gamma$ es sub-base. Esta topología recibe el nombre de \textbf{topología punto-abierta}. 
+\end{definition}
+
+En lo sucesivo, al conjunto $C(X,Y)$ dotado de la topología punto-abierta, lo denotaremos por $C_{p}(X,Y)$.
+ \begin{example}
+ Sean $X$ un espacio topológico discreto y $Y$ un espacio arbitrario. Ya que cualquier función $f:X\to Y$ resulta continua, los conjuntos $C(X,Y)$ y $Y^X$ coinciden. Además, para cada abierto $U\subset Y$ y para cada punto $x\in X$, se tiene que
+ $M\left(x,U\right)=\pi^{-1}_x(U)$, donde $\pi_x:Y^X\to Y$ denota la proyección en la $x-$ésima coordenada. Por lo tanto el espacio $C_p(X,Y)$ coincide con $Y^X$ dotado de la topología producto.
+ \end{example}
+
+Recordemos que una sucesión de funciones $\left(f_n\right)_{n\in\mathbb N}$, $f_n:X\to Y$ \textbf{converge puntualmente} a una función $f:X\to Y$, si la sucesión $\left(f_n(x)\right)_{n\in\mathbb N}$ converge a $f(x)$ para cada punto $x\in X$.
+La topología punto-abierta también suele llamarse \textbf{topología de la convergencia puntual}. La siguiente proposición esclarece porqué:
+
+\begin{proposition}
+Sean $\left(f_n\right)_{n\in\mathbb N}$ una sucesión en $C_{p}(X,Y)$ y $f\in C_{p}(X,Y)$. Entonces $\left(f_n\right)_{n\in\mathbb N}$ converge a $f$ en $C_{p}(X,Y)$ si y sólo si $\left(f_n\right)_{n\in\mathbb N}$ converge puntualmente a $f$.
+\end{proposition}
+\begin{proof}
+Supongamos que $\left(f_n\right)_{n\in\mathbb N}$ converge a $f$ en $C_{p}(X,Y)$. Consideremos $x\in X$ y $U\subset Y$ una vecindad de $f(x)$. Entonces $M(x,U)$ es una vecindad de $f$ en $C_{p}(X,Y)$. Como  $\left(f_n\right)_{n\in\mathbb N}$ converge a $f$ en $C_{p}(X,Y)$, existe $N_0\in\mathbb N$ tal que para todo $n\geq N_0$, $f_n\in M(x,U)$. Consecuentemente, para todo $n\geq N_0$, $f_n(x)\in U$, lo cual prueba que la sucesión $\left(f_n(x)\right)_{n \in\mathbb N}$ converge a $f(x)$, como se quería demostrar.
+
+Ahora supongamos que $\left(f_n\right)_{n\in\mathbb N}$ converge puntualmente a $f$. Sea $W=\bigcap\limits_{i=1}^k M(x_i, U_i)$ una vecindad básica de $f$ en $C_{p}(X,Y)$. Notemos que para cualquier $i=1,\ldots, k$, se tiene que
+$f(x_i)\in U_i$, por lo que $U_i$ es una vecindad de $f(x_i)$.
+
+Como $\left(f_n(x_i)\right)_{n\in\mathbb N}$ converge a $f(x_i)$ para todo $i=1,\ldots, k$, existe $N_i\in\mathbb N$ tal que para todo $n\geq N_i$, se cumple que $f_n(x_i)\in U_i$.
+Sea $$N_0=\max_{i=1}^k\left\{N_i\right\}.$$ Entonces, si $n\geq N_0$, se tiene que $f_n(x_i)\in U_i$ para todo $i=1,\ldots, k$. Luego, $f_n\in M(x_i, U_i)$ para todo $i=1,\ldots, k$ y con ello, $f_n\in W$ para todo $n\geq N_0$. Así, queda demostrado que $\left(f_n\right)_{n\in\mathbb N}$ converge a $f$ en $C_{p}(X,Y).$
+\end{proof}
+
+
+\begin{theorem}\label{puntoabiertaproducto}
+Sean $X$ y $Y$ espacios topológicos.  Entonces $C_{p}(X,Y)$ es homeomorfo a un subespacio del producto  
+$Y^X=\prod\limits _{x\in X}Y_x $.
+\end{theorem}
+
+\begin{proof}
+Consideremos la función $\phi:C_p(X,Y)\to \prod\limits _{x\in X}Y_x$, dada por
+$$\phi(f)=\left(f(x)\right)_{x\in X}.$$
+Demostremos que $\phi$ es un encaje.
+
+Si $f\neq g$, entonces existe $x_0\in X$ tal que $f(x_0)\neq g(x_0)$, por lo que
+$\phi(f)=\left(f(x)\right)_{x\in X}\neq \left(g(x)\right)_{x\in X}=\phi(g)$. Así queda demostrado que $\phi$ es inyectiva.
+
+Veamos que si $\langle U_x\rangle={\pi_x}^{-1}(U)$ es un abierto subbásico de $Y^X$, entonces
+\begin{align*}
+\phi^{-1}(\langle U_x\rangle) & =\{f\in C_p(X,Y)\mid \phi(f)\in\langle U_x\rangle\} \\
+                              & =\{f\in C_p(X,Y)\mid f(x)\in U \} \\
+                              & =M(x,U), \\
+\end{align*}
+con lo que hemos probado que $\phi$ es continua. 
+
+Por otro lado, si $O=\bigcap\limits_{i=1}^n M(x_i,U_i)$ es un abierto básico en $C_p(X,Y)$, entonces $f\in O$ si y sólo si $f(x_i)\in U_i$ para toda $i=1,\ldots, n$. Es decir, $f\in O$ si y sólo si $\phi(f)\in \langle U_1,\ldots, U_n \rangle$.
+Por lo tanto, $$\phi(O)= \langle U_1,\ldots, U_n \rangle \cap \phi\left(C_{p}(X,Y)\right),$$ lo cual prueba que $\phi$ es una función abierta (sobre su imagen) y por lo tanto es un encaje.
+\end{proof}
+
+La proposición anterior evidencía que en la topología de la convergencia puntual para
+$C(X,Y)$ la topología de $X$ cobra relativamente poca importancia en la estructura de 
+$C_p(X,Y)$ (tan sólo toma parte en determinar el conjunto subyacente). La topología punto-abierta presenta más desventajas, una de ellas el hecho de que una sucesión de funciones continuas puede converger puntualmente a una función discontinua. El siguiente ejemplo nos ilustra este hecho.
+
+\begin{example} Sea $X=Y=[0,1]$. Para cada entero positivo $n$, denotemos por $f_n:X\to Y$ a la función dada por $f_n(x)=x^n$. 
+Entonces la sucesión $(f_n)_{n\in\mathbb N}$ converge puntualmente a la función discontinua $f:X\to Y$, dada por
+\begin{equation*}
+f(x)=\begin{cases}
+0&\text{ si } 0\leq x<1,\\
+1&\text{ si } x=1.\\
+\end{cases}
+\end{equation*}
+\end{example}
+
+Por esta razón, en la siguiente sección buscaremos otra topología para $C(X,Y)$ en la que no ocurra lo anterior.
+
+\section{Topología de la Convergencia Uniforme de funciones}
+
+Si $Z$ es un espacio metrizable y $d$ es una métrica que define la topología de $Z$, 
+diremos que $d$ es acotada si 
+$$\sup\left\{d\left(z_1,z_2\right)\:|\:z_1\in Z,z_2\in Z\right\}<\infty.$$
+Notemos que un mismo espacio metrizable puede tener distintas métricas que definan su topología, algunas de las cuales pueden ser acotadas y otras no. Por ejemplo, si $Z=\mathbb R$, podemos considerar las métricas $d_1$ y $d_2$ definidas por
+$$d_1\left(x,y\right)=\left|x-y\right|,~~~~~\;\;d_2\left(x,y\right)=\min\left\{1, \left|x-y\right|\right\}.$$
+Ambas métricas generan la topología euclidiana en $\mathbb R$. Sin embargo, la métrica $d_2$ es acotada mientras que la métrica $d_1$ no lo es.
+
+\begin{definition}
+Sean $X$ un espacio topológico y $Y$ un espacio metrizable. Supongamos que $d$ es una métrica que define la topología de $Y$. Diremos que una función $f:X\to Y$ es \textbf{d-acotada}, si
+$$\sup\left\{d\left(f(x_1),f(x_2)\right)\:|\:x_1,x_2\in X\right\}<\infty $$
+
+El conjunto de todas las funciones $f:X\to Y$ continuas y $d$-acotadas será denotado por
+$BC(X,Y,d)$ y cuando no haya riesgo de confusión lo llamaremos simplemente $BC(X,Y)$.
+\end{definition}
+
+Podemos hacer notar que si $Y$ es un espacio métrico y $d_1\neq d_2$ son dos métricas distintas, en general los conjuntos
+$BC(X,Y;d_1)$ y $BC(X,Y;d_2)$ pueden ser distintos.  
+
+Por otro lado, si $d$ es una métrica acotada, entonces  $BC(X,Y;d)=C(X,Y)$.
+También se puede observar que si $X$ es un espacio compacto y $Y$ es un espacio metrizable, 
+entonces por el teorema de Weierstrass toda función continua $f:X\to Y$ es $d$-acotada, para cualquier métrica $d$ que defina la topología de $Y$. Así, en este caso, los conjuntos $BC(X,Y)$ y $C(X,Y)$ también coinciden.
+
+\begin{proposition}\label{metrica dtilde}
+Sean $X$ un espacio topológico, $Y$ un espacio metrizable y $d$ una métrica que defina la topología de $Y$. 
+Consideremos la función $$ d^*:BC(X,Y,d)\times BC(X,Y,d)\,\to \mathbb R$$ dada por
+$$ d^*\left(f,g\right)=\sup\left\{d\left(f(x),g(x)\right) \:|\:x\in X\right\}.$$
+Entonces $d^*$ define una métrica en $BC(X,Y,d)$ la cual llamaremos \textbf{métrica del supremo}. La topología en $BC(X,Y,d)$ generada por $d^*$ recibe el nombre de \textbf{topología de la convergencia uniforme}.
+\end{proposition}
+ La demostración es muy simple y la dejamos como ejercicio al lector.
+\medskip
+
+Así, si $d$ es una métrica que define la topología de un espacio $Y$ y $X$ es cualquier espacio topológico, el par $\left(BC(X,Y,d),d^*\right)$ es un espacio métrico. 
+Si la métrica $d$ es acotada, tendríamos que $ d^*$ define una métrica en $C(X,Y)$. En este caso, denotaremos a dicho espacio por $C_u(X,Y,d)$ y cuando no haya riesgo de confundirnos sobre qué métrica $d$ se está considerando, lo denotaremos simplemente por $C_u(X,Y)$. 
+
+ En el siguiente ejemplo veremos que dos métricas equivalentes en $Y$, pueden definir distintas topologías en $C(X,Y)$.
+
+\begin{example}
+Sea $X=Y=\mathbb R$. Consideremos las métricas $d_1$ y $d_2$ en $\mathbb R$, dadas por
+$$d_1\left(x,y\right)=\min\left\{1, \left|x-y\right|\right\},~~~~\; d_2\left(x,y\right)=\left|\frac{x}{1+|x|}-\frac{y}{1+|y|}\right|.$$
+
+Ambas métricas generan la topología euclidiana en $\mathbb R$. Además, como las dos métricas son acotadas, los siguientes conjuntos coinciden:
+$$BC(X,Y,d_1)=BC(X,Y,d_2)=C(X,Y)$$
+Sin embargo, la topología generada por $ d_1^*$ es distinta a la generada por $d_2^*$. Para convencernos de ello, consideremos para cada $n\in\mathbb N$, la función 
+$f_n:X\to Y$ dada por
+\begin{equation*}
+f_n(x)=
+\begin{cases}
+x,&\text{ si }x<n,\\
+n,&\text{ si }x\geq n.\\
+\end{cases}
+\end{equation*}
+Entonces $\left(f_n\right)_{n\in\mathbb N}$ es una sucesión contenida en $C(X,Y)$. Sea $f:X\to Y$ la función identidad. Notemos que
+$$ d_1^*\left(f_n,f\right)=\sup\left \{d_1\left(f_n(x),f(x)\right)\:|\:x\in X\right\}=\sup\left\{d_1\left(f_n(x),x\right)\:|\:x\in X\right\}=1,$$
+por lo que la sucesión $\left(f_n\right)_{n\in\mathbb N}$ no converge a $f$ en $C_u(X,Y;d_1)$. 
+
+Sin embargo,  si $x<n$ entonces
+$d_2\left(f_n(x),f(x)\right)=0$. Por lo tanto,
+$$ d^*_2\left(f_n,f\right)=\underset{x\in X}{\mathrm{sup}} d_2\left(f_n(x),f(x)\right) =
+\underset{x\geq n}{\mathrm{sup}}\left| \frac{n}{1+n}-\frac{x}{1+x}\right |.$$
+
+Pero $\frac{x}{1+x}$ es creciente, por lo que
+$$\underset{x\geq n}{\mathrm{sup}} \left| \frac{n}{1+n}-\frac{x}{1+x}\right |=\lim\limits_{x\to\infty}\left| \frac{n}{1+n}-\frac{x}{1+x}\right |=1-\frac{n}{1+n}=\frac{1}{n+1}.$$
+Consecuentemente, $ d_2^*\left(f_n,f\right)<\frac{1}{n}$, lo cual nos permite concluir que $\left(f_n\right)_{n\in\mathbb N}$ converge a $f$ en $C_u(X,Y;d_2)$. 
+Así, podemos observar que la topología generada por $ d_2^*$ no coincide con la topología generada por $ d_1^*$.
+\end{example}
+
+
+Dados dos espacios topológicos $X$ y $Y$, denotemos por
+ $$C^*(X,Y)=\left\{f\in C(X,Y) \mid  \overline{f(X)}\text{ es compacto}\right\}.$$
+
+\begin{theorem}
+Si $Y$ es metrizable, la topología de la convergencia uniforme en $C^*(X,Y)$ depende únicamente de la topología de $Y$ y no depende de la métrica de $Y$.
+\end{theorem}
+
+
+\begin{proof}
+Sean $d_1$ y $d_2$ dos métricas equivalentes en $Y$ (es decir, la topología generada por $d_1$ coincide con la generada por $d_2$). Para demostrar el teorema, hace falta probar que las métricas $d_1^*$ y $d_2^*$ son equivalentes. Para ello, es suficiente mostrar que si una sucesión $\left(f_n\right)_{n\in\mathbb N}\subset C^*(X,Y)$ converge  a una función $f$ en la métrica $d_1^*$ entonces también converge a $f$ en la métrica $d_2^*$ y viceversa.
+
+Supongamos que $(f_n)_{n\in\mathbb N}$ converge a $f$ con la métrica $d_1^*$. Entonces  
+$$d_1^*\left(f_n,f\right) \rightsquigarrow 0.$$
+Supongamos que $\left(f_n\right)_{n\in\mathbb N}$ no converge a $f$ con la métrica $d_2^*$. Entonces existe $\varepsilon >0$  y una subsucesión $\left(f_{n_k}\right)_{k\in\mathbb N}$ tal que
+$$d_2^*\left(f_{n_k},f\right)>\varepsilon  \text{ para todo } k\in\mathbb N.$$
+Pero $d_2^*\left(f_{n_k},f\right)=\sup\left\{d_2\left(f_n(x),f(x)\right)\:|\:x \in X\right\}$. Por esta razón, existe una sucesión\\ 
+$\left(x_k\right)_{k\in\mathbb N} \subset X$, tal que
+$$d_2\left(f_{n_k}(x_k),f(x_k)\right)>\varepsilon.$$
+Pero $\left(f(x_k)\right)_{k\in\mathbb N}\subset \overline {f(X)}$ y por hipótesis  $\overline {f(X)}$ es compacto. Por consiguiente, existe una subsucesión de $\left(f(x_k)\right)_{k\in\mathbb N}$ que converge a un punto $z\in \overline {f(X)}$. Supongamos, sin pérdida de generalidad, que la sucesión misma $\left(f(x_k)\right)_{k\in\mathbb N}$ converge a $z$ en $Y$.
+Más aún, como las métricas $d_1$ y $d_2$ son equivalentes, podemos asegurar que las sucesiones $d_1\left(f(x_k),z\right)$ y $d_2\left(f(x_k),z\right)$ convergen ambas a $0$.
+Por otro lado, como $\left(f_{n_k}\right)_{k\in\mathbb N}$ converge a $f$ en la métrica $d_1^*$, y como
+$$d_1\left(f_{n_k}(x_k), f(x_k)\right)\leq d_1^*\left(f_{n_k},f\right),$$
+podemos concluir que la sucesión $\left(f_{n_k}(x_k)\right)_{k \in \mathbb N}$ converge a $z$ en la métrica $d_1$; es decir,
+$$d_1\left( f_{n_k}(x_k),z\right) \longrightarrow 0.$$
+Recordemos que las métricas $d_1$ y $d_2$ son equivalentes, entonces la sucesión $d_2\left( f_{n_k}(x_k),z\right)$ también converge a $0$. Como consecuencia, existe $k$ suficientemente grande para asegurar que \\
+$d_2\left( f_{n_k}(x_k),z\right)<\varepsilon/2$ y $d_2\left(z,f(x_k)\right)<\varepsilon/2$.
+
+ Luego,
+$$\varepsilon < d_2\left(f_{n_K}(x_k),f(x_k)\right)\leq d_2\left( f_{n_K}(x_k),z\right)+d_2\left(z,f(x_k)\right)<\varepsilon/2+\varepsilon/2=\varepsilon,$$
+lo cual es una contradicción.
+Esta contradicción nos permite concluir que $\left(f_n\right)_{n\in\mathbb N}$ también converge a $f$ en la métrica $d_2^*$. Análogamente podemos mostrar que la convergencia en la métrica $d_2^*$
+implica  convergencia en la métrica $d_1^*$, así que $d_1^*$ y $d_2^*$ son métricas equivalentes.
+\end{proof}
+
+Observemos que si $X$ o $Y$ es compacto, entonces  los conjuntos $C^*(X,Y)$ y $C(X,Y)$ coinciden.  De aquí podemos concluir que $C^*(X,Y)=C_u(X,Y)$
+
+En otras palabras, si $X$ o $Y$ es compacto, entonces la topología en $C_u(X,Y)$ depende únicamente de la topología en $Y$ y no de la métrica que le demos a éste.
+
+
+
+
+
+\subsection{Convergencia Uniforme}
+\begin{definition} Sea $X$ un espacio topológico y $\left(Y,d\right)$ un espacio métrico.
+Diremos que una sucesión de funciones continuas, $\left(f_n\right)_{n\in\mathbb N}\subset C(X,Y)$ converge uniformemente a una funci\'on $f: X \to Y$ si para todo $\varepsilon>0$ existe $N_0\in\mathbb N$ tal que si $n\geq N_0$, entonces $d\left(f_n(x),f(x)\right)<\varepsilon$ para todo $x\in X$.
+\end{definition}
+El siguiente teorema nos muestra por qué la topología de la convergencia uniforme recibe este nombre.
+
+\begin{theorem}
+Sea $X$  un espacio topológico y $\left(Y,d\right)$ un espacio métrico. Entonces los siguientes enunciados se cumplen:
+\begin{enumerate}[a)]
+\item Si $\left(f_n\right)_{n\in\mathbb N}$ es una sucesión en $BC(X,Y)$ que converge uniformemente a una funci\'on $f: X \to Y$, entonces $f\in BC(X,Y)$.
+\item  La sucesión $\left(f_n\right)_{n\in\mathbb N}$ converge uniformemente a $f$ en $X$ si y sólo si  $\left(f_n\right)_{n\in\mathbb N}$ converge a $f$ en la topología de la convergencia uniforme en $BC(X,Y)$.
+\end{enumerate}
+
+\end{theorem} 
+\begin{proof}\hfill
+
+a) Sean $x_0\in X$ y $\varepsilon >0$. Como $\left(f_n\right)_{n\in\mathbb N}$ converge uniformemente a $f$, podemos encontrar  $N_0 \in\mathbb N$ tal que para todo $x\in X$ y $n \geq N_0$, se cumpla que
+$$d\left(f_n(x),f(x)\right)<\varepsilon/3.$$
+Sea $n\geq N_0$. Como $f_n$ es continua, existe una vecindad $U$ de $x_0$, tal que para todo $x\in U$, se tiene 
+$$d\left(f_n(x_0),f_n(x)\right)<\varepsilon /3.$$
+Así, si $x\in U$ podemos concluir que
+
+
+
+\begin{align*} d(f(x_0),f(x)) &\leq d(f(x_0),f_n(x_0))+d(f_n(x_0),f_n(x))+d(f_n(x),f(x)) \\
+                              &<\varepsilon/3+\varepsilon/3+\varepsilon/3 \\
+                              &=\varepsilon\\
+\end{align*}
+
+
+y por lo tanto $f$ es continua.
+
+Ahora veamos que $f$ es $d-$acotada. Para ello, notemos que para todo $n \in \mathbb N$ existe $M_n\in\mathbb N$ tal que
+$$\underset{ x,y\in X}{\sup}d\left(f_n(x),f_n(y)\right) <M_n .$$
+
+Así, para cualquier par de puntos $x,y\in X$, se tiene que
+
+\begin{align*} d(f(x),f(y)) &\leq d(f(x),f_n(x))+d(f_n(x),f_n(y))+d(f_n(y),f(y)) \\
+              &<\varepsilon/3+M_n+\varepsilon/3 \\
+              &=M_n+2\varepsilon/3 =M. \\
+\end{align*}
+
+Luego, 
+$$\underset{ x,y\in X}{\sup}d\left(f(x),f(y)\right)\leq M <\infty,$$
+por lo que podemos concluir que $f$ es $d-$acotada, como se quería demostrar.
+\medskip
+
+b) Supongamos que $\left(f_n\right)$ converge uniformemente a $f$ en $X$. Entonces, dada $\varepsilon >0$, existe $N_0\in\mathbb N$ tal que para todo $n\geq N_0$ y para todo $x\in X$ se cumple que
+$$d\left(f_n(x), f(x)\right)<\varepsilon/2.$$
+Así, si $n\geq N_0$, tendríamos que
+$$d^*\left(f_n,f\right)=\underset{ x\in X}{\sup}d\left(f_n(x),f(x)\right) \leq \varepsilon/2<\varepsilon.$$
+De esta manera podemos concluir que $\left(f_n\right)_{n\in\mathbb N}$ converge a $f$ en $BC(X,Y)$.
+
+Por otro lado, si  $\left(f_n\right)_{n\in\mathbb N}$ converge a $f$ en $BC(X,Y)$, dada $\varepsilon>0$, existe $N_0\in\mathbb N$, tal que para todo $n \geq\ N_0$, se cumple que 
+$$d^*\left(f_n,f\right)<\varepsilon.$$
+Pero $d^*\left(f_n,f\right)\geq d\left(f_n(x),f(x)\right)$ para todo $x\in X$. Así, si $n\geq N_0$, tendríamos que para todo $x\in X$, $d\left(f_n(x),f(x)\right)<\varepsilon$, lo cual demuestra que $\left(f_n\right)$ converge uniformemente a $f$ en $X$.
+\end{proof}
+
+\vspace{.5cm}
+\begin{definition}
+Sean $X$ y $Y$ espacios topológicos. La función $\Omega: C(X,Y)\times X\to Y$ dada por
+
+$$\Omega (f,x)=f(x)$$
+
+recibe el nombre de \textbf{función evaluación}.
+
+Además, diremos que una topología $\tau $ para $C(X,Y)$ es \textbf{admisible} si la función evaluación es continua.
+\end{definition}
+
+Una de las ventajas de la topología de la convergencia uniforme, es que resulta admisible como veremos a continuaci\'on.
+
+\begin{theorem}Sean $X$ un espacio topológico y $(Y,d)$ un espacio métrico. Entonces la topología  de la convergencia uniforme en $BC(X,Y;d)$ es admisible.
+\end{theorem}
+
+\begin{proof}
+Sean $\left(f_0,x_0\right)\in C(X,Y;d)\times X$ y $\varepsilon >0$. Llamemos $U=B(f(x_0),\varepsilon/2)$. Por la continuidad de $f_0$, el conjunto $V=f_0^{-1}(U)$ es una vecindad de $x_0$. 
+Sea $O=B(f_0,\varepsilon/2)\subset C(X,Y;d)$. Consideremos $(f,x)\in O\times V$. Entonces
+$d^*\left(f,f_0\right)< \varepsilon/2$, por lo que
+
+$$d\left(f(x),f_0(x)\right)<\varepsilon/2.$$
+
+Por otro lado, como $x\in V$, se tiene que
+
+$$d\left(f_0(x),f_0(x_0)\right)<\varepsilon/2.$$
+
+Así, 
+
+\begin{align*}
+d\left(\Omega(f,x),\Omega(f_0,x_0)\right)&=d\left(f(x),f_0(x_0)\right)\\
+&\leq d\left(f(x),f_0(x)\right)+d\left(f_0(x),f_0(x_0)\right)\\
+&<\varepsilon/2+\varepsilon/2=\varepsilon,\\
+\end{align*}
+lo cual prueba que $\Omega$ es continua.
+\end{proof}
+
+Como consecuencia del teorema anterior se tiene el siguiente corolario.
+
+\begin{corollary}
+Sean $X$ un espacio topológico y $\left(Y,d\right)$ un espacio métrico. Consideremos el espacio $BC(X,Y)$ con la topología de la convergencia uniforme. Si $\left(f_n\right)_{n\in\mathbb N}$ es una sucesión en $BC(X,Y)$ que converge a $f$ en $BC(X,Y)$, y si $\left(x_n\right)_{n\in\mathbb N}$ es una sucesión en $X$ que converge a un punto $x \in X$, entonces la sucesión $\left(f_n(x_n)\right)_{n\in\mathbb N}$ converge a $f(x)$.
+\end{corollary}
+
+\begin{proof}
+Consideremos la sucesión $\left(f_n,x_n\right)$ en $BC(X,Y)\times X$. Por hipótesis, dicha sucesión converge a $\left(f,x\right)$. Por otro lado, como la función evaluación $\Omega$ es continua, se tiene que
+
+$$\lim\limits_{n\to\infty}\Omega(\left(f_n,x_n\right))=\Omega(f,x).$$
+
+Pero $\Omega(f_n,x_n)=f_n(x_n)$ y $\Omega(f,x)=f(x)$. Consecuentemente, la sucesión $\left(f_n(x_n)\right)_{n\in\mathbb N}$ converge a $f(x)$, como se quería demostrar.
+\end{proof}
+
+La admisibilidad de la topología  de la convergencia uniforme es una ventaja más sobre la topología de la convergencia puntual, ya que esta última no siempre es admisible. Veamos un ejemplo.
+
+\begin{example}
+Consideremos el espacio $C_p( I, \mathbb R)$ donde $I$ denota el intervalo $[0,1]$. 
+Para cada $n\geq 1$, llamemos $f_n:I\to\mathbb R$ a la función continua dada por
+
+\begin{equation*}
+f_n(x)=\begin{cases}
+1-nx,&\text{ si }0\leq x\leq \frac{1}{n},\\
+\frac{nx-1}{n-1},&\text{ si } \frac{1}{n}\leq x\leq 1.\\
+\end{cases}
+\end{equation*}
+
+Entonces la sucesión $\left(f_n\right)_{n\in\mathbb N}$ converge puntualmente a la función constante $f$ dada por $f(x)=1~\forall x\in I$. Por otro lado la sucesión $\left(\frac{1}{2n}\right)_{n\in\mathbb N}$ converge en $I$ a $0$. 
+Si la función evaluación fuera continua, tendríamos que 
+
+$$\lim\limits_{n\to\infty} f(1/2n)=\lim\limits_{n\to\infty}\Omega(f_n,1/2n)=\Omega(f,0)=1.$$
+
+Sin embargo, para cada $n\geq 1$ tenemos $f_n(1/2n)=1-n(1/2n)=1/2$, por lo que la sucesión $f_n(1/2n)$ converge a $1/2$, lo cual contradice la igualdad anterior. Así, podemos concluir que la topología de la convergencia puntual en $C_p( I, \mathbb R)$ no es admisible.
+\end{example}
+
+\section{La topología compacto-abierta}
+ 
+
+\begin{definition} Sean $X$ y $Y$ dos espacios topológicos. Para cada par de conjuntos $K\subset X$ y $U\subset Y$, definamos
+$$M(K,U)=\left\{f\in C(X,Y) \:|\: f(K)\subset U \right\}.$$
+
+\begin{figure}[h]
+\includegraphics*[scale=.5]{KU}
+\end{figure}
+
+
+
+Llamemos $\tau_c$ a la topología en $C(X,Y)$ generada por la siguiente sub-base:
+$$\left\{M(K,U) \:|\: K \text{ es compacto en }X \text{ y } U \text{ es abierto en }Y\right\}.$$
+$\tau_c$ recibe el nombre de \textbf{topología compacto-abierta}, y el espacio topológico $\left(C(X,Y),\tau_c\right)$ se denota por $C_c(X,Y)$.
+\end{definition}  
+
+De la definición anterior, se sigue inmediatamente que la topología de la convergencia puntual es más débil que  la topología compacto-abierta. Veamos algunas propiedades elementales de esta última topología.
+
+
+\begin{proposition}\label{intersecciones}
+Sean $X$ y $Y$ espacios topológicos, $K, K_1,K_2,\ldots, K_n$ subconjuntos de $X$ y $W, W_1,W_2,\ldots, W_n$ subconjuntos de $Y$. Entonces los siguientes enunciados se cumplen:
+\begin{enumerate}[(a)]
+\item $\bigcap\limits_{i=1}^nM(K_i, W)=M\Big(\bigcup\limits_{i=1}^n K_i, W \Big)$.
+\item $\bigcap\limits_{i=1}^nM(K, W_i)=M\Big( K, \bigcap\limits_{i=1}^n W_i \Big)$.
+\item $\bigcap\limits_{i=1}^nM(K_i, W_i)\subset M\Big( \bigcup\limits_{i=1}^n K_i, \bigcup\limits_{i=1}^n W_i \Big)$.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+(a) Sea $f\in \bigcap\limits_{i=1}^nM(K_i, W)$. Entonces $f(K_i)\subset W$ para todo $i=1,\ldots, n$, y por lo tanto,
+
+$$f\Big(\bigcup\limits_{i=1}^n K_i\Big)\subset W.$$
+
+Así, $f\in M \Big(\bigcup\limits_{i=1}^n K_i, W \Big)$ por lo que $\bigcap\limits_{i=1}^n M(K_i, W)\subset M \Big(\bigcup\limits_{i=1}^n K_i, W \Big)$
+
+Por otro lado, si $f\in M \Big(\bigcup\limits_{i=1}^n K_i, W \Big)$, entonces 
+$f(K_i)\subset f\left( \bigcup\limits_{i=1}^n K_i\right)\subset W$ para todo $i=1,\ldots, n$, con lo que $f\in  \bigcap\limits_{i=1}^n M(K_i, W)$, lo cual prueba que $\bigcap\limits_{i=1}^nM(K_i, W)=M\Big(\bigcup\limits_{i=1}^n K_i, W \Big)$.
+
+(b) Si $f\in \bigcap\limits_{i=1}^n M(K, W_i)$, entonces $f(K)\subset W_i$ para todo $i=1,\ldots, n$. Así, $f\in M\Big( K, \bigcap\limits_{i=1}^n W_i \Big)$, y por lo tanto,
+
+$$\bigcap\limits_{i=1}^n M(K, W_i)\subset M\Big ( K, \bigcap\limits_{i=1}^n W_i \Big).$$
+
+Por otro lado, si $f\in M \Big( K, \bigcap\limits_{i=1}^n W_i \Big)$, entonces 
+
+$$f(K)\subset\bigcap\limits_{i=1}^n W_i \subset W_k,~~\text{ para todo }k=1,\ldots, n.$$
+
+Luego, $f\in\bigcap\limits_{i=1}^n M(K, W_i)$, por lo que $\bigcap\limits_{i=1}^n M(K, W_i)= M \Big( K, \bigcap\limits_{i=1}^n W_i \Big)$.
+
+(c) Sea $f\in \bigcap\limits_{i=1}^n M(K_i, W_i)$. Entonces, para cada $i=1,\ldots, n$, se tiene que
+$f(K_i)\subset W_i$. Así,
+
+$$f\Big( \bigcup\limits_{i=1}^n K_i\Big)\subset \bigcup\limits_{i=1}^n W_i,$$
+
+por lo que $f\in  M\Big( \bigcup\limits_{i=1}^n K_i, \bigcup\limits_{i=1}^n W_i \Big)$, como se quería demostrar.
+\end{proof}
+
+\begin{proposition}
+Sean $X$ y $Y$ espacios topológicos, $K\subset X$ un subconjunto compacto y $W\subset Y$ un subconjunto abierto. Entonces $\overline{M(K,W)}\subset M(K,\overline W)$.
+\end{proposition}
+
+\begin{proof} Sea $g\in Y^X\setminus M(K,\overline W)$. Basta demostrar que $g\notin \overline{M(K,W)}$. Como 
+$g(K)\not\subset \overline W$, existe $a\in K$ tal que $g(a)\in Y\setminus \overline W.$ Llamemos $V=Y\setminus \overline W$. Entonces  $V$ es abierto en $Y$ y $g\in M(\{a\}, V),$ por lo que $M(\{a\}, V)$ es una vecindad abierta de $g$ en $C_c(X,Y)$. 
+
+Notemos que para todo $f\in M(\{a\}, V)$, $f(a)\in V\subset Y\setminus W$, y por lo tanto $f\notin M(K, W)$. De esta manera $M(\{a\}, V)\cap M(K,W)=\emptyset$, lo cual prueba que $g\notin \overline{M(K, W)}$, como se quería demostrar.
+\end{proof}
+
+Veamos un ejemplo sencillo que ilustre los sub-básicos de la topología compacto-abierta.
+
+\begin{example} Consideremos $X=Y=\mathbb R$, $K=[1/2, 1]$ y $W=(1/5, 1+1/5)$.
+Sean $f, g, h\in Y^X$, donde:
+$$f(x)=x^2,~~~~g(x)=x,~~~~h(x)=e^x~~~~\mbox{ para todo }x\in\mathbb R$$
+
+Entonces $f,g\in M(K,W)$ pero $h\notin M(K,W)$.
+
+
+\begin{figure}[h]
+\includegraphics*[scale=.7]{dic3}
+\end{figure}
+\end{example}
+
+\begin{proposition}\label{Y encajado en YX}
+Sean $X$ y $Y$ espacios topológicos. Entonces $Y$ se puede encajar en $C_c(X,Y)$.
+\end{proposition}
+
+\begin{proof}
+Para cada punto $y\in Y$, definamos la función constante $c_y:X\to Y$ mediante
+$$c_y(x)=y \mbox{ para todo }x\in X$$
+
+Notemos que $c_y\in C(X,Y)$ y demostremos que el conjunto $\mathcal C=\left\{c_y \:|\: y\in Y\right\}$ dotado de la topología inducida por $C_c(X,Y)$ es homeomorfo a $Y$.
+
+\noindent Afirmamos que para cualesquiera subconjuntos $A\subset X$ y $V\subset Y$, $c_y\in M(A,V)$ si y sólo si $y\in V$. 
+
+En efecto, si $c_y\in M(A,V)$, entonces $c_y(A)=\{y\}\subset V$. Por otro lado, si $y\in V$ para cualquier subconjunto $A\subset X$, $\{y\}=c_y(A)\subset V$, por lo que $c_y\in M(A,V)$, como se quería demostrar.
+
+Definamos $h:Y\to \left\{c_y \:|\:y\in Y\right\}\subset C_c(X,Y)$ por $h(y)=c_y$. Es claro que $h$ es biyectiva. Para demostrar la continuidad de $h$ consideremos $y_0\in Y$ y  una vecindad sub-básica $M(A,V)$ de $c_{y_0}$. Como $c_{y_0}\in M(A,V),$ se tiene que $y_0\in V$. Además, si $z\in V$, por la afirmación $c_z\in M(A,V)$. Así
+$$h(V)\subset M(A,V),$$
+
+lo cual demuestra la continuidad de $h$.
+
+Ahora demostremos que $h$ es abierta. Sea $V\subset Y$ abierto en $Y$ y $h(y_0)=c_{y_0}\in h(V)$. Consideremos cualquier conjunto compacto $A\subset X$. Por la afirmación anterior, $c_{y_{0}}\in M(A,V)$. Por otro lado,  si $c_z=h(z)\in M(A,V)$, entonces $z\in V$ y por lo tanto $h(z)\in h(V)$. Así, llegamos a que
+$$h(y_0)\in M(A,V)\cap \mathcal C\subset h(V),$$ 
+
+de donde podemos concluir que $h(V)$ es abierto en $\mathcal C$. Por consiguiente, $h$ es abierta y por lo tanto es un homeomorfismo entre  $Y$ y $\mathcal C\subset C_c(X,Y)$, lo cual completa la prueba.
+\end{proof}
+
+Se demostró en la proposición anterior que $Y$ es homeomorfo al subespacio de $C_c(X,Y)$ compuesto por las funciones constantes. Cabe observar aquí que la topología relativa que induce la topología compacto-abierta en $\mathcal C=\{c_y\mid y\in Y\}$ de hecho coincide con la topología relativa inducida por la topología punto-abierta. Esto ya que para todo $A\subset X$, $x\in X$, y $V$ abierto en $Y$, 
+$$M(A,V)\cap \mathcal C=M(\{x\}, V)\cap \mathcal C=\{c_y\in \mathcal C\mid y\in V\}.$$
+ Además si $Y$ es un espacio métrico, $M(A, B_\varepsilon (y))\cap\mathcal C=B_\varepsilon(c_y)=\{c_z\in\mathcal C\mid z\in B_\varepsilon (y)\}$, así que la topología relativa en $\mathcal C$ inducida por la topología de convergencia uniforme también coincide con la que induce la compacto-abierta. 
+
+
+
+\begin{proposition} Sean $X$ y $Y$ espacios topológicos. Si $Y_0$ es un subespacio de $Y$, entonces $C_c(X,Y_0)$ es homemorfo a un subespacio de $C_c(X,Y)$.
+\end{proposition}
+
+\begin{proof}
+Notemos que $$C(X,Y_0)=\left\{f:X\to Y_0 \:|\: f \text{ es continua}\right\} $$ $$=\left\{f:X\to Y \:|\: f(X)\subset Y_0\text{ y }f \text{ es continua}\right\}\subset C(X,Y).$$
+
+Así, $C(X,Y_0)$ es un subconjunto de $C(X,Y)$. Para terminar la prueba, demostraremos que la topología compacto-abierta en $C(X,Y_0)$ coincide con la topología del subespacio inducida por $C_c(X,Y)$.
+Para esto bastará probar que cada subbásico en una topología es un abierto en la otra, o más aún, que estas familias de hecho coinciden.
+Recordemos que  $V\subset Y_0$ es abierto en $Y_0$ si y sólo si existe $V'\subset Y$, abierto en $Y$, tal que
+$V=V'\cap Y_0$. 
+
+Sea $A\subset X$ un subconjunto compacto y $V\subset Y_0$ abierto. Entonces $M(A,V)$ es sub-básico de $C_c(X,Y_0)$. Pero, si $f\in M(A,V)\subset C(X,Y_0)$, entonces $f(A)\subset V=V'\cap Y_0\subset V'$, por lo que
+ $f\in M(A,V')\cap C(X,Y_0)$.
+ 
+Análogamente, si  $f\in M(A,V')\cap C(X,Y_0)$, entonces $f(A)\subset V'$ y $f(A)\subset f(X)\subset Y_0$, por lo que 
+$f(A)\subset V'\cap Y_0=V$. Consecuentemente, $f\in M(A,V)\subset C(X,Y_0)$, lo cual demuestra que
+$$M(A,V)=M(A,V')\cap C(X,Y_0).$$
+
+De esta forma, podemos concluir que los sub-básicos de $C_c(X,Y_0)$ en la topología compacto-abierta coinciden con los sub-básicos de $C(X,Y_0)$ con la topología inducida de $C_c(X,Y)$, lo cual completa la prueba.
+\end{proof}
+
+Si $X_0$ es un subespacio del espacio topológico $X$, no necesariamente sucede que $C_c(X_0,Y)$ sea subespacio de $C_c(X,Y)$. Para convencernos de ello veamos el siguiente ejemplo.
+\begin{example}
+Sea $X=[0,1]$, $X_0=(0,1]$ y $Y=\mathbb R$. Consideremos la función $f\in C_c(X_0,Y)$ dada por
+$$f(x)=\sin(1/x).$$
+Como $f$ no se puede extender continuamente a todo $X$,  $f\notin C(X,Y)$, y por lo tanto
+$C_c(X_0,Y)\not\subset C_c(X,Y)$.
+\end{example}
+
+\begin{theorem}
+Sean $X$ y $Y$ dos espacios topológicos. Entonces los siguientes enunciados se cumplen:
+\begin{enumerate}[(a)]
+\item $Y$ es Hausdorff si y sólo si $C_c(X,Y)$ es Hausdorff.
+\item $Y$ es regular si y sólo si $C_c(X,Y)$ es regular.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+Por la proposición \ref{Y encajado en YX}, se tiene que $Y$ es homeomorfo a un subespacio de $C_c(X,Y)$. De este modo, si $C_c(X,Y)$ es Hausdorff o regular, cualquier subespacio $Z\subset C_c(X,Y)$ será Hausdorff o regular, respectivamente. En particular, el subespacio homeomorfo a $Y$ es Hausdorff o regular,  y por lo tanto $Y$ es Hausdorff o regular, respectivamente.
+ 
+ Demostremos las otras implicaciones.
+ 
+ (a) Supongamos que $Y$ es Hausdorff. Considermos $f, g\in C_c(X,Y)$, tal que $f\neq g$. Entonces existe $x_0\in X$ tal que $f(x_0)\neq g (x_0)$. Como $Y$ es Hausdorff, existen dos vecindades ajenas $U$ y $V$, tales que
+ $f(x_0)\in U$ y $g(x_0)\in V$.  Luego, $M(\{x_0\}, U)$ y $M(\{x_0\}, V)$ son vecindades de $f$ y de $g$ en $C_c(X,Y)$.  Si $M(\{x_0\}, U)\cap M(\{x_0\}, V)\neq\emptyset$, existiría $h\in C_c(X,Y)$ tal que $h(x_0)\in U$ y $h(x_0)\in V$, con lo que $U$ y $V$ no serían ajenas. Este hecho, nos permite concluir que
+ $$M(\{x_0\}, U)\cap M(\{x_0\}, V)=\emptyset$$
+ y por lo tanto $C_c(X,Y)$ es de Hausdorff.
+ 
+ (b) Supongamos que $Y$ es regular. Sean $f\in C_c(X,Y)$ y $M(A,V)$  una vecindad de $f$. Entonces
+ $f(A)\subset V$. Como $f(A)$ es compacto y $Y$ es regular, podemos encontrar una vecindad $W$ tal que
+ 
+ $$f(A)\subset W\subset \overline W\subset V.$$
+ Luego, aplicando la proposición \ref{intersecciones}, podemos concluir que
+ $$f\in M(A,W)\subset \overline{M(A,W)}\subset M(A,\overline W)\subset M(A,V),$$
+ lo cual prueba que $C_c(X,Y)$ es regular.
+ \end{proof}
+
+
+
+\begin{theorem}\label{pesos sub-bases}
+Sean $X$ y $Y$ espacios topológicos.  Si $X$ es regular, entonces los siguientes dos enunciados se cumplen:
+\begin{enumerate}[a)]
+\item Si $\Gamma$ es sub-base para la topología de $Y$, entonces la colección
+$$\left\{M(A,G) \:|\: A\subset X\text{ compacto, } G\in \Gamma \right\}$$
+es sub-base para $C_c(X,Y) $.
+\item Sea $\mathcal C$ una familia de subconjuntos compactos de $X$. Supongamos que para cada compacto $A\subset X$ y para cada vecindad $U$ de $A$ en $X$, existen compactos $C_1,\ldots, C_n\in \mathcal C$ tales que 
+$$A\subset \bigcup\limits_{i=1}^nC_i\subset U.$$
+Entonces la colección
+$$\left\{M(C, G) \:|\: C\in\mathcal C, G \in \Gamma \right\}$$
+es sub-base para $C_c(X,Y)$.
+\end{enumerate}
+\end{theorem}
+\begin{proof}\hfill
+
+(a) Es suficiente probar que dados $f\in M(A,V)\subset C_c(X,Y)$, con $A\subset X$ compacto y $V\subset Y$ abierto, existen compactos $A_i\subset X$ y abiertos $G_i\in\Gamma$  $i\in\{1,\ldots, n\}$, tales que
+$$f\in \bigcap\limits_{i=1}^n M(A_i, G_i)\subset M(A,V).$$
+
+Como $V$ es abierto en $Y$, podemos expresar $V=\bigcup\limits_{\alpha\in\mathcal A}V_\alpha$ donde cada $V_\alpha=\bigcap\limits_{i=1}^{k(\alpha)}G^\alpha_i$, con $G_i^\alpha\in \Gamma$.
+Además, $f(A)\subset \bigcup\limits_{\alpha\in\mathcal A}V_\alpha$ y como $A$ es compacto su imagen $f(A)$ también lo es. En consecuencia, existen $\alpha_1,\ldots, \alpha_n$, tales que
+$$f(A)\subset \bigcup\limits_{i=1}^nV_{\alpha_i}.$$
+Así, $A\subset \bigcup\limits_{i=1}^n f^{-1}(V_{\alpha_i})$.
+
+\underline{Afirmación.} Existen compactos $A_1,\ldots, A_n$, tales que $A=\bigcup\limits_{i=1}^n A_i$ y $A_i\subset f^{-1}(V_{\alpha_i})$.
+
+Para cada $a\in A$ existe $\alpha_i$, $i=1,\ldots, n$, tal que $a\in f^{-1}(V_{\alpha_i})$. Como $X$ es regular, podemos encontrar una vecindad $U_a$ de $a$ tal que
+$$a\in U_a\subset\overline{U}_a\subset f^{-1}(V_{\alpha_i}).$$
+Así, la familia $\{U_a\}_{a\in A}$ es una cubierta abierta del compacto $A$ y por lo tanto podemos extraer una subcubierta finita, digamos $\{U_{a_1},\ldots, U_{a_m}\}$.
+Notemos que
+$$A\subset\bigcup\limits_{i=1}^mU_{a_i}\subset\bigcup\limits_{i=1}^m\overline{U}_{a_i}.$$
+Además,  para cada $i=1,\ldots, m$,  existe $j\in \left\{1,\ldots, n\right\}$, tal que $\overline {U}_{a_i}\subset f^{-1}(V_{\alpha_j})$.
+Definamos
+$$A_j=\bigcup\left\{\overline {U}_{a_i}\cap A \:|\: \overline {U}_{a_i}\subset f^{-1}(V_{\alpha_j})\right\}.$$
+
+Como $A$ es compacto cada subconjunto cerrado de $A$ $\overline{U_{\alpha-i}}\cap A$ también lo es. Entonces $A_j$ es compacto para todo $i\in\{1,\ldots,m\}$ y además  $A=\bigcup\limits_{j=1}^n A_j$ y $A_j\subset f^{-1}(V_{\alpha_j})$, lo cual demuestra la afirmación.
+
+
+Como $f(A_j)\subset V_{\alpha_j}$ para todo $j \in \{1,\ldots, n\}$, se tiene que 
+$f\in \bigcap\limits_{j=1}^{n}M(A_j,V_{\alpha_j})$. Pero $V_{\alpha_j}=\bigcap\limits_{i=1}^{k(\alpha_j)}G^{\alpha^j}_{i}$, por lo que
+$$f\in M\Big(A_j,\bigcap\limits_{i=1}^{k(\alpha_j)}G^{\alpha^j}_{i}\Big)=\bigcap\limits_{i=1}^{k(\alpha_j)} M(A_j,G^{\alpha_j}_i )~~\text{  para todo }j\in\{1,\ldots, n\}.$$
+Entonces, tomando en cuenta las fórmulas de la proposición \ref{intersecciones}, se obtiene
+\begin{align*}
+f&\in \bigcap_{j=1}^n \Big(\bigcap\limits_{i=1}^{k(\alpha_j)}M(A_j,G^{\alpha_j}_i )\Big)
+=\bigcap\limits_{j=1}^n\Big(M\big(A_j,\bigcap\limits_{i=1}^{k(\alpha_j)}G_i^{\alpha_j} \big) \Big)
+=\bigcap\limits_{j=1}^n M(A_j,V_{\alpha_j})\\
+&\subset  M\Big(\bigcup\limits_{j=1}^n A_j,\bigcup\limits_{j=1}^n G_j\Big)\subset M(A,V),\\
+\end{align*}
+como se quería demostrar.
+\medskip
+
+
+(b) Por el inciso anterior, tenemos que la colección $\left\{M(A,G) \:|\: A\subset X\text{ compacto, } G\in \Gamma \right\}$ es sub-base para $C_c(X,Y)$. Para demostrar (b) consideremos $f\in C_c(X,Y)$ y  un abierto $M(A,G)$, con $G\in \Gamma$, tal que $f\in M(A,G)$. Por hipótesis, existen compactos $C_1,\ldots, C_n\in\mathcal C$, tales que
+$$A\subset\bigcup\limits_{i=1}^nC_i\subset f^{-1 }(G).$$
+Luego, una vez más por las fórmulas de la proposición \ref{intersecciones}, $f\in  M\Big(\bigcup\limits_{i=1}^n C_i, G\Big)=\bigcap\limits_{i=1}^n M(C_i,G)\subset M(A,G)$.
+Como cada $M(C_i,G)\in\left\{M(C, G) \:|\: \right.$ $\left.C\in\mathcal C, G\in\Gamma\right\}$, podemos concluir que $\{M(C, G) \:|\: C\in\mathcal C, G\in\Gamma\}$ es sub-base para la topología compacto-abierta en $C_c(X,Y)$.
+\end{proof}
+
+
+\begin{corollary}\label{II numerable}
+Sean $X$ y $Y$ espacios segundo numerables. Si $X$ es localmente compacto entonces $C_c(X,Y)$ es segundo numerable.
+\end{corollary}
+
+\begin{proof}
+Sea $\mathcal B_1$ una base numerable de $X$. Como $X$ es localmente compacto también posee
+una base $\mathcal{B}_2$ de vecindades de cerradura compacta. 
+
+Tomando $\mathcal B_X=\{B\in \mathcal{B}_1 | B\subset V $ para algún $  V\in\mathcal{B}_2\}$, es claro que $\mathcal B_X$ es base de $X$, es numerable y $\overline U$ es compacto para todo $U\in \mathcal B_X$.
+
+Si $A\subset X$ es compacto y $W\subset X$ es una vecindad de $A$, entonces para cada punto $a\in A$ existe $U_a\in \mathcal B_X$ tal que
+$a\in U_a\subset\overline U_a\subset W$.  
+Por lo tanto la colección $\{U_a\}_{a\in A}$ es una cubierta del compacto $A$. Así, existen $a_1, a_2,\ldots, a_n\in A$, tales que
+$$A\subset \bigcup_{i=1}^{n}U_{a_i}\subset\bigcup_{i=1}^{n}\overline U_{a_i}\subset W.$$
+
+Por otro lado, como $Y$ es segundo numerable, existe una base numerable $\mathcal B_Y$. Luego, en virtud del teorema~\ref{pesos sub-bases} (b), el conjunto
+$$\Gamma=\left\{M(\overline U, V) \:|\: U\in\mathcal B_X, V\in\mathcal B_Y\right\},$$
+es sub-base para la topología compacto-abierta en $C(X,Y)$. 
+Además, $\Gamma$ es numerable y por lo tanto la base que genera también lo es. De esta manera, podemos concluir que $C_c(X,Y)$ es segundo numerable.
+\end{proof}
+
+
+\subsection{La Función evaluación en la topología compacto-abierta}
+Consideremos tres espacios topológicos $X$, $Y$ y $Z$. Notemos que si $f:X\to Y$ y $g:Y\to Z$ son funciones continuas, entonces su composición $g\circ f$ lo es. Así, podemos definir la función composici\'on  $T:C_c(X,Y)\times C_c(Y,Z)\to C_c(X,Z)$ por
+\begin{equation}\label{funcion t}
+T(f,g)=g\circ f.
+\end{equation}
+En las siguientes proposiciones impondremos condiciones a los espacios $X$, $Y$ y $Z$ para garantizar que la función $T$ sea continua.
+
+\begin{proposition}\label{composiciones laterales}
+Sean $X$, $Y$ y $Z$ espacios topológicos y $T$ la función definida en (\rm{\ref{funcion t}}). Consideremos $f_0\in C_c(X,Y)$ y $g_0\in C_c(Y,Z)$. Entonces los siguientes enunciados se cumplen:
+\begin{enumerate}[(a)]
+\item La funci\'on $T_{f_0}:C_c(Y,Z)\to C_c(X,Z)$ dada por $T_{f_0}(g)=T(f_0,g)$ es continua.
+\item La funci\'on $T_{g_0}:C_c(X,Y)\to C_c(X,Z)$ dada por $T_{g_0}(f)=T(f,g_0)$  es continua.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+(a) Sea $M(A,V)\subset C_c(X,Z)$ un abierto sub-básico en $C_c(X,Z)$. Notemos que $T_{f_0}(g)=g\circ f_0\in M(A,V)$ si y sólo si $g(f_0(A))\subset V$. Pero lo anterior sucede si y sólo si $g\in M(f_0(A),V)$. Luego,
+$$T^{-1}_{f_0}(M(A,V))=M(f_0(A),V).$$
+Pero por la continuidad de $f_0$, $f_0(A)$ es compacto en $Y$, y por lo tanto $M(f_0(A),V)$ es un abierto sub-b\'asico en $C_c(Y,Z)$, y por consiguiente podemos concluir que $T_{f_0}$ es continua.
+
+(b) Sea $M(A,V)\subset C_c(X,Z)$ un abierto sub-básico en $C_c(X,Z)$. Entonces $T_{g_0}(f)=g_0\circ f\in M(A,V)$ si y sólo si $g_0(f(A))\subset V$. Pero lo anterior sucede si y sólo si $f(A)\subset g_0^{-1}(V)$, es decir, siempre y cuando $f\in M(A,g^{-1}_0(V))$. Consecuentemente,
+$$T_{g_0}^{-1}(M(A,V))=M(A,g^{-1}_0(V)),$$
+y como $g_0$ es continua, $g^{-1}_0(V)$ es abierto en $X$, lo cual prueba que $M(A,g^{-1}_0(V))$ es un abierto sub-b\'asico en $C_c(X,Y)$ y por lo tanto $T_{g_0}$ es continua.
+\end{proof}
+
+\begin{proposition}
+Sean $X$ y $Z$ espacios de Hausdorff y $Y$ un espacio localmente compacto. Entonces la función composici\'on $T$ definida en (\ref{funcion t}) es continua.
+\end{proposition}
+
+
+\begin{proof} Sea $(f_0,g_0)\in C_c(X,Y)\times C_c(Y,Z)$ y $M(A,V)\subset C_c(X,Z)$ una vecindad sub-b\'asica de $T(f_0,g_0)=g_0\circ f_0$ en $C_c(X,Z)$.
+
+Entonces, $g_0(f_0(A))\subset V$, por lo que  $f_0(A)\subset g_0^{-1}(V)$. Por otro lado, como $Y$ es localmente compacto, por el  
+corolario \ref{vecindad compacta del compacto}, podemos encontrar un abierto $W$ en $Y$ con cerradura compacta, tal que
+$$f_0(A)\subset W\subset \overline W\subset g_0^{-1}(V).$$
+Así, $f_0\in M(A,W)$ y $g_0\in M(\overline W,V)$, por lo que el conjunto $O=M(A,W)\times M(\overline W,V)\subset C_c(X,Y) \times C_c(Y,Z)$ es una vecindad de $(f_0,g_0)$ en $C_c(X,Y) \times C_c(Y,Z)$. Para completar la prueba, demostremos que $T(O)\subset M(A,V)$.
+
+Sea $(f,g)\in O$. Entonces $f(A)\subset W$ y $g(\overline W)\subset V$, por lo que $g(f(A))\subset V$, y por lo tanto, $g\circ f\in M(A,V)$, como se quería demostrar.
+\end{proof}
+
+En las siguientes proposiciones, veremos qué condiciones en $X$ nos garantizan que la función evaluación definida anteriormente, $\Omega$, sea continua.
+
+\begin{proposition}
+Sean $X$ y $Y$ espacios topológicos y $x_0\in X$. Definamos $\Omega_{x_0}:C_c(X,Y)\to Y$ por
+$\Omega_{x_0}(f)=\Omega(f,x_0)$, donde $\Omega$ es la función evaluación. Entonces $\Omega_{x_0}$ es continua.
+\end{proposition}
+
+\begin{proof}
+Para verificar este hecho es suficiente observar que para cada abierto $U\subset Y$, $\Omega_{x_0}^{-1}(U)= M({x_0},U)$. Efectivamente,
+si $U$ es un abierto en $Y$ y $f\in\Omega_{x_0}^{-1}(U)$, entonces $f(x_0)=\Omega_{x_0}(f)\in U$, por lo que $f\in M(\{x_0\}, U).$ Asimismo, si $g\in M(\{x_0\},U)$, entonces $g(x_0)\in U$, por lo que $\Omega_{x_0}(g)\in U$, como se  quería probar.
+\end{proof}
+
+\begin{proposition}\label{funcion evaluacion continua}
+Sean $X$ y $Y$ espacios topológicos. Si $X$ es localmente compacto, entonces la función evaluación es continua; es decir, la topología compacto-abierta es admisible.
+\end{proposition}
+
+\begin{proof}
+Sea $(f,x)\in C_c(X,Y)\times X$ y $V\subset Y$ una vecindad de $\Omega(f,x)=f(x)$.
+Como $f$ es continua y $X$ es localmente compacto, existe un abierto $W\subset X$ tal que $\overline W$ es compacto y 
+
+$$x\in W\subset\overline W\subset f^{-1}(V).$$
+
+Entonces $M(\overline W, V)$ es una vecindad sub-b\'asica de $f$ en $C_c(X,Y)$ y por lo tanto $O=M(\overline W, V)\times W$ es una vecindad de $(f,x)$ en $C_c(X,Y)\times X$. Para completar la prueba demostremos que
+$\Omega(O)\subset V$.
+
+Sea $(g,z)\in O$. Entonces $z\in W\subset \overline W$ y $g(\overline W)\subset V$, por lo que $\Omega (g,z)=g(z)\in   V$, como se quería demostrar.
+\end{proof}
+
+Si $X$ no es localmente compacto, la proposición anterior es falsa, como veremos a continuación.
+
+\begin{example}
+Sean $Y=[0,1]$ y $X=\mathbb Q$. Consideremos la función $f\in C_c(X,Y)$ dada por
+$f(q)=0$ para todo $q\in\mathbb Q$. Demostraremos que la función evaluación $\Omega$ no es continua en $(f,r)$ para cualquier punto $r\in\mathbb Q$. Supongamos lo contrario, entonces existe una vecindad $U$ de $r$ en $\mathbb Q$ y una vecindad básica $O=\bigcap \limits_{i=1}^n M(A_i, U_i)$ de $f$ en $C_c(X,Y)$, tal que
+$$\Omega (O\times U)\subset [0,1).$$
+
+Como $\bigcup\limits_{i=1}^nA_i\subset\mathbb Q$ es compacto y $U$ es abierto en $\mathbb Q$, se tiene que $U\not \subset \bigcup\limits_{i=1}^nA_i$ y por lo tanto, existe $p\in\mathbb Q$ tal que
+$$p\in U\setminus \bigcup\limits_{i=1}^nA_i.$$
+Pero $\mathbb Q$ es un espacio de Tychonoff, por lo que podemos encontrar una función 
+$g:\mathbb Q\to [0,1]$ tal que 
+$$g(p)=1,\text{ y }g(q)=0\text{ para todo }q\in\bigcup\limits_{i=1}^nA_i.$$
+Como $U_i$ es vecindad de $0$, (ya que $\{0\}=f(A_i)\subset U_i$) concluimos que $g(A_i)=0\in U_i$, es decir, $g \in M(A_i , U_i)$, para todo $i=1,\ldots, n$. Luego, $(g,p)\in O\times U$, pero
+$$\Omega (g,p)=g(p)=1\notin [0,1),$$
+lo cual contradice nuestra elección de $O\times U$.
+\end{example}
+
+
+
+
+\subsection{Convergencia en la topología compacto-abierta}
+
+Hemos visto que en la topología punto-abierta, una sucesión de funciones converge si y sólo si converge puntualmente. También vimos, que en la topología de la convergencia uniforme, una sucesión de funciones converge si y sólo si converge uniformemente. Ahora veremos qué convergencia es la correspondiente a la topología compacto-abierta.
+
+
+\begin{definition}
+Sean $X$ un espacio topológico y $Y$ un espacio métrico con métrica $d$.  Si $(f_n)_{n\in\mathbb N}$ es una sucesión en $C(X,Y)$ y $f \in C(X,Y)$, diremos que $(f_{n})_{n\in\mathbb N}$ \text{converge uniformemente en compactos} a $f$, si para todo conjunto compacto $K\subset X$ y para todo $\varepsilon>0$, existe $N\in\mathbb N$, tal que 
+$$d(f_n(x),f(x))<\varepsilon\text{ para todo }n\geq N\text{ y para todo }x\in K.$$
+\end{definition}
+
+\begin{theorem}
+Sean $X$ un espacio  de Hausdorff, $(Y,d)$ un espacio métrico y $(f_n)_{n\in\mathbb N}$ una sucesión  en $C(X,Y)$, y $f\in C(X,Y)$. Entonces los siguientes enunciados son equivalentes:
+\begin{enumerate}[(a)]
+\item $(f_n)_{n\in\mathbb N}$ converge uniformemente en compactos  a $f$.
+\item $(f_n)_{n\in\mathbb N}$ converge a $f$ en  $C_c(X,Y)$.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}\hfill
+
+\noindent$(a)\Rightarrow (b)$. Sea $O=\bigcap \limits_{i=1}^m M(K_i, W_i)$ una vecindad básica de $f$ en  $C_c(X,Y)$.
+Entonces, $f(K_i)\subset W_i$.
+
+Denotemos por 
+$$\varepsilon_i=\min\{d(y,w) \:|\: y\in f(K_i), w\in Y\setminus W_i\}\text{, para cada }i=1,\ldots, m.$$
+Cada $\varepsilon_i$ es estrictamente positivo por tratarse de la distancia entre un compacto y un cerrado ajenos.
+Como la sucesión $(f_n)_{n\in\mathbb N}$ converge uniformemente en compactos, para cada $i=1,\ldots, m$, existe $N_i\in\mathbb N$ tal que si $n\geq N_i$, entonces
+$$d(f_n(x),f(x))<\varepsilon _i\text{ para todo }x\in K_i.$$
+
+
+Sea $N=\max\{N_i \, | \, i=1,\ldots, m\}.$ Para completar la prueba demostraremos que si $n\geq N$, entonces $f_n\in O$.
+
+Consideremos $n\geq N$ y $x\in K_i$. Entonces $n\geq N\geq N_i$, por lo que
+$$d(f_n(x),f(x))<\varepsilon _i.$$
+Si $f_n(x)\notin W_i$, por la elección de $\varepsilon_i$, podemos garantizar que
+$d(f_n(x),f(x))\geq \varepsilon_i$, lo cual sería una contradicción. Por lo tanto, para todo $i=1,\ldots, m$ y para todo $x\in K_i$, $f_n(x)\in W_i$. Así, $f_n(K_i)\subset W_i$, para todo $i=1,\ldots, m$, por lo que podemos concluir que $f_n\in O$, como se quería demostrar.
+\vspace{.3 cm}
+
+\noindent$(b)\Rightarrow (a)$
+Sea $K\subset X$ un subconjunto compacto y $\varepsilon >0$. 
+Como $X$ es de Hausdorff, el subespacio compacto $K$ es regular. En consecuencia, para cada $x\in X$, existe un conjunto $U_x$, abierto en $K$, tal que
+$$x\in U_x\subset \overline U_x\subset f^{-1}(B(f(x),\varepsilon/2))\cap K,$$
+
+
+\noindent donde $B(f(x),\varepsilon/2)$ denota la bola abierta en $Y$ con centro en $f(x)$ y radio $\varepsilon /2$. Notemos que $\overline U_x$ es compacto para todo $x\in K$.
+Además, la colección $\{U_x\}_{x\in K}$ es una cubierta de $K$ con abiertos de $K$. Luego, podemos encontrar una subcubierta finita, digamos $U_{x_1},\ldots, U_{x_m}$. 
+Sea $A_i=\overline U_{x_i}$. Entonces $K=\bigcup\limits_{i=1}^mA_i$, y cada $A_i$ es compacto.
+Sea $O=\bigcap\limits_{i=1}^m M(A_i, B(f(x_i),\varepsilon /2))$. Como $\left(f_n\right)_{n\in\mathbb N}$ converge a $f$ en $C_c(X,Y)$, podemos encontrar $N\in\mathbb N$, tal que si $n\geq N$, entonces $f_n\in O$. De donde obtenemos, que si $n\geq N$, entonces
+\begin{equation}\label{funcont}
+f_n(A_i)\subset B(f(x_i),\varepsilon/2),\text{ para todo }i\in\{1,\ldots, m\}.
+\end{equation}
+\vspace{.1cm}
+
+Consideremos cualquier $x\in K$. Entonces existe $i\in \{1,\ldots, m\}$ tal que
+$x\in U_i\subset A_i$. Luego, $f(x)\in B(f(x_i),\varepsilon/2)$ y por lo tanto $d(f(x_i),f(x))<\varepsilon/2.$
+
+Por otro lado, seg\'un (\ref{funcont}), $f_n(x)\in B(f(x_i),\varepsilon/2)$, por lo que
+$$d(f_n(x), f(x))\leq d(f_n(x), f(x_i))+d(f(x_i),f(x))<\varepsilon/2 +\varepsilon/2=\varepsilon.$$
+\vspace{.1cm}
+
+Así, $(f_n)_{n\in\mathbb N}$ converge uniformemente en compactos a $f$, como se quería demostrar.
+\end{proof}
+
+\begin{definition} Sean $X$ y $Y$ espacios topológicos. Diremos que una sucesión $(f_n)_{n\in\mathbb N}$ contenida en $C(X,Y)$ converge continuamente a una función $f$, si para toda sucesión convergente en $X$, $x_n\rightsquigarrow x$, la sucesión
+$(f_n(x_n))_{n\in\mathbb N}$ converge a $f(x)$.
+\end{definition}
+
+\begin{theorem}
+Sean $X$ un espacio \textbf{I}-numerable de Hausdorff, $(Y,d)$ un espacio métrico, $(f_n)_{n\in\mathbb N}$ una sucesión  en $C(X,Y)$ y  $f\in C(X,Y)$. Entonces los siguientes enunciados son equivalentes:
+\begin{enumerate}[(a)]
+\item $(f_n)_{n\in\mathbb N}$ converge uniformemente en compactos  a $f$.
+\item $(f_n)_{n\in\mathbb N}$ converge continuamente a $f$.
+\end{enumerate}
+\end{theorem}
+
+
+\begin{proof}\hfill
+
+\noindent$(b)\Rightarrow (a)$. Supongamos que $(f_n)_{n\in\mathbb N}$ no converge uniformemente en algún compacto $K\subset X$. Entonces existe $\varepsilon >0$ tal que
+para todo $k\in\mathbb N$, existe $n \geq k$ y $x\in K$ tal que $d\left(f_n(x), f(x)\right) \geq \varepsilon$. De esta forma podemos encontrar una sucesión estrictamente creciente de números naturales, $(n_{k})_{k\in\mathbb N}$, y una sucesión $(x_k)_{k\in\mathbb N}$ de puntos en $K$ tal que
+$$d(f_{n_K}(x_k), f(x_k))\geq\varepsilon.$$
+Como $K$ es compacto y $X$ \textbf{I}-numerable, podemos encontrar un punto $x_0\in K$ y una subsucesión $(x_{k_m})_{m\in\mathbb N}$ que converja a $x_0$.
+Supongamos, sin pérdida de generalidad, que $(x_k)_{k\in\mathbb N}$ converge a $x_0$.
+ Por hipótesis $(f_{n_k}(x_k))_{n\in\mathbb N}$ converge a $f(x_0)$, entonces existe $N_1\in\mathbb N$ tal que para todo $k \geq N_1$, se cumple que
+$$d(f_{n_k}(x_k), f(x_0))<\varepsilon/2.$$
+ Por otro lado, como $f$ es continua, existe $N_2\in\mathbb N$ tal que si $k\geq N_2$, entonces 
+
+$$d(f(x_0), f(x_k))<\varepsilon/2.$$
+
+Sea $N=\max\{N_1,N_2\}$ y $k\geq N$. Entonces
+
+$$\varepsilon\leq d(f_{n_k}(x_k), f(x_k))\leq d(f_{n_k}(x_k), f(x_0))+d(f(x_0), f(x_k))<\varepsilon/2+\varepsilon/2=\varepsilon, $$
+
+ lo cual es una contradicción. Por lo tanto, $(f_n)_{n\in\mathbb N}$ converge uniformemente en compactos a $f$.
+
+ \noindent$(a)\Rightarrow (b)$. Sean $(x_n)_{n\in\mathbb N}$ una sucesión en $X$ que converja a un punto $x_0\in X$ y $\varepsilon>0$. Entonces $K=\{x_n\}_{n\in\mathbb N}\cup\{x_0\}$ es un compacto en $X$, por lo que existe $N_1\in\mathbb N$ tal que para todo $n\geq N_1$ se cumple que 
+ $$d(f_n(x),f(x)) <  \varepsilon/2 \mbox{ para todo } x \in K.$$
+
+Particularmente, tomando $x=x_n$ con $n\geq N_1$, obtendremos que $d\big(f_n(x_n),f(x_n)\big)<\varepsilon/2$ para todo $n\geq N_1$.
+ Por otro lado, como $f$ es continua, existe $N_2\in\mathbb N$ tal que si $n\geq N_2,$ entonces
+ $$d(f(x_n),f(x_0)) < \varepsilon/2.$$
+ Sea $N=\max\{N_1, N_2\}$. Entonces, si $n\geq N$,
+ $$d(f_n(x_n),f(x_0))\leq d(f_n(x_n),f(x_n))+d(f(x_n),f(x_0))<\varepsilon/2+\varepsilon/2=\varepsilon,$$
+ lo cual prueba que $(f_n)_{n\in\mathbb N}$ converge continuamente a $f$.
+\end{proof}
+
+Hemos visto que, por la continuidad de la función evaluación en la topología de la convergencia uniforme, la convergencia uniforme implica convergencia continua. El recíproco no se da, como demuestra el siguiente ejemplo.
+\begin{example}
+%%%%%%%%%%%%%%%%
+Sean $X=Y=\mathbb R^2$, $\{\theta_n\}_{n\in\mathbb N}\subset (0,\pi)$ tal que $\theta_n\to 0$.
+Si para cada $n\in\mathbb N$ $\phi_n$ es la rotación en torno a $(0,0)$ por ángulo $\theta_n$,
+entonces $\phi_n$ converge continuamente a la identidad, pero no uniformemente.
+\end{example}
+
+El que pueda ser definida en ámbitos más generales, y que su convergencia quede completamente
+caracterizada por la convergencia continua de funciones (cuando tiene sentido hablar de esto), son ventajas indiscutibles de la topología compacto-abierta sobre la topología uniforme que es, en general, demasiado fina para nuestros propósitos.
+
+\subsection{Comparación de la topología compacto-abierta con la topología de la convergencia uniforme}
+
+Ya hemos observado que la topología compacto-abierta  es más fuerte que  la topología de la convergencia puntual. 
+Ahora veamos qué relación existe entre la topología compacto-abierta y la topología de la convegencia uniforme.
+
+\begin{theorem} Toda topología admisible es más fina que la topología compacto-abierta
+\end{theorem}
+\begin{proof}
+Sea $\tau$ una topología admisible en $C(X,Y)$ donde $X$ y $Y$ son espacios topológicos. Basta demostrar que todo abierto sub-básico de la topología compacto-abierta está contenido en $\tau$.
+
+ Consideremos $A\subset X$ compacto y $V\subset Y$ abierto. 
+Sea $f\in M(A,V)$. Entonces $f(A)\subset V$, por lo que $\Omega(\{f\}\times A)\subset V$. Como $\tau$ es admisible, y en virtud del lema~\ref{lema producto compactos}, podemos encontrar una vecindad $U_f\in\tau$ de $f$, tal que
+$\Omega (U_f\times A)\subset V$. 
+
+Claramente, para todo $g\in U_f$, $g(A)=\Omega (\{g\}\times A)\subset V$, por lo que
+$U_f\subset M(A,V)$. Por lo tanto,
+
+$$M(A,V)=\bigcup\limits_{f\in M(A,V)}U_f\in\tau,$$
+
+lo cual prueba lo que queríamos.
+\end{proof}
+
+\begin{corollary}\label{u mas fuerte que c}
+Sea $X$ un espacio topológico y $(Y,d)$ un espacio métrico con $d$ una métrica acotada. Entonces la topología de la convergencia unifome en $C(X,Y)$ es más fuerte que la topología compacto-abierta en $C(X,Y)$.
+\end{corollary}
+En el siguiente teorema veremos que si $X$ es compacto, para cualquier métrica en $Y$ la topología compacto-abierta coincide con la topología generada por la métrica del supremo.
+
+\begin{theorem}\label{u homeo a c}
+Sean $X$ un espacio compacto y $(Y,d)$ un espacio métrico. Entonces $C_c(X,Y)$ = $C_u(X,Y)$, es decir la topología compacto abierta coincide con la uniforme en $C(X,Y)$
+\end{theorem}
+
+\begin{proof}
+
+Sabemos que la topología ce la convergencia uniforme es siempre más fina que la compacto-abierta, así que basta demostrar que la topología compacto-abierta es en este caso más fina que la de convergencia uniforme. Para esto, es suficiente demostrar que para cualquier función continua $f:X\to Y$ y para cualquier vecindad $B(f,\varepsilon)\subset C_u(X,Y)$, existe una vecindad $O$ en la topología compacto-abierta, tal que
+$f\in O\subset B(f, \varepsilon).$
+
+Sea $B(f,\varepsilon)\subset C_u(Y,X)$ una bola abierta de radio $\varepsilon$. Para cada $y\in Y$, sea $V_y=B(y,\varepsilon / 8)$. Por la continuidad de $f$, $U_y=f^{-1}(V_y)$ es abierto en $X$ para cada $y\in Y$. Por la misma razón
+$f^{-1}(\overline V_y)$ es cerrado en $X$. Así,
+
+$$U_y\subset \overline U_y \subset f^{-1}(\overline V_y).$$
+
+Por consiguiente, $f(\overline U_y)\subset \overline V_y$. De esta manera, para cualquier par de puntos $y,z\in f(\overline U_y)$ se tiene que  
+$d(y,z)\leq \varepsilon /4<\varepsilon /2$.
+
+Notemos que $\{U_y\}_{y\in Y}$ es una cubierta abierta para el compacto $X$, por lo que podemos encontrar una subcubierta finita, digamos 
+$U_{y_1},\ldots, U_{y_n}$.
+Para cada $i=1,\ldots, n$, sea $W_i=\{y\in Y \:|\: d(y, f(\overline U_{y_i}))<\varepsilon/4\}.$
+Entonces $W_i$ es una vecindad del compacto $f(\overline U_{y_i})$. Además, para cualquier par de puntos $z,y\in W_i$, se tiene que
+
+$$d(z,y)\leq3\varepsilon/4.$$
+
+Por construcción, $f\in\bigcap\limits_{i=1}^{n}M(\overline U_i,W_i)$. 
+Por otro lado, si $g\in\bigcap\limits_{i=1}^{n}M(\overline U_i,W_i)$, entonces dada $x\in X$, existe $i=1,\ldots, n$, tal que $x\in U_i\subset \overline U_i$. De esta manera, $g(x)\in W_i$ y $f(x)\in W_i$, por lo que 
+$d(g(x),f(x))\leq 3\varepsilon/4$. Esto implica que,
+
+$$ d^*(f,g)\leq3\varepsilon/4<\varepsilon,$$
+
+lo cual demuestra que $g\in B(f,\varepsilon). $
+
+%(2) Sea $M(A,V)$ una vecindad sub-básica de $f$ en la topología compacto-abierta.
+%Entonces $f(A)$ es compacto y $f(A)\subset V$. Así, si definimos
+
+%$$\varepsilon=d(f(A), Y\setminus V),$$
+
+%se tiene que $\varepsilon >0$. 
+%Demostremos que  $B(f,\varepsilon/2)\subset M(A,V)$. Sea  $g\in B(f,\varepsilon/2)$. Entonces
+%$d(g(x),f(x))<\varepsilon/2$, para todo $x\in X$. Si existiera $a\in A$ tal que $g(a)\notin V$, se tendría que
+
+%$$\varepsilon/2>d(f(a),g(a))\geq d(f(A),Y\setminus V)=\varepsilon,$$
+
+%lo cual sería una contradicción. De aqu\'i podemos concluir que $g(A)\subset V$, por lo que $g\in M(A,V)$ y por lo tanto $B(f,\varepsilon/2)\subset M(A,V)$.
+
+Se puede concluir que la topología generada por la métrica $ d^*$ coincide con la topología compacto-abierta en $C(X,Y)$.
+\end{proof}
+
+Del teorema anterior, podemos concluir que si $X$ es compacto y $Y$ es metrizable, entonces la topología compacto-abierta en $C(X,Y)$ también es metrizable.
+Sin embargo, si $X$ no es compacto, la topología compacto-abierta y la de la convergencia uniforme no necesariamente coinciden. Veamos un ejemplo.
+
+\begin{example}
+Sea $X=\mathbb N$ y $Y=\{0,1\}$, ambos con la topología discreta. Por el teorema ~\ref{II numerable}, $C_c(X,Y)$ es un espacio segundo numerable.
+
+Por otro lado,   $C_u(X,Y)$ es un espacio discreto. En efecto, dada $f\in C_u(X,Y)$ se tiene que $ d^* (f,g)<1/2$ si y sólo si
+$d(f(n),g(n))<1/2$ para todo $n\in\mathbb N$. Pero tanto $f$ como $g$, sólo pueden tomar valores en $\{0,1\}$, por lo que $d(f(n),g(n))<1/2$ si y sólo si $f(n)=g(n)$. Es decir,
+$ d^* (f,g)<1/2$ si y sólo si $f=g$. En consecuencia, $\{f\}$ es abierto en $C_u(X,Y)$, por lo que  $C_u(X,Y)$ es discreto. Entonces toda base de $C_u(X,Y)$ debe contener a $C_u(X,Y)$ mismo
+visto como la familia de todos sus subconjuntos unipuntuales.
+
+Pero $|C(X,Y)|=|Y^X|=2^{|\mathbb N|}=2^{\aleph_0}$ por lo que $C_u(X,Y)$ no tiene una base numerable.  Esto demuestra que la topología compacto-abierta  y la topología discreta en $C(X,Y)$ no coinciden.
+\end{example}
+
+
+Sean $X$  un espacio topológico y  $(Y,d)$ un espcio métrico. Consideremos $K\subset X$ un subconjunto compacto y definamos para cada $f\in C(X,Y)$ y cada $\varepsilon>0$ el conjunto
+
+$$B(K,f,\varepsilon)=\{g\in C(X,Y) \:|\: \sup_{x\in K}d(f(x),g(x))<\varepsilon\}.$$
+
+\begin{theorem}\label{sub-base distinta}
+La familia 
+$$\mathcal B=\{B(K,f,\varepsilon) \:|\: K\subset X\text{ compacto, } f\in C(X,Y),\, \varepsilon>0\}$$
+es una base para la topología compacto-abierta en $C(X,Y)$.
+\end{theorem}
+
+\begin{figure}[h]
+\includegraphics*[scale=.5]{Kfepsilon}
+\end{figure}
+
+
+\begin{proof}
+Primero demostremos que cada $B(K,f,\varepsilon)\in \mathcal B$ es abierto en la topología compacto-abierta.
+Como $K$ es compacto, por el teorema~\ref{u homeo a c} los espacios $C_c(K,Y)$ y $C_u(K,Y)$ son homeomorfos. Entonces el conjunto $B(K, f|_K,\varepsilon)\subset C(K,Y)$ coincide con $O(f|_K,\varepsilon)\subset C(K,Y)$, esto es, la bola con centro en $f|_K$ y radio $\varepsilon$. Por lo que $B(K, f|_K,\varepsilon)$ es abierto en $C_u(K,Y)$ y por lo tanto en $C_c(K,Y)$.
+
+Definamos $\xi:C_c(X,Y)\to C_c(K,Y)$ por:
+
+$$\xi(g)=g|_K .$$
+
+Demostremos que $\xi$ es continua. Para ello, consideremos $M(L,U)\subset C_c(K,Y)$ un abierto sub-básico en $C_c(K,Y)$. Entonces 
+\begin{align*}
+\xi^{-1}(M(L,U))&=\{g\in C(X,Y) \:|\: \xi(g)\in M(L,U)\}\\
+&=\{g\in C(X,Y) \, | \, g|_{K}\in M(L,U)\}\\
+&=\{g\in C(X,Y) \, | \, g|_{K}(L)\subset U\}\\
+&=\{g\in C(X,Y) \, | \, g(L) \subset U\}\\
+&=M(L,U)\subset C_c(X,Y).\\
+\end{align*}
+Como $L\subset K$ es compacto en $K$, también es compacto en $X$, por lo que
+$\xi^{-1}(M(L,U))=M(L,U)\subset C_c(X,Y)$, un abierto sub-b\'asico en $C_c(X,Y)$ y por lo tanto la función $\xi$ es continua.
+
+Entonces $\xi^{-1}(B(K,f|_K,\varepsilon))$ es abierto en $C_c(X,Y)$, pero 
+
+$$\xi^{-1}(B(K,f|_K,\varepsilon))=B(K,f,\varepsilon),$$
+
+por lo que $B(K,f,\varepsilon)$ es abierto en $C_c(X,Y)$.
+
+\medskip
+
+Ahora demostremos que $\mathcal B$ es base para la topología compacto-abierta.
+Sea $f\in C_c(X,Y)$ y $W=\bigcap\limits_{i=1}^{n}M(K_i,U_i)$ una vecindad básica de $f$.
+Entonces, para todo $i=1,2,\ldots,n$, se tiene que 
+$$f(K_i)\subset U_i.$$
+Como $C_u(K_i,Y)$ es homeomorfo a $C_c(K_i,Y)$,  para cada $i=1,2,\ldots,n$ podemos encontrar $\varepsilon_i>0$
+tal que 
+$$f\in O(f,\varepsilon_i)\subset M_{K_i}(K_i,U_i)\subset C_c(K_i,Y).$$
+
+Sean $\varepsilon=\min\{\varepsilon_i \:|\: i=1,\ldots, n\}$ y $K=\bigcup\limits_{i=1}^n K_i$ Entonces, $O(f,\varepsilon)\subset M_{K_i}(K_i,U_i)$.  Si $\xi_i: C_c(X,Y)\to C_c(K_i,Y)$ denota la función definida por $\xi_i(g)=g|_{K_i}$, tenemos que $\xi_i $ es continua por lo demostrado anteriormente y que para todo $i\in\{1,\ldots,n\}$
+$$B(K,f,\varepsilon)\subset B(K_i,f,\varepsilon)=\xi^{-1}(O(f,\varepsilon))\subset \xi^{-1}(M_{K_i}(K_i,U_i))=M(K_i,U_i).$$
+Así, $f\in B(K,f,\varepsilon) \bigcap\limits_{i=1}^{n}B(K_i,f,\varepsilon)\subset W$, lo cual prueba que $\mathcal B$ es base para la topología compacto-abierta en $C(X,Y)$.
+\end{proof}
+
+
+\subsection{La función asociada}
+\begin{definition}Sean $X$, $Y$ y $Z$ espacios topológicos y $\alpha:X\times Y\to Z$ una función continua.
+Consideremos ahora la función $\widehat\alpha:X\to C_c(Y,Z)$ dada por
+$$[\widehat\alpha(x)](y)=\alpha(x,y),\text{  para todo }y\in Y.$$
+Entonces diremos que $\alpha$ y $\widehat \alpha$ son funciones asociadas.
+\end{definition}
+
+\begin{lemma}\label{lema producto compactos} Sean $X$ y $Y$ espacios topológicos, $x_0\in X$ y $A\subset Y$ compacto. Si $W\subset X\times Y$ es una vecindad de $\{x_0\}\times A$, entonces existe una vecindad de $x_0$, $U\subset X$, tal que
+$U\times A\subset W$
+\end{lemma}
+\begin{proof}
+Para cada $a\in A$, existen vecindades $U_a\subset X$ y $V_a\subset Y$ de $x_0$ y de $a$, respectivamente, tales que
+$U_a\times V_a\subset V$. 
+Entonces la colección $\{V_a\}_{a\in A}$ es una cubierta abierta para el compacto $A$, y por lo tanto podemos extraer una subcubierta finita, digamos $V_{a_1},\ldots,V_{a_n}$. 
+Consideremos 
+$$U=\bigcap\limits_{i=1}^{n}U_{a_i}.$$
+Entonces $U$ es una vecindad de $x_0$ en $X$. Además, para todo $a\in A$, $U\times{a}\subset W$, por lo que
+$U\times A\subset W$, como se quería demostrar.
+\end{proof}
+
+\begin{theorem}\label{continuidad funcion asociada}
+Sean $X$, $Y$ y $Z$ espacios topológicos y $\alpha:X\times Y\to Z$ una función. Entonces los siguientes enunciados se cumplen.
+\begin{enumerate}[(a)]
+\item Si $\alpha$ es continua, entonces $\widehat\alpha$ es continua.
+\item Si $\widehat\alpha:X\to C_c(Y,Z)$ es continua y $Y$ es localmente compacto, entonces $\alpha:X\times Y\to Z$ es continua.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+(a) Sea $M(A,V)\subset C_c(Y,Z)$ un abierto sub-básico. Para demostrar la continuidad de $\widehat \alpha$ es suficiente demotrar que $\widehat\alpha^{\,-1}(M(A,V))$ es abierto en $X$. Sea  $x_0\in \widehat\alpha^{\,-1}(M(A,V))$, entonces $\widehat\alpha(x_0)\in M(A,V)$ por lo que
+$$[\widehat\alpha(x_0)](A)=\alpha(x_0,A) \subset V.$$
+Como $\alpha$ es continua, podemos concluir que $\alpha^{\,-1}(V)$ es una vecindad del compacto $\{x_0\}\times A$ en $X\times Y$. Así, aplicando el lema~\ref{lema producto compactos} podemos encontrar una vecindad $U\subset X$ de $x_0$ tal que
+$$U\times A\subset \alpha^{\,-1}(V).$$
+Para concluir la prueba, basta demostrar que $U\subset \widehat\alpha^{\,-1}(M(A,V))$. En efecto, si $x\in U$, entonces 
+$\{x\}\times A\subset \alpha^{\,-1}(V)$, por lo que 
+$$[\widehat\alpha(x)](A) =\alpha(x,A) \subset V$$
+y por lo tanto $\widehat\alpha(x)\in M(A,V)$, como se quería demostrar.
+
+(b) Como $\widehat\alpha$ es continua, también lo es el producto 
+$\widehat\alpha\times I_Y:X\times Y\to C_c(Y,Z)\times Y$, donde $I_Y:Y\to Y$ denota la funci\'on identidad de $Y$.
+Además, como $Y$ es localmente compacto, por la proposición \ref{funcion evaluacion continua} la función evaluación $\Omega: C(Y,Z) \times Y\to Z$ es continua. Luego,
+$\Omega\circ(\widehat\alpha\times I_Y):X\times Y\to Z$ es una función continua. Pero
+$$\Omega\circ(\widehat\alpha\times I_Y)(x,y)= \Omega (\widehat\alpha(x),y)=[\widehat\alpha(x)](y)=\alpha(x,y)$$
+para todo par $(x,y)\in X\times Y$, es decir $\alpha = \Omega \circ (\widehat{\alpha} \times I_Y )$, por lo cual podemos concluir que la función $\alpha$ es continua. 
+\end{proof}
+
+
+Dados tres espacios topológicos $X$, $Y$ y $Z$, podemos definir la función 
+$$\Lambda : C_c(X\times Y, Z)\to C_c(X,(C_c(Y,Z))$$ 
+$$\Lambda (f)=\widehat{f}$$
+Investiguemos la continuidad de esta función.
+
+\begin{lemma}\label{sub-base en esp func}
+Si $X$ y $Y$  son espacios de Hausdorff y $Z$ es un espacio topológico arbitrario,  entonces la familia 
+ $$\Gamma=\{M(K\times K',U) \:|\: K\subset X, \, K'\subset Y ~~\text{compactos, } U\subset Z\text{ abierto}\}$$
+ es una sub-base para la topología compacto-abierta en $C(X\times Y, Z)$.
+\end{lemma}
+
+\begin{proof}
+Por el teorema~\ref{pesos sub-bases} es suficiente demostrar que si $L\subset X\times Y$ es compacto, y $O$ es una vecindad de $L$, entonces existen $K_1,K_2,\ldots, K_n$ subconjuntos compactos de $X$ y $K'_1,K'_2,\ldots, K'_n$ subconjuntos compactos de $Y$ tales que
+
+$$ L\subset \bigcup_{i=1}^{n}K_i\times K'_i\subset O.$$
+
+Sea $O$ una vecindad de $L$ y $\pi_1:X\times Y\to X$ y $\pi_2:X\times Y\to Y$ las proyecciones en la primera y segunda coordenada, respectivamente. Entonces $L_1=\pi_1(L)$ y $L_2\pi_2(L)$ son subconjuntos compactos, por lo que el producto $L_1\times L_2$ es compacto y Hausdorff, y en consecuencia regular.
+
+ Así, para cada punto $(x,y)\in L_1\times L_2$, existe un conjunto canónico $U_x\times V_y$ abierto en $L_1\times L_2$ tal que
+$$(x,y)\in U_x\times V_y \subset \overline U_x\times\overline V_y\subset O\cap L_1\times L_2,$$
+\noindent donde $\overline U_x$ y $overline V_y$ denotan las cerraduras de $U_x$ y $V_y$ en $L_1$ y $L_2$, respectivamente.
+Como $L$ es compacto, podemos suponer que
+$$\displaystyle L\subset \bigcup \limits_{i=1}^n U_{x_i}\times V_{y_i}\subset\bigcup\limits_{i=1}^n \overline U_{x_i}\times \overline V_{y_i}\subset O,$$
+para un n\'umero finito de puntos $x_1, \ldots, x_n \in X$ y $y_1, \ldots, y_n \in Y$.
+Para caca $i\in\{1,\ldots,n\}$ los conjuntos
+
+$$K_i=\overline U_{x_i}$$
+y $$K_i'=\overline V_{y_i}$$
+
+son subconjuntos compactos de $X$ y $Y$ respectivamente.
+Además, es claro que 
+$$ L\subset \bigcup_{i=1}^{n}K_i\times K'_i\subset O,$$
+como se quería demostrar.
+\end{proof}
+
+\begin{theorem}[Ley exponencial]\label{ley exponencial}
+Sean $X$ y $Y$ espacios de Hausdorff y $Z$ un espacio topológico arbitrario. Entonces
+\begin{enumerate}
+\item $\Lambda : C_c(X\times Y\to Z)\to C_c(X,(C_c(Y,Z))$ es un encaje.
+\item Si además $Y$ es localmente compacto, entonces $\Lambda$ es un homeomorfismo.
+\end{enumerate}
+\end{theorem}
+
+
+
+\begin{proof}
+1. Primero demostremos que la función $\Lambda$ es inyectiva. En efecto, si $f,g\in C_c(X\times Y, Z)$ y $\widehat f=\widehat g$, entonces para todo $x\in X$ se tiene que 
+$$\widehat f(x)=\widehat g(x).$$
+Esto quiere decir que para todo $y\in Y$, $[f(x)](y)=[g(x)](y)$. Equivalentemente, tendríamos que
+$$f(x,y)=g(x,y)~~\text{para todo }(x,y)\in X\times Y.$$
+Así, podemos concluir que $f=g$, y por lo tanto, la función $\Lambda$ es inyectiva.
+
+Ahora demostremos que $\Lambda$ es continua. Sean $K\subset X$ y $K'\subset Y$ subconjuntos compactos y $U\subset Z$ un subconjunto abierto. Por la proposición~\ref{pesos sub-bases} el conjunto $O=M(K, M(K',U))$ es un sub-básico de $C_c(X,C_c(Y,Z))$. Así, basta probar que $\Lambda^{-1}(O)$ es abierto en $C_c(X\times Y,Z)$.
+Pero
+\begin{align*}
+\Lambda^{-1}(O)&=\{f\in C_c(X\times Y,Z) \:|\: \widehat f\in M(K,M(K',U))\}\\
+&=\{f\in C_c(X\times Y,Z)\:|\: \widehat f(K)\in M(K',U)\}\\
+&=\{f\in C_c(X\times Y,Z) \:|\: [\widehat f(K)](K')\subset U\}\\
+&=\{f\in C_c(X\times Y,Z) \:|\: f(K\times K')\subset U\}\\
+&=M(K\times K',U).
+\end{align*}
+
+Como $K\times K'$ es compacto el conjunto $M(K\times K',U)$ es abierto en $C_c(X\times Y,Z)$, y por lo tanto, la función $\Lambda$ es continua.
+
+Por último demostremos que $\Lambda$ es abierta. Para ello, dado que $\Lambda$ es inyectiva basta que consideremos un sub-básico de la forma $M(K\times K',U)\subset C_c(X\times Y,Z)$. Denotemos por $\rm{Img}\Lambda=\Lambda\big(C_c(X\times Y,Z)\big)$. Entonces
+\begin{align*}
+\Lambda\big(M(K\times K',U)\big)&=Img\Lambda \cap M\big(K,M(K',U)\big).
+\end{align*}
+Pero por el lemma ~\ref{sub-base en esp func}, los abiertos de la forma $M(K\times K',U)$ forman una sub-base para $C_c(X\times Y,Z)$. En consecuencia, podemos concluir que la función $\Lambda :C_c(X\times Y,Z)\to Img\wedge$ es abierta y por lo tanto es un homeomorfismo. 
+Entonces $\Lambda:C_c(X\times Y, Z)\to C_c(X, C_c(Y,Z))$ es un encaje.
+
+\bigskip
+
+2. Sea $Y$ localmente compacto. Para demostrar que $\Lambda$ es un homeomorfismo, es suficiente probar que $\Lambda$ es suprayectiva.
+Si $\phi\in C_c(X,C_c(Y,Z))$ definimos
+$f:X\times Y\to Z$ por
+$$f(x,y)=[\phi(x)](y).$$
+Se sigue de la definición que $\phi$ y $f$ son funciones asociadas. Además, como $Y$ es localmente compacto, por el teorema~\ref{continuidad funcion asociada}, se tiene que $f$ es continua. Luego,
+$$\widehat f=\phi $$
+por lo que $\Lambda$ es suprayectiva, como se quería demostrar.
+\end{proof}
+
+
+\begin{corollary}
+Si $X$ y $Y$ son espacios de Hausdorff localmente compactos y $Z$ es un espacio topológico arbitrario, entonces $C_c(X,C_c(Y,Z))$ y $C_c(Y,C_c(X,Z))$ son espacios homeomorfos.
+\end{corollary}
+\begin{proof}
+Simplemente notemos que como $X\times Y$ es homeomorfo a $Y\times X$, los espacios 
+$C_c(X\times Y,Z)$ y $C_c(Y\times X,Z)$ también son homeomorfos. Pero por el teorema~\ref{ley exponencial}, 
+$C_c(X\times Y,Z)$ es homeomorfo a $C_c(X,C_c(Y,Z))$ y $C_c(Y\times X,Z)$ es homeomorfo a $C_c(Y,C_c(X,Z))$. Así, podemos concluir que los espacios $C_c(X,C_c(Y,Z))$ y $C_c(Y,C_c(X,Z))$ son homeomorfos entre sí.
+\end{proof}
+
+Éste resultado puede extenderse a una clase más general de espacios, como veremos a continuación.
+
+
+\section{\textit{k}-espacios}
+
+\begin{definition} Un espacio $X$ se llama \textit{k}-espacio si un conjunto $A\subset X$ es cerrado si y sólo si $A\cap K$ es cerrado en $K$ para todo conjunto compacto $K\subset X$.
+\end{definition}
+
+De la definición se sigue que $X$ es \textit{k}-espacio si satisface: un conjunto $U\subset X$ es abierto si y sólo si $U\cap K$ es abierto en $K$ para todo subconjunto compacto $K\subset X$.
+
+\begin{proposition} Todo espacio localmente compacto es un \textit{k}-espacio.
+\end{proposition}
+\begin{proof}
+Sea $U\subset X$ tal que $U\cap K$ es abierto en $K$ para cada compacto $K\subset X$. Mostremos que todo punto $u\subset U$ es punto interior de $U$.
+
+Escojamos una vecindad $V_u$ de $u$ tal que $\overline{V}_u$ es compacto. Como $U\cap\overline{V}_u$ es abierto en $\overline{V}_u$, inferimos que $U\cap{V}_u$ es abierto en $V_u$ y por lo tanto en $X$. Entonces $U\cap V_u$ es una vecindad del punto $u$ en $X$ contenida en $U$, probando que $u$ es punto interior de $U$.
+\end{proof}
+\begin{proposition} Todo espacio de Hausdorff \textbf{I}-numerable es un \textit{k}-espacio.
+\end{proposition}
+\begin{proof}
+Sea $A\subset X$ tal que $A\cap K$ es cerrado en $K$ para todo subconjunto compacto $K\subset X$. Mostremos que $\overline{A}\subset A$. Sea $x\in A$. Como $X$ es \textbf{I}-numerable, existe una sucesión $\{a_n\}_{n\in\mathbb{N}}\subset A$ convergente a $x$. Entonces el conjunto $C=\{a_1,a_2,\ldots\}\cup\{x\}$ es compacto y es claro que $x\in\overline{A\cap C}$.
+
+Pero $A\cap C$ es cerrado en $C$ y como $C$ es cerrado en $X$, concluímos qie $A\cap C$ es cerrado en $X$. De aquí $\overline{A\cap C}=A\cap C$ y por lo tanto $x\in A\cap C$, implicando que $x\in A$.
+\end{proof}
+\begin{corollary} Todo espacio metrizable es \textit{k}-espacio.
+\end{corollary}
+
+\begin{proposition} Sean $X$ un \textit{k}-espacio, y $Y$ cualquier espacio. Entonces una función $f:X\to Y$ es continua si y sólo si la restricción $f|_K:K\to Y$ es continua para todo compacto $K\subset X$.
+\end{proposition}
+\begin{proof}
+Sea $A\subset Y$ cerrado. Entonces $f^{-1}(A)\cap K=(f|_K)^{-1}(A)$ es cerrado en $K$.
+\end{proof}
+
+\begin{proposition} Si $\widetilde a:X\to C(Y,Z)$ es continua y $X\times Y$ es un \textit{k}-espacio, entonces $\alpha:X\times Y\to Z$ es continua.
+\end{proposition}
+\begin{proof}
+Sea $B\subset Y$ un conjunto compacto. Demostremos que $\alpha$ es continua en $X\times B$.
+En efecto, es fácil ver que $\alpha$ es la siguiente composición:
+
+$$X\times B\overset{_{\widetilde{\alpha}\times\mathrm{Id}}}{\to}  C(Y,Z)\times B
+\overset{_{i\times\mathrm{Id}}}{\to} C(B,Z)\times B\overset{\Omega}{\to} Z, $$
+donde $i:C(Y,Z)\to C(B,Z)$ es la función restricción en $B$, esto es $i(f)=f|_B$ para cada $f\in C(Y,Z)$.
+
+Todas estas funciones son continuas, implicando que $\alpha:X\times B\to Z$ también lo es.
+Esto a su vez implica que $\alpha$ es continua en todo compacto $C\subset X\times Y$. En efecto, sea $p:X\times Y\to Y$ la proyección. Entonces $p(C)$ es compacto, y $C\subset X\times p(C)$. Pero $\alpha$ es continua en $X\times p(C)$, y por lo tanto en $C$. Por la proposición anterior, se tiene que $\alpha$ es continua.
+\end{proof}
+
+\begin{corollary}[(La ley exponencial)] Sean $X$, $Y$, $Z$ espacios. Si $X\times Y$ es un \textit{k}-espacio, entonces $C(X,C(Y,Z))$ es homeomorfo a $C(X\times Y, Z)$.
+\end{corollary}
+
+
+
+
+
+
+\section{Compacidad en Espacios de Funciones}
+
+\begin{definition}
+Sea $X$ un espacio topológico y $(Y,d)$ un espacio métrico. Se dice que una familia $\mathcal F\subset C(X,Y)$ es \textbf{equicontinua en el punto} $x_0\in X$ si para todo $\varepsilon>0$, existe una vecindad $U$ de $x_0$ tal que 
+$$d(f(x),f(x_0))<\varepsilon~~\text{ para todo }x\in U,~~\text{ para todo }f\in\mathcal F .$$
+Diremos que $\mathcal F$ es \textbf{equicontinua} si $\mathcal F$ es equicontinua en todo punto $x\in X$.
+\end{definition}
+
+Se sigue de la definición anterior que los subconjuntos de familias equicontinuas también son familias equicontinuas.
+
+\begin{theorem}\label{topologia equicontinua}
+Sea $\mathcal F\subset C(X,Y)$ una familia equicontinua, en donde $X$ es un espacio topológico y $(Y,d)$ un espacio métrico. Entonces la topología compacto-abierta y la topología punto-abierta coinciden en $\mathcal F$.
+\end{theorem}
+
+\begin{proof}
+Como siempre, denotemos por $p$ a la topología punto-abierta en $\mathcal F$ y por $c$ a la topología compacto-abierta en $\mathcal F$. Es claro que $p\subset c$, pues la topología punto-abierta siempre es más débil que la topología compacto-abierta. 
+
+Para demostrar la otra contención, recordemos que, según el teorema \ref{sub-base distinta},  los abiertos  de la forma 
+$$B(K,f,\varepsilon)=\{g\in C(X,Y) \:|\: \sup_{x\in K}d(f(x),g(x)),~~K\subset X ~\text{ compacto}\}$$
+constituyen una sub-base para la topología compacto-abierta en $C_c(X,Y)$.
+Así, es suficiente demostrar que para toda $f\in \mathcal{F}$, $B(K,f,\varepsilon)\cap \mathcal F$ es abierto en $\mathcal F$ respecto a la topología $p$. 
+
+Como $\mathcal F$ es equicontinua, también lo es $B(K,f,\varepsilon)\cap \mathcal F$. Por lo tanto, para cada $x\in K$ existe una vecindad $U_x$ de $x$ tal que para todo $y\in U_x$, y para todo $g\in\mathcal F$, se cumple que
+$$d(g(x),g(y))<\varepsilon/4.$$
+Entonces la colección $\{U_x\}_{x\in X}$ constituye una cubierta abierta del compacto $K$, por lo que podemos encontrar una subcubierta finita, $\{U_{x_1},\ldots,U_{x_n}\}$. 
+
+Para cada $i=1,\ldots, n$, llamemos $V_i$ a la bola abierta en $Y$ con centro en $f(x_i)$ y radio $\varepsilon/4$. Consideremos $M(x_i,V_i)$. Es claro que $f\in M(x_i,V_i)$, pues $f(x_i)\in V_i$, para todo $i=1,\ldots, n,$ por lo que 
+$$O=\bigcap\limits_{i=1}^{n}M(x_i,V_i)\cap \mathcal F$$
+ es una vecindad de $f$ en la topología $p$. Para terminar la prueba, es suficiente demostrar que $O\subset B(f,K,\varepsilon).$
+
+Sea $h\in O$. Entonces $h(x_i)\in V_i$, para todo $i=1,\ldots, n$, por lo que
+$$d(h(x_i), f(x_i))<\varepsilon/4.$$
+Para cada $x\in K$, existe $j\in\{1,\ldots,n\}$ tal que $x\in U_{x_j}$. Entonces
+$$d(f(x), f(x_j))<\varepsilon/4.$$
+ Además, como $h\in O\subset\mathcal F$, se tiene que 
+$$d(h(x), h(x_j))<\varepsilon/4.$$
+En consecuencia, 
+\begin{align*}
+d(h(x), f(x))&\leq d(h(x), h(x_j))~+~ d(h(x_j), f(x_j))~+~d(f(x_j), f(x))\\
+&<~\varepsilon/4~+~\varepsilon/4~+~\varepsilon/4~\\
+&=~3\varepsilon/4.
+\end{align*}
+Así, podemos concluir que
+$$\sup_{x\in K}d(h(x), f(x))\leq 3\varepsilon/4<\varepsilon, $$
+lo cual prueba que $h\in B(f,K,\varepsilon)$, como se quería demostrar.
+\end{proof}
+
+\begin{theorem}\label{cerradura equicontinua}
+Sea $\mathcal F\subset C_p(X,Y)$ una familia equicontinua, en donde $X$ es un espacio topológico y $Y$ un espacio métrico. Entonces $\overline{\mathcal F}\subset C_p(X,Y)$ también es equicontinua.
+\end{theorem}
+\begin{proof}
+Sea $\varepsilon>0$ y $x_0\in X$. Como $\mathcal F$ es equicontinua, existe una vecindad $U$ de $x_0$ tal que para todo $x\in X$ y para toda $f\in\mathcal F$, $d(f(x_0), f(x))<\varepsilon/4$.
+Sea $g\in \overline {\mathcal F}\subset C_p(X,Y)$ y $x\in U$. Entonces 
+$$M=M\big(x_0, B(g(x_0)), \varepsilon/4\big)\cap M\big(x,B(g(x),\varepsilon/4)\big)$$ 
+es una vecindad de $g$ en $C_p(X,Y)$. 
+Luego, como $g\in \overline {\mathcal F}$, podemos asegurar que existe $f\in\mathcal F\cap M$. 
+ Entonces $f(x_0)\in B(g(x_0),\varepsilon/4)$, y $f(x)\in B(g(x),\varepsilon/4)$ por lo que
+$$d(f(x_0),g(x_0))<\varepsilon/4~~\text{ y }~~d(f(x),g(x))<\varepsilon/4.$$
+Por otro lado, 
+como  $x\in U$, se cumple que $$d(f(x_0), f(x))<\varepsilon/4.$$
+Entonces,
+\begin{align*}
+d(g(x_0), g(x))&\leq d(g(x_0), f(x_0))~+~d(f(x_0),f(x))~+~d(f(x), g(x))\\
+&<\varepsilon/4+ \varepsilon/4+\varepsilon/4\\
+&<\varepsilon. 
+\end{align*}
+Así, podemos concluir que para todo $\varepsilon >0$ y para todo $x_0\in X$, existe una vecindad $U$ de $x_0$ tal que para todo $h\in\overline{\mathcal F}$ y para todo $x\in U$, se cumple que
+$d(h(x),h(x_0))<\varepsilon$. Por lo tanto, $\overline{\mathcal F}$ es equicontinua.
+\end{proof}
+
+De los dos teoremas anteriores, tenemos el siguiente corolario:
+
+\begin{corollary}\label{igualdad cerrradura}
+Sea $\mathcal F\subset C_p(X,Y)$ una familia equicontinua, en donde $X$ es un espacio topológico y $Y$ un espacio métrico, denotemos por $[\mathcal{F}]_p$ la cerrradura de $\mathcal{F}$ en $ C_p(X,Y)$ y por $[\mathcal{F}]_c$ la cerrradura del mismo conjunto en $ C_c(X,Y)$. Entonces $[\mathcal{F}]_p = [\mathcal{F}]_c$
+\end{corollary}
+
+\begin{proof}
+Observamos que $[\mathcal{F}]_c \subset [\mathcal{F}]_p$ siempre se cumple ya que la topolog\'ia compacto-abierta es m\'as fuerte que la topolog\'ia punto-abierta. Ahora bien, sea $g \in [\mathcal{F}]_p$. Entonces para toda vecindad de $g$ en la topolog\'ia punto-abierta $U$, se tiene que $U \cap \mathcal F \neq \emptyset$.
+
+Considérese una vecindad $W$ de $g$ en la topolog\'ia compacto-abierta. Como $[\mathcal{F}]_p$ es equicontinua entonces del teorema \ref{topologia equicontinua} se sigue que existe $U'$ vecindad de $g$ en la topolog\'ia punto-abierta tal que 
+
+$$W\cap  [\mathcal{F}]_p = U' \cap [\mathcal{F}]_p.$$
+
+Consecuentemente 
+
+$$W \cap \mathcal F = (W \cap [\mathcal{F}]_p) \cap \mathcal F = (U' \cap [\mathcal{F}]_p) \cap \mathcal F = U' \cap \mathcal F \neq \emptyset.$$
+
+Pero $W$ era arbitraria, luego $g\in [\mathcal{F}]_c $, y por lo tanto $[\mathcal{F}]_p = [\mathcal{F}]_c$, como se quer\'ia demostrar.
+\end{proof}
+
+\begin{theorem}[Arzela-Ascoli]
+Sea $X$ un espacio de Hausdorff, $(Y,d)$ un espacio métrico, y $\mathcal F\subset C_c(X,Y)$ un subconjunto. Entonces la cerradura $\overline {\mathcal F}\subset C_c(X,Y)$ es compacta  si  se satisfacen los siguientes enunciados:
+\begin{enumerate}[(1)]
+\item $\mathcal F$ es equicontinuo.
+\item Para todo $x\in X$, el conjunto $\mathcal F_x=\{f(x) \:|\: f\in\mathcal F\}\subset Y$ tiene cerradura compacta en $Y$.
+\end{enumerate} 
+Además, si $X$ es localmente compacto, entonces el recíproco es cierto.
+\end{theorem}
+
+\begin{proof}
+Supongamos que se cumplen $(1)$ y $(2)$ y demostremos que $\overline {\mathcal F}$ es compacto.
+Sea $Y_x=Y$ para cada $x \in X$ y consideremos cada punto $x \in X$ la funci\'on:
+
+$$\Omega _x : C_p (X,Y) \to Y $$
+
+\noindent definida como $\Omega_{x} (f) = f(x)$, para cualquier $f\in C_p(X,Y)$.
+
+ Con esto, es claro que $\mathcal{F}_{x}=\Omega_{x} ( \mathcal{F} )$, y además  por ser $\mathcal{F}$ equicontinua $[\mathcal F]_p$ tambi\'en lo es, y del corolario anterior se tiene que $\overline { \mathcal F } = [\mathcal F]_p $. Debido a la continuidad de $\Omega_x$  para todo $x \in X$
+
+$$\Omega_x ( \overline {\mathcal F} )= \Omega_x ( \overline {\mathcal F}^p ) \subset \overline{\Omega_x ( \mathcal F )} = \overline{\mathcal{F}_x} $$
+
+lo que nos permite definir, que tomando la restricci\'on de $\Omega_x$ en $\overline {\mathcal{F}}$ definimos
+
+$$\varphi : \overline{\mathcal{F}} \to \prod_{x\in X} \overline{\mathcal{F}_x}\subset Y^X$$
+
+como $\varphi (f)=(\Omega_x|_{ \overline{\mathcal{F}}} (f))_{x\in X}=(f(x))_{x \in X}$ para cada $f \in  \overline{\mathcal{F}}$.
+Observemos que dado que en $\overline {\mathcal F}$ se tiene la topología de la convergencia puntual, $\varphi$ es precisamente la restricción a $\overline{\mathcal F}$ del encaje $\phi:C_p(X,Y)\to Y^X$ definido en el teorema \ref{puntoabiertaproducto}. Así, $\varphi$ es también un encaje.  Dado que $ \prod \limits_{x\in X} \overline{\mathcal{F}_x}$ es compacto y se tiene que $\varphi( \overline{\mathcal{F}})$ es cerrado, necesariamente $\varphi( \overline{\mathcal{F}})$ es compacto. Por lo tanto $\overline{\mathcal{F}} $ es compacto.
+
+
+\bigskip
+
+
+Ahora supongamos que $X$ es localmente compacto y  demostremos el recíproco. Supongamos que  $\overline{\mathcal F}$ es compacto.
+
+$(1)$ Sean $x_0\in X$ y $\varepsilon>0$. Como $X$ es localmente compacto, existe una vecindad $U$ de $x_0$ tal que $ \overline U$ es compacto.
+Consideremos la función restricci\'on $\xi:C_c(X,Y)\to C_c(\overline U,Y)$ dada por $$\xi(f)=f|_{\overline U}.$$
+ En el teorema~\ref{sub-base distinta} se demostró que $\xi$ es continua, por lo que
+$\xi(\overline{\mathcal F})$ es compacto en $C_c(\overline U,Y)$. Además, como $\overline U$ es compacto, por el teorema \ref{u homeo a c} $C_c(\overline U,Y)$ es metrizable. Así, el conjunto $\xi(\overline{\mathcal F})$ es totalmente acotado. 
+De este modo, podemos encontrar funciones $f_1,\ldots, f_n\in\overline{\mathcal F}$ tales que
+\begin{equation}\label{cont1}
+\xi (\overline{\mathcal F}) \subset \bigcup\limits_{i=1}^n B(\xi(f_i),\varepsilon/4),
+\end{equation}
+donde $B(\varphi, r)$ denota la bola abierta de radio $r$ centrada en $\varphi \in C_c(\overline{U},Y)$.
+
+ Luego, como cada $f_i$ es continua en $x_0$, podemos encontrar una vecindad $U_i$ de $x_0$,  tal que $U_i\subset U\subset \overline U$ y de manera para que para todo $x\in U_i$, se cumple% cumpla que
+\begin{equation}\label{dist1}
+d(f_i(x_0),f_i(x))< \varepsilon/4.
+\end{equation}
+Sea $O=\bigcap\limits_{i=1}^{n}U_i$. Entonces para todo $x \in O$ y para toda $i=1, \ldots,n$, se cumple (\ref{dist1}). Por otro lado, de (\ref{cont1}) se sigue que para cada $f\in \mathcal{F}$ existe $j\in\{1,\ldots, n\}$ tal que
+ $\xi(f)\in B(\xi(f_j),\varepsilon/4)$, es decir,
+ \begin{equation}\label{sup1} 
+ \sup_{y\in\overline U}d(f(y),f_j(y))<\varepsilon/4.
+ \end{equation}
+ En particular, para todo $x \in O \subset \overline{U}$ tendremos: 
+ \begin{align*}
+ d(f(x), f(x_0))&\leq d(f(x), f_j(x))~+~d(f_j(x),f_j(x_0))~+~d(f_j(x_0),f(x_0))\\
+ &<\varepsilon/4~+~\varepsilon/4~+~\varepsilon/4\\
+ &<\varepsilon,
+ \end{align*}
+ lo cual prueba que $\mathcal F$ es una familia equicontinua.
+ \medskip
+ 
+ $(2). $ Como $\overline{\mathcal F}$ es compacto, entonces para cada $x\in X$, 
+ $\Omega_x(\overline{\mathcal F})\subset Y$ es compacto. Pero
+ $\mathcal {F}_x = \Omega_x(\mathcal F)\subset \Omega_x( \overline{ \mathcal F})$ y por lo tanto $\overline{\mathcal F}_x \subset \Omega_x (  \overline {\mathcal F})$ es compacto para cada $x\in X$. 
+\end{proof}
+
+
+\section{Ejercicios del capítulo}
+\begin{enumerate}
+\item Demuestra que para cualesquiera dos espacios topol\'ogicos $X$ y $Y$, y para todo $x_0\in X$, la función $\Omega_{x_0}:C_p(X,Y)\to Y$ dada por $\Omega_{x_0}(f)=f(x_0)$ es continua. 
+\vspace{.4cm}
+\item Sean $X$ y $Y$ espacios topológicos. Demuestra las siguientes afirmaciones:
+\begin{enumerate}[a)] 
+\item Si $Y$ es  Hausdorff, entonces $C_p(X,Y)$ es Hausdorff.
+\item Si $Y$ es regular, entonces $C_p(X,Y)$ es regular.
+\item Si $Y$ es Tychonoff, entonces $C_p(X,Y)$ es Tychonoff.
+\end{enumerate}
+\vspace{.4cm}
+\item Supongamos que $X$ y $Y$ son espacios topológicos. Además, supongamos que $Y$ es segundo numerable. Demuestra que si $(f_n)_{n\in\mathbb N}\subset C(X,Y)$ es una sucesión de funciones que converge puntualmente a una función $f$, entonces existe un conjunto $A\subset X$ tal que $f|_{X\setminus A}$ es continua, y $A$ es denso en ninguna parte. 
+Recuerda que un conjunto $A$ es denso en ninguna parte si $\mathrm{Int} (\overline A)=\emptyset$.
+\vspace{.4cm}
+\item Sea $F$ un espacio topológico finito. Demuestra que los espacios $C_u(F,\mathbb R)$ y $C_p(F,\mathbb R)$ son homeomorfos.
+\vspace{.4cm}
+\item Demuestra que $C^*(\mathbb N,\mathbb R)$ no es separable.
+\vspace{.4cm}
+\item Demuestra que si $X$ es un espacio métrico separable, entonces existe un encaje isométrico $j:X\to C^*(\mathbb N,\mathbb R)$.
+\vspace{.4cm}
+\item De un ejemplo en el que se muestre que el recíproco de \ref{intersecciones}-c no es cierto.
+\vspace{.4cm}
+\item Sea $X$ un espacio topológico discreto y $Y$ un espacio topológico arbitrario. Demuestra que
+$C_c(X,Y)$ es homeomorfo al producto topológico
+$\prod\limits_{x\in X}Y_x$, en donde $Y_x=Y$, para toda $x\in X$.
+\vspace{.4cm}
+\item Da un ejemplo de un espacio $Y$ normal, y de un espacio topológico $X$ tal que $C_c(X,Y)$ no sea normal.
+\vspace{.4cm}
+\item Sea $(f_n)_{n\in\mathbb N}$ una sucesión en $C_c(X,Y)$ que converge uniformemente en compactos a una función $f$. Demuestra que $f|_K$ es continua para cada $K\subset X$ subconjunto compacto.
+\vspace{.4cm}
+\item Si $Y$ es un espacio de Hausdorff, demuestra que el encaje $h:Y\to C_c(X,Y)$ es cerrado.
+\vspace{.4cm}
+\item Demuestra la proposición~\ref{metrica dtilde}.
+\vspace{.4cm}
+\item Sea $X$ un espacio topológico y $(Y,d)$ un espacio métrico. Supongamos que $\{f_n:X\to Y\}$ es una familia de funciones continuas tales que $(f_n)_{n\in\mathbb N}$ converge en la topología compacto-abierta de $C(X,Y)$ a una función $f\in C(X,Y)$. Demuestra que para todo $\varepsilon>0$ y para todo $x_0 \in X$, existe una vecindad $U_{x_0}$ de $x_0$ y un $N_0\in\mathbb N$, tal que para todo $n\geq N_0$ y para todo $x\in U_{x_0}$ se cumple que
+$d(f_n(x),f_n(x_0))<\varepsilon$.
+\vspace{.4cm}
+\item \begin{enumerate}
+\item Demuestra que la función identidad $I:C(X,Y)\to C(X,Y)$ es la función asociada de la función evaluación.
+\item Concluye que  $\tau$ es una topología admisible para $C(Y,Z)$ si y sólo si para todo espacio $X$ y para toda función $\alpha:X\times Y\to Z$, la continuidad de $\widehat \alpha:X\to (C(Y,Z),\tau)$ implica la continuidad de $\alpha$.
+\end{enumerate}
+\vspace{.4cm}
+\item Sea $f:X\to Y$ una función continua entre dos espacios topológicos. Consideremos otro espacio $Z$ y $T_{f}:C_c(Y,Z)\to C_c(X,Z)$ la función definida en la proposición~\ref{composiciones laterales}.
+Demuestra que si $f$ es suprayectiva, entonces $T_{f}$ es inyectiva.
+\vspace{.4cm}
+\item Sean $X$ y $Y$ espacios topológicos. Si $X$ es compacto y $Y$ es segundo numerable, demuestra que $C_c(X,Y)$ es metrizable si y sólo si $Y$ es regular (sugerencia: usa el Teorema de metrizabilidad de Urysohn).
+\vspace{.4cm}
+\item Sean $X$ y $Y$ espacios topológicos. Demuestra que si $Y$ es Hausdorff, entonces $\{(f,x,y) \:|\: f(x)=y\}$ es cerrado en $C_c(X,Y)\times X\times Y$
+\vspace{.4cm}
+\item Sean $X$ y $Y$ espacios topológicos. Considera $A\subset Y$ un conjunto cerrado. Si $X$ es localmente compacto, prueba que
+$\{(f,x) \:|\: f(x)\in A\}$ es cerrado en $C_c(X,Y)\times X$.
+\vspace{.4cm}
+\item Sea $X$ un espacio compacto y $Y$ un espacio topológico arbitrario. Si $U\subset X$ es abierto en $X$ y $A\subset Y$ es cerrado en $Y$, demuestra que
+\begin{enumerate}
+\item $\{(f,y) \:|\: f^{-1}(y)\in U\}$ es abierto en 
+$C_c(X,Y)\times Y$.
+\item $\{f \:|\: f^{-1}(A)\subset U\}$ es abierto en $C_c(X,Y)$.
+\end{enumerate}
+\vspace{.4cm}
+\item Demuestra que si $X$ es un espacio topológico, entonces para todo $q\in\mathbb N$, el espacio
+$BC_u(X,\mathbb R^q)$ es completo (aquí $\mathbb R^q$ esta provisto de la métrica usual).
+\vspace{.4cm}
+\item
+Sea $X$ es un espacio topológico compacto y consideremos $\mathbb R^q$ provisto de la métrica usual. Demuestra que una familia $\mathcal F\subset C_u(X,\mathbb R^q)$ tiene cerradura compacta si y sólo si $\mathcal F$ es equicontinua y uniformemente acotada.\\
+Recuerda que $\mathcal F$ es uniformemente acotada si y sólo si $\sup\{\|f(x)\| \:|\: x\in X, f\in\mathcal F\}<\infty$.
+\vspace{.4cm}
+\item Sea $\mathcal F\subset C_c(\mathbb R^q, \mathbb R)$ una familia equicontinua, uniformemente acotada. Demuestra que existe una sucesión $(f_n)_{n\in\mathbb N}\subset \mathcal F$ que converge uniformemente en compactos a una función $f\in C_c(\mathbb R^q,\mathbb R)$.
+\vspace{.4cm}
+\item Si $(X,d)$ y  son espacios métricos, $M>0$ y $\alpha>0$, se define el conjunto Lip$(\alpha,M)$ como el conjunto de todas las funciones continuas de $X$ en $\mathbb R$ tales que
+ 
+$$|f(x)-f(y)|\leq Md(x,y)^\alpha~~\text{ para todo par de puntos }x,y\in X.$$
+
+Demuestra que si $X=[0,1]$  provisto de la métrica usual y $\alpha>1$, entonces Lip$(\alpha,1)$ contine únicamente funciones constantes. 
+\vspace{.4cm}
+\item Demuestra que si $(X,d)$ es un espacio métrico compacto y $x_0\in X$ es un punto fijo, entonces para todo $\alpha\in(0,1]$ y para todo $M>0$, el conjunto $\{f\in \text{Lip}(\alpha,M)|~~|f(x_0)|\leq M\}$ es compacto en $C_u(X,\mathbb R)$.
+\end{enumerate}
+
+%\end{document}

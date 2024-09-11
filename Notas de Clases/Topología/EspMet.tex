@@ -1,0 +1,677 @@
+\include{encabezado}
+
+\chapter{Espacios M{\'e}tricos}
+Muchas nociones importantes de la topología fueron previamente desarrolladas en espacios métricos. Es por esta razón que comenzaremos estudiando algunas de las caracteríasticas  fundamentales de los espacios métricos. El concepto de espacio métrico fue introducido por el matemático francés M. Frechét en 1906 y juega un papel excepcionalmente importante en todas las ramas de la matemática.
+
+Un espacio métrico es un conjunto donde se tiene una noción de \textit{distancia}
+ entre sus puntos, noción que a su vez da cabida a conceptos como la convergencia y la continuidad. En este primer capítulo estudiaremos propiedades básicas de los espacios métricos y hallaremos una manera de definir la continuidad de funciones entre espacios métricos sin involucrar explícitamente sus métricas. Esta caracterización nos servirá más adelante como definición en el entorno más abstracto de los espacios topológicos, objetos centrales de este texto.
+
+\section{M{\'e}tricas}
+
+
+ Una métrica es simplemente la formalización de la noción de distancia ordinaria, como se verá en la siguiente definición.
+\begin{definition}\label{def metrica}
+ Sea $X$ un conjunto no vac{\'i}o. Una funci{\'o}n \\ $\rho:X\times X \to \mathbb{R}$ se llama  \textbf{m{\'e}trica}\ o distancia, 
+si para cualesquiera puntos $x, y, z\in X$ se satisfacen los siguientes axiomas:
+ \begin{enumerate}
+  \item $\rho(x,y)\geq 0$ \textrm{ y } $\rho(x,y)=0$ si y sólo si $x=y$,
+  \item $\rho(x,y)=\rho(y,x)$,
+  \item $\rho(x,z)\leq\rho(x,y)+\rho(y,z)$ 
+ (esta desigualdad se conoce como
+  desigualdad del triángulo).
+ \end{enumerate}
+ El par $(X,\rho)$ recibe el nombre de  \textbf{espacio m{\'e}trico}. El número $\rho(x,y)$ suele llamarse distancia entre los puntos $x$ y $y$.
+\end{definition}
+
+
+A continuación veremos algunos ejemplos de espacios métricos que ilustrarán la definición anterior.
+\begin{example}[La recta real $\mathbb{R}$]
+La función $\rho:\mathbb{R}\times\mathbb{R}\to\mathbb{R}$ definida por $\rho(x,y)=|x-y|$ es una m\'etrica para el conkunto de los números reales $\mathbb{R}$, y se le conoce como métrica usual o métrica euclidiana.
+   \end{example}
+
+  De aquí en adelante, cada vez que hablemos de \textit{la recta real} nos estaremos refiriendo al espacio métrico $(\mathbb R, \rho)$ del ejemplo anterior.
+ 
+ \begin{example}[Ejemplo]\label{metricas en Rn} En $X=\mathbb{R}^n$ pueden definirse varias métricas, estas son algunas de  las más usuales: 
+   \begin{enumerate}
+   \item $\rho_1(x,y)= \sqrt{\sum\limits_{i=1}^n(x_i-y_i)^2}$,
+   \item $\rho_2 (x,y)=\sum\limits _{i=1}^n|x_i-y_i| $ ,
+   \item $\rho_3(x,y)={\max}\{|y_i-x_i|\}_{i=1}^n$,
+   \end{enumerate}
+   en donde $x=(x_1,x_2,\dots,x_n)$ y $y=(y_1,y_2,\dots,y_n)$.
+   
+   La métrica $\rho_1$ es la métrica usual o \textbf{euclidiana} y  la métrica $\rho_3$  es llamada \textbf {métrica del supremo}. Por otro lado, a $\rho_2$  se le conoce en los cursos de cálculo y análisis como \textbf{métrica del taxista}.
+   \end{example}
+   Demostremos un lema que nos será útil para verificar que la función 1 del ejemplo\ref{metricas en Rn} efectivamente es una métrica para $\mathbb{R}^n$
+  
+ \begin{lemma}[Desigualdad de Cauchy-Schwarz]Sean $x_1,\dots, x_n, y_1,\dots, y_n$ números reales arbitrarios. Entonces se satisface la siguiente desigualdad
+ $$\Big(\sum\limits_{i=1}^n(x_iy_i)\Big)^2\leq \Big(\sum\limits_{i=1}^nx_i^2\Big)\Big( \sum\limits_{i=1}^ny_i^2\Big).$$
+ Además la igualdad ocurre si y sólo si existe un número real  $\lambda$ tal que $x_i=\lambda y_i$ para toda $i\in\{1,\dots, n\}$.
+ Esta desigualdad es conocida como \textbf{desigualdad de Cauchy-Schwarz}.
+ \end{lemma}
+ \begin{proof}
+ Supongamos que existe un real $\lambda$ tal que $x_i=\lambda y_i$ para toda $i\in\{1,\dots, n\}$. Entonces
+ $$\Big(\sum\limits_{i=1}^n(x_iy_i)\Big)^2
+=\Big(\sum\limits_{i=1}^n(\lambda y_i^2)\Big)^2
+=\Big(\sum\limits_{i=1}^n\lambda^2y_i^2\Big)\Big( \sum\limits_{i=1}^ny_i^2\Big)
+=\Big(\sum\limits_{i=1}^nx_i^2\Big)\Big( \sum\limits_{i=1}^ny_i^2\Big).$$
+\smallskip 
+Ahora supongamos que no existe ningún número $\lambda$ tal que $x_i=\lambda y_i$ para toda $i\in\{1,\dots, n\}$. Entonces, para todo $\lambda\in\mathbb{R}$, se tiene que 
+ $$\sum_{i=1}^n(x_i-\lambda y_i)^2=\sum_{i=1}^n(x_i^2-2\lambda x_iy_i+\lambda^2y_i^2)>0.$$
+ Es decir, 
+  $$\lambda^2\sum_{i=1}^n y_i^2-2\lambda\sum_{i=1}^nx_iy_i+\sum_{i=1}^nx_i^2>0.$$
+  Consideremos el polinomio con variable $\lambda$, $P(\lambda)$, dado por
+  $$P(\lambda)=\lambda^2\sum_{i=1}^n y_i^2+2\lambda\sum_{i=1}^nx_iy_i+\sum_{i=1}^nx_i^2.$$
+  Entonces $P(\lambda)$ es un polinomio cuadrático sin raíces reales. Así, su discriminante es negativo y por lo tanto
+  $$\Big(-2\sum_{i=1}^nx_iy_i\Big)^2-4\Big(\sum_{i=1}^n x_i\Big )\Big (\sum_{i=1}^n y_i\Big)<0.$$
+  Consecuentemente, 
+  $$\Big(\sum\limits_{i=1}^n(x_iy_i)\Big)^2< \Big(\sum\limits_{i=1}^nx_i^2\Big)\Big( \sum\limits_{i=1}^ny_i^2\Big),$$
+  como se quería demostrar.
+ \end{proof}
+
+Veamos ahora que las funciones definidas en el ejemplo \ref{metricas en Rn} son métricas para $\mathbb{R}^n$
+
+ \begin{proof} \,\hfill
+  \begin{enumerate}
+\item Es fácil ver que la función $\rho_1$ satisface los axiomas $1$ y $2$ de la definición~\ref{def metrica}. Demostraremos únicamente que se cumple la desigualdad del triángulo. Sean $x=(x_1,\dots,x_n)$, $y=(y_1,\dots,y_n)$ y $z=(z_1,\dots, z_n)$ tres puntos arbitrarios en $\mathbb{R}^n$. Por la desigualdad de Cauchy-Schwarz 
+sabemos que
+     \begin{equation*}
+   \big{(}\sum_{i=1}^n(x_i-y_i)(y_i-z_i)\big{)}^2  \leq  \big{(}\sum_{i=1}^n (x_i-y_i)^2 \big{)} \big{(}\sum_{i=1}^n (y_i-z_i)^2\big{)}  .
+     \end{equation*}
+     Entonces, 
+    \begin{align*}
+       \rho_1(x,z)^2 & =  \sum_{i=1}^n(x_i-y_i+y_i-z_i)^2\\ 
+                     & =  \sum_{i=1}^n(x_i-y_i)^2+2
+      \sum_{i=1}^n(x_i-y_i)(y_i-z_i)+\sum_{i=1}^n(y_i-z_i)^2\\
+                     &\leq \sum_{i=1}^n(x_i-y_i)^2+2\sqrt{\bigg{(}\sum_{i=1}^n (x_i-y_i)^2 \bigg{)} \bigg{(}\sum_{i=1}^n (y_i-z_i)^2\bigg{)} }
+      +\sum_{i=1}^n(y_i-z_i)^2\\
+                     & = \Bigg{(}\sqrt{\sum_{i=1}^n(x_i-y_i)^2}+\sqrt{\sum_{i=1}^n (y_i-z_i)^2} \Bigg{)} ^2 \\ 
+                     & =  \big{(}\rho_1(x,y)+\rho_1(y,z)\big{)}^2. \\
+    \end{align*}
+De donde se sigue inmediatamente que $\rho_1(x,z)\leq \rho_1(x,y)+\rho_1(y,z)$.
+ \medskip
+ 
+   \item Evidentemente, la función $\rho_2$ satisface las condiciones $1$ y $2$ de la definición~\ref{def metrica}, por lo que sólo resta demostrar la desigualdad del triángulo. Sean $x$, $y$ y $z$ puntos en $\mathbb{R}^n$. Por la desigualdad del triángulo para números reales,  
+   $$|x_i-y_i+y_i-z_i|\leq |x_i-y_i|+|y_i-z_i|.$$
+Entonces,
+     \begin{align*}
+     \rho_2(x,z)  &=\sum_{i=1}^n \mid x_i-z_i\mid
+                   =\sum_{i=1}^n \mid x_i-y_i+y_i-z_i\mid\\
+                  &\leq  \sum_{i=1}^n\mid x_i-y_i\mid +\sum_{i=1}^n\mid y_i-z_i\mid
+                   =\rho_2(x,y)+\rho_2(y,z),
+     \end{align*}
+el resultado buscado.
+ \medskip
+ 
+   \item  Es fácil ver que  $\rho_3(x,y)\geq 0$ para cualesquiera $x$ y $y$ en $\mathbb{R}^n$. Por otro lado,  $\rho_3(x,y)=0$ siempre y cuando cada 
+      $|x_i-y_i|=0$    para toda $i \in \{1, \ldots, n\}$; pero esto  sucede si y sólo si
+      $x_i=~y_i$   para toda $i\in\{1, \ldots, n\}$, es decir, si y solo si $x=y$.
+
+  
+ Evidentemente $\rho_3$ cumple el requisito $2$ de la definición~\ref{def metrica}, por lo que únicamente faltaría ver que se cumple la desigualdad del triángulo.
+ Primero observemos que para cualquier $j\in\{1,\dots,n\}$, se tiene que
+ $$|x_j-y_j|\leq \max\{|x_i-y_i|\}_{i=1}^n$$ y $$|y_j-z_j|\leq \max\{|y_i-z_i|\}_{i=1}^n.$$
+ De esta manera, 
+ 
+ $$\max\{|x_i-y_i|\}_{i=1}^n+\max\{|y_i-z_i|\}_{i=1}^n\geq |x_j-y_j|+|y_j-z_j|\geq |x_j-y_j|,$$
+ 
+ de donde se sigue inmediatamente que
+ $$\max\{|x_i-y_i|\}_{i=1}^n+\max\{|y_i-z_i|\}_{i=1}^n\geq \max\{|x_i-z_i|\}_{i=1}^n.$$
+     Así, podemos concluir que 
+     $\rho_3(x,z)
+     \leq\rho_3(x,y)+\rho_3(y,z)$.
+     
+   \end{enumerate}
+  \end{proof}
+   
+   
+\begin{example} En cualquier conjunto no vac{\'\i}o $X$, se puede definir una m\'etrica de la
+ siguiente manera:
+ \begin{equation*}
+  d(x,y)=
+   \begin{cases}
+     1, &\text{si $x\neq y$}\\
+     0, &\text{si $x=y$}
+   \end{cases}
+ \end{equation*}
+ Dicha métrica se llama \textbf{m\'etrica discreta}, y el espacio $(X,d)$ recibe el nombre de \textbf{espacio discreto}.
+ 
+ \begin{proof}
+Los axiomas $1$ y $2$ se siguen directamente de la definición. Para completar la prueba debemos
+demostrar que $ d(x,z)\leq d(x,y)+d(y,z)$.
+   
+   En efecto, si $x$,$y$ y $z$ son tres puntos de $X$, tenemos los siguientes casos:
+   \par Caso 1. Si $x=z$, entonces $d(x,z)=0\leq d(x,y)+d(y,z)$.
+   \par Caso 2. Si $x\neq z$, entondes $d(x,z)=1$. Es claro que por lo menos uno de los puntos $x$ y $z$ es diferente de $y$, lo cual implica que por lo menos uno de los números $d(x,y)$ y $d(y,z)$ es igual a 1. Consecuentemente
+   $$d(x,z)=1\leq d(x,y)+d(y,z).$$
+   \end{proof}
+\end{example} 
+
+\begin{definition}
+Sean $(X,d)$ un espacio m\'etrico y $A\subset X$. Se define el \textbf{di\'ametro} de $A$, como
+$$ {\rm diam }A=\sup\{d (a,a')\mid a,a'\in A\}.$$
+\end{definition}
+
+
+  
+\section{Bolas y conjuntos abiertos}
+
+
+ \begin{definition}
+  Sean $(X,d)$ un espacio m{\'e}trico, $a\in X$ un punto fijo y $r$ un real positivo.
+  La \textbf{bola
+  abierta}  con centro en $a$ y radio $r$  es el siguiente subconjunto de $X$: 
+  \begin{equation*}
+    B(a,r)=\left\{x\in X \left| \:d(x,a)< r \right.\right\}.
+  \end{equation*}
+ Análogamente, la \textbf{bola cerrada}  con centro  en $a$ y
+  radio $r$  es el siguiente subconjunto de $X$:
+  \begin{equation*}
+    {B[a,r]}=\left\{x\in X\mid d(x,a)\leq r\right\}.
+  \end{equation*}
+  Por otro lado, la \textbf{esfera} con centro en $a$ y radio $r$  es el subconjunto
+  \begin{equation*}
+  S(a,r)=\left\{x\in X\mid d(x,a)=r \right\}.
+  \end{equation*}
+ \end{definition}
+
+
+
+ 
+  \begin{example} Consideremos la recta real $\mathbb{R}$ y $a\in\mathbb{R}$ un punto arbitrario. Entonces
+   \begin{equation*}
+    B(a,r)=(a-r,a+r)
+\end{equation*}  y $$B[a,r]=[a-r,a+r].$$
+   \end{example}
+   
+   
+   \begin{example} Consideremos el espacio métrico $(\mathbb{R}^2,\rho_1)$, donde $\rho_1$ es la métrica euclidiana del Ejemplo~\ref{metricas en Rn}. Entonces, la bola con centro en $\bar 0=(0,0)$ y radio 1, es el conjunto 
+    \begin{equation*}
+      B(\bar 0,1)=\{(x,y)\in\mathbb{R}^2 \mid\sqrt{x^2+y^2}<1\}.
+     \end{equation*}
+    Geométricamente, dicho conjunto coincide con el interior del disco unitario, como se ilustra en la siguiente figura.
+     \begin{figure}[h!]
+      \begin{center}
+        \includegraphics{Bab111}
+      \end{center}
+      \caption{Bola abierta con la m\'etrica usual de $\mathbb{R}^2$}
+     \end{figure}
+   \end{example}
+   
+   \begin{example} Consideremos el espacio métrico $(\mathbb{R}^2,\rho_2)$, donde $\rho_2$ es la metrica definida en el Ejemplo~\ref{metricas en Rn}. Entonces, la bola con centro en $\bar 0=(0,0)$ y radio 1, es el conjunto dado por
+     \begin{equation*}
+      B(\bar 0,1)=\{(x,y)\in\mathbb{R}^2\mid |x|+|y|<1\}.
+     \end{equation*}
+     \begin{figure}[h!]
+      \begin{center}
+       \includegraphics{Bab112}
+      \end{center}
+      \caption{Bola abierta con la m\'etrica citadina de $\mathbb{R}^2$}
+     \end{figure}
+   \end{example}
+   
+   \begin{example} Consideremos el espacio métrico $(\mathbb{R}^2,\rho_3)$, con $\rho_3$ la métrica definida en el Ejemplo~\ref{metricas en Rn}.   Entonces, la bola abierta con centro en $\bar 0=(0,0) $ y radio 1, es el conjunto 
+     \begin{equation*}
+      B(\bar 0,1)=\{(x,y)\in\mathbb{R}^2 \mid \max\{|x|,|y|\}\leq 1\}.
+     \end{equation*}
+
+     \begin{figure}[h!]
+      \begin{center}
+      \includegraphics{Bab113}
+      \end{center}
+      \caption{Bola abierta con la m\'etrica del supremo de $\mathbb{R}^2$}
+     \end{figure}
+   \end{example}
+
+  
+  
+
+  
+  \begin{example}\label{bola discreta} Sean $(X,d)$ es un espacio  m{\'e}trico discreto, $x\in X$  y $r>0$. Entonces, si $r< 1$, 
+     
+    \begin{equation*}
+     B(x,r)=\{x\}.
+    \end{equation*}
+Por otro lado, si $r\geq 1$, entonces
+$$B(x,r)=X.$$
+
+\end{example}
+
+
+
+ 
+A continuación, introduciremos la noción central para el estudio de la topología: 
+los conjuntos abiertos de un espacio métrico.
+
+ \begin{definition}
+  Sean $(X,d)$ un espacio m{\'e}trico,  $A$ un subconjunto de $X$ y $x\in A$. Se dice que $x$ es \textbf{punto interior de} $A$, si existe $r>0$ tal que $B(x,r)\subset A$. El conjunto de todos los puntos interiores de $A$ se denota por $Int~A$. Es evidente que $Int~A\subset A$ para todo subconjunto $A$ de $X$.
+     \smallskip
+     
+ Diremos que $A$ es un \textbf{conjunto abierto} en $X$ si para cada $x\in A$, $x$
+         es \textbf{punto interior} de $A$. En otras palabras, $A$ es abierto si $A=Int~A$. Por otro lado, diremos que
+        $A$ es un \textbf{conjunto cerrado} en $X$ si $X\setminus A$ es abierto.
+   
+ \end{definition}
+ \begin{proposition}
+  Sea $(X,d)$ un espacio m{\'e}trico. Entonces para todo $x\in X$ y $r>0$, la bola abierta
+  $B(x,r)$ es un conjunto abierto en $X$.
+ \end{proposition}
+ \begin{proof}
+  Sea $y\in B(x,r)$.  Definamos $r'$ por  $$r'=r-d(y,x).$$ Como $d(y,x)<r$, es claro que $r'>0$. 
+  Consideremos $z\in B(y,r')$. Entonces $d(z,y)<r'$, y por tanto
+  
+    $$d(z,x)  \leq d(z,y)+d(y,x)<r'+d(y,x)=r-d(y,x)+d(y,x)=r$$
+
+  Así, podemos concluir que $z\in B(x,r)$, de donde $B(y,r')\subset B(x,r)$. De este modo, tenemos que $y$ es punto interior de $B(x,r)$ y por lo tanto $B(x,r)$ es abierto en $X$.
+ \end{proof}
+
+ \begin{theorem}\label{espmetrico=topologico}
+  Sea $(X,d)$ un espacio m{\'e}trico, entonces
+  \begin{enumerate}
+   \item $X,\emptyset$ son conjuntos abiertos.
+   \item Si $\{U_\alpha\}_{ \alpha \in \mathcal{A}}$ es una familia arbitraria
+de conjuntos abiertos en $X$,
+    entonces $\bigcup\limits_{\alpha\in \mathcal{A}}U_\alpha$ es un conjunto abierto en $X$.
+   \item Si $U,V\subset X$ son conjuntos abiertos en $X$, entonces $U\cap V$ es un conjunto abierto en $X$.
+  \end{enumerate}
+ \end{theorem}
+ \begin{proof}
+  \begin{enumerate}
+   \item Claramente $X$ es abierto, ya que para cualesquiera $x\in X$ y $r>0$,
+         $B(x,r) \subset X$, por lo que todo punto en $X$ es punto interior.
+     Por otro lado,  $\emptyset$ es abierto por vacuidad.
+
+   
+  \item 
+  Sea $\{U\}_{\alpha\in \mathcal A}$ una familia  arbitraria de abiertos, entonces para toda  $x \in\bigcup\limits_{\alpha\in \mathcal A}
+  U_\alpha$ existe $\alpha_0$ tal que $x \in U_{\alpha_0}$. Como $U_{\alpha_0}$ es abierto en $X$,  existe $r>0$ tal que
+    $B(x,r)\subset U_{\alpha_0}$, por lo tanto $B(x,r)\subset  \bigcup\limits_{\alpha\in \mathcal A}
+    U_\alpha$, implicando que $x$ es punto interior de $\bigcup\limits_{\alpha\in \mathcal A} U_\alpha$. Así $ \bigcup\limits_{\alpha\in A}
+    U_\alpha$ está constituído en su totalidad de puntos interiores, y por tanto es un conjunto abierto de $X$.
+  \item   Sean $U$ y $V$ abiertos y $x\in U\cap V$. Como
+    $x\in U$,  existe $r_1>0$ tal que $B(x,r_1)\subset U$. Análogamente, como
+     $x\in V$,  existe $r_2>0$ tal que $B(x,r_2)\subset V$.
+    Sea $r=\min\{ r_1,r_2\}$, entonces $B(x,r)\subset U$ y $B(x,r)\subset V$, por lo que $B(x,r)\subset U\cap
+    V$. Así, $x$ es punto interior de  $U\cap V$, y por tanto este conjunto  es abierto.
+  \end{enumerate}
+ \end{proof}
+ \begin{corollary} Si $X$ es un espacio métrico entonces $X$ y $\emptyset$ son subconjuntos abiertos y cerrados.
+ \end{corollary}
+ 
+ \begin{corollary}\label{interseccion abiertos}
+  Si $U_1,\dots,U_n\subset X$ son subconjuntos abiertos de un espacio métrico $X$, entonces
+  $\bigcap\limits_{i=1}^{n}U_i$ es un subconjunto abierto en $X$.
+ \end{corollary}
+ 
+  Como se vió en el corolario~\ref{interseccion abiertos}, la intersección  
+ finita de conjuntos abiertos es abierta. Sin embargo, la intersección infinita de abiertos, no 
+ necesariamente es abierta, como veremos en el siguiente ejemplo.
+
+\begin{example} Sean $\mathbb{R}$ la recta real, $U_n=(\frac{-1}{n},\frac{1}{n})$ y $V_n=(n,\infty)$. Para todo $n\in\mathbb{N}$,  $U_n$ y $V_n$ son subconjuntos abiertos de $\mathbb{R}$. Por un lado $\bigcap\limits_{n=1}^\infty V_n=\emptyset$ que es
+     abierto en ${{\mathbb R}}$.
+Sin embargo $\bigcap\limits_{n\in\mathbb{N}}U_n=\{0\}$, el cual no es un conjunto abierto de $\mathbb{R}$. 
+\end{example}
+
+\begin{example}
+Si $X$ es un espacio métrico discreto, entonces cualquier subconjunto $U$ de $X$ es abierto en $X$.
+\end{example}
+
+ 
+  
+   
+  
+
+  
+ 
+
+\section{Subespacios M{\'e}tricos}
+Es fácil ver que para cualquier subconjunto $A$ de un espacio métrico $(X,d)$, la restricción de la métrica $d$ al subconjunto $A$ define una métrica en $A$. Así llegamos a la siguiente definición.
+
+ \begin{definition}
+  Sean $(X,d)$ un espacio m{\'e}trico no vacío, $A\subset X$ y  $d|_{A\times A}:A\times A\to \mathbb{R}$ la restricción de la métrica $d$ al conjunto $A$. Entonces
+   la pareja $(A,d|_{A\times A})$ recibe el nombre de \textbf{subespacio m{\'e}trico} de
+  $(X,d)$.
+ \end{definition}
+ 
+ Es claro que todo subespacio métrico es a su vez un espacio métrico.
+ 
+ \begin{example}[Ejemplos] Sea $(\mathbb{R}^n,\rho_1)$ como en el Ejemplo~\ref{metricas en Rn}. Los siguientes son algunos subespacios importantes.
+ \begin{enumerate}
+ \item La bola unitaria definida por
+ $$\mathbb{B}^n=\{(x_1,\dots,x_n)\mid x_1^2+\dots +x_n^2<1\}.$$
+ \item La esfera de dimensión $n-1$, dada por $$\mathbb{S}^{n-1}=\{(x_1,\dots,x_n)\in\mathbb{R}^n\mid~x_1^2+\dots+x_n^2=1\}.$$
+ \item El cubo unitario dado por
+ $$I^n=\{x_1,\dots,x_n)\in\mathbb{R}^n\mid 0\leq x_i\leq 1~
+     i=1,\dots,n\}.$$
+ \end{enumerate}
+ \end{example}
+
+
+ \section{Producto de Espacios M{\'e}tricos}
+
+
+ \begin{proposition}
+ Sea $\{(X_i,d_i)\}$  una colección finita de espacios métricos. Definamos  $$ X=\prod_{i=1}^{n} X_i=\{(x_1,\dots,x_n)\mid x_i\in X_i,~ i=1,\dots,n
+   \}.$$ 
+  La función  $d:X\times X\to\mathbb{R}$ dada por
+  \begin{equation}
+    d(\bar x,\bar y)=
+    \sqrt{d_1^2(x_1,y_1)+\dots+d_n^2(x_n,y_n)}\notag.
+  \end{equation}
+  es una métrica en $X$, por lo que  $(X,d)$ es un espacio m{\'e}trico
+ \end{proposition}
+La demostración es análoga a la del Ejemplo~\ref{metricas en Rn}.
+\smallskip
+ El espacio $(X,d)$ de la proposición anterior se  llama \textbf{producto 
+ de espacios m{\'e}tricos}. Hay otras métricas que se les suele dar al espacio $X$. Algunas de las más comunes son las siguientes
+ \begin{enumerate}
+ \item $\hat d:X\times X\to\mathbb{R}$ dada por $$d(x,y)=\sum\limits_{i=1}^nd_i(x_i,y_i).$$
+ \item $\tilde d:X\times X\to \mathbb{R}$ dada por
+ $$d(x,y)=\max\{d_i(x_i,y_i)\}_{i=1,\dots,n}.$$
+ \end{enumerate}
+ 
+ 
+ \section{Continuidad}
+
+Uno de los aspectos que más va a llamar nuestro interés es la noción de continuidad de una función entre
+dos espacios. El estudio de estas funciones es de suma importancia para
+esta materia.
+
+ \begin{definition}
+  Sea $f:(X,d)\to(Y,\rho)$ una funci\'on entre dos espacios métricos.
+ Se dice que  $f$ es continua en el punto  $x_0\in X$, si para
+ todo $\varepsilon>0$ existe $\delta>0$ tal que
+  $\rho(f(x),f(x_0))<\varepsilon$ siempre que $d(x,x_0)<\delta\notag.$
+\smallskip
+Diremos que $f$ es continua en $X$, si es continua en cualquier punto $x_0\in X$.
+
+ \end{definition}
+ 
+En otras palabras, diremos que una función $f:(X,d)\to (Y,\rho)$  entre dos espacios métricos  es continua si para toda $x\in X$ y para toda $\varepsilon>0$, existe $\delta>0$, tal que $f(B(x,\delta))\subset B(f(x),\varepsilon)$.
+ 
+Cuando los espacios $(X,d)$ y $(Y,\rho)$ coinciden con la recta real, entonces la definición anterior coincide con la definición usual de continuidad que se estudia en los cursos de cálculo.
+
+Es importante observar que dependiendo de las métricas $d$ y $\rho$ una misma función puede ser continua o no. Por ejemplo, si consideramos los espacios $(\mathbb R,d)$ y 
+$(\mathbb R, \rho)$, donde $d$ denota la métrica discreta y $\rho$ la métrica usual, entonces la función identidad $Id:(\mathbb R,d)\to (\mathbb R,\rho)$ es continua,en tanto que la misma función $Id:(\mathbb R,\rho)\to(\mathbb R, d) $ no lo es. 
+
+
+ 
+ 
+
+ \begin{theorem}
+  Sean $(X,d)$ y $(Y,\rho)$ dos espacios m{\'e}tricos y $f:X\to Y$ una función. Entonces  los siguientes enunciados son equivalentes:
+  \begin{enumerate}
+  \item $f$ es continua.
+  \item Para toda $y\in Y$ y para toda $\varepsilon>0$, $f^{-1}(B(y,\varepsilon))$ es abierto en $X$.
+   \item Para cualquier abierto $U\subset Y$, $f^{-1}(U)$ es abierto en $X$. 
+  \end{enumerate}
+\end{theorem}
+\begin{proof}\,\hfill \\
+   
+
+$(1\Rightarrow 2).$ Sea $y\in Y$ y $\varepsilon >0$. 
+Consideremos 
+     $z\in f^{-1}(B(y,\varepsilon))$, entonces
+ $f(z)\in B(y,\varepsilon)$. Como $B(y,\varepsilon)$ es un 
+conjunto abierto, existe $\eta>0$ tal que
+    $B(f(z),\eta)\subset B(y,\varepsilon)$. Aplicando
+ la continuidad de $f$ podemos encontrar 
+    $\delta>0$,  tal que  $f(B(z,\delta))\subset B(f(z),\eta)$.
+ Así, podemos concluir que   $B(z,\delta)\subset
+    f^{-1}(B(f(z),\eta))\subset f^{-1}(B(y,\varepsilon))$, y por 
+    tanto $f^{-1}(B(y,\varepsilon))$ es abierto en $X$.
+  
+\smallskip
+$(2\Rightarrow 3)$.   Sea $U$ abierto en $Y$ y  $z\in f^{-1}(U)$. Demostraremos que $z$ es punto interior de $f^{-1}(U)$.  Notemos que  $f(z)\in U$ y por ser $U$ abierto 
+    existe $\varepsilon>0$ tal que $B(f(z),\varepsilon)\subset
+    U$.
+     Por hipótesis
+ $f^{-1}(B(f(z),\eta))$ es abierto en $X$, entonces, existe $\delta>0$ 
+tal que $$B(z,\delta)\subset f^{-1}(B(f(z),\varepsilon)).$$ Pero $f^{-1}(B(f(z),\varepsilon))$ está contenido en  $f^{-1}(U)$, por lo que $B(z,\delta)\subset f^{-1}(U)$,  y por lo tanto $z$ es punto interior de $f^{-1}(U)$.
+  
+
+\smallskip
+$(3\Rightarrow 1).$ 
+    Sean $x_0 \in X$, y $\varepsilon>0$. Entonces $B(f(x_0),\varepsilon)$ es un abierto en $Y$ y por
+    hipótesis $f^{-1}(B(f(x_0),\varepsilon))$ es abierto en $X$.
+     Como $x_0$ pertenece a $ f^{-1}(B(f(x_0),\varepsilon))$, existe $\delta>0$ tal que
+$$B(x_0,\delta)\subset
+    f^{-1}(B(f(x_0),\varepsilon)).$$ Así, $f(B(x_0,\delta))\subset B(f(x_o),\varepsilon)$, por lo que $f$ es
+    continua.
+  
+ \end{proof}
+\section{Convergencia de suceciones}
+
+ \begin{definition}
+  Sean $(X,d)$ un espacio m{\'e}trico y $(x_n)_{n\in\mathbb{N}}$ una
+  sucesi{\'o}n en $X$. Se dice que $(x_n)_{n\in\mathbb{N}}$ \textbf{converge} al punto $x$, si
+  para cada $\varepsilon > 0$ existe  $n_0\in\mathbb{N}$, tal que 
+   $d(x_n,x)< \varepsilon$ para todo $n \geq n_0$. 
+ \end{definition}
+ En la literatura la convergencia de una suseción $(x_n)_{n\in\mathbb{N}}$ a un punto $x$, se suele denotar por $\lim\limits_{n\to\infty}x_n=x$ o por $x_n\to x$.
+ 
+ 
+ \begin{proposition}
+  Sea $(X,d)$ un espacio m{\'e}trico y $(x_n)_{n\in\mathbb{N}}$ una sucesi{\'o}n en $X$.
+  Entonces, $x_n \rightarrow x$ si y sólo si $d(x_n,x) \rightarrow 0$.
+ \end{proposition}
+ La demostraci\'on es inmediata.
+ 
+ En los espacios métricos discretos, las sucesiones convergentes tienen una forma muy particular como veremos en el siguiente ejemplo.
+    \begin{example}
+    Sea $(X,d)$ un espacio  métrico discreto. 
+Si $(x_n)_{n\in\mathbb{N}}$ es una sucesión en $X$ que converge a un punto $x$, entonces existe $n_0\in\mathbb{N}$, tal que para toda $n\geq n_0$, $x_n=x$. 
+
+En efecto, si $\varepsilon < 1$, entonces existe $n_0\in\mathbb{N}$ tal que para todo $n\geq n_0$, $x_n\in B(x,\varepsilon )$. Pero por el Ejemplo~\ref{bola discreta}, $B(x,\varepsilon)=\{x\}$, por lo que
+    $x_n= x$, para todo $n\geq n_0$.
+    
+    \end{example}
+   
+\begin{proposition} Sea $(X,d)$ un espacio métrico. Entonces toda sucesión convergente tiene un sólo límite.
+\end{proposition}
+
+\begin{proof}
+Sea $(x_n)_{n\in\mathbb{N}}$ una sucesión en $X$. Si $x$ y $y$ son dos puntos en $X$ tales que $\lim\limits_{n\to\infty}x_n=x$ y $\lim\limits_{n\to\infty}x_n=y$.
+Supongamos que $x\neq y$. Entonces $d(x,y)>0$, por lo que $\varepsilon=\frac{d(x,y)}{2}>0$. Además, es claro que $B(x,\varepsilon)\cap B(y,\varepsilon)=\emptyset$. 
+
+Como $(x_n)$ converge a $x$, existe $n_1$ tal que si $n\geq n_1$, entonces $x_n\in B(x,\varepsilon)$. Análogamente, existe $n_2$ tal que si $n\geq n_2$, entonces $x_n\in B(y,\varepsilon)$. Sea $n_0=\max\{n_1,n_2\}$, entonces, si $n\geq n_0$, $x_n\in B(x,\varepsilon)\cap B(y,\varepsilon)$ lo cual es una evidente contradicción. Por lo tanto $x=y$.
+\end{proof}
+Las sucesiones juegan un papel determinante en la continuidad de las funciones entre espacios métricos. El siguiente teorema nos dice porqué.
+\begin{theorem}
+  Sean $(X,d)$ y $(Y,\rho)$ dos espacios m\'etricos.  Una función $f:X\to Y$ es continua en $x_0\in X$ si y sólo si, para cualquier sucesión $(x_n)_{n\in\mathbb{N}}$ que converja a $x_0$ la sucesión $(f(x_n))_{n\in\mathbb{N}}$ converge a $f(x_0)$. 
+ \end{theorem}
+ 
+ \begin{proof}
+ Primero demostraremos la parte \textit{si}. Sea $(x_n)_{n\in\mathbb{N}}$ una sucesión en $X$ convergente al punto $x_0\in X$. Por la continuidad de $f$, dado $\varepsilon>0$ existe 
+$\delta>0$ tal que si $x \in B(x_0, \delta)$, entonces 
+   $f(x) \in B(f(x_0), \varepsilon)$. 
+Como
+   $x_n$ converge a $ x_0$, podemos encontrar  $n_0 \in \mathbb{N}$, tal que   $x_n \in B(x_0, \delta)$
+   para todo $n \geq n_0$. Luego $f(x_n) \in B(f(x_0), \varepsilon)$ para todo $n \geq n_0$, lo cual demuestra que $(f(x_n))_{n\in\mathbb{N}}$ converge a $f(x_0)$.
+   \smallskip
+   
+   Ahora demostraremos la parte \textit{sólo si}. Demostraremos que $f$ es continua por contradicción. Supongamos que existe $\varepsilon_0>0$, tal que para toda $\delta>0$, existe $x\in B(x_0,\delta)$ tal que $x\notin B(f(x_0),\varepsilon_0)$.
+   Construiremos una sucesión $(x_n)_{n\in\mathbb{N}}$ en $X$ tal que $x_n\to x_0$, pero de manera que la sucesión $(f(x_n))_{n\in\mathbb{N}}$ no converja a  $f(x_0)$.
+
+ Para $\delta_1=1$, escojamos $x_1\in B(x_0,1)$ tal que $f(x_1)\notin B(f(x_0),\varepsilon_0)$. Análogamente, para $\delta_2=\frac{1}{2}$, escojamos $x_2\in B(x_0,\frac{1}{2})$ tal que $f(x_n)\notin B(f(x_0),\varepsilon_0)$. Así, para $\delta_n=\frac{1}{n}$ podemos escoger $x_n\in B(x_0,\frac{1}{n})$ tal que $f(x_n)\notin B(f(x_0),\frac{1}{n})$. Claramente, la sucesión $(x_n)_{n\in\mathbb{N}}$ converge a $x_0$. Pero la construcción nos grantiza que $(f(x_n))_{n\in\mathbb{N}}$ no converge a $f(x_0)$, contradiciendo la hipótesis. 
+ Por lo tanto, $f$ es continua en $x_0$, como se quería demostrar.
+
+ \end{proof}
+
+ 
+ 
+ \section{Espacios normados}
+ A continuación introduciremos un tipo de espacios métricos que por sus carácteristicas geométricas merecen ser tratados por separado.
+ \begin{definition}\label{def norma}
+  Sea $X$ un espacio lineal (sobre $\mathbb{R}$ {\'o} $\mathbb{C}$).
+  Una \textbf{norma} es  una funci{\'o}n $\parallel \cdot \parallel :X\to\mathbb{R}$ la cual satisface los siguientes axiomas:
+  \begin{enumerate}
+   \item  $\|x\|\geq 0$. Además $\|x\|=0$ si y sólo si $x=0$,
+   \item  $\|\lambda x\|=|\lambda| \|x\|$,
+   \item  $\|x+y\|\leq\|x\|+\|y\|$,
+  \end{enumerate}
+  donde $x,y\in X$ y $\lambda\in\mathbb{K}=\mathbb{R}$ ó $\mathbb{C}$. El par $(X,\|\cdot\|)$ recibe el nombre de \textbf{espacio lineal normado}.  
+ \end{definition}
+ 
+ 
+ \begin{proposition}
+ Sea $(X, \|\cdot\|)$  un espacio lineal normado. Definamos la función 
+$d:X\times X\to\mathbb R$, por
+ $d(x,y)=\|x-y\|$. Entonces, 
+  $d$ es una m{\'e}trica en $X$.
+ \end{proposition}
+ \begin{proof}
+  Se sigue de la definición de norma que siempre $d(x,y)\geq 0$ y $d(x,y)=0$ si y sólo si $x-y=0$, lo cual sucede siempre y cuando $x=y$.
+Por otro lado, $$d(x,y)=|x-y\|=\|-(y-x)\|=|-1|\|y-x\|=\|y-x\|=d(y,x).$$ 
+ 
+ Para completar la demostración, sólo resta verificar la desigualdad del triángulo.
+  Para ello tomemos tres puntos $x,y,z\in X$.  Entonces
+  \begin{equation*}
+    d(x,z)=\|x-z\|
+                =\|x-y+y-z\|                
+                \leq \|x-y\|+\|y-z\|\\
+                =d(x,y)+d(y,z).
+  \end{equation*}
+Así, podemos concluir que $d$ es una métrica.
+ \end{proof}
+
+Se sigue de la proposición anterior que todos los espacios normados son a su vez espacios métricos.
+Veamos algunos ejemplos.
+
+
+ 
+ \begin{example} Sea $X$ un conjunto no vacío. Consideremos el conjunto de todas las funciones  acotadas de $X$ en $\mathbb{R}$, denotado por $B(X)$.
+    
+    $B(X)$ es un espacio lineal, 
+donde la suma est\'a definida por $(f+g)(x)=f(x)+g(x)$; el producto
+    por escalares por $(\lambda f)(x)=\lambda f(x)$; y,  la funci\'on cero
+    como $\theta(x)=0$. La función $\|\cdot\|:B(X)\to\mathbb{R}$ dada por  $\|f\|=\sup\{|f(x)||x\in X\}$ define una norma en $B(X)$.  Esta norma recibe el nombre de 
+    \textbf{norma uniforme} o \textbf{norma del supremo}.
+
+   
+   \begin{proof}
+      \begin{enumerate}
+        \item Es evidente que para cualquier $f\in B(X)$, $\|f\|\geq 0$. Por otro lado, como $\sup\limits_{x\in X}\{ |f(x)|\}\geq~|f(x)|$ para cualquier $x\in
+        X$, es claro que $\|f\|=0$ si y sólo si $f(x)=0$ para toda $x\in X$.
+
+      \item Sea $f\in B(X)$ y $\lambda\in\mathbb{R}$. Entonces, 
+        \begin{equation*}
+          \|\lambda f\|=\sup\limits_{x\in X}|\lambda f(x)|=\sup\limits_{x\in X}|\lambda||f(x)|=
+          |\lambda|\sup\limits_{x\in X}|f(x)|=|\lambda|\|f\|.
+        \end{equation*}
+      \item Sean $f,g\in B(X)$. Entonces
+        \begin{equation*}
+        \|f+g\|=\sup\limits_{x\in X}|f(x)+g(x)|
+        \leq\sup\limits_{x\in X}|f(x)|+\sup\limits_{x\in X}|g(x)|=
+          \|f\|+\|g\|,
+        \end{equation*}
+      \end{enumerate}
+      lo cual muestra que $\|\cdot\|$ es una norma en $B(X)$.
+    \end{proof}
+\end{example}       
+  \begin{example}\label{espaciodehilbert}
+Denotemos por $\ell_2$ el conjunto dado por
+   \begin{equation*}
+    \ell_2=\left\{x=(x_1,x_2,\dots)\left|~
+        x_i\in \mathbb{R},~\sum_{i=1}^\infty|x_i|^2<\infty\right.
+    \right\}.
+   \end{equation*}
+   $\ell_2$ es un espacio lineal, dónde  la suma está definida por $x+y=(x_1+y_1,x_2+y_2,\dots)$; el producto por escalares por $\lambda x=(\lambda x_1,\lambda x_2,\dots);$ y el vector cero es el punto $(0,0,\dots)$.
+
+Se define en $\ell_2$ la función $\|\cdot\|:\ell_2\to\mathbb{R}$, de la siguiente manera:  
+    $$\|x\|=\sqrt{\sum_{i=1}^\infty|x_i|^2}.$$
+El espacio $(\ell_2,\|\cdot\|)$ es un espacio normado
+  conocido como \textbf{espacio de Hilbert}.
+
+  \begin{proof}
+   Primero veamos que $\ell_2$ es cerrado bajo la suma y la múltiplicación por escalares. En efecto, si $x=(x_1,x_2,\dots)$, y $y=(y_1,y_2\dots)$ son dos puntos arbitrarios de $ \ell_2$, 
+   \begin{equation*}
+    \sum_{i=1}^{\infty}\left|x_i + y_i\right|^2 = \sum_{i=1}^{\infty}(\left|x_i\right|^2 +
+     2\left|x_i\right|\left|y_i\right| + \left|y_i\right|^2)
+     =\sum_{i=1}^{\infty}\left|x_i\right|^2 +
+     2\sum_{i=1}^{\infty}\left|x_i\right|\left|y_i\right| +
+     \sum_{i=1}^{\infty}\left|x_i\right|^2.
+   \end{equation*}
+   
+ Pero el primer y  el \'ultimo  sumando  son  series convergentes, por lo que para demostrar la convergencia de $\sum\limits_{i=1}^{\infty}\left|x_i + y_i\right|^2$ s\'olo faltaría demostrar  la convergencia
+  de la serie $\sum\limits_{i=1}^{\infty}|x_i||y_i|$. Aplicando  la 
+   desigualdad de Cauchy-Schwarz, tenemos que
+    $$\sum_{i=1}^n|x_i||y_i|\leq\sqrt{\Big{(}\sum_{i=1}^n|x_i|^2\Big{)}\Big{(}\sum_{i=1}^n|y_i|^2\Big{)}}.$$
+    Tomando el límite cuando $n$ tiente a infinito, tenemos que 
+     \begin{equation}\label{d:c s}  \sum_{i=1}^{\infty}\left|x_i\right|\left|y_i\right| \leq
+      \sqrt{\Big{(}\sum_{i=1}^{\infty}\left|x_i\right|^2 \Big{)}\Big{(}\sum_{i=1}^{\infty}\left|y_i\right|^2\Big{)}}.
+\end{equation}
+
+   Como  las series
+   $\sqrt{\sum_{i=1}^{\infty}\left|x_i\right|^2}$ y $\sqrt{\sum_{i=1}^{\infty}\left|y_i\right|^2}$
+   convergen, el producto 
+   $$\Big{(}\sum_{i=1}^{\infty}\left|x_i\right|^2 \Big{)}\Big{(}\sum_{i=1}^{\infty}\left|y_i\right|^2\Big{)}<\infty.$$  Luego
+   $$ \sum_{i=1}^{\infty}\left|x_i\right|\left|y_i\right| \leq \infty ,$$
+   como se quería demostrar.
+   
+   Por otro lado, 
+  si $x\in\ell_2$ y $\lambda \in\mathbb{R}$,  se tiene que:
+    \begin{equation*}
+      \sum_{i=1}^\infty|\lambda
+      x_i|^2=\sum_{i=1}^\infty|\lambda|^2|x_i|^2 =
+      |\lambda|^2\sum_{i=1}^\infty|x_i|^2<\infty,
+    \end{equation*}
+    lo cual implica que $\lambda
+    x\in\ell_2$.
+    Por \'ultimo, verificaremos que la función $\|\cdot\|$ es una norma. Es claro que $\|\cdot\|$ satisface los axiomas $1$ y $2$ de la definición~\ref{def norma}. 
+
+   Como hemos visto anteriormente $\|x+y\|^2=\|x\|^2+\|y\|^2+2\sum\limits_{i=1}^{\infty}|x_i||y_i|$. Observemos que de la desigualdad~(\ref{d:c s}), se sigue directamente que 
+   $$\sum\limits_{i=1}^{\infty}|x_i||y_i|\leq \|x\|\|y\|,$$
+   por lo que
+   $$\|x+y\|^2\leq\|x\|^2+\|y\|^2+2\|x\|\|y\|=(\|x\|+\|y\|)^2.$$
+   De donde podemos concluir que $\|x+y\|\leq\|x\|+\|y\|$.
+  \end{proof}
+\end{example}
+\section{Ejercicios del cap\'\i tulo}
+ \begin{enumerate}[1.]
+  
+  \item Sea $X=\{1,2,3\}$. Queremos construir una m\'etrica para $X$,
+   que satisfaga $d(1,2)=2$ y $d(1,3)=3$ ¿Cu\'al debe ser el valor de
+   $d(2,3)$ para que $d$ sea m\'etrica?
+  \item Sea $X\neq\emptyset$. Prueba que si $d(x,y)$ satisface que
+   $d(x,y)\geq 0$, $d(x,y)=0$
+   si y sólo si $x=y$ y la desigualdad del tri\'angulo, entonces
+   $d'(x,y)=d(x,y)+d(y,x)$ es una m\'etrica para $X$.
+  \item ?` Cu\'ales de las siguientes son m\'etricas para $\mathbb{R}$?
+   \begin{enumerate}
+    \item $d(x,y)=(x-y)^2,$
+    \item $d(x,y)=\sqrt{|x-y|},$
+    \item $d(x,y)=|x^2-y^2|,$
+    \item $d(x,y)=||x|-|y||.$
+   \end{enumerate}
+  
+  
+\item Sea $X$ el conjunto formado por las casillas de un tablero de ajedrez como el que se ilustra a continuación.
+
+ \begin{figure}[h!]
+      \begin{center}
+      \includegraphics*[scale=0.2]{tablero}
+      \end{center}
+   \end{figure}
+ Considermos el caballo (C), la Reina (D), el rey (R) y la torre (T). Para cada una de estas piezas definamos las siguientes funciones de $X\times X$ en $\mathbb{R}$:
+\begin{enumerate}  
+\item $d_C(x, y)=$ mínimo número de movimientos que  necesita un caballo para ir de la casilla $x$ a la casilla $y$, 
+\item $d_D(x,y)=$ mínimo número de movimientos que  necesita la Reina para ir de la casilla $x$ a la casilla $y$,
+\item $d_R(x,y)=$ mínimo número de movimientos que  necesita un Rey para ir de la casilla $x$ a la casilla $y$,
+\item $d_T(x,y)=$ mínimo número de movimientos que  necesita una torre para ir de la casilla $x$ a la casilla $y$.
+  \end{enumerate}
+  Por ejemplo, $d_C(B2,G6)=3$, mientras que $d_D(B2,G6)=2$.
+  Demuestra que cada una de estas funciones define una métrica en $X$ ¿Porqué el alfil no puede definir una métrica en $X$?
+  Para cada una de las métricas describe cómo serían las bolas abiertas.
+  \item Da un ejemplo de un espacio métrico  $X$, en el cual existan puntos $x$ y $y$, tales que $B(x,r)\subsetneqq B(y,q)$ con $r>q$.
+  \item Define una métrica $d$ en $\mathbb{R}^2$ tal que la bola unitaria coincida con el interior de la elipse dada por $\frac{x^2}{a^2}+\frac{y^2}{b^2}=1$; es decir, $B((0,0),1)=\{(x,y)\in\mathbb{R}^2|~\frac{x^2}{a^2}+\frac{y^2}{b^2}<1\}$, con $a$ y $b$ números reales positivos.
+  \item Sean $d_X$ y $d_Y$ m\'etricas para los espacios $X$ y $Y$
+   respectivamente. Menciona al menos dos m\'etricas para el producto
+   $X\times Y$.
+  \item Sean $X=[0,1)$ y $\rho:X\times X\to \mathbb{R}$ dada por 
+  $$\rho(x,y)=\min \{|x-y|,1-|x-y|\}.$$
+  Demuestra que $\rho$ es una métrica en $X$. Interpreta geométricamente.
+  \item Considera el espacio métrico $(X,\rho)$ del ejercicio anterior. Sea $f:X\to\mathbb{R}$ dada por $f(x)=x$ ¿Es continua esta función?
+  \item Demuestra que si $(X,d)$ es un espacio métrico discreto, y $Y$ es un espacio métrico arbitrario, entonces cualquier función $f:X\to Y$ es continua.
+   \end{enumerate}
+ 
+\end{document}

@@ -1,0 +1,788 @@
+%\iclude{encabezados}
+\chapter{Axiomas de Separaci{\'o}n}
+
+Hasta ahora, nos hemos restringido a hablar de las características generales de los espacios topológicos.
+Conocemos varios ejemplos de éstos y seguramente ya habremos notado algunas diferencias entre 
+ellos.
+Sin embargo, la simple definición de un espacio topológico es demasiado general. Es por ello, que
+para obtener
+ más resultados, necesitamos establecer algunas restricciones a los espacios topológicos.
+ 
+ En el capítulo 2, hablamos de los axiomas de numerabilidad, los cuales diferencían a los 
+ espacios según la cardinalidad de las bases. En el presente capítulo, hablaremos
+ de los axiomas de separación, los cuales nos permiten saber cuándo es posible separar 
+ puntos y conjuntos cerrados en un espacio topológico.
+
+\section{Axiomas de separación}
+\begin{definition}
+  Diremos que un espacio topológico $X$ satisface el axioma de separación \textbf{$ T_0$}, 
+o más brevemente, que es $T_0$ (denotado por $X\in T_0$), si
+  para cualquier par de puntos distintos $x,y\in X$, existe un abierto
+  $U$ en $X$, tal que $|U\cap \{x,y\}|=1$.
+\end{definition}
+
+\begin{figure}[h]
+\includegraphics*[scale=.5]{t0}
+\caption{Espacio $T_0$}
+\end{figure}
+
+\noindent En otras palabras, un espacio es $T_0$ si para cualesquiera dos puntos distintos
+$x$ y $y$, es posible hallar un abierto $U$ que o bien contenga a $x$ y no a $y$, o que 
+contenga a $y$ pero no a $x$.
+
+\begin{example}[Ejemplos]\label{t0 no t1}
+\begin{enumerate}
+\item Sea $X=\mathbb{R}$ con la topología indiscreta. Entonces $X$ no es $T_0$, pues
+para cualesquiera dos puntos distintos, $x, y\in X$, el único abierto no vacío que los contiene es $X$, y $|X\cap\{x,y\}|=2$. 
+
+\item Sea $X=\mathbb{R}$ y $\tau=\{U\subset \mathbb{R}\mid 1\in U\}$. Entonces el espacio topológico $(X,\tau)$ es $T_0$.
+En efecto, si $x, y\in X$ son dos puntos distintos,  entonces al menos uno de los dos puntos es diferente de 1. Supongamos, sin pérdida de generalidad, que
+$x\neq 1$ y consideremos $U=\{y, 1\}$. Claramente $U$ es vecindad de $y$ y $x\not\in U$, por lo que 
+$X$ es $T_0$.
+\end{enumerate}
+\end{example}
+
+%hereditaria, estable bajo productos (removido)
+
+\begin{definition}
+   Diremos que un  espacio topol\'ogico $X$ es \textbf{$T_1$} (y lo denotaremos por $X\in T_1$), si para
+  cualquier par de puntos distintos $x,y,$ en $X$ existen  vecindades
+  $U$ y $V$ de $x$ y $y$, respectivamente, tales que $y\notin U$ y $x\notin V$.
+\end{definition}
+
+
+\begin{figure}[h]
+\includegraphics*[scale=.5]{t1}
+\caption{Espacio $T_1$}
+\end{figure}
+
+
+\begin{example}
+Sea $X$ un espacio topológico discreto. Entonces $X$ es $T_1$. 
+\end{example}
+
+Los espacios $T_1$ se caracterizan por el hecho de que cada uno de sus puntos constituye un subconjunto cerrado. La siguiente proposición nos lo demuestra.
+
+\begin{proposition}\label{t1=puntos cerrados} Sea $X$ un espacio topol\'ogico. 
+Entonces $X\in T_1$ si y   sólo si para todo punto $x$ de $X$, el subconjunto unipuntual $\{x\}$ es 
+  cerrado en $X$.
+\end{proposition}
+\begin{proof} Supongamos que $X\in T_1$. Sea $x$  un punto arbitrario de $X$
+  y $y\in X\setminus\{x\}$. Entonces, podemos encontrar una vecindad $V$ de $y$ tal que $x\notin V$.
+ Así, tenemos que $y\in V\subset X\setminus\{x\}$, por lo que $y$ es punto interior de  $X\setminus\{x\}$, y por lo tanto, $X\setminus\{x\}$ es abierto en $X$. De este modo, podemos concluir que $\{x\}$ es un subconjunto cerrado en $X$.
+
+Ahora supongamos que para cualquier punto $x\in X$, $\{x\}$ es cerrado en $X$. Sean $x,y\in X$ dos puntos arbitrarios y distintos. Como los subconjuntos
+ $\{x\}$ y $\{y\}$ son cerrados, entonces $U=X\setminus\{y\}$ y
+  $V=X\setminus\{x\}$ son  vecindades de $x$ y $y$, respectivamente. Claramente  $y\notin
+  U$ y $x\notin V$, por lo que $X\in T_1$, como se quería demostrar.
+\end{proof}
+
+
+\begin{proposition} Sea $X$ un espacio topológico. Si $X$ es $T_1$ entonces $X$     es  $T_0.$
+\end{proposition}
+\begin{proof}
+      Sean  $x,y,$ dos puntos distintos de $X$.  Como
+      $X\in T_1$ existen dos vecindades $U$ y $V$ de $x$ y $y$, respectivamente,  tales que  $x\notin V$ y $y\notin U$.  Entonces $|U\cap\{x,y\}|=|V\cap\{x,y\}|=1$, lo cual demuestra que $X$ es $T_0$.
+\end{proof}
+
+El recíproco de la proposición anterior no es cierto. Veamos un ejemplo.
+
+\begin{example} Sea $(X,\tau)$ el espacio topológico del Ejemplo~\ref{t0 no t1}. Entonces, $X$ es un espacio $T_0$ pero no es $T_1$.  Para verlo, simplemente notemos que para cualquier punto $x$ distinto de 1, y para cualquier vecindad $U$ de $x$, $1\in U$.
+\end{example}
+
+
+
+
+\begin{definition}
+   Se dice  que  un espacio topol\'ogico $X$ es \textbf{$T_2$} ( y se denota por $X\in T_2$), si para cualquier par de
+  puntos $x,y,$ distintos, existen dos vecindades $U$ y $V$ de $x$ y de $y$, respectivamente, tales que $U\cap V=\emptyset$.
+\end{definition}
+
+\begin{figure}[h]
+\includegraphics*[scale=.5]{t2}
+\caption{Espacio $T_2$}
+\end{figure}
+
+A los espacios $T_2$ también se les conoce como espacios de \textbf{Hausdorff}, en honor a Felix Hausdorff, quién los introdujo por pirmera vez.
+\begin{example}\label{metrico=hausdorff}
+Si $(X,d)$ es un espacio métrico, entonces $X$ es $T_2$. En efecto, si $x$ y $y$ son dos puntos distintos, se tiene que $d(x,y)>0$. Sea $\varepsilon=\frac{d(x,y)}{2}$, $U=B(x,\varepsilon)$ y $V=B(y,\varepsilon)$. Claramente $x\in U$, $y\in V$ y $U\cap V=\emptyset$. 
+\end{example}
+
+
+\begin{proposition}
+Sea $X$ un espacio topológico. Si $X$ es de Hausdorff, entonces $X\in T_1.$
+\end{proposition}
+
+\begin{proof}
+      Sean $x$ y $y$ dos puntos distintos de $X$. Como $X$ es de Hausdorff, existen dos vecindades ajenas $U$ y $V$, de $x$ y $y$ respectivamente, tales que $U\cap V=\emptyset$. Evidentemente, $x\notin V$ y $y\notin U$, lo cual demuestra que $X$ es un espacio $T_1$.
+\end{proof}
+
+El recíproco de la proposición anterior no  es cierto. Veamos un ejemplo que lo confirme.
+
+\begin{example}
+Sea $X$ un conjunto infinito y $\tau$ la topología cofinita en $X$. Ya que todo conjunto finito, y en particular todo conjunto unipuntual es cerrado tenemos por la proposición \ref{t1=puntos cerrados} que $X\in T_1$. 
+
+ Ahora, consideremos  las vecindades ajenas  $U=X\setminus A$ y $V=X\setminus B$  de $x$ y de $y$, donde $A$ y $B$ denotan a dos subconjuntos finitos de $X$. Como $X$ es infinito, $U$ y $V$ son conjuntos infinitos. Pero como $U\cap V=\emptyset$, tenemos que  $V\subset A$ y $U\subset B$, lo cual nos dice que $U$ y $V$ son conjuntos finitos. Ésto es una contradicción que viene de suponer que $U$ y $V$ son ajenas. Por lo tanto $X$ no es un espacio de Hausdorff.
+\end{example}
+
+
+\begin{definition}
+  Sea $X$ un espacio topol\'ogico. Se dice  que $X$ es \textbf{$T_3$}
+(y se denota por $X\in T_3$) si para cualquier
+   cerrado $F\subset X$ y cualquier punto $x\in X\setminus F$, existen dos abiertos ajenos
+  $U$ y $V$ tales que $x\in U$ y  $F\subset V$.
+\end{definition}
+
+\begin{figure}[h]
+\includegraphics*[scale=.3]{t3}
+\caption{Espacio $T_3$}
+\end{figure}
+
+Notemos que en la definición anterior, no estamos pidiendo que los puntos sean  cerrados. 
+Por lo tanto, un espacio topológico puede ser $T_3$ sin ser $T_2$ o $T_1$.
+
+\begin{example}\label{t3 no t2}
+Sea $X=\{a,b,c\}$ y $\tau=\{X,\emptyset,\{a,b\},\{c\}\}$. Entonces $(X,\tau)$ es un espacio topológico $T_3$ pero no es $T_1$. 
+\end{example}
+La demostración queda como ejercicio al lector.
+
+
+\begin{definition}
+ Un espacio topológico $X$ se llama \textbf{regular} si $X\in T_1\cap T_3$.
+\end{definition}
+
+Es importante señalar que
+ algunos autores usan el término $T_3$ para los espacios regulares.  
+
+\begin{proposition} Si $X$ es un espacio $T_3$ y $Y\subset X$, 
+entonces $Y$ es un espacio $T_3$.
+\end{proposition}
+
+\begin{proof}
+Sean $F\subset Y\subset X$ un subconjunto cerrado en $Y$, y $x\in Y\setminus F$. Entonces $F$ 
+es de la forma $F=F'\cap Y$, donde $F'$ es un subconjunto cerrado de $X$. Evidentemente, 
+$x\notin F'$, por lo que en $X$ existen dos abiertos ajenos, $U'$ y $V'$ tales que $x\in U'$ y 
+$F'\subset V'$. Definamos $U=U'\cap Y$ y $V=V'\cap Y$. Se cumple que $x\in U$, 
+$F\subset V$ y $U\cap V=\emptyset$. Por lo tanto $Y$ es un espacio $T_3$. 
+\end{proof}
+
+\begin{proposition}
+Sea $\{X_\alpha\}_{\alpha\in \mathcal{A}}$  una familia de espacios topol\'ogicos. 
+Si para cada $\alpha\in\mathcal{A}$, el  espacio  $X_\alpha$ es $T_3$, entonces
+ $X=\prod\limits_{\alpha\in \mathcal{A}} X_\alpha$ es $T_3$.
+\end{proposition}
+\begin{proof}
+ Sea $F\subset X$ un subconjunto cerrado y $x=(x_\alpha)\in X\setminus F$. 
+Como $X\setminus F$ es una vecindad de $x$, existe un abierto básico en $X$, 
+$W=\langle W_{\alpha_1},\dots, W_{\alpha_n}\rangle$, tal que $x\in W\subset X\setminus F$.
+ Como $X_\alpha$ es $T_3$ para todo $\alpha\in\mathcal{A}$, en cada $X_{\alpha_i}$ (con $i=1,\dots ,n$) existen dos abiertos ajenos $U_{\alpha_i}$ y $V_{\alpha_i}$, tales que $x_{\alpha_i}\in U_{\alpha_i}$ y $X\setminus W_{\alpha_i}\subset V_{\alpha_i}$. Definamos $U=\langle U_{\alpha_1},\dots, U_{\alpha_n}\rangle $ y $V=\bigcup\limits_{i=1}^n\langle V_{\alpha_i}\rangle.$ 
+ Evidentemente $x\in U$ y $F\subset X\setminus W\subset V$. Además, $U\cap V=\emptyset$. 
+ Por lo tanto, podemos concluir que $X$ es un espacio $T_3$
+\end{proof}
+
+Las propiedades $T_0$, $T_1$ y $T_2$ también son hereditarias y estables bajo productos. Las demostraciones de estos hechos son sencillas y muy parecidas entre sí, por lo que se dejarán como ejercicio para el lector.
+
+
+\begin{corollary}
+El producto arbitrario de espacios topológicos regulares es un espacio regular.
+\end{corollary}
+
+El siguiente teorema nos brinda una caracterización muy práctica de los espacios topológicos $T_3$.
+
+\begin{theorem}  Un espacio topológico $X$ es $T_3$ si y s\'olo si para
+ cada punto $x$ en $X$ y cada  abierto $W$ tal que $x\in W$, 
+existe un abierto $U$ tal que $x\in U\subset\overline{ U}\subset W.$
+
+\end{theorem}
+\begin{proof}
+Supongamos que $X$ es $T_3$. 
+Sea $x\in X$ y $W$ una vecindad de $x$. Entonces $F=X\setminus W$ es un conjunto 
+cerrado tal que $x\notin F$. Como $X$ es $T_3$ ,  existen dos vecindades  $U$ y $V$, de $x$ 
+y $F$, respectivamente, tales que $V\cap U=\emptyset$. Entonces $U\subset X\setminus V$, y 
+como $X\setminus V$ es cerrado en $X$, es claro que $\overline{U}\subset X\setminus V$. 
+Además, $F=X\setminus W\subset V$, por lo que $X\setminus V\subset W$. Así, 
+podemos conluir que $x\in U\subset\overline{U}\subset W$.
+
+Ahora supongamos que para cualquier punto $x$ y para cualquier vecindad $W$ de $x$, 
+existe una vecindad $U$ de $x$ tal que $x\in U\subset\overline{U}\subset W$. 
+Sea $F$ un  cerrado en $X$ y $x\in X\setminus F$. Como $W=X\setminus F$ es vecindad de $x$, 
+podemos encontrar un abierto $U$ tal que $x\in U\subset\overline{U}\subset W$. 
+Sea $V= X\setminus \overline{U}$. Entonces $U$ y $V$ son dos abiertos ajenos tales que 
+$x\in U$, $F\subset V$ y $U\cap V=\emptyset$. Por lo tanto $X$ es un espacio $T_3$.   
+\end{proof}
+
+Ya vimos en el Ejemplo~\ref{t3 no t2} que en general el axioma $T_3$ no implica 
+el axioma $T_2$. Sin embargo, esta situación cambia cuando pedimos que el espacio sea regular. 
+\begin{proposition}Si $X$ es un espacio topológico regular, entonces $X$ es de Hausdorff.
+\end{proposition}
+
+\begin{proof}
+ Sean $x$ y $y$ dos puntos distintos de $X$. Como $X$ es $T_1$,
+      entonces $\{y\}$ es un conjunto cerrado de $X$. Además, comos $X$ es $T_3$, existen dos abiertos disjuntos, $U$ y $V$, tales que $x\in U$ y $y\in V$. Así, $X$ es un espacio de Hausdorff.
+
+\end{proof}
+
+Una vez más, el recírpoco de este teorema no es cierto. Veamos un ejemplo para cerciorarnos de ello.
+
+\begin{example}
+Sea $X=[0,1]$. Denotemos por $\tau_e$ la topología euclideana en $X$. 
+Sea $A=\{\frac{1}{n}\mid n\in\mathbb{N}\}$ y denotemos por $\sigma $ al siguiente conjunto:
+$$\sigma=\{U\setminus B\mid U\in\tau_e, ~0\in U,~B\subset A\}.$$ 
+Entonces $\tau=\tau_e\cup \sigma$ es una topología en $X$ que hace al espacio $(X,\tau)$ un 
+espacio de Hausdorff, pero no un espacio regular, como verificaremos enseguida:
+
+Dejamos como ejercicio al lector demostrar que $\tau$ es una topología en $X$. 
+
+Sean $x$ y $ y$ dos puntos distintos en $X$. Por el Ejemplo~\ref{metrico=hausdorff} 
+sabemos que $(X,\tau_e)$ es un espacio de Hausdorff, por lo que podemos encontrar dos 
+conjuntos $U,V\in\tau_e\subset \tau$ tales que $x\in U$, $y\in V$ y $U\cap V=\emptyset$. 
+Por lo tanto, $(X,\tau)$ es también un espacio de Hausdorff.
+
+Ahora veamos que $X$ no es un espacio regular. Notemos que $A$ es cerrado en $X$, ya que 
+$X\setminus A\in \sigma\subset \tau$. Por otro lado, el punto $0$ no pertenece a $A$. 
+Supongamos que existen dos abiertos  $U$ y $V$, tales que $0\in U$, $A\subset V$ y 
+$U\cap V=\emptyset$. Como $0\notin V$, inferimos que $V\in \tau_e$. 
+Además, $U$ no puede ser un abierto euclideano, pues de lo contrario, $U\cap A\neq\emptyset$, lo cual contradice el hecho de que $U$ y $V$ son ajenos. 
+Entonces $U=U'\setminus B$, en donde $U'\in\tau_e$ y $B\subset A$. Ya que $0\in U'$, 
+existe $m\in\mathbb{N}$ tal que $1/m\in U'$. Como $1/m\in A\subset V$, podemos encontrar 
+$\varepsilon>0$ tal que $(1/m-\varepsilon,1/m+\varepsilon)\subset V\cap U'$. 
+Notemos que $U\cap(1/m-\varepsilon,1/m+\varepsilon) \neq\emptyset$, por lo que $V\cap U\neq\emptyset$, una contradicción. Así podemos concluir que $(X,\tau)$ no es un espacio regular, lo que se quería demostrar.
+\end{example}
+
+\begin{definition}
+  Sea $X$ un espacio topol\'ogico. Se dice que  
+$X$ es \textbf{$T_{3\frac{1}{2}}$} (y se denota por $X\in T_{3\frac{1}{2}}$), 
+  si para cualquier punto $x$ y cualquier cerrado
+  $A\subset X$, existe una funci\'on continua $f:X\to [0,1]$, tal que
+  $f(x)=0$ y $f(y)=1$ para todo $y\in A$.
+  
+  Diremos que el espacio topológico $X$ es  de \textbf{Tychonoff}
+ o \textbf{completamente regular} 
+si $X\in T_1$ y $X\in T_{3\frac{1}{2}}$.
+\end{definition}
+
+
+
+Al igual que en el caso de los espacios $T_3$, algunos autores añaden a la definición de $T_{3\frac{1}{2}}$,
+la condición de que el espacio sea $T_1$. 
+
+\begin{proposition} Si un espacio topológico $X$ es  $T_{3\frac{1}{2}}$, entonces $X$ es $T_3$
+\end{proposition}
+\begin{proof}
+  Sea  $A\subset X$ cerrado en $X$ y $x\in X\setminus A$. Como $X$ es
+  $T_{3\frac{1}{2}}$,  existe una funci\'on continua
+  $f:X\to [0,1]$, tal que $f(x)=0$ y $f(A)\subset\{1\}$. 
+  Tomemos $U=f^{-1}\big([0,\frac{1}{2})\big)$ y $V=f^{-1}\big((\frac{1}{2},1]\big)$. Como $f$ es
+  continua y $[0,\frac{1}{2})$ y $(\frac{1}{2},1]$ son abiertos en $[0,1]$, entonces
+  $U$ y $V$ son dos abiertos  ajenos en $X$. Además $x\in U$ y $A\subset V$, 
+  por lo que $X$ es un espacio $T_3$.
+\end{proof}
+\begin{corollary}Si $X$ es un espacio  de Tychonoff, entonces $X$ es un espacio regular.
+\end{corollary}
+
+La recíproca de la proposición anterior tampoco se da, como evidencía el  siguiente ejemplo, debido a A. Mysior.
+\begin{example}
+Sea $X=\{(x,y)\in \mathbb R^2\mid y>0\}\cup\{a\}$, es decir el semiplano superior cerrado junto con un punto adicional $a$.
+Construyamos la topología para $X$ definiendo bases locales en cada punto.
+
+ Para los puntos  $(x,y)$, con $y>0$, la base local $\beta_{(x,y)}$ constará únicamente del singulete $\{(x,y)\}$. Para cada $x\in\mathbb R$ fijo consideremos los conjuntos
+$I_x=\{(x,y)\mid 0\leq y\leq 2\}$ e $I'_x=\{(x+y,y)\mid 0\leq y\leq 2\}$, y así para cada punto de la forma $(x,0)$, definimos su base local como los conjuntos de la forma $(I_x\cup I'_x)\setminus F$, donde $F$ es un conjunto finito. Por último, para $a$, definimos
+$\beta_a=\{a\}\cup\{(x,y)\mid x>n\}$.
+
+ Queda como ejercicio para el lector corroborar que esto efectivamente define una topología en $X$.
+
+ 
+\begin{figure}[h]
+\includegraphics*[scale=.7]{mysior}
+\caption{Ejemplo}
+\end{figure}
+
+Es sencillo verificar que $X$ es $T_1$. Las vecindades básicas de los puntos de $X\setminus \{a\}$ son simultáneamente abiertas y cerradas, y para $a$ vemos que $\overline{U_{n+2}}\subset U_n$. Con esto, para cada punto en x, y cualquier vecindad suya $V$, hemos encontrado un abierto $W$ tal que $x\in W\subset \overline W\subset V$, con lo que, aplicando el teorema \ref{}, queda probado que $X$ es $T_3$.
+\medskip
+
+Para probar que $X$ no es $T_{3\frac{1}{2}}$, consideremos $A=\{(x,0)\mid x\leq 1\}$, que es un subconjunto cerrado de $X$. Veremos que para cualquier función continua $f:X\to \mathbb [0,1]$  tal que $f(A)=\{0\}$, necesariamente $f(a)$ será también cero. En efecto, ya que $f^{-1}(0)$ debe ser un subconjunto cerrado, es suficiente mostrar que para todo $n\in \mathbb N$ el conjunto 
+$K_n=f^{-1} (0)\cap\{(x,0)\mid n-1\leq x\leq n\}$ es distinto del vacío, pues con esto estaríamos demostrando que $a\in \overline{f^{-1}(0)}$.
+
+Probaremos por inducción que cada $K_n$ es de hecho infinito. Claramente $K_1$ lo es. Suponiendo que $K_n$ es infinito, podemos hallar $C\subset K_n$ un subconjunto infinito numerable. Para cada $(c,0)\in C$, $f^{-1}([1/n,1])\cap I'_c$ debe ser finito, pues $f^{-1}([0,1/n))$ es vecindad de $c$.
+ Así, el conjunto $I'_c\setminus f^{-1}(0)=\bigcup\limits_{i=1}^{\infty}f^{-1}([1/n,1])\cap I'_c$ es a lo más numerable, por lo que la proyección
+ $P =\big\{ (x,0)\mid (x,y)\in\bigcup\limits_{(c,0)\in C}\{I'_c\setminus f^{-1}(0)\}\big\}$
+ es también numerable.
+
+Es claro entonces que $F=\{(x,0)\mid n\leq x\leq n+1\}\setminus P$ es infinito. Además, para cada $(x,0)\in F$ el segmento $I_x$ interseca a $I'_c\cap f^{-1}(0)$ para cada $(c,0)\in C$, de modo que hay una infinidad de puntos en $I_x\cap f^{-1}(0)$, y por tanto no existe ninguna vecindad de $(x,0)$ que lo separe de $f^{-1}(0)$, y como $f^{-1}(0)$ es cerrado, se sigue que $(x,0)\in f^{-1}(0)$. En consecuencia $F\subset f^{-1}(0)$, por lo que esl conjunto $K_{n+1}$ es infinito, lo que buscábamos demostrar.
+
+
+
+
+\end{example}
+
+La propiedad de ser un espacio $T_{3\frac{1}{2}}$ es una propiedad hereditaria.
+
+\begin{proposition}\label{subespacios t3 y medio} Sea $X$ un espacio topológico y $Y\subset X$ un subconjunto cualquiera. Si $X\in T_{3\frac{1}{2}}$, entonces $Y \in T_{3\frac{1}{2}}$.
+\end{proposition}
+\begin{proof}
+ Sean $A\subset Y$  cerrado en  $Y$ y
+      $x\in Y\setminus A$ . Entonces existe un subconjunto cerrado $A'$ en $X$ tal que 
+$A= A'\cap Y$. Evidentemente $x\notin A'$. Además, como $X$ es $T_{3\frac{1}{2}}$ 
+existe una funci\'on continua $g:X\to [0,1]$ tal que $g(x)=0$ y $g(A')=\{1\}$. Sea 
+$f=g|_Y:Y\to[0,1]$ la restricción a $Y$ de $g$. Entonces $f$ es una función continua tal que $f(x)=0$ y $f(y)=1$ para todo $y\in A$. Por lo tanto, $Y$ es un espacio $T_{3\frac{1}{2}}$.
+\end{proof}
+
+\begin{proposition}\label{producto de t3s}
+Sea $\{X_\alpha\}_{\alpha\in \mathcal{A}}$  una familia de espacios topol\'ogicos. Si para cada $\alpha\in\mathcal{A}$, el espacio
+ $X_\alpha$ es $ T_{3\frac{1}{2}}$,  
+entonces $X=\prod\limits_{\alpha\in \mathcal{A}} X_\alpha$ es $T_{3\frac{1}{2}}$.
+\end{proposition}
+\begin{proof}
+Sea $A$ cerrado en $X$ y $x=(x_\alpha)\in X\setminus A$.  Como $A$ es cerrado, $X\setminus A$ 
+es una vecindad de $x$, por lo que podemos encontrar un abierto básico $W=\langle 
+W_{\alpha_1},\dots, W_{\alpha_n}\rangle$ en $X$ tal que $x\in W \subset X\setminus A$. 
+
+Como cada $X_{\alpha_i}$ es un espacio $T_{3\frac{1}{2}}$, existe una función continua 
+$f_{\alpha_i}:X_{\alpha_i}\to [0,1]$ tal que $f_{\alpha_i}(x_{\alpha_i})=1$ y 
+$f_{\alpha_i}(X_{\alpha_i}\setminus W_{\alpha_i})=\{0\}$. Para cada $\alpha_i$, consideremos 
+la proyección $\pi_{\alpha_i}:X\to X_{\alpha_i}$ en la $\alpha_i$-ésima coordenada, y llamemos 
+$g_{\alpha_i}=f_{\alpha_i}\circ \pi_{\alpha_i}$. Evidentemente, $g_{\alpha_i}$ es una función continua.
+Ahora definamos $f:X\to[0,1]$ por
+$$f=g_{\alpha_1}\cdot g_{\alpha_2}\cdot ... \cdot g_{\alpha_n}.$$
+Es decir, $f(z)=g_{\alpha_1}(z)\cdot g_{\alpha_2}(z)\cdot ... \cdot g_{\alpha_n}(z)$ para todo $z\in X$. Así, 
+$$f(x)=f_{\alpha_1}(x_{\alpha_1})\cdot f_{\alpha_2}(x_{\alpha_2})\cdot ... \cdot f_{\alpha_n}(x_{\alpha_n})=1\cdot 1\cdot ...\cdot 1=1.$$
+ Por otro lado, si $y\in A$ entonces $y\notin W$, por lo que existe $i\in\{1,\dots,n\}$, tal que $y_{\alpha_i}\notin W_{\alpha_i} $. Entonces $f_{\alpha_i}(y_{\alpha_i})=0$, de donde $f(y)=0$.
+La prueba de que $f$ es continua la dejamos como ejercicio al lector.
+\end{proof}
+
+\begin{definition}
+Sea $(X,\tau)$ un espacio topol\'ogico. Se dice que $X$ es \textbf{$T_4$} 
+(y se denota por $X\in T_4$),  si para cualesquiera subconjuntos cerrados ajenos $F$ y $G$, 
+existen dos abiertos ajenos $U$ y $V$ tales que $F\subset U$ y $G\subset V$.
+  Se dice que el espacio $X$ es  \textbf{normal}, si $X\in T_1\cap T_4$.
+\end{definition}
+
+\begin{figure}[h]
+\includegraphics*[scale=.3]{t4}
+\caption{Espacio $T_4$}
+\end{figure}
+
+A diferencia de los axiomas $T_i$ con $i<4$, la propiedad de ser $T_4$ no es hereditaria. 
+Sin embargo, es débilmente hereditaria (la heredan los subconjuntos cerrados), como lo veremos 
+en la siguiente proposición.
+\begin{proposition}
+Sea $X$ un espacio topológico $T_4$ y $Y\subset X$ un subconjunto cerrado. Entonces $Y$ es $T_4$.   \end{proposition}
+
+\begin{proof}
+ Sean $F$ y $G$ cerrados en $Y$, entonces $F$ y $G$ son cerrados en $X$. 
+ Como $X$ es $T_4$, existen dos abiertos ajenos $U'$ y $V'$ en $X$ tales que $F\subset U'$ 
+ y $G\subset G'$. Claramente $U=U'\cap Y$ y $V=V'\cap Y$ son dos conjuntos ajenos, abiertos 
+ en $Y$ tales que $F\subset U$ y $G\subset V$. Por lo tanto, $Y$ es un subespacio $T_4$.
+\end{proof}
+
+El siguiente teorema nos presenta una forma práctica de caracterizar los espacios $T_4$.
+\begin{theorem}\label{t4} Un espacio topológico $X$  es $T_4$ si y s\'olo si para
+ cada subconjunto cerrado $F\subset X$ y cada  vecindad $W$ de
+$F$, existe un abierto $U$ en $X$ tal que $F\subset U\subset\overline{ U}\subset W$.
+
+\end{theorem}
+\begin{proof}
+  Supongamos que $X$ es un espacio $T_4$.  Sean $F\subset X$ un subconjunto  cerrado en $X$ y $W$ una vecindad de $F$. Entonces $G=X\setminus W$ es cerrado en $X$ y $G\cap F=\emptyset$. Como $X$ es $T_4$, existen dos abiertos $U$ y $V$ tales que $F\subset U$, $G\subset V$ y $U\cap V=\emptyset$. Así, $U\subset X\setminus V$, y como $X\setminus V$ es un subconjunto cerrado, esto implica que $\overline{U}\subset X\setminus V$. Por consiguiente $\overline{U}\subset X\setminus V\subset X\setminus G=W$. Claramente $U$ es el abierto buscado.
+  Por otro lado, si  $F$ y $G$ dos subconjuntos ajenos y cerrados de $X$.  Entonces,  $W=X\setminus G$ es un abierto que contiene a $F$. Por la hip\'otesis, existe un abierto $U$ tal que $F\subset U\subset\overline{U}
+   \subset W$. Llamemos $V=X\setminus\overline{U}$. Entonces $U$ y $V$ son dos vecindades de $F$ y $G$, respectivamente, tales que $U\cap V=\emptyset$. Por lo tanto, $X$ es $T_4$.  
+\end{proof}
+
+
+\section{Lema de Urysohn}
+\begin{theorem}[Lema de Urysohn]
+  Sea $X$ un espacio $T_4$. Supongamos que $F$ y $G$ son subconjuntos
+  cerrados de $X$, tales que $F\cap G=\emptyset$. Entonces, existe una
+  funci\'on continua $f:X\to [0,1]$  tal que $f(F)=\{0\}$ y $f(G)=\{1\}$. 
+
+La función $f$ recibe el nombre de \textbf{función de Urysohn} del par (F,G).
+\end{theorem}
+\begin{proof}
+ Sea $P=[0,1]\cap\mathbb{Q}$, donde $\mathbb{Q}$ denota el conjunto de los números racionales. 
+Como $P$ es un conjunto numerable, podemos numerar los elementos de $P$ de manera que 
+$P=\{r_n\mid n=0,1,2\dots\}$ en donde  $r_0=0$ y $r_1=1$. Construiremos por inducción sobre 
+$n$ una sucesión de conjuntos abiertos $U_{r_n}$ los cuales cumplirán las siguientes dos 
+condiciones: 
+  \begin{enumerate}[(1)]
+  \item $F\subset U_0$ y $U_1\subset X\setminus G$,
+  \item si $r<s$ entonces $\overline {U_r}\subset U_s$.
+  \end{enumerate}
+  
+  Como $X$ es un espacio $T_4$, por el teorema \ref{t4} existe un abierto $U$ tal que
+  $$F\subset U\subset \overline{U}\subset X\setminus G.$$
+  Definamos $U_0=U$ y $U_1=X\setminus G$. Claramente $\{U_0, U_1\}$ cumple las condiciones 
+$(1)$ y $(2)$.
+  
+ Supongamos que los abiertos  $U_{r_0}, \dots ,U_{r_{n-1}}$ ya están construidos y satisfacen las condiciones $(1)$ y $(2)$. Para construir el abierto $U_{r_n}$ denotemos:
+
+ $$r=\max\{r_k\mid k< n, r_k<r_n\}$$ y
+  $$s=\min\{r_k\mid k< n, r_k>r_n\}.$$ Por la  
+hipótesis de inducción, $\overline{U_r} \subset U_s$. Aplicando nuevamente el hecho de que  $X\in T_4$, podemos encontrar un abierto $V$ tal que $\overline{U_r}\subset V\subset \overline{V}\subset U_s$. Definamos $U_{r_n}=V$. 
+Evidentemente $\{U_{r_0},U_{r_1},\dots,U_{r_n}\}$ satisface las condiciones $(1)$ y $(2)$. 
+Así, podemos construir la sucesión $\{U_{r_n}\}_{n\in\mathbb{N}}$ de conjuntos abiertos que satisfacen las condiciones $(1)$ y $(2)$.
+  
+  Ahora definamos la función $f:X\to [0,1]$ mediante la fórmula 
+\begin{equation*}
+f(x)=\begin{cases}
+\inf \{r\in P\mid x\in U_r\},& \text{ si }x\in  X\setminus G,\\
+ f(x)=1, &\text{ si }x\in G.\\
+ \end{cases}
+  \end{equation*}
+  Veamos que $f$ es la función buscada. 
+  Si $x\in G$ entonces $f(x)=1$. Por otro lado, si $x\in F$ entonces 
+  $x\in U_0$, de donde $f(x)=0$. 
+
+Para terminar la demostración necesitamos verificar la continuidad de $f$. Para ello, basta ver que  para cualquier $a\in(0,1)$ , $f^{-1}([0,a))$ y $f^{-1}((a,1])$ son
+  abiertos en $X$.
+ 
+Notemos que $f(x)<a$ si y sólo si existe $q\in P$ tal que $x\in U_q$ y $q<a$. Entonces, es fácil ver que 
+   $$f^{-1}\big([0,a)\big)=\bigcup\limits_{q<a}U_q.$$
+  Así, $f^{-1}\big([0,a)\big)$ es abierto en $X$.  
+
+Análogamente, $f(x)>a$ si y s\'olo si existe $q\in P$ tal que 
+  $x\notin U_z$ y $q>a$. En virtud de la  condición $(2)$, $x\notin\overline{U_q}$ para todo 
+$q\in P$ con $a<q<r$. Así, podemos decir que $f(x)>a$ si y sólo si existe $q\in P$, tal que $q>a$ y $x\in X\setminus\overline{U_q}$. Por lo tanto $$f^{-1}\big((a,1]\big)=\bigcup\limits_{q>a}\Big{(}X\setminus\overline{U_q}\Big{)}.$$
+  Así, $f^{-1}\big((a,1]\big)$ es abierto en $X$, lo cual demuestra la continuidad de $f$.
+\end{proof}
+\begin{corollary}\label{normal implica tychonoff}
+  Si $X$ es un espacio normal entonces $X$ es de Tychonoff.
+\end{corollary}
+\begin{proof}
+  Sea $A$ cerrado  en $X$ y $x\in X\setminus A$. Como $X$
+  es $T_1$, $\{x\}$ es cerrado en $X$. Por otro lado,  como $X$ es normal, podemos aplicar el
+  lema de Uryshon para encontrar una funci\'on continua $f:X\to [0,1]$ tal que $f(A)=1$ y
+  $f(x)=0$. Así, podemos concluir que $X$ es un espacio de Tychonoff.
+\end{proof}
+
+A continuación veremos un ejemplo que nos mostrará que el recíproco del corolario~\ref{normal implica tychonoff} no  es cierto.
+
+\begin{example}\label{niemitzki no es normal}
+Sea $(L,\tau)$ el plano de Niemytzki (ejemplo \ref{plano de niemytzki}). Entonces $L$ es un espacio de Tychonoff pero no es normal.
+
+\begin{proof}
+Recordemos que $L_1$ denota al conjunto $\{(x,y)\in\mathbb{R}^2\mid y=0\}$, 
+$L_2=\{(x,y)\in\mathbb{R}^2\mid y>0\}$ y $L=L_1\cup L_2$.
+Sea $\tau_e$ la topología euclideana en $L$. Notemos que $\tau_e\subset \tau$. Sea $U\in \tau_e$ y $x\in U$. Si $x\in L_2$, entonces existe $r>0$, tal que $B(x,r)\subset U$. Como $B(x,r)\in\tau$, $x$ es punto interior de $U$ respecto a $\tau$. Ahora, si $x\in L_1$, entonces $x=(x_1,0)$. Además, como $U$ es un abierto euclideano, existe $r>0$, tal que  $B(x,r)\cap U\subset U$. Sea $z=(x_1,\frac{r}{2})$. Entonces,  
+$$B(z,r/2)\subset B(x,r)\cap U\subset U.$$ 
+Más aún, $B(z,r/2)$ es tangente a $L_1$ en $x$. Por lo tanto, $W=B(z,r/2)\cup\{x\}$ es una vecindad de $x$ respecto a $\tau$ contenida en $U$. Por lo tanto, $x$ es punto interior de $U$, respecto a $\tau$. Así hemos demostrado que $U\in \tau$, y por lo tanto, $\tau_e\subset \tau$. 
+
+Usemos éste hecho para demostrar que $(L,\tau)$ es un espacio completamente regular.
+\smallskip
+Primero veamos que $(L,\tau)$ es 
+$T_1$. Sea $x\in L$. Entonces, $L\setminus\{x\}\in \tau_e\subset \tau$. Por lo que
+ el conjunto $\{x\}$ es cerrado en $(L, \tau)$, lo cual demuestra que $(L,\tau)$ es $T_1$.
+
+Ahora consideremos  un subconjunto  $A$ cerrado en $(L,\tau)$, y $x\in L\setminus A$.  Si $x\in L_2$, podemos encontrar $r>0$ tal que $B(x,r)\subset L_2$ y $B(x,r)\cap A=\emptyset$. 
+Entonces el conjunto $B=X\setminus B(x,r) $ es cerrado en $(L,\tau_e)$. Como $(L,\tau_e)$ es un espacio métrico, en particular es completamente regular, por lo que podemos encontrar una función continua $g:(L,\tau_e)\to[0,1]$, tal que $g(x)=0$ Y $g(B)=\{1\}$. 
+
+Consideremos la función identidad, $Id:(L,\tau)\to(L,\tau_e)$. Como  $\tau_e\subset \tau$, $Id$ es una función continua. Consecuentemente, $f:(L,\tau)\to[0,1]$ dada por
+$$f=g\circ Id,$$ es una función continua. Además, $f(x)=0$ y $f(A)=\{1\}$ ya que $A\subset B$.
+
+Por otro lado, si $x\in L_1$, entonces existe un disco abierto $D$, de radio $r$ y tangente a $L_1$ en $x$ tal que $U=D\cup\{x\}\subset L\setminus A$. Denotemos a $x$ por $x=(x_1,0)$ y
+definamos $f:(L,\tau)\to [0,1]$ de la siguiente forma:
+\begin{equation*}
+f(z_1,z_2)=\begin{cases}
+0,&\text{ si } (z_1,z_2)=(x_1,0),\\
+1,& \text{ si }(z_1,z_2)\in L\setminus U,\\
+\frac{(z_1-x_1)^2+z_2^2}{2rz_2}, &(z_1,z_2)\in D.\\
+\end{cases}
+\end{equation*}
+
+Para demostrar que $f$ es continua, considermos $a$ y $b$ en $[0,1]$. Basta demostrar que $f^{-1}([0,a))$ y $f^{-1}((b,1])$ son abiertos en $(L, \tau)$.  Pero esto se sigue de las siguientes igualdades, las cuales quedan como ejercicio al lector:
+\begin{equation*}
+f^{-1}([0,a))=\{x\}\cup B\big((x_1,ra),ra\big)\in\tau,
+\end{equation*}
+y
+\begin{equation*}
+f^{-1}((b,1])=X\setminus \overline{B\big((x_1,rb),rb\big)}^{\tau_e}\in\tau_e\subset \tau.
+\end{equation*}
+ 
+Ahora veamos que $L$ no es $T_4$. Sea $C=\{(x,y)\in L_2\mid x\in\mathbb{Q},~y\in\mathbb{Q}\}$. Es fácil ver que $C$ es un conjunto numerable y denso en $L$. Además observemos que $L_1$ es un subespacio cerrado y discreto de $L$, por lo que cualquier subconjunto $A\subset L_1$ es cerrado en $L$. 
+
+Supongamos que $L$ es $T_4$. Entonces, para cualquier $A\subset L_1$, tanto $A$ como $L_1\setminus A$ son subconjuntos cerrados de $L$, por lo que existen dos abiertos disjuntos $U_A$ y $V_A$ en $L$ tales que $A\subset U_A$ y $L_1\setminus A\subset V_A$. Definamos $C_A=C\cap U_A$. Como $C$ es denso en $L$, $C_A$ no es vacío para todo $A\subset L_1$. 
+
+Afirmamos que si $A$ y $B$ son dos subconjuntos distintos de $L_1$, entonces  $C_A$ y $C_B$ son distintos. En efecto, si $A\neq B$ entonces $A\setminus B\neq\emptyset $ ó $B\setminus A\neq\emptyset$. Supongamos sin pérdida de generalidad que $A\setminus B\neq\emptyset$. Observemos que $A\setminus B=A\cap (L_1\setminus B)$, por lo que $$A\setminus B=A\cap (L_1\setminus B)\subset U_A\cap V_B.$$
+Como $A\setminus B\neq\emptyset$, tenemos que $U_A\cap V_B\neq\emptyset$.  Además, como $C$ es denso en $L$, entonces $$C\cap U_A\cap V_B=C_A\cap V_B\neq\emptyset.$$
+Pero $U_B\cap V_B =\emptyset$, de donde podemos concluir que $C_A\cap V_B\subset C_A\setminus C_B$ y por tanto $C_A\setminus C_B\neq\emptyset$, como se quería demostrar.
+
+Así, la función $\phi:2^{L_1}\to 2^{C}$, dada por $\phi(A)=C_A$ es una función inyectiva. De esta manera, podemos conluir que la cardinalidad $|2^{L_1}|=|2^{\mathbb{R}}|\leq |2^C|=|2^{\mathbb{N}}|$, lo cual es una contradicción. Por lo tanto $L$ no es un espacio $T_4$.
+
+\end{proof}
+\end{example}
+En los espacios métricos, el lema de Urysohn se puede verificar de una manera más simple.
+
+\begin{proposition}\label{lema urysohn para metricos} Sean $(X,d)$ un espacio métrico, y $F$ y $G$ dos subconjuntos cerrados y ajenos de $X$. Entonces existe una función continua $f:X\to [0,1]$ tal que $f^{-1}(0)=F$ y $f^{-1}(1)=G$.
+\end{proposition}
+\begin{proof}
+  Para cada subconjunto cerrado $A\subset X$, definamos la función $d_A:X\to \mathbb{R}$ por 
+  $$d_A(x)=\inf_{z\in A}d(x,z).$$
+
+ Notemos que si $x$ y $y$ son dos puntos distintos, entonces
+ $$d_A(y)=\inf_{z\in A}d(y,z)\leq\inf_{z\in A}\{d(y,x))+d(x,z)\}=\inf_{z\in A}d(x,z)+d(x,y)=d_A(x)+d(x,y).$$
+ Análogamente, se puede observar que $d_A(x)\leq d_A(y)+d(x,y).$ Por lo tanto, para cualquier $x$ y $y$ en $X$ se tiene 
+$$|d_A(x)-d_A(y)|\leq d(x,y).$$Entonces, dada $\varepsilon>0$, si  $d(x,y)<\varepsilon$, tenemos $|d_A(x)-d_A(y)|<\varepsilon$, lo cual demuestra que $d_A$ es una función continua (de hecho uniformemente continua).
+
+Sean  $F$ y $G$  dos subconjuntos cerrados. Entonces la función $f:X\to[0,1]$ definida por
+$$f(x)=\frac{d_F(x)}{d_F(x)+d_G(x)},$$
+es una función bien definida ya que $F\cap G=\emptyset$ y por tanto 
+$d_F(x)+d_G(x)\neq\emptyset$ para todo $x\in X$. $f$ es continua por ser composición de 
+funciones continuas.Además, es fácil observar que  
+$$d_G(x)=0\Leftrightarrow x\in G ~{\rm y}~   d_F(x)=0\Leftrightarrow x\in F.$$ 
+Por lo que $f(x)=0$ si y sólo si $x\in F$ y $f(x)=1$ si y sólo si $x\in G$. Entonces $f$ es la función de Urysohn buscada.
+\end{proof}
+
+\begin{corollary}\label{esp metrico=normal} Todo espacio métrico es un espacio normal.
+\end{corollary}
+
+
+\subsection{Teorema del encaje de Tychonoff} El siguiente teorema nos brinda una caracterización de los espacios de Tychonoff. 
+\begin{theorem}[ Teorema del encaje de Tychonoff]\label{teo encaje tychonoff}
+  Un espacio topológico $X$ es de Tychonoff si y sólo si existe un cardinal $\omega$ y un encaje $h:X\hookrightarrow  {\rm I}^{\omega}$, en donde ${\rm I}$ denota el intervalo $[0,1]$.
+\end{theorem}
+\begin{proof}
+
+Como ${\rm I}$ es un espacio métrico, por el corolario~\ref{esp metrico=tychonoff} ${\rm I}$ 
+ es un espacio de Tychonoff. Luego por la proposición~\ref{producto de t3s}, el espacio 
+${\rm I}^{\omega}$ es de Tychonoff.  Como la propiedad de ser un espacio de Tychonoff es hereditaria, todo subespacio $Y\subset {\rm I}^\omega $ es de Tychonoff (ver proposición~\ref{subespacios t3 y medio}). Por lo tanto, si $X$ es homeomorfo a un subespacio de ${\rm I}^{\omega}$, entonces $X$ también es de Tychonoff.
+
+  Ahora supongamos que $X$ es un espacio de Tychonoff. Sea 
+$$\mathcal{S}=\{s:X\to {\rm I}\mid s\text{ es continua}\}.$$ Llamemos             $\omega=|\mathcal{A}|$ y
+  definamos $h:X\to {\rm I}^{\omega}=\prod\limits_{s\in\mathcal{S}}{\rm I}_s$ 
+(en donde ${\rm I}_s={\rm I}$) 
+como el producto diagonal $h=\underset{s\in\mathcal{S}}{\triangle}s$. Es decir, 
+si $x\in X $, entonces $h(x)_s=\pi_s(h(x))=s(x)$. Como cada $s:X\to {\rm I}={\rm I}_s$ 
+es una función continua, la función $h$ también es continua.
+  
+  Por otro lado, si $x$ y $y$ son dos puntos distintos de $X$,  como $\{y\}$ es cerrado en $X$ y éste es un espacio de Tychonoff, existe una función continua $s_0\in \mathcal{S}$, tal que $s_{0}(x)=0$ y $s_0(y)=1$. Entonces $h(x)_{s_0}\neq h(y)_{s_0}$, por lo que $h(x)\neq h(y)$. De esta manera, queda demostrado que $h$ es una función inyectiva.
+  
+ Demostremos que la familia $\mathcal{s}$ separa puntos de conjuntos cerrados. Sea 
+$B\subset X$ un subconjunto cerrado y $x\in X\setminus B$. Entonces existe una función continua $t\in\mathcal{S}$, tal que $t(B)=\{0\}$ y $t (x)=1$. Evidentemente, $\overline{t(B)}=\{0\}$, por lo que $t(x)\notin \overline{t (B)}$. 
+  Consecuentemente $\mathcal{S}$ separa puntos de subconjuntos cerrados. Entonces, por el teorema de la Diagonal (teorema \ref{teorema de la diagonal}), $h$ es un encaje topológico.
+  \end{proof}
+  
+  Más adelante veremos algunas aplicaciones del teorema anterior. Por el momento continuaremos viendo algunos teoremas clásicos relacionados con los axiomas de separación.
+  
+  \begin{lemma}\label{lemma para T3 y II es T4}
+  Sea $X$ un espacio topológico $T_1$. Supongamos que para cada cerrado $F \subset X$ y para cada vecindad $W$ de $F$, existe una colección numerable de subconjuntos abiertos, $\{W_n\}_{n\in\mathbb{N}}$, tal que $F\subset \bigcup\limits_{n\in\mathbb{N}}W_n$. Además, supongamos que $\overline{W_n}\subset W$ para toda $n\in\mathbb{N}$. Entonces, $X$ es normal.
+  \end{lemma}
+  
+
+\begin{proof}
+Sean $F$ y $G$ dos subconjuntos cerrados y disjuntos de $X$. Entonces $X\setminus G$ 
+es una vecindad abierta de $F$.  Por hipótesis existe una colección $\{U_n\}_{n\in\mathbb{N}}$ 
+de subconjuntos abiertos, tales que $F\subset \bigcup\limits_{n\in\mathbb{N}}U_n$ y $\overline{U_n}\subset X\setminus G$.
+
+Análogamente, podemos encontrar una colección de subconjuntos abiertos $\{V_n\}_{n\in\mathbb{N}}$, tales que $G\subset \bigcup\limits V_n$ y $\overline{V_n}\subset X\setminus F$.
+
+Para cada $n\in\mathbb{N}$ definamos los siguientes conjuntos:
+$$W_n=U_n\setminus\big{(}\bigcup\limits_{i=1}^n\overline {V_i}\big{)},$$
+$$O_n=V_n\setminus\big{(}\bigcup\limits_{i=1}^n\overline {U_i}\big{)}.$$
+Es fácil ver que $W_n$ y $O_n$ son subconjuntos abiertos. Además, como 
+$$\overline{U_n}\subset X\setminus G~\text{ y }~\overline{V_n}\subset X\setminus F,$$ tenemos que $\overline{U_n}\cap G=\emptyset$ y $\overline{V_n}\cap F=\emptyset.$ Así, podemos asegurar que 
+$$F\subset \bigcup\limits_{n\in\mathbb{N}}W_n=U  ~ \text{ y } ~ G\subset\bigcup\limits_{n\in\mathbb{N}}O_n=V.$$
+
+Para completar la prueba necesitamos demostrar que $U\cap V=\emptyset.$ Supongamos lo contrario, es decir, que existe $x\in U\cap V$. Entonces existen  dos números naturales, $n$ y $m$, tales que $x\in W_n\cap O_m$. Supongamos, sin pérdida de generalidad, que $n\geq m$. Entonces $V_m\subset \bigcup\limits_{i=1}^{n}V_i$, y por la definición de $W_n$, $V_m\subset X\setminus W_n$. Además $O_m\subset V_m$, por lo que  $O_m\subset X\setminus W_n$. Entonces, tenemos que $O_m\cap W_n=\emptyset$, pero esto es una contradicción por que $x\in O_m\cap W_n$. Por lo tanto $U\cap V=\emptyset$,  como se quería demostrar.
+ \end{proof}
+
+\begin{theorem}\label{T3 y II= metrizable}
+Sea $X$ es un espacio topológico regular. Si $X$ es segundo numerable,  entonces es normal.
+\end{theorem}
+\begin{proof}
+
+Sean $F$ un subconjunto cerrado y $W$ una vecindad abierta de $X$. Como $X$ es segundo numerable, existe  una base numerable $\mathcal{B}$ para $X$.
+Por la regularidad de $X$, para cada $x\in F$, podemos encontrar un abierto $V$ tal que $x\in V\subset \overline{V} \subset W$. Como $\mathcal{B}$ es base, existe un elemento $U_x\in\mathcal{B}$, tal que $x\in U_x\subset V$. Evidentemente $\overline{U_x}\subset W$. Sea $\mathcal{U}=\{U_x\}_{x\in F}$, como $\mathcal{U}\subset \mathcal{B}$, $\mathcal{U}$ es a lo más numerable. Así, estamos en condiciones de aplicar el lemma~\ref{lemma para T3 y II es T4}, el cual nos garantiza que $X$ es normal.
+
+\end{proof}
+
+
+
+\begin{theorem}[De metrizabilidad de Uryshon]
+  Sea $X$ un espacio regular con base numerable. Entonces, $X$ es metrizable.
+\end{theorem}
+
+\begin{proof}
+
+  
+  Afirmamos que existe una colecci\'on numerable de funciones
+  continuas $\mathcal{F}=\{f_n:X\to [0,1]\}_{n\in\mathbb{N}}$ con la propiedad de que para cualquier $x\in X$ y para cualquier vecindad $U$ de $x$, existe $n\in \mathbb{N}$ tal que $f_n(x)>0$ y $f_n{(X\setminus U)}=0$.
+  
+ Para construir $\mathcal{F}$ primero notemos  que como $X$ es regular y segundo numerable, en virtud del teorema~\ref{T3 y II= metrizable}, $X$ es normal.
+ consideremos  una base numerable $\mathcal{B}=\{V_n\}_{n\in\mathbb{N}}$ para la topología de $X$.  Para cada par de números naturales, $n,m\in \mathbb{N}$, tales que  
+$\overline{V_n}\subset V_m$, aplicando el Lema de Urysohn, podemos encontrar una función 
+$g_{nm}:X \to [0,1]$ tal que $g_{nm}(\overline{V_n})=1$ y $g_{nm}(X\setminus{V_m})=0$.
+  
+  Ahora sea $x\in X$ y $U$ una vecindad arbitraria de $x$. Como $\mathcal{B}$ es base, existe
+  $V_m\in \mathcal{B}$ tal que $x\in V_m\subset U$. Pero como $X$ es regular, existe un abierto $V$ tal que $x\in V\subset \overline{V}\subset V_m\subset U$.
+  Entonces existe $V_n\in\mathcal{B}$ con la propiedad de que $x\in V_n\subset V$, de donde podemos concluir que
+  $$x\in V_n\subset\overline{V_n}\subset V_m\subset U.$$
+  Consideremos la función $g_{nm}$. Entonces $g_{nm}(x)=1$ y $g_{nm}(X\setminus U)=0$. Así, $\{g_{nm}\}$ es la colección de funciones buscada. Como dicha colección es numerable, podemos renumerar cada uno de sus elementos para obtener una colección de la forma $\mathcal{F}=\{f_n\}_{n\in\mathbb{N}}$.
+
+Observemos que $\mathcal{F}$ separa puntos de cerrados. En efecto, si $B\subset X$ es un subconjunto cerrado y $x\in X\setminus {B}$, entonces $U=X\setminus B$ es una vecindad para el punto $x$. Así, existe $f_n\in\mathcal{F}$ tal que $f_n(x)>0$ y $f_n(B)=\overline{f_n(B)}=0$, por lo que $f(x)\notin \overline{f(B)}$. Aplicando el teorema \ref{teorema de la diagonal}, podemos concluir que la función producto diagonal 
+$$f= \underset{n\in\mathbb{N}}{\bigtriangleup}f_n\to {\rm I}^{\aleph_0}$$
+es un encaje topológico, y por tanto $X$ es homeomorfo a un subespacio $Y$  del cubo de Hilbert     ${\rm I}^{\aleph_0}$. Como ${\rm I}^{\aleph_0}$ es un espacio metrizable, $Y$ también lo es y por lo tanto $X$ es metrizable, como se quería demostrar.  
+\end{proof}
+
+
+
+
+
+\section{Teorema de Tietze-Urysohn}
+
+Uno de los problemás de gran interés en la topología es el siguiente:  si $A\subset X$ ¿cúando una función continua $f:A \to Y$ puede ser extendida a una función continua $F:X\to Y$? En la actualidad se conocen muchos resultados al respecto; en esta sección estudiaremos uno de ellos: el Teorema de Tietze -Urysohn.  
+
+
+Diremos que un espacio topológico $Y$ es \textbf{extensor absoluto respecto a $X$} (denotado $Y\in {\rm AE}(X)$ si para cualquier subconjunto cerrado $A\subset X$ y para cualquier función continua $f:A\to Y$, existe una función continua $F:X\to Y$ tal que $f(a)=F(a)$ para todo $a\in A$. En este caso $F$ se llama extensión de $f$.
+
+ Si $\mathcal{C}$ es una clase de espacios topológicos (por ejemplo, la clase de los espacios normales), se dice que $Y$ es un 
+\textbf{extensor absoluto para la clase $\mathcal{C}$} (denotado por $Y\in {\rm AE}(\mathcal{C})$) si $Y\in {\rm AE}(X)$ para cualquier $X\in \mathcal{C}$.
+
+
+
+
+
+\begin{theorem}[Tietze-Urysohn]\label{t-u}
+Sea $X$ un espacio topológico. Entonces $[-1,1]$ es un extensor absoluto respecto a $X$ si y sólo si $X$ es normal.
+
+\end{theorem}
+
+Antes de continuar, demostremos el siguiente lema.
+\begin{lemma}\label{lemat-u}
+Sean $X$ un espacio normal, $A$ un subconjunto cerrado, $r>0$ y $f:A\to [-r,r]$.
+Entonces existe una función continua $g:X\to [-r,r]$ tal que :
+
+ $$|g(x)|\leq\frac{1}{3}r$$ para toda $x\in X$, y 
+ $$|f(a)-g(a)|\leq\frac{2}{3}r$$ para toda $a\in A$.
+
+
+
+\end{lemma}
+\begin{proof}
+Sean $C=f^{-1}([-r,-\frac{r}{3}])$ y
+$D=f^{-1}([\frac{r}{3},r])$. Como $f$ es continua, $C$ y $D$ son dos subconjuntos cerrados y disjuntos del espacio normal $X$. Aplicando el lema de Urysohn, podemos encontrar una función
+continua $g:X\to
+[-\frac{r}{3},\frac{r}{3}],$ tal que $g(C)=-\frac{r}{3}$ y
+$g(D)=\frac{r}{3}$. Demostremos que $g$ es la función buscada.
+
+Es claro que $g$ satisface que $|g(x)|\leq \frac{r}{3}$ para todo $x\in X$. Veamos que $g$ también satisface la segunda ecuación. Si $a\in A$ y $f(a)\in[-\frac{r}{3},\frac{r}{3}]$, entonces  $$|f(a)-g(a)|\leq \frac{r}{3}-\Big{(}\frac{-r}{3}\Big{)}=\frac{2}{3}r.$$
+Por otro lado, si $f(a)\in [-r,-\frac{r}{3} ]$, entonces $g(a)=-\frac{r}{3}$, de donde se sigue inmediatamente que $|f(a)-g(a)|\leq \frac{2}{3}r$. Análogamente, si $f(a)\in [\frac{r}{3},r]$, entonces $g(a)=\frac{r}{3}$, por lo que es fácil concluir que $|f(a)-g(a)|\leq \frac{2}{3}r$, como se quería demostrar.
+\end{proof}
+\begin{proof}[Demostración del teorema~\ref{t-u}] 
+Supongamos que $[-1,1]$ es extensor absoluto para $X$. Sean $A$ y $B$ dos subconjuntos cerrados y disjuntos de $X$. Entonces $C=A\cup B$ es cerrado en $X$. 
+Definamos $f:C\to[-1,1]$ por
+\begin{equation*}
+f(x)=\begin{cases}
+-1&\text{ si }x\in A,\\
+1&\text{ si }x\in B.\\
+\end{cases}
+\end{equation*}
+Es claro que $f$ es una función continua. Como $[-1,1]\in {\rm AE}(X)$, existe una extensión continua $F:X\to [-1,1]$ para $f$. Entonces $U=F^{-1}([-1,0))$ y $V=F^{-1}((0,1])$ son dos vecindades ajenas de $A$ y de $B$, respectivamente, por lo que $X$ es normal.
+
+Ahora supongamos que $X$ es normal. Consideremos un subconjunto cerrado $A$ y una función continua $f:A\to [-1,1]$.
+Construiremos por inducción sobre $n$, una sucesión de funciones $\{g_n:X\to [-1,1]\}_{n\in\mathbb{N}}$ tal que
+\begin{enumerate}[(1)]
+\item $\mid g_n(x)\mid \leq \frac{1}{3}(\frac{2}{3})^{n-1}$ para toda $x\in X$, 
+\item $\mid f(a) -\sum_{i=1}^n g_i(a)\mid \leq (\frac{2}{3})^n$ para toda $a\in A$.
+\end{enumerate}
+Para $n=1$, aplicando  el lema~\ref{lemat-u}, podemos encontrar  una funci\'on continua 
+$g_1:X\to [-1,1]$ que satisface las condiciones (1) y (2).
+
+Supongamos que  para cualquier $k \leq n$, existe una función $g_k:X\to [-1,1]$ tal que las funciones $g_1,\dots, g_n$ satisfacen las condiciones (1) y (2). 
+
+Sea $f_{n+1}=f-\sum_{i=1}^n g_i:A\to
+[-(\frac{2}{3})^n,(\frac{2}{3})^n]$.
+
+Aplicando nuevamente el lema~\ref{lemat-u} podemos encontrar  una funci\'on continua $g_{n+1}:X\to [(-\frac{2}{3})^n,(\frac{2}{3})^n]$ tal que 
+ $$\mid g_{n+1}(x)\mid \leq \frac{1}{3}\bigg{(}\frac{2}{3}\bigg{)}^{n}$$
+ para toda $x\in X$, y
+ $$\mid f_{n+1}(a)-g_{n+1}(a))\mid \leq \bigg{(}\frac{2}{3}\bigg{)}^{n+1}$$
+ para toda $a\in A$. 
+
+Consecuentemente, las funciones $g_1,\dots, g_n,g_{n+1}$ satisfacen las condiciones (1) y (2).
+ Así, podemos construir la sucesión de funciones $\{g_n\}_{n\in\mathbb{N}}$ que se quería.
+ 
+ Ahora definamos $F:X\to[-1,1]$ por 
+$$F(x)=\sum_{n=1}^\infty
+g_n(x),~x\in X.$$ 
+Como $g_n(x)\leq \frac{1}{3}(\frac{2}{3})^{n-1}$ para toda $n\in\mathbb{N}$, podemos aplicar  el criterio  de Weierstrass, para concluir que la serie $\sum\limits_{n=1}^\infty
+g_n(x)$ converge uniformemente, y como consecuencia, 
+$F$ es una función continua. Por otro lado,  $F(x)\in [-1,1]$,  ya que
+$$\mid F(x)\mid \leq \frac{1}{3}\sum_{i=1}^\infty\big{(}\frac{2}{3}\big{)}=1.$$
+
+Además, si $a\in A$, entonces   $$0<\mid f(a)-\sum_{i=1}^n g_i(a)\mid\leq
+\bigg{(}\frac{2}{3}\bigg{)}^n,$$ para todo $n\in\mathbb{N}$. Haciendo tender $n$ a infinito, obtendremos que  $$0<~\big|~ f(a)-F(a)~\big|~ \leq 0,$$
+de donde  $f(a)=F(a)$. Por lo tanto, $F$ es la extensión continua de $f$.
+\end{proof}
+
+
+\begin{corollary}
+$\mathbb{R}$ es un extensor absoluto para los espacios normales.
+\end{corollary}
+
+\begin{proof} 
+Como $\mathbb{R}$ es homeomorfo a $(-1,1)$, basta demostrar el corolario para este espacio.
+Sean $A$ un subconjunto cerrado de $X$ y $f:A\to (-1,1)\subset [-1,1]$ una función continua.
+Por el teorema~\ref{t-u}, existe una función continua $F:X\to [-1,1]$, tal que $F$ extiende a $f$. 
+
+Consideremos el subconjunto cerrado $B=F^{-1}(\{-1\})\cup F^{-1}(\{1\})$ de $X$. Como $A$ es cerrado y
+$A\cap B=\emptyset$, por el lema de Urysohn existe una función continua $\lambda:X\to
+[0,1]$ tal que $\lambda(A)=\{1\}$ y $\lambda(B)=\{0\}$. Definamos 
+$G:X\to(-1,1)$ por $$G(x)=\lambda(x)F(x).$$
+Veamos que $G$ es la extensión buscada. Primero notemos que efectivamente $G(x)\in(-1,1)$. 
+Si $a\in A$, entonces $G(a)=\lambda(a)F(a)=f(a)\in (-1,1)$. Si $x\in B$,
+entonces $G(x)=\lambda(x)F(x)=0$. Finalmente, si $x\notin B$
+tenemos $|F(x)| <1$, y por tanto  $|G(x)|=|\lambda(x)F(x)|<1$.
+Por otro lado, como $G$ es producto de dos funciones continuas, entonces $G$ es continua. Así podemos concluir que $G$ extiende continuamente a $f$, y por tanto, $(-1,1)$ es extensor absoluto para la clase de los espacios normales.
+\end{proof}
+\begin{corollary}
+Todo intervalo semiabierto $[a,b)$ es extensor absoluto para los espacios normales.
+\end{corollary}
+
+
+\section{Ejercicios del cap\'\i tulo} 
+
+\begin{enumerate}
+
+
+\item Sean $X$ un conjunto y $a\in X$ un punto fijo. Si $\tau=\{U\subset X\mid a\in U\}$, demuestra que $(X,\tau)$ es un espacio $T_0$ pero no $T_1$.
+
+\item Sea $X$ un conjunto infinto y $\tau$ la topología cofinita. Mostrar que $(X,\tau)$ es un espacio $T_1$ pero no es $T_i$ para ninguna $i>1$.
+\item Demuestra que un espacio topológico $X$ es $T_0$ si y s\'olo si
+  $\overline{\{x\}}\neq\overline{\{y\}}$ para cualquier par de puntos distintos $x,y\in X$. 
+
+\item  Sea $X$ un espacio topológico finito. Si $X$ es $T_1$, demuestra que $X$ es discreto.
+
+\item  Sean $X$ un espacio topológico de Hausdorff y $\{x_1,x_2\dots,x_n\}$ una colección finita de puntos distintos. Demuestra que existe una familia $\{U_i\}_{i=1}^n$ de subconjuntos abiertos ajenos dos a dos, tales que $x_i\in U_i$ para toda $i\in\{1,\dots n\}.$
+
+\item  Sean $X$ un espacio topológico normal y $\{A_i\}_{n\in\{1,\dots n\}}$ una familia finita de subconjuntos cerrados ajenos dos a dos. Demuestra que existe una familia $\{U_i\}_{i=1}^n$ de subconjuntos abiertos ajenos dos a dos, tales que $F_i\subset U_i$ para toda $i\in\{1,\dots n\}.$
+
+
+
+\item  Sea $X$ un espacio topológico. Demuestra que los siguiente enunciados son equivalentes. 
+\begin{enumerate}
+    \item  $X$ es  $T_1$. 
+    \item Todo subconjunto $A\subset X$ es intersecci\'on de una familia de
+    subconjuntos abiertos de $X$. 
+    \end{enumerate}
+
+
+\item  Dar un ejemplo de un espacio topológico $X\in T_1$ tal que $U\cap
+  V\neq\emptyset$ para cualesquiera abiertos no vac\'\i os $U$ y $V$. 
+
+
+
+\item Sea $Y$ un espacio topológico. Si $X$ es un espacio  regular y $f:X\to Y$ es una función continua, suprayectiva, abierta y cerrada, entonces $Y$ es de Hausdorff.
+\item Verifica la continuidad de la función $f$ construida en la prueba de la proposición 
+      \ref{producto de t3s}
+\item Demuestra que la recta de Sorgenfrey es un espacio normal.
+\item Da un ejemplo de dos espacios topológicos normales, $X$ y $Y$, tales que $X\times Y$ no sea un espacio normal. Sugerencia: considera $X=Y=L$, donde $L$ denota la recta de Sorgenfrey.
+\item Sea $X\subset\mathbb{R}^2$ la unión de las rectas $y=0$ y $y=1$ de $\mathbb{R}^2$ con la topología del subespacio. Sea $Y$ el espacio cociente obtenido al identificar el punto $(x,0)$ con su respectivo $(x,1)$ para toda $x\in\mathbb{R}\setminus\{0\}$. 
+Demuestra que $Y$ no es de Hausdorff y conluye que la imagen continua de un espacio de Hausdorff no necesariamente es de Hausdorff.
+\item Sean $X$ y $Y$ dos espacios topológicos y $f:X\to Y$ una función continua. Si $Y$ es de Hausdorff, demuestra que el conjunto 
+$$A=\{(x_1,x_2)\in X\times X\mid f(x_1)=f(x_2)\}$$
+es cerrado en $X\times X$.
+\item  Sean $f,g:X\to Y$ dos funciones continuas. Si $Y$ es de Hausdorff,
+demuestra que el conjunto $A=\{x\mid f(x)=g(x)\}$ es cerrado en $X$. 
+\item Sea $X$ un espacio topológico y $f:X\to X$ una función continua e idempotente, esto es $f(f(x))=f(x)$ para todo $x\in X$. Demuestra que si $X$ es un espacio de Hausdorff, entonces $f(X)$ es un subconjunto cerrado.
+\item Sean $X$ un espacio $T_4$,  y $U_1$ y  $U_2$ dos subconjuntos abiertos tales que $X=U_1\cup U_2$. Demuestra que existen dos subconjuntos cerrados, $A_1$ y $A_2$, tales que $A_1\subset U_1$, $A_2\subset U_2$ y $A_1\cup A_2=X$.
+\item Considera un espacio topológico arbitrario $X$. Diremos que $x\sim y$ si $\overline{\{x\}}=\overline{\{y\}}$.  Demuestra que el espacio cociente $X/_{\sim}$ es un espacio $T_0$.
+\end{enumerate}
+%\end{document}

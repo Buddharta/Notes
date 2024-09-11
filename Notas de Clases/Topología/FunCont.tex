@@ -1,0 +1,1260 @@
+%\include{encabezados.tex}
+\chapter{Funciones Continuas y Operaciones con Espacios Topol\'ogicos}
+
+\section{Funciones Continuas}
+En el capítulo 1 introdujimos la noción de continuidad de funciones entre espacios métricos.
+En  esta sección, generalizaremos este concepto para hablar de funciones continuas entre 
+espacios topológicos.
+
+\begin{definition}
+  Sean $X$ y $Y$ dos espacios topol\'ogicos,  $f:X\to Y$ una función y  $x\in X$. Se dice que $f$ es \textbf{continua en $x$} si para toda vecindad $U$ de $f(x)$ existe una vecindad 
+   $V$ de $x$ tal que $f(V)\subset U$.
+   
+   
+  Si $f:X\to Y$ es continua en cada $x\in X$, se dice que $f$ es
+  \textbf{continua en $X$}.
+\end{definition}\index{funci\'on!continua}\index{funci\'on!continua!en un punto}
+
+
+\begin{theorem} \label{continuidad a}
+  Sea $f:X\to Y$ una funci\'on entre dos espacios topológicos $X$ y $Y$. Entonces los siguientes enunciados son equivalentes:
+\begin{enumerate}
+\item $f$ es continua.
+\item Para todo subconjunto $B\subset Y$, $f^{-1}({\rm Int}\,B)\subset\mathrm{Int}\,f^{-1}(B).$
+\item Para todo subconjunto abierto $U$ de $Y$, $f^{-1}(U)$ es  abierto en $X$.
+\end{enumerate}
+\end{theorem}
+\begin{proof}\hfill
+
+\noindent $(1\Rightarrow 2)$. 
+  Sean $B\subset Y$ y $x\in f^{-1}({\rm Int}\,B)$. Entonces $f(x)\in {\rm Int}\,B$
+  y por tanto existe una vecindad $U$ de $f(x)$ tal que $U\subset B$. Como $f$ es continua en 
+  $x$, existe una vecindad $V$ de $x$ tal que $f(V)\subset U\subset B$. En consecuencia
+  $V\subset f^{-1}(B)$, luego $x\in{\rm Int}\,f^{-1}(B)$. Como $x$ era cualquier punto de 
+  $f^{-1}({\rm Int}\,B)$, podemos concluir que 
+  $f^{-1}({\rm Int}\,B)\subset{\rm Int}\,f^{-1}(B)$.
+\smallskip
+
+\noindent $(2\Rightarrow 3)$
+  Sea $U\subset Y$ abierto. Esto es $U={\rm Int}\,U$, luego por hipótesis
+  $f^{-1}(U)=f^{-1}({\rm Int}\,U)\subset{\rm Int}\,f^{-1}(U)$. Además sabemos que
+  ${\rm Int}\,f^{-1}(U)\subset f^{-1}(U)$, luego ${\rm Int}\,f^{-1}(U)= f^{-1}(U)$,
+  así que $f^{-1}(U)$ es abierto.
+
+\smallskip
+\noindent $(3\Rightarrow 1)$
+  Sean $x\in X$ y $U$ una vecindad de $f(x)$. Por hipótesis $V=f^{-1}(U)$ es abierto, y
+  además $x\in V$. Así, $V$ es una vecindad de $x$ y claramente $f(V)\subset U$, con lo que
+  queda demostrado que $f$ es continua.
+\end{proof}
+
+
+\begin{proposition}\label{continuidadcerrados} 
+ Sean $X$ y $Y$ espacios topológicos y $f:X\to Y$ una función. Entonces $f$ 
+ es continua si y sólo si
+ para todo subconjunto cerrado $A$ de $Y$, $f^{-1}(A)$ es cerrado en $X$.
+\end{proposition}
+\begin{proof}
+   Probemos la parte \lq sólo si\rq.
+   Sea $A\subset Y$ un subconjunto cerrado de $Y$. Entonces $U=Y\setminus A$ es abierto en 
+   $Y$, y por el teorema \ref{continuidad a} , $f^{-1}(U)$ es abierto en $X$. Pero
+   
+   $$f^{-1}(U)=f^{-1}(Y\setminus A)=X \setminus f^{-1}(A),$$ 
+   
+   por lo que  $f^{-1}(A)$ es cerrado en $X$, como se quería demostar.
+   
+   La parte \lq si \rq se demuestra de manera completamente análoga.
+\end{proof}
+
+
+\begin{proposition} 
+Si $X$ y $Y$ son espacios topológicos y $f:X\to Y$ es una función entre ellos, entonces $f$ es 
+continua si y sólo si para todo $A\subset X$ se tiene $f(\overline{A})\subset\overline{f(A)}$.
+\end{proposition}
+\begin{proof} \hfill    
+
+   Probemos la suficiencia. En virtud de la proposición \ref{continuidadcerrados} basta
+   verificar que las preimágenes bajo $f$ de los  subconjuntos cerrados de $Y$ son, a su vez, 
+   subconjuntos cerrados de $X$. 
+   Sea pues $B\subset Y$ cerrado. Tenemos, por hipótesis, que
+   
+   $$f(\overline{f^{-1}(B)})\subset\overline{f(f^{-1}(B))}=\overline{B}=B=f(f^{-1}(B)),$$
+   
+   por lo que necesariamente $\overline{f^{-1}(B)}\subset f^{-1}(B)$, y así 
+   $\overline{f^{-1}(B)}= f^{-1}(B)$, lo que se quería probar.
+
+   Probemos ahora la necesidad. Sea $A\subset X$. 
+   Notemos que $\overline{f(A)}$ es un subconjunto cerrado en $Y$, y por la proposición 
+   \ref{continuidadcerrados}, $f^{-1}(\overline{f(A)})$ es cerrado en $X$. Por otro lado, como
+   $f(A)\subset \overline{f(A)}$, tenemos que 
+   $A\subset f^{-1}(f(A))\subset f^{-1}(\overline{f(A)})$. Así,  $f^{-1}(\overline{f(A)})$ 
+   es un subconjunto cerrado que contiene a $A$, de donde  
+   $\overline{A}\subset  f^{-1}(\overline{f(A)})$. De aquí se obtiene
+  $$f(\overline{A})\subset f\big{(} f^{-1}(\overline{f(A)})\big{)}\subset \overline{f(A)},$$ 
+   como se quería demostrar.
+\end{proof}
+
+
+\begin{example}[Ejemplos]
+\begin{enumerate}
+ \item Sean $X$ un espacio topológico discreto y $Y$ cualquier
+  espacio topol{\'o}gico. Entonces toda funci\'on $f:X\to Y$, es
+  continua en $X$. En efecto,
+ si $U$ es un
+   abierto  arbitrario en $Y$, entonces la preimagen
+  $f^{-1}(U)$ es abierto en $X$ ya que todos los subconjuntos de $X$ son abiertos.
+
+
+\item Sean $X$ cualquier espacio topol\'ogico y $Y$ un espacio topológico antidiscreto. 
+Entonces toda función $f:X\to Y$ es continua  en $X$. En efecto, como los únicos 
+abiertos en $Y$ son $Y$ y $\emptyset$, las preimágenes bajo $f$ de dichos conjuntos 
+serán $X$ y $\emptyset$ respectivamente, que son abiertos en $X$.
+\end{enumerate}
+\end{example}
+
+\begin{theorem}\label{T:fc}
+  Sean $X$ y $Y$ dos  espacios topológicos, $f:X\to Y$ una función, ${\mathcal{B}_Y}$ 
+  una base para la topología de $Y$  y   $\Gamma_Y$  una sub-base que genera a $\mathcal{B}_Y$. 
+  Entonces los siguientes enunciados son equivalentes:
+\begin{enumerate}
+\item $f$ es continua.
+\item Para todo $V\in\Gamma_Y$, $f^{-1}(V)$ es abierto en $X$.
+\item Para todo $U\in{\mathcal{B}_Y}$, $f^{-1}(U)$ es  abierto en $X$.
+\end{enumerate}
+\end{theorem}
+
+
+\begin{proof}\hfill
+
+$(1\Rightarrow 2).$ Como cada elemento $U$ de $\Gamma$ es abierto en $Y$,
+ se sigue del toerema~\ref{continuidad a} que $f^{-1}(U)$ es  abierto en $X$.
+\smallskip
+
+
+$(2\Rightarrow 3).$  
+Sea $U\in \mathcal{B}_Y$. Como $\Gamma_Y$ es sub-base que genera a $\mathcal{B}_Y$,
+$U$ tiene la forma $U=\bigcap\limits_{i=1}^{n}V_{\gamma i}$, donde 
+$V_{\gamma_i}\in\Gamma_Y$. Consecuentemente
+\begin{equation*}
+f^{-1}(U)=f^{-1}\big(\bigcap\limits_{i=1}^{n}V_{\gamma _i}\big)=\bigcap\limits_{i=1}^{n}
+f^{-1}(V_{\gamma _i}).
+\end{equation*}
+ Pero, por hipótesis, $f^{-1}(V_{\gamma _i})$ es abierto en $X$ y como 
+la intersecci\'on finita de subconjuntos abiertos es abierta, inferimos que $f^{-1}(U)$
+es abierto en $X$. \smallskip
+
+$(3\Rightarrow 1).$
+Si  $W \subset Y$ es un subconjunto abierto de $Y$, entonces existe $\{U_\alpha\}_{\alpha\in\mathcal{A}} \subset \mathcal{B}_Y$, tal que $W=\bigcup\limits_{\alpha \in \mathcal{A}} U_\alpha$. Por hipótesis, $f^{-1}(U_\alpha)$ es abierto en $X$, de donde
+\begin{equation*}
+f^{-1}(W)=f^{-1}(\bigcup\limits_{\alpha \in \mathcal{A}} U_\alpha)
+=\bigcup\limits_{\alpha \in \mathcal{A}} f^{-1}(U_\alpha)
+\end{equation*}
+es abierto en $X$. Por el teorema~\ref{continuidad a}, esto implica que $f$ es una función continua.
+\end{proof}
+
+En los siguientes ejemplos usaremos el teorema anterior para verificar la continuidad de una función.
+
+\begin{example}[Ejemplos] \begin{enumerate}
+
+\item Sea $f:\mathbb{R}^2\to\mathbb{R}$ dada por $f(x,y)=x$. La preimagen de
+cualquier abierto b\'asico $(a,b)\subset\mathbb{R}$ es 
+$f^{-1}((a,b))= \{(x,y)\in\mathbb{R}^2\mid a<x<b,~y\in\mathbb{R}\}$,
+ que es un abierto de $\mathbb{R}^2$. Por lo tanto $f$ es una función continua. 
+
+\medskip
+ \label{identidad sorgenfrey}
+\noindent Sean $(\mathbb{R},\tau)$ la recta real y $(\mathbb R,\sigma)$ la recta de Sorgenfrey.
+\smallskip  
+
+\item $f:(\mathbb{R},\tau)\to (\mathbb R,\sigma)$ dada por $f(x)=x$, no es continua.
+ En efecto, $f^{-1}([x,w))=[x,w)$ no es un subconjunto abierto de $(\mathbb{R},\tau)$,
+ mientras que $[x,w)$ es un abierto en $(\mathbb{R},\sigma)$.
+ \item $g:(\mathbb{R},\sigma)\to (\mathbb R,\tau)$ dada por $g(x)=x$ sí es continua,
+ ya que $\mathcal{B}=\{(a,b)\mid a,b\in\mathbb{R}\}$ es una base para $(\mathbb{R},\tau)$
+ y $g^{-1}\big( (a,b)\big) =(a,b)$ es abierto en  la  recta de Sorgenfrey.
+\end{enumerate}
+\end{example}
+
+La siguiente proposición es una generalización del ejemplo anterior.
+ La demostración queda como ejercicio al lector.
+
+\begin{proposition}
+Sean $\tau_1$ y $\tau_2$ dos topologías en un conjunto $X$. Entonces la función identidad
+ $Id:(X,\tau_1)\to (X,\tau_2)$ es continua si y sólo si $\tau_1$ es más fina que $\tau_2$.
+\end{proposition} 
+\medskip
+\begin{proposition}
+Sean $X$, $Y$ y $Z$ espacios topológicos y $f:X\to Y$ y $g:Y\to Z$ dos funciones continuas. 
+Entonces la composición $g\circ f:X\to Z$ es continua.
+\end{proposition}
+\begin{proof}
+ Sea $U\subset Z$ un subconjunto abierto. Como $g$ es continua, 
+ por el teorema~\ref{continuidad a}, $g^{-1}(U)$ es abierto en $Y$.
+ Como $f$ también es continua, 
+$f^{-1}(g^{-1}(U))$ es abierto en $X$, pero
+$(g\circ f)^{-1}=f^{-1}(g^{-1}(U))$  por lo que $g\circ f$ es continua.
+\end{proof}
+
+\begin{definition}
+Sean $X$, $Y$ conjuntos, $A\subset X$ y $f:X\to Y$ una función. Definimos la 
+\textbf{restricción} de $f$ en $A$, denotada por $f|_A$, como la función $f|_A:A\to Y$
+dada por $f|_A(a)=f(a)$ para cada $a\in A$.
+\end{definition}
+
+
+\begin{proposition} Sea $f:X\to Y$ una función continua entre dos espacios topológicos. Entonces, para cualquier subconjunto $A\subset X$, la función $f|_A:A\to Y$ es continua en el subespacio topológico $A$.
+\end{proposition}
+
+\begin{proof}
+Sea $U\subset Y$ un conjunto abierto. Entonces, 
+\begin{equation*}
+(f|_A)^{-1}(U)= \{ a \in A\mid f(a)\in U\}
+=A \cap f^{-1}(U).
+\end{equation*}
+Como $f$ es continua,  $f^{-1}(U)$ es abierto en $X$, lo cual implica que  
+$f|_A^{-1}(U)=A\cap f^{-1}(U)$ es abierto en $A$. Así, $f|_A$ es continua en $A$, 
+como se quería demostrar.
+\end{proof}
+
+%lemadelpegado
+
+\begin{theorem}\label{lemadelpegado}
+Si $X=A \cup B,\,$ donde $A$ y $B$ son ambos abiertos (respectivamente, cerrados) en $X$,
+y $f: X \to Y$ es una funci\'on tal que $f|_A$ y $f|_B$ son continuas,
+entonces $f$ es continua.
+\end{theorem}
+
+\begin{proof}
+Supongamos que $A$ y $B$ son abiertos. Si $U \subset Y$ es abierto,
+entonces $\big(f|_{A}\big)^{-1}(U)$ y $\big(f|_{B}\big)^{-1}(U)$ son abiertos en $A$ y $B$
+respectivamente, como $A$ y $B$ son subespacios abiertos, 
+$\big( f|_{A}\big)^{-1}(U)$ y $\big(f|_{B}\big)^{-1}(U)$ son abiertos en $X$. Entonces,
+como
+
+$$f^{-1}(U)=\big(f|_{A}\big)^{-1}(U) \cup \big(f|_{B}\big)^{-1}(U) \, ,$$
+
+\noindent concluimos que $f^{-1}(U)$ es abierto en $X$ y por lo tanto $f$ es
+continua. 
+
+La prueba en el caso en que $A$ y $B$ son cerrados es
+completamente an\'aloga.
+\end{proof}
+
+
+
+\section{Funciones abiertas y funciones cerradas}
+En esta sección introduciremos los conceptos de \textit{función abierta} 
+y \textit{función cerrada}. Como veremos más adelante, esta clase de funciones desempeñará 
+un papel muy importante en el estudio de espacios topológicos.
+\begin{definition}
+Sea $f:X\to Y$ una función entre dos espacios topológicos. Se dice que $f$ es 
+\textbf{abierta} si para cualquier abierto $U$ en $X$, su imagen $f(U)$ es abierto en $Y$. 
+De igual manera, se dice que $f$ es  \textbf{cerrada}, si para cualquier cerrado $A$ en $X$,  
+su imagen $f(A)$ es cerrado en $Y$.
+ \end{definition}\index{funci\'on!abierta}\index{funci\'on!cerrada}
+ 
+A continuación veremos algunos ejemplos de funciones abiertas y cerradas.
+
+\begin{example}[Ejemplos]
+\begin{enumerate}
+\item Para cualquier espacio topológico $X$, la función identidad es abierta y cerrada.
+\item Sean $X$ un espacio topol\'ogico y $Y$ un espacio discreto. Entonces cualquier funci\'on
+ $f:X\to Y$ es abierta y cerrada.
+\end{enumerate}
+\end{example}
+El que una función sea abierta (cerrada) no implica que sea cerrada (abierta), como veremos
+ en los siguientes ejemplos.
+
+\begin{example}[Ejemplos]
+\begin{enumerate}
+\item Sea $f:\mathbb{R}^2\to \mathbb{R}$ la proyecci\'on a la primera coordenada. La funci\'on $f$ no es cerrada, pues $A=\{(x,1/x)~|~x>0\}$ es un cerrado de $\mathbb{R}^2$ pero su imagen $f(A)=(0,\infty)$ no es un cerrado de $\mathbb{R}$.
+
+
+\item Consideremos la recta real, entonces 
+    \begin{enumerate}
+  \item La función $f:{{\mathbb R}}\to{{\mathbb R}}$ dada por $f(x)=e^x$ es abierta y no
+   es cerrada, ya que $f(\mathbb{R})=(0,\infty)$, el cual no es cerrado en $\mathbb{R}$.
+  \item La función $g:\mathbb{R}\to\mathbb{R}$ dada por 
+   \[ g(x)= \left\{\begin{array}{ll} 0\quad & {\rm si~}x\in(-\infty,0) \\
+                                    x\quad & {\rm si~}x\in[0,\infty) \end{array}\right. \] 
+   no es abierta, ya que $g((-1,1))=[0,1)$, el cual no es abierto en $\mathbb{R}$. Sin 
+   embargo, $g$ es cerrada. En efecto, para un cerrado $A$ en $\mathbb{R}$ tenemos dos casos:
+   \begin{itemize}
+    \item si $A\subset[0,\infty)$, entonces $g(A)=A$,
+    \item Si $A\nsubseteq [0,\infty)$, entonces $g(A)=(A\cap[0,\infty))\cup\{0\}$.
+   \end{itemize}  
+En cualquier caso, $g(A)$ es cerrado.
+
+    \end{enumerate}
+\end{enumerate}
+\end{example}
+
+
+\begin{proposition}\label{abierta basicos}
+  Sea ${\mathcal{B}_X}$ una base para un espacio topológico $X$ y $f:X\to Y$ cualquier funci{\'o}n
+a un espacio topol\'ogico $Y$.
+  Entonces $f$ es abierta si y s\'olo si para todo $U\in\mathcal{B}_X$,
+  $f(U)$ es abierto en $Y$.
+\end{proposition}
+\begin{proof}
+Claramente si $f$ es una función abierta,  $f(U)$ es abierto para todo $U\in\mathcal{B}_X$.
+
+Ahora supongamos que la imagen bajo $f$ de todo conjunto básico $U\in \mathcal B_X$ es abierta y demostremos que 
+ $f$ es abierta. Sea $V$ un subconjunto abierto de $X$. Entonces $V=\bigcup\limits_{\alpha \in \mathcal{A}}U_\alpha$
+con $U_\alpha \in \mathcal{B}_X$ para toda $\alpha\in\mathcal{A}$. Por hipótesis $f(U_\alpha)$ es abierto en $Y$ para cada $\alpha\in\mathcal{A}$. De esta manera
+\begin{equation*}
+f(V)=f(\bigcup\limits_{\alpha \in \mathcal{A}} U_\alpha)
+= \bigcup\limits_{\alpha \in \mathcal{A}} f(U_\alpha),
+\end{equation*}
+ por lo que $f(V)$ es abierto en $Y$,
+ y por  tanto $f$ es abierta.
+\end{proof}
+
+
+  
+  \begin{proposition} Sean     $f:X\to Y$ y $g:Y\to Z$ funciones entre espacios topológicos. Si $f$ y $g$ son funciones abiertas (cerradas), entonces la composición $g\circ f:X\to Z$ es una función abierta (cerrada).
+  \end{proposition}
+\noindent La demostración de este hecho es sencilla y se deja como ejercicio al lector.
+\medskip
+
+\begin{theorem}\label{t f cerrada}
+Una función  $f:X\to Y$ entre dos espacios topológicos $X$ y $Y$ es cerrada  si y sólo si 
+para todo $B\subset Y$ y para toda vecindad $U$  de  $f^{-1}(B)$, existe una vecindad  $V$ de $B$, tal que $f^{-1}(V)\subset U$.
+\end{theorem}
+
+\begin{proof}
+Primero demostremos la parte \lq\lq si\rq\rq. Sean $B\subset Y$ un subconjunto arbitrario 
+y $U$ una vecindad de  $f^{-1}(B)$. Entonces $X\setminus U$ es cerrado en $X$ 
+y, por hipótesis, $f(X\setminus U)$ es cerrado en $Y$. 
+Definamos el abierto $V=Y\setminus f(X\setminus U)$. Notemos que de 
+$f^{-1}(B)\subset U$ se sigue que $f(X\setminus U)\subset Y\setminus B$ 
+y, en consecuencia, $B$ se encuentra contenido en $V$.
+Por otro lado, tenemos que 
+$$f^{-1}(V)=f^{-1}\big(Y\setminus f(X\setminus U)\big)=
+X\setminus f^{-1}\big(f(X\setminus U)\big)\subset X\setminus (X\setminus U)=U,$$
+particularmente $f^{-1}(V)\subset U$. Entonces $V$ es el conjunto buscado.
+
+
+Ahora demostremos la parte \lq\lq sólo si\rq\rq. Sea $F$ cerrado en $X$, entonces
+ $U=X\setminus F$  es abierto en $X$. Además el conjunto $B=Y\setminus f(F)$ cumple   
+$$f^{-1}(B)=f^{-1}(Y\setminus f(F))=X\setminus f^{-1}(f(F))\subset X\setminus F=U.$$
+
+ Por hipótesis, podemos encontrar un subconjunto $V$ abierto en $Y$, 
+tal que $B\subset V$ y $f^{-1}(V)\subset U$.  Entonces $f^{-1}(V)\subset X\setminus F$, 
+por lo que $f^{-1}(V)\cap F=\emptyset $, y por tanto, $V\cap f(F)=\emptyset$. 
+Esto implica que $V\subset Y\setminus (f(F))$. Pero $B\subset V$, por lo que 
+$B=Y\setminus f(F)\subset V\subset Y\setminus f(F)$, y por tanto, $V=Y\setminus f(F)$.
+ Consecuentemente  $f(F)$ es cerrado en $Y$. Así, queda demostrado que $f$ es una función cerrada.
+\end{proof}
+
+\begin{theorem}
+Una función  $f:X\to Y$ entre dos espacios topológicos $X$ y $Y$, es abierta si y sólo si para todo $B\subset Y$ y para todo subconjunto $U$ cerrado en $X$ que contenga a $f^{-1}(B)$, existe un subconjunto cerrado $V$, que contiene a $B$, tal que $f^{-1}(V)\subset U$.
+\end{theorem}
+
+La demostración de este teorema es análoga a la del teorema~\ref{t f cerrada}, y se deja como ejercicio al lector.
+
+
+\section{Homeomorfismos} 
+
+En esta sección introduciremos uno de los conceptos más importantes en la topología. Quizá el lector haya estudiado en los cursos de álgebra la idea de \textit{isomorfismo}, una función biyectiva entre dos grupos o entre dos espacios vectoriales que preserva la estructura algebraica. Pues bien, el equivalente en topología es el \textit{homeomorfismo}, una función biyectiva entre dos espacios topológicos que preserva la \textit{estructura topológica}. Veamos de manera más formal qué quiere decir esto.
+\begin{definition}\index{homeomorfismo}
+  Sean $X$ y $Y$ dos espacios topol{\'o}gicos y
+  $f:X\to Y$ una funci{\'o}n. Se dice que $f$ es \textbf{homeomorfismo} si se satisfacen los siguientes enunciados:
+\begin{enumerate}
+\item $f$ es biyectiva,
+\item $f$ es continua,
+\item $f^{-1}$ es continua.
+\end{enumerate}
+
+  Diremos que los espacios $X$ y $Y$ son \textbf{homeomorfos} (denotado por $X\cong  Y$)
+  si existe un homeomorfismo $f:X\to Y$. 
+\end{definition}
+
+\begin{example}[Ejemplos]\hfill
+
+\begin{enumerate}
+\item La funci\'on identidad $1_X:X\to X$ es un homeomorfismo.
+
+\item  Los espacios $\left(-\frac\pi 2,\frac\pi 2\right)$ y ${\mathbb R}$ son homeomorfos. En efecto, la función $f:\left(-\frac\pi 2,\frac\pi 2\right)\to{{\mathbb R}}$ dada por
+  $f(x)=\tan x$ es un homeomorfismo.
+\smallskip
+Cabe notar que en este caso la m\'etrica no se preserva, es decir, los dos espacios son m\'etricos, pero en un caso la m\'etrica no es acotada y en otro s\'i. Sin embargo los espacios poseen esencialmente la misma reserva de conjuntos abiertos.
+
+\item  Si $a,b,c$ y $d$ son números reales tales que $a<b$ y $c<d$, los intervalos 
+$[a,b]$ y  $[c,d]$ son homeomorfos.  Por ejemplo, la función $f$ definida por
+%\begin{equation}\label{h entre intervalos}
+$$f(x)= \frac{d-c}{b-a}x+\frac{cb-da}{b-a}$$
+%\end{equation}
+es un homeomorfismo entre ambos espacios.
+ 
+La función aquí definida también realiza un homeomorfismo entre los espacios $(a,b)$ y
+ $(c,d)$, así como entre los espacios $(a,b]$ y $(c,d]$. 
+De manera análoga se puede demostrar que los intervalos $[a,b)$ y $(a,b]$ son homeomorfos.
+Por otro lado, los intervalos $[0,1],$ $[0,1)$ y $(0,1)$ no son homeomorfos entre sí. La 
+demostración  no es evidente en este momento, pero a lo largo del texto 
+iremos generando herramientas que nos permitirán dar una demostración sencilla de este hecho. 
+\end{enumerate}
+\end{example}
+
+
+\begin{theorem}\label{caracterizacion homeomorfismos}
+  Sea $f:X \to Y$ una función biyectiva entre dos espacios topológicos. Entonces los siguientes enunciados  son equivalentes:
+\begin{enumerate}
+\item $f$ es un homeomorfismo.
+\item $f$ es continua y cerrada.
+\item $f$ es continua y abierta.
+\end{enumerate}
+\end{theorem}
+
+La demostración queda como ejercicio para el lector.
+
+ 
+
+\begin{theorem} La relación de homeomorfismo $\cong$ es una relaci{\'o}n de equivalencia (es decir, es reflexiva, simétrica y transitiva).
+\end{theorem}
+\begin{proof}
+Notemos que para cualquier espacio topológico $X$, la funci\'on identidad $1_X : (X,\tau) \to (X,\tau)$ es un homeomorfismo, con lo cual $X \cong X$ y por lo tanto $\cong$ es reflexiva.
+
+
+Por otro lado, si $X$ y $Y$ son espacios topológicos tales que $X\cong Y$, entonces existe un homeomorfismo $f:X\to Y$. Como la función inversa $f^{-1}:Y\to X$ es continua y biyectiva y  $(f^{-1})^{-1}=f$, inferimos que $f^{-1}$ es un homeomorfismo. Así que $Y\cong X$, quedando demostrado que $\cong$ es simétrica.
+
+Por último, consideremos $X$, $Y$ y $Z$ espacios topológicos, tales que  $X\cong Y$ y $Y\cong
+Z$. Entonces existen dos homeomorfismos, $f:X \to Y$ y
+ $g:Y \to Z$. Como la composici\'on de funciones continuas, abiertas y biyectivas es continua, abierta y biyectiva, la función $g\circ f:X\to Z$ es un homeomorfismo. Concluimos que $X\cong Z$, por lo que $\cong$ es una relación transitiva.
+\end{proof}
+
+
+Como la relación de homeomorfismo $\cong$ es de equivalencia, $\cong$ induce una partición en la clase de todos los espacios topológicos.  La clase $  [X]=\{Y\mid Y\cong X\}$ de equivalencia de un espacio $X$ recibe el nombre de \textbf{tipo topológico} de $X$. 
+\index{tipo topol\'ogico}
+
+  Diremos que una propiedad $\mathcal{P}$ es \textbf{topol{\'o}gica} o es un \textbf{invariante
+    topol{\'o}gico} si para cualesquiera dos espacios $X$ y $Y$ homeomorfos, $X$ satisface la propiedad $\mathcal{P}$ si y sólo si $Y$ satisface la propiedad $\mathcal{P}$. Claramente la cardinalidad de un espacio $X$ es un invariante topológico. Otro ejemplo de invariante topológico es el peso, como  veremos a continuación.
+\index{invariante topol\'ogico}
+    
+\begin{example}[Ejemplos]
+\begin{enumerate}
+ \item Tener base numerable es una propiedad topol\'ogica. 
+ Ser separable tambi\'en es una propiedad topol\'ogica.
+
+ \item La propiedad de ser un conjunto acotado en $\mathbb{R}$ no es topol\'ogica, 
+ pues $(-\pi/2,\pi/2)$ es homeomorfo a $\mathbb{R}$.
+
+ \item Sea $Y=\ell_2$ el conjunto de todas las sucesiones tales que la suma
+  del cuadrado de sus entradas converge, equipado con la m\'etrica
+  $\rho(x,y)=\sqrt{\underset{i\in\mathbb{N}}{\sum}(y_i-x_i)^2}$. 
+  $Y$ es separable, pues las sucesiones con entradas racionales que son eventualmente cero
+  forman un subconjunto denso y numerable. En el ejemplo \ref{ex:suc}, se
+  demostr\'o que el espacio $X$ de todas las sucesiones acotadas no es
+  separable. Así, resulta claro que éstos espacios no son homeomorfos.    
+\end{enumerate}
+\end{example}
+
+\begin{proposition}
+   El peso de un espacio es un invariante topológico.
+\end{proposition}
+\begin{proof} Sean $X$ y $Y$ dos espacios topológicos y $f:X\to Y$ un
+  homeomorfismo. Sea $\mathcal{B}$ una base para la topología de
+  $X$. Definamos $\mathcal{B}'=\{f(U)\mid U\in\mathcal{B}\}$ y
+  demostremos que $\mathcal{B}'$ es base para la topología de $Y$.  
+  
+  Primero notemos que como $f$ es abierta, cada $f(U)$ es abierto en
+  $Y$, por lo que $\mathcal{B}$ es una familia de conjuntos abiertos de
+  $Y$. Ahora consideremos 
+  $y\in Y$ y una vecindad $W$ de $y$. Como $f$ es continua 
+  $f^{-1}(W)$ es abierto en $X$; además $f^{-1}(y)\in f^{-1}(W)$. Como
+  $\mathcal{B}$ es base, existe $U_\alpha\in\mathcal{B}$, tal que
+  $f(y)\in U_\alpha\subset f^{-1}(W)$. Así, $f(U_\alpha)\in\mathcal{B}'$
+  y $y\in f(U_\alpha)\subset W$, lo cual demuestra que $\mathcal{B}'$ es
+  base para la topolog\'ia de $Y$. Observemos que los conjuntos
+  $\mathcal{B}$ y $\mathcal{B}'$ tienen la misma cardinalidad. Esto
+  implica que $\omega(Y)\leq \omega(X)$. De manera análoga se demuestra
+  que $\omega(X)\leq \omega(Y)$, de donde podemos concluir que los
+  espacios $X$ y $Y$ tienen el mismo peso. 
+
+\end{proof}
+
+\begin{definition}
+  Sean $X$ y $Y$ dos  espacios topol{\'o}gicos y $f:X\to Y$ una función. Se dice que $f$ es un \textbf{encaje
+  topol{\'o}gico}\index{encaje!topol\'ogico} si $f:X\to f(X) $ es un homeomorfismo.
+\end{definition}
+
+
+\begin{example}
+Sean $n$ y $m$ dos números naturales, donde $n<m$. Entonces, la función $f:\mathbb{R}^n\to\mathbb{R}^m$ dada por 
+$$f(x_1,x_2,\dots,x_n)=(x_1,x_2,\dots,x_n,0,\dots,0)$$
+es un encaje topológico.
+\end{example}
+
+
+
+
+
+\section{Productos finitos de espacios topol{\'o}gicos}
+\begin{proposition}
+  Sea $\{(X_i,\tau_i)\}_{i=1}^n$ una colección finita de espacios
+  topológicos. consideramos el producto cartesiano $\prod\limits_{i=1}^nX_i$,
+  es decir,  el conjunto 
+\begin{equation*}
+ \prod_{i=1}^n X_i = \{x=(x_1,\dots,x_n)\mid x_i\in X_i\}.
+\end{equation*}
+Sea ${\mathcal{B}} =\{ U_1\times U_2\times \dots \times U_n\mid U_i
+\in \tau_i \}$.  Entonces $\mathcal{B}$ es
+base para
+una {\'u}nica topología $\tau$ en $X$ la cual recibe el nombre de \textbf{topología producto}.
+ El espacio topológico $(X,\tau)$ se llama \textbf{producto topológico}, o simplemente 
+\textbf{producto} de los espacios $X_i$.
+\end{proposition}
+\index{topolog\'ia!producto}
+\index{espacio!producto}
+\begin{proof}
+  Según el teorema~\ref{T:b}, basta demostrar que $\mathcal{B}$
+  satisface las propiedades \textbf{$\mathcal{B}1$} y
+  \textbf{$\mathcal{B}2$} de una base. Como  cada $X_i$ es elemento de $\tau_i$, y
+  $X=\prod\limits_{i=1}^nX_i$ inferimos que $X\in\mathcal{B}$, 
+  satisfaciéndose la propiedad
+  \textbf{$(\mathcal{B}1)$}.  
+  
+  Por otro lado, si $U=\prod\limits _{i=1}^n U_i$ y
+  $V=\prod\limits_{i=1}^n V_i$ son dos elementos de $\mathcal{B}$ con
+  intersección no vacía, entonces como cada $U_i\cap V_i\in\tau_i$,
+  tenemos que 
+$$U\cap V=\big{(}\prod _{i=1}^n U_i\big{)}\cap\big{(} \prod _{i=1}^n
+V_i\big{)}=\prod_{i=1}^n (U_i\cap V_i)\in\mathcal{B}.$$ 
+De donde
+$\mathcal{B}$ satisface la propiedad \textbf{$(\mathcal{B}2)$} y por
+lo tanto existe una única topología $\tau$ para la cual $\mathcal{B}$
+es base.  
+\end{proof}
+
+\begin{example}[Ejemplos]
+\begin{enumerate}
+\item El espacio euclidiano $\mathbb {R}^n$ es homeomorfo al producto topológico de 
+$n$ copias de la recta real: $$\mathbb{R}^n=\prod _{i=1}^n\mathbb{R}_i,$$ donde  cada $\mathbb{R}_i=\mathbb{R}$.
+
+
+\item Sea $\mathbb{S}^{1}=\{(x,y)\in\mathbb{R}^2\mid~x^2+y^2=1\}$ el círculo o la esfera de dimensión 1. El producto $\mathbb{S}^1\times\mathbb{S}^1$ recibe el nombre \textbf{toro 2-dimensional}, y suele denotarse por $T^2$. 
+\index{Toro}
+Más adelante veremos otra forma de construir el toro.
+
+
+
+\item Si $X$ es un espacio topológico e $\mathbb I$ denota el intervalo $[0,1]$, entonces el espacio producto $X \times \mathbb I$  es llamado
+\textbf{cilindro sobre $X$}.  
+\index{Cilindro}
+\end{enumerate}
+\end{example}
+
+
+
+
+
+\section{Producto de Tychonoff}
+
+\begin{definition}
+  Sean $\mathcal{A}$ un conjunto de índices y
+  $\{X_\alpha\}_{\alpha\in\mathcal{A}}$ una colección de conjuntos no
+  vac\'ios. El \textbf{producto cartesiano}\index{producto!cartesiano}
+  de los conjuntos $X_\alpha$, es el conjunto de todas las funciones
+  % \st{$x:\mathcal{A}\to \bigcup\limits_{\alpha\in\mathcal{A}}X_\alpha $}
+  $x:\mathcal{A}\to \bigsqcup\limits_{\alpha\in\mathcal{A}}X_\alpha
+  $ tales que $x(\alpha)\in X_{\alpha}$ para cada
+  $\alpha\in\mathcal{A}$. Este conjunto se suele denotar por
+  $\prod\limits_{\alpha\in\mathcal{A}}X_\alpha$. 
+  
+  Para cada $x\in\prod\limits_{\alpha\in\mathcal{A}}X_\alpha$ y para
+  cada $\alpha\in\mathcal{A}$, el valor $x(\alpha)$ lo llamaremos la
+  \textbf{$\alpha-$ésima cordenada } de $x$.\index{producto!coordenada} 
+\end{definition}
+
+En la práctica, se suele denotar la $\alpha-$ésima cordenada de $x$, por $x_\alpha$. Además, por conveniencia, en algunas ocasiones denotaremos a la función $x$ por $(x_\alpha)_{\alpha\in\mathcal{A}}$, o simplemente por $(x_\alpha)$ si no hay riesgo de confusión.
+\smallskip
+\begin{nota}En realidad, para asegurarse de que el producto de una colección infinita de conjuntos no es vacío se usa el axioma de elección; de hecho esta afirmación y el axioma de elección son equivalentes.
+\end{nota}
+
+
+
+Si cada $X_\alpha$ es a su vez un espacio topológico, nos gustaría proveer al producto $\prod\limits_{\alpha\in\mathcal{A}}X_\alpha$ de una topología que generalice el producto finito de espacios topológicos. 
+En realidad existen varias formas de hacerlo. En primera instancia, uno podría pensar que la topología más convenienete es la que generan los conjuntos de la forma $\prod\limits_{\alpha\in\mathcal{A}} U_\alpha$, donde cada $U_\alpha$ es abierto en $X_\alpha$. Esta topología recibe el nombre de \textbf{topología  \textit{caja}}. Sin embargo,
+ esta topología no es la más conveniente. \index{topolog\'ia!de cajas}
+A continuación veremos la manera que más se utiliza de topologizar al producto cartesiano.
+
+\begin{definition}
+Sea $\{X_\alpha\}_{\alpha\in\mathcal{A}}$ una familia de espacios topológicos indexados 
+por un conjunto cualquiera de índices $\mathcal{A}$. Sea $\Gamma$ el conjunto de todos los 
+subconjuntos de $\prod\limits_{\alpha\in\mathcal{A}}X_\alpha$ de la forma 
+$$\langle U_{\alpha_0}\rangle=\prod\limits_{\alpha\in\mathcal {A}}U_\alpha, $$
+ donde $U_{\alpha_0}$ es un subconjunto abierto en $X_{\alpha_0}$ y $U_\alpha=X_\alpha$ si
+ $\alpha\neq\alpha_0$. 
+La topología en $\prod\limits_{\alpha\in\mathcal{A}}X_\alpha$ generada por $\Gamma$ como 
+sub-base recibe el nombre de \textbf{topología de Tychonoff}\index{topolog\'ia!Tychonoff} o 
+\textbf{topología producto}\index{topolog\'ia!producto}.  El espacio 
+$\prod\limits_{\alpha \in\mathcal{A}}X_\alpha$ provisto de dicha topología se llama 
+\textbf{producto de Tychonoff}\index{producto!Tychonoff} o 
+\textbf{producto topológico}\index{producto!topol\'ogico} de los espacios 
+$X_\alpha$, $\alpha\in\mathcal{A}$.
+\end{definition}
+
+Observemos que la base generada por $\Gamma$ como sub-base, es la colección de todos los subconjuntos de la forma $U=\prod\limits_{\alpha\in\mathcal{A}}U_\alpha$, en donde $U_\alpha$ es abierto en $X_\alpha$ y $U_\alpha=X_\alpha$ salvo para un número finito de indices en $\mathcal{A}$, digamos $\alpha_1,\alpha_2,\dots ,\alpha_n$. En otras palabras, $U=\bigcap\limits_{i=1}^n\langle U_{\alpha_i}\rangle$, y lo denotaremos de la siguiente forma
+$$U=\langle U_{\alpha_1},U_{\alpha_2},\dots,U_{\alpha_n}\rangle.$$
+Los conjuntos $\langle U_{\alpha}\rangle$ se llaman sub-básicos canónicos y los conjuntos
+$\langle U_{\alpha_1},U_{\alpha_2},\dots,U_{\alpha_n}\rangle$ se llaman básicos canónicos.
+\smallskip
+
+
+
+Cuando el conjunto $\mathcal{A}$ es un finito, la topología de Tychonoff coincide con la topología producto de la sección anterior. Por esta razón, todas las proposiciones y teoremas que se vean en esta sección serán válidas para el caso en el que $\{X_\alpha \}_{\alpha\in\mathcal{A}}$ sea  una familia finita de espacios topológicos.
+
+
+\begin{definition}\label{proyecciones}
+Sea $\prod\limits_{\alpha\in\mathcal{A}}X_\alpha$ el producto  topológico de una familia $\{X_\alpha\}_{\alpha\in\mathcal{A}}$ de espacios topológicos. Para cada $\beta\in\mathcal{A}$, la función $\pi_{\beta}:\prod\limits_{\alpha\in\mathcal{A}}X_\alpha\to X_{\beta}$ dada por
+
+$$\pi_{\beta}\big((x_\alpha)\big)=x_{\beta}$$
+
+se llama la \textbf{$\beta-$ésima proyección}.\index{proyecci\'on}
+\end{definition}
+
+
+
+\begin{proposition}\label{proyecciones continuas}
+  Toda proyección   $\pi_{{\beta}}:\prod\limits_{\alpha\in \mathcal{A}}X_\alpha\to X_\beta$, $\beta\in\mathcal{A}$, es una funci{\'o}n
+  continua y abierta.
+\end{proposition}
+\begin{proof}
+  
+  Para demostrar que $\pi_{\beta}$ es continua, simplemente notemos que
+  si $U_{\beta} $ es un abierto arbitrario en $X_{\beta}$, tenemos que  
+  $$\pi_{\beta}^{-1}(U_{\beta})=\big\{x\in\prod\limits_{\alpha\in\mathcal{A}}X_\alpha|~x_{\beta}\in 
+  U_{\beta}\big\}=\langle U_{\beta}\rangle,$$ 
+  el cual es abierto en
+  $\prod\limits_{\alpha\in\mathcal{A}}X_\alpha$. Así, $\pi_{\beta}$ es
+  continua. 
+  \smallskip
+  
+  Por otro lado, para demostrar que $\pi_{\beta}$ es una función
+  abierta, en virtud de la proposición~\ref{abierta basicos}, basta
+  demostrar que la imagen de cualquier abierto básico canónico es abierta. Sea
+  pues $U=\langle U_{\alpha_1},\dots, U_{\alpha_n}\rangle$ un abierto
+  básico en $\prod\limits_{\alpha\in\mathcal{A}}X_\alpha$. Entonces
+  $\pi_\beta(U)=U_{\beta}$  que por definici\'on  de 
+  $\langle U_{\alpha_1},U_{\alpha_2},\dots,U_{\alpha_n}\rangle$ es abierto en $X_{\beta}$, 
+  lo que nos permite concluir que
+  $\pi_\beta$ es una función abierta. 
+\end{proof}
+
+
+\begin{proposition}\label{top prod mas debil}
+  La topolog\'\i a de Tychonoff es la topología  más débil que hace
+  continuas todas las proyecciones $\pi_\beta:\prod\limits_{\alpha\in\mathcal{A}}X_\alpha\to X_\beta$.
+\end{proposition}
+\begin{proof}
+ Sea $X=\prod\limits_{\alpha\in\mathcal{A}}X_\alpha$ y denotemos por $\tau_T$ la topología de Tychonoff en $X$. En la proposición anterior vimos que respecto a $\tau_T$ todas las proyecciones son continuas.
+ 
+Supongamos que existe una topología $\tau$ en $X$ tal que todas las proyecciones $\pi_\beta: X\to X_\beta$ son continuas. Entonces, para cualquier $\alpha\in\mathcal{A}$ y para cualquier abierto $U_\alpha\subset X_\alpha$, se tiene que $\pi_{\alpha}^{-1}(U_\alpha)=\langle U_\alpha\rangle\in \tau$. Así, $\tau$ es una topología que contiene todos los elementos sub-básicos de $\tau_T$. En conclusión $\tau_T\subset \tau$, como se quería demostrar.
+ \end{proof}
+ 
+
+
+El siguiente teorema nos permite determinar fácilmente cuándo una función de un espacio topológico  a un producto topológico es continua.
+
+\begin{theorem}\label{funciones continuas en productos}
+Sean $Y$ un espacio topológico, $X=\prod\limits_{\alpha\in\mathcal{A}}X_\alpha$ el producto de 
+Tychonoff de una familia de espacios topológicos y $\pi_\alpha:X\to X_\alpha$ la 
+$\alpha-$ésima proyección. Entonces, $f:Y\to X$ es continua si y sólo si la composición 
+$\pi_\alpha\circ f$ es continua para toda $\alpha\in\mathcal{A}$.
+\end{theorem}
+\begin{proof} Si $f$ es una función continua, entonces  $\pi_\alpha\circ f$ es continua por 
+ser composición de dos funciones continuas. 
+
+Ahora supongamos que $\pi_\alpha\circ f$ es continua para cada $\alpha\in\mathcal{A}$. Para 
+demostrar que $f$ es continua, basta demostrar que la preimagen de cualquier abierto 
+sub-básico de $X$ es abierta en $Y$. Sea pues $\langle U_{\alpha_0}\rangle$ un abierto 
+sub-básico en $X$. Entonces 
+$$f^{-1}(\langle U_{\alpha_0}\rangle)=
+\{y\in Y\mid f(y)\in \langle U_{\alpha_0}\rangle\}=
+\{y\in Y\mid \pi_{\alpha_0}(f(y))\in U_{\alpha_0}\}=
+(\pi_{\alpha_0}\circ f)^{-1}(U_{\alpha_0}).$$
+Pero $\pi_{\alpha_0}\circ f$ es continua, por lo que $f^{-1}(U_{\alpha_0})=(\pi_{\alpha_0}\circ f)^{-1}(U_{\alpha_0})$ es abierto en $Y$. De esta manera queda demostrado que $f$ es una función continua.
+\end{proof}
+
+\begin{theorem}[Conmutatividad del producto]
+  Sea $\{(X_{\alpha},\tau_{\alpha})\}_{\alpha\in \mathcal{A}}$ una familia de
+  espacios topol{\'o}gicos. Si $\phi :\mathcal{A}\to\mathcal{A}$ es una
+  biyecci{\'o}n, entonces 
+$$\prod_{\alpha\in \mathcal{A}} X_{\alpha} \cong \prod_{\alpha\in 
+  \mathcal{A}}X_{\phi(\alpha)}.$$
+\end{theorem}
+
+\begin{proof}
+Sea $X=\prod\limits_{\alpha\in\mathcal{A}}X_{\alpha}$. Para cada $\alpha\in \mathcal{A} $, 
+denotemos  $Y_\alpha=X_{\phi(\alpha)}$ y llamemos 
+$Y=\prod\limits_{\alpha\in\mathcal{A}}Y_\alpha$. Definamos las funciones 
+$f:X\to Y$ y $g:Y\to X$ por 
+\begin{align*}
+f\big((x_\alpha)\big)=(x_{\phi(\alpha)})\\
+g\big((y_\alpha)\big)=(y_{\phi^{-1}(\alpha)}).
+\end{align*}
+Notemos que para toda $(x_\alpha)\in X$, 
+$$g\circ f\big((x_\alpha)\big) = g\big(f\big((x_\alpha)\big)\big) = g\big((x_{\phi(\alpha)})\big) = (x_{\phi^{-1}(\phi(\alpha))})=(x_\alpha),$$
+por lo que $g\circ f$ es la identidad en $X$. 
+
+Por otro lado, para toda $(y_\alpha)\in Y$, 
+$$f\circ g\big((y_\alpha)\big) = f\big(g\big((y_\alpha)\big)\big) = f\big((y_{\phi^{-1}(\alpha)})\big) = (y_{\phi(\phi^{-1}(\alpha))})=(y_\alpha).$$
+Entonces $f\circ g$ es la identidad en $Y$. Así, podemos concluir que tanto $f$ como $g$ son biyecciones y además $g=f^{-1}$.
+
+\smallskip
+Para completar la prueba, necesitamos demostrar que las funciones $f$ y $g$ son continuas. Para cada $\alpha \in\mathcal{A}$, sean $\pi_\alpha:X\to X_\alpha$ y  $\eta_\alpha :Y\to Y_\alpha$ las $\alpha-$ésima proyecciones. Por la proposición~\ref{proyecciones continuas}, tanto $\pi_\alpha$ como $\eta_\alpha$ son funciones continuas.
+
+Notemos que para cada $\alpha_0\in\mathcal{A}$, $\eta_{\alpha_0}\circ f=\pi_{\phi(\alpha_0)}$. En efecto, si $(x_\alpha)\in X$, entonces 
+
+$$\eta_{\alpha_0}\circ f\big((x_\alpha)\big) = \eta_{\alpha_0} \big(f\big((x_\alpha)\big)\big) = \eta_{\alpha_0}\big((x_{\phi(\alpha)})\big) = (x_{\phi(\alpha_0)}) = \pi_{\phi(\alpha_0)}\big((x_\alpha)\big).$$
+Como las proyecciones $\eta_{\alpha_0}$ y $\pi_{\phi(\alpha_0)}$ son funciones continuas, entonces, según el teorema~\ref{funciones continuas en productos}, $f$ debe ser una función continua.  Análogamente se prueba que $g=f^{-1}$ es una función continua. Así, $f$ es un homeomorfismo entre $X$ y $Y$, lo cual demuestra lo que queríamos.
+  
+
+\end{proof}
+
+\begin{proposition}[Asociatividad del producto]
+Sea  $\{X_\alpha\}_{\alpha\in\mathcal{A}}$ una famimlia de espacios topológicos. 
+Supongamos que el conjunto de índices está representado como unión ajena de sus subconjuntos 
+$A_i,~i\in\mathcal{I}$, esto es 
+$\mathcal{A}=\bigsqcup\limits_{\i\in\mathcal{I}}\mathcal{A}_i$. Si $Y_i=\prod\limits_{\alpha\in\mathcal{A}_i}X_\alpha$, entonces 
+\begin{equation*}
+\prod_{\alpha \in \mathcal{A}}X_\alpha\cong\prod_{i \in
+\mathcal{I}}Y_i.
+\end{equation*}
+\end{proposition}
+
+\begin{proof} Llamemos $X=\prod\limits_{\alpha \in \mathcal{A}}X_\alpha$ y $Y=\prod\limits_{i \in\mathcal{I}}Y_i$. Para cada $i\in \mathcal{I}$, definamos la función $\phi_i:X\to Y_i$ por $\phi_i(x)=\{x_\alpha\}_{\alpha\in\mathcal{A}_i}$.
+%, es decir, para cada $i$, consideramos las \lq proyecciones\rq $\alpha\in\mathcal{A}_i$ y $\phi_i=\triangle p_\alpha$, donde $p_\alpha:X\to X_\alpha$ es la proyecci\'on. 
+Sea $\phi:X\to Y$ la función dada por 
+$$\phi(x)=\{\phi_i(x)\}_{i\in\mathcal{I}}.$$
+%es decir, $\phi=\triangle_{i\in\mathcal{I}}\phi_i$.
+
+Veamos que $\phi$ define un homeomorfismo.
+
+
+Primero notemos que si $x=\{x_\alpha\}_{\alpha\in\mathcal{A}}$ y $y=\{y_\alpha\}_{\alpha\in\mathcal{A}}$ son dos puntos distintos de $X$, 
+ entonces existe $\alpha_0 \in \mathcal{A}$ tal
+que $x_{\alpha_0}\neq y_{\alpha_0}$. Como $\mathcal{A}=\bigsqcup\limits_{i\in\mathcal{I}} \mathcal{A}_i$,
+existe un único índice $i_0\in\mathcal{I}$, tal que $\alpha_0\in\mathcal{A}_{i_0}$
+Así,  
+$\phi_{i_0}(x)=\{x_\alpha\}_{\alpha\in\mathcal{A}_{i_0}}\neq\{y_\alpha\}_{\alpha\in\mathcal{A}_{i_0}}=\phi_{i_0}(y)$, 
+lo cual nos garantiza que $\phi(x)\neq\phi(y)$ y por tanto $\phi$ es inyectiva.
+
+Por otro lado, 
+si $y=\{\{y_\alpha\}_{\alpha\in\mathcal{A}_i}\}_{i\in\mathcal{I}}$ es un punto arbitrario de $Y$, es claro que el punto $x=\{y_\alpha\}_{\alpha\in\mathcal{A}}$ satisface $\phi(x)=y$. Por lo tanto, $\phi$ es suprayectiva.
+Así, $\phi$ es una biyección entre $X$ y $Y$. 
+
+
+
+Para demostrar que $\phi$ es continua, por el teorema~\ref{funciones continuas en productos}, basta demostrar que $\eta_i\circ \phi=\phi_i$ es continua para toda $i\in\mathcal{I},$ donde $\eta_i:Y\to Y_i$ es la proyección en la $i-$ésima coordenada. A su vez, en virtud del teorema~\ref{funciones continuas en productos}, la continuidad de $\phi_i$ es equivalente a la continuidad de todas las composiciones $\mu_{\beta}^{i}\circ\phi_i$, donde $\mu_{\beta}^{i}:Y_i\to X_\beta$ es la proyección en la $\beta-$ésima coordenada, con $\beta\in\mathcal{A}_i$.
+Pero $\mu_{\beta}^{i}\circ\phi_i=\pi_\beta$, donde $\pi_\beta:X\to X_\beta$ es la $\beta-$ésima proyección, y por lo tanto es continua.
+
+De manera similar, para probar la continuidad de la función $\phi^{-1}:Y\to X$, es suficiente ver que para todo índice $\alpha\in\mathcal{A}$, la composición $\pi_\alpha\circ\phi^{-1}$ es continua. Si $\alpha\in\mathcal{A}$, entonces existe un único $i_0\in\mathcal{I}$, tal que $\alpha\in\mathcal{A}_{i_0}$. Así, es fácil ver que $\pi_{\alpha}\circ \phi^{-1}=\mu_{\alpha}^{i_0}\circ \eta_{i_0}$. Como las proyecciones $\eta_{i_0}$ y $\mu_\alpha^{i_0}$ son continuas, la composición $\pi_{\alpha}\circ \phi^{-1}=\mu_{\alpha}^{i_0}\circ \eta_{i_0}$ lo es, y por tanto $\pi_\alpha\circ\phi^{-1}$ es continua, como se quería demostrar.
+\end{proof}
+
+\begin{proposition}\label{producto de cerraduras}
+  Sean $\{(X_\alpha,\tau_\alpha)\}_{\alpha\in\mathcal{A}}$ una familia de espacios 
+topológicos. Para cada $\alpha\in\mathcal{A}$ sea $B_\alpha$ un subconjunto de $X_\alpha$. 
+Entonces
+
+  $$\overline{\prod_{{\alpha} \in \mathcal{A}} B_{\alpha}}= \prod_{{\alpha} \in
+    \mathcal{A}}\overline{B_{\alpha}}.$$
+\end{proposition}
+\begin{proof}
+Sea $\{x_\alpha\}\in\overline{\prod\limits_{\alpha\in\mathcal{A}}B_\alpha}$. Para demostrar
+ que $\{x_\alpha\}\in \prod\limits_{{\alpha} \in
+    \mathcal{A}}\overline{B_{\alpha}}$ basta probar 
+que $x_\alpha\in \overline{B_\alpha}$ para cada $\alpha\in\mathcal{A}$.
+Sea $\beta\in\mathcal{A}$, y $U_\beta\subset X_\beta$ una vecindad 
+de $x_\beta$. 
+Entonces $\langle U_\beta\rangle=\prod\limits_{\alpha\in\mathcal{A}}U_\alpha$ 
+es una vecindad de $\{x_\alpha\}$, por lo
+ que
+$$\emptyset\neq \langle U_\beta\rangle \cap\big{(}\prod\limits_{\alpha\in\mathcal{A}}
+B_\alpha\big{)}=\big{(}\prod\limits_{\alpha\in\mathcal{A}}
+U_\alpha\big{)}\cap\big{(}\prod
+\limits_{\alpha\in\mathcal{A}}B_\alpha\big{)}=
+\prod\limits_{\alpha\in\mathcal{A}}
+(U_\alpha\cap B_\alpha).$$
+    De donde podemos concluir que para cada $\alpha\in\mathcal{A}$, $U_\alpha\cap B_\alpha\neq\emptyset$. En particular, $U_\beta\cap B_\beta\neq\emptyset$, lo cual demuestra 
+que $x_\beta \in\overline{B_\beta}$ y por tanto 
+$\{x_\alpha\}\in\prod\limits_{\alpha\in\mathcal{A}}\overline{B_\alpha}$.
+    \smallskip
+    
+    Ahora consideremos cualquier  
+$\{x_\alpha\}\in\prod\limits_{\alpha\in\mathcal{A}}\overline{B_\alpha}$, y demostremos que 
+$\{x_\alpha\}\in \overline{\prod\limits_{\alpha\in\mathcal{A}}B_\alpha}$. 
+Para ello, basta demostrar que cualquier vecindad básica $U$ de $\{x_\alpha\}$,  
+  $U\cap\prod\limits_{\alpha\in\mathcal{A}}B_\alpha\neq\emptyset$. Sea pues $U=\langle U_{\alpha_1},\dots, U_{\alpha_n}\rangle $ una vecindad básica de  $\{x_\alpha\}$. Entonces, para cada $\alpha\in\mathcal{A}$, $U_\alpha$ es una vecindad de $x_\alpha$ en $X_\alpha$. Como  $x_\alpha\in \overline{B_\alpha}$, tenemos que $U_\alpha\cap B_\alpha\neq\emptyset$, de donde 
+$$U\cap \big{(}\prod\limits_{\alpha\in\mathcal{A}}B_\alpha\big{)}= \big{(}\prod\limits_{\alpha\in\mathcal{A}}
+U_\alpha\big{)}\cap\big{(}\prod
+\limits_{\alpha\in\mathcal{A}}B_\alpha\big{)}=
+\prod\limits_{\alpha\in\mathcal{A}}
+(U_\alpha\cap B_\alpha)\neq\emptyset.$$
+Así  $\{x_\alpha\}\in \overline{\prod\limits_{\alpha\in\mathcal{A}}B_\alpha} $, como se quería demostrar. 
+\end{proof}
+
+De la proposición anterior se siguen inmediatamente los siguientes corolarios.
+
+\begin{corollary}
+  Si para toda ${\alpha}\in \mathcal{A}$, $B_{\alpha}$ es un subconjunto cerrado en el espacio topológico $X_{\alpha}$, entonces
+  $\prod\limits_{{\alpha} \in \mathcal{A}}B_{\alpha}$ es cerrado en $\prod\limits_{{\alpha} \in \mathcal{A}}X_{\alpha}$.
+\end{corollary}
+\begin{proof}
+Como $B_{\alpha}$ es cerrado, tenemos que $\overline{B_\alpha}=B_\alpha$ para toda $\alpha\in\mathcal{A}$. Así, tenemos que
+$$\overline{\prod\limits_{\alpha\in\mathcal{A}}
+B_\alpha}=\prod\limits_{\alpha\in\mathcal{A}}
+\overline{B_\alpha}=\prod\limits_{\alpha\in\mathcal{A}}B_\alpha.$$
+En virtud del teorema~\ref{cerradura=cerrado}, podemos concluir que  $\prod\limits_{{\alpha} \in \mathcal{A}}B_{\alpha}$ es un conjunto cerrado.
+\end{proof}
+
+
+\begin{corollary}
+ Si $B_{\alpha}$ es un subconjunto denso en el espacio topológico $X_{\alpha}$ para toda ${\alpha}\in \mathcal{A}$, entonces
+  $\prod\limits_{{\alpha} \in \mathcal{A}}B_{\alpha}$ es denso en $\prod\limits_{{\alpha} \in \mathcal{A}}X_{\alpha}$.
+\end{corollary}
+\begin{proof}
+  Tenemos que $\overline{B_\alpha}=X_\alpha$ para toda $\alpha\in\mathcal{A}$. Luego, en virtud de la proposición~\ref{producto de cerraduras}, tenemos que
+ $$\overline{\prod\limits_{\alpha\in\mathcal{A}}B_\alpha}=\prod\limits_{\alpha\in\mathcal{A}}\overline{B_\alpha}=\prod\limits_{\alpha\in\mathcal{A}}X_\alpha,$$
+ 
+ lo cual significa que $\prod\limits_{\alpha\in\mathcal{A}}{B_\alpha}$ es denso en $\prod\limits_{\alpha\in\mathcal{A}}X_\alpha$. 
+\end{proof}
+
+
+A continuación veremos algunas propiedades que se preservan bajo el producto numerable de espacios topológicos.
+
+\begin{theorem} Sea $\{X_n\}_{n\in\mathbb{N}}$ una familia numerable de espacios topológicos. Si para cada $n\in\mathbb{N}$, $X_n$ es primero numerable, entonces $\prod\limits_{n=1}^{\infty} X_n$ es primero numerable.
+ \end{theorem}
+ 
+ 
+ \begin{proof}
+ Sea $x=(x_n)_{n\in\mathbb{N}}$ un punto arbitrario en $X=\prod\limits_{n=1}^{\infty}X_n$. Sabemos que para cada $x_n\in X_n$ existe una base local numerable, digamos, $\mathcal{B}_{x_n}$. Denotemos por $\mathcal{B}_{x}$ la colección de todos los abiertos canónicos de la forma $\langle U_{n_1},U_{n_2},\dots,U_{n_k}\rangle$ con $U_{n_i}\in\mathcal{B}_{x_{n_i}}$. Es claro que $\mathcal{B}_x$ es una colección numerable. Veamos que  es base local en $x$. 
+
+Consideremos una vecindad $W\subset X$ de $x$. Sin pérdida de generalidad, podemos suponer que $W=\langle{W_{n_1},W_{n_2},\dots,W_{n_k}}\rangle$ con $W_{n_i}$ abierto en $X_{n_i}$.  Como cada  $\mathcal{B}_{x_{n_i}}$ es base local de $x_{n_i}$ en $X_{n_i}$, podemos encontrar $U_{n_i}\in\mathcal{B}_{x_{n_i}}$ tal que $x_{n_i}\in U_{n_i}\subset W_{n_i}$. Así, $U=\langle{U_{n_1},U_{n_2},\dots U_{n_k}}\rangle$ es un elemento de $\mathcal{B}_x$ tal que $x\in U\subset W$. Por lo tanto $\mathcal{B}_x$ sí es una base local numerable en $x$. De esta manera  $X$ es un espacio primero numerable.
+ \end{proof}
+
+El siguiente ejemplo nos muestra que es esencial que la colección de factores sea
+numerable para que su producto resulte primero numerable (si los espacios no son triviales).
+
+\begin{example}
+Sea $\{X_\alpha\}_{\alpha \in \mathcal{A}}$ una familia no numerable de espacios topológicos no triviales (no antidiscretos). Entonces su producto 
+$\prod\limits_{{\alpha \in \mathcal{A}}}X_\alpha$ no es primero numerable.
+\smallskip
+
+En efecto, como cada $X_\alpha$ es no trivial, para cada $\alpha \in \mathcal{A}$ existe 
+$U_\alpha\subset X_\alpha$ abierto con $U_\alpha\notin\{\emptyset, X_\alpha\}$. 
+Sea $x=(x_\alpha)$ donde cada $x_\alpha\in U_\alpha$, y supongamos que existe una base 
+local numerable $\mathcal{B}_x=\{V_1,V_2,\ldots\}$ para $x$. Para cada $V_i\in\mathcal{B}_x$ 
+se tiene que $\pi_\alpha(V_i)=X_\alpha$ salvo para una colección finita de índices 
+$\alpha_{i_1},\alpha_{i_2},\ldots\alpha_{i_{n_i}}$, y como $\mathcal{A}$ es no numerable, 
+existe $\beta\in\mathcal{A}$ tal que $\beta\neq\alpha_{i_k}$ para todo $i\geq 1$, 
+$k\in\{1,\ldots,n_i\}$.
+
+$\langle U_\beta \rangle$ es vecindad de $x$, luego existe $V_i\in\mathcal{B}_x$ tal que 
+$x\in V_i\subset U_\beta$, de donde 
+$\pi_\beta(V_i)\subset\pi_\beta(\langle U_\beta\rangle)=U_\beta\neq X_\beta$ y en particular 
+$\pi_\beta(V_i)\neq X_\beta$, una contradicción pues elegimos $\beta$ de tal modo que 
+$\pi_\beta(V_j)=X_\beta$ para todo $U_j\in\mathcal{B}_x$. 
+\end{example}
+
+\begin{theorem}\label{producto segundo numerable}
+ Sea $\{X_n\}_{n\in\mathbb{N}}$ una familia numerable de espacios topológicos. Si para cada $n\in\mathbb{N}$, $X_n$ es segundo numerable, entonces $\prod\limits_{n=1}^{\infty} X_n$ es segundo numerable.
+\end{theorem}
+\begin{proof}
+Sea $\{X_n\}_{n\in\mathbb{N}}$ una familia numerable de espacios topológicos.
+Para cada $n\in \mathbb{N}$, sea $\mathcal{B}_n$ una base numerable para el espacio $X_n$. Denotemos por $\mathcal{B}$ la colección de todos los abiertos canónicos de la forma $\langle{U_{n_1},U_{n_2},\dots U_{n_k}}\rangle$ con $U_{n_i}\in\mathcal{B}_{n_i}$. La familia $\mathcal{B}$ es una base numerable para la topología producto.
+\end{proof}
+
+
+\begin{theorem}
+  Sean $\{X_{n}\}_{n\in\mathbb{N}}$ una familia numerable de  espacios metrizables. Entonces su producto $\prod\limits_{n=1}^{\infty}X_n$ es metrizable.
+\end{theorem}
+
+\begin{proof}
+Para cada $n\in\mathbb{N}$ sea $\rho_n$ una métrica que genere la topología de $X_n$. 
+Para cada $n\geq 1$ consideramos la siguiente métrica acotada en $X_n$:
+$$d_n(x_n,y_n)={\rm min}\{1,\rho_n(x_n,y_n)\} $$
+Es claro que $d_n(x_n,y_n)\leq 1$ para todo $x_n,y_n\in X_n$, y que la nueva métrica $d_n$ 
+genera la misma topología que $\rho_n$.
+
+Consideremos la función 
+$\rho:\prod\limits_{n=1}^{\infty}X_n\times \prod\limits_{n=1}^{\infty}X_n\to\mathbb{R}$ 
+dada por
+\begin{equation*}
+\rho(x,y)=\sum_{n=1}^\infty{\frac{d_n(x_n,y_n)}{2^n}}. 
+\end{equation*}
+Es fácil ver que $\rho$ es una métrica en $\prod\limits_{n=1}^{\infty}X_n$ 
+y por lo tanto genera una topología en 
+$\prod\limits_{n=1}^{\infty}$, digamos $\tau_\rho$. 
+Denotemos por $\tau $ a la topología de Tychonoff del producto 
+$\prod\limits_{n=1}^{\infty}X_n$y demostremos que $\tau=\tau_\rho$.
+
+Para demostrar que $\tau\subset \tau_\rho$, en virtud de la 
+proposición~\ref{top prod mas debil}, basta demostrar que las proyeciones 
+$\pi_k:(\prod\limits_{n=1}^{\infty}X_n,\rho)\to (X_k,d_k),~n\geq 1$ son continuas.
+ 
+Sean $x\in X$ y $\varepsilon>0$. Dada $k\in\mathbb{N}$ elijamos $0<\delta<\varepsilon /2^k$. 
+Ahora, si
+   $$\rho(x,y)=\sum\limits_{n=1}^\infty\frac{d_n(x_n,y_n)}{2^n}<\delta,~ {\rm entonces}$$ 
+  $$\frac{d_k(x_k,y_k)}{2^k}<\delta<\frac{\varepsilon}{2^k}.$$ Por lo tanto $d_k(\pi_k(x),\pi_k(y))=d_k(x_k,y_k)<\varepsilon $, quedando demostrada la continuidad de $\pi_k$. 
+  \smallskip
+  
+  
+    Por otro lado, consideremos
+  $U\in\tau_\rho$. Sea $x\in U$, entonces existe $r>0$ tal que $B(x,r)\subset U$. Luego, existe
+$n\in \mathbb{N}$, tal que 
+$$\sum\limits _{i=n+1}^\infty \frac{1}{2^{i}}<\frac{r}{4}.$$
+
+Para cada $i\in\{1,2,\dots,n\}$, definamos $U_i\subset X_i$, por $U_i=B(x_i,\frac{r}{4})$. Sea $W_x=\langle U_1,U_2,\dots
+U_n\rangle\in \tau$. Es claro que $x\in W_x$. Demostremos que $W_x\subset B_\rho(x,r)$.
+Sea $y\in W_x$, entonces
+\begin{align*}
+\rho(x,y)& =\sum_{i=1}^\infty {\frac{d_i(x_i,y_i)}{2^i}}
+=\sum_{i=1}^n{\frac{d_i(x_i,y_i)}{2^i}}+\sum_{i={n+1}}^\infty {\frac{d_i(x_i,y_i)}{2^i}}\\
+&\leq \sum_{i=1}^n\frac{r/4}{2^i}+\frac{r}{4}
+=\frac{r}{4}\big(\sum_{i=1}^{n}\frac{1}{2^i}~+~1)
+<\frac{r}{4}(1+1)
+<r.
+\end{align*}
+Así,  $y\in B(x,r)\subset U$. Consecuentemente, $W_x\subset U$, por lo que todo punto de $U$ es punto interior en la topología $\tau$. De esta forma podemos concluir que $\tau_\rho\subset \tau$, lo cual completa la demostración.
+ 
+\end{proof}
+
+
+\section{Producto diagonal infinito de funciones}
+
+\begin{definition}\label{producto diagonal} Sean $X$ un espacio topológico y $\{Y_\alpha\}_{\alpha\in\mathcal{A}}$ una familia de espacios topológicos. 
+  Si $\mathcal{F}=\{f_{\alpha}:X \rightarrow Y_{\alpha}
+  \}_{\alpha\in\mathcal{A}}$ es una familia de funciones, entonces la
+  funci{\'o}n
+  \begin{equation*}
+    F=\underset{{\alpha} \in \mathcal{A}}{\bigtriangleup}f_{\alpha}:X\to \prod_{{\alpha} \in \mathcal{A}}
+    Y_{\alpha}
+  \end{equation*}
+  dada por $$F(x)=\{f_{\alpha}(x)\}_{{\alpha} \in \mathcal{A}} \text{ para cada }x\in X$$ 
+    recibe el nombre de \textbf{producto diagonal}\index{producto!diagonal} de $\mathcal{F}$.
+\end{definition}
+\begin{proposition}
+
+  Sea $\mathcal{F}$ una familia de funciones como en la definición~\ref{producto diagonal}. 
+El producto diagonal $F=\underset{{\alpha} \in \mathcal{A}}{\bigtriangleup}f_\alpha:X\to \prod\limits_{\alpha\in\mathcal{A}}Y_\alpha$ es continuo si y sólo si $f_\alpha:X\to Y_\alpha$ es continua para todo $\alpha\in\mathcal{A}$.
+\end{proposition}
+\begin{proof}
+Notemos que para toda $\alpha\in\mathcal{A}$, $f_\alpha=\pi_\alpha\circ F$, donde 
+$\pi_\alpha: \prod\limits_{i\in\mathcal{A}}Y_i\to Y_{\alpha}$ denota la $\alpha-$ésima proyección. De esta manera, la demostración es una consecuencia directa del teorema~\ref{funciones continuas en productos}.
+\end{proof}
+
+
+
+\begin{definition}
+  Sean $X$ un espacio topológico y
+  $\{Y_{\alpha} \}_{\alpha \in \mathcal{A}}$ una familia de
+  espacios topol{\'o}gicos. Se dice que una familia de funciones $\mathcal{F}=\{f_{\alpha}:X\to Y_{\alpha} \} _{{\alpha} \in
+  \mathcal{A} }$ \textbf{separa puntos de X}\index{separa!puntos}
+    si para cualquier par de puntos distintos $x$ y $y$ de $X$,  existe una funci\'on $f_{\alpha}\in \mathcal{F}$ tal que 
+   $ f_{\alpha}(x)\neq f_{\alpha}(y)$.
+
+An{\'a}logamente, se dice que $\mathcal{F}$ \textbf{separa puntos de
+conjuntos cerrados de $X$},\index{separa!puntos de cerrados} si para cualquier subconjunto cerrado $B\subset X$ y para cualquier punto $x\in X\setminus B$, existe $f_{\alpha}\in
+\mathcal{F}$, tal que $f_{\alpha}(x)\notin \overline{f_{\alpha}(B)}$.
+\end{definition}
+
+\begin{theorem}[El Teorema de la Diagonal]\label{teorema de la diagonal}
+  Sea  $\mathcal{F} = \{f_{\alpha}:X\to Y_{\alpha}\}_
+  {{\alpha} \in \mathcal{A}} $ una familia de funciones continuas. 
+  Si $\mathcal{F}$ separa puntos, entonces el producto diagonal 
+  $$F=\underset{{\alpha} \in \mathcal{A}}{\bigtriangleup}f_\alpha:X\to \prod_{\alpha\in\mathcal{A}}Y_\alpha.$$
+  es inyectivo. Además, si $\mathcal{F}$ separa puntos de subconjuntos cerrados, 
+  entonces $F$ es un encaje topológico. 
+\end{theorem}
+
+Antes de demostrar el teorema, probaremos el siguiente lema.
+
+\begin{lemma}\label{lema diagonal} Sean $X$ y $Y$ dos espacios topológicos
+y $f:X\to Y$ una función continua e inyectiva. 
+Si la función $f$ separa puntos de cerrados, entonces $f$ es un encaje.
+\end{lemma}
+\begin{proof}
+Sabemos que $f:X\to f(X)$ es una función continua y biyectiva. Para completar la demostración, es suficiente probar que para todo subconjunto cerrado $B$, su imagen $f(B)$ es cerrada en $f(X)$. 
+
+Es evidente que $f(B)\subset f(X)\cap \overline {f(B)}$, donde $\overline{f(B)}$ 
+denota la cerradura de $f(B)$ en $Y$. Por otro lado, si $y=f(x)\in f(X)\setminus f(B)$, 
+entonces $x\in X\setminus B$ ya que $f$ es inyectiva. Como $f$ separa puntos de 
+subconjuntos cerrados, $f(x)\notin \overline{f(B)}$. De esta manera hemos demostrado que $f(X)\setminus f(B)\subset f(X)\setminus \overline {f(B)}$, de donde se sigue que $\overline {f(B)}\cap f(X)\subset f(B)$ y por tanto $f(B)=\overline{f(B)}\cap f(X)$. Como $\overline{f(B)}$ es cerrado en $Y$, inferimos que $f(B)$ es cerrado en $f(X)$, como se quería demostrar.
+\end{proof}
+
+\begin{proof} [ Demostración del  Teorema~\ref{teorema de la diagonal}]
+Sean $x$ y $y$ dos puntos distintos de $X$. Como $\mathcal{F}$ separa puntos, existe $\alpha_0\in\mathcal{A}$ tal que $f_{\alpha_0}(x)\neq f_{\alpha_0}(y)$. Como consecuencia, tenemos que $F(x)\neq F(y)$, y por tanto, $f$ es inyectiva.
+
+Ahora supongamos que $\mathcal{F}$ separa puntos de subconjuntos cerrados. 
+Afirmamos que la función  $F$ también separa puntos de subconjuntos cerrados. 
+En efecto, si $B\subset X$ es cerrado en $X$ y $x$ es un punto tal que 
+$F(x)\in \overline{F(B)}$, entonces para toda $\alpha\in\mathcal{A}$,  
+
+$$f_\alpha(x)=\pi_\alpha(f(x))\in \pi_\alpha (\overline{F(B)})\subset \overline{\pi_\alpha(F(B))}=\overline { f_\alpha(B)},$$
+
+\noindent en donde la contención $\pi_\alpha (\overline{f(B)})\subset \overline{\pi_\alpha(f(B))}$ 
+tiene lugar gracias a la continuidad de la proyección 
+$\pi_\alpha:\prod\limits_{i\in\mathcal{A}}Y_i\to Y_\alpha$. Así, 
+$f_\alpha(x)\in\overline{f_\alpha(B)}$ para todo $\alpha\in\mathcal{A}$, lo cual contradice 
+al hecho que $\mathcal{F}$ separa puntos de cerrados. Por lo tanto,  $F$ separa puntos de  cerrados, y según el lema~\ref{lema diagonal}, es un encaje.
+\end{proof}
+\subsection{Producto directo de funciones}
+
+\begin{definition}
+Sea $\{f_\alpha:X_\alpha\to Y_\alpha\}_{\alpha\in\mathcal{A}}$ una familia de funciones 
+continuas entre espacios topológicos. Definimos $f=\prod\limits_{\alpha\in\mathcal{A}}f_\alpha:\prod\limits_{\alpha\in\mathcal{A}} X_\alpha\to\prod\limits_{\alpha\in\mathcal{A}} Y_\alpha$ como el \textbf{producto directo de funciones}\index{producto!directo de funciones} dada por $f\big((x_\alpha)\big)=\big(f_\alpha(x_\alpha)\big)_{\alpha\in\mathcal{A}}$. 
+\end{definition}
+\begin{proposition}
+La funci\'on $f$ completa el diagrama conmutativo:
+$$
+\xymatrix{
+\prod\limits_{\alpha\in\mathcal{A}}X_\alpha
+\ar[r]^f
+\ar[d]^{p_\alpha}
+&
+\prod\limits_{\alpha\in\mathcal{A}}Y_\alpha
+\ar[d]^{q_\alpha}
+\\
+X_\alpha
+\ar[r]^{f_\alpha}
+&
+Y_\alpha
+}
+$$
+para toda $\alpha\in\mathcal{A}$, donde $p_\alpha$ y $q_\alpha$ son las proyecciones respectivas.
+\end{proposition}
+\begin{proposition}
+Si toda $f_\alpha$ es continua, entonces $f$ es continua.
+\end{proposition}
+\begin{proof}
+Según el teorema \ref{funciones continuas en productos} basta ver que $q_i f$ es continua para toda $i\in\mathcal{A}$. Veamos entonces que, 
+$$q_i f\big((x_\alpha)\big)=q_i\big(f_\alpha(x_\alpha)\big)=f_i(x_i)$$
+
+Así, si $U$ es un abierto de $Y_\alpha$, usando la conmutatividad del diagrama tenemos que $(q_\alpha f)^{-1}(U) = 
+(f_\alpha p_\alpha)^{-1}(U)=p^{-1}_{\alpha}\big(f^{-1}_{\alpha}(U)\big)$, que es abierto gracias a la continuidad de $p_\alpha$ y $f_\alpha$.
+\end{proof}
+\begin{proposition}
+Si $f$ es continua, entonces cada $f_\alpha$ es continua.
+\end{proposition}
+\begin{proof}
+Sea $U\subset Y_\alpha$ abierto. Por la conmutatividad del diagrama 
+$f_\alpha^{-1}(U)=p_\alpha f^{-1}q_\alpha^{-1}(U)$, lo cual es abierto ya que 
+$f$ y $q_\alpha$ son continuas y $p_\alpha$ es abierta.
+\end{proof}
+
+
+
+
+
+
+
+\section{Espacios Cociente} 
+Existen varias maneras de abordar los espacios cocientes. En esta sección estudiaremos dos de ellas.
+
+\begin{proposition}\label{topologia cociente} Sean $X$ un espacio topológico, $Y$ un conjunto no vacío y $q:X\to Y$ una función suprayectiva. Denotemos por $\tau_q$ la siguiente colección:
+$$\tau_q=\{U\subset Y\mid q^{-1}(U)\text{ es abierto en }X\}.$$
+Entonces $\tau_q$ es una topología en $Y$. Además, $\tau_q$ es la topología más fina que hace a $q$ continua.
+\end{proposition}
+\begin{proof} Es evidente que $Y$ y $\emptyset$ son elementos de $\tau_q$. Ahora, si $\{U_\alpha\}_{\alpha\in\mathcal{A}}$ es una familia arbitraria de elementos de $\tau_q$, entonces $q^{-1}(U_\alpha)$ es abierto en $X$ para cada $\alpha\in\mathcal{A}$. Como consecuencia, $\bigcup\limits_{\alpha\in\mathcal{A}}q^{-1}(U_\alpha)$ es abierto en $X$. Pero
+$$\bigcup\limits_{\alpha\in\mathcal{A}}q^{-1}(U_\alpha)=q^{-1}\big{(}\bigcup\limits_{\alpha\in\mathcal{A}}U_\alpha\big{)},$$
+por lo que $\bigcup\limits_{\alpha\in\mathcal{A}}U_\alpha\in \tau_q$.
+
+Ahora consideremos dos elementos cualesquiera de $\tau_q$, $U$ y $V$. Entonces $q^{-1}(U)$ y $q^{-1}(V)$ son abiertos en $X$, por lo que $q^{-1}(U)\cap q^{-1}(V)$ es abierto en $X$. Pero 
+$$q^{-1}(U)\cap q^{-1}(V)=q^{-1}(U\cap V).$$
+Así, $\tau_q$ es una toplogía en $Y$ respecto a la cual la función $q:X\to Y$ es continua.
+
+ Ahora supongamos que existe otra topología, $\tau'$, tal que $q:X\to (Y,\tau')$ es continua. Esto implica que para cualquier $V\in \tau'$, $q^{-1}(V)$ es abierto en $X$, por lo que $V\in \tau_q$. Así, $\tau'\subset \tau_q$, quedando demostrado que $\tau_q$ es la topología más fina que hace continua a $q$. 
+\end{proof}
+
+La proposición anterior nos permite llegar a la primera definición de espacio cociente.
+\begin{definition}
+Sean $X$, $Y$, $q$ y $\tau_q$ como en la proposición~\ref{topologia cociente}. En esta situación se dice que el espacio topológico $(Y,\tau_q)$ es un \textbf{espacio cociente} de $X$; la topología $\tau_q$ recibe el nombre de \textbf{topología cociente} inducida en $Y$ por $q$, y la función $q$ se llama \textbf{función cociente}.
+\end{definition}
+
+
+\begin{example} Sea $X=[0,1]$ y $Y=\mathbb{S}^1=\{z\in\mathbb{C}\mid |z|=1\}$. Definamos $q:X\to Y$ por $q(t)=e^{2\pi i t}$. Entonces $(\mathbb{S}^1,\tau_q)$ es un espacio cociente de $X$. Además, es fácil ver que $\tau_q$ coincide con la topología usual de $\mathbb{S}^1$.
+\end{example}
+
+La otra forma de estudiar los espacios cociente es la siguiente. Consideremos  un espacio topológico $X$ y  una relación de equivalencia $\sim$ en $X$. Denotemos por $[x]$  la clase de equivalencia de $x$, es decir,
+$$[x]=\{y\in X\mid x\sim y\}.$$ 
+Llamemos $X/\sim$ al conjunto de todas las clases de equivalencia de $X$ bajo la relación $\sim$. Sea $q:X\to X/\sim$ la proyección natural dada por 
+\begin{equation}\label{ecuacion mapeo cociente}
+q(x)=[x].
+\end{equation}
+La idea es encontrar una topología en $X/\sim$ que haga continua a la función $q$. Evidentemente, $q$ es una función suprayectiva, por lo que si definimos $\tau_q$ como en la  proposición~\ref{topologia cociente}, el par $(X/\sim,\tau_q)$ es un espacio topológico y la función $q:X\to (X/\sim,\tau_q)$ es continua. 
+
+En esta situación, el par $(X/\sim,\tau_q)$ es el espacio cociente de $X$ inducido por la relación $\sim$, y $q$ es la función cociente.
+
+Es evidente que ambas definiciones son equivalentes. En efecto, si $Y$ es un espacio cociente de $X$ inducido por alguna función suprayectiva, digamos $q'$, entonces $Y\cong X/\sim$, donde $\sim$ es la relación de equivalencia en $X$ dada por $x_1\sim x_2$ si y sólo si $q'(x_1)=q'(x_2)$. Por otro lado, si $X/\sim$ es un espacio cociente inducido por la relación de equivalencia $\sim$, entonces $X/\sim$ coincide con el espacio cociente inducido por la función suprayectiva $q:X\to X/\sim$ definida en la ecuación~(\ref{ecuacion mapeo cociente}).
+
+A continuación veremos algunos ejemplos clásicos de espacios cociente.
+
+\begin{example}
+Sea $X=[0,1]\times[0,1]$ y $\sim_{1}$ la relación de
+equivalencia dada por  $(x,y)\sim_1 (x',y')$ si y sólo si se cumple alguno de los siguientes enunciados.
+
+\begin{enumerate}
+\item $(x,y)=(x',y')$.
+\item $y=y'$ y $|x-x'|=1$.
+\end{enumerate}    El espacio cociente $X/{\sim_{1}}$ es un cilindro.
+\begin{figure}[h]
+\begin{center}
+      \includegraphics*[scale=.5, angle=90]{cil1}
+      \includegraphics*[scale=.4 ]{cilindro}
+\end{center}
+\caption{Identificaci\'on de un cilindro}
+\end{figure} 
+\end{example}
+
+\begin{example}Sea $X=[0,1]\times[0,1]$ y 
+$\sim_2$ la relación de equivalencia dada por $(x,y)\sim_2 (x',y')$ si y sólo si  se cumple alguno de los siguientes enunciados.
+\begin{enumerate}
+\item $(x,y)=(x',y')$.
+\item  $y+y'=1$, $\max\{x,x'\}=1$ y $\min\{x,x'\}=0$. 
+\end{enumerate}
+ El espacio cociente
+$X/\sim_2$ recibe el nombre de \textbf{Banda de Möebius} (ver figura
+\ref{mobius}).
+
+\begin{figure}[h]
+\includegraphics*[scale=.5]{mobius}
+\caption{Identificaci\'on e imagen de una Banda de
+Möbius}\label{mobius}
+\end{figure}
+\end{example}
+
+\begin{example}
+Sean $X=[0,1]\times[0,1]$ y  $\sim_{3}$ la relación de equivalencia dada por $(x,y)\sim_{3} (x',y')$ si y solo si se satisface alguno de los siguientes enunciados.
+
+\begin{enumerate}
+\item $(x,y)=(x',y')$.
+\item $x=x'$ y $|y-y'|=1$.
+\item $y=y'$ y $|x-x'|=1$.
+\item $|y-y'|=1$ y $|x-x'|=1$.
+\end{enumerate}
+ El espacio cociente
+$X/\sim_{3}$ es el \textbf{Toro} (ver figura
+\ref{toro}).
+
+\begin{figure}[h]
+\includegraphics*[scale=.5]{toro}
+\caption{Identificaci\'on e imagen de un Toro}\label{toro}
+\end{figure}
+\end{example}
+
+\begin{example}
+Sea $X=[0,1]\times [0,1]$. Definamos la relación $\sim_4$ como sigue. $(x,y)\sim_4 (x',y')$ si y sólo si alguno de los siguientes enunciados se satisface
+\begin{enumerate}
+\item $(x,y)=(x',y')$.
+\item  $y+y'=1$, $\min \{x, x'\}=0$ y $\max\{x,x'\}=1$.
+\item $x=x'$,  $\min \{y, y'\}=0$ y $\max\{y,y'\}=1$.
+\end{enumerate}
+El espacio $X/\sim_4$ recibe el nombre de \textbf{Botella de Klein}
+\begin{figure}[h]
+\includegraphics*[scale=.3]{klein}
+\caption{Identificaci\'on e imagen de una Botella de
+Klein}\label{Klein}
+\end{figure}
+\end{example}
+
+\begin{example} Consideremos $X=\mathbb{S}^2$ la esfera 2 dimensional y $\sim_5$ la relación de equivalencia dada por $x\sim_5 y$ si y sólo si $x=y$ ó $x=-y$. El espacio
+$X/{\sim_5}$ se le conoce como {\textbf{plano Proyectivo}} o \textbf{bonete} (ver
+figura~\ref{Proy}).
+
+%\begin{figure}[h]
+%\includegraphics*[scale=.5]{proy1}
+%\includegraphics*[scale=.45]{proy2}
+%\caption{Identificaci\'on e imagen de un Plano
+%proyectivo}\label{Proy}
+%\end{figure}
+\begin{figure}[h]
+\includegraphics*[scale=.3]{proyec}
+\caption{Identificaci\'on e imagen de un Plano
+proyectivo}\label{Proy}
+\end{figure}
+
+\end{example}
+
+
+\begin{proposition}
+Sean $X$ un espacio topológico y $Y$ un espacio cociente de $X$ donde $q:X\to Y$ es la función cociente. Entonces, $F\subset Y$ es cerrado en $Y$ si y sólo si $q^{-1}(F)$ es cerrado en $X$.
+\end{proposition}
+\begin{proof}
+Sea $F\subset Y$ un subconjunto. Entonces $F$ es cerrado en $Y$ si y sólo si $Y\setminus F$ es abierto en $Y$, lo cual sucede siempre y cuando $q^{-1}(Y\setminus F)$ sea abierto en $X$. Pero 
+$$q^{-1}(Y\setminus F)=X\setminus q^{-1}(F).$$ Por lo que  $q^{-1}(Y\setminus F)$ es abierto en $X$ si y sólo si $q^{-1}(F)$ es cerrado en $X$, lo cual es justo lo que se quería demostrar.
+\end{proof}
+
+\begin{proposition}Sean $X$ un espacio topológico, $Y$ un espacio cociente de $X$ y  $q:X\to Y$  la función cociente. Consideremos una función $f:Y\to Z$ donde $Z$ es algún espacio topológico. Entonces $f$ es continua si y sólo si la composición $f\circ q:X\to Z$ es continua.
+\end{proposition}
+\begin{proof}
+Claramente si $f$ es continua, entonces la composición $f\circ q$ es una función continua. Ahora supngamos que $f\circ q$ es continua. Entonces, para cualquier  abierto $U$ en $Z$, $(f\circ q)^{-1}(U)=q^{-1}(f^{-1}(U))$ es abierto en $X$. Pero como $Y$ es un espacio cociente y $q$ es la función cociente, se sigue que $f^{-1}(U)$ es abierto en $Y$, lo cual demuestra que $f$ es continua.
+\end{proof}
+
+
+
+
+\section{Ejercicios del cap\'\i tulo.}
+\begin{enumerate}
+\item Sea  $X$ un espacio topológico y $A\subset X$. Definimos $\chi_A:X\to[0,1]$ como
+      $$\chi_A(x)=\left\{\begin{array}{rl}1~&{\rm si}~x\in A \\
+                                         0~&{\rm si}~x\notin A.\end{array}\right. $$
+      Demostrar que $\chi_A$ es continua si y sólo si $A$ es abierto y cerrado.
+\item Sea $X=(0,\infty)$ con la topología inducida de $\mathbb{R}$ y $(a_n)_{n\in\mathbb{N}}$ la sucesión dada por
+$a_n=1/n$. Encuentra un homeomorfismo $f:X\to X$ tal que $\{f(a_n)\}$
+no sea sucesi\'on de Cauchy. Concluye que ser sucesión  de Cauchy no es una propiedad
+  topol\'ogica. Recuerda que una sucesión $(x_n)_{n\in\mathbb{N}}$ del espacio métrico $(X,d)$ es de Cauchy, si para cualquier $\varepsilon>0$, existe $n_0\in\mathbb{N}$, tal que  $d(x_n, x_m)<\varepsilon$ para todo $n,m>n_0$.
+\item Da un ejemplo de un conjunto $X$, de una suceción $(a_n)_{n\in\mathbb{N}}$ en $X$ y de dos topologías $\tau$ y $\sigma$ en $X$, tales que exista un punto $x_0$ in $X$ de manera que $(a_n)_{n\in\mathbb{N}}$ converja a $x_0$ en $(X,\tau)$ pero no converja a $x_0$ en $(X,\sigma)$. 
+\item Demuestra el teorema~\ref{caracterizacion homeomorfismos}.
+
+
+\item Sea $\{\tau_\alpha\}_{\alpha\in\mathcal{A}}$ una colecci\'on de topolog\'\i as en un conjunto $X$. Si
+  $f:X\to Y$ es continua con respecto a cada $\tau_\alpha$, demuestra que $f$ es
+  continua respecto a la topología $\tau= \bigcap\limits_{\alpha\in\mathcal{A}}\tau_\alpha$ en $X$.
+\item Considera $X=[0,1)$ y $\rho:X\times X\to\mathbb{R}$ dada por
+$$\rho(x,y)=\min \{|x-y|,~1-|x-y|\}.$$
+En los ejercicios del capítulo 1 se pidió demostrar que $\rho$ es una métrica en $X$.  
+Si $\mathbb{S}^1$ es el círculo con la topología heredada del plano ¿son $(X,\rho)$ y $\mathbb{S}^1$ homeomorfos?
+\item Da un ejemplo de una función $f:X\to Y$ entre dos espacios topológicos, y de un conjunto $A\subset X$, tal que $f(\overline{A})\not\subset \overline{f(A)}$.
+\item Demuestra que el hecho de que cualquier función continua de un espacio $X$ en $\mathbb{R}$ alcance su mínimo es una propiedad topológica. Concluye que $[0,1]$ no es homeomorfo a $\mathbb{R}$.
+  \item Sean $X$ y $Y$ dos espacios topol\'ogicos, con $X=E\cup F$. Consideremos
+  $f:E\to Y$ y $g:F\to Y$ con $f=g$ en $E\cap F$. Si $f$ y $g$ son continuas, demuestra los siguientes incisos.
+  \begin{enumerate}
+  \item Ver que $h=f\cup g$ está bien definida, donde 
+  \begin{equation*}
+(f\cup g)(x)=\begin{cases}
+f(x)&~si~x\in E\\
+g(x)&~si~x\in F\\
+\end{cases}
+\end{equation*}
+  \item Dar un ejemplo en que $h$ puede no ser continua.
+  \item Si $E$ y $F$ son abiertos entonces $h$ es continua.
+  \item Si $E$ y $F$ son cerrados entonces $h$ es continua.
+  \end{enumerate}
+
+\item Demuestra que un espacio $X$ es discreto si y sólo si para cualquier espacio $Y$, cualquier función  $f:X \to Y$ es continua.
+
+\item Si $X$ es un espacio topológico separable y $f:X\to Y$ una función continua a un espacio $Y$. Demostrar que $f(X)$ es un subespacio separable de $Y$.
+
+\item Sea $f:X\to Y$ una función entre dos espacios topológicos. Demuestra que $f$ es cerrada si y sólo si para cada punto $y\in Y$, y para cada abierto $U\subset X$ que contenga a $f^{-1}(y)$, existe una vecindad $V\subset Y$  de $y$, tal que $f^{-1}(V)\subset U$. Sugerencia: usa el teorema~\ref{t f cerrada}
+%productos
+\item Demuestra que $X\times Y\cong Y\times Z$ no implica que $X\cong
+  Z$.
+\item Demuestra que la suma $+:\mathbb{R}^n\to\mathbb{R}$, la multiplicación 
+$\mu\mathbb{R}^n\to\mathbb{R}$ y la multiplicación escalar $\lambda:\mathbb{R}^n\to\mathbb{R}$ 
+son continuas.
+\item Sea $\{X_\alpha\}_{\alpha\in\mathcal{A}}$ una familia de espacios topológicos.
+Demuestra que cada $X_\alpha$ puede encajarse en $\prod\limits_{\alpha\in\mathcal{A}}$.
+¿Es este encaje único?
+\item Demuestra que si $\{X_\alpha\}_{\alpha\in\mathcal{A}}$ es una familia de espacios topológicos discretos, entonces el producto $\prod\limits_{\alpha\in\mathcal{A}}X_\alpha$ es discreto si y sólo si $\mathcal{A}$ es un conjunto finito \'o a lo m\'as una cantidad finita de espacios $X_\alpha$ poseen m\'as de un punto.
+\item Sea $\{X_\alpha\}_{\alpha\in\mathcal{A}}$ una familia de espacios topológicos y $\{Y_\alpha\subset X_\alpha\}_{\alpha\in\mathcal{A}}$ una colección de subespacios topológicos. Entonces la topología producto en $\prod\limits_{\alpha\in\mathcal{A}}Y_\alpha$ coincide con la topología inducida de $\prod\limits_{\alpha\in\mathcal{A}}X_\alpha$.
+\item Considera $X$ un espacio topológico y $X^m=\prod\limits_{i=1}^mX_i$ donde cada $X_i\cong X$. La diagonal de $X^m$ es el conjunto
+$$\Delta =\{(x_1,\dots, x_m)\in X^m|~x_1=x_2=\dots =x_m\}.$$
+Demuestra que $\Delta$ es homeomorfo a $X$.
+%cocientes
+\item Sea $X$ un espacio topológico discreto y $\sim $ una relación de equivalencia en $X$. Demuestra que el espacio $X/\sim$ es discreto.
+\item Considera el círculo $\mathbb{S}^1$ y $\sim$ la relación de equivalencia dada por $x\sim y$ si y sólo si $x=y$ ó $x=-y$. Demuestra que $\mathbb{S}^1$ es homeomorfo a $\mathbb{S}^1/_\sim$ 
+\item Sea $X=\mathbb{S}^1\times [0,1]$ y $\sim$ la relación de equivalencia dada por $(x,t)\sim (y,s)$ si y sólo si $(x,t)=(y,s)$ ó $t=s=0$ ó $t=s=1$. Demuestra que $X/_\sim $ es homeomorfo a $\mathbb{S}^2$.
+\item Demuestra que si $Y$ es un espacio cociente de un espacio topológico $X$ y $Z$ es un espacio cociente de $Y$, entonces $Z$ es un espacio cociente de $X$.
+\end{enumerate}
+%\end{document}

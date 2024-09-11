@@ -1,0 +1,577 @@
+\documentclass[letterpaper]{report}
+%\usepackage{pst-node}
+\usepackage{tikz-cd} 
+\usepackage{amsmath}
+\usepackage{float}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage[spanish,activeacute]{babel}
+\usepackage{amscd}
+\usepackage{fancyhdr}
+\usepackage{graphicx}
+\usepackage{color}
+\usepackage{transparent}
+\usepackage{makeidx}
+\usepackage{afterpage}
+
+\makeindex
+
+\newtheorem{teorema}{Teorema}[chapter]
+\newtheorem{prop}[teorema]{Proposici\'on}
+\newtheorem{cor}[teorema]{Corolario}
+\newtheorem{lema}[teorema]{Lema}
+\newtheorem{obs}{Observaci\'on}
+\newtheorem{def.}{Definici\'on}[chapter]
+\newtheorem{afir}{Afirmaci\'on}
+
+
+\renewcommand{\figurename}{Figura}
+\renewcommand{\chaptername}{\Large  \sc Cap\'{\i}tulo}
+\renewcommand{\indexname}{\'{I}ndice anal\'{\i}tico}
+\renewcommand{\bibname}{Bibliograf\'{\i}a}
+\newcommand{\dem}{{\sc Demostraci\'on. }}
+
+\newcommand{\nat}{\ensuremath{ \mathbb N }}
+\newcommand{\dbz}{\ensuremath{ \mathbb Z }}
+\newcommand{\co}{\ensuremath{\mathbb C }}
+\newcommand{\hc}{\ensuremath{\widehat{\mathbb C} }}
+\newcommand{\con}{\ensuremath{\mathbb{C}^{n}}}
+\newcommand{\hil}{\ensuremath{\mathcal H }}
+\newcommand{\re}{\ensuremath{\mathbb R }}
+\newcommand{\cp}{\ensuremath{\mathbb{CP}}}
+\newcommand{\rp}{\ensuremath{\mathbb{RP}}}
+\newcommand{\sph}{\ensuremath{\mathbb{S}}}
+
+\newcommand{\nuc}{\ensuremath{\mathcal{N}}}
+\newcommand{\hip}{\ensuremath{\mathbb H}}
+\newcommand{\hd}{\ensuremath{\mathbf{H}_{\delta}}}  
+
+\newcommand{\bg}{\ensuremath{\overline \Gamma}}
+\newcommand{\ga}{\ensuremath{\Gamma}}
+\newcommand{\fb}{\ensuremath{\overline f}}
+\newcommand{\la}{\ensuremath{\lambda}}
+\newcommand{\La}{\ensuremath{\Lambda}}
+\newcommand{\bt}{\ensuremath{\overline T}}
+\newcommand{\li}{\ensuremath{\mathbb{L}}}
+\newcommand{\ord}{\ensuremath{\mathbb{O}}}
+
+\newcommand{\pslz}{\ensuremath{PSL(2,\mathbb Z) }}
+\newcommand{\pslr}{\ensuremath{PSL(2,\mathbb R) }}
+\newcommand{\pslc}{\ensuremath{PSL(2,\mathbb C) }}
+\newcommand{\qed}{\ensuremath{\hspace*{0em plus 1fill}\blacksquare}}
+
+
+\begin{document}
+
+
+\begin{titlepage}
+\begin{center}
+%\vspace*{-3cm}
+%\makebox{\includegraphics[height=3cm]{unam.jpg}} 
+%\vspace*{1cm}
+
+%\LARGE\textbf{UNIVERSIDAD NACIONAL AUT'ONOMA DE MEXICO}
+%\vspace*{0.3cm}
+
+%\large PROGRAMA DE MAESTR'IA Y DOCTORADO EN CIENCIAS MATEM'ATICAS Y DE LA ESPECIALIZACI'ON EN ESTAD'ISTICA APLICADA
+%\vspace*{2cm}
+
+\LARGE\textbf{ANÁLISIS FUNCIONAL}
+%\vspace*{2cm}
+
+%\large TESINA QUE PARA OPTAR POR EL GRADO DE MAESTRO EN CIENCIAS
+%\vspace*{1.5cm}
+
+%\small \textbf{PRESENTA:}
+%\vspace*{0.2cm}
+
+%\small CARLOS EDUARDO MART'INEZ AGUILAR
+%\vspace*{0.2cm}
+
+%\small DIRECTOR: DR. ADOLFO GUILLOT SANTIAGO
+%\vspace*{0.2cm}
+
+%\small \textbf{INSTITUTO DE MATEM'ATICAS UNAM}
+%\vspace*{2.5cm}
+
+%\small CIUDAD UNIVERSITARIA, ENERO DE 2019
+
+\tableofcontents
+ 
+\end{center}
+\end{titlepage} 
+
+\chapter{Teoría Espectral de Operadores}
+
+\noindent Sea $(X,\Vert.\Vert)$ un espacio vectorial normado no trivial y sea $T:X\rightarrow X$ un operador lineal, buscamos resolver la ecuación
+
+\begin{equation}
+(T-\lambda\,I_X)x=y \hspace*{1cm} \lambda\in\co,
+\end{equation}
+
+\noindent donde $I_X$ es la identidad en $X$. Quisiéramos que las soluciones fueran tal que, si es posible hablar el operador inverso $(T-\lambda I_X)^{-1}y=x$, entonces se cumplieran alguna de las siguientes propiedades: 
+
+\begin{enumerate}
+\item[i)]La solución $x$ es única ($(T-\lambda\,I_X)^{-1}$ esta bien definido).\\
+
+\item[ii)] Existe por lo menos una solución $x$ para toda $y$ ($(T-\lambda\,I_X)^{-1}$ esta definido en todo $X$).\\
+
+\item[iii)] La solución $x$ depende continuamente de $y$ ($(T-\lambda\,I_X)^{-1}$ es acotado).\\
+\end{enumerate}
+
+\begin{def.}
+Sea $X$ un espacio vecorial normado y $T$ un operador lineal acotado y $\lambda\in\co$, si $T_{\lambda}:=T-\lambda\,I_X$ definimos el conjunto resolvente como
+
+\begin{equation}
+\rho(T):=\lbrace\lambda\in\co\,\mid\,
+				T_{\lambda}\hspace{0.1cm}\text{es biyectivo y }(T-\lambda\,I_X)^{-1}\hspace{0.1cm}\text{es acotado}
+		  \rbrace.
+\end{equation} 
+Con esto definimos el espectro de $T$ como $\sigma(T):=\co\setminus\rho(T)$. También definimos el operador resolvente como 
+
+$$R_{\lambda}:=T_{\lambda}^{-1}=(T-\lambda\,I_X)^{-1}\hspace*{0.3cm}\lambda\in\rho(T).$$
+\end{def.}
+
+\noindent El problema fundamental de la teoría espectral de opradores es describir a los conjuntos $\rho(T)$ y $\sigma(T)$.
+
+\begin{obs}
+Sea $X$ espacio de Banach, si $T$ no es un operador cerrado, entonces $\sigma(T)=\co$ por el teorema de la gráfica cerrada.
+\end{obs}
+
+\begin{teorema} 
+Sean $X$ e $Y$ espacios de Banach y sea $T:X\rightarrow Y$ una transformación lineal, entonces $Gr(T)$ es cerrada si y sólo si $T$ es acotada, donde $Gr(T):=\lbrace(x,T\,x)\,\mid\,x\in X\rbrace$.
+\end{teorema}
+
+\noindent Así, si $T:D(T)\subset X\rightarrow X$ no es cerrado y $z\in\co$, es tal que $T-z\,I_X$ es biyectiva, entonces $(T-z\,I_X)^{-1}$ no puede ser cerrado ya que si lo fuera, entonces $T_z$ sería cerrado y por lo tanto $T$ sería cerrado \cite{weidmann1}[pp. 89]. Por lo que $(T-z\,I_X)^{-1}:X\rightarrow D(T)$ no es cerrado y por teorema de la gráfica cerrada no es acotado, es decir que $\rho(T)=\emptyset$, así que a partir de ahora supondremos $T$ cerrado. 
+
+\begin{def.}
+Sea $\lambda\in\co$ y $T:X\rightarrow X$ un operador cerrado, diremos que $\lambda$ es valor propio de $T$ si $T-\lambda\,I_X$ no es inyectiva y denotaremos por
+
+$$\sigma_p(T):=\lbrace\lambda\in\co\,\mid\,\lambda\text{ es valor propio}\rbrace\subset\sigma(T).$$
+\end{def.}
+
+\begin{teorema}
+Sea $X$ espacio de Banach y $T:D(T)\subset X\rightarrow X$ cerrado, entonces el conjunto resolvente $\rho(T)\subset\co$ es abierto y por lo tanto el espectro $\sigma(T)$ es cerrado.
+\end{teorema}
+
+\section{Aspectos básicos de análisis complejo}
+\begin{def.}
+Sea $f:\Omega\subset\co\rightarrow\co$ donde $\Omega$ es una región, diremos que $f$ es holomorfa en $z_0\in\Omega$ si para una vecindad de $z_0$ se cumple que existe $\eta\in\co$ tal que
+
+\begin{equation}\label{holomorfa}
+\lim_{z\rightarrow z_0}\frac{f(z)-f(z_0)}{z-z_0}=\eta.
+\end{equation}
+Denotaremos por $f'(z_0):=\eta$ 
+\end{def.}
+
+\begin{def.}
+Sea $f:\Omega\rightarrow\co$, diremos que $f$ es analítica en $\Omega$ si para cada $z_0\in\Omega$ existe $R\in\re^{+}$ tal que
+
+$$f(z)=\sum^{\infty}_{n=0}\alpha_n(z-z_0)^n,\hspace{0.2cm}\lbrace\alpha_n\rbrace\subset\co,$$
+
+para todos los $\lbrace\vert z-z_0\vert<R\rbrace\subset\Omega.$  
+\end{def.}
+
+\begin{teorema}
+Una función defininda en una región $\Omega\subset\co$, $f:\Omega
+\rightarrow\co$ es holomorfa en $\Omega$ si y sólo si es analítica.
+\end{teorema}
+
+\begin{teorema}[Radio de convergencia]\label{radio-conver}
+Sea $\lbrace\alpha_n\rbrace_{n\in\nat}\subset\co$ una sucesion de números complejos, entonces existe una única $R\in\re^+$ tal que la serie
+
+$$\sum^{\infty}_{n=0}\alpha_n(z-z_0)^n,$$
+
+converge uniformemente en compactos si $\vert z-z_0\vert<R$ y diverge si $\vert z-z_0\vert>R$, más aún $R=1/\rho$ donde
+
+$$\rho:=\limsup_{n\rightarrow\infty}\sqrt[n]{\vert\alpha_n\vert}.$$ 
+\end{teorema}
+
+\begin{def.}
+Sea $f:\Omega\subset\co\rightarrow\co$ función holomorfa y sea $\gamma:[a,b]\rightarrow\Omega$ una curva diferenciable por tramos, se define la integral de $f$ sobre $\gamma$ como
+\begin{equation}
+\int_{\gamma}f\,dz:=\int_a^b f(\gamma(t))\gamma'(t)\,dt,
+\end{equation}
+de forma similar definimos la integral de $f$ de longitud de arco como 
+\begin{equation}
+\int_{\gamma}f\,\vert dz\vert:=\int_a^b f(\gamma(t))\vert\gamma'(t)\vert\,dt.
+\end{equation}
+\end{def.}
+
+\noindent\textbf{Ejemplo:} Sea $f(z):=\frac{1}{(z-a)^n}$ y $\gamma(t):=a+\rho \exp(i2\pi\,t)\hspace{0.2cm}t\in[0,1]$, entonces
+
+$$\int_{\gamma}\frac{dz}{(z-a)^n}=
+\int_0^1\frac{i\rho\,e^{2\pi\,t}}{\rho^n\,e^{2n\pi\,t}}\,dt=
+\begin{cases}
+0,\,\,n\neq 1\\
+1,\,\,n=1
+\end{cases}
+.$$
+\\
+
+\begin{def.}
+Decimos que dos curvas $\gamma_1,\gamma_2:[a,b]\rightarrow\Omega$ diferenciables por tramos son homotópicas $\gamma_1\simeq\gamma_2$ si existe una función continua $H:[a,b]\times[0,1]\rightarrow\co$ tal que
+
+$$H(s,0)=\gamma_1(s),\hspace{0.2cm}H(s,1)=\gamma_2,\,\,\forall s\in[a,b]$$ 
+\end{def.}
+
+\begin{teorema}[Deformación/Cauchy]
+Sea $f:\Omega\subset\co\rightarrow\co$ función holomorfa y sean $\gamma_1,\gamma_2:[a,b]\rightarrow\Omega$ curvas diferenciables por tramos homotópicas en $\Omega$, entonces
+
+$$\int_{\gamma_1}f\,dz=\int_{\gamma_2}f\,dz.$$
+\end{teorema}
+
+\begin{obs}
+Si $\Omega\subset\co$ es simplemente conexa y $f:\Omega\rightarrow\co$ es una función holomorfa y $\gamma$ es una curva simple cerrada y diferenciable por tramos en $\Omega$, entonces
+
+$$\int_{\gamma}f\,dz=0$$
+\end{obs}
+
+\begin{teorema}[Liouville]
+Sea $f:\co\rightarrow\co$ analítica en todo $\co$ tal que existe $M\in\re^+$ una cota de $\vert f(z)\vert\leq M$ para todo $z\in\co$, entonces $f$ es constante.
+\end{teorema}
+
+\section{Funciones analíticas en $\mathcal{B}(X)$}
+
+\noindent Existen varias formas de definir funciones analíticas en $\mathcal{B}(X)$, por ejemplo se puede emular la ecuación \ref{holomorfa} (vease \cite{canavati}[cap. 7]). Analiticidad en $\mathcal{B}(X)$ nos permitirá expresar al operador resolvente en términos de operadores conocidos.  
+
+\begin{teorema}\label{res-analyt}
+Sea $X$ espacio de Banach y $T:D(T)\subset X\rightarrow X$ operador cerrado, si $\lambda_0\in\rho(T)$, entonces si $\lambda\in\co$ cumple
+
+$$\vert\lambda-\lambda_0\vert<\frac{1}{\Vert R_{\lambda_0}\Vert}\,\Rightarrow\,\lambda\in\rho(T),$$
+
+y la siguiente expresión es válida
+
+\begin{equation}
+(T-\lambda\,I_X)^{-1}=R_{\lambda}=\sum_{j=0}^{\infty}(\lambda-\lambda_0)^j\,R_{\lambda_0}^{j+1}.
+\end{equation}
+\end{teorema}
+
+\noindent Además de la expresión analítica anterior, existe la llamada expresión de Von-Neumann, la cual es válida para operadores acotados. 
+
+\begin{teorema}[Von-Neumann]\label{von-neumann}
+Sea $X$ espacio de Banach y $T:D(T)\subset X\rightarrow X$ operador acotado, si $\vert\lambda\vert>\Vert T\Vert$, entonces $\lambda\in\rho(T)$ y tenemos la siguiente expresión para el operador resolvente
+
+\begin{equation}
+(T-\lambda\,I_X)^{-1}=R_{\lambda}=\frac{-1}{\lambda}\sum_{j=0}^{\infty}\Big(\frac{T}{\lambda}\Big)^j
+\end{equation}
+\end{teorema}
+
+\begin{def.}
+Sea $X$ un espacio de Banach y sea $F:\Omega\subset\co\rightarrow\mathcal{B}(X)$ con $\Omega$ abierto, decimos que $F$ es una función holomorfa si para todo $\alpha\in X^*$ y $x\in X$ la función $F_{x}^{\alpha}:\Omega\rightarrow\co$ dada por
+
+\begin{equation}
+F_{x}^{\alpha}(z):=\alpha(F(z)\,x)=:\langle F(z)\,x,\alpha\rangle,
+\end{equation} 
+es holomorfa.
+\end{def.}
+
+\noindent\textbf{Ejercicio.-} La definición anterior de función holomorfa/analítica es equivalente si en lugar de tomar $x\in X$ y $\alpha\in X^*$ se toma cualquier $A\in\mathcal{B}(X)^*$ y se pide que $A\circ F:\Omega\rightarrow\co$ sea holomorfa.\\
+
+\noindent Sea $X$ un espaio de Banach y $T\in\mathcal{B}(X)$, verifiquemos que la función resolvente $R:\rho(T)\subset\co\rightarrow\mathcal{B}(X)$, $R(z):=(T-z\,I_X)$ es analítica/holomorfa. Sea $A\in\mathcal{B}(X)$ y sea $z_0\in\rho(T)$ fija, como $\rho(T)$ es abierto, existe \hbox{$0<r<1/\Vert R_{z_0}\Vert$} tal que \hbox{$\lbrace\vert z-z_0\vert<r\rbrace\subset\rho(T)$}, así por el teorema \ref{res-analyt} tenemos que
+
+$$A(R(z))=A((T-z\,I_X)^{-1})=\sum_{j=0}^{\infty}(z-z_0)^j\,A(R_{z_0}^{j+1}),$$
+
+denotemos por $a_j=A(R_{z_0}^{j+1}))$, entonces por el teorema \ref{radio-conver} tenemos que \hbox{$A\circ R$} se expresa como una serie uniformemente convergente en compactos para \hbox{$\lbrace\vert z-z_0\vert<r\rbrace$} y por lo tanto es holomorfa/analítica.
+
+Similarmente si $\vert\lambda\vert>\Vert T\Vert$, por la expansión de Von-Neumann \ref{von-neumann} tenemos la siguiente expresión
+
+$$
+A(R(\lambda))=A(T-\lambda\,I_X)^{-1})=
+\frac{1}{\lambda}\sum_{j=0}^{\infty}A\,\Big(\frac{T^j}{\lambda^j}\Big)=
+\sum_{j=0}^{\infty}A(T^j)\zeta^{j+1},
+$$
+
+donde $\zeta=\frac{1}{\lambda}$, entonces si $\alpha_{j+1}=A(T^j)$ tenemos otra expresión analítica para el resolvente en el conjunto \hbox{$\lbrace\vert\zeta\vert<\frac{1}{\Vert T\Vert}\rbrace$}.
+
+\begin{def.}[Radio espectral]
+Sea $X$ espacio normado y $T\in\mathcal{B}(X)$, se define el radio espectral de $T$ como
+
+\begin{equation}
+r_{\sigma}:=\max\lbrace\vert\lambda\vert\mid\lambda\in\sigma(T)\rbrace.
+\end{equation}
+\end{def.}
+
+\begin{teorema}
+Sea $X$ espacio normado y $T\in\mathcal{B}(X)$, entonces el radio espectral de $T$ se puede calcular como
+
+\begin{equation}
+r_{\sigma}=\limsup_{n\rightarrow\infty}\sqrt[n]{\Vert T^n\Vert}. 
+\end{equation}
+\end{teorema}
+
+\noindent \begin{dem}
+Como el radio de convergencia de la serie de Von-Neumann en coordenadas $\zeta=1/\lambda$ es $R=1/\rho$, donde se toma un funcional $A\in\mathcal{B}(X)^*$ cualquiera y si denotamos $\alpha_n=A(T^n)$, entonces el radio de convergencia se cualcula por medio de
+
+\begin{equation}
+\rho:=\limsup_{n\rightarrow\infty} \sqrt[n]{\vert\alpha_n\vert}\leq
+\limsup_{n\rightarrow\infty} \sqrt[n]{\Vert A\Vert\,\Vert T^n\Vert}=
+\limsup_{n\rightarrow\infty} \sqrt[n]{\Vert T^n\Vert},
+\end{equation}
+
+el cual observamos que es independiente de $A$. Por lo tanto, como $\zeta=1/\lambda$, entonces $1/r_{\sigma}\geq R$, así obtenemos la desigualdad $r_{\sigma}\leq\rho$, por lo que sólo falta probar que
+
+$$r_{\sigma}\geq\limsup_{n\rightarrow\infty}\sqrt[n]{\Vert T^n\Vert}.$$
+
+Sean $m\in\nat$, $s\geq r_{\sigma}$ y $A\in\mathcal{B}(X)^*$, definmos la siguiente función
+
+\begin{equation}
+J(A)=\frac{1}{2\pi\,i}\int_{\vert z\vert=s} z^m\,A(R_z)\,dz,
+\end{equation}
+
+reemplazamos $R_z$ por su expresión en serie de Von-Neumann
+
+$$
+\frac{1}{2\pi\,i}\int_{\vert z\vert=s} z^m\,A(R_z)\,dz=
+\frac{1}{2\pi\,i}\int_{\vert z\vert=s} z^m\,\Big(-\sum_{j=0}^{\infty}\frac{A(T^j)}{z^{j+1}}\Big)\,dz,
+$$
+
+como estamos integrando funciones holomorfas en un compacto podemos reemplazar el límite de la serie con la integral por el teorema de convergencia dominada
+
+$$
+J(A)=\sum_{j=0}^{\infty}-\frac{1}{2\pi\,i}\int_{\vert z\vert=s} z^{m-j-1}\,dz\, A(T^j)=A(T^m).
+$$
+
+Ya que todas las integrales se anulan excepto cuando $j=m$, por lo tanto $J(A)$ es independiente de $s\geq r_{\sigma}$. Ahora por Hahn-Banach sea $\widehat{A}\in\mathcal{B}(X)^*$ tal que $\widehat{A}(T^m)=\Vert T^m\Vert$ y $\Vert\widehat{A}\Vert=1$, así por lo anterior tenemos que 
+
+$$J(\widehat{A})=\widehat{A}(T^m)=\Vert T^m\Vert$$ 
+
+pero sabemos que se cumplen las siguientes desigualdades para las integrales
+
+$$
+\vert J(\widehat{A})\vert\leq
+\frac{1}{2\pi}\int_{\vert z\vert=s}\vert z^m\,\widehat{A}(R_z)\vert\,\vert dz\vert\leq
+\frac{1}{2\pi}\int_{\vert z\vert=s} s^m\,\Vert\widehat{A}\Vert\Vert R_z \Vert\,\vert dz\vert.
+$$
+
+Sea $M=\max\lbrace\Vert R_z\Vert\mid\vert z\vert=s\rbrace$, entonces
+
+$$
+\Vert T^m\Vert=J(\widehat{A})\leq
+\frac{1}{2\pi}s^m\,\int_{\vert z\vert=s}\Vert R_z \Vert\,\vert dz\vert\leq M s^{m+1},
+$$
+
+por lo tanto tenemos
+
+$$
+\limsup_{m\rightarrow\infty} \sqrt[m]{\Vert T^m\Vert}\leq\lim_{m\rightarrow\infty} \sqrt[m]{M\,s^{m+1}}=s,
+$$
+
+para toda $s>r_{\sigma}$, lo que significa que el límite existe y obtenemos el resultado. \qed
+\end{dem}
+
+\section{Teoría espectral en espacios de Hilbert}
+
+\begin{def.}
+Sea $\hil$ un espacio de Hilbert y \hbox{$T:D(T)\subset\hil\rightarrow\hil$} un operador lineal, entonces se define el operador adjunto de $T$ denotado $T^*$ como el operador lineal \hbox{$T^*:D(T^*)\subset\hil\rightarrow\hil$} que cumple
+
+\begin{equation}
+\eta_y:=\langle y,T\,x\rangle=\langle T^*\,y,x\rangle
+\hspace{0.2cm}\forall x\in D(T)\,,\forall y\in D(T^*),
+\end{equation}
+
+el cual siempre existe pues $\eta_y$ es un funcional lineal acotado, entonces por el teorema de Riez tiene un representante asignado el cual definimos como $T^*\,y$. 
+\end{def.}
+
+\noindent\textbf{Ejercicio.-} Demueste las siguentes propiedades
+\begin{enumerate}
+\item[i)] Si $T$ es acotado, $T^*$ es un operador lineal cerrado y acotado y $\Vert T\Vert=\Vert T^*\Vert$.
+\item[ii)]$(\alpha\,S+T)^*=\overline{\alpha}\,S^*+T^*$, con $\alpha\in\co$.
+\item[iii)]$(ST)^*=T^*S^*$.
+\end{enumerate}
+
+\begin{teorema}\label{teo1}
+Sea $T:D(T)\rightarrow\hil$ un operador lineal y $T^*$ su adjunto, entonces sucede que
+
+\begin{equation}
+\nuc(T^*-\overline{\lambda}\,I_{\hil})=
+\big(Rang(T-\lambda\,I_{\hil})\big)^{\bot}
+\end{equation} 
+\end{teorema}
+
+\begin{dem}
+Sea $x_0\in\big(Rang(T-\lambda\,I_{\hil})\big)^{\bot}$, entonces para toda $x\in D(T)$ se cumple que
+
+$$
+0=\langle x_0,(T-\lambda\,I_{\hil})\,x\rangle=
+\langle(T^*-\overline{\lambda}\,I_{\hil})\,x_0,x\rangle.
+$$
+
+Por lo tanto, como esto sucede para toda $x$ en el dominio de $T$, tenemos que \hbox{$(T^*-\overline{\lambda}\,I_{\hil})\,x_0=0$}, entonces hemos probado que
+
+$$
+\big(Rang(T-\lambda\,I_{\hil})\big)^{\bot}
+\subset
+\nuc(T^*-\overline{\lambda}\,I_{\hil}).
+$$
+
+Ahora sea $x_0\in\nuc(T^*-\overline{\lambda}\,I_{\hil})$, entonces para toda $x\in D(T)$ se cumple que
+
+$$
+\langle(T-\lambda\,I_{\hil})\,x,x_0\rangle=
+\langle x,(T^*-\overline{\lambda}\,I_{\hil})x_0\rangle=0
+$$\qed
+\end{dem}
+
+\begin{obs}
+Si $T\subset T^*$ es decir si $T^*$ es una extensión de $T$, y $T\,x=\lambda x$ con $x\neq0$, entonces $\lambda\in\re$ ya que
+
+$$
+\overline{\lambda}\Vert x\Vert^2=
+\langle\lambda\,x,x\rangle=
+\langle T\,x,x\rangle=
+\langle x,T\,x\rangle=
+\langle\,x,\lambda x\rangle=
+\lambda\Vert x\Vert^2
+$$
+
+\noindent Si sucede que $T^*$ es una extensión de $T$, diremos que $T$ es \textit{\textbf{simétrico}} y si sucede que $T=T^*$, diremos que T es \textit{\textbf{autoadjunto}}.
+\end{obs}
+
+\begin{def.}
+Sea $X$ un espacio vecorial normado y $T$ un operador lineal acotado, definimos el espectro residual de $T$ como
+
+\begin{equation}
+\sigma_r(T):=\lbrace z\in\sigma(T)\,\mid\,(T-z\,I_X)^{-1}\,\exists\,\wedge\,\overline{Rang(T-z\,I_X)}\neq X\rbrace
+\end{equation} 
+\end{def.}
+
+\begin{teorema}\label{teo2}
+Sea $\hil$ un espacio de Hilbert entonces las siguientes proposiciones caracterizan a los operadores auto-adjuntos
+
+\begin{enumerate}
+\item[i)] Si $T=T^*$ entonces $\sigma_r(T)=\emptyset$
+
+\item[ii)] Si $T\subset T^*$ y $\sigma_r(T)=\emptyset$, entonces $T=T^*$.
+\end{enumerate}
+\end{teorema}
+
+\begin{dem}
+\textbf{i)} Supongamos que $\sigma_r(T)\neq\emptyset$ entonces sea $z\in\sigma_r(T)$, así existe \hbox{$0\neq x_0\in\overline{Rang(T-z\,I_{\hil})^{\bot}}$} y por hipótesis más el teorema \ref{teo1} tenemos
+
+$$
+x_0\in\nuc(T^*-\overline{z}\,I_{\hil})=
+\nuc(T-\overline{z}\,I_{\hil}).
+$$
+
+Por lo tanto $T\,x_0=\overline{z}x_0$, entonces por la observación anterior sabemos que $z=\overline{z}$, lo que significa que \hbox{$(T-z\,I_{\hil})x_0=0$} y por lo tanto $T-z\,I_{\hil}$ no es inyectiva. Ahora para la demostración de \textbf{ii)} necesitaremos  probar primero otros resultados.
+\end{dem}
+
+\begin{teorema}\label{reg}
+Sea $\hil$ un espacio de Hilbert y $T\subset T^*$ un operador simétrico y sea $z\in\co$ tal que \hbox{$Im(z)=\beta$}, entonces
+
+$$
+\Vert(T-z\,I_{\hil})\,x\Vert\geq\vert\beta\vert\Vert x\Vert
+\hspace{0.2cm}\forall x\in D(T).
+$$
+\end{teorema}
+
+\begin{dem}
+Sea $x\in D(T)$, notamos que como $T$ es simétrico entonces \hbox{$\langle T\,x,x\rangle=\overline{\langle T\,x,x\rangle}$}, por lo que si calculamos la parte imaginaria de \hbox{$\langle(T-z\,I_{\hil})\,x,x\rangle$}, obtenemos que 
+
+\begin{align}
+\langle(T-z\,I_{\hil})\,x,x\rangle=\langle T\,x,x\rangle-\overline{z}\Vert x\Vert^2\\
+\overline{\langle(T-z\,I_{\hil})\,x,x\rangle}=\langle T\,x,x\rangle-z\Vert x\Vert^2\\
+\therefore 2iIm\langle(T-z\,I_{\hil}\,x,x\rangle)=2i\beta\Vert x\Vert,
+\end{align}
+así por la desigualdad de Cauchy-Schwarz tenemos el resultado.\qed
+\end{dem}
+
+\begin{def.}
+Sea $T$ un operador en un espacio de Banach $X$, decimos que $z\in\co$ es de tipo regular si existe $C\in\re^+$ tal que
+
+$$
+\Vert(T-z\,I_X)\,x\Vert\geq C\Vert x\Vert
+\hspace{0.2cm}\forall x\in D(T).
+$$
+\end{def.}
+
+\begin{obs}
+Si $z\in\co$ es de tipo regular, entonces por definición $T-z\,I_X$ es inyectiva y $(T-z\,I_X)^{-1}$ es continua, por lo que $z\in\rho(T)$ si y sólo si $z$ es de tipo regular y $T-z\,I_X$ es suprayectivo.
+\end{obs}
+
+\begin{teorema}\label{rang-closed}
+Sea $X$ un espacio de Banach y $T$ un operador cerrado definido en un subespacio cerrado, si $z\in\co$ es de tipo regular, entonces
+
+$$Rang(T-z\,I_X)=\overline{Rang(T-z\,I_X)}.$$
+\end{teorema}
+
+\begin{dem}
+Sea $y\in\overline{Rang(T_z)}$, entonces existe $\lbrace x_n\rbrace_{n\in\nat}\subset D(T)$ tal que \hbox{$T\,x_n\rightarrow y$}, como $z$ es de tipo regular tenemos
+
+$$
+\Vert T_z\,x_n-T_z\,x_m\Vert\geq C\Vert x_n-x_m\Vert
+\hspace{0.2cm}C\in\re^+.
+$$ 
+
+Como $\lbrace T_z\,x_n\rbrace$ es de Cauchy, entonces $\lbrace x_n\rbrace_{n\in\nat}$ es de Cauchy y por lo tanto converge a un $x\in D(T)$ por ser un subespacio cerrado y por lo tanto de Banach, al ser $T$ operador cerrado concluimos que $T\,x=y$ \qed
+\end{dem}
+
+\begin{teorema}[El espectro de operadores auto-adjuntos es real]\label{real-spec}
+Sea $\hil$ espacio de Hilbert y $T:D(T)\subset\hil\rightarrow\hil$, si $T=T^*$, entonces $\sigma(T)\subset\re$.
+\end{teorema}
+
+\begin{dem}
+Sea $z\in\co\setminus\re$ por el teorema \ref{reg} $z$ es de tipo regular, por lo que lo único que tenemos que demostrar es que $T_z$ es suprayectiva. Ahora por el teorema anterior $Rang(T_z)=\overline{Rang(T_z)}$, si sucediera que $Rang(T_z)\neq\hil$, entonces $z\in\sigma_r(T)$, pero sabemos que $\sigma_r(T)=\emptyset$, por lo tanto $T_z$ es suprayectiva y por lo tanto $z\in\rho(T).$ \qed
+\end{dem}
+
+\begin{teorema}[Critgerio Básico para operadores auto-adjuntos]\label{ind-auto-adj}
+Sea $T:D(T)\rightarrow\hil$ simétrico $T\subset T^*$, entonces $T=T^*$ si y sólo si 
+
+$$Rang(T+i\,I_{\hil})=Rang(T-i\,I_{\hil})=\hil$$.
+\end{teorema}
+
+\begin{dem}
+Por el teorema \ref{real-spec} sabemos que si $T$ es auto adjunto entonces $Rang(T\pm i\,I_{\hil})=\hil$, por lo tanto supongamos que \hbox{$Rang(T\pm i\,I_{\hil})=\hil$}. Sea $\psi\in D(T^*)$, veamos que $\psi\in D(T)$ para probar el resultado, por hipótesis existe $\varphi\in\ D(T)$ tal que 
+
+$$
+(T+i\,I_{\hil})\,\varphi=(T^*+i\,I_{\hil})\,\psi\,\Rightarrow\,(T^*+i\,I_{\hil})\,(\varphi-\psi)=0,
+$$
+
+ya que $T$ es extensión. Por el teroema \ref{teo1} \hbox{$(\varphi-\psi)\bot Rang(T-i\,I_{\hil})=\hil$}, lo que significa que $\psi=\varphi$ y tenemos el resultado. \qed
+\end{dem}\\
+
+\noindent De hecho el resultado anterior es verdadero para cualesquiera $\alpha\in\hip^+$ y $\beta\in\hip^{-}$, donde 
+
+$$\hip^{\pm}:=\lbrace z\in\co\,\mid\,\pm Im(z)\in\re^+\rbrace.$$
+
+\noindent\textbf{Ejercicio.-} Demuestre que $T$ es autoadjunto si y sólo si $n_{+}(T)=n_{-}(T)=0$, donde
+
+\begin{equation}
+n_{\pm}(T)=\dim(\hil)-\dim(Rang(T\pm z\,I_{\hil}))
+\hspace{0.2cm}z\in\co\setminus\re.
+\end{equation}
+
+\begin{cor}
+Si $T\subset T^*$ y $\sigma(T)\subset\re$, entonces $T=T^*$ pues $\pm i\in\rho(T)$. 
+\end{cor}
+
+\begin{cor}
+Si $T\subset T^*$ y $z\in\co\setminus\re$, entonces $z\in\rho(T)\cup\sigma(T)_r$. 
+\end{cor}
+
+\begin{dem}
+Por el teorema \ref{reg} $z$ es de tipo regular, por lo tanto $(T-z\,I_{\hil})^{-1}$ existe y es continua, por \ref{rang-closed} $Rang(T_z)$ es cerrado, por lo tanto hay dos posibilidades; si $Rang(T_z)=\hil$, entonces $z\in\rho(T)$ y si $Rang(T_z)\neq\hil$, entonces $z\in\sigma(T)_r$.\qed 
+\end{dem}\\
+
+\noindent Ahora sí proseguimos con la demostracion al teorema \ref{teo2} \textbf{ii)}; Sea $z\in\co\setminus\re$, por el corolario anterior $z\in\rho(T)$, así $\sigma(T)\subset\re$ y tenemos que $T=T^*$.\qed
+%Como sabemos $\Vert T\Vert\geq\vert z\vert$ para toda $z\in\sigma(T)$, entonces $\Vert T\Vert\geqr_{\sigma}$ por lo que para toda $n\in\nat$ dada $m\in\nat$ tenemos que $n=p_n\,m+q_n$, donde $\lbrace p_n,q_n\rbrace\subset\nat$ y $q_n<m$, así si \hbox{$C=\max\lbrace 1,\Vert T\Vert,\Vert T^2\Vert,\cdots, \Vert T^m\Vert\rbrace$} tenemos que
+
+%$$\Vert T^n\Vert\leq\Vert T^m\Vert^{p_n}\,\Vert T^{q_n}\Vert<C\,\Vert T^m\Vert^{p_n}$$  
+
+\section{Alternativa de Fredholm}
+
+
+\begin{thebibliography}{99} 
+\bibitem{weidmann1}{\sc Weidmann, J.,} {\it Linear Operators in Hilbert Spaces,}
+Graduate Texts in Mathematics, Springer-Verlag, 1980.
+\bibitem{weidmann2}{\sc Weidmann, J.,} {\it Spectral Theory of Ordinary Differential Operators,}
+Lecture Notes in Mathematics, Springer-Verlag, 1980.
+\bibitem{birman-solomjak}{\sc Birman M. S. and Solomjak M. Z.,} {\it Spectral Theory of Self-Adjoint Opetarors in Hilbert Space,} D.Reidel Publishing Company, 1986.
+\bibitem{reed-simon}{\sc Simon, B. and Reed, M.,} {\it Methods of Modern Mathematical Physics Vol.I Functional Analysis,} Academic Press Inc, 1980.
+\bibitem{kreyszig}{\sc Kreyszig, E.,} { \it Introductory Functional Analysis with Applications,} John Wiley and Sons Inc, 1978.
+\bibitem{canavati}{\sc Canavati, J. A.,} {\it Introducción al Análisis Funcional} Fondo de Cultura Económica, 1998.
+
+\end{thebibliography}
+\printindex
+\end{document}

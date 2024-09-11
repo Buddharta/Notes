@@ -24,6 +24,6 @@ La declaración de una variable se hace conun bloque let
 donde claramente se utiliza el operador \(=\) para asignar a la variable el dato. similarmente, hay bloques para funciones
 #+BEGIN_SRC
 (defun funcion (parametros)
-(;; cuerpo de la función)
-)
+(;;cuerpo de la función
+))
 #+END_SRC

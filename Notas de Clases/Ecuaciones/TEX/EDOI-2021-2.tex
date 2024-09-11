@@ -1,0 +1,767 @@
+\documentclass[10pt,a4paper,notitlepage]{report}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\title{Protocolo - Investigación}
+\begin{document}
+
+
+\begin{center}
+
+%\maketitle
+\Large ECUACIONES DIFERENCIALES I.  \vspace{0.2cm} \\
+NOTAS DE CLASE \vspace{0.2cm} \\  \vspace{0.2cm} \\ Facultad de Ciencias, UNAM. 
+\vspace{0.2cm} \\ Grupo 4166. 2021-2.
+
+\end{center}
+\Large 
+\chapter{Introducción} \vspace{0.2cm} \\
+\section{Planteamiento de problemas} \vspace{0.2cm}\\
+
+
+\Large
+\subsection{Modelo matemático}
+Tendemos a una caracterización de los objetos, ahora bien podemos darle una representación matemática; esto es lo que constituye un modelo. Esto crea predicciones, qué dependiendo de nuestras variables, la función de esas variables y la derivada de la función respecto a la variable independiente $t$, se tendrá una ecuación diferencial ordinaria. Decimos que son modelos que dependen de la razón de cambio de sus variables y aveces de parámetros\\
+Son modelos matemáticos que evolucionan en $t$, y quizá alguna otra variable, aunque en realidad los modelos del mundo real pueden ser complicados (caóticos).
+\subsection*{Elaboración de modelos}
+
+\begin{enumerate}
+\item Establecer las hipótesis en las que se basará el modelo. 
+\item Definir variables y parámetros a usarse en modelo.
+\item Usar las hipótesis del primer paso para proponer ecuaciones que relacionen los componentes del paso 2.
+\end{enumerate}
+La calidad de las hipótesis determina la validez del modelo y las situaciones en las que nuestro modelo ya no es aplicable. Por otra parte, se definen las cantidades asociadas al modelo en las unidades y escalas implicadas.\\
+La cantidades que se usan para modelar una ecuación diferencial son
+\begin{itemize}
+\item Variable independiente: Generalmete representa el tiempo $t$, que es independiente de culquier otra cantidad del modelo.
+\item Variables dependientes: Son funciones de la variable independiente, se suele decir que son ``funciones que varían con el tiempo'', como una razón de cambio, una derivada.
+\item Parámetros: Cantidades que no cambian con el tiempo (en este caso, la variable independiente) y que pueden ajustarse. Lo importante depende en que tanto podemos determinar la forma en que cambian las variables dependientes cuando variamos los paramétros o los ajustamos.
+\end{itemize}
+\subsection*{Definición}
+Un modelo que contiene derivadas, respecto a una o más variables independientes, de derivadas de una o más variables dependientes, se denomina $ecuación$ $diferencial$.
+Se distinguen las ecuaciones diferenciales por su tipo, orden y linealidad
+\begin{itemize}
+\item Tipo: Si la ecuación que depende de una o más variables, depende de una sola variable independiente, se le denomina $ecuación$ $difrencial$ $ordinaria$, es decir podemos tener $f(t, x_{1}, x_{n})$ tal que se tenga una relación que involucre $f'(t,x_{1}, x_{n})$, donde $f'$ determina derivada de $f$ repecto a $t$. Una ecuación con más de dos derivadas, de las variables dependeinte, respecto a las variables independientes, se denomina $ecuación$ $diferencial$ $parcial$.\\
+Se puede usar, para la notación de derivadas, la que acabamos de mencionar, o la de $Leibniz$
+\begin{equation}
+\frac{dx}{dt}, \: \frac{d^{2}x}{dt^{2}}, \ .... \; \frac{d^{n}x}{dt^{n}}
+n = 1, ..., \infty.
+\end{equation}
+\item Orden: Corresponde al orden de la mayor derivada en la ecuación doferencial. Por ejemplo en el último término de la expresión anterior, define una $ecuación$ $diferencial$ $de$ $orden$ $n$. La ecuaciones difrenciales de primer orden pueden escribirse en su forma diferencial
+\begin{equation}
+M(x, y)dx + N(x, y) dy = 0.
+\end{equation}
+Se expresa de forma general, una ecuación diferencial de orden $n-ésimo$ de una variable dependiente
+\begin{equation}
+F(x, y, y'', ..., y^{(n)} ) = 0
+\end{equation}
+se dice una ecuación diferencial con una derivada de orden mayor $y^{(n)}$ de las demás $n+1$ variables. Se puede escribir como
+\begin{equation}
+\frac{d^{n}y}{dx^{n}} = f(x, y, y', ..., y^{(n -1)})
+\end{equation}
+se conoce como una $forma$ $normal$ de la ecuación diferencial, para $f$ una función de valores reales, contínua.
+\item Linealidad: Se dice que una ecuación diferencial de $n-ésimo$ orden es lineal, si la función $F$ es lineal respecto a sus derivadas $y, y', ..., y^{(n)}$. Es decir si
+\begin{equation}
+a_{n} (x) y^{(n)} + ... + a_{1} (x) y' + a_{0} y - g(x) & = & 0  \\
+ó \; a_{n} (x) \frac{d^{n}y}{dx^{n}} + a_{1} \frac{dy}{dx} + a_{0}(x) y & = & g (x).
+\end{equation}
+\end{itemize}
+En este curso trataremos mayomente, con las ecuaciones diferenciales lineales de $primer$ $orden$ ($n=1$) y $segundo$ $orden$ ($n = 2$)
+\begin{equation}
+a_{1} \frac{dy}{dx}   + a_{0}(x) y & = & g (x) \\
+ a_{2} (x) \frac{d^{2}y}{dx^{n}} + a_{1} \frac{dy}{dx} + a_{0}(x) y & = & g (x)
+\end{equation}
+cuando $g(x) = 0$, representa una ecuación diferencial $homogénea.$
+\subsection{Problemas con valores iniciales}
+Generalmente nos interesan problemas en los que buscamos una solución a una ecuación diferencial, tal que dicha solción $y (x)$ este sujeta a condiciones preescritas o iniciales, es decir, resolver el problema, sujeto a
+\begin{equation}
+\frac{d^{n}y}{dx^{n}}  = f(x, y, y', ..., y^{(n -1)}) \\
+y (x_{0}) = y_{0}, \; y'(x_{0}) = y_{1}, ..., y^{(n-1)} (x_{0}) = y_{n -1}
+\end{equation}
+para $y_{0}, y_{1}, ..., y_{n-1}$ constantes arbitrarias, reales, en el problema de $valores$ $iniciales$.\\
+Los valores de $y(x)$ y de sus primeras $n-1$ derivadas
+ en un punto $x_{0}$, $y(x_{0}) = y_{0}, y'(x_{0}) =y_{1}, ..., y^{(n-1)} (x_{0}) = y_{n-1}$ son ecuaciones diferenciales de primer y segundas $condiciones$ $iniciales$.
+ Para ecuaciones diferenciales de primer y segundo orden, con sus condiciones iniciales, se expresan como
+ \begin{equation}
+\frac{dy}{dx} =  f(x, y), \; y(x_{0}) =  y_{0} \\
+\frac{d^{2}y}{dx^{2}} = f(x, y, y'), \; y(x_{0}) = y_{0}, y'(x_{0}) = y_{1}
+ \end{equation}
+que se identifica con buscar una solución de la ecuación diferencial en in intervalo $I$  que contenga a $x_{0}$ tal que su gráfica pase por el punto $(x_{0}, y_{0})$, en el primer caso. En el segundo caso corresponde a determinar una solución $y(x)$ de la ecuación diferencial $y'' (x) = f (x, y, y')$ en un intrevalo que contenga a $x_{0}$ y que su gráfica además de pasar por el punto $(x_{0}, y_{0})$, además la pendiente en ese punto tenga una valor $y_{1} = m$.\\
+Finalmente resolver un problema con valores iniciales de $n-ésimo$ orden, frecuentemente consiste en determinar primero una familia uni-paramétrica de soluciones de la ecuación diferencial dada y posteriormente usando las $n$ condiciones iniciales en $x_{0}$ determinar los valores de las $n$ constantes dicha familia de soluciones.
+\section{Planteamiento Cualitativo}
+Se pueden realizar procedimientos geométricos para representar las soluciones de una ecuación diferencial, visualizando las gráficas de dichas soluciones. La geometría de
+\begin{equation}
+\frac{dy}{dx} = f(t, y)
+\end{equation}
+nos indica que si $y(t)$ es una solución d ela ecuación diferencial y su gráfica pasa por el punto $(t_{1}, y_{1})$ donde $y_{1} = y(t_{1})$, entonces la ecuación diferencial nos dice que la derivada $dy/dt$ en $t=t_{1}$ está dada por el número $f(t_{1}, y_{1})$, que significa que la pendiente de la línea tangente a la gráfica $y(t)$ en el punto $(t_{1}, y_{1})$ es $f(t_{1}, y_{1})$ y se vale para toda $t$ para la que $y(t)$ satisfaga la ecuación diferencial. \\
+Así, sea una función derivable $y = y(x)$, la derivada $dy/ dx$ da las pendientes de las rectas tangentes en los puntos de su gráfica.
+\subsection{Campos direccionales}
+Evaluando a $f$ en una malla rectangular de puntos en el plano $xy$ y se dibuja un elemento lineal en cada punto $(x, y)$ de la malla con pendiente $f(x, y)$, al conjunto de todos elementos lineales se le denomina $campo$ $direccional$ de la ecuación diferencial. \\
+ La dirección del campo nos muestra visualmente la forma de una familia de curvas solución de una ecuación diferencial dada,donde podemos adquirir aspectos cualitativos de la solución, por ejemplo regiones en el plano donde la solución muestre comportamientos peculiares.
+\subsection*{Comportamiento Crecimiento/Decrecimiento}
+De la interpretación que la derivada d euna función, como una función que da una pendiente es el elemento principal para cnstruir el campo direccional. Si
+\begin{equation}
+\frac{dy}{dx} > 0 \; ó \; \frac{dy}{dx} < 0
+\end{equation}
+pra toda $x$ en un intervalo $I$, entonces la función derivable $y = Y(x)$ será $creciente$ o $decreciente$, respectivamente, en dicho intervalo.
+\subsection{Ecuaciones Diferenciales Autónomas} 
+Una clasificación importante en la teoría cualitativa de las ecuaciones diferenciales , es aquella que no depende explícitamente del tiempo, denominada $atónoma$. Sea $x$ la variable independiente, escribimos una ecuación diferencial autónoma de primer orden como
+\begin{equation}
+f(y, y') = 0 \; ó \; \frac{dy}{dx} = f(y)
+\end{equation}
+con $f. f'$ continuas en el intervalo $I$.
+\subsection*{Puntos críticos}
+La raíces de $f$ en la ecuación anterior tienen importancia. Sea $c \in \mathbb{R}$ un $punto$ $crítico$ de la ecuación diferencial autónoma si es una raíz de $f$, es decir, $f(c) = 0$ Son llamados también $puntos$ $de$ $equilibrio$ o $estacionarios$. \\
+Sustituyendo la función constante $y(x) = c$ en la ecuación diferencial, entonces ambos lados son iguales a cero y eso nos dice qué: Si $c$ es un punto crítico, entonces $y(x) = c$ es una solución $constate$ de la ecuación diferencial autónoma. La soluciones de equilibrio son las $únicas$ soluciones constantes de la ecuación diferencial. \\
+La trayectoris de una solución estacionaria es un punt de $\mathbb{R}$ que se donomina $punto$ $crítico$, $fijo$, $de$ $equilibrio$ o $estacionario$ de la ecuación diferencial.
+Es más común, en un tratamiento cualitativo, referirnos a un conjunto de ecuaciones diferenciales, o un sistema de ecuaciones diferenciales.
+Sea el sistema de $n$ ecuaciones diferenciales de la forma
+\begin{equation}
+\frac{dy}{dx} = f(y, t), \; y \in \mathbb{R}^{n}, \; t \in \mathbb{R}
+\end{equation}
+con $f$ una función de $\mathbb{R}^{n} \times \mathbb{R} \rightarrow \mathbb{R}^{n}$ que se supone con una regularidad sufuciente para asegurar la $existencia$ y $unicidad$ de las soluciones.
+\subsection*{Diagrama fase}
+Para esbozar un diagrama fase radica en la creación de un modelo geométrico que represente todos los posibles estados del sistema, que se puede llamar $espacio$ $de$ $estados$.\\ Se pude decir que el objetivo de la teoría cualítativa de las ecuaciones diferenciales es la descripción más completa posible del digrama de fases, analizando el comportamiento asíntotico de las trayectorias.\\
+ Las soluciones $y (t)$ representan las coordenadas de un objeto, por ejemplo, su posición o velocidad del un objeto en un tiempo $t$. En un sistema de dimensión dos, en el plano $(y_{1}, y_{2})$ se pueden dibujar el número de trayectorias suficientes como tener una idea del comportamiento de las demás trayectorias del sistema. Se suele dibujar una flecha que indica el sentido de la variación de $y_{1}$ y $y_{2}$ al pasar el tiempo $t$, lo que nos muestra una dinámica de su recorrido, obteniendo así una descripción cualitativa del comportamiento de las soluciones. \\
+Se denomina un $diagrama$ $fase$ al sistema de ecuaciones diferenciales $y' = f(y)$ al conjunto d etodas las trayectorias de las soluciones del sistema. Dos soluciones distintas no pueden cruzarse nunca, debid al teorema de unicidad de las soluciones. Las trayectorias de dos soluciones distintas o bien no tienen punto en común o bien coinciden, además una misma trayectoria nunca se corta a sí misma.
+Dichas trayectorias pueden ser de tres tipos
+\begin{itemize}
+\item Curvas abiertas y simples
+\item Curvas cerradas y simples (soluciones periódicas)
+\item Puntos de equilibrio (soluciones constantes)
+\end{itemize}
+\subsection*{Teorema}
+Sea un sistema lineal y homogéneo de ecuaciones diferenciales. La solución cero es el único punto crítico si y sólo si cero no es un autovalor de la matriz asociada. \\
+$Demostración$ \\
+Sea $\lambda = 0$ un autovalor de la matriz asociada, y sea $v_{1}$ el autovector correspondiente, entonces la solución general del sistema lineal tiene la forma
+\begin{equation}
+y(t) = C_{1} v_{1} + C_{2} v_{2} \varphi_{2} (t) + ... + C_{n} v_{n} \varphi_{n} (t)
+\end{equation}
+donde existe una solución particular $\varphi_{1} (t) = v_{1}$, cuyas derivadas valen cero, y es, por tanto, un punto crítico distinto de cero. \\ Reciprocament, si $v_{1}$ es un punto crítico no nulo, entoces $0 = Av$, lo que significa que la matriz $A$ no tiene matriz inversa, luego cero es un autovalor de dicha matriz.\\
+ Los puntos fijos se corresponden conlas $soluciones$ $de$ $equilibrio$ del sistema de ecuaciones diferenciales. La condición de dicho punto fijo de $atraer$ o $repeler$ nos proporciona información sobre la estabilidad del sistema. \\
+Unpunto crítico es $estable$ si para cualquier trayectoria $y$ sufiecientemente proxima al punto en el momento inicial, por ejemplo a una distancia menor a $\delta$, permanece próxima al punto para todo tiempo $t_{0} > 0$, es decir, la trayectoria permanece siempre dentro de un cículo de centro en el punto y radio $\epsilon$, mientras que para que sea $asíntoticamente$ $estable$ además de ser estable las trayectorias deben aproximarse al punto cuanto $t \rightarrow \infty$ es decir, el punto es un $atractor$. El punto es un $repulsor$ si es $inestable$ y las trayectorias se alejan de él. \\
+Se considera un sistema de ecuaciones diferenciales $autónomo$ con un punto $crítico$ $v$
+\begin{itemize}
+\item $v$ es un $punto$ $fijo$ $estable$ o $nodo$ $estable$ si para cada $\epsilon$ existe un $\delta$ tal que si $y$ es una solución tal que 
+\begin{equation}
+|| y(t_{0}) - v || < \delta \; \Rightarrow \; || y(t) - v || > \epsilon
+\end{equation}
+para todo $t > t_{0}$
+\item $v$ $punto$ $fijo$ $asintóticamente$ $estable$ o $nodo$ $asintóticamente$ $estable$ si $v$ es estable, y existe un $\delta > 0$ tal que para cada solución $y$, si
+\begin{equation}
+|| y(t_{0}) - v || < \delta \; \Rightarrow \; \lim\limits_{t \rightarrow \infty} || y(t)|| = v
+\end{equation}
+\item $v$ es un $punto$ $fijo$ $inestable$ o $nodo$ $inestable$ si no es estable.
+\section{Ejercicios}
+\begin{enumerate}
+\item El ritmo a que cierto medicamento se absorbe en el sistema circulatorio está dado por $\frac{dy}{dx} = r -sy$, donde $y(t)$ representa la concentración del medicamento en el flujo sanguíneo en el tiempo $t$, y $r, s$ constantes positivas. Si se supone que al inicio no había indicios de medicamento en la sangre. Hallar $y(t)$. ¿ Qué le sucede a $y(t)$ a largo plazo? \\
+\large
+Al ser una ecuación diferencial autónoma, se puede resolver por separación de variable
+\begin{equation}
+ - \frac{1}{s} \int \frac{-sdy}{r - sy} = \int dt \Rightarrow - \frac{1}{s} In |r - sy| = t + c
+\end{equation}
+despejando se obtiene $y(t)$
+\begin{equation}
+y(t) = \frac{1}{s} (r - e^{-sc} - e^{-st}), \; c \in \mathbb{R}
+\end{equation}
+usando las condiciones iniciales $y(0) = 0$
+\begin{equation}
+\frac{1}{s} (r - e^{-sc}) = 0 \Rightarrow r= e^{-sc} 
+\end{equation}
+finalmente
+\begin{equation}
+y(t) = \frac{r}{s} (1 - e^{-st}).
+\end{equation}
+Si $t \rightarrow \infty$ entonces $y(t) \rightarrow r/s$.
+\Large
+\item Escribir una ecuación diferencial que descsriba la razón de cambio con las que las personas escuchan hablar del aumento en las tarifas postales, es proporcional al número de país que no han oído hablar al respecto. Resolver dicha ecuación.\\
+\large
+Sea $y (t)$ la cantidad de personas que han oido hablar del aumento de los preceios en un tiempo $t$, $y'(t)$ representa la razón con la que las personas escuchan hablar sobre dicho aumneto; el número de personas que no ha oído hablar de dicho aumento se representa por $B - y(t)$, así se escribe
+\begin{equation}
+y´(t) = \frac{dy}{dt} = k (B - y)
+\end{equation}
+con $k >0$ constante d eproporcionalidad, $y'(t) > 0$.
+Usamos separación de variables
+\begin{equation}
+\frac{1}{B - y} dy = kdt
+\end{equation}
+integrando
+\begin{equation}
+- In |B - y| = kt + c
+\end{equation}
+al ser $B - y > 0$, se puede quitar el valor absoluto, nos queda
+\begin{equation}
+-In (B - y) & = & kt + c \Rightarrow In (B - y) = -kt - c \nonumber \\
+B - y = e^{-kt -c} & = & e^{-kt}e^{-c} \Rightarrow y(t) = B - e^{-c}e^{-kt}.
+\end{equation}
+\Large
+\item Una sustancia radiativa $A$ se descompone según la ley 
+\begin{equation}
+x(t) = x(0) e^{- \alpha t}
+\end{equation}
+transformandose en una nueva sustancia $B$, la cual, a su vez, se descompone a una velocidad
+\begin{equation}
+v_{b} = v_{a} - \alpha_{1} y =  \alpha x (t) - \alpha_{1} y(t)
+\end{equation}
+en cada instante los $\alpha x$ átomos que se descomponen de la sustancia $A$ se transfroman en átomos de la sustancia $B$, la cual pierde un número átomos igual a $\alpha_{1} y$. Se supone que un instante inicial se tiene $y_{0}$ átomos  de la segunda sustancia, expresar a $y$ en función del tiempo $t$. \\
+\large
+Se deduce que
+\begin{equation}
+v_{B} \frac{dy}{dt} = \alpha x(t) - \alpha_{1} y(t) = \alpha x(0) - \alpha_{1} y(t)
+\end{equation}
+que tanbién se ve de la forma
+\begin{equation}
+y'(t) \alpha_{1} y(t) = \alpha x(0) e^{- \alpha t}
+\end{equation}
+que es una ecuación lineal que tiene como factor integrante
+\begin{equation}
+\mu (t) = e^{\int \alpha_{1} dt} = e^{\alpha_{1} t}.
+\end{equation}
+Multiplicando por el factor integrante a la ecuación diferncial
+\begin{equation}
+e^{\alpha_{1} t}y'(t) + \alpha_{1} e^{\alpha_{1} t} y(t) = e^{\alpha_{1} t} \alpha x(0) e^{-\alpha_{1} t}
+\end{equation}
+se reescribe como
+\begin{equation}
+(y(t) e^{\alpha_{1} t})' = a x(0) e^{(\alpha_{1} - \alpha) t}.
+\end{equation}
+La solución es 
+\begin{equation}
+y(t) e^{\alpha_{1} t} = ax(0) \int e^{(\alpha_{1} - \alpha) t} = \frac{ax(0)}{\alpha_{1} - \alpha} e^{(\alpha_{1} - \alpha) t}
+\end{equation}
+finalmente despejamos $y(t)$
+\begin{equation}
+y(t) = \frac{ax(0)}{\alpha_{1} - \alpha} e^{ \alpha t} - e^{-  \alpha_{1} t} + y_{0} e^{- \alpha _{1} t}
+\end{equation}
+\Large
+\item Dada la población $y (t)$ de un cierto país a un tiempo $t$. Suponemos que la tasa de natalidad $u$ y la de mortalidad $v$ del paía son constantes y que además existe una tasa constante de inmigración $m$. Explicar el por que de que el modelo esté descrito por la ecuación diferencial
+\begin{equation}
+\frac{dy}{dt} = (r - s) y (t) + m.
+\end{equation}
+Hallar $y (t)$. Si el país era $100 millones$ en $2020$, con una tasa de crecimiento (tasa de natalidad menos tasa de mortalidad) del $2$ por ciento, si se permite permite inmigarción a tasa de $300 mil$ personas por año, ¿cúal será la población para el año $2030$? \\
+\large
+El ritmo con el que se modifica la población en cada momento es igual a los que se incorporan $uy(t) + m$ menos los que abandonan $v y(t)$ la población. Escribimos
+\begin{equation}
+y'(t) = ry (t) + m - sy(t) = (r -s) y(t) + m = ky(t) + m
+\end{equation}
+sea $k > 0$ si la población aumenta y $k < 0$ si disminuye. Tenemos
+\begin{equation}
+y'(y) - y(t) = m
+\end{equation}
+con un factor integrante $\mu (t) = e^{-kt}$
+\begin{equation}
+(y(t) e^{-kt})' = me^{-kt} \; \Rightarrow \; y(t) e^{-kt} = - \frac{m}{k} e^{-kt} + c
+\end{equation}
+o bien
+\begin{equation}
+y(t) = - \frac{m}{k} + ce^{kt}, \; c \in \mathbb{R}.
+\end{equation}
+Por otra parte si suponemos $t= 0$ en $2020$, es necesario conoces $y (10)$, Sustituimos $k = 0.02$ y $m = 0.3$
+\begin{equation}
+y(t) = ce^{0.02 t} -15
+\end{equation}
+usando el dato $y (0) = 100$ se obtiene $c = 115$ y finalmente
+\begin{equation}
+y(t) = 115 e^{kt} - 15 \; \Rightarrow \; y(10) = 115 e^{0.2} - 15 \approx 125.
+\end{equation}
+\Large
+\item Se supone que el previo de cierta especie animal $p(t)$ varía de modo que su razón de cambio con respecto al tiempo es proporcionala la escasez $D - p$, donde $D(p)$ y $S(p)$ son las funciones de demanda y oferta 
+\begin{equation}
+D(p) = 8 - 2p \; \; S(p) = 2 + p
+\end{equation}
+si el precio es de $1000$ euros cuando $t= 0$ y $600$ euros en $t = 2$, entonces calcular $p(t)$. Determinar que le sucede a $p(t)$ a ``largo plazo''.
+\large
+Se deduce que
+\begin{enumerate}
+p'(t) = k (D - S) = 6-3p, \; p(0) = 1000, \; p(2) = 600
+\end{enumerate}
+que es una ecuación deferencial de variables separables
+\begin{equation}
+\int \frac{dp}{3(2 - p)} = \int k dt
+ \; \Rightarrow \; - \frac{1}{3} In |2 - p| = kt + c_{1}
+ \end{equation}
+ o bien
+ \begin{equation}
+In |2 - p| = -3kt + c_{2} \; \Rightarrow \; p(t) = 2 - e^{c_{2}} e^{-3kt}
+ \end{equation}
+ Ahora, teniendo $p(0) = 1000$, entonces $e^{c_{2}} = -998.$ Por otra parte, $p(2) = 600$ obliga a que $k \approx 0.085$; así la ecuación buscada es
+ \begin{equation}
+ p(t) = 2 + 998 e^{-0.255 t}
+ \end{equation}
+ se puede ver que en $p(t) \rightarrow 2$ cuando $t \rightarrow \infty$.
+ \Large
+ \item El ritmo al que se propaga na epidemia en una cominidad es conjuntamente proporcional a la cantidad de residentes que han sido infectados y al número de residentes propensos a la enfermedad que no han sido infectados. Expresar el número de residentes que han sido infectados como una función del tiempo. \\
+ \large
+ Sea $y(t)$ el número de residentes infectados al timpo $t$, y sea $K$ la cantidad total de residentes propensos a la enfermedad. Entonces, la cantidad de residentes propensos que no han sido infectados es $K - y$, y la ecuación diferencial que describe la propagación de la epidemia es
+ \begin{equation}
+\frac{dy}{dx} = \alpha y (K - y) = ry (1 - \frac{y}{K}), \; r = \alpha K 
+ \end{equation}
+ que es una ecuación de variables separadas cuya solución es
+ \begin{equation}
+\int \frac{1}{y (1 - \frac{y}{K})} dy = \int rdt
+ \end{equation}
+ integrando
+ \begin{equation}
+In |y| - In |1- y/K| = rt + C
+ \end{equation}
+ o bien
+\begin{equation}
+\frac{Ky}{K - y} = rt + C
+\end{equation}
+ ya que $y > 0$ y $K > y$,  despejando $y$
+ \begin{equation}
+\frac{Ky}{K - y} = e^{rt + C} =  A_{1} e^{rt}
+ \end{equation}
+ siendo $A_{1} = e^{C}$, simplificando
+ \begin{enumerate}
+y(t)= \frac{K  A_{1} e^{rt}}{K +  A_{1} e^{rt}}
+ \end{enumerate} 
+ renombrando $A  = K/ A_{1}$ y dividiendo numerador y denominador por $ A_{1} e^{rt}$ se obtiene
+ \begin{equation}
+y(t)= \frac{K}{1 + A_{1} e^{rt} }
+ \end{equation}
+ que corresponde a la ecuación general de una $curva$ $logística$.
+ \Large
+ \item El número de células que componen un tumor es, inicialmente , $10^{4}$. El creimiento de dicho tumor puede responder a uno de las dos leyes siguientes
+ \begin{itemize}
+ \item $Logística$
+ \begin{equation}
+y'(t) = ry (t) (1 - \frac{1}{k} y(t))
+ \end{equation}
+ \item $de Gompertz$
+ \begin{equation}
+y'(t) =re^{-at} y(t)
+ \end{equation}
+ \end{itemize}
+ con $y(t)$ el número de células para tiempo $t$ medido en días; $r=0.2, k= 22 \times 10^{7}$ y $a = 0.02$ una constante que retrasa el crecimiento en el segundo modelo
+ \begin{enumerate}
+\item Calcular la expresión de $y(t)$ en los dos modelos, con un instante iniciao $t_{0} = 0$. 
+\item Comprobar que existe un tope poblacional para el segundo modelo, cuyo valor númerico coincide con el del primero de ellos.
+\item Es conocido que para este tipo de tumores la velocidad de crecimiento es maxima cuando $t = 50$ días. Calcular en los dos modelos los efectivos en dicho instante. Establecer cuál de los dos modelos, y por qué, describe el comportamiento previsto.
+ \end{enumerate}
+ \large
+ Comenzamos resolviendo el problema de valores iniciales 
+ \begin{equation}
+y'(t) = 0.2 y(t) (1 - \frac{1}{22 \times 10^^{7}} y (t)), \; y(0) = 10^{4}
+ \end{equation}
+una ecuación de variables separables 
+\begin{equation}
+\int \frac{dy} {y (1 - \frac{1}{22 \times 10^^{7}} y)} = \int 0.2 dt \\
+\Rightarrow \int \frac{dy}{y} + \frac{\frac{1}{22 \times 10^{7}}}{1 - \frac{1}{22 \times 10^{7}} y} = 0.2t + c 
+\end{equation} 
+integrando
+\begin{equation}
+In |y| - In |1 - \frac{1}{22 \times 10^{7}} y| = 0.2t + c  \Rightarrow In|\frac{y}{1 - \frac{1}{22 \times 10^{7}}}y| = 0.2t + c
+\end{equation}
+despejando
+\begin{equation}
+y = e^{0.2t + c} (1 - \frac{1}{22 \times 10^{7}} y) \Rightarrow y(1 + \frac{1}{22 \times 10^{7}} e^{0.2t + c} ) = e^{0.2t + c} 
+\end{equation}
+es decir
+\begin{equation}
+y(t)= \frac{e^{0.2t + c} }{1 + \frac{1}{22 \times 10^{7}}e^{0.2t + c} } = \frac{22 \times 10^{7}}{1 + 22 \times 10^{7} e^{-(0.2t + c)}}.
+\end{equation}
+Al ser $y(0) = 10^{4}$, sustituimos en la exresión anterior
+\begin{equation}
+10^{4} = \frac{22 \times 10^{7}}{1 + 22 \times 10^{7} e^{-c}} \Rightarrow e^{-c} = 9999 \times 10^{-8}
+\end{equation}
+así la respuesta a nuestro problema será el modelo logístico
+\begin{equation}
+y(t) = \frac{22 \times 10^{7}}{1 + 22 \times 10^{7} \times 9999 \times 10^{-8} e^{-(0.2t + c)} } = \frac{22 \times 10^{7}}{1 + 21998  e^{-(0.2t + c)}} ...
+\end{equation}
+\end{enumerate}
+
+
+%\begin{center}
+
+%Fis. Karen Susana Villa Aguirre \\
+%ksva@ciencias.unam.mx
+%\end{center}
+\chapter{Ecuaciones diferenciales de primer orden}
+\section{Teorema de existencia y unicidad}
+\Large
+Considerese el problema de valor inicial
+\begin{equation}
+\frac{dy}{dx} = f(x, y), \; y(x_{0}) = y_{0}
+\end{equation}
+para una función dada de $x$ y $y$, donde es posible que no pueda resolverse explícitamente. Surgen las siguientes preguntas
+\begin{itemize}
+\item ¿Cómo es posible saber si el problema de valores iniciales tiene realmente solución, si no puede exhibirse?
+\item ¿Cómo puede saberse si el problema tiene una solución única $y(x)$ Es posible que existan una, dos, tres o incluso un número infinito de soluciones.
+\item ¿Por qué preocuparse en plantear las cuastiones anteriores? Despúes de todo, ¿qué sentido tiene determinar si el problema tiene una solución única si no es posible exhibirla explícitamente. \\
+Este tipo de problemas aparece mucho en aplicaciones de física, biología y economía. Es de observarse, que en ciertas aplicaciones no es necesario conocer la solución exacta al problema de valores iniciales, con más de un número finito de cifras decimales.
+\end{itemize}
+\subsection{Existencia}
+Se determinan las condiciones que garantizan que al menos una solución a (2.1). \\
+Si $f(x, y)$ es una función continua que depende unicamente de $x$ se ´puede integrar la ecuación en (2.1) para obtener la solución al problema diferencial. \\
+Si $f(x, y)$ es una función que depende unicamente de $y$, se puede realizar separación de variables, integrar y obtener la solución al problema diferencial. \\
+En general, $f(x, y)$ es una función que depende tanto de $x$ como de $y$. Se toma cualquier función continua $y = y_{0}(x)$ que pase por el punto $(x_{0}, y_{0})$, puede ser la función constante $y = y_{0}$, y reemplazarla en el miembro derecho de la ecuación diferencial (2.1) para obtener
+\begin{equation}
+y' = f(x, y_{0} (x)).
+\end{equation}
+Si $f(x, y)$ es una función continua en algún conjunto abierto y conexo $S$ del plano que contiene al punto $(x_{0}, y_{0})$, entonces $f(x, y_{0} (x))$ será una función de $x$ continua en algun intervalo que contenga $x_{0}$. integrando obtenemos
+\begin{equation}
+y_{1} (x) = y_{0} + \int\limits_{x_{0}}^{x} f(t, y_{0} (t)) dt
+\end{equation}
+que pasa por el punto $(x_{0}, y_{0}).$ \\
+Reemplazando $y_{1} (x)$ en el miembro derecho de la ecuación diferencial (2.3), obtenemos
+\begin{equation}
+y' = f(x, y_{1} (x))
+\end{equation}
+integrando se tiene
+\begin{equation}
+y_{2} (x) = y_{0} + \int\limits_{x_{0}}^{x} f(x, y_{1} (t)) dt.
+\end{equation}
+Utilizando $y_{2} (x)$ podemos obtener $y_{3} (x)$, y así sucesivamente. Realizando el procedimiento $n$ veces se obtiene la función
+\begin{equation}
+y_{n} (x) = y_{0} + \int\limits_{x_{0}}^{x} f(x, y_{n - 1} (t)) dt.
+\end{equation}
+La funciones $y = y_{n} (x)$, para $n = 1, ...$ reciben el nombre de $Iteradas$ de $Picard$. \\
+Se debe demostrar que en un cierto intervalo que contiene a $x_{0}$, y bajo ciertas condiciones, la sucesión de funciones definida en () se aproxima a una función límite $y = \varphi (x)$ que es solución al problema (2.1) en algún intervalo que contiene a $x_{0}$.
+\subsection{Unicidad}
+Se debe demostrar que en el intervalo $[a, b]$ solo hay una solución del problema diferencial (2.1). \\
+Se supone que sea $y = \psi (x)$ solución de (2.1) en el intervalo $[a, b]$ y se demuestra que dicha solución coincide con la solución $y = \psi(x)$. \\
+Primero se demuestra que $(x, \psi (x))$ se encuentra en la región $R$, para cada $x \in (x_{0}, b]$. Sea 
+\begin{equation}
+T= { x \in [x_{0}, b] : |\frac{\psi (x) - \psi (x_{0})}{x - x_{0}}| > M }.
+\end{equation}
+Si $T$ distinto del vacío, existe un número $x_{m}$ que es el menor de los elementos de $T$. Dado que $y = \psi (x)$ es continua y derivable, por el teorema del vaor medio s epuede garantizar la existencia sw un número $x^{*}$ entre $x_{0}$ y $x_{m}$ tal que
+\begin{equation}
+|\frac{\psi (x_{m} - x_{0})}{x_{m} - x_{0}}| = | \psi' (x^{*})|
+\end{equation}
+entonces
+\begin{equation}
+|f(x^{*}, \psi(x^{*}))| = |\psi' (x^{*})| = |\frac{\psi (x_{m} - x_{0})}{x_{m} - x_{0}}| > M
+\end{equation}
+luego el punto $(x^{*}, \psi(x^{*}))$ no está en $S$ y por lo tanto
+\begin{equation}
+|\frac{\psi (x_{m} - x_{0})}{x_{m} - x_{0}}| > M
+\end{equation}
+lo cual es ¡absurdo! ya que $x^{*} > x_{m}$.  Luego $T$ es igual al conjunto vacío y así
+\begin{equation}
+|\frac{\psi (x_{m} - x_{0})}{x_{m} - x_{0}}| < M
+\end{equation}
+para $x_{0} < < \geq b$. Lo que garantiza que $(x, \psi (x^{*})) \in R$. De manera similar se demuestra que  $(x, \psi (x^{*})) \in R$ para $a \geq x < x_{0}$.
+Además $(x, \psi (x^{*})) = (x_{0}, y_{0}) \in R$.
+\subsection*{Teorema: Existencia y unicidad}
+Suponemos que $f(x, y)$ sea una función continua en una región $S$ del plano $xy$ y que existe una constante $M > 0$ tal que $|f(x, y)| \geq M$ para $(x, y) \in S$. \\ Sean $(x_{0}, y_{0})$ un elemento de $S$ y $[a, b]$ un intervalo tal que la región $S$ incluye a la región $R$ encerrada por los triángulos formados por las rectas $x = a$ y $x = b$ y las dos rectas que pasan por el punto $(x_{0}, y_{0})$ y tienen pendiente $M$ y $-M$ respectivamente. \\
+Suponemos que existe una constante $A > 0$ tal que
+\begin{equation}
+|f (x, \tilde{y}) - f(x, \bar{y})| \geq A|\tilde{y} - \bar{y}|
+\end{equation}
+para cada par de puntos $(x, \tilde{y})$ y $(x, \bar{y})$ de $R$. \\
+Entonces existe una única función que pasa por el punto $(x_{0}, y_{0})$ y que satisface la ecuación diferencial $y' = f(x, y)$ en el intervalo $[a, b]$.
+
+\subsubsection{Ejercicios}
+\begin{enumerate}
+\Large
+\item Considerese la siguiente ecuación diferencial, con una ondición inicial $y(1) = 3$
+\begin{equation}
+y' (x) = -y
+\end{equation}
+¿Existe una solución a este problema? ¿Es la única solución posible? \\
+\large 
+Primero se evalua la existencia de las solución de la ecuación diferencial y que además cunpla con la condición inicial. \\
+Aquí $f(x, y) = -y$, la condición de $existencia$ debe requerir saber si $f (x, y)$ es continua en una región del plano $xy$ que contenga al punto de coordenadas $x = 2, y = 3$. \\
+$f(x, y) = -y$ es la función $afín$, que es continua en el dominio de los números reales y existe en todo el rango de los números reales. \\
+Se concluye que $f(x, y)$ es continia en $\mathbb{R}^{2}$, por lo que por el teorema se garantiza la existencia de al menos una solución. \\
+Sabiendo esto, toco evaluar si la solución es $única$ o si por el contrario hay más de una. para esto es necesario cacular la derivada parcial de $f$ respecto de la variable $y$
+\begin{equation}
+\frac{\partial f}{\partial y} = \frac{\partial (-y)}{\partial y} = -1
+\end{equation}
+entonces $g(x, y) = -1$ una función constante, que tambiém está definida para todo $\mathbb{R}^{2}$ y además es continua allí. Se sigue que el teorema de $existencia$ y $unicidad$ garantiza que este problema de valor inicial sí tiene una solución única, aunque no se nos dice cual es. \\
+\Large
+\item Considerese la siguiente ecuación diferencial $ordinaria$ $de primer$ $orden$, con condición inicial $y(0) = 0$
+\begin{equation}
+y´(x) = 2 \sqrt{y}.
+\end{equation}
+¿Existe una solución $y (x)$ para este problema?  En caso afirmativo determinar si hay una o más de una. \\
+\large
+Se considera la función $f(x, y) = 2\sqrt{y}$, está definida únicamente para $y \leq 0$, ya que sabemos que un número negativo carece de raíz real. Además $f(x, y)$ es continua en el semiplano superior de $\mathbb{R}^{2}$ incluido el eje $x$, por lo que el $teorema$ de existencia y unicidad garantiza al menos una soluci´n en dicha región. \\
+La condición inicial $x = 0, y = 0$ se encuentar en el borde de la región de solución. Entonces tomamos la derivada parcial de $f(x, y)$ respecto de $y$
+\begin{equation}
+\frac{\partial f}{\partial y} = \frac{1}{\sqrt{y}}
+\end{equation}
+aquí la función $no está definida$  para $y = 0$, precisamente donde se encuuentra la condición inicial. \\
+El teorema nos dice que aunque sabemos que existe al menos una solución el semiplano superio del eje $x$ incluido el eje $y$, y como no se cumple teorema de unicidad, no hay garantía de que exísta solución única. \\
+Esto significa que podría haber una o más de una solución en la región de continuidad de $f (x, y)$, y como siempre, el teorema no nos dice cuales podrían ser.
+
+\end{enumerate}
+
+\subsection{Ecuaciones diferenciales de primer orden}
+La única ecuación diferencial de primer orden que es posible resolver es 
+\begin{equation}
+\frac{dy}{dt} = g(t)
+\end{equation}
+para $g$ una función integrable del tiempo. Si queremos resolver esta ecuación, integramos ambos lados con respecto a $t$
+\begin{equation}
+y(t) = \int g(t) dt + c
+\end{equation}
+con $c$ una constante arbitraria de integración y $\int g(t)$ representa una antiderivada de $g$, es decir, una función cuya derivada es g. Así para quere resolver otra ecuación diferencial debe reducirse de alguna manera a la forma (2.17).
+\subsection*{Definición}
+Sea la ecuación diferencial lineal general de primer orden
+\begin{equation}
+\frac{dy}{dt} + a(t)y = b(t)
+\end{equation}
+suponemos $g(t)$ y $b(t)$ continuas en el tiempo, se define como una ecuación diferencial lineal $no$ $homogénea$ de primer orden para $b(t )$ diferente de $0$. Es una ecuación $lineal$ porque la variable dependiente aarece sola; es decir, no aparecen términos de forma funcional, trigonométrica, exponencial, periódicas, pe. $y^{3}, e^{-y}, sen y, ...$.\\
+Una ecuación no lineal sería por ejemplo: $\frac{dy}{dt} = y^{-2} + tan t$.\\
+\subsection*{Definición}
+Se define una ecuación dferencial lineal $homógenea$ al hacer en (2.19), $b(t) = 0$ 
+
+\begin{equation}
+\frac{dy}{dt} = a(t)y = 0.
+\end{equation}
+Es una ecuación homogenéa que puede encontarse su solución de forma sencilla. Dividimos ambos lados de la ecuación entre $y$ 
+\begin{equation}
+\frac{dy/dt}{y} = -a (t)
+\end{equation}
+observemos que 
+\begin{equation}
+\frac{dy/dt}{y} \equiv \frac{d}{dt} In |y (t)|
+\end{equation}
+donde $In |y (t)|$ significa el logaritmo natural de $y(t)$. Escribimos
+\begin{equation}
+\frac{d}{dt} In |y (t)| = - a(t)
+\end{equation}
+vemos que es una ecuación que puede integrarse de ambos lados. obtenemos
+\begin{equation}
+In |y (t)| = - \int a(t) dt + c_{1}
+\end{equation}
+$c_{1}$ constrante de integración, arbitraria. Aplicamos la función exponecial
+\begin{equation}
+|y(t)| & = & e^{- \int a(t) dt + c_{1}} \nonumber \\ & = & c e^{- \int a(t) dt}
+\end{equation}
+la función $ y(t)e^{- \int a(t) dt}$ es continua en el tiempo, de la última igualdad vemos que el valor absoluto de dicha función es constante. \\
+Si el valor absoluto de una función $y$ es constante entonces la misma función $g$ debe serlo también. Supongamos $g$ no constante, por lo que $\exists 'n \; t_{1}, t_{2}$ dos tiempos difrentes para los cuales 
+\begin{equation}
+g(t_{1}) = c, \; g(t_{2}) = -c
+\end{equation}
+por el teorema de valor medio en Cálculo, $g$ debe tomar todos los valores entre $c$ y $-c$, pero esto no e sposible, ya que $|g(t)| = c$. De aquí observamos que 
+\begin{equation}
+y(t) e^{- \int a(t) dt} = c \\
+ ó \; \; y(t) = c e^{- \int a(t) dt} 
+\end{equation}
+a la cúal se le llama $solución$ $general$ de la ecuación homogénea. Toda solución de (2.20) tiene esa forma. Se espera que simpre resulte una constante en la solución general de cualquier ecuación de primer orden. \\
+Si nos dan $\frac{dy}{dt}$ y deseo obtener $y(t)$ esto implica realizar una integración lo cuál siempre involucra una constante arbitraria. \\
+Para cada valor de $c$ en la ecuación (2.20), se tiene una solución $y(t)$ diferente y por lo tanto (2.20) tiene un número $infinito$ de soluciones. \\
+Ahora retomemos la ecuación diferencial no homogénea
+\begin{equation}
+\frac{dy}{dt} + a(t) y = b(t)
+\end{equation}
+lo que se requiere es tener la forma en y tal que  pueda integrarse de ambos lados, más la expresión $\frac{dy}{dt} + a(t) y$ no parece ser la derivada de una expresión simple. \\
+Multilpliquemos ambos lados de la ecuación (2.19) por la función continua $\mu(t)$
+\begin{equation}
+\mu (t) \frac{dy}{dt} + a(t) \mu(t) y = \mu(t) b(t) 
+\end{equation}
+tomemos en cuenta
+\begin{equation}
+\frac{d}{dt} \mu(t) y = \mu (t) \frac{dy}{dt} + \frac{d\mu}{dt} y
+ \end{equation}
+ donde $\mu(t) [dy/ dt] + a(t) \mu(t)y$ es la derivada de $\mu(t) y$ si y solo sí 
+ \begin{equation}
+ \frac{d\mu (t)}{dt} = a(t) \mu(t)
+ \end{equation}
+ que es una ecuación lineal homogénea de primer orden respecto a $\mu(t)$, es decir
+ \begin{equation}
+ \frac{d\mu}{dt} - a(t) \mu = 0
+ \end{equation}
+ la cuál es homogénea y ya se sabe resolver.\\
+Dado que solo requerimos una función $\mu(t)$ damos el valor $c=1$ en la solución general (2.29) y
+\begin{equation}
+\mu(t) = e^{\int a(t) dt}
+\end{equation}
+ así escribimos (2.31) como
+ \begin{equation}
+ \frac{d}{dt} \mu(t) y = \mu(t) b(t).
+ \end{equation}
+ Para encontrar todas las soluciones (o la solución general) de la ecuación no homogénea, integramos ambos lados, es decir, se obtienen las antiderivadas y se tiene
+ \begin{equation}
+\mu(t) y = \int \mu(t)b(t) dt + c
+ \end{equation}
+ despejando $y$
+ \begin{equation} 
+y = \frac{1}{\mu(t)} \left( \int \mu(t) b(t) dt + c \right) = e^{[- \int a(t) dt] [\int \mu(t) b(t) dt + c]}.
+ \end{equation}
+ Si se quiere encontar la solución específica de (2.19)  que satisface la condición inicial $y (t_{0}) = y_{0}$, resolvemos el problema de valor inicial
+ \begin{equation}
+\frac{dy}{dt} + a(t) y = b(t), \; y(t_{0}) = y_{0}
+ \end{equation}
+ entonces realizando integral indefinida en ambos lados de (2.35) de $t_{0}$ a $t$
+ \begin{equation}
+\mu(t) y - \mu (t_{0}) y_{0} = \int\limits_{t_{0}}^{t} \mu (s) b(s) ds
+ \end{equation} 
+ despejando $y$
+ \begin{equation}
+y = \frac{1}{\mu(t)} (\mu (t_{0}) y_{0} + \int\limits_{t_{0}}^{t} \mu(s) b(s) ds).
+\end{equation}
+Resulta de útilidad conocer la solución de la ecuación homogénea para encontar la función $\mu (t)$ que permite resolver la ecuación no homogénea. \\
+$\mu(t)$ recibe el nombre de factor integrante, ya que al multiplicar la ecuación no homogénea, pudiendo integrar y encontar todas las soluciones.
+\subsection{Ejercicos}
+\begin{enumerate}
+\item Encontar la solución general de la ecución diferencial e indicar el intervalo $I$ en el que se define dicha solución. DEterminar si existen términos transitorios. \\
+\begin{itemize}
+\large
+\item \begin{equation}
+x^{2} y' + x(x +2)y = e^{x}
+\end{equation}
+Dividimos entre $x^{2}$ para presentarla de la forma estandar
+\begin{equation}
+\frac{dy}{dx} + \left( \frac{(x+2)}{x} \right) y = \frac{dy}{dx} + \left( 1+ \frac{(2)}{x} \right) y = \frac{e^{x}}{x}
+\end{equation}
+se tiene el factor integrante
+\begin{equation}
+e^{\int \left( 1+ \frac{(2)}{x} \right) dx} & = & e^{(x + 2 In x)} \nonumber \\ & = & e^{x} e^{In x^{2}} \nonumber  \\ & = & e^{x} e^{2}
+\end{equation}
+multiplicando la ecuación original por el factor integrante
+\begin{equation}
+e^{x} e^{2} \left[  \frac{dy}{dx} + \left( 1+ \frac{(2)}{x} \right) y  \right] = e^{x} e^{2} \left[ \frac{e^{x}}{x^{2}} \right]
+\end{equation}
+desaciendo regla del producto
+\begin{equation}
+\frac{d}{dx} [e^{x} x^{2} y] = e^{2x}
+\end{equation}
+integramos ambos lados
+\begin{equation}
+\int d[e^{x} x^{2} y] = \int e^{2x} dx
+\end{equation}
+donde obtenemos
+\begin{equation}
+e^{x} x^{2} y = \frac{1}{2} e^{2x} + C \\
+\therefore y = \frac{e^{x}}{2x^{2}} + C e^{-x} x^{-2}
+\end{equation}
+donde podemos ver $C e^{-x} x^{-2}$ transitorio y el intervalo donde la solución esta definida es $I : (0, \infty)$.
+\item \begin{equation}
+(1 + x) \frac{dy}{dx} - xy = x + x^{2}
+\end{equation}
+Dividimos entre $(1+x)$ para poner a la ecuación en forma estandar
+\begin{equation}
+\frac{dy}{dx} - \frac{x}{1 + x} y = x
+\end{equation}
+el factor integrante es
+\begin{equation}
+e^{\int  - \frac{x}{1 + x} dx} & = & e^{- \int \left( 1  - \frac{x}{1 + x} \right) dx} \nonumber \\ & = & e^{-(x - In (1 + x))}  \nonumber \\ & = & e^{-x} e^{In (1 + x)} = (1 + x) e^{-x}
+\end{equation}
+multiplicando ambos lados por factor integrante
+\begin{equation}
+(1 + x) e^{-x} \left(\frac{dy}{dx} - \frac{x}{1 + x} y  \right) = (1+ x) e^{-x}x 
+\end{equation}
+desaciendo la rega del producto
+\begin{equation}
+\frac{d}{dx} [(1 + x) e^{-x} y] = (x + x^{2}) e^{-x}
+\end{equation}
+integrando ambos lados
+\begin{equation}
+\int d [(1 + x) e^{-x} y] = \int (x + x^{2}) e^{-x} dx
+\end{equation}
+realizamos integral por partes con $u = x + x^{2}$ y $ dv = -e^{-x} dx$ se tiene
+\begin{equation}
+(1 + x) e^{-x} y = -e^{-x} [(x^{2} + x) + (2x + 1) + 2] + C \\
+\therefore y = \frac{- [x^{2} + 3x + 3] + Ce^{x}}{1 + x}
+\end{equation}
+y la solución está definida en $I : (-1, \infty)$.
+\item \begin{equation}
+\frac{dP}{dt} + 2tP = P +4t -2
+\end{equation}
+Realizamos un rearreglo de la ecuación, en este caso la dependencia en P
+\begin{equation}
+\frac{dP}{dt} + (2t - 1) P = 4t - 2
+\end{equation}
+el factor integrante
+\begin{equation}
+e^{\int (2t - 1) dt} = e^{t^{2} -t}
+\end{equation}
+multilpica a la ecuación por ambos lados
+\begin{equation}
+e^{t^{2} -t} \left[ \frac{dP}{dt} + (2t - 1) P \right] = e^{t^{2} -t} [4t - 2]
+\end{equation}
+desaciendo regla del producto
+\begin{equation}
+\frac{d}{dt} [e^{t^{2} -t} P] = e^{t^{2} -t}(4t -2)
+\end{equation}
+integrando ambos lados
+\begin{equation}
+\int d [e^{t^{2} -t} P] = \int (4t - 2) e^{t^{2} -t} dt
+\end{equation}
+usamos la sustitución $u = t^{2} - t$
+\begin{equation}
+e^{t^{2} -t} P = 2 e^{t^{2} -t} + C \\
+\therefore P = 2 + Ce^{t^{2} -t}
+\end{equation}
+donde $Ce^{t^{2} -t}$ es transitorio y la solución está definida en $I : (- \ifty, \infty)$.
+\item \begin{equation}
+\frac{dr}{d\theta} + r sec \theta = cos \theta
+\end{equation}
+Encontramos el factor integrante
+\begin{equation}
+e^{\int sec \theta d \theta} & = & e^{In (sec \theta + tan \theta)} \nonumber \\ & = & sec \theta + tan \theta
+\end{equation}
+multiplicando ambos lados en ecuación original
+\begin{equation}
+(sec \theta + tan \theta) \left[ \frac{dr}{d\theta} + r sec \theta  \right] = (sec \theta + tan \theta) [cos \theta]
+\end{equation}
+desaciendo regla del producto
+\begin{equation}
+\frac{d}{d\theta} [(sec \theta + tan \theta) r] = (1 + sen \theta)
+\end{equation}
+integrando en ambos lados
+\begin{equation}
+\int d [(sec \theta + tan \theta) r] = \int (1 + sen \theta) d \theta
+\end{equation}
+entonces
+\begin{equation}
+(sec \theta + tan \theta) r = \theta - cos \theta + C \\
+\therefore t = \frac{\theta - cos \theta + C }{sec \theta + tan \theta}
+\end{equation}
+la solución no es transitoria y la solución esta definida en $I : (-\frac{\pi}{2}, \frac{\pi}{2}).$
+\end{itemize}
+\Large
+\item Resolver el problema de valores iniciales e indicar el mayor intervalo en el que se define la solución.
+\large
+\begin{itemize}
+\item \begin{equation}
+L \frac{di}{dt} + Ri = E, \; i(0) = i_{0}
+\end{equation}
+con $L, R, E$ e $i_{0}$ constantes. \\
+Dividimos ambos lados por $L$ para tener una ecuación diferncial de forma estandar
+\begin{equation}
+\frac{di}{dt} + \frac{R}{L} i = \frac{E}{L} 
+\end{equation}
+el factor integrante 
+\begin{equation}
+e^{\frac{R}{L} dt} = e^{\frac{R}{L} t}
+\end{equation}
+multiplica ambos lados de ecuación original
+\begin{equation}
+e^{\frac{R}{L} t} \left( \frac{di}{dt} + \frac{R}{L} i \right) = e^{\frac{R}{L} t} \left( \frac{E}{L} \right)
+\end{equation}
+desaciendo la regla del producto
+\begin{equation}
+\frac{d}{dt} [e^{\frac{R}{L} t} i] = \frac{E}{L} e^{\frac{R}{L} t}
+\end{equation}
+integrando ambos lados
+\begin{equation}
+\int d [e^{\frac{R}{L} t}i] \int \frac{E}{L} e^{\frac{R}{L} t} dt
+\end{equation}
+lo que nos queda
+\begin{equation}
+e^{\frac{R}{L} t}i = \frac{E}{L} \cdot \frac{L}{R} e^{\frac{R}{L} t}i + C \\ \therefore i = \frac{E}{R} + Ce^{-\frac{R}{L} t}
+\end{equation}
+y la solución está definida en $(- \infty, \infty).$\\
+Haciendo uso de las condiciones iniciales $i(0) =i_{0}$
+\begin{equation}
+i_{0} = \frac{E}{R} + C \; \Rightarrow C = i_{0} - \frac{E}{R}
+\end{equation}
+nos queda la solución final
+\begin{equation}
+i = \frac{E}{R} + \left(  i_{0} - \frac{E}{R} \right) e^{-\frac{R}{L} t}.
+\end{equation}
+\end{itemize}
+
+\end{enumerate}
+\end{document}
+
+

@@ -1,0 +1,491 @@
+%\include{encabezado}
+\chapter{Paracompacidad y Teoremas de Metrizabilidad}La noción de \textit{paracompacidad} fue introducida en 1944 por el matemático Dieudonné. La clase de los espacios paracompactos, juega un papel fundamental en la topología, ya que no sólo generaliza la noción de compacidad, sino también, la de metrizabilidad. 
+\section{Paracompacidad}
+
+
+\begin{definition} Sea $X$ un espacio topológico y $\mathcal U=\{U_\alpha\}_{\alpha\in\mathcal A}$ una colección de subconjuntos de $X$. Se dice que $\mathcal U$ es \textbf{localmente finita}, si para todo punto $x\in X$, existe una vecindad $V$ de $x$, tal que $V$ intersecta sólo una cantidad finita de elementos de $\mathcal U$.
+
+Por otro lado, diremos que la familia $\mathcal U$ es $\sigma$\textbf{-localmente finita}, si $\mathcal U=\bigcup\limits_{n=1}^{\infty}\mathcal U_n$, donde cada $\mathcal U_n$ es una familia localmente finita.
+\end{definition}
+\begin{example}
+Sea $X$ la recta real y $$\mathcal U=\{(-n,n)\}_{n\in\mathbb N} ~~~~\text{ y }~~~~\mathcal V=\{(n,n+2)\}_{n\in\mathbb Z}.$$ Entonces, $\mathcal V$  es localmente finita, pero $\mathcal U$ no lo es. 
+
+En efecto, si $V$ es una vecindad arbitraria de $0$, entonces $V\cap (-n,n)\neq\emptyset$ para cualquier $n\in\mathbb N$, por lo que $\mathcal U$ no puede ser localmente finita.
+
+Por otro lado, para todo $x\in \mathbb R$, existe $n\in\mathbb Z$ tal que $n\leq x< n+1$. Sea $W=(n-1,n+1)$. Entonces, para todo $V\in\mathcal V$, $V\cap W =\neq\emptyset$ si y sólo si
+$$V=(n-2,n),\text{ ó }V=(n-1,n+1),\text{ ó }V=(n,n+2).$$
+Por lo tanto, $\mathcal V$ es localmente finita.
+\end{example}
+
+Las familias localmente finitas, poseen muchas propiedades interesantes, algunas de ellas se enuncian en la siguiente proposición.
+
+\begin{proposition}\label{propiedades familias l.f.}
+Sea $\mathcal B$ una familia localmente finita de subconjuntos de un espacio vectorial $X$. Entonces los siguientes enunciados se cumplen:
+\begin{enumerate}
+\item Cualquier  $ \mathcal A\subset\mathcal B$, es una colección localmente finita.
+\item La colección $\{\overline B| B\in\mathcal B\}$ es localmente finita.
+\item $\bigcup\limits_{B\in\mathcal B}\overline B=\overline{\bigcup\limits_{B\in\mathcal B}B}$.
+\end{enumerate}
+\end{proposition}
+\begin{proof}
+$1$. Sea $x\in X$. Entonces existe una vecindad $U$ de $x$ que intersecta únicamente una cantidad finita de elementos de $\mathcal B$. Como $\mathcal A\subset \mathcal B$, $U$ también intersecta únicamente una cantidad finita de elementos de $\mathcal A$. Así, podemos concluir que $\mathcal A$ es localmente finita.
+
+\medskip
+
+$2$. Para cualquier $x\in X$, existe una vecindad $U$ de $x$ 	que intersecta una cantidad finita de elementos de $\mathcal B$, digamos $B_1,\dots B_n$. Evidentemente, para cada uno de estos subconjuntos
+$U\cap\overline B_i\neq\emptyset$. Supongamos que existe $B\in\mathcal B$, tal que $U\cap \overline{B}\neq\emptyset$.
+Entonces
+$$U\cap B\neq\emptyset,$$
+por lo que $B=B_i$ para alguna $i\in\{1,\dots ,n\}.$ Consecuentemente, podemos concluir que $U$ intersecta únicamente una cantidad finita de elementos de $\{\overline B| B\in\mathcal B\}$, y por lo tanto esta colección es localmente finita.
+
+\medskip
+
+$3$. Sabemos que $B'\subset \bigcup\limits_{B\in \mathcal {B}}B$  
+para toda $B'\in \mathcal{B}$, de manera que 
+ $\overline{B'} \subset \overline{\bigcup\limits_{B\in \mathcal {B}}B}$, y por lo tanto
+ tenemos la inclusión  
+\begin{equation*}
+\bigcup_{B\in \mathcal {B}} \overline{B}
+\subset \overline{\bigcup_{B\in \mathcal {B}}B}.
+\end{equation*}
+
+Para demostrar la otra inclusión considermos 
+$x\in \overline{\bigcup\limits_{B\in \mathcal {B}}B}$. Como $\mathcal {B}$ es
+localmente finita, existe una vecindad $V$ de $x$, tal que $V$ intersecta sólo un 
+número finito de elementos de $\mathcal{B}$. 
+Sean $\mathcal A=\{B_1, B_2, \dots , B_{n}\}$ dichos elementos. 
+Como $V\cap B=\emptyset$ para todo $B\in \mathcal{B}\setminus \mathcal{A}$, 
+podemos afirmar que 
+\begin{equation*}
+x\not\in \overline{\bigcup_{B \in \mathcal{B}\setminus \mathcal{A} } B}.
+\end{equation*}
+
+Pero sabíamos que 
+\begin{equation*}
+x\in \overline{\bigcup_{B\in \mathcal{B}} B}=
+\overline{\big{(}\bigcup_{B \in \mathcal{B}\setminus \mathcal{A}}B\big{)}\cup\bigcup_{B\in \mathcal{A}}B}
+=\overline{\big{(}\bigcup_{B\in \mathcal{B}\setminus \mathcal{A} }B\big{)}}
+\cup\overline{\bigcup_{B \in \mathcal{A}}B},
+\end{equation*}
+de manera que 
+\begin{equation*}
+x\in\overline{\bigcup_{B\in \mathcal{A}}B}.
+\end{equation*}
+Recordemos que $\mathcal{A}$ es un conjunto finito, entonces
+\begin{equation*}
+x\in \overline{\bigcup_{B\in \mathcal{A}}B}
+=\bigcup_{B \in \mathcal{A}}\overline{B}\subset 
+\bigcup_{B \in \mathcal{B}}\overline{B}.
+\end{equation*}
+Por lo tanto, podemos concluir que 
+\begin{equation*}
+ \bigcup_{B\in \mathcal {B}} \overline{B}
+=\overline{\bigcup_{B\in \mathcal {B}}B},
+\end{equation*}
+como se quería demostrar.
+\end{proof}
+
+\begin{definition} Sean $\mathcal U$ y $\mathcal V$ cubiertas de un espacio topológico $X$. Se dice que $\mathcal V$ \textbf{refina} a $\mathcal U$ (o $\mathcal V$ es \textbf{refinamiento} de $\mathcal U$) si para todo $V\in \mathcal V$, existe $U\in\mathcal U$ tal que $V\subset U$. 
+\end{definition}
+
+\begin{definition}
+Sea $X$ un espacio topológico de Hausdorff. Se dice que $X$ es paracompacto, si toda cubierta abierta posee un refinamiento localmente finito.
+\end{definition}
+
+Es fácil ver que todos los espacios compactos, son espacios paracompactos. Sin embargo, la clase de los espacios paracompactos es mucho más amplia. 
+
+\begin{example} La recta real es un espacio paracompacto. 
+
+En efecto, si $\mathcal U$ es una cubierta abierta de $\mathbb R$. Para cada $n\in\mathbb Z$, escojamos una cantidad finita de elementos de $\mathcal U$ que cubran al compacto $[n,n+1]$. Sean $U^n_1,\dots, U^n_{k_n}$ dichos elementos. Denotemos por $\mathcal U_n$ la siguiente colección de conjuntos
+$$\mathcal U_n=\{U^{n}_i\cap (n-1,n+2)| i=1,\dots,n_k\}.$$
+Sea $\mathcal V=\bigcup\limits_{n\in\mathbb Z}\mathcal U_n$. Entonces $\mathcal V$ es una cubierta abierta y localmente finita de $\mathbb R$ que refina a $\mathcal U$.
+\end{example}
+
+Ahora veremos algunas propiedades básicas de los espacios paracompactos.
+\begin{lemma}\label{vecindades paracompacidad} Sean $X$ un espacio paracompacto y $A$ y $B$ dos subconjuntos cerrados de $X$. Supongamos que para cada punto $x\in B$, existen dos vecindades $V_x$ y $U_x$, de $x$ y de $A$, respectivamente, tales que $V_x\cap U_x=\emptyset$. Entonces, podemos encontrar dos abiertos ajenos $U$ y $V$ tales que $A\subset U$ y $B\subset V$.
+\end{lemma}
+\begin{proof}
+Para cada $x\in B$, consideremos las vecindades $V_x$ y $U_x$ como en las hipótesis del lema. Notemos que
+la familia
+$$\mathcal V=\{V_x\}_{x\in B}\cup\{X\setminus B\}$$
+ es una cubierta abierta del espacio paracompacto $X$. Consecuentemente, existe un refinamiento localmente finito $\{W_\alpha\}_{\alpha\in\mathcal A}$. Consideremos el siguiente conjunto
+$$\mathcal B =\{\alpha\in\mathcal A | B\cap W_\alpha\neq\emptyset\}.$$ De esta manera, tenemos que 
+$$B\subset V=\bigcup\limits_{\alpha\in\mathcal B}W_\alpha.$$
+Por otro lado, afirmamos que $A\cap \overline{W_\alpha}=\emptyset$ para cualquier $\alpha\in\mathcal B$. Para convencernos de ello, supongamos lo contrario; es decir, que existe $\beta\in\mathcal B$, tal que $A\cap\overline{W_\beta}\neq\emptyset$.
+Como $\{W_\alpha\}_{\alpha\in\mathcal A}$ es refinamiento de $\mathcal V$, existe un punto $x\in B$, tal que $W_\beta\subset V_x$. Por hipótesis, también existe una vecindad $U_x$ de $A$ tal que
+$V_x\cap U_x=\emptyset$. Como $A\subset U_x$, se tiene que  
+$$U_x\cap\overline{V_x}\neq\emptyset.$$
+Pero esto último sólo sucede si y sólo si $U_x\cap V_x\neq\emptyset$, lo cual es una contradicción. Consecuentemente, $A\cap W_\alpha=\emptyset$ para toda $\alpha\in\mathcal B$.
+Sea 
+$$U=X\setminus\bigcup\limits_{\alpha\in\mathcal B}\overline W_\alpha.$$
+Entonces $A\subset U$. Además, por la proposición~\ref{propiedades familias l.f.}, $\bigcup\limits_{\alpha\in\mathcal B}\overline W_\alpha=\overline{\bigcup\limits_{\alpha\in\mathcal B} W_\alpha}$, por lo que $U$ es un conjunto abierto. Como $U\cap V=\emptyset$, $U$ y $V$ son las vecindades buscadas.
+\end{proof}
+\begin{proposition}\label{paracompacto es normal} Todo espacio paracompacto es normal
+\end{proposition}
+\begin{proof}
+Sean $A$ y $B$ dos subconjuntos cerrados de $X$ y  
+fijemos un punto arbitrario $b\in B$.
+Como $X$ es Hausdorff,  para cada $a\in A$, existen dos vecindades ajenas, $U_a$ y $V_a$, de $a$ y de $b$, respectivamente. Aplicando el lema~\ref{vecindades paracompacidad}, podemos encontrar dos vecindades ajenas $U_b$ y $V_b$, de $A$ y de $b$. Hagamos esto 
+para todos los puntos $b\in B$.
+ En estas condiciones, podemos aplicar nuevamente el lema~\ref{vecindades paracompacidad} para encontrar dos vecindades ajenas de $A$ y de $B$, $U$ y $V$. Consecuentemente, $X$ es un espacio normal, como se quería demostrar.
+\end{proof}
+
+La paracompacidad es una propiedad débilmente hereditaria, como lo veremos en la siguiente proposición.
+
+\begin{proposition}
+Sea $X$ un espacio topológico paracompacto y $F\subset X$ un subespacio cerrado. Entonces $F$ es paracompacto. 
+\end{proposition}
+\begin{proof}
+Sea $\mathcal U=\{U_\alpha\}_{\alpha\in\mathcal A}$ una cubierta abierta de $F$ con abiertos en $F$. Para cada $\alpha\in\mathcal A$, sea $V_\alpha$ abierto en $X$ tal que
+$$U_\alpha=V_\alpha\cap F.$$
+Entonces $\mathcal V=\{V_\alpha\}_{\alpha\in\mathcal A}\cup\{X\setminus F\}$ es una cubierta abierta de $X$. Consecuentemente, existe un refinamiento localmente finito, digamos $\mathcal O$.
+ Así,
+ $$\mathcal W=\{O\cap F|O\in\mathcal W\},$$
+es el refinamiento localmente finito de $\mathcal U$ que estamos buscando.
+\end{proof}
+
+\begin{theorem}\label{refinamiento indexado} Sean $X$ un espacio paracompacto, y $\mathcal U=\{U_\alpha\}_{\alpha\in\mathcal A}$ una cubierta abierta de $X$. Entonces existe una cubierta abierta localmente finita, $\mathcal V=\{V_\alpha\}_{\alpha}$, tal que $\overline{V}_\alpha\subset U_\alpha$, para toda $\alpha\in\mathcal A$.
+\end{theorem}
+
+\begin{proof} Sea $\mathcal U=\{U_\alpha\}_{\alpha\in\mathcal A}$ una cubierta abierta de $X$. Entonces
+ $$\mathcal W=\{W\subset X| W\text{ es abierto en }X, \overline W\subset U_\alpha\text{ para algún }\alpha\in\mathcal A\}$$ es un refinamiento de $\mathcal U$.
+ 
+Como $X$ es un espacio regular, $\mathcal W$ es una cubierta abierta de $X$, y debido a que $X$ es paracompacto, podemos encontrar un refinamiento localmente finito de $\mathcal W$, digamos $\mathcal O$. 
+Supongamos que $\mathcal O=\{O_\beta\}_{\beta \in\mathcal B}$, para algún conjunto de índices $\mathcal B$. Como $\mathcal O$ es refinamiento de $\mathcal W$, también es refinamiento de $\mathcal U$. Así, podemos encontrar por cada $\beta\in\mathcal B$, un índice $f(\beta)\in\mathcal A$, tal que
+$$\overline O_\beta\subset U_{f(\beta)}.$$
+Así, podemos definir la siguiente colección:
+$\mathcal B_\alpha=\{\beta\in\mathcal B| f(\beta)=\alpha\}.$ 
+Sea $V_\alpha=\bigcup\limits_{\beta\in\mathcal B_\alpha}O_\beta.$
+Claramente $\{V_\alpha\}_{\alpha\in\mathcal A}$ es una cubierta abierta para $X$. Además,
+como $\mathcal O$ es localmente finita, también lo es $\{O_\beta\}_{\beta \in\mathcal B_\alpha}$. Consecuentemente, 
+$$\overline V_\alpha=\overline{\bigcup\limits_{\beta\in\mathcal B_\alpha}O_\beta}=\bigcup\limits_{\beta\in\mathcal B_\alpha}\overline O_\beta,$$
+por lo que $\overline V_\alpha\subset U_\alpha$. 
+
+Para completar la prueba, falta demostrar que $\{V_\alpha\}_{\alpha\in\mathcal A}$ es localmente finita. Para ello consideremos  un punto arbitrario $x\in X$. Como $\mathcal O$ es localmente finita, existe una vecindad $W$ de $x$ tal que $W\cap O_\beta\neq\emptyset$ si y sólo si $\beta\in\{\beta_1,\dots, \beta_n\}$. Entonces $W\cap V_\alpha\neq\emptyset$ si y sólo si $\alpha\in\{f(\beta_1),\dots ,f(\beta_n)\}$, lo cual prueba lo que se quería.
+\end{proof}
+
+\section{Particiones de Unidad}
+
+Las particiones de unidad son una herramienta de gran importancia tanto en topología como en análisis. Como lo veremos más adelante, las particiones de unidad están íntimamente relacionadas con las cubiertas localmente finitas y consecuentemente, aparecen con frecuencia en el estudio de espacios paracompactos. Veamos de qué se trata.
+
+Primero recordemos que el \textbf{soporte} de una función $\varphi:X\to\mathbb R$ definida en un espacio topológico  $X$, se define como el siguiente conjunto:
+$$\text{sop }\varphi=\overline{\{x\in X|\varphi(x)\neq 0\}}.$$
+\begin{definition}
+Sea $X$ un espacio topológico y $\{\varphi_\alpha\}_{\alpha\in\mathcal A}$ una familia de funciones continuas $\varphi_\alpha:X\to[0,1]$ que satisfacen las siguientes dos propiedades:
+\begin{enumerate}
+\item La familia $\{\text{sop }\varphi_\alpha\}_{\alpha\in\mathcal A}$ es localmente finita.
+\item $\sum\limits_{\alpha\in\mathcal A}\varphi_\alpha (x)=1$ para todo $x\in X$.
+\end{enumerate}
+Entonces la familia $\{\varphi_\alpha\}_{\alpha\in\mathcal A}$ se llama \textbf{partición de unidad}.
+ 
+Además, si $\mathcal U=\{U_\alpha\}_\alpha\in\mathcal A$ es una cubierta de $X$, se dice que $\{\varphi_\alpha\}_{\alpha\in\mathcal A}$ es una partición de unidad \textbf{subordinada} a $\mathcal U$, si 
+$\text{sop }\varphi_\alpha\subset U_\alpha$ para toda $\alpha\in\mathcal A$.
+\end{definition}
+
+
+\begin{theorem} Si $X$ es un espacio topológico paracompacto, entonces cualquier cubierta abierta $\mathcal U$ admite una partición de unidad subordinada a $\mathcal U$
+\end{theorem}
+\begin{proof}
+Sea $\mathcal U=\{U_\alpha\}_{\alpha\in\mathcal A}$ 
+una cubierta abierta del espacio paracompacto $X$. Por el teorema~\ref{refinamiento indexado}, podemos encontrar una cubierta abierta localmente finita $\mathcal V=\{V_\alpha\}_{\alpha\in\mathcal A}$,
+ tal que $\overline V_\alpha\subset U_\alpha$ para toda $\alpha\in\mathcal A$.
+  Aplicando nuevamente el teorema~\ref{refinamiento indexado}, podemos encontrar una nueva cubierta localmente finita $\{W_\alpha\}_{\alpha\in\mathcal A}$, 
+  tal que $\overline W_\alpha \subset V_\alpha$ 
+  para todo $\alpha\in\mathcal A$. 
+
+Por el lema de Urysohn, existen  funciones continuas $p_\alpha:X\to[0,1]$, $\alpha\in\mathcal A$, tales que:
+$$p_\alpha(x)=0,~~\text{ para todo }x\in X\setminus V_\alpha,~~p_\alpha(x)=1 \text{ para todo }x\in\overline W_\alpha.$$
+
+Consideremos la función $q:X\to\mathbb R$ dada por $q(x)=\sum_{\alpha\in\mathcal A}p_\alpha (x).$
+
+\underline{Afirmación 1} $q$ es una función continua.
+
+ Sea $x_0\in X$. Como $\mathcal V$ es localmente finita, existe una vecindad $O$ de $x_0$ tal que $O\cap V_\alpha$ si y sólo si $\alpha\in\{\alpha_1,\dots \alpha_n\}$. 
+Entonces, para todo $z\in O$ y para todo $\alpha\in\mathcal A\setminus\{\alpha_1,\dots \alpha_n\}$, se cumple que
+$$p_\alpha(z)=0.$$
+
+Así, 
+$$q(z)=\sum\limits_{\alpha\in\mathcal A}p_\alpha(z)=\sum\limits_{i=1}^n p_{\alpha_i}(z).$$
+
+Consecuentemente, $q|_O$ es en realidad una suma finita de funciones continuas y por tanto, $q$ es continua en todo $O$, como se quería demostrar.
+
+
+Como $\mathcal W$ es cubierta de $X$, para cada $x\in X$ existe al menos un $\alpha \in\mathcal A$, tal que $x\in W_\alpha $. De esta manera, $p_\alpha(x)=1$ y por lo tanto $q(x)\geq p_\alpha(x)>0$. 
+Así, podemos definir $\varphi_\alpha:X\to [0,1]$ de la siguiente manera
+$$\varphi(x)=\frac{p_\alpha(x)}{q(z)}.$$
+
+\underline{Afirmación 2}. La familia $\{\varphi_\alpha\}_{\alpha\in\mathcal A}$ es una partición de unidad subordinada a $\mathcal U$.
+
+Primero notemos que $\varphi_\alpha$ es el cociente de dos funciones continuas y por lo tanto $\varphi_\alpha$ es continua para toda $\alpha\in\mathcal A$. Además, como $p_\alpha(x)\leq q(x)$ para todo $x\in X$, se tiene que
+$$0\leq \frac{p_\alpha(x)}{q(x)}=\varphi_\alpha(x)\leq 1,$$
+por lo que $\varphi_\alpha(x)\in[0,1]$ para todo $\alpha\in\mathcal A$ y para todo $x\in X$.
+
+Por otro lado, notemos que
+$$\sum\limits_{\alpha\in\mathcal A}\varphi_\alpha(x)=\sum\limits_{\alpha\in\mathcal A}\frac{p_\alpha(x)}{q(x)}=\frac{1}{q(x)}\sum\limits_{\alpha\in\mathcal A}p_\alpha(x)=\frac{1}{q(x)}q(x)=1.$$
+
+Por último, notemos que si $x\in X\setminus V_\alpha$, entonces $p_\alpha(x)=0$ y por lo tanto $\varphi_\alpha(x)=0$. Así, $\varphi_\alpha^{-1}((0,1])\subset V_\alpha$ por lo que
+$$\text{sop }\varphi_\alpha=\overline {p^{-1}((0,1])}\subset \overline V_\alpha \subset U_\alpha,$$
+lo cual demuestra que $\{\varphi_\alpha\}_{\alpha\in\mathcal A}$ está subordinada a $\mathcal U$. 
+
+Para completar la prueba, faltaría demostrar que $\{\text{sop}\varphi_\alpha\}_{\alpha\in\mathcal A}$ es localmente finita, pero esto se sigue del hecho de que $\{\overline V_\alpha\}_{\alpha\in\mathcal A}$ es una familia localmente finita y que $\{\text{sop}\varphi_\alpha\}_{\alpha\in\mathcal A}$ es un refinamiento de esta última.
+\end{proof}
+
+\section{El teorema de Stone}
+\begin{definition} Sea $X$ un espacio topológico y $\mathcal B$ una familia de subconjuntos de $X$. Se dice que $\mathcal B$ es \textbf{discreta} si  cualquier punto $x\in X$, posee una vecindad que intersecta a lo más a un elemento de $\mathcal B$.
+
+Por otro lado, diremos que $\mathcal B$ es \textbf{$\sigma$-discreta}, si $\mathcal B=\bigcup\limits_{n=1}^\infty\mathcal B_n$, donde cada $\mathcal B_n$ es una familia discreta.
+\end{definition}
+
+\begin{theorem}
+Toda cubierta abierta de un espacio métrico posee un refinamiento que es localmente finito y $\sigma$-discreto.
+\end{theorem}
+
+\begin{proof}
+Sea $\mathcal U=\{U_s\}_{s\in\mathcal S}$ una cubierta abierta del espacio métrico $(X,d)$. Fijemos un buen orden $\prec$ en $\mathcal S$. 
+Para cada $i\in\mathbb N$, definamos inductivamente familias $\mathcal V_i=\{V_{s,i}\}_{s\in\mathcal S}$ por
+$$V_{s,i}=\bigcup\limits_{c\in K_{s,i}} B(c,2^{-i}),$$
+donde $K_{s,i}$ es el conjunto de todos los puntos $c\in X$ que satisfacen las siguientes tres condiciones:
+\begin{align}
+\label{1} s\text{ es el mínimo tal que }c\in U_s\\
+\label{2} c\notin V_{t,j}\text{ para toda }j<i,\text{ y }t\in \mathcal S.\\
+\label{3} B(c,3/2^i)\subset U_s
+\end{align}
+
+Para cada $x\in X$, sea $s\in\mathcal S$ el elemento mínimo tal que $x\in U_s$, y sea $i\in\mathbb N$, tal que  $B(x,3/2^i)\subset U_s$. Entonces, $x\in V_{s,i}$ ó $x\in V_{t,j}$ para algún $j<i$ y para algún $t\in\mathcal S$. En ambos casos, podemos concluir que
+ $\mathcal V=\bigcup\limits_{i=1}^\infty \mathcal V_i$ es un refinamiento de $\{U_{s}\}_{s\in\mathcal S}$ ya que $V_{s,i}\subset U_s$ y $\mathcal V$ es cubierta de $X$.
+ 
+ Afirmamos que para todo $i\in\mathbb N$, se cumple la siguiente propiedad:
+ 
+ \begin{align}\label{4}
+ \text{Si }x_1\in V_{s_1,i},~~x_2\in V_{s_2,i}, ~\text{ con }s_1\prec s_2,~\text{ entonces }d(x_1,x_2)>1/2^i.
+ \end{align}
+ En efecto, por la definición de $V_{s_1,i}$ y de $V_{s_2,i}$, existen puntos $c_1$, $c_2\in X$ que satisfacen las propiedades~(\ref{1})-(\ref{3}) y
+ $$x_1\in B(c_1,1/2^i)\subset V_{s_1,i}, \text{ y }x_2\in B(c_2,1/2^i)\subset V_{s_2,i}.$$
+ De la propiedad~(\ref{3}), se sigue que $B(c_1,3/2^i)\subset U_{s_1}$, y de la propiedad~(\ref{1}) se sigue que $c_2\notin U_{s_1}$. Entonces $c_2\notin B(c_1,3/2^i)$ y por lo tanto $d(c_1, c_2)\geq 3/2^i$. Consecuentemente,
+ $$d(x_1,x_2)\geq d(c_1,c_2)-d(c_1,x_1)-d(c_2,x_2)>3/2^i-1/2^i-1/2^i=1/2^i,$$
+ por lo que la propiedad~(\ref{4}) está demostrada. De aquí se sigue que $\mathcal V_i$ es una familia discreta ya que toda bola de radio $1/2^{i+1}$ sólo puede intersectar a lo más un elemento de $\mathcal V_i$. Así, la familia $\mathcal V$ es una familia $\sigma$-discreta.
+ 
+ Faltaría demostrar que $\mathcal V$ es localmente finita. Para esto, es suficiente demostrar que para toda $t\in S$, se cumple la siguiente propiedad:
+ \begin{align}
+ \label{5}\text{ si }B(x,1/2^k)\subset V_{t,j},\text{ entonces }B(x,1/2^{j+k})\cap V_{s,i}=\emptyset,
+ \end{align}
+para todo $i\geq j+k$ y $s\in\mathcal S.$
+
+Sabemos que $V_{s,i}=\bigcup\limits_{c\in K_{s,i}} B(c,2^{-i})$. Además, por~(\ref{2}) si $c\in K_{s,i}$ entonces $c\notin V_{t,j}$ para todo $j<i$. En particular, si $i \geq j+k$.
+Pero $B(x,1/2^k)\subset V_{t,j}$, por lo que
+$$d(x,c)>1/2^k.$$
+Consecuentemente, 
+$$B(x,1/2^{j+k})\cap B(c,1/2^{i})=\emptyset,~~\text{ para }i\geq j+k.$$
+ Por lo tanto, podemos concluir que $ \mathcal V$ es un refinamiento localmente finito, como se quería demostrar.
+\end{proof}
+
+
+\begin{corollary}
+Todo espacio métrico es paracompacto.
+\end{corollary}
+
+\section{El teorema de Nagata-Smirnov}
+
+\begin{definition}
+Sea $X$ un espacio topológico. Se dice que un subconjunto $A\subset X$ es $G_\delta$, si existe $\{U_n\}_{n\in\mathbb N}$ una familia numerable de conjuntos abiertos, tales que $A=\bigcap\limits_{n\in\mathbb N}U_n$.
+
+Por otro lado, diremos que $A$ es $F_\sigma$, si existe $\{B_n\}_{n\in\mathbb N}$ una familia numerable de conjuntos cerrados, tales que
+$A=\bigcup_{n\in\mathbb N}B_n$.
+\end{definition}
+
+\begin{example}
+Si $(X,d)$ es un espacio métrico, entonces todo conjunto cerrado es $G_\delta$.
+
+En efecto, llamemos $O_n=\{x\in X| d(A,x)< 1/n\}$. Afirmamos que $O_n$ es abierto y que $A=\bigcap\limits _{n\in\mathbb N}O_n$. 
+
+ Sean $x\in O_n$, y $\eta=d(x, A)<1/n$. Entonces $\varepsilon=1/n-\eta>0$. De esta manera, podemos considerar $B(x,\varepsilon)$, la bola abierta con centro en $x$ y radio $\varepsilon$. Así, si $y\in B(x,\varepsilon)$, entonces
+$$d(y,A)\leq d(y,x)+d(x,A)<\varepsilon+\eta=1/n-\eta+\eta=1/n.$$
+De este modo, podemos concluir que $y\in O_n$ y por lo tanto $B(x,\varepsilon)\subset O_n$, lo cual prueba que $O_n$ es un conjunto abierto.
+
+Ahora demostremos que $A=\bigcap\limits _{n\in\mathbb N}O_n$. Claramente $A$ es subconjunto de $O_n$, para toda $n\in\mathbb N$, por lo que la contención  
+
+$$A\subset \bigcap\limits _{n\in\mathbb N}O_n$$
+es evidente. Por otro lado, si $x\in \bigcap\limits _{n\in\mathbb N}O_n$, entonces $d(x, A)=0$, por lo que
+$x\in\overline A$. Pero $A$ es un subconjunto cerrado, por lo que $\overline A=A$. De aquí que
+$$\bigcap\limits _{n\in\mathbb N}O_n\subset \overline A=A,$$
+y por lo tanto $A=\bigcap\limits _{n\in\mathbb N}O_n$.
+
+
+\end{example}
+
+Observemos que si un subconjunto $A$ de un espacio topológico es $G_\delta$ si y sólo si su complemento es $F_\sigma$. En efecto,  $A=\bigcap\limits_{n=1}^\infty U_n$, donde cada $U_n$ es abierto, si y sólo si $X\setminus A=\bigcup\limits_{n=1}^{\infty}(X\setminus U_n)$, donde cada $X\setminus U_n$ es un conjunto cerrado. 
+\begin{lemma}
+Sea $X$ un espacio regular con una base $\sigma$-localmente finita. Entonces $X$ es normal y todo cerrado en $X$ es $G_\delta$.
+\end{lemma}
+
+\begin{proof}
+\underline{Afirmación 1}.  Para cualquier abierto $W\subset X$, existe una sucesión de abiertos $U_n$, tales que
+$$W=\bigcup\limits_{n=1}^\infty U_n=\bigcup\limits_{n=1}^\infty\overline U_n.$$
+
+En efecto, sea $\mathcal B$ una base para la topología de $X$ que sea $\sigma$-localmente finita. Entonces $\mathcal B=\bigcup\limits_{n=1}^\infty\mathcal B_n$, donde cada $\mathcal B_n$ es una familia localmente finita.
+
+Sea $\mathcal E_n=\{B\in\mathcal B|B\in \mathcal B_n,~B\subset  \overline B\subset W\}$. Definamos, $U_n=\bigcup\limits_{B\in\mathcal E_n}B$. Entonces $U_n$ es abierto y $U_n\subset W$.
+Como $\mathcal E_n\subset \mathcal B_n$, se tiene que $\mathcal E_n$ es una familia localmente finita. Así, podemos aplicar la proposición~\ref{propiedades familias l.f.}-3, y concluir que
+$$\overline U_n=\overline{\bigcup\limits_{B\in\mathcal E_n}B}=\bigcup\limits_{B\in\mathcal E_n}\overline B\subset W.$$
+Entonces $\bigcup\limits_{n=1}^{\infty}U_n \subset\bigcup\limits_{n=1}^\infty \overline{ U}_n\subset W$.
+
+Por otro lado, como $X$ es regular, para cada $x\in W$, existe $B\in\mathcal B$, tal que
+$x\in B\subset \overline B\subset W$. Entonces, existe $n_0\in\mathbb N$, tal que $B\in\mathcal B_n$, por lo que $B\in\mathcal E_n$. Consecuentemente, $x\in U_{n_0}$ y por lo tanto $W\subset\bigcup\limits_{i=1}^\infty U_n$, lo cual demuestra lo que queríamos.
+\medskip
+
+\underline{Afirmación 2}. Todo conjunto cerrado es un $G_\delta$.
+
+Sea $C$ un subconjunto cerrado en $X$. Si $W=X\setminus C$, entonces $W$ es un conjunto abierto. Por el paso 1, existe una sucesión $U_n$ de subconjuntos abiertos tales que
+$$W=\bigcup\limits_{n=1}^\infty \overline U_n.$$
+Entonces, $C=\bigcap\limits_{n=1}^\infty (X\setminus \overline U_n)$. Como cada $X\setminus\overline U_n$ es un conjunto abierto, podemos concluir que $C$ es un conjunto $G_\delta$.
+\medskip
+
+\underline{Afirmación 3}. $X$ es normal.
+
+Sean $C$ y $D$ dos subconjuntos cerrados y disjuntos de $X$. Por el paso 1, existe una familia numerable  de subconjuntos abiertos $\{U_n\}_{n\in\mathbb N}$, tal que $X\setminus D=\bigcup\limits_{n=1}^\infty U_n=\bigcup\limits_{n=1}^\infty \overline U_n$. Entonces $\{U_n\}$ cubre a $C$ y cada $\overline U_n$ es disjunto con $D$. De manera similar, existe una familia numerable de conjuntos abiertos $\{V_n\}_{n\in\mathbb N}$ que cubre a $D$ y tal que $\overline V_n\cap C=\emptyset$.  Definamos los siguientes conjuntos:
+$$U'_n=U_n\setminus \bigcup\limits_{i=1}^n\overline V_i,~~V'_n=V_n\setminus\bigcup_{i=1}^n\overline U_i.$$
+Entonces los conjuntos $U=\bigcup\limits_{i=1}^\infty U'_n$ y $V=\bigcup\limits_{i=1}^{\infty}V'_n$ son dos vecindades disjuntas de $C$ y $D$, respectivamente, lo cual demuestra que $X$ es un espacio normal.
+
+\end{proof}
+
+Cabe señalar que un espacio en el que cada conjunto cerrado es un $G_\delta$ recibe el nombre de espacio \textbf{perfectamente normal}.
+
+\begin{lemma} \label{u mejorado}Sea $A$ un conjunto normal y $A$ un subconjunto $G_\delta$ de $X$. Entonces existe una función $f:X\to[0,1]$, tal que $A=f^{-1}(0)$.
+\end{lemma}
+
+\begin{proof}
+Como $A$ es $G_\delta$, $X\setminus A$ es $F_\sigma$. Entonces existe una familia numerable de subconjuntos cerrados, $\{B_n\},$ tal que $X\setminus A=\bigcup\limits_{n=1}^\infty B_n$. Consecuentemente, para cada natural $n$, $A$ y $B_n$ son conjuntos disjuntos, por lo que podemos aplicar el lema de Urysohn para encontras una función $f_n:X\to[0,1]$, tal que
+$$f_n(a)=0,~~\text{ para todo }a\in A, ~~f_n(x)=1,~~\text{ para todo }x\in B_n.$$
+Construyamos $f:X\to [0,1]$ de la siguiente manera
+$$f(x)=\sum_{n=1}^\infty\frac{1}{2^n}f_n(x), ~~\text{ para todo }x\in X.$$
+Por el criterio de Weierstrass, $f$ es una función continua. Además, para todo $a\in A$, $f(a)=0$. Por otro lado, si $x\in X\setminus A$, entonces existe $n_0\in\mathbb N$, tal que $x\in B_{n_0}$. Consecuentemente, $f_{n_0}(x)=1$, y por lo tanto $$f(x)\geq 1/2^{n_0}f_{n_0}(x)=1/2^{n_0}>0.$$ Así, podemos concluir que $A=f^{-1}(0)$, lo cual prueba el lema.
+\end{proof}
+
+\begin{theorem}[Nagata-Smirnov]Un espacio $X$ es metrizable si y sólo si $X$ es regular y tiene una base $\sigma$-localmente finita.
+\end{theorem}
+\begin{proof}
+Primero supongamos que $X$ es un espacio regular y que posee una base $\mathcal B$, $\sigma$-localmente finita. Entonces, $\mathcal B=\bigcup\limits_{n=1}^{\infty}\mathcal B_n$, donde cada $\mathcal B_n$ es una familia localmente finita. Para cada $B\in\mathcal B_n$, usemos el lema~\ref{u mejorado} para encontrar una función $f_{n, B}:X\to[0,1/n]$ tal que
+$$f_{n, B}(x)>0,~~\text{ para todo }x\in B,$$
+$$f_{n, B}(x)=0 ~~\text{ para todo }x\in  X\setminus B.$$
+
+\underline{Afirmación}. La familia $\{f_{n, B}\}$ separa puntos de cerrados en $X$.
+
+En efecto, sea $D$ un subconjunto cerrado en $X$ y $x\in X\setminus D$. Entonces existe una vecindad $U$ de $x$ disjunta de $D$. Luego, podemos encontrar un abierto básico, $B\in \mathcal B$, tal que $x\in B\subset U$. Además, existe $n_0\in\mathbb N$, tal que $B\in\mathcal B_{n_0}$. Consecuentemente, $f_{n_0, B}(x)>0$, y $f_{n_0, B}(D)\subset f_{n_0, B}(X\setminus B)=\{0\}$. De aquí se sigue inmediatamente que $f(x)\notin \overline {f(D)}$. Por lo tanto $\{f_{n, B}\}$ separa puntos de cerrados.
+
+
+\medskip
+
+ Sea $J=\{(n, B)|n\in\mathbb N,~~B\in\mathcal B_n\}$.  Por el teorema del encaje de Tychonoff, la función
+ $F:X\to [0,1]^J$ dada por
+ $$F(x)=\{f_{n,B}(x)\}_{(n,B)\in J}$$
+ define un encaje topológico, donde el producto topológico $[0,1]^J$  tiene la topología de Tychonoff, $\tau$.
+ 
+ Ahora dotemos al conjunto $[0,1]^J$ con la topología uniforme, $\tau_u$. Es decir, la topología inducida por la métrica
+ $$d(x, y)=\sup_{j\in J}|x_j-y_j|,~~\text{ donde }x=\{x_j\},~~y=\{y_j\}.$$
+ La topología uniforme es más fina que  la de Tychonoff, por lo que la función identidad
+ $$Id:([0,1]^J,\tau)\to  ([0,1]^J,\tau_u)$$ es una función abierta.
+ Así, la función $g:X\to ([0,1]^J,\tau_u)$, dada por 
+ $g(x)=F(x)$ es una función abierta.  Para completar la prueba es suficiente demostrar que $g$ es continua. 
+ 
+ Sea $x_0\in X$ y $\varepsilon >0$. Para cada $n\in\mathbb N$, elijamos una vecindad $U_n$ de $x_0$ que intersecte sólo a un número finito de elementos de $\mathcal B_n$. Sean $B_{n1},\dots B_{nk_n}$ dichos elementos. Entonces, si $B\neq B_{ni}$ (con $i=1,\dots k_n)$, se cumple que
+ $$f_{n,B}(x)=0,~~\text{ para todo }x\in U_n.$$
+ Por la continuidad de las funciones $f_{n,B_{ni}}$ (con $i=1,\dots k_n$), existe una vecindad $V_n$ de $x_0$ tal que
+ $$|f_{nB_{ni}}(x)-f_{nB_{ni}}(x_0)|<\varepsilon/2,~~\text{ para todo }x\in V_n,~~i=1,\dots k_n.$$
+ Además, podemos suponer sin pérdida de generalidad que $V_n\subset U_n$.
+ Sea $p\in\mathbb N$ tal que $1/p<\varepsilon /2$. Definamos $V$ por
+ $$V=\bigcap\limits_{i=1}^{p}V_i.$$
+ Entonces $V$ es una vecindad de $x_0$. Notemos que para todo $x\in V$, $$d(g(x),g(x_0))<\varepsilon.$$ En efecto, si $n\leq p$, entonces para toda $x\in V$ y para todo $B\in\mathcal B_n$ se tiene que
+ $$|f_{n,B}(x)-f_{n, B}(x_0)|<\varepsilon /2.$$
+ Por otro lado, si $n >p$, entonces para todo $x\in X$, y para todo $B\in\mathcal B_n$ se tiene que
+ $$|f_{n,B}(x)-f_{n,B}(x_0)|\leq 1/n <1/p\leq \varepsilon/2,$$
+ esto último debido al hecho de que $f_{n,B}$ toma valores en el intervalo $[0,1/n]$.
+ Consecuentemente, podemos concluir que para todo $x\in V$, se cumple que
+ $$d(g(x),g(x_0))=\sup_{(n,B)\in J}|f_{n,B}(x)-f_{n,B}(x_0)|\leq\varepsilon/2<\varepsilon.$$
+ Así, podemos concluir que $g$ es una función continua y por lo tanto $X$ es homeomorfo a un subespacio del espacio métrico $([0,1]^J,\tau_u)$, lo cual prueba que $X$ es metrizable.
+ \bigskip
+ 
+ 
+ Ahora supongamos que $X$ es metrizable. Claramente $X$ es un espacio regular, por lo que sólo nos falta demostrar que $X$ tiene una base $\sigma-$localmente finita. Para ello consideremos los siguientes conjuntos
+ $$\mathcal U_n=\{B(x,1/n)\}_{x\in X},$$
+ donde $B(x,1/n)$ denota la bola abierta de centro en $x$ y radio  $1/n$. Por el teorema de Stone, $X$ es paracompacto, por lo que podemos encontrar por cada $n\in\mathbb N$ un refinamiento localmente finito, $\mathcal B_n$, de $\mathcal U_n$. 
+
+Afirmamos que $\mathcal B=\bigcup\limits_{n=1}^\infty \mathcal B_n$ es base para la topología de $X$. Primero notemos que  cada $B\in\mathcal B_n$ satisface que
+$$d(x,y)\leq 2/n,~~\text{ para cualesquiera puntos }x,y\in B.$$
+Por otro lado, dados $x\in X$ y $\varepsilon >0$, existe $m\in\mathbb N$, tal que $2/m<\varepsilon$. Como $\mathcal B_m$ cubre a $X$, existe $B\in\mathcal B_m$ tal que $x\in B$. Así, para cualquier $y\in B$, se tiene que
+$$d(x,y)\leq 2/m< \varepsilon.$$
+Consecuentemente, $x\in B\subset B(x,\varepsilon)$, lo cual prueba que $\mathcal B$ es una base $\sigma$-localmente finita.
+\end{proof}
+
+\begin{theorem}Sea $X$ un espacio regular. Entonces, las siguientes condiciones son equivalentes:
+
+Toda cubierta abierta de $X$ tiene un refinamiento que es:
+\begin{enumerate}
+\item Cubierta abierta $\sigma$-localmente finita.
+\item Cubierta localmente finita.
+\item Cubierta cerrada localmente finita.
+\item Cubierta abierta localmente finita.
+\end {enumerate}
+\end{theorem}
+\begin{proof}
+$(4\Rightarrow 1).$ Es evidente.
+
+$(1\Rightarrow 2).$ Sea $\mathcal U$ una cubierta abierta de $X$. Aplicando (1), encontremos un refinamiento abierto  $\mathcal V$ de $\mathcal U$ que sea $\sigma$-localmente finito. Entonces 
+$$\mathcal V=\bigcup\limits_{n=1}^\infty \mathcal V_n,$$
+donde cada $\mathcal V_n$ es una familia localmente finita. Para cada $k\in\mathbb N$, sea
+$$V_k=\bigcup\limits_{U\in\mathcal B_k}U.$$
+Luego, definamos para cada $n\in\mathbb N$ y para cada $U\in\mathcal B_n$, el siguiente conjunto:
+$$S_n(U)=U\setminus \bigcup\limits_{k<n}V_k.$$
+Notemos que  $S_n(U)\subset U$, para toda $U\in\mathcal B_n$. Así, la colección
+$$\mathcal C_n=\{S_n(U)|U\in\mathcal B_n\},$$
+es un refinamiento de $\mathcal B_n$.
+Consideremos $\mathcal C=\bigcup\limits_{n=1}^\infty \mathcal C_n$. Afirmamos que $\mathcal C$ es el refinamiento buscado. Para probarlo, necesitamos demostrar que $\mathcal C$ es una cubierta localmente finita de $X$ y que refina a $\mathcal U$.  Esto último es consecuencia inmediata del hecho de que $\mathcal C$ es refinamiento de $\mathcal V$, el cual a su vez refina a $\mathcal U$.
+
+ Sea $x\in X$. Necesitamos demostrar que $x$ pertenece a algún elemento de $\mathcal C$ y que existe una vecindad de $x$ que sólo intersecta una cantidad finita de elementos de $\mathcal C$. Como $\mathcal V=\bigcup\limits_{n=1}^\infty \mathcal V_n$ cubre a $X$, podemos encontrar un natural $n_0$ con la propiedad de ser el mínimo natural para el cual $x$ pertenece a algún elemento de $\mathcal V_{n_0}$. Entonces $x$ no pertenece a ningún elemento de de $\mathcal V_k$, si $k<n_0$. Consecuentemente, $x\notin V_k$, para toda $k<n_0$. Además, existe $U\in \mathcal V_{n_0}$ tal que $x\in U$. Así, podemos asegurar que
+ $$x\in S_{n_0}(U)-\bigcup \limits_{k<n}V_k\in \mathcal C.$$
+ 
+ Por otro lado, como $\mathcal V_n$ es localmente finita, para cada $k=1,\dots n_0$, podemos encontrar una vecindad $W_k$ de $x$, que intersecte únicamente una cantidad finita de elementos de $\mathcal V_k$. 
+ Si $W_k$ intersectara a un elemento $S_k(V)\in\mathcal C_k$, entonces $W_k$ intersectaría a $V\in\mathcal V_k$, puesto que $S_k(V)\subset V$. Pero $W_k$ sólo intersecta una cantidad finita de elementos de $\mathcal V_k$, por lo que sólo puede intersectar una cantidad finita de elementos de $\mathcal C_k$. 
+ 
+ Además, como $U\in\mathcal V_{n_0}$, $U$ no puede intersectar a ningún elemento de $\mathcal V_{n}$, para toda $n>n_0$.  Consecuentemente, la vecinad
+ $$O=U\cap W_1\cap\dots\cap W_{n_0},$$
+ intersecta sólo una cantidad finita de elementos de $\mathcal C$, lo cual completa la prueba de $(1\Rightarrow 2)$.
+
+$(2\Rightarrow 3).$ Sean $\mathcal U$ una cubierta abierta de $X$ y $\mathcal V$ la colección de todos los conjuntos abiertos $V$, tales que $\overline V\subset U$ para algún $U\in\mathcal U$. Por la regularidad de $X$, la familia $\mathcal V$ es cubierta de $X$ y por (2), podemos encontrar un refiamiento localmente finito $\mathcal W$, de $\mathcal V$. 
+Entonces, $\mathcal D=\{\overline W|W\in\mathcal W\}$ es un refinamiento cerrado de $\mathcal U$, y por la proposición~\ref{propiedades familias l.f.}-2, $\mathcal D$ es localmente finito.
+ 
+$(3\Rightarrow 4).$ Sea $\mathcal U$ una cubierta abierta de $X$. Por (3), podemos encontrar un refinamiento cerrado $\mathcal B$ de $\mathcal U$ localmente finito. Para cada $x\in X$, sea $U_x$ una vecindad de $x$ que intersecte únicamente una cantidad finita de elementos de $\mathcal B$. Entonces, la familia $\{U_x\}_{x\in X}$ constituye una cubierta abierta de $X$.
+
+ Aplicando nuevamente (3), podemos encontrar $\mathcal C$, un refinamiento  cerrado y localmente finito de $\{U_x\}_{x\in X}$.  Consecuentemente, cada elemento de $\mathcal C$ intersecta únicamente una cantidad finita de elementos de $\mathcal B$. 
+ 
+ Para cada elemento $B\in\mathcal B$, sea
+ $$\mathcal C(B)=\{C|C\in\mathcal C, ~~C\subset X\setminus B\}.$$
+ Como la familia $\mathcal C$ es localmente finita, también lo es $\mathcal C(B)$ para cada $B\in\mathcal B$. 
+ Aplicando la proposición~\ref{propiedades familias l.f.}-3, podemos asegurar que $\bigcup\limits_{C\in\mathcal C(B)}C$ es un conjunto cerrado para cada $B\in\mathcal B$. De aquí que el conjunto
+ $$ E(B)=X\setminus\bigg(\bigcup\limits_{C\in\mathcal C(B)}C\bigg)$$
+ es abierto en $X$. Además, $B\subset E(B)$ para toda $B\in\mathcal B$.
+ 
+Por otro lado, recordemos que $\mathcal B$ es refinamiento de $\mathcal U$, por lo que podemos escoger para cada $B\in\mathcal B$, un elemento $U(B)\in\mathcal U$, tal que $B\subset\mathcal U(B)$. Así, si definimos
+$V(B)=E(B)\cap U(B)$, tenemos que $B\subset V(B)$ para toda $B\in\mathcal B$, por lo que la familia
+$$\mathcal V=\{V(B)\}_{B\in\mathcal B}$$
+es una cubierta abierta de $X$. Además, como $V(B)\subset U(B)\in\mathcal U$, se tiene que $\mathcal V$ es un refinamiento de $\mathcal U$.  Para completar la prueba sólo falta demostrar que $\mathcal V$ es una familia localmente finita.
+
+Primero observemos que cada elemento $C\in\mathcal C$ intersecta únicamente una cantidad finita de elementos de $\mathcal V$.  Para ello notemos que si $C\cap E(B)\neq\emptyset$, entonces $C\not\subset X\setminus B$ y consecuentemente $B\cap C\neq\emptyset$. Pero recordemos que cada elemento de $\mathcal C$, sólo puede intersectar una cantidad finita de elementos de $\mathcal B$ (por la construcción de $\mathcal C$). Así, $C$ intersecta únicamente una cantidad finita de $E(B)$'s y por lo tanto $C$ sólo puede intersectar un número finito de elementos $V(B)\in\mathcal V$. 
+
+
+Ahora consideremos un punto $x\in X$ y $W$ una vecindad de $x$ que intersecte únicamente una cantidad finita de elementos de $\mathcal C$, digamos $C_1,\dots C_n$. Entonces, se tiene que
+$$W\subset \bigcup\limits_{i=1}^n C_i.$$
+Como cada $C_i$ intersecta una cantidad finita de elementos de $\mathcal V$, digamos $V(B_{i,1})\dots V(B_{i,k_i})$, se sigue que si $W\cap V(B)\neq\emptyset$, entonces  $B=B_{i,j}$, con $i=1,\dots n$, $j=1,\dots k_i$. Es decir, $W$ intersecta únicamente una cantidad finita de elementos de $\mathcal V$, como se quería demostrar.
+\end{proof}
+
+
+
+\section{Ejercicios}
+\begin{enumerate}
+\item Sea $X$ un espacio de Hausdorff. Supongamos que existe una cubierta abierta numerable, $\{U_n\}_{n\in\mathbb N}$, tal que $\overline{U}_n$ es compacto, y $\overline U_n\subset U_{n+1}$ para toda $n\in\mathbb N$. Demuestra que $X$ es paracompacto.
+\item Sea $X$ un espacio regular. Supongamos que existe una cubierta abierta numerable, $\{U_n\}_{n\in\mathbb N}$, tal que $\overline U_n$ es paracompacto. Demuestra que $X$ es paracompacto.
+\item Demuestra que en un espacio métrico, todos los subconjuntos abiertos son $F_\sigma$.
+\item Considera el conjunto de los irracionales con la topología heredada de la recta real. Demuestra que éstos constituyen un conjunto $G_\delta$.
+\item Demuestra que un espacio es metrizable si y sólo si es regular y tiene una base $\sigma$  discreta.
+
+\end{enumerate}
+%\end{document}

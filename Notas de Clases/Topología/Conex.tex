@@ -1,0 +1,614 @@
+%\include{encabezados}
+\chapter{Conexidad}
+La conexidad es una propiedad topológica completamente distinta a todas las estudiadas anteriormente. La conexidad no implica ni es implicada por ninguno de los teoremas anteriores. Sin embargo, como veremos en los ejemplos de este capítulo la conexidad se convierte en una poderosa herramienta para el estudio de los espacios topológicos.
+
+\label{C:CEM}\section{Espacios Conexos}
+
+Antes de definir qué es un espacio conexo, definiremos qué es un espacio disconexo.
+\begin{definition}Sea $X$ un espacio topol\'ogico y $U$ y $V$ dos  abiertos de $X$. Se dice que la pareja $(U,V)$ es una \textbf{separaci\'on o disconexi\'on} de $X$, si se satisfacen las siguientes propiedades,
+ \begin{enumerate}  
+\item $U\neq \emptyset$ y $V\neq \emptyset$,
+  \item $U\cap V=  \emptyset$,
+  \item $ X=U\cup V$.
+  \end{enumerate}
+ Diremos que un espacio topol\'ogico $X$  es \textbf{disconexo} si
+existe una separaci\'on de $X$.
+\end{definition}
+
+\begin{definition}
+Se dice que un espacio topológico $X$ es 
+\textbf{conexo} si no existe ninguna separación de $X$.
+\end{definition}
+
+
+Un subconjunto $A$ de un espacio topológico $X$ se llama conexo, si el espacio $A$ con la topología inducida de $X$ es conexo.
+
+
+
+\begin{example} El espacio de los números racionales con la topología inducida de la recta real es disconexo.  En efecto, los abiertos $U=(-\infty, \sqrt{2})\cap\mathbb Q$ y $V=(\sqrt{2},\infty)\cap\mathbb Q$, constituyen una separaci\'on de $\mathbb{Q}$. 
+\end{example}
+
+
+\begin{theorem}\label{R es conexo}La recta real es un espacio conexo.
+\end{theorem}
+\begin{proof}
+Supongamos que existen dos abiertos $U$ y $V$ en $\mathbb{R}$, tales que el par $(U,V)$ 
+es una separación de $\mathbb{R}$. Sean $u \in U$ y $v \in V$.
+ Sin p{\'e}rdida de generalidad, supongamos que $u < v$. Consideremos el conjunto   
+$$ C= \{x\in U\mid x<v\}.$$ 
+Notemos que $C$ está acotado superiormente y es no vacío, ya que $v$ es una cota superior y 
+$u\in C$. Por la propiedad del supremo, existe un número $s\in\mathbb{R}$ tal que 
+$$s=\sup C.$$  
+Entonces $s\in U\cup V$. Supongamos que $s \in U$. Como $U$ es abierto existe 
+$\varepsilon > 0$ tal que $(s- \varepsilon , s+ \varepsilon ) \subset U$. 
+Recordemos que $U$ y $V$ son ajenos, por lo que $v\notin (s- \varepsilon , s+ \varepsilon )$. 
+Además, como $v$ es cota superior de $C$, $ s\leq v$. Por lo tanto, 
+$s<s + \frac{\varepsilon }{2}< v$, y $s + \frac{\varepsilon }{2}\in U$. Entonces 
+$s+\frac{\varepsilon }{2}\in C$ y $s<s + \frac{\varepsilon }{2}$, 
+lo cual contradice el hecho que $s$ sea el supremo de $C$.
+Esta contradicción nos permite suponer que $s\in V$. 
+
+ Nuevamente, como $V$ es abierto,  existe $\eta > 0$ tal que $(s- \eta, s+\eta ) \subset V$. Además, como $U$ y $V$ son ajenos, el punto $s-\frac{\eta}{2}$ cumple $x<s-\frac{\eta}{2}$, 
+para todo $x\in C$. Por lo tanto, $s$ no podría ser el supremo de $C$. Esta contradicción 
+viene de suponer que existe una separación para $\mathbb{R}$. Por lo tanto $\mathbb{R}$ es conexo.
+\end{proof}
+
+Las siguientes proposiciones nos brindan algunas caracterizaciones de la noción de conexidad cuya 
+utilidad se hará patente más adelante.
+
+\begin{theorem}\label{P:equivconexo1}  
+Un espacio topológico $X$ es conexo si y sólo si los únicos subconjuntos simultáneamente 
+abiertos y cerrados son $X$ y $\emptyset$.
+\end{theorem}
+\begin{proof}
+Si $X$ es conexo y $A\subset X$ es abierto y cerrado, necesariamente $A\in\{X,\emptyset\}$, 
+pues de lo contrario $A$ y $X\setminus A$ formarían una separación de $X$. 
+Si $X$ no es conexo, entonces existe una separación $(U,V)$ de $X$, 
+y de la definición de disconexión, se sigue inmediatamente que $U$ es abierto, cerrado, 
+no vacío y distinto de $X$.
+\end{proof}
+\begin{theorem}\label{P:equivconexo}
+Sea $X$ un espacio topológico. Entonces los siguientes enunciados son equivalentes.
+\begin{enumerate}
+\item X es conexo.
+\item Si $D$ es un espacio discreto arbitrario, entonces toda función continua, $ f:X\to D$, es constante.
+\item Toda función continua $ f:X\to \{0,1\}$ es constante.
+\end{enumerate}
+\end{theorem}
+\begin{proof}  \hfill 
+
+$(1\Rightarrow 2)$ Sea $f:X\to D$ una función continua.
+Sean $x \in X$ y  $d = f(x)$. Como $D$ es un espacio discreto, entonces 
+$\{ d \}$ es a la vez abierto y cerrado. Por continuidad, $f^{-1}(d)$ es abierto 
+y cerrado en $X$. Además, $x\in f^{-1}(d)$, por lo que $f^{-1}(d)\neq\emptyset$. Por el teorema anterior, el único conjunto abierto y cerrado no vacío es $X$. Entonces $f^{-1}(d)=X$, lo cual demuestra que $f$ es constante.
+\medskip
+
+$(2\Rightarrow 3)$ Es evidente, ya que como el espacio 
+$ \{0 , 1 \}$ es discreto, por (2) toda función continua $ f:X\to \{0,1\}$ es constante
+ \medskip
+ 
+$(3\Rightarrow 1)$ Contrapositivamente, si existe una función continua y no constante 
+$f:X\to\{0,1\}$, entonces los abiertos $V=f^{-1}\{0\}$ y $U=f^{-1}\{1\}$ constituyen una separación de $X$.
+\end{proof}
+
+El siguiente teorema nos brinda otra importante caracterización de la conexidad.
+
+\begin{theorem}[Teorema de Boltzano]\label{boltzano}
+Un espacio topológico $X$ es conexo si y sólo si todo función continua $f:X\to \mathbb{R}$, tal que $\{a,b\}\subset f(X)$, cumple que $[a,b]\subset f(X)$.
+\end{theorem} 
+\begin{proof}
+Demostremos primero la parte \lq\lq sólo si\rq\rq, por contrapositiva. Supongamos que existe una función continua  
+$f : X \to \mathbb{R}$,  tal que $\{ a,b \} \subset f(X)$, pero $[a,b]$ no 
+esté contenido en $ f(X)$.  Entonces existe $x_1\in X$ y $x_2\in X$, tal que $f(x_1)=a$ y $f(x_2)=b$.
+ Sea $c \in [a,b] \setminus f(X)$, definamos
+ $g : \mathbb{R} \setminus\{ c \} \to \{ 0 ,1 \} $ por 
+
+\begin{equation*}
+g(y) = \begin{cases}
+0, & \text { si }y < c,\\
+1,&\text { si }y> c.\\
+\end{cases}
+\end{equation*}
+
+Claramente $g$  est{\'a} bien definida y es continua. Consideremos ahora la función
+ $h=g \circ f : X \to \{0,1\}$. Entonces $h$ es una función continua y no es constante, ya que 
+ $h(x_1 ) = 0$ y $h (x_2 ) = 1$. Así, existe una función continua y no constante de $X$ al $\{0,1\}$, por lo que, en virtud del teorema anterior, $X$ es disconexo.
+\medskip
+Probemos ahora, contrapositivamente, la parte \lq\lq sí\rq\rq.
+Supongamos que $X$ es disconexo, entonces existe una separación $(U,V)$ de $X$.
+Definamos $f:X\to\mathbb{R}$ por 
+\begin{equation*}
+f(x) = \begin{cases}
+0, & \text { si }x\in U,\\
+1,&\text { si }x\in V.\\
+\end{cases}
+\end{equation*} 
+Es claro que $f$ est{\'a} bien definida en todo X y es continua por la proposición \ref{lemadelpegado}.  
+De esta manera, hemos encontrado una función continua de $X$ en $\mathbb{R}$ tal que 
+${0,1}\subset f(X)$ pero $[0,1]$ no está contenido en $f(X)$,con lo que  el teorema queda demostrado.
+
+
+\end{proof}
+Como veremos en la siguiente proposición, la conexidad es una propiedad que se preserva bajo funciones continuas.
+\begin{theorem}\label{imagen continua de conexos es conexa}
+Sea  $f : X \to Y$ una funci{\'o}n continua y suprayectiva. Si $X$ es conexo, entonces $Y$ es conexo.
+\end{theorem}
+\begin{proof}
+Sea $g : Y \to \{ 0 , 1 \} $ una funci{\'o}n continua. En virtud del teorema~\ref{P:equivconexo} 
+basta demostrar que $g$ es constante. 
+
+Considermos la función $h=g \circ f : X \to \{ 0 , 1 \} $. Como $X$ 
+es conexo, por el teorema~\ref{P:equivconexo}, $h$ es constante y por lo tanto, $g$ es constante.
+\end{proof}
+
+
+\begin{proposition}\label{adherencia conexa}  
+Sea $X$ un espacio topol{\'o}gico. Si $A$ es un subconjunto conexo $B$ es un subconjunto de $X$ que  satisface   $A\subset B\subset \overline{A}$, entonces   $B$ es conexo.
+\end{proposition}
+\begin{proof} 
+ Sea $f:B \to \{0,1\}$ una funci{\'o}n continua. En virtud del teorema~\ref{P:equivconexo}, basta demostrar que $f$ es constante.
+  Consideremos: $ f\vert_{A}:A\to \{0,1\}$. Como 
+$f\vert_{A}$ es continua y $A$ es conexo, por el teorema~\ref{P:equivconexo}, $f|_A$ es constante. Sin p{\'e}rdida de generalidad,  supongamos que $f(A)=\{0\}$.  
+Notemos que $A$ es denso en $B$, entonces, por la continuidad de $f$, 
+ $$f(B)=f(\overline  A^B)\subset \overline {f(A)} = \overline {\{0\}}=\{0\}.$$ 
+Por lo tanto, $f$ es una función constante, como se quería demostrar.
+\end{proof}
+\begin{corollary}\label{cerradura conexa}  Sea $A$ un subconjunto  conexo de un espacio topológico $X$. Entonces $\overline{A}$ es conexo.
+\end{corollary}
+
+
+\begin{example}\label{caracterizacion conexos de R}
+Un subespacio $S$ de la recta real es conexo si y sólo si  $S$ es un intervalo. Aquí  entendemos por intervalo cualquier subconjunto de la forma $(a,b)$, $(a,b]$, $[a,b]$, $[a,b)$,   $(a,\infty)$, $[a,\infty)$, $(-\infty,b)$ $(-\infty, b]$ ó $(-\infty,\infty)$.
+
+\begin{proof}
+Primero supongamos que existe un conjunto $S$ conexo, tal que no es un intervalo. Entonces existe un punto $\xi \in\mathbb{R}\setminus S$, y dos puntos $a$ y $b$ en $S$, tal que $a<\xi<b$. Así, $U=(-\infty,\xi)\cap S$ y $V=(\xi,\infty)\cap S$ constituyen una separación de $S$, por lo tanto $S$ es disconexo. Esta contradicción nos permite concluir que cualquier subconjunto conexo de $\mathbb{R}$ es un intervalo.
+
+
+ Ahora supongamos que $S$ es un intervalo. Si  $S=(a,b)$, $S=(-\infty,b)$ ó $S=(a,\infty)$, entonces $S$ es homeomorfo a $\mathbb{R}$. Así, se sigue del ejemplo~\ref{R es conexo} y del teorema~\ref{imagen continua de conexos es conexa} que $S$ es conexo. Por otro lado, si   $S=[a,b]$, $S=[a,b)$, $S=(a,b]$, $[a,\infty)$ ó $(-\infty, b]$, en virtud de la proposición~\ref{adherencia conexa} podemos concluir que $S$ es conexo.
+\end{proof}
+\end{example}
+
+\begin{proposition} 
+ Sea $C$ un subconjunto conexo de un espacio topológico $X$. Si $ U$ es  un subconjunto 
+ abierto y cerrado de $X $, tal que $U\cap C\neq \emptyset$, entonces  $C\subset U$.
+\end{proposition}
+\begin{proof}  Como $U$ es abierto y cerrado en $X$, tenemos que $U\cap C$ es un  
+ conjunto abierto y cerrado en $C$. Pero $C$ es conexo, por lo que en virtud del teorema~\ref{P:equivconexo1},
+ $C = U\cap C$. Así, $C\subset U$.
+\end{proof}
+\begin{theorem}\label{union de conexos es conexo}
+Sean $X $ un espacio topológico y
+$\{ B_\alpha \} _{\alpha \in \mathcal{A}}$ una familia de subconjuntos conexos de $X$. 
+Si $\bigcap\limits_{\alpha\in\mathcal{A}}B_\alpha\neq\emptyset$, entonces $\bigcup\limits_{\alpha\in\mathcal{A}} B_\alpha$ es conexo.
+\end{theorem}
+\begin{proof} Sea  $f:\bigcup\limits_{\alpha\in\mathcal{A}} B_\alpha\to\{0,1\}$ 
+una funci{\'o}n continua. Basta demostrar que $f$ es constante.
+
+Consideremos  $x\in\bigcap\limits_{\alpha\in\mathcal{A}}B_\alpha$
+y supongamos sin pérdida de generalidad que $f(x)=0$. Como $B_\alpha$ es conexo para toda $\alpha\in\mathcal{A}$, $f|_{B_\alpha}$ es constante, de hecho la constante $0$. Así, $f(y)=0$ para toda $y\in \bigcup\limits_{\alpha\in\mathcal{A}} B_\alpha$. Por lo tanto, $f$ es constante.  
+
+\end{proof}
+
+\begin{corollary}\label{para par de puntos hay conexos} Si cualquier par de puntos $\{x,y\}$ 
+de un espacio topológico $X$ está contenido en un conjunto conexo $B\subset X$, entonces $X$ es conexo.
+\end{corollary}
+
+\begin{proof} Sea $x\in X$. Entonces para cualquier $y\in X$, existe un conjunto conexo $B_y$ tal que $\{x,y\}\subset B_y$. Así, $x\in \bigcap\limits_{y\in X}B_y$. De esta forma, podemos aplicar el teorema~\ref{union de conexos es conexo}, para concluir que $\bigcup\limits_{y\in X}B_y$ es conexo.
+Pero por la hipótesis 
+$$X=\bigcup\limits_{y\in Y}B_y,$$
+y por lo tanto $X$ es conexo.
+\end{proof}
+
+\begin{proposition}\label{cadena de conexos conexa} Sean $X$ un espacio topológico y $\{C_i\}_{i=1}^n$ una familia de conjuntos conexos. Si para cada $i\in\{1,\dots ,n-1\}$, $C_i\cap C_{i+1}\neq\emptyset$, entonces la unión $\bigcup\limits_{i=1}^nC_i$ es conexo.
+\end{proposition}
+\begin{proof}
+Por inducción sobre $n$. 
+Si $n=1$, entonces $\bigcup\limits_{i=1}^nC_i=C_1$, el cual es un conjunto conexo. Supongamos que para toda $k<n$, $\bigcup\limits_{i=1}^kC_i$ es un conjunto conexo. Hagamos $B=\bigcup\limits_{i=1}^{n-1}C_i$. Entonces, por hipótesis de inducción, $B$ es conexo.
+Además, por hipótesis $C_{n-1}\cap C_n\neq\emptyset$, y consecuentemente $B\cap C_n\neq\emptyset$. Así, aplicando el teorema~\ref{union de conexos es conexo}, podemos concluir que 
+$$\bigcup\limits_{i=1}^nC_i=B\cup C_n$$
+es un conjunto conexo.
+\end{proof}
+
+\begin{corollary}
+Sea $X$ un espacio topológico. Supongamos que para cualquier par de puntos $x$ y $y$ de $X$, existe una colección finita de conjuntos conexos, $\{C_1,\dots C_n\}$, tal que $C_i\cap C_{i+1}\neq\emptyset$ y de manera que $x\in C_1$ y $y\in C_n$. Entonces $X$ es conexo.
+\end{corollary}
+\begin{proof}
+Sean $x$ y $y$ dos puntos arbitrarios de $X$. Por hipótesis, existe una familia finita de conjuntos conexos $\{C_1,\dots ,C_n\}$, tales que para toda $i\in\{1,\dots ,n-1\}$, se tiene 
+$C_i\cap C_{i+1}\neq\emptyset.$ Por la proposición~\ref{cadena de conexos conexa}, el conjunto $B=\bigcup\limits_{i=1}^nC_i$ es conexo. Entonces $B$ es un conjunto conexo que contiene a $x$ y a $y$. Aplicando el corolario~\ref{para par de puntos hay conexos}, podemos concluir que $X$ es conexo.
+\end{proof}
+\begin{definition}\label{def comp conex} Sea $x_0 \in X$, y  $\{C_\alpha\}_{\alpha\in\mathcal{A}}$ la familia de todos los 
+subconjuntos conexos, $C_\alpha\subset X$, tales que $x_0 \in C_\alpha$. 
+
+El conjunto $$C(x_0)=\bigcup_{\alpha\in\mathcal{A}}C_\alpha$$ se
+llama  \textbf{componente conexa de} $X$ que contiene al punto $x_0$.
+\end{definition}
+
+Se sigue del teorema~\ref{union de conexos es conexo} y de la definición~\ref{def comp conex}, que la componente conexa de cualquier punto $x$ de un espacio topológico $X$, es un conjunto conexo. Más aún, $C(x_0)$ es el conjunto conexo más grande que contiene a $x_0$.
+
+Además, notemos que si $x$ y $y$ son puntos de un espacio topológico $X$, entonces 
+\begin{displaymath}
+C(x) = C(y) \quad \text{o} \quad C(x) \cap C(y) = \emptyset.
+\end{displaymath}
+En efecto, si $C(x) \cap C(y) \neq \emptyset$, por el teorema~\ref{union de conexos es conexo}, $C(x)\cup C(y)$ sería conexo. Entonces, por la definición~\ref{def comp conex}, $C(x)\cup C(y)\subset C(x)$, lo cual implica que $C(y)\subset C(x).$ Análogamente, $C(x)\subset C(y)$, y por lo tanto $C(x)=C(y)$.
+
+
+\begin{theorem}\label{comp conex cerr}
+Cualquier componente conexa $C$ de un espacio topológico $X$ es un subconjunto  cerrado.
+\end{theorem}
+\begin{proof}
+Sea $C$ una componente conexa de $X$. Entonces $C=C(x)$ para algún punto $x\in X$.  Pero $C$ es un conjunto conexo, y por lo que, en virtud del corolario~\ref{cerradura conexa}, la cerradura $\overline{C}$ es un conjunto conexo que contine a $x$. 
+Así, $\overline{C}\subset C$,  y por lo tanto $C$ es cerrado.
+\end{proof}
+
+
+\begin{definition} 
+ Un espacio topol{\'o}gico se llama \textbf{totalmente disconexo}  
+si para todo $x \in X$ se tiene $C (x) = \{ x \}$.
+\end{definition}
+Observemos  que cualquier espacio discreto es
+ totalmente disconexo, sin embargo la afirmaci{\'o}n rec{\'\i}proca no es cierta, como veremos en el siguiente ejemplo. 
+
+\begin{example}
+El conjunto de los números racionales con la topología heredada de la recta real es un espacio totalmente disconexo. En efecto, consideremos $C\subset\mathbb{Q}$  un subconjunto con más de dos puntos. Entonces, podemos escoger $a, b\in C$ dos puntos distintos. Supongamos sin pérdida de generalidad que $a<b$. Entonces, por la densidad de los números irracionales en $\mathbb{R}$, existe un número $\zeta \in\mathbb{R}\setminus\mathbb{Q}$, tal que
+$$a<\zeta<b.$$
+
+Sea $U=(\infty,\zeta)\cap C$ y $V=(\zeta,\infty)\cap C$. Entonces $U$ y $V$ constituyen una separación del conjunto $C$, lo cual muestra que $C$ es disconexo. Por lo tanto, las componentes conexas de $\mathbb{Q}$ solo pueden tener un punto.
+
+\end{example}
+
+
+\begin{theorem}\label{producto de dos conexos}
+ Sean $X$ y $Y$  dos espacios topol{\'o}gicos conexos.
+ Entonces $X\times Y$ es conexo.
+\end{theorem}
+\begin{proof}
+ Sea $f:X\times 
+Y\to \{ 0,1 \}$
+ cualquier funci{\'o}n  continua.  Demostremos que $f$ es constante.
+ Sean $x=(x_1,x_2)$ y $y=(y_1,y_2)$ dos puntos arbitrarios de $ X\times Y$. Para nuestros propósitos, basta demostrar que $f(x)=f(y)$.
+Notemos que $X\times \{x_{2}\} $ es homeomorfo a $X$. Así, $X\times \{x_{2}\} $ es conexo y por lo tanto, $f\vert_{X\times \{x_{2}\}}$ es
+ constante.  Consecuentemente, $$f(x_1,x_2)=f(y_1,x_2).$$
+ Análogamente, 
+ ${\{y_1 \} \times Y}$ es conexo, por lo que,  $f\vert_{\{y_1 \} \times Y}$ es constante. Así, 
+ $$f(y_1,x_2)=f(y_1,y_2).$$
+ Entonces $f(x)=f(y_1,x_2)=f(y)$, por lo que $f$ es constante, como se quería demostrar.
+\end{proof}
+
+
+\begin{corollary}\label{producto finito de conexos} Si $\{X_i\}_{i=1}^n$ es una familia finita de espacios conexos, entonces $\prod\limits_{i=1}^nX_i$ es conexo.
+\end{corollary}
+
+\begin{example}
+El espacio  euclideano $\mathbb{R}^n$ es conexo.
+\end{example}
+
+\begin{theorem}
+Sea $\{X_\alpha\}_{\alpha\in\mathcal{A}}$ una familia cualquiera de espacios topológicos conexos. Entonces el producto $X=\prod\limits_{\alpha\in\mathcal{A}}X_\alpha$ es conexo si y sólo si $X_\alpha$ es conexo para todo $\alpha\in\mathcal A$.
+\end{theorem}
+\begin{proof}
+Supongamos que $X$ es conexo. Entonces, por el teorema~\ref{imagen continua de conexos es conexa}, para todo $\alpha\in\mathcal{A}$, $X_\alpha=\pi_{\alpha}(X)$ es conexo. 
+
+Ahora supongamos que $X_\alpha$ es conexo para todo $\alpha\in\mathcal{A}$.
+Sea $\mathcal{F}$ la familia de todos los subconjuntos finitos de $\mathcal{A}$. Entonces, por el corolario~\ref{prodcuto finito de conexos} para cada $F\in \mathcal F$, el producto  $\prod\limits_{\alpha\in F}X_\alpha$ es conexo. Sea $x=\{x_\alpha\}_{\alpha\in\mathcal{A}}\in X$ un punto fijo. Así, por el corolario~\ref{producto finito de conexos}, para cada $F\in\mathcal{F}$,
+$$Y_F=\prod\limits_{\alpha\in F}X_\alpha \times \prod\limits_{\alpha\in \mathcal{A}\setminus F}\{x_\alpha\}\subset X$$
+es conexo. Además, observemos que $x\in \bigcap\limits_{F\in\mathcal{F}} Y_F$, por lo que podemos aplicar el teorema~\ref{union de conexos es conexo} para concluir que 
+$Y=\bigcup\limits_{F\in\mathcal{F}}Y_F$ es conexo. En virtud del corolario~\ref{adherencia conexa}, $\overline Y$ es un subconjunto conexo de $X$.
+Para terminar la demostración, probaremos que $\overline Y=X$.
+Supongamos que no. Entonces $X\setminus \overline{Y}$ es un abierto no vacío de $X$. Consideremos un abierto básico $W=\langle W_{\alpha_1}\dots W_{\alpha_n}\rangle$ de $X$ tal que
+$$ W\subset X\setminus \overline{Y}.$$
+Sea $F_0=\{\alpha_1,\dots,\alpha_n\}$. Para cada $i \in \{1,\dots, n\}$, escojamos un punto $y_i\in W_{\alpha_i}\subset X_{\alpha_i}$. Construyamos el punto $y=\{y_{\alpha}\}_{\alpha\in\mathcal{A}}\in X$, en donde $y_{\alpha}=y_{\alpha_i}$, si $\alpha=\alpha_i$, y  $y_{\alpha}=x_\alpha$, si $\alpha\notin F_0$. Así, $y\in W\subset X\setminus \overline{Y}$.
+ Entonces $y\in Y_{F_0}\subset Y$, lo cual es una contradicción. Por lo tanto, $X=\overline{Y}$, como se quería demostrar.
+
+ 
+
+\end{proof}
+
+\section{Conexidad por trayectorias}
+\begin{definition} 
+Sea $X$ un espacio topológico y $x$ y $y$ dos puntos en $X$. 
+ Una \textbf{trayectoria} 
+entre $x$ y $y$  es  una funci{\'o}n continua 
+$f:[0,1]\to X$, tal que   $f(0)=x$ y $f(1)=y$. 
+En este caso, los puntos $x$ y $y$ reciben el nombre de  \textbf{extremos de la trayectoria},  más precisamente $x$ se llama el inicio y $y$ el fin de la trayectoria.
+ 
+ Diremos que el espacio topológico $X$  es \textbf{conexo por trayectorias}
+ si para cualquier par de puntos $x$ y $y$ de $X$, existe una trayectoria entre ellos.
+\end{definition}
+
+\begin{example}
+La recta real es conexa por trayectorias. En efecto, para cualesquiera dos puntos $a$ y $b$ en $\mathbb{R}$, la función $f:[0,1]\to\mathbb{R}$ dada por 
+
+$$f(t) =tb +(1-t)a,$$
+define una trayectoria entre $a$ y $b$.
+\end{example}
+  
+  
+\begin{example} En $\mathbb{R}^n$ cualquier subconjunto convexo $K$ es un espacio conexo por trayectorias. Recordemos que un conjunto $K$ es convexo, si para cualquier par de puntos $a$ y $b$ de $K$, el segmento 
+$$T=\{x=a+t(b-a)\mid t\in[0,1]\}$$
+está contenido en $K$.
+  \smallskip
+
+En efecto, sea $K\subset\mathbb{R}^n$ un conjunto convexo. Consideremos $a, b\in K$. Entonces, $\alpha:[0,1]\to K$, dada por
+
+$$\alpha(t)=a+t(b-a),$$
+es una trayectoria de $a$ a $b$ contenida en $K$. Por lo tanto $K$ es conexo por trayectorias.
+\end{example}
+  \begin{proposition}\label{union conex por tray} Sea $X$ un espacio topológico y $\{B_\alpha\}_{\alpha\in\mathcal{A}}$ una familia de subconjuntos conexos por trayectorias. Si $\bigcap\limits_{\alpha\in\mathcal{A}}B_\alpha\neq\emptyset$, entonces $\bigcup\limits_{\alpha\in\mathcal{A}}B_\alpha$ es conexo por trayectorias.
+  \end{proposition}
+  \begin{proof} Sean $x$ y $y$ dos puntos cualesquiera de $\bigcup\limits_{\alpha\in\mathcal{A}}B_\alpha$. Entonces existen $\alpha_1$ y $\alpha_2$ en $\mathcal{A}$, tal que $x\in B_{\alpha_1}$ y $y\in B_{\alpha _2}$.
+
+ Consideremos $z\in \bigcap\limits_{\alpha\in\mathcal{A}}B_\alpha$. Así, existe una función continua $h:[0,1]\to B_{\alpha_1}$, tal que $h(0)=x$ y $h(1)=z$. Análogamente, existe una función continua $g:[0,1]\to B_{\alpha_2}$ tal que $g(0)=z$ y $g(1)=y$. Definamos 
+ $f:[0,1]\to\bigcup\limits_{\alpha\in\mathcal{A}}B_\alpha$, por
+ 
+\begin{equation*}
+f(t)=\begin{cases}
+f(2t), & \text{si }t\in [0,\frac{1}{2}],\\
+g(2t-1),&\text{si }t\in [\frac{1}{2},1].\\
+\end{cases}
+\end{equation*}
+Claramente $f$ es continua y constituye una trayectoria entre $x$ y $y$. Por lo tanto $\bigcup\limits_{\alpha\in\mathcal{A}}B_\alpha$ es conexo por trayectorias.
+
+  \end{proof}
+  Si $X$ es un espacio topológico, definimos para cada $x\in X$ la \textbf{componente conexa por trayectorias} de $X$ en el punto $x\in X$ (denotada por $C_t(x)$), como la unión de todos los subconjuntos conexos por trayectorias que contengan a $x$. Se sigue de la proposición~\ref{union conex por tray}, que si $x\neq y$, entonces $C_t(x)=C_t(y)$ o $C_t(x)\cap C_t(y)=\emptyset$.
+  
+  
+ 
+
+\begin{theorem}\label{comp c t en c}
+Sea $X$ un espacio topológico $X$. Entonces, para cualquier $x\in X$, $C_t(x)\subset C(x)$.
+\end{theorem}
+ 
+ \begin{proof}
+ Sea $y\in C_t(x)$. Entonces existe una trayectoria $f:[0,1]\to X$, tal que $f(0)=x $ y $f(1)=y$. Así, $B=f([0,1])$ es un subconjunto conexo de $X$ que contiene a $x$ y a $y$, por lo que $B\subset C(x)$. Entonces, $y\in C(x)$ y por lo tanto $C_t(x)\subset C(x)$ como se quería demostrar.
+  \end{proof}
+  
+
+\begin{corollary}  
+Sea $X$ un espacio topológico conexo por trayectorias. Entonces $X$ es conexo.
+\end{corollary}
+\begin{proof}
+Como $X$ es conexo por trayectorias, para cada $x\in X$, $C_t(x)=X$. Así, por el teorema~\ref{comp c t en c}, $C_t(x)\subset C(x)$. Consecuentemente, $C(x)=X$ lo cual prueba que $X$ es conexo.
+\end{proof}
+
+El recíproco del corolario anterior no es cierto como veremos en el siguiente ejemplo.
+
+\begin{example}\label{seno top} Sea $S$ el siguiente subconjunto del plano euclideano:
+$$S=\big\{(t,\sen 1/t)\in\mathbb{R}^2\mid t\in(0,2/\pi]\big\}\cup
+\big\{(0,t)\mid t\in[-1,1]\big\}.$$
+$S$ es un espacio conexo pero no conexo por trayectorias. A este espacio se le conoce como \textbf{el seno del topólogo}
+
+\begin{figure}[h]
+\begin{center}
+      \includegraphics*[scale=.5]{seno}
+\end{center}
+\caption{Seno del topólogo}
+\end{figure} 
+\begin{proof}
+Notemos que la función $f:(0,2/\pi]\to\mathbb{R}^2$ dada por
+$$f(t)=(t,\sen 1/t)$$
+es continua por serlo en cada coordenada. Como el intervalo $(0,2/\pi]$ es conexo (vease ejemplo~\ref{caracterizacion conexos de R}) se sigue del teorema~\ref{imagen continua de conexos es conexa} que $f((0,2/\pi])$ es conexo. Pero 
+$$f((0,2/\pi])=\big\{(t,\sen 1/t)\in\mathbb{R}^2\mid t\in(0,2/\pi]\big\},$$
+por lo que podemos concluir que $\{(t,\sen 1/t)\in\mathbb{R}^2\mid t\in(0,2/\pi]\}$ es conexo. 
+Ahora simplemente notemos que $S$ es la cerradura de $f(0,2/\pi]$. Entonces, por el corolario~\ref{cerradura conexa}, $S$ es conexo.
+
+Demostraremos por contradicción que $S$ no es conexo por trayectorias. Supongamos que existe una trayectoria $f:[-1,1]\to S$, tal que $f(-1)=(0,0)$ y $f(1)=(2/\pi, 1)$.
+ Llamemos $Q=\{(0,t)\mid t\in[-1,1]\}$.
+ Como $Q$ es cerrado en $S$ y $f$ es continua. 
+$f^{-1}(Q)$ es cerrado en el compacto $[-1,1]$. 
+Así, $f^{-1}(Q)$ es un subconjunto compacto de $\mathbb{R}$ 
+y por lo tanto existe $b\in f^{-1}(Q)\subset [-1,1]$,
+ tal que $b=\max \{t\mid t\in f^{-1}(Q)\}$. 
+Además, $b<1$, por lo que podemos suponer, sin pérdida de generalidad, que $b=0$.
+
+Supongamos que 
+$$f(t)=(x(t),y(t)),\quad t\in[-1,1].$$
+Así, la función $x:[-1,1]\to\mathbb{R}$ es una función continua. Notemos que $x(-1)=0$. Así, en virtud del corolario~\ref{boltzano}, para cada $n\in\mathbb{N}$, el segmento $[0,x(\frac{1}{n})]\subset x([-1,1])$. Así,
+para cada $n\in\mathbb{N}$, podemos escoger un número 
+$\mu_n\in(0,x({1/n}))$, y un número 
+$t_n\in (0,{1/n})$ tal que $$x(t_n)=\mu_n$$ y
+ $$\sen(1/\mu_n)=(-1)^n.$$ 
+Así, la sucesión $(t_n)_{n\in\mathbb{N}}$ 
+converge a $0$, y por la continuidad de la función
+ $y$, la sucesión $(y(t_n))_{n\in\mathbb{N}}$ converge
+ a $y(0)$. Pero $(y(t_n))_{n\in\mathbb{N}}$ es precisamente
+ la sucesión $((-1)^{n})_{n\in\mathbb{N}}$ la cual no 
+converge. Esta contradicción nos permite concluir que $S$ no es conexo por trayectorias.  
+\end{proof}
+\end{example}
+
+Al igual que la conexidad, la conexidad por trayectorias  se preserva bajo funciones continuas.
+\begin{theorem}\label{fun cont esp conx por tra}
+Sea $f :X \to Y$ una función continua y suprayectiva entre dos espacios topológicos. Si $X$ es conexo por trayectorias, entonces $Y$
+es conexo por trayectorias.
+\end{theorem}
+\begin{proof}
+Sean $f(x)$  y $f(y) \in Y$.  Como $X$ es conexo por trayectorias,
+existe una trayectoria $\alpha:[0,1]\to X$ tal que $\alpha(0)=x$ y $\alpha(1)=y$. Sea  $\gamma= f \circ \alpha : [0,1] \to Y$. Entonces $\gamma$ es una trayectoria tal que $\gamma(0)=f(x)$ y $\gamma(1)=f(y)$. Por lo tanto, $Y$ es conexo por trayectorias.
+\end{proof}
+\begin{theorem}
+Sea   $\{ X_\alpha \}_{\alpha \in \mathcal{A}}$ una familia de espacios topologicos. Entonces $X=\prod\limits_{\alpha\in\mathcal{A}}X
+_\alpha$ es conexo por trayectorias si y sólo si  $X_\alpha$
+es conexo por trayectorias para toda $\alpha\in\mathcal{A}$.
+\end{theorem}
+\begin{proof}
+Supongamos que $X$ es conexo por trayectorias. Como para toda $\alpha\in\mathcal{A}$, la proyección $\pi_\alpha:X\to X_\alpha$ es continua, por el teorema~\ref{fun cont esp conx por tra}, $X_\alpha=\pi_\alpha(X)$ es un espacio conexo por trayectorias.
+
+Ahora supongamos que para toda $\alpha\in\mathcal{A}$, $X_\alpha $ es conexo por trayectorias.
+Sean $x=\{x_\alpha\}$ y $y=\{y_\alpha\}$, dos puntos arbitrarios en $X$. Entonces, para cada $\alpha\in\mathcal{A}$, exite una trayectoria $f_\alpha:[0,1]\to X_\alpha$, tal que $f_\alpha(0)=x_\alpha$ y $f_\alpha(1)=y_\alpha$.
+Definamos $f:[0,1]\to X$ como el producto diagonal 
+$$f=\underset{\alpha\in\mathcal{A}}{\bigtriangleup}f_\alpha.$$
+Así, $f$ es una trayectoria, tal que $f(0)=x$ y $f(1)=y$. Por lo tanto, $X$ es conexo por trayectorias.
+\end{proof}
+
+
+
+
+
+\section{Espacios localmente conexos}
+\begin{definition} 
+ Se dice que un espacio topol{\'o}gico $X$ es \textbf{localmente conexo en el punto} $x\in X$,
+ si para toda vecindad $U$ de $x$ existe un abierto 
+conexo $V$, tal que $$x\in V\subset U.$$
+
+Diremos que $X$ es \textbf{localmente conexo}, si es localmente conexo en todo punto $x\in X$.
+\end{definition}
+\begin{example} El espacio de los números racionales $\mathbb Q$ con su topología heredada de $\mathbb R$ no es localmente conexo, ya que para todo $q\in \mathbb Q$, si $V$ es vecindad de $q$, existe $p\in V$, $p\neq q$. Si consideramos un número irracional $r$ entre $p$ y $q$, es claro que los abiertos $ \{s\in V\mid s<r\}$ y $\{s\in V\mid s>r\}$ forman una separación de $V$.
+\end{example}
+
+\begin{example}\label{peine}Sea $P$ el siguiente subespacio de $\mathbb{R}^2$
+$$P=\{(t,0)\mid t\in[0,1]\}\cup\{(0,t)\mid t\in[0,1]\}\cup \{(1/n,t)\mid t\in[0,1],~n\in\mathbb N\}.$$Entonces $P$ es un espacio conexo (de hecho conexo por trayectorias) pero no localmente conexo. Al espacio $P$ se le suele llamar \textbf{el peine}.
+
+\begin{figure}[h]
+\begin{center}
+      \includegraphics*[scale=.4]{peine}
+\end{center}
+\caption{Peine}
+\end{figure} 
+\begin{proof} Definamos los siguientes conjuntos:
+$$P_0=\{(t,0)\mid t\in[0,1]\}\cup\{(0,t)|t\in[0,1]\}$$ y 
+$$P_n=\{(t,0)\mid t\in[0,1]\}\cup\{(1/n,t)\mid t\in[0,1]\}.$$
+Notemos que $P_i$ es conexo para cada $i\in\{0,1,\dots\}$. En efecto, para toda $i$, el conjunto $P_i$ es la unión de dos conjuntos conexos por trayectorias (de hecho homeomorfos al intervalo $[0,1]$) con intersección no vacía y por lo tanto es conexo por trayectorias.
+Ahora notemos que 
+$$P=\bigcup\limits_{n=0}^{\infty}P_n.$$
+Como $\bigcap\limits_{n=0}^{\infty}P_n=\{(t,0)\mid t\in[0,1]\}\neq\emptyset$, podemos aplicar la proposición~\ref{union conex por tray} para garantizar que $P$ es un conjunto conexo por trayectorias.
+
+Sea $O$ una vecindad del punto $a=(0,1)$ que no contenga al conjunto $\{(t,0)\mid t\in[0,1]\}$. Demostraremos que para toda vecindad $V$ de $a$ en $P$ tal que $V\subset O$, $V$ es disconexa.
+
+
+Sea $V\subset O$ una vecindad cualquiera de $(0,1)$. Como $P$ tiene la topología heredada de $\mathbb{R}^2$, existe un abierto $V'$ en $\mathbb{R}^2$, tal que $V=V'\cap P$. Así, existe $\delta>0$, tal que $(-\delta,\delta)\times (1-\delta,1+\delta)\subset V'$. Escojamos $n\in\mathbb{N}$, tal que $\frac{1}{n}<\delta$. Entonces $(\frac{1}{n},1)\in V$.
+
+Sean $\xi\in (\frac{1}{n+1},\frac{1}{n})$, $U'=\{(x,y)\mid x<\xi\}$ y $W'=\{(x,y)\mid x>\xi\}$. Notemos que $U'$ y $V'$ son abiertos en $\mathbb{R}^2$, por lo que $U=U'\cap P$ y $W=W'\cap P$ son abiertos en $P$. Además $(0,1)\in U$ y $(\frac{1}{n},1)\in W$.
+Notemos que $$P\setminus(U\cup W)=(\xi,0)$$ el cual no está en $V$. Entonces $V\cap U$ y $V\cap W$ consitituyen una separación de $V$, por lo que $V$ es disconexo. Así, hemos demostrado que $P$ no es localmente conexo.
+\end{proof}
+\end{example}
+
+\begin{theorem}  
+Sea  $X$ un espacio topológico  localmente conexo. Entonces toda componente conexa de $X$ es 
+ cerrada y abierta.
+\end{theorem}
+
+\begin{proof}
+Sea $C$ una componente conexa de $X$. Por el teorema~\ref{comp conex cerr}, $C$ es cerrado. 
+
+Demostremos que $C$ es abierto. Sea $x \in C$ y $U$ una vecindad arbitraria de $x$. Como $X$ es localmente conexo, existe 
+una vecindad $V$ de
+$x$,  tal que $V$ es conexa y $V \subset U$. Como la componente conexa de $x$ es el conjunto conexo más grande tal que $x\in C$, inferimos que $V\subset C$. Entonces $x$ es punto interior de $C$ y por lo tanto, $C$ es un conjunto abierto.
+\end{proof}
+
+\begin{definition} 
+Se dice que un espacio topol{\'o}gico $X$ es  \textbf{localmente conexo por  trayectorias en el punto} $x\in X$ si
+ para toda  vecindad $U$ de $x$, existe abierto conexo por trayectorias $V$  tal que 
+$x\in V\subset U$.
+
+Diremos que $X$ es \textbf{localmente conexo por trayectorias} si es localmente conexo por trayectorias en $x$, para todo $x\in X$.
+\end{definition}
+
+Se sigue de la definición anterior que un espacio localmente conexo por trayectorias es localmente conexo. Veamos otras propiedades de este tipo de espacios.
+
+\begin{example} La recta real es un espacio localmente conexo por trayectorias. En efecto, la colección $\mathcal{B}=\{(a,b)\mid a<b\}$ es una base para la topología de $\mathbb{R}$ formada totalmente por vecindades conexas por trayectorias.
+\end{example}
+\begin{example} Cualquier espacio discreto $D$ es localmente conexo por trayectorias, ya que $\mathcal D=\big\{\{d\}\mid d\in D\big\}$ es una base para $D$ constituída en su totalidad por abiertos conexos por trayectorias.
+\end{example}
+
+\begin{theorem}  Sea $X$ un espacio topológico localmente conexo por trayectorias. Entonces los siguientes enunciados se cumplen.
+\begin{enumerate}[(1)]
+\item Toda componente conexa por trayectorias es cerrada y abierta.
+\item Si $X$ es conexo, entonces $X$ es conexo por trayectorias.
+\item Para todo $x\in X$, $C_{t} (x)=C(x)$.
+\end{enumerate}
+\end{theorem}
+\begin{proof}\hfill 
+
+\begin{enumerate}[(1)]
+\item Sean $C$ una componente conexa por trayectorias y $x\in C$. Escojamos una vecindad arbitraria $U$ de $x$. Entonces existe una vecindad $V$ de $x$ tal que $V$ es conexo por trayectorias y $V\subset U$. Evidentemente $V\subset C$, lo cual demuestra que $C$ es abierto.
+
+Por otro lado, notemos que 
+\begin{displaymath}C= X \setminus \bigcup_{y \notin C_t(x)} C_t(y).
+\end{displaymath}
+Por el parrafo anterior, cada $C_t(y)$ es un conjunto abierto, y por lo tanto  
+su uni{\'o}n es abierta. Así, $C$ un conjunto cerrado.
+
+\item Si $X$ es conexo, entonces el único conjunto no vacío abierto y cerrado es $X$. 
+Sea $C_t$ una componente conexa por trayectorias. Por el inciso $(1)$,   
+ $C_{t}$ es un conjunto no vacío,  abierto y cerrado. Entonces $C_t = X$, Por lo que podemos concluir que $X$ es conexo por trayectorias. 
+\item Sea $x\in X$. Entonces  $C_{t} (x) \subset C(x)$. Por otro lado,  como
+ $C(x)$ es conexo, por el inciso (2), $C(x)$ es conexo por trayectorias. Consecuentemente, $C(x)=C_t(x)$, como se quería demostrar.
+\end{enumerate}
+\end{proof}
+
+La conexidad local y la conexidad local por trayectorias, a diferencia de sus análogos globales, no se preservan bajo funciones continuas. Para ilustrar este hecho, consideremos la función identidad de los números racionales con la topología discreta, a estos mismos números con su topología usual. La función es claramente continua y hemos visto que el dominio es localmente conexo por trayectorias en tanto que la imagen no es siquiera localmente conexa.
+ 
+Recordemos que una \textbf{retracción} es una función $r:X\to X$ tal que $r|_{r(X)}=Id_{r(X)}$, y que en este contexto se dice que $r(X)$ es un \textbf{retracto} de $X$. Demostraremos que las retracciones sí preservan la conexidad local (por trayectorias) por medio de la siguiente equivalencia:
+\begin{proposition}\label{lemaconexlocal}
+Un espacio topológico $X$ es localmente conexo (por trayectorias) si y sólo si para todo 
+$x\in X$, y para todo $V$ vecindad de $x$ existe un conjunto $A$ conexo (por trayectorias)
+tal que $x\in \mathrm{Int}(A)\subset A\subset V$.
+\end{proposition}
+\begin{proof}
+Basta demostrar que si un espacio $X$ cumple que para todo $x\in X$,
+ y para todo $V$ vecindad de $x$ existe un conjunto $A$ conexo (por trayectorias)
+tal que $x\in \mathrm{Int}(A)\subset A\subset V$, entonces $X$ es localmente conexo (por trayectorias), ya que la otra implicación es trivial.
+Sean $x\in X$, $V$ una vecindad de $x$. Queremos construir un abierto conexo (por trayectorias) $U$ tal que $x\in U\subset V$. Existe un conjunto conexo $A_0$ tal que $x\in \mathrm{Int}(A)$ y $A\subset V$. Para cada $a\in A_0$, existe un conexo $A_1^a$ tal que
+$a\in\mathrm{Int}(A_1^a)$ y $A_1^a\subset V$. Llamemos $A_1=\bigcup\limits_{a\in A_0}A_1^a$, y observemos que $A_0\subset\mathrm{Int}(A_1)$, $A_1\subset V$ y que $A_1$ 
+es conexo (por trayectorias), ya que
+si $x,y\in A_1$, existen $a,b\in A_0$ tales que $x\in A_1^a$ y $b\in A_1^b$, y es fácil ver que $A_1^a\cup A_0\cup A_1^b$ es un conjunto conexo (por trayectorias) que contiene a $x$ y a $y$, y está contenido en $A_1$.
+
+Así, siguiendo este proceso puede construirse una familia de conjuntos conexos (por trayectorias) $\mathcal A=\{A_n\mid n\in \mathbb N\}$ tal que $A_i\subset\mathrm{Int}(A_i+1)$, y $A_i\subset V$ para todo $i\in \mathbb N$. Sea
+
+$$U=\bigcup\limits_{n\in\mathbb N}A_n.$$
+
+Entonces $x\in U\subset V$, $U$ es conexo (por trayectorias) ya que es unión de conexos
+(por trayectorias) que tienen intersección no vacía, y finalmente $U$ es abierto ya que para todo $u\in U$, existe $n\in\mathbb N$ tal que $u\in A_n$, por lo que $u\in\mathrm{Int}(A_{n+1})\subset U$. Esto concluye la prueba.
+\end{proof}
+\begin{theorem}
+Sean $X$ un espacio localmente conexo, y $A\subset X$ un retracto de $X$. Entonces $A$ es localmente conexo.
+\end{theorem}
+\begin{proof}
+Sean $a\in A$, $V$ vecindad de $a$ en $A$. Entonces $V'=r^{-1}(V)$ es abierto en $X$. Como $X$ es localmente conexo, existe un abierto conexo $U$ tal que $a\in U\subset V$. El conjunto $r(U)$ es conexo y está contenido en $V$, y además $a\in U\cap A\subset r(U)$, por lo que
+$a\in \mathrm{Int}(r(U))$. La proposición anterior nos permite concluir que $A$ es localmente conexo.
+\end{proof}
+
+Análogamente puede probarse que la conexidad local por trayectorias también es invariante bajo retracciones.
+ 
+\section{Ejercicios del cap\'\i tulo}
+
+\begin{enumerate}
+\item Demuestra que $\mathbb{R}^2$ no es homeomorfo a $\mathbb{R}$.
+\item Demuestra que $\mathbb{S}^1$ no es homeomorfo al intervalo $[0,1]$. Usa este hecho para concluir que $[0,1)$ y $(0,1)$ no son homeomorfos.
+\item Demuestra que si $X$ es un conjunto infinito provisto de la topolog\'ia
+cofinita, entonces $X$ es conexo.
+\item Si $X$ es un espacio $T_0$ y tiene una base de conjutos 
+abiertos  y cerrados demuestra que $X$ es totalmente disconexo.
+
+\item Sea $f :X \to Y$ tal que para todo subconjunto conexo $C$, $f(C)$ es conexo 
+¿Se puede concluir que $X$ es conexo?
+\item Sea $X$ un espacio topológico y $x\in X$. Consideremos 
+$$\mathcal{F}=\{A\subset X| A\text{ es cerrado y abierto y }x\in A\}.$$
+Demuestra que $C(x)\subset \bigcap\limits_{A\in\mathcal{F}}A$.
+Además, si $X$ es localmente conexo, entonces $C(x)= \bigcap\limits_{A\in\mathcal{F}}A$.
+
+\item Sea $X$ un espacio topológico ¿Es cierto que las componentes conexas por trayectorias de $X$ son subconjuntos cerrados? Demuéstralo o da un contraejemplo.
+\item Demuestra que si $C$ es un subconjunto conexo y abierto de $\mathbb{R}^n$, entonces $C$ es conexo por trayectorias.
+\item Demuestra que la recta de Sorgenfrey es totalmente disconexa. Concluye que la recta de Sorgenfrey no es localmente conexa.
+\item Sea $P$ el espacio construido en el ejemplo~\ref{peine}. Considerea el subespacio $T\subset P$ definido por
+$$T=P\setminus\{(x,y)|x=0,~y<1\}.$$
+Demuestra que $T$ es un espacio conexo, pero no localmente conexo ni conexo por trayectorias.
+\item Da un ejemplo de un espacio topológico $X$ y de un punto $x\in X$, tal que $C(x)$ no sea un conjunto abierto.
+
+\item Sea $A$ un conjunto numerable de  la recta real. Demuestra que $A$ no es conexo.
+\item ¿Es cierto que la imagen continua de un espacio localmente conexo
+es localmente conexo? Demuestralo o da un contraejemplo.
+\item Demuestra que el Seno del topólogo no es localmente conexo.
+\item Sea $\{X_\alpha\}_{\alpha\in\mathcal A}$ una familia de espacios topológicos. Demuestra que $\prod\limits_{\alpha\in\mathcal{A}}X_\alpha$ es localmente conexo si y sólo si $X_\alpha$ es localmente conexo para todo $\alpha\in\mathcal{A}$ y $X_\alpha$ es conexo para todo $\alpha\in\mathcal A$ salvo un número finito.
+\item Sea  $X$ un espacio de Hausdorff. Sea $\{C_n\}_{n\in\mathbb{N}}$ una familia de  
+ subconjuntos compactos y conexos, tales que $C_{n+1}\subset C_n$. Demuestra que  
+$\bigcap\limits_{n\in\mathbb{N}} C_n$  es un subconjunto conexo.
+\item Da un ejemplo de un espacio de Hausdorff, y de una familia $\{C_n\}_{n\in\mathbb{N}}$ de subconjuntos conexos, tales que $C_{n+1}\subset C_n$ y $\bigcap\limits_{n\in\mathbb{N}} C_n$ no sea conexo.
+\item Denota por $\mathbb S^1=\{z\in\mathbb C| |z|=1\}$. Sea $\{z_n\}_{n\in\mathbb N}$ 
+un conjunto denso y numerable en $\mathbb S^1$. Para cada $n\in\mathbb N$, denota por 
+$J_n$ al segmento cerrado con extremos en $z_n$ y $z_n/(n+1)$. Demuestra 
+que $X=\{0\}\cup\Big (\bigcup\limits_{n\in\mathbb N}J_n\Big)\subset\mathbb C$ 
+con la topología heredada de $\mathbb C$ es un espacio conexo.
+\item Sea $X$ un espacio localmente conexo por trayectorias y $r:X\to X$ una función continua e idempotente (i.e. para todo $x\in X$ se tiene $r\big(r(x)\big)=x$). Demuestra que $r(X)$ es localmente conexo por trayectorias.
+\end{enumerate}
+%\end{document}

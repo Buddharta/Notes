@@ -1,0 +1,216 @@
+\chapter{Espacios Cubrientes}
+
+Como se vi\'o en el cap\'itulo anterior utilizando algunas propiedades de espacios cubrientes pudimos calcular el grupo fumdamental de la circunferencia. En este cap\'itulo haremos exactamente lo contrario, es decir deduciremos propiedaes de los espacios cubrientes atrav\'es del grupo fundamental.\\
+Cuando tengamos una proyecci\'on cubriente $p:X \rightarrow Y$, durate toda esta secci\'on asumiremos que tanto $X$ como $Y$ son conexos y localmente conexos por trayectorias.
+
+La teor\'ia de proyecci\'ones cubrientes es de gran importancia no s\'olo en la topolog\'ia sino en diversas ramas de las matem\'aticas como el An\'alisis Complejo, la Geometr\'ia Diferencial y la Teor\'ia de los Grupos de Lie entre otas.\\
+
+Uno de los resultados m\'as importantes que vamos a mostrar en este cap\'itulo es que si $p: \widetilde{X} \rightarrow X$ es una proyecci\'on cubriente, entonces el problema de existecia de un "levantamiento" de una funci\'on continua $f:A \rightarrow X$ a una funci\'on $ \widetilde{f} :A \rightarrow \widetilde{X}$, tiene soluci\'on completa en t\'erminos de los grupos fundamentales de $A$, $X$ y $\widetilde{X}$\\
+
+
+\begin{definition}\label{vec admisible}
+Sea $p: \widetilde{X} \rightarrow X$ una funci\'on continua, se dice que un conjunto abierto $U \subset X$ est\'a \textbf{uniformemente} cubierto por $p$, si
+
+\begin{equation}
+ p^{-1}(U)= \bigsqcup_{\alpha \in A} V_{\alpha} 
+\end{equation}
+
+donde los $V_{\alpha}$ son subconjuntos abiertos disjuntos dos a dos tal que $p \vert_{V_{\alpha}}:V_{\alpha} \rightarrow U$ sea un homeomorfismo, en cuyo caso llamaremos a $U$ \textbf{vecindad admisible}. 
+\end{definition}
+
+En general la representaci\'on disjunta $p^{-1}(U)= \bigsqcup_{\alpha \in A} V_{\alpha}$ no es \'unica, pero si $U$ es conexo por trayectorias, entonces existe solamente una forma de representar a $p^{-1}(U)$ como uni\'on disjunta de abiertos $V_{\alpha}$ tal que cada $V_{\alpha}$ sea homeomorfa por medio de $p$ a $U$.\\
+
+Si $U$ es conexo por trayectorias entonces las vecindades $V_{\alpha}$ son simplemente las componentes conexas por trayectorias de $p^{-1}(U)$, En efecto pues cada $V_{\alpha}$ es abierto en $\widetilde{X}$ y por lo tanto en $p^{-1}(U)$ y como las $V_{\alpha}$ son disjuntas dos a dos significa que son cerrados en $p^{-1}(U)= \bigsqcup_{\alpha \in A} V_{\alpha}$ adem\'as los $V_{\alpha}$ son conexos por trayectorias al ser homeomorfos a $U$, lo que significa que en efecto los $V_{\alpha}$ son las componentes conexas por trayectorias de $p^{-1}(U)$.\\
+
+Con el concepto de vecindad admicible ya definido obtenemos la siguiente definici\'on:\\
+
+\begin{definition}\label{proy cubr}
+A una funci\'on continua $p: \widetilde{X} \rightarrow X$ se le llama funci\'on (o proyecci\'on) \textbf{cubriente} si $\forall x \in X$ existe una vecindad U admisible (Definici\'on \ref{vec admisible}). Al espacio $ \widetilde{X}$ se le llama cubriente de X por medio de p, y a X se le conoce como la base de la proyecci\'on cubriente.
+\end{definition}
+
+
+ \begin{example}
+La funci\'on exponencial 
+$e:\mathbb R \rightarrow \mathbb S^{1}$ 
+definida por:
+ $$e(t)= e^{2 \pi i t}, t \in \mathbb R$$ 
+Es cubriente  tomando $U_{1}=\mathbb S^{1} \setminus \lbrace -1 \rbrace $ 
+como vecindad admicible para puntos en la circunferencia distintos de $-1$ pues 
+
+$$e^{-1}(U_{1})= \bigsqcup_{n \in \mathbb Z}(n-1/2,n+1/2)$$ 
+
+y la restricci\'on $e:(n-1/2,n+1/2) \rightarrow U_{1}$ 
+es un homemorfismo, de forma an\'aloga tomando 
+$U_{2}=\mathbb S^{1} \setminus \lbrace 1 \rbrace$ vemos que esta vecindad es admicible.\\
+\end{example}
+
+\begin{example}
+Sea $n \in \mathbb{Z} \setminus \lbrace 0 \rbrace$ definimos la funci\'on $p_n:\mathbb S^{1} \rightarrow \mathbb S^{1}$ como:
+$$p_n(z):=z^n$$
+Entonces queda al lector comprobar que $p_n$ es cubriente $\forall n \in \mathbb{Z} \setminus \lbrace 0 \rbrace$.\\
+\end{example}
+
+En uno de los ejercicios del cap\'itulo se le pedir\'a al lector probar que el producto de proyecciones cubriente es tambi\'en una proyecci\'on cubriente, con esto en mente podemos examinar el siguiente ejemplo bastante interesante:
+
+\begin{example}
+Recordando la funci\'on exponencial $e:\mathbb{C} \rightarrow \mathbb{C} \backslash \lbrace 0 \rbrace$ definida por:
+$$ e^z:=1+z+z^2/2!+z^3/3!+...$$
+Es una proyecci\'on cubriente, pues tomando $z \in \mathbb{C}, z=x+iy$ sabemos por los cursos b\'asicos de Variable Compleja que $e^z=e^{x+iy}=e^x e^{iy}$, ahora sabemos que:\\
+
+$e^x: \mathbb R \rightarrow \mathbb{R^{+}} $ es un homemorfismo (que claramente es cubriente) y que\\
+
+$e^{iy}: \mathbb R \rightarrow \mathbb S^1 $ es cubriente\\
+Como $\mathbb R \times \mathbb R$ es homemorfo a $\mathbb{C}$ entonces la funci\'on $e^x \times e^{iy} :\mathbb{C} \rightarrow \mathbb{R^{+}} \times \mathbb S^{1}$ es una proyecci\'on cubriente, ahora nada m\'as hay que notar que tenemos un homeomorfismo $\phi :\mathbb{R^{+}} \times \mathbb S^1 \rightarrow \mathbb{C}\setminus \lbrace 0 \rbrace$ dado por: 
+$$\phi(\rho,e^{i \theta}):= \rho e^{i \theta}$$
+Se queda como ejerecicio al lector verificar que en efecto $\phi$ es un homeomorfismo, con esto tenemos que la funci\'on $e^z$ es cubriente.\\
+\end{example}
+
+\begin{example} \textbf{(La Lemiscata (o figura ocho))}\\
+Sean $X=\lbrace (z,w) \in \mathbb S^1\times S^1 \vert z=1 \quad o \quad w=1 \rbrace$ y $\widetilde{X}=\lbrace(x,y)\in \mathbb R^2 \vert x \in \mathbb{Z} \quad o \quad y \in \mathbb{Z} \rbrace$\\
+
+Definimos: $p:\widetilde{X} \rightarrow X$ por:
+
+$$p(x,y)=(e^{2\pi i x},e^{2\pi i y})$$
+
+Es una proyecci\'on cubriente.
+\end{example}
+
+\begin{definition}\label{homeo local}
+Una funci\'on continua $f:X \rightarrow Y$ se llama un homeomorfismo local si $\forall x \in X$ se tiene que $x$ posee una vecindad $U$ tal que $f(U)$ es abierto en $Y$ y
+
+$$f \vert_{U}:U \rightarrow f(U)$$
+
+es un homeomorfismo
+\end{definition}
+ 
+De la definici\'on es facil notar que toda proyecci\'on cubriente es un homeomorfismo local, pues si $p:\widetilde{X} \rightarrow X$ es una proyecci\'on cubriente, nos tomamos un $\widetilde{x} \in \widetilde{X}$, entonces al proyectarlo lo denotamos como $p(\widetilde{x})=x$, como $p$ es cubriente nos tomamos $U$ una vecindad admicible (Definici\'on \ref{vec admisible}) de $x$ entonces $p^{-1}=\bigsqcup_{i \in I}V_i$ donde tenemos que $\forall i \in I$ los $V_i$ son abiertos en $\widetilde{X}$ y adem\'as $p \vert_{V_i}:V_i \rightarrow U$ es un homeomorfismo, ahora $\widetilde{x} \in V_j$ para alguna $j \in I$ pues $p(\widetilde{x})=x \in U$ como los $V_i$ son abiertos $\forall i \in I$ tenemos que $V_j$ es la vecindad deseada.\\
+Con esto tenemos que todas la propiedades de homeomorfismos locales tambi\'en son propiedades de las proyecciones cubrientes, la siguente proposici\'on nos otorgar\'a una de estas propiedades.\\
+
+\begin{proposition}\label{proy ab}
+Todo homeomorfismo local $f:X \rightarrow Y$ es una funci\'on abierta
+\end{proposition}
+
+\begin{proof} 
+Sea $V \subset X$ abierto y sea $y \in f(V)$, entonces $y=f(v)$ para alg\'un $v \in V$, como $f$ es homeomorfismo local entonces existe $U \subset X$ abierto tal que $v \in U$, $f(U)$ es abierto en $Y$ y $f \vert_{U}:U \rightarrow f(U)$ es un homeomorfismo. 
+Ahora nos tomamos a $U \cap V$ que es abierto en $U$, como $f$ es un homemorfismo restringido a $U$ entonces $f(U \cap V)$ es abierto en $f(U)$, ahora $f(U)$ es abierto en $Y$ entonces se infiere que $f(U \cap V)$ es abieto en $Y$, adem\'as ten\'iamos que $v \in V$ y $v \in U$ por lo que $y=f(v)\in f(U \cap V) \subset f(V)$ lo que implica que $f(V)$ es abierto en Y que es lo que quer\'iamos.\\
+\end{proof}
+
+\begin{corollary}
+Toda proyecci\'on cubriente es una funci\'on abierta.
+\end{corollary}
+
+%%%Hay que profundizar en esta obsrevación%%%%
+
+Observemos que no todo homeomorfismo local es una proyecci\'on cubriente. En efecto, sea $f:(0,2) \rightarrow \mathbb S^1$ dada por:
+
+$$ f(t)= e^{2 \pi i t}$$
+
+entonces $f$ es un homeorfismo local, pero no es cubriente porque si nos tomamos a $1 \in \mathbb S^1$ este punto no tiene vecindades admisibles pues siempre podemos escojer $U$ una vecindad de $1$ que sea conexa y lo suficientemente peque\~na tal que $f^{-1}(U)$ consista en tres componentes las cuales solamente una es homeorfa a $U$ por medio de $f$.\\ 
+
+%%%INSTERAR FIGURA%%%
+
+El ejemplo anterior tambi\'en nos dice que no siempre la restricci\'on de un mapeo cubriente es cubriente, la siguiente proposici\'on nos dice en que tipo de conjuntos la restricci\'on de un mapeo cubriente es cubriente.
+
+
+\begin{proposition}\label{proy ab}
+Sea $p: \widetilde{X} \rightarrow X$ una proyecci\'on cubriente y sea $A \subset X$ un subconjunto conexo y localmente conexo por trayectorias. Si $\widetilde{A}$ es una componente conexa por trayectorias de $p^{-1}(\widetilde{A})$, entonces la restricci\'on: 
+$$p \vert_{\widetilde{A}}:\widetilde{A} \rightarrow A$$ 
+es una proyecci\'on cubriente.\\
+\end{proposition}
+
+\begin{proof} 
+Para cada $a \in A$ escogemos una vecindad $U$ admisible conexa por trayectorias entonces:
+
+$$p^{-1}(U)=\bigcup_{i \in I}U_i$$ 
+
+Donde $U_i \cap U_j= \varnothing$ si $i \neq j$ y cada $U_i$ es homeomorfo a $U$ por medio de $p$, observemos que cada $U_i$ es una componente conexa por  trayectorias de $p^{-1}(U)$.\\
+Entonces $p^{-1}(U \cap A)=\bigsqcup_{i \in I}(U_i \cap p^{-1}(A))$ donde es claro que $p$ restringida a cada $U_i \cap p^{-1}(A)$ es un homeomorfismo, ahora como A es localmente conexo por trayectorias entonces podemos encontrar para cada $a\in A$ una vecindad $V$ conexa por trayectorias tal que $a\in V \subset (A \cap U)$ entonces $p^{-1}(V)=\bigsqcup_{i \in I}V_i \subset \bigsqcup_{i \in I} U_i \cap p^{-1}(A) \subset p^{-1}(A) $ entonces cada $V_i$ es homeomorfo por medio de $p$ a $V$ lo que significa que cada $V_i$ es conexo por trayectorias, entonces si $V_i \cap \widetilde{A} \neq \varnothing$ como $V_i$ es conexo por trayectorias y $\widetilde{A}$ es una componente conexa por trayectorias entonces $V_i \subset \widetilde {A}$ por lo que $p^{-1}(V) \cap \widetilde{A} = \bigsqcup_{i \in J} V_i$ donde $J \subset I$ lo que dice que $p \vert_{\widetilde{A}}:  \widetilde{A} \rightarrow A$ es cubriente.\\
+\end{proof}
+
+\begin{theorem}
+Las Cardinalidades de todas las fibras se una proyecci\'on cubriente $p: \widetilde{X} \rightarrow X$ coinciden si $X$ es conexo.
+\end{theorem}
+
+\begin{proof}
+Sea $x \in X$ denotamos como 
+
+$$A=\lbrace y \in X \vert  \vert p^{-1}(y) \vert= \vert p^{-1}(x)\vert \rbrace$$
+
+Notemos que $A \neq \varnothing$ pues $x \in A$. Nuestra  afirmaci\'on es que $A$ es un conjunto abierto y cerrado. En efecto, si $y \in A$, como $p$ es cubriente entonces $y$ tiene una vecindad $U$ admisible, lo que significa que: 
+
+$$p^{-1}(U)=\bigsqcup_{i \in I}V_i$$ 
+
+Tal que los $V_i$ son homeomorfos a $U$ por medio de $p$, entonces es claro que $\forall z \in U$ la fibra de $z$ tiene cardinalidad $\vert I \vert$ pues cada $V_i$ tiene exactamente un elemento de la fibra de $z$, como tenemos exactamente $\vert I \vert$ vecindades entonces se sigue que $\vert p^{-1}(z) \vert = \vert p^{-1}(y) \vert = \vert p^{-1}(x) \vert =\vert I \vert$ lo cual nos dice que $y \in U \subset A$, entonces $A$ es abierto en $X$, de manera completamente an\'aloga $X \setminus A$ es abierto pues si $w \in X \setminus A$, entonces $\vert p^{-1}(w) \vert \neq \vert p^{-1}(x) \vert$ entonces si nos tomamos una vecindad admicible $V$ de $w$ tenemos por el mismo argumento que $\forall v \in V$ la fibra de $v$ tiene cardinalidad $\vert p^{-1}(w) \vert$ por lo tanto $X \setminus A$ es abierto, como $X$ es conexo y $A \neq \varnothing$ entonces $A=X$\\  
+
+\end{proof}
+
+\begin{definition}
+Sea $p: \widetilde{X} \rightarrow X$ una proyecci\'on cubriente con $X$ conexo. El cardinal $\vert p^{-1}(x) \vert$, $x \in X$, se llama el n\'umero de hojas de $\widetilde{X}$ sobre $X$.\\
+\end{definition}
+
+
+\section{Levantamiento de Trayectorias}
+
+\textbf{Problema de levantamiento}: Supongamos que $X$, $\widetilde{X}$ y $A$ son tres espacios topol\'ogicos, y que $p: \widetilde{X} \rightarrow X$ es una funci\'on continua y suprayectiva, supongamos tambi\'en que tenemos una funci\'on continua $f: A \rightarrow X$ ¿ser\'a posible encontrar una funci\'on $\widetilde{f} : A  \rightarrow \widetilde{X}$ continua que conmute el diagrama? (i.e que se cumple que $p \circ \widetilde{f}= f$)\\
+Esta pregunta puede taner o no una respuesta afirmativa. Cuando en efecto exisita tal funci\'on $\widetilde{f}$ diremos que esta funci\'on es un levantamiento de $f$.\\
+En esta secci\'on responderemos esta pregunta en el caso en el que la funci\'on $p$ sea un mapeo cubriente.\\
+Recordemos que los casos cuando $f$ es una trayectoria o una homotop\'ia la respuesta es afirmativa.\\ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\section{La acci\'on del grupo fundamental en las fibras de un cubriente}
+
+\begin{theorem}
+ Sean $p:E \to B$ una funci\'on cubriente y $q \in B$. Entonces el grupo fundamental $\pi(B,q)$ act\'ua transitivamente (por la derecha)
+ en la fibra $p^{-1}(q) \subset E$ mediante $\alpha: p^{-1}(q) \times \pi(B,q) \to p^{-1}(q)$:
+ \begin{equation} \label{AccGpoFund:ec}
+  \alpha(\widetilde{q},[f]) = \widetilde{q}[f] = \widetilde{f}(1)  
+ \end{equation}
+ donde $\widetilde{f}$ es el levantamiento de $f$ que empieza en $\widetilde{q} \in p^{-1}(q)$.
+\end{theorem}
+
+\begin{proof}
+ Sabemos que dos levantamientos $\widetilde{f_1}$ y $\widetilde{f_2}$ de dos trayectorias $f_1$ y $f_2$ que empiezan en $\widetilde{q}$ son
+ hom\'otopas si $f_1$ y $f_2$ lo son. En particular, la funci\'on \eqref{AccGpoFund:ec} est\'a biendefinida. Verifiquemos que $\alpha$ es
+ en verdad una acci\'on:
+ \begin{enumerate}
+  \item $\widetilde{q}[e_q] = e_{\widetilde{q}}(1) = \widetilde{q}$ pues la constante $e_{\widetilde{q}}$ es levantamiento de la constante $e_q$.
+  \item $(\widetilde{q}[f])[g] = \widetilde{g}(1)$ donde $\widetilde{g}$ es el levantamiento de $g$ que empieza en $\widetilde{q}[f]$.
+        Como $\widetilde{q}[f] = \widetilde{f}(1)$ donde $\widetilde{f}$ es el levantamiento de $f$ que empieza en $q$, basta observar que
+        $\widetilde{f}*\widetilde{g}$ es un levantamiento de $f*g$ que empieza en $q$, por lo que
+        \[ \widetilde{q}([f][g]) = \widetilde{f}*\widetilde{g}(1) = \widetilde{g}(1) = (\widetilde{q}[f])[g].   \]
+ \end{enumerate}
+ Adem\'as, dados $\widetilde{q}_1, \widetilde{q}_2 \in p^{-1}(q)$, tomemos una trayectoria $\widetilde{f}:I \to E$ de $\widetilde{q}_1$ a
+ $\widetilde{q}_2$. Entonces $p\widetilde{f}$ es un lazo en $q$ y $\widetilde{f}$ su levantamiento, de modo que
+ $\widetilde{q}_1[p\widetilde{f}] = \widetilde{f}(1) = \widetilde{q}_2$.
+\end{proof}

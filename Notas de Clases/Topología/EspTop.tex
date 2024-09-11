@@ -1,0 +1,1596 @@
+%\include{encabezado}
+\chapter{Espacios Topol\'{o}gicos}
+En este cap\'{\i}tulo introduciremos las nociones b\'{a}sicas de la
+topolog\'{\i}a general. La idea principal es llevar el concepto de
+conjunto abierto en un espacio m\'{e}trico, introducido en el cap\'{\i}tulo anterior, a una
+noci\'{o}n m\'{a}s abstracta que nos permita generalizar algunos de los
+conceptos y propiedades de los espacios m\'{e}tricos a otro tipo de
+estructuras matem\'{a}ticas,  a las que llamaremos {\it espacios
+topol\'{o}gicos.}
+\index{espacios!topol\'ogicos}
+
+\section{Espacios Topol\'{o}gicos}
+
+\index{topolog\'ia}
+\index{conjunto!abierto}
+\begin{definition}
+  Sea $X$ un conjunto no vac\'{\i}o. Una colecci\'{o}n $\tau$ de subconjuntos de $X$ se llama \textbf{topolog\'{\i}a} en $X$, si se satisfacen los siguientes axiomas: 
+  \begin{enumerate}
+  \item El conjunto vac\'{\i}o y $X$ est\'an en $\tau$.
+  \item Si $\{U_\alpha\}_{\alpha\in \mathcal{A}}$ es una familia cualquiera de elementos de $\tau$, entonces la uni\'on $\bigcup\limits_{\alpha\in \mathcal{A}}U_\alpha$ est\'a en $\tau$.
+  \item Si $\{U_1, \ldots ,U_n\}$ es una familia finita de elementos de $\tau$, entonces la intersecci\'on $U_1\cap \cdots \cap U_n$ es elemento de $\tau$.
+  \end{enumerate}
+  Los elementos de $\tau$ reciben el nombre de conjuntos
+  \textbf{abiertos} de $X$, y 
+  al conjunto  $X$ junto  con la topolog\'{\i}a $\tau$ se llama
+  \textbf{espacio topol\'{o}gico}.
+\end{definition}
+
+\begin{nota} 
+Hay dos cosas que definen un espacio topol\'ogico: un conjunto subyacente $X$ y una familia $\tau$ de subconjuntos de $X$ que constituye una topolog\'{\i}a. Formalmente un espacio topol\'ogico es un par ordenado $(X, \tau)$. Pero por lo general, cuando no haya riesgo de confusi\'on vamos a denotar al espacio topol\'ogico $(X, \tau)$ simplemente por $X$ dejando impl\'icitamente claro que hay una topolog\'{\i}a $\tau$ en $X$. A los elementos de $X$ se les suele llamar puntos. 
+\end{nota}
+
+As\'{\i}, en un espacio topol\'ogico $X$ el conjunto vac\'{\i}o y $X$ son abiertos, la uni\'on de cualquier familia de abiertos es un conjunto abierto, y la intersecci\'on de toda familia finita de abiertos es tambi\'{e}n un conjunto abierto.
+
+Si el lector tiene una idea sobre c\'{o}mo son los conjuntos abiertos en la recta real o en el plano, es importante que no trate de imaginar conjuntos ``abiertos t\'{\i}picos'' de esta forma en un espacio topol\'{o}gico abstracto. En general, cualquier subconjunto de un conjunto dado $X$  puede ser abierto si la topolog\'{\i}a en $X$ se elige apropiadamente.
+
+\begin{example}[Ejemplos]\ref{ejemplos1}
+\begin{enumerate}
+
+\item Sea $(X,d)$ un espacio m\'etrico, y sea $\tau_d$ la familia de todos los subconjuntos abiertos de $X$ en el sentido de la m\'{e}trica $d$, como se vi\'{o} en el cap\'{\i}tulo anterior. Entonces $\tau_d$ es una topolog\'{\i}a en $X$, llamada la topolog\'{\i}a generada por la m\'{e}trica $d$. (Ver el teorema \ref{espmetrico=topologico}). Llamaremos \textbf{metrizable} a cualquier espacio topol\'{o}gico $(X, \tau)$ cuya topolog\'{\i}a es generada por alguna m\'{e}trica $d$. N\'{o}tese la diferencia de este concepto con el de espacio m\'{e}trico, que es un espacio dotado de una m\'{e}trica particular expl\'{\i}cita. En tanto que cada m\'{e}trica $d$ para $X$ induce una \'{u}nica topolog\'{\i}a $\tau_d$, dado un espacio metrizable $(X, \tau)$ con m\'{a}s de un punto siempre es posible hallar muchas m\'{e}tricas que generen su topolog\'{\i}a, por ejemplo si $\tau =\tau_d$, entonces tambi\'{e}n $\tau=\tau_{2d}$. 
+
+\item Sea $X$ un conjunto no vac\'{\i}o. La colecci\'{o}n $\tau=2^X$ de todos los subconjuntos de $X$ forma una topolog\'{\i}a en $X$, llamada topolog\'{\i}a \textbf{discreta}. \index{topolog\'ia!discreta}
+
+
+\item  Sea $X$ un conjunto no vac\'{\i}o. Entonces $\tau=\left\{\emptyset,X\right\}$ es una topolog\'{\i}a en $X$, llamada topolog\'{\i}a \textbf{trivial} o \textbf{antidiscreta}.
+ \index{topolog\'ia!antidiscreta o trivial}
+
+
+\item  Sea $X$ un conjunto no vac\'{\i}o y $A$ un subconjunto de $X$. Entonces $\tau = \{\emptyset, A, X\}$ es una topolog\'{\i}a en $X$.
+
+\item  Sea $X$ cualquier conjunto infinito. La colecci\'{o}n $$\tau=\left\{U\subset X \mid X\setminus U \text{ es finito}\right\} \cup \{\emptyset\},$$ 
+ es una topolog\'{\i}a en $X$, llamada topolog\'{\i}a \textbf{cofinita}.
+
+\index{topolog\'ia!cofinita}
+\begin{proof}\hfill
+  \begin{itemize}
+  \item Por definici\'{o}n $\emptyset \in \tau$. Por otro lado, $X\setminus X=\emptyset$ es finito, de donde concluimos que $X$ pertenece a $\tau$. 
+  \item Sea $\{U_\alpha\}_{\alpha\in \mathcal{A}}$ una familia arbitraria de elementos de $\tau$.  Entonces $X\setminus U_\alpha$ es un subconjunto finito para cada $\alpha \in \mathcal{A}$. As\'{\i}, $$X\setminus\underset{\alpha\in \mathcal{A}}{\bigcup} U_\alpha= \underset{\alpha\in \mathcal{A}}{\bigcap}(X\setminus U_\alpha)$$ es una intersecci\'{o}n de conjuntos finitos y por tanto es finita. De este modo, tenemos que $\underset{\alpha\in \mathcal{A}}{\bigcup}U_\alpha\in\tau$. 
+  \item Sean $U,V\in\tau.$ Entonces $X\setminus U$ y $X\setminus V$ son subconjuntos finitos de $X$, y por tanto su uni\'{o}n $$(X\setminus U)\cup(X\setminus V)=X\setminus(U\cap V)$$ es un subconjunto finito. Por esta raz\'{o}n podemos concluir que $U\cap V$ es un elemento de $\tau$.
+  \end{itemize}
+As\'{\i},  $\tau$ es una topolog\'{\i}a en $X$.
+\end{proof}
+
+\item  Sea $X$ cualquier conjunto infinito. La familia $$\tau=\left\{U\subset X~|~ X\setminus U \text{ es numerable}\right\} \cup \left\{\emptyset\right\}$$ 
+  es una topolog\'{\i}a en $X$, llamada topolog\'{\i}a \textbf{conumerable}. \index{topolog\'ia!conumerable}
+
+\item \label{espacio co-B}
+Sean $X$ un conjunto no vac\'{\i}o y $B\subset X$. Entonces $$\tau=\left\{U\subset X~|~ B\subset U \right\} \cup \left\{\emptyset\right\}$$
+es una topolog\'{\i}a en $X$. 
+
+\item  Sea $X$ un conjunto no vac\'{\i}o y $B\subset X$. Entonces $$\tau=\left\{U\subset X~|~ U\cap B=\emptyset \right\} \cup \left\{X\right\}$$
+es una topolog\'{\i}a en $X$. 
+
+
+\item  Sea $X$ el conjunto de tres puntos $\{a,b,c\}$. Consideremos cuatro familias de subconjuntos de $X$
+
+
+   $\tau_1=\{\{a\},\{a,b\},\emptyset, X\}$.
+
+   $\tau_2=\{\{a\},\{b\},\{a,b\},\{b,c\},\emptyset,X\}$.
+
+   $\tau_3=\{\{a,c\},\emptyset,X\}$.
+
+   $\tau_4=\{\{a\},\{b\},\{a,b\},\{c\},\emptyset , X\}$.
+
+
+  Entonces $\tau_1,\tau_2$ y $\tau_3$ son topolog\'{\i}as en $X$ pero $\tau_4$ no lo es.
+
+\end{enumerate}
+\end{example}
+
+
+
+Los ejemplos anteriores muestran que en un mismo conjunto pueden definirse varias topolog\'{\i}as. Estas topolog\'{\i}as a veces pueden ser
+comparables. As\'{\i} arribamos a la siguiente definici\'{o}n. 
+
+\begin{definition}
+    Sean $\tau_1$ y $\tau_2$ dos topolog\'{\i}as en un conjunto no vac\'{\i}o $X$. Si $\tau_{1} \subset \tau_{2}$ diremos que $\tau_1$ es
+    \textbf{m\'as d\'ebil} o \textbf{m\'as gruesa} que $\tau_2$ y $\tau_2$ es \textbf{m\'as fuerte} o \textbf{m\'as fina} que $\tau_1$. 
+\end{definition}\index{topolog\'ia!comparaci\'on}
+\begin{example}[Ejemplos]
+\begin{enumerate}
+\item Sea $X$ un conjunto no vac\'{\i}o, y $\tau$ una topolog\'{\i}a para $X$. Claramente $\{\emptyset, X\}\subset \tau\subset 2^X$. Esto es, las topolog\'{\i}as trivial y discreta son respectivamente las topolog\'{\i}as m\'{a}s d\'{e}bil y m\'{a}s fuerte que se pueden definir para $X$.
+\item Sea $(X,d)$ un espacio m\'{e}trico. Entonces la topolog\'{\i}a generada por la m\'{e}trica $d$ es m\'{a}s fuerte que la topolog\'{\i}a cofinita.
+\end{enumerate}
+\end{example}
+
+
+\section{Interior y vecindades}
+
+\begin{definition}[1]
+    Sea $X$ es un espacio topol\'{o}gico
+    \begin{enumerate}
+    \item Para todo $x\in X$, diremos que $U$ es \textbf{vecindad} de $x$, si $U$ es un abierto en $X$ que contiene a $x$. \index{vecindad!de un punto}
+    \item Si $A\subset X$. Se dice que $x$ es un \textbf{punto interior} de $A$, si existe una vecindad $U$ de $x$ tal que $U\subset A$. \index{punto!interior}
+    \end{enumerate}
+  \medskip
+  
+  El conjunto de los puntos interiores de $A$ se llama \textbf{interior} de $A$ y se denota por ${\rm{Int}}\,A$ o $\mathring{A}$.\index{interior} Claramente ${\rm{Int}}\,A\subset A$.
+\end{definition}
+
+
+La siguiente proposici\'{o}n nos muestra que el interior de $A$ es el subconjunto abierto m\'{a}s grande contenido en $A$. 
+
+\begin{proposition}\label{interior=uniondeabiertos}
+  Sean $X$ un espacio topol\'{o}gico y $A$ subconjunto de $X$. Entonces el interior de $A$ es la uni\'on de todos los subconjuntos abiertos de $X$ contenidos en $A$.
+\end{proposition}
+
+\begin{proof}
+  Sea $x\in {\rm{Int}}\,A$. Entonces existe una vecindad $V$ de $x$, tal que $V\subset A$. As\'{\i}, $V\subset\{U~|~U\subset A,~U\text{ es abierto}\}$, lo que nos garantiza que 
+    $$x\in V \subset \bigcup\{U~|~U\subset A,~U\text{ es abierto}\}\text{.}$$ 
+  
+Por otro lado, si $x$ es un punto de la uni\'on, existe un abierto $U$ contenido en $A$, tal que $x\in U$, por tanto $x\in {\rm{Int}}\,A$. As\'{\i} podemos concluir que ${\rm{Int}}\, A=\bigcup\{U~|~U\subset A,~U \text{ es abierto}\}$. 
+\end{proof}
+\begin{proposition}\label{interior=abierto} 
+  Sean $X$ un espacio topol\'{o}gico y $A\subset X$. Entonces $A$ es abierto si y s\'{o}lo si $A={\rm{Int}}\,A$. 
+\end{proposition}
+\begin{proof}
+  Supongamos que $A$ es abierto. Por esta raz\'{o}n $A\in \{U~|~U\subset A, U \text{ es abierto}\}$, luego 
+  $$A\subset\bigcup\{U~|~U\subset A, ~U \text{ es abierto}\}= {\rm{Int}}\,A \text{.}$$
+  
+  La  contenci\'{o}n ${\rm{Int}}\,A\subset A$ se cumple siempre y por tanto $A= {\rm{Int}}\,A$. Ahora, si $A= {\rm{Int}}\,A$, por la proposici\'{o}n \ref{interior=uniondeabiertos} tenemos que $A$ es uni\'{o}n de abiertos y por consiguiente es abierto. 
+\end{proof}
+
+\begin{proposition}\label{interiorcreciente}
+Sea $X$ un espacio topol\'ogico. Si $A\subset B\subset X$, entonces ${\rm{Int}}\,A\subset {\rm{Int}}\,B$.
+\end{proposition}
+\begin{proof}
+  Sea $x\in {\rm{Int}}\,A$. Como $x\in {\rm{Int}}\,A$ entonces existe una vecindad $U$  de $x$ contenida en $A$ y como $A\subset B$, es claro que $U\subset B$
+  y por lo tanto $x\in {\rm{Int}}\,B$. 
+\end{proof}
+
+\begin{theorem}\label{Teo:Propiedades interior}
+  Si $X$ es un espacio topol\'{o}gico, entonces para cualesquiera dos subconjuntos $A$ y $B$ de $X$ se satisfacen los siguientes enunciados: 
+  
+  \begin{enumerate}
+  \item ${\rm{Int}}\,X=X$.
+  \item ${\rm{Int}}\,A\subset A$. 
+  \item ${\rm{Int}}\,({\rm{Int}}\,A)={\rm{Int}}\,A$.
+  \item ${\rm{Int}}\,(A\cap B)={\rm{Int}}\,A\cap {\rm{Int}}\,B$.
+  \end{enumerate}
+\end{theorem}
+
+\begin{proof}\hfill
+  \begin{enumerate}
+  \item Como $X$ es un conjunto abierto, se sigue de la proposici\'on \ref{interior=abierto} que ${\rm{Int}}\,(X)=X$.
+  \item Es inmediato de la definici\'on de ${\rm{Int}}\,A$.
+  \item Para demostrar que ${\rm{Int}}\,({\rm{Int}}\,A)= {\rm{Int}}\,A$, simplemente notemos que ${\rm{Int}}\,A$ es abierto y apliquemos nuevamente la proposici\'on
+    \ref{interior=abierto} para obtener ${\rm{Int}}\,({\rm{Int}}\,A)= {\rm{Int}}\,A$. 
+  \item Como $A\cap B\subset A$ y $A\cap B\subset B$, por la proposici\'on \ref{interiorcreciente} ${\rm{Int}}\,(A\cap B)\subset {\rm{Int}}\,A$ e ${\rm{Int}}\,(A\cap B)\subset {\rm{Int}}\,B$, de donde ${\rm{Int}}\,(A\cap B)\subset {\rm{Int}}\,A \cap {\rm{Int}}\,B$. Por otro lado, notemos que ${\rm{Int}}\,A \cap  {\rm{Int}}\,B$ es un subconjunto abierto contenido en $A\cap B$. Entonces, ${\rm{Int}}\,A  \cap {\rm{Int}}\,B \subset {\rm{Int}}\,(A\cap B)$. As\'{\i} podemos concluir que ${\rm{Int}}\,(A\cap B)={\rm{Int}}\,A\cap {\rm{Int}}\,B$.     
+  \end{enumerate}
+\end{proof}
+
+\begin{theorem}\label{phi=int}
+  Sean $X$ un conjunto no vac\'{\i}o y $\phi:2^X\to 2^X$ una funci\'on que satisface las siguientes propiedades:
+  \begin{enumerate}
+  \item $\phi(X)=X$.
+  \item $\phi(A)\subset A$. 
+  \item $\phi(\phi(A))=\phi(A)$.
+  \item $\phi(A\cap B)=\phi(A)\cap \phi(B)$.
+  \end{enumerate}
+  para todo par de subconjuntos $A$ y $B$ de $X$.
+  
+  Entonces existe una \'unica topolog\'{\i}a $\tau$ en $X$ cuyo operador interior es exactamente igual a $\phi$, es decir, $\phi(A)= {\rm{Int}}\,A$ para todo subconjunto $A$ de $X$, donde ${\rm{Int}}$ es el operador interior respecto a la topolog\'{\i}a $\tau$. 
+\end{theorem}
+
+Antes de demostrar el teorema anterior, necesitamos la siguiente
+proposici\'on: 
+
+\begin{proposition}\label{phiAphiB}
+  Sea $\phi$ una funci\'on como se describe en \ref{phi=int}. Entonces
+  para todo par de subconjuntos $A$ y $B$ de $X$ tales que $A\subset
+  B$, se tiene que $\phi(A)\subset\phi(B)$. 
+\end{proposition}
+\begin{proof}
+  Tenemos
+  que $A=A\cap B$. Aplicando la propiedad 4, obtenemos $\phi(A)=\phi(A\cap B)=\phi(A)\cap\phi(B)$ y por lo tanto $\phi(A)\subset\phi(B)$.   
+\end{proof}
+
+
+\begin{proof}[Demostraci\'on del teorema \ref{phi=int}]
+  Afirmamos que $\tau$, definida como:
+   $$\tau=\{A\subset X \mid \phi(A)=A\} ,$$
+  
+es la topolog\'{\i}a buscada.
+  \begin{enumerate}
+  \item Por la definici\'on de $\phi$, tenemos que $X\in \tau$. Como $\phi(\emptyset)\subset\emptyset$ entonces $\phi(\emptyset)=\emptyset$ y por lo tanto $\emptyset\in \tau$.
+  
+  \item Sea $\{A_s\}_{s\in S}\subset \tau$. Para todo $s_0\in S$, tenemos que $A_{s_0}\subset\underset{s\in \mathcal{S}}{\bigcup} A_s$ y en consecuencia $\phi(A_{s_0})\subset\phi(\underset{s\in \mathcal{S}}{\bigcup} A_s)$. Como $A_{s_0}=\phi(A_{s_0})$, se tiene que $A_{s_0}\subset\phi(\underset{s\in \mathcal{S}}{\bigcup}
+    A_s)$. De aqu\'{\i} obtenemos $\underset{s\in \mathcal{S}}{\bigcup} A_s\subset\phi(\underset{s\in \mathcal{S}}{\bigcup} A_s)$. La
+    otra contenci\'on est\'a asegurada por el punto 2, en conclusi\'{o}n $\underset{s\in \mathcal{S}}{\bigcup}A_s=\phi(\underset{s\in \mathcal{S}}{\bigcup} A_s)$, lo cual muestra que $\underset{s\in \mathcal{S}}{\bigcup} A_s\in \tau$.
+  
+  \item Sean $U_1, \ldots ,U_n$ abiertos de $X$ respecto a la topolog\'{\i}a $\tau$. Por ello $\phi(U_i)=U_i$ para $i=1,\ldots,n$. Del punto 4,  tenemos que 
+  $$\phi(U_{1} \cap \cdots \cap U_{n})=\phi(U_{1})\cap \cdots \cap\phi(U_{n})=U_1\cap \cdots \cap U_{n} \text{,}$$
+   y por lo tanto $U_1\cap \cdots \cap U_n\in \tau$. 
+    % FALTA>>>
+  \item Falta ver que el operador interior respecto a la topolog\'{\i}a definida $\tau$, es igual a $\phi$. Para ello, tomemos un subconjunto $A\subset X$.
+    
+Veremos primero que ${\rm{Int}}\,A\subset \phi(A)$. Como ${\rm{Int}}\,A\subset A$, se deduce de la proposici\'{o}n \ref{phiAphiB} que $\phi({\rm{Int}}\,A)\subset\phi(A)$, del hecho que ${\rm{Int}}\,A$ es un abierto de la topolog\'{\i}a $\tau$, se tiene que $\phi({\rm{Int}}\,A)= {\rm{Int}}\,A\subset A$ y junto con la proposici\'on \ref{phiAphiB}, que nos dice que  $\phi(\rm{Int}A)\subset\phi(A)$, tenemos ${\rm{Int}}\,A\subset\phi(A)$. 
+    
+    Para demostrar la inclusi\'on $\phi(A)\subset {\rm{Int}}\,A $, observemos que $\phi(A)\subset A$ entonces, por la proposici\'on \ref{interiorcreciente}  ${\rm{Int}}\,(\phi(A))\subset {\rm{Int}}\,A$. 
+    
+    Por el inciso 3 tenemos que $\phi(\phi(A))=\phi(A)$, por la definici\'on de la topolog\'{\i}a esto nos dice que $\phi(A)$ es abierto, por la proposici\'on \ref{interior=abierto} $\phi(A)$ es abierto si y s\'olo si $\phi(A)= {\rm{Int}}\,\phi(A)$. Junto con lo anterior, tenemos que $\phi(A)= {\rm{Int}}\,(\phi(A))\subset {\rm{Int}}\,A$.      
+    \end{enumerate}
+\end{proof}
+
+
+% CERRADOS
+\section{Conjuntos cerrados y cerradura}
+
+\begin{definition}
+  Sea $X$ un espacio topol\'{o}gico. Un conjunto $A \subset X$ se llama \textbf{cerrado} si $X \setminus A$ es abierto en $X$.
+\end{definition}\index{conjunto!cerrado}
+
+Observemos que un conjunto no abierto no necesariamente es cerrado. Por ejemplo, en $X=\mathbb{R}$ provisto de la topolog\'{\i}a
+inducida por la m\'{e}trica euclidiana, el intervalo $(0,1]$ no es ni abierto ni cerrado en $X$.
+
+\begin{theorem} \label{propcerrados}
+  Sea $X$ un espacio topol\'{o}gico. Si $\mathcal{C}$ es la colecci\'{o}n de todos los subconjuntos cerrados de $X$, entonces los   siguientes enunciados se satisfacen. 
+  \begin{enumerate}
+  \item $\emptyset\in \mathcal{C}$  y $X\in\mathcal{C}$.
+  \item  Si  $ \{D_\alpha\}_{\alpha\in\mathcal{A}}$, es una familia arbitraria de elementos de $\mathcal{C}$ entonces
+    $\bigcap \limits_{\alpha \in \mathcal{A}} D_{\alpha}\in\mathcal{C}$.
+  \item Si $\{C_1,\ldots,C_n\}$ es una familia finita de elementos de
+    $\mathcal{C}$, entonces la uni\'on $C_1 \cup \cdots \cup C_n$ tambi\'en es elemento de $\mathcal{C}$.  
+  \end{enumerate}
+    
+\end{theorem}
+
+\begin{proof}\hfill
+  \begin{enumerate}
+  \item Sabemos que $\emptyset$ y $X$ son subconjuntos abiertos, por lo que sus respectivos complementos ser\'{a}n subconjuntos
+    cerrados. Por consiguiente $\emptyset=X\setminus X$ y $X=X\setminus \emptyset$ son subconjuntos cerrados.
+  
+  \item Sea $\{D_\alpha\}_{\alpha\in \mathcal{A}}$ una familia arbitraria de elementos de $\mathcal{C}$, entonces 
+    $$X\setminus \Big(\bigcap_{\alpha\in \mathcal{A}}
+    D_\alpha\Big)=\bigcup_{\alpha\in \mathcal{A}}(X\setminus
+    D_\alpha)$$
+    es abierto, ya que $X\setminus D_\alpha$ es abierto para cada $\alpha\in \mathcal{A}$. Lo cual implica, que la intersecci\'on
+    de sus complementos es cerrado; que es lo que se quer\'{\i}a demostrar.
+  \item Sea  $\{C_1,\ldots ,C_n\}$ una familia de conjuntos cerrados. Por lo cual $X\setminus C_i$ es un subconjunto abierto de $X$ para $i=1,\ldots,n$,
+    por lo que $ \bigcap \limits_{i=1}^{n}(X\setminus C_i)$ tambi\'{e}n es un subconjunto abierto y por tanto su complemento es cerrado. Pero 
+    $$X\setminus \big{(}\bigcap_{i=1}^n(X\setminus
+    C_i)\big{)}=\bigcup_{i=1}^n C_{i} \text{,}$$
+    en consecuencia, la uni\'on finita de elementos cerrados es un elemento de $\mathcal{C}$. 
+  \end{enumerate}
+\end{proof}
+
+
+
+\begin{theorem}
+  Si $X$ es un conjunto no vac\'{\i}o y $\mathcal{C}$ una colecci\'{o}n de
+  subconjuntos 
+  de $X$ que satisface los incisos $1$, $2$ y $3$ del
+  teorema~\ref{propcerrados}, entonces existe una \'{u}nica topolog\'{\i}a
+  $\tau$ para la cual $\mathcal{C}$ es exactamente la familia de
+  todos los subconjuntos 
+  cerrados en el espacio topol\'ogico $(X,\tau)$. 
+\end{theorem}
+
+\begin{proof}
+  Comencemos por definir $$\tau=\{U\subset X \mid X\setminus U
+  \in\mathcal{C}\}.$$ 
+  Por hip\'{o}tesis sabemos que tanto $X$ como $\emptyset$ son elementos
+  de $\mathcal{C}$; por esta raz\'{o}n $\emptyset=X\setminus X\in\tau$ y
+  $X=X\setminus\emptyset\in \tau$. Ahora bien, si
+  $\{U_\alpha\}_{\alpha\in \mathcal{A}}$ es una familia arbitraria de
+  elementos de $\tau$, entonces la familia $\{D_\alpha=X\setminus
+  U_\alpha\}_{\alpha\in\mathcal{A}}$ est\'{a} contenida en $\mathcal{C}$.
+  Por 2, sabemos que $\bigcap\limits_{\alpha\in
+    A}D_\alpha\in\mathcal{C}$, y por tanto su complemento pertenece a
+  $\tau$. Es decir, 
+  $$\bigcup\limits_{\alpha\in A}U_\alpha=\bigcup\limits_{\alpha\in
+    A}(X\setminus D_\alpha)= 
+  X\setminus\Big{(}\bigcap\limits_{\alpha\in
+    A}D_\alpha\in\mathcal{C}\Big{)} \in\tau.$$ 
+  
+  Por \'{u}ltimo, sea $\{ U_1,\ldots,U_n \}$ una colecci\'{o}n finita de elementos de
+  $\tau$. Entonces existe una familia finita $\{C_1,\ldots,C_n \}$ de
+  elementos de $\mathcal{C}$ tal que $U_i=X\setminus C_i$ para
+  $i=1,\ldots,n$. Por 3, tenemos que $\bigcup \limits_{i=1}^n C_i\in\mathcal{C}$,
+  y por tanto $X\setminus \Big(\bigcup \limits_{i=1}^n C_i \Big)\in\tau$. En otras palabras 
+  $$\bigcap_{i=1}^n U_i=\bigcap_{i=1}^n(X\setminus C_i)=
+  X\setminus \Big(\bigcup_{i=1}^n C_i \Big)\in \tau.$$
+  De esta manera podemos concluir que $\tau$ es una topolog\'{\i}a en
+  $X$. Adem\'{a}s, de la definici\'{o}n de $\tau$, se sigue que $\mathcal{C}$
+  es la familia de cerrados en $(X,\tau)$. Claramente $\tau$ es la \'{u}nica topolog\'{\i}a posible en $X$ que tiene a $\mathcal{C}$ como
+  familia de todos los cerrados. 
+\end{proof}
+
+%Cerradura
+\begin{definition}
+  Sean $X$ un espacio topol{\'o}gico, $A \subset X$ y $x \in X$.
+  Se dice que $x$ es \textbf{punto cerradura} o \textbf{punto de adherencia} de $A$, si para toda vecindad 
+  $U$ de $x$, se cumple que $U\cap A \neq \emptyset$.
+  \medskip\index{punto!cerradura}\index{punto!adherencia}
+  
+  Al conjunto de todos los puntos de adherencia de $A$ se le llama
+  \textbf{cerradura} de $A$ y se denota por $\overline
+  A$. Evidentemente se tiene que $A\subset\overline{A}$. 
+\end{definition}\index{cerradura}
+
+\begin{example} 
+  Consideremos la recta real y $A=(0,1]$. Entonces
+  $\overline{A}=[0,1]$ 
+\end{example}
+
+
+
+
+\begin{theorem}\label{cerradura=cerrado}
+  Sean $X$ un espacio topol{\'o}gico y $A \subset X$.  $A$ es
+  cerrado si y s\'olo si $A=\overline{A}$. 
+\end{theorem}
+\begin{proof}
+  Supongamos  que $A$ es  cerrado. Como $A \subset \overline{A}$, s\'olo
+  falta demostrar que $\overline{A} \subset A$. Consideremos cualquier
+  punto $x\in X\setminus A$, 
+  entonces $U= X \setminus A$ es una vecindad para $x$. Notemos que $U\cap
+  A=\emptyset$, por lo que $x$ no puede estar en $\overline{A}$.  De
+  esta manera tenemos que $X\setminus A \subset X\setminus
+  \overline{A}$, y por lo tanto $\overline {A}\subset A$, como se
+  quer\'{\i}a demostrar. 
+
+  Ahora supongamos que $A=\overline{A}$.
+  Observemos que cada $x \in X\setminus\overline{A}$,  posee una
+  vecindad $U_x$ tal que $U_x\cap A=\emptyset$. Es  claro que
+  $$\bigcup\limits_{x\in X\setminus A}U_x=X\setminus
+  \overline{A}=X\setminus A \text{,}$$
+  por lo que $X\setminus A$ siendo una uni\'{o}n de conjuntos abiertos,
+  es abierto. De este modo, podemos concluir que $A$ es un subconjunto cerrado. 
+  
+\end{proof}
+
+\begin{proposition}\label{cerraduracreciente}
+  Sea $X$ un espacio topol\'ogico. Si $A$ y $B$ son dos subconjuntos
+  de $X$ tales que $A\subset B\subset X$, entonces $\overline{A}\subset\overline{B}$. 
+\end{proposition}
+\begin{proof}
+  Sean $x\in \overline{A}$ y $U$ una vecindad de $x$. Queremos ver que
+  $U\cap B\neq\emptyset$. Como $x\in\overline{A}$, se deduce que $U\cap
+  A\neq\emptyset$, es decir existe $y\in U\cap A$, pero como $A\subset
+  B$, en particular $y\in B$. De aqu\'{\i}, $y\in U\cap B$, que es lo que
+  quer\'{\i}amos demostrar. 
+\end{proof}
+
+\begin{theorem}
+  Si $X$ es un espacio topol\'{o}gico, entonces para cualesquiera
+  subconjuntos $A$ y $B$ de $X$ se satisfacen los siguientes
+  enunciados: 
+  \begin{enumerate}[1).]
+    
+  \item $\overline{\emptyset} = \emptyset$.
+  \item $A\subset\overline{A}$.
+  \item $\overline{\overline{A}}=\overline{A}$.
+  \item $\overline{A \cup B}=\overline{A}\cup \overline{B}$.
+    
+  \end{enumerate}
+  
+\end{theorem}
+\begin{proof}\hfill
+  \begin{enumerate}
+  \item Por el teorema \ref{propcerrados}, sabemos que $\emptyset$ es un subconjunto cerrado. Si aplicamos el teorema
+    \ref{cerradura=cerrado} a este conjunto, deducimos que
+    $\overline{\emptyset}= \emptyset$.
+    
+  \item Es evidente.    
+  \item Sea $x\in\overline{\overline{A}}$ y $U$ una vecindad cualquiera de $x$, entonces $U\cap\overline{A}\neq\emptyset$. Sea
+    $z\in U\cap\overline{A}$, como $U$ es vecindad de $z$ y $z\in
+    \overline{A}$, tenemos que $U\cap A\neq\emptyset$. As\'{\i} $x\in
+    \overline A$, por lo cual
+    $\overline{\overline{A}}\subset\overline{A}$. Como $\bar
+    A\subset\overline{\overline{A}}$, concluimos que $\bar
+    A=\overline{\overline{A}}$. 
+
+    
+  \item Tanto $A$ como $B$ son subconjuntos de $A\cup B$, por tanto
+    podemos aplicar la proposici\'on \ref{cerraduracreciente}  para
+    deducir que 
+    $\overline{A}\subset\overline{A\cup B}$ y
+    $\overline{B}\subset\overline{A\cup B}$. De esta manera, obtenemos la
+    contenci\'{o}n $\overline{A}\cup\overline{B}\subset\overline{A\cup
+      B}$. 
+    
+    Ahora como $A\subset\overline{A}$ y $B\subset\overline{B}$, es
+    claro que $A\cup B\subset \overline{A}\cup\overline{B}$. Si
+    aplicamos nuevamente la proposici\'on \ref{cerraduracreciente}
+    obtenemos que $\overline{A\cup  B}\subset\overline{\overline{A}\cup\overline{B}}$. Observemos
+    que el inciso 2) y el teorema~\ref{cerradura=cerrado} nos
+    garantizan que tanto $\overline {A}$ como $\overline{B}$ son
+    subconjuntos cerrados, por lo que $\overline{A}\cup\overline{B}$
+    al ser la uni\'{o}n de dos cerrados, es cerrado. As\'{\i}, por el
+     teorema \ref{cerradura=cerrado} se tiene que 
+    $\overline{A}\cup\overline{B}=\overline{\overline{A}\cup\overline{B}}$
+    y por tanto, $\overline{A\cup B}\subset
+    \overline{A}\cup\overline{B}$. De este modo 
+    $$\overline{A}\cup\overline{B}=\overline{A \cup B}.$$
+  \end{enumerate}
+\end{proof}
+
+En la siguiente proposici\'on vemos que la cerradura de un conjunto es
+\textit{el 
+  cerrado m\'{a}s peque\~{n}o que contiene a dicho conjunto}. 
+
+
+\begin{proposition} Sean $X$ un espacio topol\'{o}gico y $A\subset
+  X$ un subconjunto cualquiera. Entonces 
+  $\overline A=\bigcap \{F\subset X \mid A\subset F,\, F \text{ es cerrado}\}.$
+\end{proposition}
+\begin{proof}
+  Sea $\mathcal{F}=\{F\subset X\mid A\subset F, \,F \text{ es cerrado}\}.$
+  Como $\overline{A}$ es cerrado y $A\subset \overline{A}$, se tiene
+  que $\overline{A}\in \mathcal {F}$. As\'{\i} 
+  $$\bigcap\limits_{F\in\mathcal{F}} F\subset \overline{A}.$$
+
+  Por otro lado, observemos que
+  $U=X\setminus \Big(\bigcap\limits_{F\in\mathcal F}F \Big)$ es un subconjunto
+  abierto, ya que $\bigcap\limits_{F\in\mathcal F}F$ al ser intersecci\'{o}n
+  de cerrados, es cerrado. Adem\'{a}s, es claro
+  que $U\cap A=\emptyset$. De esta forma, si $x\in U$ entonces $x$ no
+  puede estar en $\overline{A}$, por lo que $U\subset X\setminus
+  \overline{A}$. De aqu\'{\i} 
+  $\overline{A}\subset X\setminus U=\bigcap\limits_{F\in\mathcal F}F$, y por lo tanto, $\overline{A}=\bigcap\limits_{F\in\mathcal F} F$. 
+\end{proof}
+
+
+Las proposiciones y teoremas anteriores nos muestran una \textit{dualidad}
+entre la noci\'{o}n de cerradura y la noci\'{o}n de
+interior. Esta dualidad se formaliza en la siguiente proposici\'{o}n. 
+\begin{proposition}\label{dualidadintcerr}
+  Sean $X$ un  espacio topol{\'o}gico y $A\subset X$, entonces
+  $X\setminus 
+{\rm{Int}}\,A=\overline{X\setminus A}$ y $X\setminus\bar
+  A=
+{\rm{Int}}\,(X\setminus A)$.
+\end{proposition}
+\begin{proof}
+  Notemos simplemente que $x\in \overline{X\setminus A}$ si y s\'{o}lo si
+  para cualquier vecindad $U$ de $x$, $U\cap(X\setminus
+  A)\neq\emptyset$. Pero esto \'{u}ltimo sucede si y s\'{o}lo si $x\notin {\rm{Int}}\,A$. En otras palabras, $x\in \overline{X\setminus A}$ si y s\'{o}lo
+  si $x\in X\setminus {\rm{Int}}\,A$, que es justo lo que se quer\'{\i}a demostrar. La segunda f\'ormula se obtiene sustituyendo $A$ por
+  $X\setminus A$.
+\end{proof}
+
+\begin{theorem}[Kuratowski]\label{Teo:Kwratowskicerradura}
+  Sean $X$ un conjunto no vac\'{\i}o y $\phi:2^X\to 2^X$ una funci\'on tal
+  que para todo par de subconjuntos $A$ y $B$ de $X$,  
+  \begin{enumerate}
+  \item $\phi(\emptyset)=\emptyset$,
+  \item $A\subset\phi(A)$, 
+  \item $\phi(\phi(A))=\phi(A)$ 
+  \item $\phi(A\cup B)=\phi(A)\cup \phi(B)$
+  \end{enumerate}
+  Entonces existe una \'unica topolog\'{\i}a $\tau$ en $X$ tal que el operador
+  cerradura respecto a $\tau$ coincide con $\phi$, es decir, para
+  cualquier subconjunto $A$ de $X$, se tiene que $\phi(A)=\overline{A}$.
+\end{theorem}
+\begin{proof}
+Sea $\psi :2^X \to 2^X$ dada por $\psi(A)= X\setminus \phi(X\setminus A)$. Entonces
+
+\begin{enumerate}
+
+\item $\psi(X)=X\setminus \phi(X\setminus X)=X\setminus \phi(\emptyset)=X\setminus \emptyset =X$
+
+\item $(X\setminus A)~\subset~\phi(X\setminus A)$, luego $\psi(A)=X\setminus\phi(X\setminus A) ~\subset~A$
+
+\item $\psi(\psi(A)) = \psi(X\setminus\phi(X\setminus A)) =X\setminus\phi\big(X\setminus (X\setminus\phi(X\setminus A))\big)$
+
+
+       \hspace{18.5pt}   $=X\setminus\phi(\phi(X\setminus A)) =X\setminus\phi(X\setminus A)$
+
+
+        \hspace{18.5pt}  $=\psi(A)$
+
+\item $ \psi(A\cap B) =X\setminus(\phi\big(X\setminus(A\cap B))\big) = X\setminus\big(\phi((X\setminus A)\cup( X\setminus B))\big) $
+
+
+       \hspace{23pt} $ =X\setminus\big(\phi(X\setminus A)\cup\phi(X\setminus B)\big) =\big(X\setminus\phi(X\setminus A)\big)\cap\big(X\setminus\phi(X\setminus B)\big)$
+
+
+       \hspace{23pt} $ =\psi(A)\cap\psi(B)$
+\end{enumerate}
+
+As\'{\i}, en virtud del teorema \ref{phi=int} tenemos que existe una \'{u}nica topolog\'{\i}a cuyo operador interior es exactamente $\psi$. Por la proposici\'{o}n \ref{dualidadintcerr} esta topolog\'{\i}a es la \'{u}nica tal que $\phi$ es precisamente su operador cerradura.
+\end{proof}
+
+
+\begin{definition}
+  Sean $X$ un espacio topol\'{o}gico y  $A\subset X$. El conjunto
+  $\overline A~\cap~\overline{X\setminus A}$
+  se llama  \textbf{frontera} de $A$  y se denota por $Fr(A)$.
+\end{definition}\index{punto!frontera}
+
+\begin{proposition}
+  Sean $X$ un espacio topol\'ogico y $A$ un subconjunto de $X$. Entonces $Fr(A) = \overline{A}\setminus {\rm{Int}}\,A$.
+\end{proposition}
+
+\begin{proof}
+  Sea $x\in Fr(A) = \overline A\cap\overline{X\setminus A}$. Queremos ver que
+  $x\in   \overline{A}\setminus 
+{\rm{Int}}\,A$. Sea $U$ cualquier vecindad de
+  $x$. Como $x\in\overline{X\setminus A}$ entonces $U\cap (X\setminus
+  A)\neq \emptyset$, es decir no existe una vecindad de
+  $x$ tal que est\'e contenida en $A$, lo que significa que
+  $x\notin 
+{\rm{Int}}\,A$. Por hip\'otesis $x\in \overline{A}$, concluimos que $x\in
+  \overline{ A}\setminus 
+{\rm{Int}}\,A$.
+
+  Ahora, sea $x\in \overline{A}\setminus {\rm{Int}}\,A$, como $x\notin {\rm{Int}}\,A$
+  esto implica que toda vecindad $U$ de $x$ interseca $X\setminus A$. De
+  aqu\'{\i} tenemos que $x\in\overline{X\setminus A}$. Por hip\'otesis
+  $x\in \bar A$, por lo tanto $x\in\overline{A}\cap \overline{X\setminus A}$.
+\end{proof}
+
+
+\begin{proposition}Sean $X$ un espacio topol\'{o}gico y  $A\subset X$. Se cumplen las siguientes igualdades:
+\begin{enumerate}[a)]
+\item $ \overline{A}=A\cup Fr(A)$
+\item ${\rm{Int}}\,(A)= A\setminus Fr(A) $
+\item $X= {\rm{Int}}\,(A)\cup Fr(A)\cup {\rm{Int}}\,(X\setminus A) $
+\end{enumerate}
+\end{proposition}
+\begin{proof}\hfill
+\begin{enumerate}
+\item[a)] $A\cup Fr(A) = A\cup (\overline{A}\cap\overline{X\setminus A})  =(A\cup\overline{A})\cap(A\cup\overline{X\setminus A})$ 
+
+
+\hspace{28pt} $ =\overline{A}\cap X =\overline{A} \text{.}$
+
+\item[b)] $A\setminus Fr(A)=A\setminus(\overline{A}\cap\overline{X\setminus A})=(A\setminus\overline{A})\cup(A\setminus\overline{X\setminus A})$
+
+          
+\hspace{26.5pt}  $ =A\setminus\overline{(X\setminus A)} = {\rm{Int}}\,(A) $
+            
+\item[c)] $X={\rm{Int}}\,(A)\cup(X\setminus {\rm{Int}}\,A)) ={\rm{Int}}\,(A)\cup\overline{X\setminus A}$
+                      
+                      
+\hspace{-9.5pt} $={\rm{Int}}\,(A)\cup Fr(X\setminus A) \cup (X\setminus A)$
+                      
+                      
+ \hspace{-9.5pt} $={\rm{Int}}\,(A)\cup Fr(A)\cup {\rm{Int}}\,(X\setminus A)\cup\big((X\setminus A)\setminus {\rm{Int}}\,((X\setminus A))\big)$
+                       
+                       
+ \hspace{-9.5pt} $={\rm{Int}}\,(A)\cup Fr(A)\cup {\rm{Int}}\,(X\setminus A)$
+\end{enumerate}
+\end{proof}
+
+\begin{example}[Ejemplos]
+\begin{enumerate}
+\item Si X es un espacio discreto, para todo $A\subset X$, $Fr(A)=\emptyset$.
+\item Si X es un espacio antidiscreto, entonces para todo $A\subset X$, $A\neq\emptyset$, se cumple $Fr(A)=X$.
+\item En la recta real, la frontera de cualquier intervalo $(a,b),~[a,b],~(a,b]$ o $[a,b)$ son sus extremos $\{a, b\}$.
+\item En cualquier espacio m\'{e}trico, $Fr(B(x,r))\subset S(x,r)$. En algunos espacios se da la igualdad, por ejemplo en $\mathbb{R}^n$.
+\end{enumerate}
+\end{example}
+
+\section{Densidad}
+
+\begin{definition}
+  Sean $X$ un espacio topol{\'o}gico y $A\subset X$. Se dice
+  que $A$ es \textbf{denso} en $X$ 
+  si $\overline {A}=X$.
+\end{definition}\index{conjunto!denso}
+De la definici\'{o}n anterior se sigue que $A$ es denso en $X$ si y s\'{o}lo
+si todo abierto $U$ intersecta al conjunto $A$.
+
+\begin{definition}
+  Se dice que un espacio topol\'{o}gico $X$ es \textbf{separable} si
+  existe un subconjunto numerable y denso en $X$. 
+\end{definition}\index{conjunto!separable}
+\begin{example}[Ejemplos]
+\begin{enumerate} 
+\item Para cualquier espacio topol\'{o}gico $X$, se cumple que $X$ es denso en $X$.
+
+\item Sea $\mathbb{R}$ el espacio de los n\'{u}meros reales con la topolog\'{\i}a euclidiana. Si $\mathbb{Q}$ denota el  conjunto de los n\'{u}meros racionales, entonces $\mathbb{Q}$ es denso
+  en $\mathbb{R}$. M\'{a}s a\'{u}n, como $\mathbb{Q}$ es un conjunto
+  numerable, $\mathbb{R}$ es un espacio separable. 
+
+\item  Consideremos $X$ el espacio topol\'{o}gico
+  introducido en el Ejemplo \ref{espacio co-B} de la sección de ejemplos \ref{ejemplos1}. El conjunto $B$ es denso
+  en $X$. M\'{a}s a\'{u}n, si $B'$ es subconjunto numerable de $ B$, entonces
+  $B'$ es denso en $X$, por lo que $X$ es un espacio separable. 
+\end{enumerate}
+\begin{proof}
+  Sean $B'\subset B$ y $U$ un abierto de $X$. De la definici\'{o}n de la
+  topolog\'{\i}a de $X$ tenemos que $B\subset U$, de lo cual se infiere que $B'\subset U$ y por tanto
+  $B'\cap U\neq\emptyset$. As\'{\i} $B'$ es denso en $X$. Para demostrar
+  que $X$ es separable, basta tomar $B'$ numerable. 
+\end{proof}
+\end{example}
+
+\begin{proposition}\label{U=Ucap A si U esab y A dens}
+  Sea $A$ un subconjunto denso de un espacio topol\'{o}gico $X$. Entonces
+  para todo abierto $U\subset X$ se tiene que
+  $\overline{U}=\overline{U\cap A}.$ 
+\end{proposition}
+
+\begin{proof}
+  Sea $x\in \overline{U}$, y $V$ una vecindad arbitraria de
+  $x$. Entonces, $U\cap V\neq\emptyset$, por lo que $U\cap V$ es un
+  subconjunto de $X$ abierto y no vac\'{\i}o. Como $A$ es denso, se tiene
+  que $A\cap(U\cap V)\neq\emptyset$. As\'{\i} $(U\cap A)\cap
+  V\neq\emptyset$, y por tanto $x\in\overline{U\cap A}$. 
+  Por otro lado, como $U\cap A\subset U$, siempre se cumple que
+  $\overline{U\cap A}\subset \overline{U}$. As\'{\i}, llegamos a que
+  $\overline{U}=\overline{U\cap A},$ como se quer\'{\i}a demostrar. 
+\end{proof}
+
+
+
+
+\section{Bases}
+
+\begin{definition}
+  Sean $X$ un espacio topol{\'o}gico y $\mathcal{B}$ una familia de
+  abiertos. 
+  La familia $\mathcal{B}$ se llama \textbf{base} para la topolog\'{\i}a
+  de $X$ si para
+  cualquier abierto $U$,  existe una subfamilia
+  $\{U_\alpha\}_{\alpha\in\mathcal{A}}\subset\mathcal{B}$, tal que
+  $U=\bigcup\limits_{\alpha\in\mathcal{A}}U_\alpha$.  A los elementos
+  de la base $\mathcal{B}$ se les llama abiertos b\'asicos. 
+\end{definition}
+\index{base}
+\begin{proposition}\label{b1}
+  $\mathcal{B}$ es una base del espacio topol{\'o}gico $X$ si y
+  s{\'o}lo si para cualquier abierto $U$ y para toda $x\in U$,
+  existe $V\in\mathcal{B}$ tal que $x\in V\subset U$. 
+\end{proposition}
+\begin{proof}
+  Supongamos que $\mathcal{B}$ es base. Sean
+  $U$ un abierto de $X$ y $x\in U$. Entonces existe una subfamilia
+  $\{U_\alpha\}_{\alpha\in\mathcal{A}}$ de $\mathcal{B}$ tal que 
+  $U=\bigcup\limits_{\alpha\in\mathcal{A}}U_\alpha$. Como $x\in U$,
+  existe $\alpha_0\in\mathcal{A}$ tal que $x\in
+  U_{\alpha_0}$. Claramente $V:=U_{\alpha_0}$ es el elemento b\'asico
+  buscado.  
+  \medskip
+  
+  
+  
+  Ahora supongamos que para cualquier abierto $U$, y para cualquier
+  $x\in U$, existe un elemento $V_x$ de ${\mathcal{B}}$ tal que $x\in 
+  V_x\subset U$. De este modo es f\'{a}cil ver que
+  $U=\bigcup\limits_{x\in U}V_x$, por lo que $\mathcal{B}$ es base
+  para la topolog\'{\i}a de $X$. 
+  
+\end{proof}
+
+
+
+\begin{example}\label{r2n}
+\begin{enumerate}
+\item La colecci\'{o}n de los singuletes $\{\{x\}\mid x\in X\}$ es base para la topolog\'{\i}a discreta en $X$. De hecho, cualquier otra base para la topolog\'{\i}a discreta contiene a esta colecci\'{o}n.
+
+  \item La recta real posee varias bases interesantes. Las siguientes colecciones son
+  algunas de ellas: 
+  $$\mathcal{B}_1=\{(a,b)\mid a,b\in\mathbb{R},~a<b\}.$$
+  $$\mathcal{B}_2=\{(p,q)\mid p,q\in\mathbb{Q},~p<q\}.$$
+  $$\mathcal{B}_3=\{(r,s)\mid r,s\in~\mathbb{R}\setminus\mathbb{Q},~r<s\}.$$
+
+ \item Para cualquier espacio m\'{e}trico $(X,\rho)$, las siguientes son bases
+  para la topolog\'{\i}a 
+  generada por la m\'{e}trica $\rho$:
+  \begin{enumerate}
+  \item $\mathcal{B}_1=\left\{B(x,\varepsilon) \mid x\in X,\;\varepsilon
+      >0\right\}$
+  \item $\mathcal{B}_2=\{B(x,r) \mid x\in X,
+    ~r>0,~r\in\mathbb{Q}\}$.
+  \end{enumerate}
+\end{enumerate}  
+\end{example}
+
+\begin{theorem}\label{b1 y b2}
+  Sea $X$ un espacio topol{\'o}gico. Si
+  $\mathcal{B}$ es una 
+  base de la topolog\'{\i}a de $X$, los siguientes enunciados se cumplen:
+  \begin{description}
+  \item[$\mathcal{B}$1] Para toda $x\in X$, existe $V\in \mathcal{B}$
+    tal que 
+    $x\in V$.
+  \item[$\mathcal{B}$2] Para cualesquiera $ V_1,V_2\in\mathcal{B}$ y
+    para toda $ x\in V_1\cap 
+    V_2$, existe $  V_3\in\mathcal{B}$ tal que $x\in V_3\subset
+    V_1\cap V_2$.
+  \end{description}
+\end{theorem}
+\begin{proof}\hfill
+\begin{enumerate}
+
+  \item[$\mathcal{B}$1]. Como $X$ es abierto, existe una familia 
+  $\{V_\alpha\}_{\alpha\in\mathcal{A}}$ de elementos de
+  $\mathcal{B}$ tal que 
+  $X=\bigcup\limits_{\alpha\in\mathcal{A}} V_\alpha$. As\'{\i}, para cada
+  $x\in X$, existe $\alpha_0\in\mathcal{A}$ para el cual $x\in
+  V_{\alpha_0}$, que es un elemento de la base $\mathcal{B}$, como se
+  quer\'{\i}a demostrar.   
+  
+  \item[$\mathcal{B}$2]. Ahora consideremos  dos elementos $V_1$ y $V_2$ de $\mathcal{B}$ y
+  $x\in V_1\cap 
+  V_2$. Como $\mathcal{B}$ es base y $V_1\cap V_2$ es abierto, por la proposici\'on \ref{b1} existe $V\in\mathcal{B}$ tal que $x\in V\subset V_1\cap V_2$. Por lo tanto  $\mathcal{B}$ satisface las propiedades \textbf{${\boldmath{\mathcal
+        B}1}$} y \textbf{$\boldmath{\mathcal{B}2}$}. 
+\end{enumerate}
+\end{proof}
+ \begin{figure}[h!]
+      \begin{center}
+      \includegraphics*[scale=0.7]{base1}
+      \caption{Propiedades de una base}
+      \end{center}
+   \end{figure}
+
+
+\begin{theorem}\label{T:b}
+  Sea $X$ un conjunto no vac\'{\i}o y $\mathcal{B}$ una colecci\'{o}n de
+  subconjuntos de $X$ que satisface las 
+  propiedades \textbf{${\boldmath{\mathcal B}1}$} y
+  \textbf{${\boldmath{\mathcal B}2}$} del teorema \ref{b1 y
+    b2}. Entonces, existe una {\'{u}}nica topolog{\'\i}a $\tau$ en $X$
+  para la cual ${\mathcal{B}}$ es base. 
+\end{theorem}
+\begin{proof}
+  
+  Definamos $\tau$ como la colecci\'{o}n de todos los subconjuntos de $X$
+  que tienen la forma $\bigcup
+  \limits_{\alpha\in\mathcal{A}}V_\alpha$, donde
+  $\{V_\alpha\}_{\alpha\in\mathcal{A}}$ es una subfamilia de ${\mathcal{B}}$. Demostremos que $\tau$ es una topolog\'{\i}a en $X$. 
+  \begin{enumerate}
+  \item $\emptyset \in\tau$ ya que $\emptyset$ es la uni\'{o}n de una
+    familia vac\'{\i}a de elementos de $\mathcal{B}$. 
+    
+    Por otro lado, \textbf{${\boldmath{\mathcal B}1}$} nos garantiza
+    que para cualquier 
+    $x\in X$ existe un elemento $V_x\in{\mathcal{B}}$, tal que $x\in
+    V_x$. En consecuencia 
+    $ X=\bigcup\limits_{\substack{x\in X}}V_x,$
+    por lo que  $X\in \tau$.
+  \item Sea $\{U_\alpha\}_{\alpha\in \mathcal{A}}$ una familia
+    arbitraria de elementos de $\tau$. Entonces, para cada $\alpha\in 
+    \mathcal{A},$  existe $\{V_{\gamma_\alpha}\}_{\gamma_{\alpha}\in
+      G_\alpha} \subset\mathcal{B}$, tal que 
+    $U_\alpha=\bigcup\limits_{\gamma_\alpha\in G_\alpha}V_{\gamma_\alpha}$.
+    Luego
+     $$\bigcup_{\alpha\in
+      \mathcal{A}}U_\alpha=\bigcup_{\substack{\alpha\in A\\
+        \gamma_\alpha\in G_\alpha}} 
+    V_{\gamma_\alpha},$$
+        
+    de donde concluimos que $\bigcup\limits_{\alpha\in
+      A}U_\alpha\in\tau$.
+  \item Sean $U_1,\ldots,U_n$ elementos de $\tau$. Entonces para cada $i\in\{1,\ldots,n\}$ existe una subfamilia $\{U_{\gamma_i}\}_{\gamma_i\in
+      G_i}$ de $\mathcal{B}$ tal que 
+    $U_i=\bigcup\limits_{\gamma_i\in G_i}U_{\gamma_i}$.
+
+    As\'{\i},
+    $$\bigcap_{i=1}^nU_i=\bigcap_{i=1}^n\Big(\bigcup_{\gamma_i\in
+        G_i}U_{\gamma_i}\Big)=
+    \bigcup_{\gamma_i\in G_i} \Big(\bigcap_{i=1}^nU_{\gamma_i} \Big).$$ 
+
+
+    %$$U\cap V=\big{(}\bigcup_{\gamma_1\in G_1}U_{\gamma_1}\big{)}\cap
+    %\big{(}\bigcup_{\gamma_2\in G_2}V_{\gamma_2}\big{)}=
+    %\bigcup_{\substack{\gamma_1\in G_1\\ \gamma_2\in
+    %    G_2}}U_{\gamma_1}\cap U_{\gamma_2}.$$
+    
+    
+    Se sigue de la propiedad \textbf{${\boldmath{\mathcal B}2}$} que para cualquier $x\in
+    \bigcap\limits_{i=1}^n U_{\gamma_i}$, existe $W_{x}\in\mathcal{B},$ tal que $x\in
+    W_{x}\subset \bigcap\limits_{i=1}^n U_{\gamma_i}.$
+    De esta manera,  $\bigcap\limits_{i=1}^n U_{\gamma_i}=
+    \bigcup\{W_x\mid x\in \bigcap\limits_{i=1}^n U_{\gamma_i}\}.$
+    
+Por lo cual
+    $$\bigcap_{i=1}^nU_i=\bigcup_{\gamma_i\in G_i} \Big( \bigcup\{W_x\mid x\in \bigcap\limits_{i=1}^n U_{\gamma_i}\}\Big).$$ 
+    
+    
+    De este modo $\bigcap\limits_{i=1}^n U_i$ se expresa como uni\'{o}n de elementos de
+    $\mathcal{B}$ y por lo tanto es abierto. 
+    
+  \end{enumerate}
+  Los tres incisos anteriores nos muestran que $\tau $ es una
+  topolog\'{\i}a para la cual ${\mathcal{B}}$ 
+  es base. Demostremos ahora que es la
+  {\'{u}}nica topolog\'{\i}a posible con esta propiedad.  Supongamos que
+  existe $\tau '$ una topolog\'{\i}a en $X$ para la 
+  cual ${\mathcal{B}}$ es base.  Sea $U\in\tau '$. Como
+  ${\mathcal{B}}$ es base para esta topolog\'{\i}a, 
+  $U=\bigcup\limits_{\alpha\in \mathcal{A}}U_\alpha$, donde
+  $U_\alpha\in{\mathcal{B}}\subset \tau$ para toda $\alpha
+  \in\mathcal{A}$. Por lo tanto 
+  $U\in\tau$. Entonces $\tau '\subset\tau$.  An\'alogamente se
+  demuestra que  $\tau\subset\tau '$. 
+  As\'{\i}, $\tau=\tau '$.
+\end{proof}
+
+\begin{example}\label{sorgenfrey}\index{topolog\'ia!L\'inea de Sorgenfrey} 
+  Consideremos $\mathbb{R}$, el
+  conjunto de los n\'{u}meros reales y 
+$$\mathcal{B}=\{[a,b)\subset  \mathbb{R}\mid a<b,~a,b\in\mathbb{R}\}.$$
+ $\mathcal{B}$ satisface las
+  propiedades \textbf{${\boldmath{\mathcal B}1}$} y
+  \textbf{${\boldmath{\mathcal B}}2$}, y por tanto es base para una
+  topolog\'{\i}a $\tau_s$ en $\mathbb{R}$. El espacio topol\'{o}gico
+  $(\mathbb{R},\tau_s) $ recibe el nombre de \textbf{recta de
+    Sorgenfrey}. 
+\end{example}
+
+\begin{example}[Ejemplos]
+\begin{enumerate}
+\item Sea $X=\mathbb{Z}$. Para cada $n\in X$, definimos 
+\begin{equation*}
+V(n)~=~
+\begin{cases}
+\{n\} & \text { si } n \text{ es impar}\\
+\{n-1, n, n+1\} & \text{ si } n \text{ es par}
+\end{cases}
+\end{equation*}
+
+Ahora, consideremos $\mathcal{B}=\{V(n)~|~n\in X\}$. Es f\'acil ver que $\mathcal{B}$ satisface $\mathcal{B}$\textbf{1} y $\mathcal{B}$\textbf{2}, por lo que de acuerdo al teorema \ref{T:b}, existe una \'unica topolog\'{\i}a para la cual $\mathcal{B}$ es base. A la topolog\'{\i}a resultante se le llama \textbf{topolog\'{\i}a de la recta digital} y al espacio topol\'ogico $(\mathbb{Z},\tau)$ se le llama \textbf{recta digital}. 
+\index{topolog\'ia!recta digital}
+ \begin{figure}[h!]
+      \begin{center}
+      \includegraphics*[scale=0.75]{recdig}
+      \end{center}
+   \end{figure}
+\smallskip
+
+
+\item \index{topolog\'ia!plano digital}Ahora definiremos el plano digital. Como en el caso de la recta digital, la idea es tener un conjunto de abiertos, constituidos de un \'unico punto, que modelen los pixeles de una imagen digital y adicionalmente tener puntos representando los espacios entre pixeles. Consideremos el conjunto $\mathbb{Z} \times \mathbb{Z}$, para cada punto $(m,n)$, definimos el elemento b\'asico $B(m,n)$ como sigue:
+ 
+$$B(m,n)= \left\{
+\begin{array}{ll}
+ \left\{ (m,n) \right\} & \mbox{Si $m$ y $n$ son impares,}  \\
+ \left\{ (m+i,n) \mid i=-1,0,1\right\} & \mbox{Si $m$ es par y $n$ impar,}     \\
+ \left\{ (m,n+j) \mid j=-1,0,1\right\}  &\mbox{Si $m$ es impar y $n$ par,}     \\ 
+ \left\{ (m+i,n+j) \mid i,j=-1,0,1\right\} & \mbox{Si $m$ es par y $n$ impar.} 
+\end{array}
+\right.
+$$
+ \begin{figure}[h!]
+      \begin{center}
+      \includegraphics*[scale=0.9]{pland}
+      \end{center}
+      \caption{El Plano Digital}
+   \end{figure}
+
+La colecci\'on $\mathcal{D}= \{ B(m,n) \mid  (m,n) \in \mathbb{Z} \times \mathbb{Z}\}$ es base para una topolog\'{\i}a en $\mathbb{Z} \times \mathbb{Z}$. El espacio topol\'ogico resultante es llamado el \textbf{plano digital}. Los elementos b\'asicos $B(m,n)=\left\{ (m,n) \right\}$, donde $m$ y $n$ son ambos impares, son los abiertos constituidos de un \'unico punto que representan los pixeles de una imagen digital. En la figura siguiente se muestran algunos de los elementos b\'asicos de la topolog\'{\i}a del plano digital.
+\smallskip
+
+
+\item La familia  $\mathcal{B}= \left\{(a,b)\mid a,b\in\mathbb{R},a<b\right\}\cup
+\left\{\{x\} \mid x \in \mathbb{R} \setminus \mathbb{Q} \right\} $ 
+es base para una topolog\'{\i}a $\tau_M$ en $\mathbb{R}$, al espacio topol\'{o}gico 
+$(\mathbb{R}, \tau_M)$ se le conoce como recta de Michael $\mathbb{M}$.
+
+Adem\'as podemos restringirnos a los intervalos con extremos racionales en el primer conjunto 
+de esta uni\'on, o solo a los intervalos con extremos irracionales, para describir una base de 
+$\mathbb{M}$. 
+
+Es f\'acil ver que $(a,b)\subset \mathbb{M}$ es abierto y cerrado si $a,b \in \mathbb{R} \setminus\mathbb{Q}$, entonces si consideramos solamente los intervalos con extremos en los irracionales para dar una base de $\mathbb{M}$, se sigue que $\mathbb{M}$ tiene una base constituida por abiertos y cerrados; a esta clase de espacios se les denomina \textbf{$0$-dimensionales}.
+\end{enumerate}
+\end{example}
+
+\section{Subbases}
+
+\begin{definition}
+  Sea $X$ un espacio topol{\'o}gico. Una familia de abiertos $\Gamma$ de
+  $X$
+  se llama \textbf{subbase} para la topolog\'{\i}a de $X$ si 
+  la colecci\'{o}n $\mathcal{B}_{\Gamma}$ de todas las intersecciones finitas de elementos de
+  $\Gamma$, constituye una base para la topolog\'{\i}a de $X$. 
+\end{definition}\index{subbase}
+
+\begin{example}[Ejemplos]
+\begin{enumerate} 
+  \item Consideremos el espacio de los n\'{u}meros reales. Sea   
+  $$\Gamma=\{(-\infty,a)\mid a\in\mathbb{R}\}\cup\{(b,\infty)\mid b\in\mathbb{R}\}.$$ 
+  Como $(-\infty ,a)\cap(b,\infty)= (b,a)$ para $b<a$, inferimos que $\Gamma$ es subbase para  
+  la topolog\'{\i}a usual de $\mathbb{R}$.
+
+  \item En $\mathbb{R}^2$ consideremos como $\Gamma$ al conjunto de todas las franjas
+   horizontales y verticales. Es decir,
+  $$\Gamma=\{(a,b)\times\mathbb{R}\mid a<b~a,b\in\mathbb{R}\}\cup\{\mathbb{R}\times(c,d)\mid c<d,~c,d\in\mathbb{R}\}.$$
+  La familia $\Gamma$ es subbase para la topolog\'{\i}a usual de $\mathbb{R}^2$.
+ \begin{figure}[h!]
+      \begin{center}
+      \includegraphics*[scale=0.75]{subbase}
+      \end{center}
+      \caption{Una subbase para $\mathbb{R}^2$}
+   \end{figure}
+\end{enumerate}
+\end{example}
+
+
+\begin{theorem}\label{gama1} 
+  Sea $X$ un espacio topol\'{o}gico. Entonces toda subbase
+  $\Gamma$ satisface la siguiente condici\'{o}n: 
+  \begin{description}
+  \item[{\textbf{$\mathcal{\boldsymbol{\Gamma}}$}1} ] Para toda $ x\in
+    X$ existe $ V\in\Gamma$ tal que $x\in V$.
+  \end{description}
+\end{theorem}
+\begin{proof}
+  
+  Sea $\mathcal{B}_\Gamma$ la colecci\'{o}n de todas las intersecciones
+  finitas de elementos de $\Gamma$. Como $\Gamma$ es subbase,
+  $\mathcal{B}_\Gamma$ es base para la topolog\'{\i}a de $X$. 
+  Si $x\in X$, por  la propiedad \textbf{${\boldmath{\mathcal B}1}$}
+  correspondiente a $\mathcal{B}_\Gamma$, existe $U\in
+  \mathcal{B}_\Gamma$, tal que $U$ es vecindad de $x$.      Pero
+  $U=\bigcap\limits_{i=1}^{n} V_{ _i}$ para algunas $V_{ _i}\in
+  \Gamma.$ 
+  Entonces, $x\in V_{ _i}\in \Gamma$ para cualquier $i\in \{1,\ldots, n\}$.
+\end{proof}
+
+
+\begin{theorem}
+  Sea $X$ un subconjunto no vac\'{\i}o. Si $\Gamma$ es una colecci\'{o}n de
+  subconjuntos de $X$ que satisface 
+  \textbf{$\boldsymbol{\Gamma 1}$}, Entonces existe una {\'{u}}nica
+  topolog\'{\i}a $\tau$ en $X$ para la cual 
+  $\Gamma$ es subbase.
+  
+\end{theorem}
+\begin{proof}
+  Sea $\mathcal{B}_\Gamma$ la colecci\'{o}n de todas las intersecciones
+  finitas de elementos de $\Gamma$. En virtud del teorema \ref{T:b}, 
+  basta demostrar que $\mathcal{B}_\Gamma$ cumple con las propiedades
+  \textbf{$\mathcal{B}1$} y \textbf{$\mathcal{B}2$}. 
+  
+  Observemos que \textbf{$\boldsymbol{\Gamma}$1} nos dice que $\Gamma$
+  cubre a X. 
+  Como $\Gamma \subset
+  \mathcal{B}_\Gamma$, tenemos que $\mathcal{B}_\Gamma$ tambi\'{e}n cubre a $X$ y por lo tanto $\mathcal{B}_\Gamma$
+  satisface \textbf{B1}.
+  
+  Por otro lado, consideremos
+  $U, V \in \mathcal{B}_\Gamma$. Entonces,
+  $U=\bigcap\limits_{i=1}^n U_{\gamma_i}$ y $V=\bigcap\limits_{j=1}^p
+  U_{\beta _j},$ con $U_{\gamma_i}\in\Gamma$  y 
+  $U_{\beta_j}\in\Gamma$. Se sigue que 
+$$U\cap V=\big{(}\bigcap\limits_{i=1}^n
+  U_{\gamma_i}\big{)}\cap \big{(}\bigcap\limits_{j=1}^p U_{\beta
+    _j}\big{)}=\bigcap\limits_{i=1}^{n+p} U_{\alpha_i},$$ 
+    
+donde: 
+  \begin{displaymath}
+    U_{\alpha _i} =\left\{\begin{array}{lcc}
+        U_{\gamma_i} & & si\; i\in \{1\dots n\},\\
+        U_{\beta_{i-n}} & & si\; i\in \{ n+1 \dots n+p\}.\\
+      \end{array}\right.
+  \end{displaymath}
+  
+  De lo cual se concluye que $U\cap V\in \mathcal{B}_\Gamma$, y por tanto
+  $\mathcal{B}_\Gamma$ satisface \textbf{$\mathcal{B}2$}. 
+\end{proof}
+
+\begin{example}[Ejemplos]
+\begin{enumerate}
+  \item Sea $X=C([a,b])$ el conjunto de las funciones reales continuas 
+  definidas 
+  en el intervalo $[a,b]$.
+
+  Para cada punto $x\in[a,b]$ y todo par $(r,q)\in\mathbb{R}^2$, definimos 
+  $$M_x^{(r,q)}= \{f\in C[a,b]~|~r<f(x)<q\}.$$
+  
+  Sea $\Gamma=\{M_x^{(r,q)}~|~x\in[a,b],~r,q\in\mathbb{R}\}$. Es
+  f\'acil ver que $\Gamma$ es cubierta. La topolog\'{\i}a generada por $\Gamma$ se
+  llama topolog\'{\i}a de convergencia puntual y al espacio topol\'ogico
+  se le denota como $C_p[a,b]$.
+
+  \item Sea $X=C[a,b]$ el conjunto de las funciones reales continuas definidas 
+  en el intervalo $[a,b]$.
+  
+  Para todo par de intervalos $[c,d],(r,q)$ con $[c,d]\subset[a,b]$ definimos 
+  $$M_{[c,d]}^{(r,q)}= \{f\in C[a,b]\mid f([c,d])\subset(r,q)\}.$$
+  
+  Sea $\Gamma=\{M_{[c,d]}^{(r,q)}\mid c,d,r,q\in \mathbb{R},~a\leq c<d\leq b,~r<q\}$. Es
+  f\'acil ver que $\Gamma$ es cubierta. La topolog\'{\i}a generada por $\Gamma$ se 
+  llama topolog\'{\i}a de convergencia uniforme y al espacio topol\'ogico
+  se le denota como $C_u[a,b]$.
+\end{enumerate}
+\end{example}
+
+
+\section{Bases locales}
+
+\begin{definition}
+  Sean $X$ un espacio topol{\'o}gico, $x\in X$ y $\tau _x$ la
+  totalidad de todas las vecindades de $x$, es decir
+  $\tau_x=\{U~|~U \text{ es vecindad de }x\}$. Una 
+  \textbf{base local} o \textbf{sistema fundamental de
+    vecindades} para $x$ es una subfamilia $\mathcal{B}_x\subset\tau_x$ tal que
+  para cualquier $ U\in\tau_x$, existe $V\in
+  \mathcal{B}_x$  tal que $ V\subset U$.
+  \end{definition}
+ \begin{figure}[h!]
+      \begin{center}
+      \includegraphics*[scale=0.7]{baseloc}
+      \end{center}
+      \caption{Base local}
+   \end{figure}
+
+\begin{example}[Ejemplos]
+ \begin{enumerate}
+  \item Sean $(X,d)$ un espacio m{\'e}trico y $x\in X$,
+  entonces la familia de bolas abiertas con centro en $x$
+  $$\mathcal{B}_x=\left\{B(x,1/n)|~n\in\mathbb{N}\right\}$$ es una
+  base local numerable para $x$. 
+
+ \item Sea $X$ un espacio discreto. Para cada $x\in X$, la familia unipuntual 
+  $\mathcal{B}_x=\big\{\{x\}\big\}$, es una base 
+  local en $x$.
+\end{enumerate}
+\end{example}
+
+\begin{definition}\hfill
+
+\begin{enumerate}
+  \item Sea $X$ un espacio topol\'ogico. Decimos que $X$ es \textbf{primero
+    numerable} o \textbf{I-numerable} si existe una base local
+  numerable para 
+  todo punto $x\in X$.\index{numerable!primero}
+
+  \item Sea $X$ un espacio topol\'ogico. Decimos que $X$ es \textbf{segundo
+    numerable} o \textbf{II-numerable} si existe una base numerable
+  para la topolog\'{\i}a de $X$. \index{numerable!segundo}
+\end{enumerate}
+\end{definition}
+
+
+\begin{example}
+  Sea $X=\mathbb{R}_s$ la recta de Sorgenfrey. Para cada $x\in X$, sea
+  ${\mathcal B}_x=\{ [x,x+1/n) \mid n\in\mathbb{N}\}$. Es f\'acil ver que
+  para cada punto $x\in X$, el conjunto $\mathcal{B}_x$ es base local
+  numerable. As\'{\i}, $\mathbb{R}_s$ es primero numerable. 
+\end{example}
+
+
+\begin{proposition}
+  Sea $X$ un espacio topol\'ogico. Si $X$ es II-numerable entonces $X$
+  es I-numerable.
+\end{proposition}
+\begin{proof}
+  Sea $\mathcal{B}=\{U_1,U_2,\ldots\}$ una base numerable para la topolog\'{\i}a de
+  $X$. Para cada punto $x\in X$, definimos
+  $\mathcal{B}_x=\{U_j\in\mathcal{B}~|~x\in U_j\}$. Ya que
+  $\mathcal{B}_x\subset \mathcal{B}$, es claro que $\mathcal{B}_x$ es
+  numerable para cada $x\in X$. Falta demostrar que $\mathcal{B}_x$ es
+  una base local para $x$.
+
+  Sea $U$ una vecindad de $x$ en $X$. Como $\mathcal{B}$ es base,
+  existe $U_k\in\mathcal{B}$ tal que
+  $x\in U_k\subset U$. Como $x\in U_k$ entonces
+  $U_k\in\mathcal{B}_x$ as\'{\i} que $B_x$ es una base local en $x$. 
+\end{proof}
+
+  El siguiente ejemplo nos brinda un espacio \textbf{I}-numerable que
+  no es \textbf{II}-numerable.
+
+\begin{example}\label{ex:suc}
+Sea $(X,\rho)$ el conjunto de las sucesiones reales acotadas, equipado con la m\'{e}trica
+ del supremo, es decir:
+$$X=\{s=(x_1,\ldots,x_n,\ldots)~\big{|}~|x_i|\leq M_{s}\text{, para cada } i\in\mathbb{N}\} $$
+ $$\rho(s_1,s_2)=\underset{i\in\mathbb{N}}{\mathrm{sup}}\,|x_i-y_i|,~\mathrm{donde}~ s_1=(x_1,x_2,\ldots)~\mathrm{y}~s_2=(y_1,y_2,\ldots).$$
+
+Es claro que $(X,\tau_{\rho})$ es \textbf{I}-numerable (como todo espacio metrizable) 
+pero no es \textbf{II}-numerable, como veremos a continuaci\'{o}n.
+
+En efecto, sean $\mathcal{B}$ una base para $X$ y 
+$$S=\{s=(x_1,x_2,\ldots)\mid x_i\in\{0,1\} \text{, para cada } i\in\mathbb{N}\}.$$
+
+ Claramente $S$ no es numerable y adem\'{a}s $\rho(s,t)=1$ para cualesquiera 
+ $s,t\in S$ con $s\neq t$.
+ Como $\mathcal{B}$ es base, para cada $s\in S$ existe $U_s \in \mathcal{B}$ tal que
+ $s\in U_s\subset B(s,\frac{1}{2})$.
+ As\'{\i}, si $s,t\in S,~\mathrm{y}~s\neq t$,
+ $U_s\cap U_t\,\subset\,B(s,\frac{1}{2})\cap B(t,\frac{1}{2})=\emptyset$,
+ en particular $U_s\neq U_t$.
+ As\'{\i} la correspondencia $s\mapsto U_s$ es una funci\'{o}n inyectiva de $S$ en $\mathcal{B}$
+ y por tanto $\mathcal{B}$ no es numerable.
+\end{example}
+
+\begin{theorem}\label{metricoseparable=metrico2numerable}
+  Sea $(X,\rho)$ un espacio m\'etrico. Entonces $X$ es \textbf{II}-numerable si
+  y s\'olo si $X$ es separable.
+\end{theorem}
+\begin{proof}
+    Supongamos que $X$ es \textbf{II}-numerable, y sea $\mathcal{B}=\{U_1,U_2,\ldots\}$ una
+    base numerable para $X$. Para cada $n\in\mathbb{N}$ elegimos un punto $a_n\in U_n$, y 
+    definimos $A=\{a_n\}_{n\in\mathbb{N}}$. Entonces para cada abierto no vac\'{\i}o $U$ existe un 
+    abierto b\'{a}sico $U_n\in\mathcal{B}$ tal que $U_n\subset U$. Esto implica que $a_n\in U\cap A$ y 
+    por lo tanto $A$ es denso en $X$.
+\medskip
+    
+    Supongamos ahora que $X$ es separable, y sea $A=\{a_k\}_{k\in\mathbb{N}}$ un subconjunto
+    denso numerable de $X$. Sea $\mathcal{B}=\{B(a_k,1/n)~|~a_k\in A,~n\in\mathbb{N}\}$.
+    Es claro que $\mathcal{B}$ es numerable. Afirmamos que $\mathcal{B}$ es una base para la
+    topolog\'{\i}a de $X$. 
+
+    En efecto, si $U$ es un abierto en $X$ y $x\in U$, existe $r>0$ tal que 
+    $B(x,r)\subset U$. 
+
+    Sea $n\in\mathbb{N}$ tal que $1/n<r/4$. Como $A$ es denso, $A\cap B(x,1/n)\neq\emptyset$
+    y por lo tanto existe  $a_k\in A$ tal que $a_k\in B(x,1/n)$; por consiguiente $x\in  B(a_k,1/n)$.
+
+    Afirmamos que $ B(a_k,1/n)\subset U$. A saber, sea $z\in  B(a_k,1/n)$. Calculando las 
+    distancias, tenemos que 
+$$d(z,x)\leq d(z,a_k)+d(a_k,x)\leq 1/n+1/n < r/4+r/4< r ,$$ 
+    consecuentemente $z\in B(x,r)\subset U$. Entonces $ B(a_k,1/n)\subset U$, que es lo que se quer\'{\i}a
+    demostrar.   
+\end{proof}
+
+
+\begin{theorem}\label{axiomas bases locales}
+  Sea $X$ un espacio topol{\'o}gico. Para cada $x\in X$ sea
+  $\mathcal{B}_x$ una base local  en $x$. Entonces se cumplen los
+  siguientes enunciados: 
+  \begin{description}
+  \item[$\mathcal{BL}1$] Si $V\in \mathcal{B}_x$, entonces $x\in V$.
+  \item[$\mathcal{BL}2$] Si $y\in U\in\mathcal{B}_x$ entonces existe $
+    V\in\mathcal{B}_y$  tal 
+    que $V\subset U$.
+  \item[$\mathcal{BL}3$] Si $V_1,V_2\in\mathcal{B}_x$ entonces
+    existe $ V\in\mathcal{B}_x$  tal que 
+    $V\subset V_1\cap V_2$.
+  \end{description}
+\end{theorem}
+\begin{proof}
+  Los enunciados \textbf{$\mathcal{BL}1$} y \textbf{$\mathcal{BL}2$}
+  son evidentes. Para demostrar \textbf{$\mathcal{BL}3$}, simplemente
+  notemos que si $V_1$ y $V_2$ pertenecen a $\mathcal{B}_x$, esto implica que
+  $V_1\cap V_2$ es vecindad de $x$, por lo que existe $V\in\mathcal{B}_x$, tal
+  que $V\subset V_1\cap V_2$. 
+    
+\end{proof}
+\begin{theorem}
+  Sea $X$ un conjunto no vac\'{\i}o. Supongamos que para cada $x\in X$,
+  existe una colecci\'{o}n $\mathcal{B}_x$ de subconjuntos de $X$   que
+  cumple con 
+  \textbf{$\mathcal{BL}1$, $\mathcal{BL}2$, $\mathcal{BL}3$}. Entonces
+  existe una {\'{u}}nica topolog{\'\i}a 
+  $\tau$ en $X$ para la cual $\mathcal{B}_x$ es base
+  local en $x$ para todo $x\in X$.
+\end{theorem}
+\begin{proof}
+  Sea $\mathcal{B}=\bigcup\{\mathcal{B}_x|~x\in X\} $. En virtud del
+  teorema~\ref{T:b} basta ver que $\mathcal{B}$ satisface las propiedades
+  \textbf{$\mathcal{B}1$} y \textbf{$\mathcal{B}2$} de una base. 
+
+  Sea $x\in X$, entonces por \textbf{$\mathcal{BL}1$} existe $U\in\mathcal{B}_x$ con $x\in U$,
+  por lo que $\mathcal{B}$ satisface \textbf{$\mathcal{B}1$}. 
+
+  Para demostrar \textbf{$\mathcal{B}2$} consideremos
+  $U_1,U_2\in\mathcal{B}$, y sea $x\in U_1\cap 
+  U_2$. Como $U_i\in\mathcal{B}$, entonces $U_i\in\mathcal{B}_{x_i}$
+  para alguna $x_i$, $i=1,2.$ 
+  Dado que $x\in U_1$ y $x\in U_2$, por \textbf{$\mathcal{BL}2$} existen
+  $V_1, 
+  V_2\in\mathcal{B}_x$ tal que   $V_1\subset U_1$,
+  $V_2\subset U_2$. Ahora, por \textbf{$\mathcal{BL}3$} existe
+  $V\in\mathcal{B}_x\subset \mathcal{B}$ tal que 
+  $$x\in 
+  V\subset V_1\cap V_2\subset U_1\cap U_2 .$$
+  As\'{\i}, $\mathcal{B}$
+  satisface \textbf{$\mathcal{B}2$} y por tanto, por el teorema
+  \ref{T:b}, $\mathcal{B}$ es base para una
+  \'{u}nica topolog\'{\i}a $\tau$ en $X$. 
+
+  Verifiquemos que para todo $x\in X$, $\mathcal{B}_x$ es base local
+  en $x$. Sea $W$ una vecindad de $x$, como $\mathcal{B}$ es base de
+  la topolog\'{\i}a $\tau$, existe un $V\in\mathcal{B}$ tal que $x\in
+  V\subset W$. De la definici\'{o}n de $\mathcal{B}$, se sigue que
+  $V\in\mathcal{B}_z$ para alg\'{u}n punto $z\in X$. Ahora, la propiedad
+  \textbf{$\mathcal{BL}2$} nos garantiza la existencia de un elemento
+  $U\in\mathcal{B}_x$ tal que $U\subset V$. As\'{\i}, $U\subset W$, con lo
+  que queda demostrado que $\mathcal{B}_x$ es base local en $x$. 
+  %%%%%
+  La unicidad de la topolog\'{\i}a $\tau$ es evidente.
+\end{proof}
+
+\begin{example}\label{plano de niemytzki} 
+  Sean $L_1$ y $L_2$ subconjuntos de $\mathbb{R}^2$ definidos por
+  $$L_1=\{(x_1,x_2)\in\mathbb{R}^2\mid x_2=0\}.$$ 
+  $$L_2=\{(x_1,x_2)\mid x_2>0\}.$$
+  Llamemos $L=L_1\cup L_2$.Para cada $x\in L$  definamos $\mathcal{B}_x$
+  como sigue:
+  \begin{enumerate}[a)]
+  \item Si $x\in L_2$ entonces $\mathcal{B}_x=\{B(x,r)\cap L|~r>0\}$,
+    donde $B(x,r)$ denota la bola abierta usual en $\mathbb{R}^2$ de
+    radio $r$ y centro en $x$. 
+  \item Si $x\in L_1$ entonces $\mathcal{B}_x=\{U(x,r)|~r>0\}$, d\'{o}nde
+    $U(x,r)$ es la uni\'{o}n del punto $x$ y de  la bola abierta de radio
+    $r$ tangente a $L_1$ en $x$. 
+  \end{enumerate}
+  
+  Para todo punto $x\in X$, $\mathcal{B}_{x}$ satisface las
+  propiedades \textbf{$\mathcal{BL}1$, $\mathcal{BL}2$,\textnormal{ y} $\mathcal{BL}3$} del
+  teorema~\ref{axiomas bases locales} y por tanto generan una topolog\'{\i}a $\tau$ en $L$. El
+  espacio topol\'{o}gico $(L,\tau)$ recibe el
+  nombre de \bf{plano de Niemytzki}. 
+
+\begin{figure}[h!]
+      \begin{center}
+      \includegraphics*[scale=0.7]{planodeN}
+      \end{center}
+      \caption{El Plano de Niemytzki}
+   \end{figure}  
+\end{example}
+
+
+Antes de enunciar las siguientes definiciones, conviene recordar que dos cardinales 
+siempre son comparables y la relaci\'{o}n as\'{\i} definida $<$ resulta ser un
+buen orden. Es decir, toda colecci\'{o}n de cardinales posee un primer
+elemento, al que llamaremos m\'{\i}nimo. 
+\begin{definition}
+  Sea $X$ un espacio topol{\'o}gico, se define:
+  \begin{equation}
+    w(X)=\min\{\alpha \mid \text{existe una base } \mathcal{B}\text{ con
+    }|\mathcal{B}|=\alpha\}\notag. 
+  \end{equation}
+  A $w(X)$ se le llama el \textbf{peso} de $X$.
+\end{definition}
+\begin{definition}Sean $X$ un espacio topol\'{o}gico y $x\in X$.
+  El \textbf{peso local} en $x$   o
+  \textbf{car{\'a}cter} de $X$ en  $x$ es el cardinal $\chi(X,x)$ dado por
+  \begin{equation}
+    \chi(X,x)=\min\{\alpha \mid \text{existe una base local } \mathcal{B}_x
+    \text{ con } |\mathcal{B}_x|=\alpha\}\notag.
+  \end{equation}
+  El \textbf{car\'{a}cter} de $X$ se define como el cardinal $\chi(X)$ dado por 
+  
+  \begin{equation}
+    \chi(X)=\min\{\alpha\mid \alpha\geq\chi(X,x)\text{, para todo }x\in X\}\notag.
+  \end{equation}
+\end{definition}
+
+De las definiciones anteriores se sigue que cualquier espacio
+topol\'{o}gico $X$ satisface la desigualdad $\chi(X)\leq w(X)$. 
+
+Los espacios topol\'{o}gicos con bases y bases locales numerables poseen
+propiedades muy importantes, algunas de las cuales ser\'{a}n  estudiadas
+m\'{a}s adelante. Observemos que un espacio topol\'{o}gico $X$ es
+primero numerable si $\chi(X)=\aleph_0$. An\'{a}logamente, $X$ es 
+segundo numerable si $w(X)=\aleph_0$. 
+
+
+
+
+\begin{example} La recta real es  segundo numerable (ver  Ejemplo~\ref{r2n}).
+\end{example}
+\begin{example}  
+ La recta de Sorgenfrey (ver Ejemplo~\ref{sorgenfrey}) es primero
+ numerable pero no es segundo numerable. 
+\begin{proof} 
+  Denotemos por $\mathbb{R}_s$ la recta de Sorgenfrey. Para cada
+  $x\in \mathbb{R}_s$, la familia $\mathcal{B}_x=\{[x,x+1/n) \mid n\in\mathbb{N}\}$
+  es una base local numerable, por lo que $\chi(\mathbb{R}_s)=\aleph_0$. 
+  
+  Sea $\mathcal{B}$ una base para $\mathbb{R}_s$. Para cada $x\in \mathbb{R}$, $[x, x+1)$ es
+  una vecindad de $x$, luego existe $U_x\in\mathcal{B}$ tal que $x\in U_x\subset[x, x+1)$. 
+  Claramente $x\neq y$ implica que $U_x\neq U_y$, 
+  luego $\{U_x\mid x\in \mathbb{R}\}\subset\mathcal{B}$ no es numerable y por tanto 
+  $\mathcal{B}$ tampoco lo es.
+\end{proof}
+\end{example}
+
+
+En el cap\'{\i}tulo anterior introdujimos la definici\'{o}n de convergencia de
+sucesiones en espacios m\'{e}tricos. En los espacios topol\'{o}gicos, esta
+definici\'{o}n se generaliza de la siguiente manera. 
+
+\begin{definition} 
+  Sea $X$ un espacio topol\'{o}gico y $\{x_n\}_{n\in\mathbb{N}}$ una sucesi\'{o}n
+  en $X$. Se dice que $\{x_n\}_{n\in\mathbb{N}}$ converge al punto $x\in
+  X$, si para toda vecindad $U$ de $x$, existe $M\in\mathbb{N}$, tal que
+  $x_n\in U$ para todo $n>M$. Este hecho se denota escribiendo $\lim\limits_{n\to\infty}a_n=x$ 
+\end{definition}
+
+\begin{theorem}
+  Sea $X$ es un espacio topol\'{o}gico primero numerable y $A\subset
+  X$. Entonces $x\in \overline{A}$ si y s\'{o}lo si existe una sucesi\'{o}n
+  contenida en $A$, $\{a_n\}_{n\in\mathbb{N}}$, tal que
+  $\lim\limits_{n\to\infty}a_n=x$. 
+\end{theorem}
+\begin{proof}
+  Primero supongamos que $x\in \overline{A}$. Sea
+  $\mathcal{B}_x=\{V_n\}_{n\in\mathbb{N}}$ una base local numerable en
+  el punto $x$. 
+  Podemos suponer sin p\'{e}rdida de generalidad que $V_n\subset V_m$ si
+  $n>m$, ya que de no ser as\'{\i} podemos tomar $V'_n=\bigcap\limits_{i=1}^n V_n$.  
+  La colecci\'{o}n as\'{\i} definida tambi\'{e}n es una base local en $x$ y claramente cumple lo que 
+  deseamos. Construiremos  una sucesi\'{o}n $\{a_n\}_{n\in\mathbb{N}}\subset A$
+  tal que $\lim\limits_{n\to\infty}a_n=x$. 
+
+  Como $V_n$ es una vecindad de $x$ para toda $n\in\mathbb{N}$ y $x$
+  es punto de adherencia de $A$, $V_n\cap A\neq\emptyset$. De esta
+  manera, para cada $n\in\mathbb{N}$, podemos escoger un punto $a_n\in
+  V_n\cap A$. Afirmamos que $\{a_n\}_{n\in\mathbb{N}}$ es la sucesi\'{o}n
+  buscada. En efecto, si $U$ es una vecindad de $x$, existe
+  $V_m\in\mathcal{B}_x$ tal que $V_m\subset U$. Consecuentemente, si
+  $n>m$, $V_n\subset V_m$. En conclusi\'{o}n, $a_n\in V_m\subset
+  U$ para toda $n>m$. As\'{\i}, $\lim\limits_{n\to\infty}a_n=x$. Por otro
+  lado, es evidente que $\{a_n\}_{n\in\mathbb{N}}$  est\'{a} contenida en
+  $A$. De este modo queda demostrado que $\{a_n\}_{n\in\mathbb{N}}$ es
+  la sucesi\'{o}n buscada. 
+  
+  Ahora, si existe una sucesi\'{o}n $\{a_n\}_{n\in\mathbb{N}}$ contenida en
+  $A$ y que converge a $x$, entonces para cualquier vecindad, $U$ de
+  $x$, existe $m\in\mathbb{N}$ tal que si $n>m$, $a_n\in
+  U$. Por lo tanto $U\cap A\neq\emptyset$. As\'{\i}, $x\in \overline{A}$
+  como se quer\'{\i}a demostrar. 
+\end{proof}
+
+
+\section{Subespacios Topol{\'o}gicos}
+
+Dado un subconjunto $Y$ de un espacio topol\'{o}gico $X$, existe
+una manera muy natural de definir una topolog\'{\i}a en $Y$. A continuaci\'{o}n
+explicaremos c\'{o}mo. 
+
+\begin{proposition}\label{tau A es topologia}
+  Sean $X$ un
+  espacio topol{\'o}gico y $Y\subset X$. Consideremos el conjunto 
+  $\tau_Y=\{U\cap Y \mid U\in\tau\}$. Entonces
+  $\tau_Y$ es una topolog\'{\i}a en Y.
+\end{proposition}
+
+\begin{proof} \hfill
+  \begin{enumerate}
+  \item Como $\emptyset$ y $X$ son elementos de $\tau$, tenemos
+    $Y=X\cap Y$ y $\emptyset =\emptyset\cap Y$, por tanto $Y$ y $\emptyset$ son elementos de
+    $\tau_Y$. 
+    
+  \item Sea $\{V_\alpha\}_{\alpha\in\mathcal{A}}$ una familia
+    arbitraria de elementos de $\tau_Y$. Para cada
+    $\alpha\in\mathcal{A}$, existe un elemento $U_\alpha\in\tau$, tal
+    que 
+    $V_\alpha=U_\alpha\cap Y$.
+    Luego,
+    $$ \bigcup\limits_{\alpha\in \mathcal{A}}V_\alpha
+    =\bigcup_{\alpha\in \mathcal{A}}(U_\alpha\cap Y)= 
+    \Big{(}\bigcup_{\alpha\in \mathcal{A}}U_\alpha \Big{)}\cap Y.$$
+    Como
+    $\bigcup\limits_{\alpha\in \mathcal{A}}U_\alpha\in\tau$,
+    podemos concluir que $ \bigcup\limits_{\alpha\in
+      \mathcal{A}}V_\alpha \in\tau_Y$ 
+    
+  \item Sean $V_1, V_2\in \tau_Y$. Entonces, existen $U_1$ y $U_2$
+    en $\tau$ tales que $V_1=U_1\cap Y$ y $V_2=U_2\cap Y$. De este modo
+    $$V_1\cap V_2=(U_1\cap Y)\cap(U_2\cap Y)=(U_1\cap U_2)\cap Y.$$
+    Pero $U_1\cap U_2\in\tau$, por lo que $V_1\cap V_2 \in \tau_Y$. 
+    
+  \end{enumerate}
+\end{proof}
+\begin{definition} 
+  Sean $(X,\tau)$ un espacio topol\'{o}gico y $Y\subset X$. La topolog\'{\i}a
+  $\tau_Y$  definida en la  proposici\'{o}n \ref{tau A es topologia}
+  recibe el nombre de 
+  \textbf{topolog\'{\i}a inducida por $\tau$}, y sus elementos se llaman
+  \textbf{abiertos en Y} o \textbf{abiertos relativos}. En este caso
+  diremos que $(Y,\tau_Y)$  es un \textbf{subespacio} de $(X,\tau)$. 
+\end{definition}
+
+Resulta claro de esta definici\'{o}n, que si $\mathcal{B}$ es base para la topolog\'{\i}a de $X$, 
+$\mathcal{B}_Y=\{U\cap Y\mid U\in\mathcal{B}\}$ es base para la topolog\'{\i}a inducida en $Y$. 
+An\'{a}logamente, la topolog\'{\i}a del espacio ambiente hereda sub-bases y bases locales a los 
+subespacios. Resulta claro entonces que si $Y$ es un subespacio de $X$, $w(Y)\leq w(X)$ y 
+$\chi(Y)\leq\chi(X)$. Veamos algunos ejemplos de subespacios.
+
+\begin{example} 
+  Consideremos el plano euclideano $\mathbb{R}^2$.
+  
+   
+  Sea  $Y=\{(x,y)\in\mathbb{R}^2\mid y=0\}$. Entonces la topolog\'{\i}a inducida en $Y$
+  coincide con la  topolog\'{\i}a usual en la recta real, identificando a $Y$ con $\mathbb{R}$  
+  mediante $x\mapsto(x,0)$
+  \begin{proof} Bastar\'{a} demostrar que los b\'{a}sicos relativos son abiertos de la topolog\'{\i}a
+  usual, y que los b\'{a}sicos usuales son abiertos de la topolog\'{\i}a inducida.
+  Sea $(a,b)\subset\mathbb{R}$. Tenemos que $(a,b)=B(\frac{a+b}{2},r)\cap Y$, 
+  con $r=\frac{b-a}{2}$. En consecuencia, el intervalo $(a,b)$ es un abierto relativo.
+
+  Sea $B(\bar{x}, r)$ un abierto b\'{a}sico de $\mathbb{R}^2$, con $\bar{x}=(x,y)$. 
+  Si $|y|\geq r$, entonces $B(\bar{x}, r)\cap Y=\emptyset$. Si en cambio $|y|<r$, 
+  es f\'{a}cil ver que 
+  $$B(\bar{x}, r)\cap Y= (x-\sqrt{r^2-y^2},\,x+\sqrt{r^2-y^2})$$
+  es un abierto de $\mathbb{R}$.
+  
+  \end{proof} 
+\end{example}
+
+\begin{example}
+  Si $X$ es un espacio topol\'{o}gico discreto, cualquier subconjunto $Y\subset X$ 
+  con la topolog\'{\i}a inducida, ser\'{a} un espacio discreto. 
+\end{example}
+\begin{proposition}
+  Sean  $X$ un espacio topol{\'o}gico, $Y\subset X$ y $B\subset Y$.
+  Entonces $B$ es cerrado en $Y$ si y s\'{o}lo si existe un cerrado $B'$
+  en $X$ tal que 
+  $B=Y\cap B'$.
+\end{proposition}
+\begin{proof}
+  Denotemos por $\tau$ la topolog\'{\i}a de $X$. Supongamos que $B$  es cerrado en $Y$.
+  Entonces $Y\setminus B\in\tau_Y$, por lo que existe $U\in\tau$ tal que $Y\setminus B=U\cap
+  Y.$ De este modo  $B=Y\cap(X\setminus U)$. Si $B'=X\setminus U$,
+  claramente $B'$ es cerrado en $X$ y $B=B'\cap Y$. 
+  
+  Ahora supongamos que existe un cerrado $B'\subset X$ tal que
+  $B=Y\cap B'$. Notemos que
+   $$Y\setminus B=Y\setminus(Y\cap B')=Y\cap(X\setminus B')$$
+  Como $X\setminus B'$ es abierto en $X$, concluimos que $Y\setminus B$ es abierto en $Y$
+  y por tanto $B$ es cerrado en $Y$. 
+\end{proof}
+
+\begin{example}
+  Consideremos $\mathbb{R}$ con la topolog\'{\i}a usual. Sea $Y=(0,1)\cup
+  [6,7]$. Entonces cada uno de los conjuntos $(0,1)$ y $[6,7]$ es abierto y
+  cerrado en $Y$. 
+\end{example}
+
+
+Sea $(X,\tau)$  un espacio topol\'{o}gico, $Y\subset X$ y $Z\subset
+Y$. Observemos que $Z$ puede verse como un subespacio topol\'{o}gico de
+$X$ o como un subespacio topol\'{o}gico de $Y$. Denotemos
+por $\tau_Z$ la topolog\'{\i}a en $Z$ inducida por $\tau$, y por
+$(\tau_Y)_Z$ la topolog\'{\i}a inducida por $\tau_Y$. Resulta ser que ambas
+topolog\'{\i}as coinciden; es decir, $(\tau_Y)_Z=\tau_Z$. La demostraci\'{o}n
+de este hecho es muy sencilla y se deja como ejercicio al lector. 
+
+
+\section{Ejercicios del cap\'{\i}tulo}
+%%% topologías
+\begin{enumerate}
+  
+  
+\item Sean $X=\{a,b,c\}$ y
+  $\tau=\{\emptyset,\{a,b,c\},\{b\},\{a,b\},\{c,b\}\}$, probar que
+  $\tau$ es una topolog\'{\i}a en $X$.
+  
+  
+\item Sea $X\neq\emptyset$ y $\{\tau_\alpha\}_{\alpha\in \mathcal{A}}$
+  una familia de 
+  topolog\'{\i}as en $X$. Probar que $\tau=\bigcap\limits_{\alpha\in
+    \mathcal{A}}\tau_\alpha$ es 
+  topolog\'{\i}a de $X$.
+  
+  
+  
+\item Prueba que en un espacio m\'etrico finito, cualquier subconjunto
+  es abierto (es decir, el espacio es discreto).
+\item Verdadero o Falso:
+  \begin{enumerate}[a)]
+  \item Si $\tau$ es una topolog\'{\i}a para $X$, entonces
+    $$\tau'=\{U\subset X\mid U\notin \tau\}$$ es una topolog\'{\i}a para $X$.
+    
+  \item    $\tau=\{A\subset\mathbb{Z}~\big{|}~|A|\geq
+    2\}\cup\{\emptyset,\mathbb{Z}\}$ es 
+    una topolog\'{\i}a para $\mathbb{Z}$.
+  \end{enumerate}
+  
+\item Encuentra ${\rm{Int}}\, \mathbb{Q}$ y $\overline{\mathbb{Q}}$ en
+  $\mathbb{R}$ provisto con la topolog\'{\i}a usual. 
+\item Si $X$ es un espacio topol\'{o}gico y $A\subset X$ ?`Ser\'{a} cierto que
+  ${\rm{Int}}\, A={\rm{Int}}\,\overline{A}$? Demu{\'e}stralo o da un contraejemplo. 
+  
+\item Para dos subconjuntos cualesquiera $A$ y $B$ de un espacio
+  topol\'{o}gico,  ¿cu\'{a}les de las siguientes contenciones son ciertas?
+  (Demuestra o da un contraejemplo). 
+  \begin{enumerate}
+  \item $\overline{A\cap B}\subset\overline A\cap\overline B$,
+  \item $\overline{A\cap B} \supset \overline A\cap\overline B$,
+  \item ${\rm{Int}}\,A\cup {\rm{Int}}\,B\subset {\rm{Int}}\,(A\cup B)$,
+  \item ${\rm{Int}}\,A\cup {\rm{Int}}\,B\supset {\rm{Int}}\,(A\cup B)$,
+  \item $\overline A\setminus\overline B\subset\overline{A\setminus B}$.
+  \end{enumerate}
+  
+\item Da un ejemplo donde $\overline{\underset{\iota\in\mathcal{I}}{\bigcup}
+    A_\iota}\neq\underset{\iota\in\mathcal{I}}{\bigcup}\overline{A_\iota}.$
+\item Sea $D$ un subconjunto denso en un espacio topol\'{o}gico $X$. ¿Es
+  cierto que $D\cap A$ es denso en $A$ para cualquier subespacio $A$ de $X$? 
+  
+\item  Si $U\subset X$ es abierto y $A\subset X$ es cualquier
+  subconjunto, entonces 
+  $\overline{U\cap\overline A}=\overline{U\cap A}$.
+  
+  
+\item Encuentra un ejemplo en el que ${\rm{Int}}\,A\subset{\rm{Int}}\,B$, pero $A\not\subset  B.$
+\item Demostrar directamente el teorema de Kuratowski (sin hacer referencia al teorema \ref{phi=int}): Sea X un conjunto, $\alpha :
+  2^X\to 2^X$ una funci\'{o}n que satisface: 
+  \begin{enumerate}
+  \item $\alpha (\emptyset )=\emptyset$
+  \item $\alpha (A\cup B)=\alpha (A) \cup \alpha (B)$
+  \item $\alpha (\alpha (A))=\alpha (A)$
+  \item $A\subset \alpha (A)$
+  \end{enumerate}
+  Entonces, existe una \'{u}nica topolog\'{\i}a $\tau$ en X, tal que $\alpha (A)=
+  \overline A$, donde $\overline A$ denota la cerradura de $A$ respecto a $\tau$.
+ %%Sugerencia: $\tau=\{U\subset X\mid \alpha(X\setminus U)=X\setminus U\}$ es la topología buscada 
+\item Sea $(X,\tau)$ un espacio topol\'{o}gico en el que
+  $${\rm{Int}}\,(A\cup B)={\rm{Int}}\,A\cup {\rm{Int}}\,B,$$ para cualesquiera dos subconjuntos 
+  $A$ y $B$ de $ X$. Demostrar que $\tau$ es la topolog\'{\i}a discreta.
+\item Sean $\tau$ y $\mu $ topolog\'{\i}as en un conjunto X. Demostrar que
+  $\tau\subset\mu$ si y s\'{o}lo si para todo $A\subset X$. ${\rm{Int}}\,_\tau\,A\subset {\rm{Int}}\,_\mu\,A$.
+%%densidad
+\item Sea $(X,\tau)$ un conjunto infinito dotado de la topología cofinita, y $A\subset X$ un conjunto infinito. Demuestra que $A$ es denso en $X$.
+ 
+%%bases
+\item Una progresi\'{o}n aritm\'{e}tica en $\mathbb{Z}$ es un conjunto
+$$A_{a,b}=\{\ldots, a-2b,a-b,a,a+b,a+2b,\ldots\}$$
+con $a,b\in\mathbb{Z}$ y $b\neq 0$. Probar que el conjunto de todas las progresiones aritm\'{e}ticas
+$$\mathcal{A}=\{A_{a,b}\mid a,b\in\mathbb{Z}, b\neq 0\}$$
+es base para alguna topolog\'{\i}a en $\mathbb{Z}$. La topolog\'{\i}a resultante se conoce como la \textbf{topolog\'{\i}a de la progresi\'{o}n aritm\'{e}tica} en $\mathbb{Z}$.
+
+\item Sea $\{\tau_t\mid t\in T\}$ una familia de topolog\'{\i}as en un
+  conjunto $X$. Demostrar que 
+  $\Gamma=\bigcup\{\tau_t\mid t\in T\}$ puede generar una topolog\'{\i}a en $X$ como
+  sub-base, pero no necesariamente como base. 
+\item Sea $\Gamma =\{[a,b]\mid a,b\in \mathbb{R}\}$. ¿Qué topolog\'{\i}a
+  genera $\Gamma$ como sub-base? 
+\item Demostrar que se puede construir una base local $\mathcal
+  {B}_p$ en cada punto $p\in \mathbb {Q}$ de tal modo que 
+  $\bigcup\{\mathcal {B}_p\mid p\in\mathbb{Q}\}$ no sea base de $\mathbb{R}$.
+\item Sean $B_1$ y $B_2,$ bases para la misma topolog\'{\i}a $\tau$ en un
+  conjunto X. Probar que la familia
+  $$\mathcal{B}=\{U\in B_1\mid \text{ existe}~V\in B_2, \text{ tal que
+  }~U\subset V\}$$ tambi\'{e}n es base para $\tau$. 
+\item Sean $B_1$ y $B_2,$ bases para la misma topolog\'{\i}a $\tau$ en un
+  conjunto X. Probar que la familia
+  $$\mathcal{B}=\{U\in B_1\mid \text{ existen } V,W\in B_2 \text{ tales
+    que }~V\subset U\subset W\}$$ tambi\'{e}n es base para $\tau$. 
+
+\item Demuestra que si $d$ es una métrica en $X$, entonces $d_1:X\times X\to \mathbb R$ y $d_2:X\times X\to\mathbb R$ dadas por
+$$d_1(x,y)=\min\{1,d(x,y)\},\,\text{ y }\,d_2(x,y)=\frac{d(x,y)}{1+d(x,y)}$$
+son dos métricas en $X$ que generan la misma topología que $d$. 
+  
+  %%% subespacios
+\item Sean $X=(0,2)$ y $A=\{1,\frac{1}{2},\frac{1}{3},\ldots\}\subset  X$. Encuentra 
+  $\overline{A}$ en $X$.
+\item  Considera el plano euclidiano $\mathbb{R}^2$ y  
+  $A={\{(x,sen(1/x))\mid x>0\}}\subset \mathbb{R}^2$. Encuentra la cerradura de $A$. 
+\item Determina en qu\'e subespacio de
+  $\mathbb{R}$, el conjunto $(0,1]$ es abierto:
+  \begin{enumerate}[a)]
+  \item $A=(0,\infty).$
+  \item $B=(-\infty,1].$
+  \item $C=(0,1].$
+  \item $D=[0,1].$
+  \item $F=\{-1\}\cup(0,1].$
+  \end{enumerate}
+\item Sea
+  $X=\{0,1,\frac{1}{2},\frac{1}{3},\ldots\}$ con la topolog\'{\i}a
+  inducida de la recta real. Describe los abiertos en este espacio. 
+\item Sean $(X,\tau)$ un espacio topol\'{o}gico y  $A\subset X$. Demuestra
+  los siguientes enunciados: 
+  \begin{enumerate}
+  \item Si $A$ es cerrado en $X$, entonces un conjunto $ B\subset A$
+    es cerrado en $A$ si y s{\'o}lo si $B$ es cerrado en $X$. 
+  \item Si $A$ es abierto en $X$, entonces un conjunto $ B\subset A$
+    es abierto en $A$ si y s{\'o}lo si $B$ es abierto en $X$. 
+    
+  \end{enumerate}
+\item Sean $A,B,C$ subespacios de $X$ tales que $C\subset A\cap
+  B$. Prueba que $C$ es abierto en $A\cup B$ si es abierto en $A$ y en 
+  $B$. Prueba que $C$ es cerrado en $A\cup B$ si es cerrado en $A$ y
+  en $B$.
+  
+%EJEMPLOS  
+\item Demuestra que el plano de Niemytzki (ver Ejemplo~\ref{plano de
+    niemytzki}) es primero numerable pero no segundo numerable.
+\item Demuestra que la recta de Sorgenfrey no es un espacio metrizable.
+\item Demuestra que el plano de Niemytzki no es un espacio  metrizable.
+  
+\end{enumerate}
+
+
+%\end{document}

@@ -1,0 +1,1430 @@
+
+\chapter{Grupo Fundamental}
+
+
+ En este capítulo introduciremos la noción de homotop\'ia entre dos funciones para desarrollar el importante concepto de \textit{grupo fundamental}.
+ Como veremos más adelante, el grupo fundamental no sólo será una poderosa herramienta que nos ayudará a determinar, en algunos casos,
+ cuando dos espacios no son homeomorfos, sino que nos va permitir demostrar teoremas importantes dentro de las matemáticas,
+ como son el Teorema Fudamental del Álgebra y el Teorema de Brower, entre otros.
+
+ A lo largo del capítulo denotaremos por $I$ al intervalo cerrado $[0,1]$.
+
+\section{Trayectorias homotópicas}
+
+ Comencemos por definir  qué es una \textit{homotopía}.
+
+\begin{definition}
+ Sean $X$ y $Y$ dos espacios topológicos y $f,g:X\to Y$ dos funciones continuas. Una \textbf{homotopía} entre $f$ y $g$ es una función continua
+ $H:X\times I\to Y$, tal que 
+ \begin{itemize}
+ 	\item[i)] $H(x,0)=f(x),$
+	\item[ii)] $H(x,1)=g(x)$
+ \end{itemize}
+ para todo punto $x\in X$. 
+En este caso diremos que $f$ y $g$ son funciones \textbf{homotópicas} y lo denotaremos por $f\simeq g$ o $H:f \simeq g$.
+
+ Además, denotaremos por $H_t:X\to Y$ la función dada por
+ \[ H_t(x) = H(x,t). \]
+\end{definition}
+
+\begin{example}
+ Sean $X$ un espacio topológico, $V\subset \mathbb R^n, n\geq 1$ un subconjunto convexo y $f,g:X\to \mathbb V$ dos funciones continuas. La función $H:X\times \mathbb{I}\to\mathbb V$
+ dada por
+  $$H(x,t)=tg(x)+(1-t)f(x)$$
+ define una homotopía entre $f$ y $g$. 
+\end{example}
+
+\subsection{Homotopías Relativas}
+
+ Un caso particular de las funciones homotópicas, son las funciones homtópicas relativas a un conjunto dado.
+\begin{definition}
+Sean $X$ y $Y$ espacios topológicos, $A\subset X$ un subconjunto arbitrario y  $f,g:X\to Y$ dos funciones continuas. Se dice que $f$ es \textbf{homotópica a $g$ relativo a $A$} (denotado $f\simeq g$(rel $A$) o $f\simeq_A g$), si $f(a)=g(a)$ para todo $a\in A$, y existe una homotopía $H:X\times \mathbb{I} \to Y$ entre $f$ y $g$ tal que
+$$H(a,t)=f(a)=g(a),\text{ para todo }a\in A.$$
+En este caso diremos que $H$ es una homotopía relativa a $A$ entre $f$ y $g$.
+\end{definition}
+
+\begin{example}\label{contraible homotopico}
+Sea $X\subset \mathbb R^{n}$ un conjunto convexo. Si $Y$ es un espacio topológico arbitrario,   $A\subset X$ un subconjunto cualquiera y $f,g:Y\to X$ son funciones continuas tales que 
+$f(a)=g(a)$ para todo $a\in A$, entonces $f$ y $g$ son homotópicas relativas a $A$. En efecto, la función
+$H:Y\times I\to X$ dada por
+$$H(x,t)=tf(x)+(1-t)g(x),$$
+es una homotopía entre $f$ y $g$ relativa a $A$.
+\end{example}
+A continuación demostraremos un pequeño lema que nos será de gran utilidad en las demostraciones siguientes.
+\begin{lemma}\label{union de funciones}
+Sean $X$ y $Y$  espacios topológicos y $A,B\subset X$ dos subespacios cerrados tales que
+$X=A\cup B$.
+Supongamos que $f:A\to Y$ y $g:B\to Y$ son funciones continuas tales que $f(x)=g(x)$ para todo $x\in A\cap B$. Entonces la función
+$h:X\to Y$ dada por
+\begin{equation*}
+h(x)=\begin{cases}
+f(x),&\text{ si }x\in A,\\
+g(x),&\text{ si }x\in B.\\ 
+\end{cases}
+\end{equation*}
+está bien definida y es continua.
+\end{lemma}
+\begin{proof}
+Es claro que $h$ está bien definida. Demostremos su continuidad.
+Sea $G\subset Y$ cerrado en $Y$, entonces
+\begin{align*}
+h^{-1}(G)&=\{x\in X\mid h(x)\in G\}\\
+&=\{x\in A\mid f(x)\in G\}\cup\{x\in B\mid g(x)\in G\}\\
+&=f^{-1}(G)\cup g^{-1}(G).
+\end{align*}
+Como $f$ y $g$ son continuas, $f^{-1}(G)$ y $g^{-1}(G)$ son cerrados en $A$ y en $B$, respectivamente. Pero $A$ y $B$ son cerrados en $X$, entonces $f^{-1}(G)$ y $g^{-1}(G)$ son cerrados en $X$, y por lo tanto su unión también es un cerrado en $X$. Así queda demostrado que $h$ es continua.
+\end{proof}
+
+
+
+\begin{proposition}
+ Sean $X$ y $Y$ dos espacios topológicos y $A\subset X$. La relación $\simeq_A$ es una relación de equivalencia en $C(X,Y)$. 
+\end{proposition}
+
+\begin{proof} 
+ Probaremos que $\simeq_A$ es reflexiva, sim\'etrica y transitiva, construyendo las homotop\'ias respectivas.
+ \begin{enumerate}
+  \item Reflexividad. Dada $f: X \to Y$ continua, la función $H:X \times \mathbb{I} \to Y$ dada por $H(x,t) = f(x)$ es una homotopía relativa a $A$
+        entre $f$ y $f$. 
+  \item Simetr\'ia. Si $f$ y $g$ son dos funciones  de $X$ en $Y$ hom\'otopas relativas a $A$, entones hay una homotopía relativa a $A$,
+        $H:X\times \mathbb{I}\to Y$ tal que
+        \[H(x,0) = f(x),\quad  H(x,1) = g(x) \quad  \text{y} \quad H(a,t) = f(a) = g(a)   \]
+       para todo $t \in \mathbb{I}$ y para todo $a \in A$. De esta manera, la función $G:X\times \mathbb{I}\to Y$ dada por
+       $$ G(x,t) = H(x,1-t) $$
+       es una función continua. Además, 
+       \[G(x,0) = H(x,1) = g(x), \quad G(x,1) = H(x,0) = f(x)   \]
+       \[\text{y} \quad G(a,t) = H(a,1-t) = f(a) = g(a)   \]
+       para todo $x\in X$, $t \in \mathbb{I}$ y para todo $a \in A$.
+ 
+       Entonces $G$ es una homotopía relativa a $A$ entre $g$ y $f$.
+ \medskip
+ 
+ \item Transitividad. Sean $f$, $g$ y $h$ funciones continuas de $X$ en $Y$ tales que $f \simeq_A g$ y $g \simeq_A h$.
+       Entonces, $f(a)=g(a)=h(a)$ para todo $a\in A$, por lo que $f(a)=h(a)$ para todo $a\in A$. Por otro lado, existen $H_1, :X\times \mathbb{I}\to Y$ una homotopía entre $f$ y $g$ relativa a $A$, y $H_2:X\times \mathbb{I}\to Y$ una homotopía entre $g$ y $h$ relativa a $A$.
+ Definamos $H:X\times \mathbb{I}\to Y$ de la siguiente manera
+ \begin{equation*}
+ H(x,t)=\begin{cases}
+ H_1(x,2t),&\text{ si }t\in [0,1/2],\\
+ H_2(x,2t-1),&\text{ si }t\in [1/2,1].\\
+ \end{cases}
+ \end{equation*}
+
+
+ Por el lema~\ref{union de funciones}, la función $H$ es continua. Veamos que es una homotopía entre $f$ y $h$. Por un lado,
+ $H(x,0)=H_1(x,0)=f(x)$ y $H(x,1)=H_2(x,1)=h(x)$. Por otro lado, como $H_1$ y $H_2$ son homotopías relativas a $A$, entonces  para todo $t\in \mathbb{I}$ y para todo $a\in A$, se tiene que
+ $$ H_1(a,t)=f(a)=g(a)=h(a)=H_2(a,t).$$ 
+  Así, podemos concluir que $H$ es una homotopía entre $f$ y $h$ relativa a $A$.
+ \end{enumerate}
+\end{proof}
+
+Particularmente, si $f$ y $g$ son trayectorias entre dos puntos $x_0$ y $x_1$ de un espacio topológico $X$, diremos que $f$ y $g$ son \textit{homotópicas relativas a }$\{0,1\}$, 
+si existe una homotopía $H:\mathbb{I}\times \mathbb{I}\to X$ entre $f$ y $g$, tal que para todo $t\in \mathbb{I}$,
+$$H(0,t)=f(0)=g(0)=x_0$$
+y
+$$H(1, t)=f(1)=g(1)=x_1.$$ 
+
+
+
+\subsection{Tipo Homotópico}
+\begin{definition}
+Se dice que dos espacios topológicos $X$ y $Y$ son  \textbf{homotópicamente equivalentes} o tienen el mismo \textbf{tipo homotópico}  si existen funciones $f:X\to Y$ y $g:Y\to X$ tales que
+$g\circ f\simeq \rm{Id}_X$ y $f\circ g\simeq \rm{Id}_Y$. En estas circunstancias, diremos que las funciones $f$ y $g$ son equivalencias homotópicas.
+\end{definition}
+
+
+\begin{example}
+$\mathbb R^n\setminus \{0\}$ es homotópicamente equivalente a $\mathbb S^{n-1}$. En efecto,
+Si $r:\mathbb R^n\setminus \{0\}\to \mathbb S^{n-1}$ está definida por
+$$r(x)=\frac{x}{\|x\|},$$
+y $j:\mathbb S^{n-1} \to \mathbb R^n\setminus \{0\}$ es la función inclusión. Entonces
+$r\circ j=1_{\mathbb S^{n-1}}$. Por otro lado, 
+$j\circ r$ es homotópica a la identidad en $\mathbb R^{n}\setminus\{0\}$ mediante la homotopía
+$$H:\mathbb R^{n}\setminus \{0\}\times \mathbb{I}\to\mathbb R^{n}\setminus\{0\}$$
+dada por
+$$H(x,t)=t\frac{x}{\|x\|}+(1-t)x.$$
+Por lo tanto, $\mathbb R^n\setminus \{0\}$ y  $\mathbb S^{n-1}$ son homotópicamente equivalentes.
+\end{example}
+
+Claramente si dos espacios son homeomorfos, entonces también son homotópicamente equivalentes. 
+Sin embargo, abundan ejemplos de espacios que no son homeomorfos, pero que sí son homotópicamente equivalentes.
+
+\begin{example} $\mathbb{R}^n$ es homotópicamente equivalente a $\{0\}$. En efecto, consideremos $i:\{0\}\to\mathbb{R}^n$ la inclusión, y $f:\mathbb{R}^n\to\{0\}$ la constante.
+Entonces $f\circ i= Id_{\{0\}}$, en tanto que $i\circ f$ es homotópica a la identidad en $\mathbb{R}^n$ mediante
+$$H:\mathbb{R}^n\times \mathbb{I}\to \mathbb{R}^n$$
+dada por 
+$$H(x,t)= tx. $$
+Así, $\mathbb{R}^n$ es homotópicamente equivalente a $\{0\}$, pero claramente estos espacios no son homeomorfos, pues no existe una biyección entre ellos. Cabe aclarar aquí que el ejemplo anterior también ilustra esta situación: $\mathbb{R}^n\setminus\{0\}$ y $\mathbb{S}^{n-1}$ son espacios homotópicos pero no son homeomorfos, ya que $\mathbb{S}^{n-1}$ es compacto mientras que $\mathbb{R}^n\setminus\{0\}$ no lo es.
+\end{example}
+
+ Si $X$ y $Y$ son dos espacios homotópicamente equivalentes, lo denotaremos por $X\simeq Y$.
+Como veremos a continuación, la relación $\simeq$ es una relación de equivalencia en la clase de los espacios topológicos. Antes de demostrar esto, probemos el siguiente lema.
+
+\begin{lemma}\label{composicion homotopicas}
+Sean $X$, $Y$ y $Z$ espacios topológicos.
+Consideremos $f,g:X\to Y$ y $\psi,\varphi:Y\to Z$ funciones continuas entre estos espacios. Entonces los siguientes enunciados se cumplen:
+\begin{enumerate}
+\item Si $f\simeq g$, relativo a $A$ ($A\subset X$) entonces $\varphi\circ f\simeq \varphi\simeq g$ relativo a $A$.
+\item Si $\varphi\simeq \psi$ relativo a $B$ ($B\subset Y$) entonces $\varphi\circ f\simeq\psi\circ f$ relativo a $f^{-1}(B)$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+1. Sea $G:X\times I\to Y$ una homotopía entre $f$ y $g$ relativo a $A$ tal que 
+$$G_0=f,~~\text{ y }~~G_1=g.$$
+Entonces la función continua $H:X\times I\to Z$ dada por
+$$H_t=\varphi\circ G_t$$
+es una homotopía ente $\varphi \circ f$ y $\varphi \circ g$. Además, como $G$ es una homotopía relativa a $A$, se tiene que para todo $a\in A$, y para todo $t\in I$, $G_t(a)=f(a)=g(a)$. Así,
+$$H_t(a)=\varphi(G_t(a))=\varphi(f(a))=\varphi(g(a)),$$
+por lo que $H$ es una homotopía entre $\varphi\circ f$ y $\varphi\circ g$ relativo a $A$.
+\bigskip
+
+2. Sea $F:Y\times I\to Z$ una homotopía ente $\varphi$ y $\psi$  relativa a $B$ tal que
+$$F_0=\varphi,~~\text{ y }~~F_1=\psi.$$
+Entonces la función continua $J:X\times I\to Z$ dada por
+$$J_t=F_t\circ f$$
+es una homotopía ente $\varphi \circ f$ y $\psi \circ f$. Además, como $F$ es una homotopía relativa a $B$, se tiene que para todo $b\in B$, y para todo $t\in I$, $F_t(b)=\varphi(b)=\psi(b)$.
+Así, si $x\in f^{-1}(B)$, entonces $f(x)\in B$, por lo que
+$$J_t(x)=F_t(f(x))=\varphi(f(x))= \psi(f(x)),~~\text{ para todo }t\in I .$$
+De este modo, podemos concluir que $J$ es una homotopía relativa a $f^{-1}(B)$, entre $\varphi\circ f$ y $\psi\circ f$.
+\end{proof}
+
+\begin{theorem}
+La relación $\simeq$ es una relación de equivalencia en la clase de todos los espacios topológicos.
+\end{theorem}
+
+\begin{proof}
+Es claro que $\simeq$ es una relación reflexiva y simétrica. Demostremos que también es transitiva.
+
+Sean $X$, $Y$ y $Z$ espacios topológicos tales que $X\simeq Y$ y $Y\simeq Z$. Entonces existen funciones continuas $f:X\to Y$, $g:Y\to X$, $\varphi:Y\to Z$ y $\psi:Z\to Y$, tales que $g\circ f\simeq 1_X$, $f\circ g\simeq 1_Y$, $\psi\circ \varphi\simeq 1_Y$ y $\varphi\circ \psi\simeq 1_Z$.
+
+
+Consideremos las funciones $\varphi\circ f:X\to Z$ y $g\circ \psi:Z\to Y$.
+Por el lema anterior, tenemos que
+$$(g\circ \psi)\circ(\varphi\circ f)=(g\circ(\psi\circ\varphi))\circ f\simeq g\circ 1_Y\circ f=g\circ f.$$
+Pero $g\circ f\simeq 1_X$, de donde podemos concluir que $(g\circ \psi)\circ(\varphi\circ f)\simeq 1_X$.
+
+Análogamente, $$(\varphi\circ f)\circ(g\circ \psi)=\varphi\circ (f\circ g)\circ \psi\simeq \varphi\circ 1_Y \circ \psi=\varphi\circ  \psi.$$
+Como $\varphi\circ  \psi\simeq 1_Z$ podemos concluir que $(\varphi\circ f)\circ(g\circ \psi)\simeq 1_Z$. Así, queda demostrado que $X$ y $Z$ son homotópicamente equivalentes.
+\end{proof}
+
+Así, la relación $\simeq$ divide a la clase de todos los espacios topológicos en clases de quivalencia. Si $X$ es un espacio topológico, denotaremos su clase de equivalencia por
+$$[X]=\{Y| Y\simeq X\}.$$
+
+
+\subsection{Espacios contraibles}
+\begin{definition} Se dice que un espacio topológico $X$ es \textbf{contraible} si 
+$1_X\simeq f_c$, donde $f_c$ es la función constante $f_c:X\to \{c\}$, i.e. $f_c(x)=c$ para todo $x\in X$.
+\end{definition}
+
+\begin{example}
+$\mathbb R^n$  es contraible. En efecto, la función $H:\mathbb R^n\times I\to \mathbb R^n$ dada por
+$$H_t(x)=tx,$$
+ es una homotopía entre la identidad en $\mathbb R^n$ y la función constante $0$.
+ \end{example}
+
+\begin{example} Si $X\subset\mathbb R^{n}$ es un subconjuto convexo, entonces $X$ es contraible. Para cualquier punto $c\in X$, la función
+$H:X\times I\to X$ dada por
+$$H_t(x)=tx+(1-t)c$$
+define una homotopía entre $1_X$ y la función constante $f_c:X\to X$.
+\end{example}
+
+\begin{theorem}
+Sea $X$ un espacio topológico. $X$ es contraible si y sólo si $X\simeq \{*\}$, donde $\{*\}$ es el espacio topológico
+formado por un sólo punto.
+\end{theorem}
+\begin{proof}
+Primero supongamos que $X$ es contraible y demostremos que $X\simeq *$. Sea $f:X\to *$ la función
+dada por $f(x)=*$. Fijemos un punto $x_0\in X$, y definamos $c:*\to X$ por $c(*)=x_0$.  Demostremos
+que $c\circ f \simeq 1_X$ y que $f\circ c\simeq 1_{*}$. 
+Notemos que $c\circ f =\zeta _{x_0}:X\to x_0 $, donde $\zeta_{x_0}(x)=x_0$. Como $X$ es
+contraible, $\zeta_{x_0}\simeq 1_X$, así que $c\circ f\simeq 1_X$. Por otro lado $f\circ c=1_{*}$, y por tanto $f\circ c\simeq 1_{*}.$ Entonces, $X$ es homotópicamente equivalente a $*$.
+
+Ahora supongamos que $X$ y $*$ son homotópicamente equivalentes. Entonces existen funciones
+$f:X\to *$ y $g:*\to X$ tales que $g\circ f\simeq 1_X$ y $f\circ g \simeq 1_{*}$. Claramente, la 
+única función posible $f$, es la función constante $c$ definida anteriormente. De igual manera,
+$g(*)=x_0$ para algún $x_0\in X$. Así, $g\circ f$ es una función constante homotópica a la identidad.
+En otras palabras, $X$ es contraíble.
+\end{proof}
+
+\begin{proposition}
+Sea $Z$ un espacio contraíble. Entonces, para todo espacio $X$, para cualesquiera dos funciones $f,g:X\to Z$, $f$ y $g$ son homotópicas. 
+\end{proposition}
+
+\begin{proof}
+Como $Z$ es contraible, existe una función constante $c:Z\to Z$, tal que $1_Z$ y $c$ son homtópicas.
+Por el lema~\ref{composicion homotopicas}, $f=1_Z\circ f$ es homotópica a $c\circ f$. Análogamente, $g$ es homotópica a $c\circ g$. Pero $c\circ g=c\circ f$, por lo que $f$ y $g$ son homotópicas, como se quería demostrar.
+\end{proof}
+
+
+\section{El producto de trayectorias}
+
+\begin{definition}
+ Sea $X$ un espacio topológico. Si $f:I\to X$ es una trayectoria de $x_0$ a $x_1$  y $g:I\to X$ es una trayectoria de $x_1$ a $x_2$, definimos
+ el \emph{producto} $f*g$ de $f$ y $g$ como la trayectoria de $x_0$ a $x_2$ dada por
+ \begin{equation} \label{operacion asterisco}
+  f*g(t) = \begin{cases}
+            f(2t),   & \text{si} t \in [0,1/2], \\
+            g(2t-1), & \text{si} t \in [1/2,1]. \\
+           \end{cases}
+ \end{equation}
+\end {definition}
+
+ La continuidad de $f*g$ es una consecuensia inmediata del lema~\ref{union de funciones}. 
+
+\begin{lemma} \label{operacion asterisco respeta c. e.}
+ Sean $X$ un espacio topológico. Si $f,f':I\to X$ son trayectorias homotópicas entre $x_0$ y $x_1$ y $g,g':I\to X$ son trayectorias homotópicas
+ entre $x_1$ y $x_2$, entonces
+ $$f*g \sim f'*g'.$$
+\end{lemma}
+
+\begin{proof}
+ Como $f \sim f'$, existe una homotopía  entre $f$ y $f'$ relativa a $\{0,1\}$, digamos $F:I\times I\to X$. Análogamente, como $g \sim g'$, existe 
+ $G:I\times I\to X$, una homotopía  entre $g$ y $g'$, relativa a $\{0,1\}$.
+
+ Definamos $H:I\times I\to X$ por
+ \begin{equation*}
+  H(s,t)=\begin{cases}
+          F(2s,t), & \text{ si } s \in [0,1/2],\\
+          G(2s-1,t), & \text{ si } s \in [1/2,1].\\
+         \end{cases}
+ \end{equation*}
+
+\begin{figure*}[h]
+\begin{center}
+      \includegraphics*[scale=.5]{cac}
+\end{center}
+\end{figure*}
+
+ Como $F(1,t)=x_1=G(0,t)$, la función $H$ está bien definida y es continua. Veamos que también es una homotopía entre $f*g$ y $f'*g'$,
+ relativa a $\{0,1\}$. Tenemos que $H(0, t)=F(0,t)=x_0$, y $H(1, t)=G(1,t)=x_2$. Por otro lado, 
+
+ \begin{equation*}
+  H(s,0)=\begin{cases}
+  F(2s,0),&\text{ si }s\in[0,1/2]\\
+  G(2s-1,0),&\text{ si }s\in[1/2,1].\\
+ \end{cases}
+ =
+ \begin{cases}f(2s),&\text{ si }s\in[0,1/2]\\
+  g(2s-1),&\text{ si }s\in[1/2,1].\\
+ \end{cases}
+=f*g(s).
+ \end{equation*} 
+ Así, $H(s,0)=f*g(s)$. Análogamente se demustra que $H(s,1) = f'*g'(s)$, lo cual completa la demostraci\'on.
+\end{proof}
+
+\begin{lemma}\label{reparametrizacion}
+ Sea $f:I \to X$ una trayectoria de $x_0$ a $x_1$. Si $\alpha:I \to I$ es una finci\'on continua con $\alpha(0)=0$ y $\alpha(1)=1$,
+ entonces $f\alpha \sim f$.
+\end{lemma}
+
+\begin{proof}
+ Definamos a homotop\'ia $H:I \times I \to X$ como
+ \[ H(s,t) = f((1-t)s + t\alpha(s)). \]
+ Entonces, \begin{eqnarray*}
+            H(s,0) & = & f(s) \\
+            H(s,1) & = & f(\alpha(s)) = (f\alpha) (s) \\
+            H(0,t) & = & f(0) \quad \text{y} \quad H(1,t) = f(1)
+           \end{eqnarray*}
+
+ De donde concluimos que $H$ es la homotop\'ia relativa entre $f$ y $f\alpha$ buscada.
+\end{proof}
+
+ En otras palabras, este lema dice que cualquier reparametrizaci\'on de una trayectoria es homot\'opica a la trayectoria original.
+
+\begin{lemma}\label{o.a. asociativa}
+ Sean $X$ un espacio topológico, $f,g,h:I\to X$ tres trayectorias en $X$ tales que $f(0)=x_0$, $f(1)=g(0)=x_1$, $g(1)=h(0)=x_2$ y $h(1)=x_3$.
+ Entonces
+ $$(f*g)*h\simeq f*(g*h)\text{ relativo a }\{0,1\}.$$
+\end{lemma}
+
+\begin{proof}
+Escribamos las funciones $(f*g)*h$ y $f*(g*h)$.
+\begin{equation*}
+(f*g)*h(s)=
+\begin{cases}
+f*g(2s),&\text{ si }s\in[0,1/2],\\
+h(2s-1),&\text{ si }s\in[1/2,1].\\
+\end{cases}
+=
+\begin{cases}
+f(4s),&\text{ si }s\in[0,1/4],\\
+g(4s-1),&\text{ si }s\in[1/4,1/2],\\
+h(2s-1),&\text{ si }s\in[1/2,1].\\
+\end{cases}
+\end{equation*}
+
+
+\begin{equation*}
+f*(g*h)(s)=
+\begin{cases}
+f(2s),&\text{ si }s\in[0,1/2],\\
+g*h(2s-1),&\text{ si }s\in[1/2,1].\\
+\end{cases}
+=
+\begin{cases}
+f(2s),&\text{ si }s\in[0,1/2],\\
+g(4s-2),&\text{ si }s\in[1/2,3/4],\\
+h(4s-3),&\text{ si }s\in[3/4,1].\\
+\end{cases}
+\end{equation*}
+
+
+Sea $\rho:I\to I$ la función continua, dada por
+
+\begin{equation*}
+\rho(s)=\begin{cases}
+s/2&\text{ si }s\in[0,1/2],\\
+s-1/4,&\text{ si }s\in[1/2,3/4],\\
+2s-1,&\text{ si }s\in[3/4,1].\\ 
+\end{cases}
+\end{equation*}
+
+ Por el lema anterior funciones, $(f*g)*h$ y $\big ((f*g)*h \big ) \rho$ son homotópicas. Pero 
+ $\big ((f*g)*h \big ) \rho = f*(g*h)$, por lo que  $(f*g)*h \sim f*(g*h)$.
+\end{proof}
+
+
+
+ Para cada $x\in X$, denotemos por $e_x:I\to X$ la trayectoria dada por $e_x(t)=x$, para todo $t\in X$. 
+
+\begin{lemma}\label{ex es neutro}
+ Sean $X$ un espacio topológico y $f:I\to X$ una trayectoria entre dos puntos $x_0$ y $x_1$. 
+ Entonces $e_{x_0}*f \sim f$  y $f*e_{x_1} \sim f$.
+\end{lemma}
+
+\begin{proof}
+Para demostrar que $e_{x_0}*f\simeq f$, notemos que 
+
+\begin{equation*}
+e_{x_0}*f(s)=\begin{cases}
+x_0,&\text{ si }0\leq s\leq 1/2,\\
+f(s),&\text{ si }1/2\leq s\leq 1,\\
+\end{cases}
+=f(\rho(s)),
+\end{equation*}
+ 
+ donde la función $\rho:I\to I$ está dada por
+ \begin{equation*}
+ \rho(s)=\begin{cases}
+ 0,&\text{ si }0\leq s\leq 1/2,\\
+2s-1,&\text{ si }1/2\leq s\leq 1,\\
+ \end{cases}
+ \end{equation*}
+ 
+ Por el lema\ref{reparametrizacion}, se tiene que las funciones $f\circ \rho$ y $f$ son hotmotópicas relativo a $\{0,1\}$. De este modo, concluimos que
+ $e_{x_0}*f$ y $f$ son funciones homotópicas relativo a $\{0,1\}$.
+ Análogamente se demuestra que $f$ y $f*e_{x_1}$ son homotópicas relativo a $\{0,1\}$. Los detalles quedan como ejercicio al lector. 
+\end{proof}
+
+ Dada una trayectoria $f:I \to X$, con extremos en $x_0$ y en $x_1$, se define la trayetoria \textit{inversa} $\overline{f}:I \to X$
+ de la siguiente manera:
+ $$\overline f(s)=f(1-s).$$
+ Notemos que $\overline f$ es una trayectoria de $x_1$ a $x_0$ que recorre el mismo \textit {camino} que $f$, pero en sentido inverso.
+ Además, $\overline{ \overline f}=f$. En efecto,
+$\overline{\overline f}(s)=\overline f(1-s)=f(1-(1-s))=f(s)$.
+
+\begin{lemma}\label{inverso bien definido}
+Sea $X$ un espacio topológico y $f,g:I\to X$ dos trayectorias homotópicas entre dos puntos $x_0$ y $x_1$.
+Entonces $\overline f\simeq  \overline g$ relativo a $\{0,1\}$.
+\end{lemma}
+
+\begin{proof}
+Como $f$ y $g$ son trayectorias homotópicas, existe una homotopía de trayectorias $F:I\times I$ entre $f$ y $g$. Entonces $F(s,0)=f(s)$, $F(s,1)=g(s)$, $F(0,t)=x_0$ y $F(1,t)=x_1$
+Definamos $H:I\times I$ de la siguiente manera
+$$H(s,t)=F(1-s,t).$$
+Entonces $H$ es una función continua. Veamos que es una homotopía relativa a $\{0,1\}$.
+En efecto, tenemos $H(0,t)=F(1,t)=x_1$; $H(1,t)=F(0,t)=x_0$; $H(s,0)=F(1-s,0)=f(1-s)=\overline f(s)$; y $H(s,1)=F(1-s,1)=g(1-s)=\overline g(s)$. Por lo tanto $H$ es la homotopía  deseada.
+\end{proof}
+
+\begin{lemma}\label{inverso}
+Sean $X$ un espacio topológico y $f:I\to X$ una trayectoria entre dos puntos $x_0$ y $x_1$. Entonces $f*\overline f\simeq e_{x_0}$ relativo a $\{0,1\}$ y $\overline f*f\simeq e_{x_1}$ relativo a $\{0,1\}$.
+\end{lemma}
+
+\begin{proof} Para demostrar que $ f*\overline f\simeq e_{x_0}$
+consideremos la función $H:I\times I\to X$, dada por
+\begin{equation*}
+H(s,t)=\begin{cases}
+	f\left(2s\right),&\text{ si } 0 \leq s \leq \frac{t}{2} ,\\
+	f(t), & \text{ si } \frac{t}{2} \leq s \leq 1 - \frac{t}{2}, \\
+	f(2(1-s)),&\text{ si }s\in[1/2,1].\\ 
+\end{cases}
+\end{equation*}
+ Si $s=\frac{t}{2}$, entonces $f(2s)=f(t)$ y si $s = 1- \frac{t}{2}$ entonces $f(2(1-s)) = f(t)$, por lo que $H$ está bien definida
+ y por el lema~\ref{union de funciones} podemos concluir que $H$ es continua. Demostremos que es una homotopía relativa a $\{0,1\}$.
+
+Tenemos $H(0,t)=f(0)=x_0$. Si $s=1$, entonces $H(1,t)=f(0)=x_0$. 
+Por otro lado, si $t=0$, entonces $H(s,0)=f(0)=e_{x_0}(s)$.  Y si $t=1$, entonces $H(s,1)=f*\overline{f}(s)$.
+
+ Consecuentemente, $H$ es una homotopía  entre $e_{x_0}$ y
+$ f*\overline f$, relativa a $\{0,1\}$. 
+Para demostrar que $\overline f*f\simeq e_{x_1}$, recordemos que $\overline{\overline f}=f$. Así, tenemos que
+$$e_{x_1}\simeq\overline f*\overline{\overline{f}}=\overline f*f.$$
+Por lo tanto la prueba está completa.
+\end{proof}
+
+
+\section{Grupo Fundamental}
+
+ Recordemos que un grupo es una terna $(G,e,*)$ en donde $G$ es un conjunto, $e\in G$ un elemento distinguido, llamado \textit{neutro}
+ y $*$ es una operación 
+ $$*:G\times G\to G$$
+ cuya imagen $*(a,b)$ denotamos por $=a*b$ o simplemente $ab$ cuando no hay otras operaciones en $G$. La \textit{multiplicacio\'on} $*$ y el 
+ neutro $e$ satisfacen a su vez las siguientes propiedades:
+ \begin{enumerate}[(a)]
+  \item $*$ es asociativa, esto es, $(a*b)*c = a*(b*c)$, para cualesquiera $a,b,c\in G$.
+  \item $a*e=e*a=a$ para cualquier $a\in G$.
+  \item Para todo $a\in G$ existe otro elemento $a^{-1} \in G$ tal que $a^{-1}*a = a*a^{-1} = e$. Este elemento es \'unico y se llaman 
+        \textit{inverso} de $a$.
+ \end{enumerate}
+
+ Ejemplos conocidos de grupos son:
+ \begin{itemize}
+  \item El sistema de los n\'umeros enteros $\mathbb{Z}$ con la suma como operaci\'on y el cero como neutro.
+  \item El sistema de los n\'umeros reales  $(\mathbb{R},0,+)$.
+ \end{itemize}
+ Aqu\'i a operaci\'on satisface adem\'as la condici\'on $a*b = b*a$. Los grupos con esta propiedad se llaman \textit{abelianos}.
+ No todos los grupos son abelianos:
+ \begin{itemize}
+  \item Los grupos de matrices invertibles $GL(n)$ por ejemplo, forman un grupo no abeliano con la multiplicaci\'on usual de matrices 
+        como operaci\'on.
+  \item Los grupos de (algunas) funciones biyectivas en ciertos conjuntos forman grupos por lo general no abelianos bajo la composisci\'on usual
+        de funciones.
+ \end{itemize}
+
+ En nuestro caso, el producto $f*g$ de trayectorias har\'a las veces de la operaci\'on en un grupo. En efecto, si $X$ es un espacio topológico, 
+ la relación $\simeq$ (relativo a $\{0,1\}$) induce una partición en clases de equivalencia en el conjuto $C(I,X)$. Denotemos por 
+ $$[f] = \{g\in C(I,X) \:|\: g \simeq f\}. $$
+ Si $f$ es una trayectoria entre $x_0$ y $x_1$, y $g$ es una trayectoria entre $x_1$ y $x_2$, la operación $f*g$ definida en la ecuación
+ (\ref{operacion asterisco}) se extiente a las clases de equivalencia de $C(I,X)$ como sigue:
+ $$[f] \cdot [g] = [f*g].$$
+
+ Por el Lema~\ref{operacion asterisco respeta c. e.}, esta operación queda bien definida, sin embargo, tiene la desventaja de que cualesquiera dos
+ trayectorias $f$ y $g$ en $X$ no siempre se pueden operar. Para remediar esta situaci\'on consideramos trayectorias cuyos puntos inicial y final
+ coinciden.
+
+ \begin{definition}
+  Sea $X$ un espacio topológico y $x_0 \in X$ un punto arbitrario. Un \textbf{lazo} basado en $x_0$ es una trayectoria 
+  $f:I\to X$ tal que $f(0) = f(1) = x_0$.
+ \end{definition}
+
+ Si $X$ es un espacio topológico y $x_0$ in $X$, denotamos por $\Omega(X,x_0)$ al conjunto de  lazos  basados en $x_0$. Este es un subconjunto
+ de $C(I,X)$. De este modo, la homotop\'ia de trayectorias divide tambi\'en a $\Omega(X,x_0)$ en clases de equivalencia. Denotamos ahora
+ las clases de equivalencia de lazos en $x_0$ como 
+ $$\pi(X,x_0) = \{[f]\:|\: f \in  \Omega(X,x_0)\} = \Omega(X,x_0) /_\simeq .$$ 
+
+ Si $f$ y $g$ son lazos en $x_0$, entonces también lo es $f*g$, por lo que 
+ $$[f] \cdot [g] = [f*g] \in \pi(X,x_0)$$
+ y estamos en condiciones de reeununciar algunos de los resultados hasta ahora probados con la siguiente proposici\'on. 
+
+ \begin{proposition}
+  Sean $X$ un espacio topol\'ogico y $x_0 \in X$. Entonces la terna $(\pi(X,x_0), [e_{x_0}], \cdot)$ es un grupo. 
+ \end{proposition}
+ 
+ \begin{proof}
+ Para demostrar que $\cdot$ es asociativa, consideremos $[f], [g], [h]\in \pi(X,x_0)$. Entonces
+ $$([f]\cdot[g]) \cdot [h] = [f*g]\cdot[h] = [(f*g)*h] = [f*(g*h)] = [f]\cdot[g*h] = [f]\cdot([g]\cdot[h])$$  
+ por el Lema~\ref{o.a. asociativa}. Veamos ahora que la clase $[e_{x_0}]$ de la constante $x_0$ es neutro para $\pi_1(X,x_0)$.
+ Sea $[f] \in \pi(X,x_0)$, entonces
+ $$[f] \cdot [e_{x_0}] = [f*e_{x_0}] = [f] = [e_{x_0}*f] = [e_{x_0}]\cdot[f]$$
+ por el Lema~\ref{ex es neutro}. Por último, observemos que todo elemento de $\pi(X,x_0)$ tiene un inverso: dado $[f]\in \pi(X,x_0)$,
+ $$[f]^{-1}=[\overline {f}]$$
+ funciona como inverso. En efecto, por el Lema~\ref{inverso bien definido}, $[f]^{-1}$ está bien definido. Adem\'as, 
+ $$[f]\cdot[f]^{-1} = [f]\cdot[\overline f]=[f*\overline f] = [e_{x_0}] = [\overline f*f] = [\overline f]\cdot [f] = [f]^{-1}\cdot[f] $$
+ por el Lema~\ref{inverso}.
+ \end{proof}
+
+ La terna $(\pi(X,x_0),[e_{x_0}],\cdot)$ recibe el nombre de \textbf{Grupo Fundamental  relativo a} $x_0$, y lo denotaremos de aquí en 
+ adelante simplemente por $\pi(X,x_0)$
+
+ Cuando estudiamos grupos, las funciones de inter\'es son aquellas que preservan la operaci\'on del dominio y la respectiva en el codominio.
+ Formalmente, un \textit{homomorfismo} entre dos grupos $G$ y $G'$, es una función $\varphi:G \to G'$, tal que
+ $$\varphi(a b) = \varphi(a) \varphi(b) $$
+ para cualesquiera $a,b \in G$. Los homomorfismos biyectivos reciben  el nombre de \textit{isomorfismos}. Es f\'acil ver que el inverso de un
+ isomorfismo es tambi\'en un homomorfismo de grupos, resultado no v\'alido para la continuidad de funciones invertibles.
+
+ \begin{theorem}\label{teorema grupos iguales}
+  Sea $X$ un espacio topológico y $\alpha:I \to X$ una trayectoria entre dos puntos $x_0$ y $x_1$ de $X$. Entonces $\alpha$ induce un isomorfismo
+  $\widetilde{\alpha}:\pi(X,x_0) \to \pi(X,x_1)$ definido por
+  $$\widetilde{\alpha}([f]) = [\overline{\alpha}*f*\alpha]$$.
+ \end{theorem}
+ 
+ \begin{proof}
+ Dados dos lazos $f$ y $g$ basados en $x_0$, 
+ $$\widetilde{\alpha}([f]) = \widetilde{\alpha} ([g]) \quad \Leftrightarrow \quad \overline{\alpha}*f*\alpha \simeq \overline{\alpha}*g*\alpha.$$
+
+ Entonces, si concatenamos por la derecha con $\overline{\alpha}$, tenemos que
+ \begin{eqnarray*}
+  (\overline{\alpha}* f *\alpha)*\overline{\alpha} & \simeq & (\overline{\alpha}* g *\alpha) * \overline{\alpha}   \\
+  \overline{\alpha}* f *(\alpha*\overline{\alpha}) & \simeq &  \overline{\alpha}* g *(\alpha * \overline{\alpha})   \\
+  \overline{\alpha}* f                             & \simeq &  \overline{\alpha}* g.
+ \end{eqnarray*}
+ y al contatenar por la izquierda con $\alpha$ obtenemos 
+ $$f \simeq \alpha * \overline{\alpha}*f \simeq \alpha * \overline{\alpha}*g \simeq g.$$
+ Así, $[f] = [g]$ y podemos concluir que $\widetilde{\alpha}$ es inyectiva.
+
+ Por otro lado, si $h$ es un lazo en $x_1$. Entonces $f=\alpha * h* \overline{\alpha}$ es un lazo en $x_0$ y claramente
+ $$\widetilde\alpha([f])=(h).$$
+ Por lo tanto, $\widetilde{\alpha}$ es una biyección.
+
+ Ahora consideremos dos lazos $f$ y $g$ basados en $x_0$. Entonces
+
+ \begin{align*}
+  \widetilde{\alpha}([f] \cdot [g]) & = \widetilde{\alpha}([f*g]) \\ 
+                                    & = [\overline\alpha*(f*g)*\alpha]\\
+                                    & = [\overline\alpha*f*\alpha*\overline\alpha*g*\alpha]\\
+                                    & = [\overline\alpha*f*\alpha]\cdot[\overline\alpha*g*\alpha]\\
+                                    & = \widetilde\alpha ([f])\cdot\widetilde\alpha([g]).
+ \end{align*}
+ Por lo tanto, $\widetilde{\alpha}$ es un homomorfismo biyectivo y un isomorfismo.
+\end{proof}
+
+\begin{corollary}\label{c.c. implica gfi}
+ Si $X$ es un espacio conexo por trayectorias, entonces para cualesquiera dos puntos $x_0$  y $x_1$ de $X$, los grupos $\pi(X,x_0)$ y
+ $\pi(X,x_1)$ son isomorfos.
+\end{corollary}
+
+ En otras palabras, el grupo fundamental es \'unico (salvo isomorfismo) o no depende del punto base.
+
+\begin{definition}
+ Sea $X$ un espacio topológico. Diremos que $X$ es \textbf{simplemente conexo} si
+ \begin{itemize}
+ 	\item[i)] $X$ es conexo por trayectorias y
+	\item[ii)] $\pi(X,x_0)$ es el grupo trivial para algún $x_0$ en $X$ (y por lo tanto para todo $x_0\in X$).
+ \end{itemize}
+\end{definition}
+
+
+\begin{proposition}
+ Si $X$ es simplemente conexo, cualesquiera dos trayectorias con los mismos extremos son trayectorias homotópicas.
+\end{proposition}
+
+\begin{proof}
+ Sean $f,g:I\to X$ trayectorias tales que $f(0) = g(0) = x_0$ y $f(1) = g(1) = x_1$. Entonces $f*\overline g$ es un lazo en $x_0$ y como $X$ es
+ simplemente conexo, $[f * \overline{g}] = [e_{x_0}]$, i.e., $f*\overline{g} \simeq e_{x_0}$. Entonces
+ $$(f*\overline {g})*g \simeq e_{x_0}*g \simeq g.$$
+ Pero también
+ $$(f*\overline g)*g \simeq f*(\overline g*g) \simeq f*e_{x_1} \simeq f.$$
+ Consecuentemnte, $f \simeq g$.
+\end{proof}
+
+ Supongamos que ahora que $\varphi:X \to Y$ es una funci\'on continua. Si $x\in X$ y $ y= \varphi(x) \in Y$, escribiremos
+ $$\varphi:(X,x)\to (Y,y)$$
+ y diremos que $\varphi$ es una \textbf{función basada} en $x$. Notemos que en este caso, dado cualquier lazo $f$ basado en $x$,
+ la composici\'on $\varphi f:I\to Y$ es un lazo basado en $y$. Este hecho sugiere estudiar la asignaci\'on inducida $f \mapsto \varphi f$
+ a nivel de homotop\'ias. Mas precisamente definimos $\varphi_{*}:\pi(X,x) \to \pi(Y,y)$, de la siguiente manera
+ $$\varphi_{*}([f]) = [\varphi f].$$
+
+\begin{lemma} \label{homomorfismo}
+  Sea $\varphi:(X,x) \to (Y,y)$ una funci\'on basada. Entonces la funci\'on inducida $\varphi_{*}:\pi(X,x) \to \pi(Y,y)$ es un homomorfismo.
+\end{lemma}
+
+\begin{proof}
+ Notemos primero que  $\varphi_*$ est\'a bien definida. En efecto, si $f,g:I \to X$ son lazos hom\'otopos basados en $x$, entonces de acuerdo
+ al Lema \ref{composicion homotopicas} $\varphi f$ es un lazo hom\'otpo a $\varphi g$ basado en $y$.
+ Adem\'as,
+ $$\varphi (f*g) = (\varphi f)*(\varphi g).$$
+ puesto que para cada $x \in I$,
+ \begin{eqnarray*}
+  \varphi(f*g)(x) & = & \begin{cases}
+                         \varphi(f(2x)), & \text{si} \; x \in [0,1/2],\\
+                         \varphi(g(2x-1)), & \text{si} \; x \in [1/2,1].\\
+                         \end{cases} \\
+                  & = & \big ( (\varphi f)*(\varphi g) \big ) (x).
+ \end{eqnarray*}
+ Entonces alevaluar $\varphi_*$ en el producto de dos lazos tenemos
+ \begin{align*}
+  \varphi_*([f]\cdot [g]) & = \varphi_{*}([f*g]) \\
+                          & = [\varphi (f*g)] \\
+                          & = [(\varphi f)*(\varphi g)] \\
+                          & = [\varphi f] \cdot [\varphi g] \\
+                          & = \varphi_{*}([f]) \cdot \varphi_{*}([g]). 
+ \end{align*} 
+
+ Podemos concluir que $\varphi_*$ es un homomorfismo.
+\end{proof}
+
+\begin{theorem} \label{propiedades funcion ast}
+ Sean $X$, $Y$ y $Z$ espacios topológicos. Entonces:
+ \begin{enumerate}[(a)]
+  \item si $\varphi:(X,x) \to (Y,y)$, $\psi:(Y,y)\to (Z,z)$ son funciones basadas,
+            $$(\psi \varphi)_{*} = \psi_{*} \varphi_{*}: \pi(X,x) \to \pi(Z,z).$$
+  \item si $id_X:(X,x) \to (X,x)$ es la identidad en $X$, 
+           $$(id_X)_* = id_{\pi(X,x)}.$$
+ \end{enumerate}
+\end{theorem}
+
+\begin{proof}
+ (a) Consideremos primero un lazo $f$ basado en $x$ arbitrario, entonces
+ $$(\psi \varphi)_{*}([f]) = [(\psi \varphi) f] = [\psi (\varphi f)].$$
+ Por otro lado,
+ $$\psi_{*} \varphi_{*}([f]) = \psi_{*}(\varphi_{*}([f])) = \psi_{*}([\varphi f]) = [\psi (\varphi f)].$$
+ Conscuentemente, 
+ $$(\psi\circ\varphi)_{*}([f])=\psi_{*}\circ\varphi_{*}([f])$$
+ para todo $[f] \in \pi(X,x)$.  \\
+
+ (b) Sea $f$ un lazo basado en $x$. Entonces,
+ $$(id_X)_{*}([f])=[id_X f]=[f] = id_{\pi(X,x)}$$
+ como se afrima.
+\end{proof}
+
+\begin{corollary}\label{homeo isormor}
+ Sean $X$ y $Y$ dos espacios topológicos y $\varphi:(X,x) \to (Y,y)$ un homeomorfismo basado. Entonces el homomorfismo inducido
+ $\varphi_*:\pi(X,x)\to \pi(Y,y)$ es un isomorfismo.
+\end{corollary}
+
+\begin{proof}
+ Es suficiente demostrar que $\varphi_*$ es biyectiva, o bien, que tiene una función inversa. Como $\varphi:X \to Y$ es un homeomorfismo,
+ su inversa $\varphi^{-1}:Y \to X$ es una función continua. Entonces, por el Teorema~\ref{propiedades funcion ast},
+ $$\varphi_{*} ({\varphi^{-1}}_{*}) = (\varphi \varphi^{-1})_{*} =(id_Y)_{*} = id_{\pi(Y,y)} $$
+ por lo que $(\varphi^{-1})_{*}$ es inversa derecha de $\varphi_{*}$. Análogamente,
+ $$(\varphi^{-1})_{*}\varphi_{*}=(\varphi^{-1} \varphi)_{*}=(id_X)_{*} = id_{\pi(X,x)} $$
+ por lo que $(\varphi^{-1})_{*}$ es inversa izquierda de $\varphi_{*}$. Consecuentemente, 
+ $$(\varphi^{-1})_* = (\varphi_*)^{-1}$$
+ y $\varphi_*$ es un isomorfismo.
+\end{proof}
+
+ En otras palabras, como se mencin\'o al principio del cap\'itulo, el grupo fundamental es un invariante topol\'ogico. Para terminar la sección,
+ veremos que en los espacios conexos por trayectorias, el grupo fundamental de un producto es equivalente (isomorfo) al producto de 
+ los grupos fundamentales respectivos.
+
+\begin{theorem} \label{grup fund prod}
+ Sean $X$, $Y$ dos espacios topológicos y $(x_0, y_0) \in X \times Y$. Entonces $\pi(X \times Y,(x_0,y_0))$ es isomorfo a 
+ $\pi(X,x_0) \times \pi(Y,y_0)$.
+\end{theorem}
+
+\begin{proof}
+ Sea $p:(X \times Y,(x_0,y_0)) \to (X,x_0)$ y $q:(X \times Y,(x_0,y_0)) \to (Y,y_0)$ las proyecciones basadas en $X$ y $Y$ respectivamente.
+ Entonces $p_*:\pi(X \times Y,(x_0,y_0)) \to \pi_(X,x_0)$ y $q_*:\pi(X\times Y,(x_0,y_0)) \to \pi(Y,y_0)$ son homomorfismos, por lo que
+ $$\phi:\pi\big(X\times Y,(x_0,y_0)\big) \to \pi(X,x_0) \times \pi(Y,y_0),$$
+definida por $$ \quad \phi([f]) = (p_*([f]),q_*([f])) = ([pf],[qf])$$
+ es igualmente un homomorfismo. Para completar la demostración, verifiquemos que $\phi$ es biyectiva. 
+ 
+ Sea $([f_1],[f_2]) \in \pi(X,x_0) \times \pi(Y,y_0)$ donde $f_1$ y $f_2$ son lazos basados en $x_0$ y en $y_0$ respectivamente. Entonces
+ $$f:I \to X \times Y, \quad f(s) = (f_1(s),f_2(s))$$
+ es un lazo basado en $(x_0, y_0)$. Claramente, $\phi([f])=([f_1],[f_2])$, i.e. $\phi$ es suprayectiva. Para demostrar ahora que $\phi$ es
+ inyectiva, consideremos dos lazos $f$ y $g$ en $(x_0,y_0)$ tales que $\phi([f])=\phi([g])$. Entonces $[pf] = [pg]$ y $[qf] = [qg]$, por lo que  
+ existen homotopías de trayectorias $H_1:pf \simeq pg$ y $H_2:qf \simeq qg$. Definamos 
+ $$H:I \times I \to X \times Y, \quad H(s,t) = (H_1(s,t), H_2(s,t)).$$
+ Entonces $H$ es una función continua y tambi\'en una homotop\'ia entre los lazos $f$ y $g$. En efecto, si $t=0$,
+ $$H(s,0) = (H_1(s,0),H_2(s,0))=(pf(s),qf(s)) = f(s).$$
+ An\'alogamente, si $t=1$ tendremos $H(s,1)=g(s)$. Por otro lado, si  $s=0$, 
+ $$H(0,t) = (H_1(0,t),H_2(0,t)) = (x_0,y_0).$$
+ Similarmente, se demuestra que $H(1,t)=(H_1(1,t), H_2(1,t))=(x_0,y_0)$. Podemos entonces concluir que $[f]=[g]$ y que $\phi$  es inyectiva.
+\end{proof}
+
+
+\section{Invarianza Homotópica del Grupo fundamental}
+
+Hemos visto anteriormente que el grupo fundametal es un invariante topológico. En esta sección, veremos que también es un invariante homotópico, es decir, se preserva bajo homotopías.
+
+\begin{theorem}
+Sean $X$ y $Y$ espacios topológicos, $x_0\in X$, $f,g:X\to Y$ dos funciones continuas. Si $F$ es una homotopía entre $f$ y $g$, $y_0,y_1\in Y$ son puntos tales que 
+$$y_0=f(x_0),~~~~y_1=g(x_0), $$
+y $\alpha:I\to Y$ es una trayectoria entre $y_0$ y $y_1$ determinada por $\alpha(t)=F(x_0,t)$, entonces
+$$\tilde \alpha\circ f_*=g_*.$$
+\end{theorem}
+\begin{proof}
+Consideremos las funciones $\tilde \alpha\circ f_*:\pi_1(X,x_0)\to \pi_1(Y,y_1)$ y $ g_*:\pi_1(X,x_0)\to \pi_1(Y,y_1)$. Sea $\gamma$ un lazo en $x_0$. Entonces
+$$\tilde \alpha\circ f_*([\gamma])=\tilde \alpha([f\circ\gamma])=[\overline\alpha*(f\circ \gamma)*\alpha]$$
+y 
+$$g_*([\gamma])=[g\circ \gamma].$$
+Para demostrar el teorema, basta demostrar que las trayectorias $g\circ \gamma$ y $\overline\alpha*(f\circ \gamma)*\alpha$ son homotópicas relativo a $\{0,1\}$. Para ello, consideremos la homotopía $G:I\times I\to Y$ dada por $G(s,t)=F(\gamma(s),t)$.
+Para cada $i=1,2,3,4$ consideremos las trayectorias $\beta_i:I\to I\times I$ dadas por
+\begin{align*}
+\beta_1(s)=(s,0),\\
+\beta_2(s)=(0,s),\\
+\beta_3(s)=(s,1),\\
+\beta_4(s)=(1,s).\\
+\end{align*}
+
+Notemos que las siguientes igualdades se cumplen:
+\begin{align*}
+G\circ \beta_1=f\circ \gamma,\\
+G\circ \beta _2=\alpha,\\
+G\circ\beta_3=g\circ\gamma,\\
+G\circ\beta_4=\alpha.\\
+\end{align*}
+
+Como $I\times I\subset\mathbb R^2$ es convexo, se tiene que las trayectorias $\beta_3$ y $\overline\beta_2*\beta_*\beta 4$ son homotópicas relativo a $\{0,1\}$.
+Consecuentemente, $G\circ \beta_3\simeq G\circ(\overline\beta_2*\beta_*\beta 4)$ relativo a $\{0,1\}$. Pero $G\circ \beta_3=g\circ\gamma$, por lo que
+$$ g\circ\gamma\simeq G\circ(\overline\beta_2*\beta_*\beta 4)~~~~\text{ relativo a } \{0,1\}.$$
+Por otro lado,
+$$G\circ(\overline\beta_2*\beta_*\beta 4)=(G\circ \overline\beta_2)*(G\circ \beta_1)*(G\circ\beta_4)=\overline\alpha*(f\circ\gamma)*\alpha.$$
+Así, podemos concluir que  las trayectorias $g\circ \gamma$ y $\overline\alpha*(f\circ \gamma)*\alpha$ son homotópicas relativo a $\{0,1\}$, como se quería probar. 
+\end{proof}
+
+\begin{corollary} Si $f:(X,x_0)\to (Y,y_0)$ es una equivalencia homotópica, entonces $f_*:\pi_1(X,x_0)\to \pi_1(Y,y_0)$ es un isomorfismo.
+\end{corollary}
+\begin{proof}
+Sea $g:Y\to X$ la inversa homotópiva de $f$, es decir, $g\circ f\simeq 1_X$ y $f\circ g\simeq 1_Y$. 
+Sea $x_1=g(y_0)$ y $F:X\times I\to X$ una homotopía entre $1_X$ y $g\circ f$. Como $g\circ f(x_0)=x_1$, se tiene que $F(x_0,t)=\alpha(t)$ es una trayectoria entre $x_0$ y $x_1$. Por el teorema anterior, podemos concluir que
+$$(g\circ f)_*=\tilde \alpha\circ (1_{X})_*=\tilde \alpha.$$
+Pero $\tilde \alpha$ es un isomorfismo, por lo que $(g\circ f)_*=g_{*}\circ f_*$ también es un isomorfismo. De aquí que 
+$f_*$ sea monomorfismo y $g_*$ sea epimorfismo.
+
+Repitiendo el mismo argumento para $f\circ g$ y $1_Y$, podemos concluir que $g_*$ es monomorfismo y $f_*$ es epimorfismo. Así, tanto $f_*$ como $g_*$ son isomorfismos de grupos.
+\end{proof}
+
+\begin{corollary}
+Si $X$ y $Y$ son espacios conexos por trayectorias con el mismo tipo homotópico, entonces $\pi_1(X)=\pi_1(Y)$.
+\end{corollary}
+\begin{corollary}
+Si $X$ es un espacio contraible, entonces su grupo fundamental es trivial.
+\end{corollary}
+
+
+
+\section{Espacios cubrientes y levantamientos}
+ El prop\'osito de esta secci\'on es dar las herramientas necesarias para poder calcular el grupo fundamental de la circunferencia.
+
+\begin{definition}
+ Sean $Y$ y $Y$ espacios topol\'ogicos y $p:Z \to Z$ una funci\'on continua y suprayectiva. Diremos que $p$ es una \textbf{función cubriente} si para cada
+ $z_0\in Z$, existe una vecindad $U \subset Z$ de $z_0$ y una colecci\'on $\{V_{\alpha}\}_{\alpha\in\mathcal A}$ de subconjuntos abiertos y disjuntos en
+ $Y$, tal que 
+ $$p^{-1}(U) = \bigcup \limits_{\alpha\in\mathcal A}V_{\alpha} \quad \text{y} \quad p|_{V_{\alpha}}:V_{\alpha}\to U$$
+ es un homeomorfismo.  En este caso diremos que $Y$ es un \textbf{espacio cubriente} de $Z$.
+\end{definition}
+
+ El siguiente resultado no s\'olo nos brindar\'a un ejemplo de un espacio cubriente, tambi\'en jugar\'a un papel fundamental al calcular el grupo
+ fundamental de la circunferencia.
+
+\begin{proposition}\label{funcion eta}
+ La función $\eta:\mathbb R\to \mathbb S^{1}\subset \mathbb C$ definida por
+ $$\eta(t)=e^{2\pi i t}=\cos(2\pi t)+i\sen(2\pi t),$$
+ es una función cubriente.
+\end{proposition}
+
+\begin{figure*}[h]
+\begin{center}
+      \includegraphics*[scale=.5]{eta}
+\end{center}
+\end{figure*}
+
+\begin{proof}
+ Claramente $\eta$ es una funci\'on continua y suprayectiva. Más a\'un, podemos observar que $\eta([n,n+1]) = \mathbb S^{1}$ para todo $n\in\mathbb Z$.
+ Consideremos $z\in \mathbb S^1$. Entonces $z = e^{2\pi i s}$ para algún $s \in \mathbb R$. Sean $a,b$ n\'umeros reales tales que $a<s<b$ y $b-a<1$.
+ Así, el arco abierto
+ $$U = \{e^{2\pi i t} \:|\: a<t<b\}$$
+ es una vecindad de $z$. Llamemos $V$ al intervalo abierto $(a,b)$ y a los intervalos desplazados $V_n=(a+n,b+n)$ para $n \in \mathbb Z$.
+ Notemos que si $n \neq m$, entonces $V_n\cap V_m=\emptyset$. De lo contrario, podríamos encontrar dos enteros $n$ y $m$ con $n<m$ tales que
+ $(a+n,b+n) \cap (a+m,b+m) \neq \emptyset$. Entonces tendr\'iamos que $a+m<b+n$, por lo que 
+ $$0<m-n<b-a<1.$$
+ Pero $m$ y $n$ son enteros, y por lo tanto $m-n \geq 1$, lo cual nos lleva a una contradicción. Concluimos que $\{V_{n}\}_{n\in\mathbb N}$ es una
+ colecci\'on disjunta de abiertos de $\mathbb R$. Tambi\'en es claro que
+ $$\eta^{-1}(U) = \bigcup\limits_{n\in\mathbb Z}V_n.$$
+ Como $V$ es homeomorfo a $V_n$ para todo $n \in \mathbb Z$ bajo la traslaci\'on $t \mapsto t+n$, es suficiente  demostrar que $\eta|_{V}:V \to U$
+ es un homeomorfismo.
+
+ Como $\eta$ es una función continua, también lo es su restricción $\eta|_{V}$. Adem\'as, $\eta|_{V}(V) = \eta (V)=U$, 
+ por lo que $\eta|_V$ es suprayectiva. Sean $r,t \in (a,b)$. Supongamos que $\eta|_V(r) = \eta|_V(t)$. Entonces
+ $$e^{2\pi i r}=e^{2\pi i t},$$
+ por lo  que $r = t+n$ para alg\'un $n \in \mathbb Z$.  Sin embargo, $b-a<1$ y por lo tanto $|t-r| = |n| <1$, por lo que $n=0$. Así, $r=s$,
+ lo cual prueba que $\eta|_{V}$ es inyectiva.
+
+ Para terminar, demostremos que $\eta|_V$ es abierta. Sea $(c,d)\subset (a,b)$ un abierto básico, entonces
+ $$\eta|_V((c,d)) = \eta((c,d)) = \{e^{2\pi i t} \:|\: t\in(c,d)\}$$
+ representa un arco abierto en $\mathbb S^1$. Así, podemos concluir que $\eta|_V:V \to U$ es un homeomorfismo y por lo tanto la función $\eta$
+ es una función cubriente.
+\end{proof}
+
+\begin{definition}
+ Sean $X$, $Y$ y $Z$ espacios topol\'ogicos. Supongamos que $p:Y \to Z$ es una función cubriente y $f:X \to Z$ un funci\'on continua. 
+ Una función $\widetilde{f}:X \to Y$ se llama \textbf{levantamiento} de $f$, si $p \widetilde{f} = f$.
+ $$ \xymatrix{                               & Y \ar[d]^{p}   \\
+              X \ar[r]_{f}\ar[ru]^{\tilde f} & Z }   $$
+\end{definition}
+
+\begin{proposition} \label{unicidad levantamiento}
+ Sean $X$, $Y$, y $Z$ espacios topol\'ogicos. Supongamos que $p:Y\to Z$  una función cubriente, $X$ es conexo y $f:X \to Z$ es una función continua.
+ Si $\widetilde{f}$ y $\widehat{f}$ son levantamientos de $f$ y $\widetilde{f}(x_0) = \widehat{f}(x_0)$ en al menos un punto $x_0\in X$,
+ entonces $\widetilde{f} = \widehat{f}$.
+\end{proposition}
+
+\begin{proof}
+ Consideremos los conjuntos $S = \{x \in X \:|\: \widetilde{f}(x) = \widehat{f}(x)\}$ y su complemento
+ $Q = \{x \in X \:|\: \widetilde{f}(x) \neq \widehat{f}(x)\}$. Demostraremos que tanto $S$ como $Q$ son abiertos en $X$. Como $X$ es conexo y 
+ $S \neq  \emptyset$, $Q = \emptyset$ y $S = X$ como se afrima. \\
+
+ Sean $x \in S$ y $z = f(x)\in Z$. Entonces existe una vecindad $U_z$ de $z$ tal que
+ $$p^{-1}(U_z) = \bigcup \limits_{\alpha \in \mathcal A}  V_{\alpha}$$
+ y cada restriccio\'on $p:V_{\alpha} \to U_z$ es un homeomorfismo. Supongamos que $\widetilde{f}(x) = \widehat{f}(x) \in V_\beta$.
+ Entonces, par la continuaidad de $\widetilde{f}$ y $\widehat{f}$, existe una vecindad $N_x$ de $x$ en $X$, tal que
+ $$\widetilde{f}(N_x) \subset V_\beta, \quad \text{y} \quad \widehat{f}(N_x) \subset V_\beta.$$
+ Si $y\in N_x$, como $p \widetilde{f} = f = p \widehat{f}$ se tiene
+ $$\widetilde{f}(y) \in p^{-1}(f(y)) \cap V_\beta = \{a_y\} = \widehat{f}(y) \cap V_\beta. $$
+ De donde se concluye que $\widetilde{f}(y) = \widehat{f}(y)$ y $N_x \subset S$. Esto muestra que $S \subset Z$ es abierto. \\
+
+ Demostremos ahora que $Q$ es abierto. Sean $x\in Q$ y $f(x)=z$. Tomemos $U_z$ y $\{V_{\alpha}\}$ como arriba.
+ Supongamos que $\widetilde{f}(x) \in V_{\alpha_1}$ y $\widehat{f}(x) \in V_{\alpha_2}$. Si $\alpha_1 = \alpha_2$, dado que
+ $p \widetilde{f}(x) = f(x) = p \widehat{f}(x) \in U_z$, al aplicar $p^{-1}$ en $V_{\alpha_1} = V_{\alpha_2}$, tendr\'iamos
+ $\widetilde{f}(x) = \widehat{f}(x)$ contrario nuestra elección de $x$. Tenemos entonces $\alpha_1 \neq \alpha_2$ y
+ $V_{\alpha_1} \cap V_{\alpha_2} = \emptyset$.
+
+ Como $\widetilde{f}$ y $\widehat{f}$ son continuas, existen vecindades de $x$, $N_1$ y $N_2$, tales que
+ $$\widetilde{f}(N_1) \subset V_{\alpha_1} \quad \text{y} \quad \widehat{f}(N_2) \subset V_{\alpha _2}.$$
+ Podemos concluir que $x \in N_1 \cap N_2 \subset Q$, i.e $x$ es punto interior de $Q$ y por lo tanto $Q$ es abierto e $X$.
+\end{proof}
+
+
+
+\begin{proposition}\label{lema 4.1}
+ Sea $p:Y\to Z$ una funci\'on cubriente entre dos espacios topológicos $Y$ y $Z$. Dados $y_0 \in Y$ y $z_0 \in Z$ tales que $p(y_0)=z_0$,
+ si $f:I \to Z$ es una trayectoria cuyo punto inicial es $z_0$, entonces existe un único levantamiento $\widetilde f:I\to Y$,
+ tal que $\widetilde f(0)=y_0$.
+\end{proposition}
+
+\begin{proof}
+ Como $p$ es una funci\'on cubriente, para cada punto $z\in Z$, podemos encontrar una vecindad $U_z$ de $z$, tal que 
+ $p^{-1}(U_z) = \bigcup\limits_{\alpha\in\mathcal A_z}V_{\alpha}$ es una descomposici\'on disjunta de subconjuntos abiertos de $Y$
+ donde $p|_{V_{\alpha}}:V_{\alpha}\to U_z$ es un homeomorfismo para cada $\alpha\in\mathcal A_z$. Así, $\mathcal U=\{U_z\}_{z\in Z}$ es una
+ cubierta abierta para $Z$ y $f^{-1}(\mathcal{U})$ una cubierta abierta del intervalo compacto $I$. Por el lema del número de Lebesque,
+ podemos encontrar puntos $t_0,t_1,\dots,t_n\in I$ tales que $t_0 = 0$, $t_n = 1$, $t_i < t_{i+1}$  y $f([t_i,t_{i+1}]) \subset U$,
+ para algún $U\in\mathcal U$.
+
+ Construiremos el levantamiento $\tilde f$ por inducción. Primero definamos $\widetilde f(0)=y_0$. Ahora supongamos que $\widetilde f(s)$
+ está definido para todo $t \in[0,t_i]$, para algún $i=0, \dots n-1$. Consideremos el intervalo $[t_{i},t_{i+1}]$. Exste ntonces un abierto
+ $U_{z}\in\mathcal U$, para el cual $f([t_i,t_{i+1}])\subset U_{z}$. Como la colección $\{V_{\alpha}\}_{\alpha\in\mathcal A_z}$ es disjunta,
+ hay un único \'indice $\beta \in \mathcal A_{z}$ en donde $\widetilde f(t_i)\in V_{\beta}$. Además,
+ $p|_{V_{\beta}}:V_{\beta}\to U_z$ es un homeomorfismo. Así que podemos definir $\widetilde f$ en $[t_i, t_{i+1}]$ como
+ $$\widetilde f(t)=(p|_{V_{\beta}})^{-1}(f(t)).$$
+ Por la continuidad de $(p|_{V_{\beta}})^{-1}$, la función $\widetilde f$ es continua en el intervalo cerrado $[t_i, t_{i+1}]$, y por el 
+ Lema~\ref{union de funciones} es continua en $[0,t_{i+1}]$. Por la construcción, se sigue que $p \widetilde f=f$.
+ Continuando con este proceso, se define de manera continua $\widetilde f$ en todo el intervalo $[0,1]$ obteniendo as\'i el levantamiento 
+ buscado. Por la Proposición~\ref{unicidad levantamiento}, $\widetilde f$ es el único levantamiento posible.
+\end{proof}
+
+\begin{proposition}\label{levantamiento homotopia}
+ Sea $p:Y \to Z$ una funci\'on cubriente entre dos espacios $Y$ y $Z$. Sean $y_0\in Y$ y $z_0\in Z$ tales que $p(y_0)=z_0$. Si
+ $F:I \times I\to Z$ es una función continua con $F(0,0) = z_0$, entonces hay un único levantamiento $\widetilde F:I\times I\to Z$ 
+ tal que $\widetilde F(0,0) = y_0$. Más aún, si $F$ es una homotopía relativa a $\{0,1\}$, entonces $\widetilde F$ también lo es.
+\end{proposition}
+
+\begin{proof}
+ Construiremos inductivamente el levantamiento $\widetilde F$. Primero definamos $\widetilde F(0,0)=y_0$. Luego podemos aplicar dos veces 
+ la Proposición~\ref{lema 4.1} para extender $\widetilde F$ a un levantamiento de $F|_{I\times \{0\}\cup\{0\}\times I}$. Adem\'as,
+ como  $p$ es una funci\'on cubriente,  podemos encontrar para cada punto $z \in Z$, una vecindad $U_z$ de $z$ tal que
+ $p^{-1}(U_z)=\bigcup\limits_{\alpha\in\mathcal A_z}V_{\alpha}$, donde $\{V_{\alpha}\}_{\alpha\in\mathcal A_z}$ es una colección disjunta de
+ subconjuntos abiertos de $Y$ de manera que cada $p|_{V_{\alpha}}:V_{\alpha}\to U_z$ es un homeomorfismopara. Como antes, usando la compacidad
+ de $I \times I$, podemos encontrar puntos  $s_0 <s_1 < \dots < s_m \in I$ y $t_0 <t_1 < \dots< t_n \in I$ tales que $s_0 = 0 = t_0$, 
+ $s_m = 1 = t_n$ y $F([s_{i-1},s_{i}] \times [t_{j-1},t_j]) \subset U$, para algún $U \in \mathcal U$.
+
+ Sea $R_{ij}$ el rectángulo determinado por 
+ $$R_{ij} = [s_{i-1},s_{i}] \times [t_{j-1},t_j], \quad i=1, \dots m, \quad j=1 \dots n.$$
+ Definiremos el levantamiento por inducción sobre los rectángulos
+ $$R_{11},\: R_{21},\: \dots \:R_{m1},\: R_{12},\: R_{22},\: \dots,\: R_{(m-1)n},\; R_{mn}.$$
+ Para ello supongamos que $\widetilde F$ está definida en el siguiente conjunto
+ $$A=\Big(I\times\{0\}) \cup (\{0\}\times I \Big) \cup \Big( \bigcup \Big \{ R_{ij} \:|\: j<k,\; \text{\'o} \; j=k \; \text{y} \; i<l \Big \} \Big ).$$
+ \begin{figure*}[h]
+\begin{center}
+      \includegraphics*[scale=.6]{cuadrado}
+\end{center}
+\end{figure*}
+
+ Ahora definamos $\widetilde F$ en el rectángulo $R_{lk}$ de la siguiente manera. Consideremos $U_z\in\mathcal U$, tal que
+ $$F(R_{lk}) \subset U_z.$$
+ Sabemos que $\widetilde F$ ya está definda en $A \cap R_{lk}$, luego, como $\widetilde F$ es un levantamiento de $F|_{A}$, podemos asegurar que
+ $$\widetilde F(A\cap R_{lk})\subset p^{-1}(U_z)=\bigcup\limits_{\alpha \in \mathcal{A}_z}V_{\alpha}.$$
+ Como la colección de abiertos $\{V_{\alpha}\}_{\alpha\in \mathcal A_z}$ es disjunta y el conjunto
+ $$A \cap R_{lk} = \big(\{s_{l-1}\}\times [t_{k-1},t_k] \big) \cup \big([s_{l-1},s_l]\times\{t_{k-1}\} \big)$$
+ es conexo, podemos asegurar que existe un único abierto $V_\beta$, $\beta\in\mathcal A_z$, donde $\widetilde F(A\cap R_{lk})\subset V_{\beta}$. 
+ Pero $p:V_{\beta} \to U_z$ es un homeomorfismo, as\'i que podemos definir $\widetilde F$ en $R_{lk}$ como
+ $$\widetilde F(s,t)=(p|_{V_\beta})^{-1}(F(s,t)).$$
+ Si $(s,t)\in A\cap R_{lk}$, entonces 
+ $$p|_{V_\beta}(\widetilde F(s,t)) = F(s,t)$$
+ por lo que $\widetilde F(s,t) = (p|_{V_\beta})^{-1}(F(s,t))$ y $\widetilde F: A \cup R_{lk}: \to Z$ está bien definida.
+ Por el Lema~\ref{union de funciones}, $\widetilde F$ es una función continua.
+
+ Continuando con este proceso, se define $\widetilde F$ en todo el rectángulo $I\times I$. Por la Proposición~\ref{unicidad levantamiento},
+ la función $\widetilde F$ es única. \\
+
+ Para completar la demostraci\'on verificamos que si $F$ es una homotopía relativa a $\{0,1\}$, entonces también lo es $\widetilde F$.
+ Para ello, es suficiente probar que $\widetilde F(\{0\}\times I) = F(0,0)=y_0$ y que $\widetilde F(\{1\}\times I)= \widetilde F(1,0)=y_1$,
+ para algún punto $y_1\in Y$.
+
+ Como $F(\{0\}\times I)=z_0$ y $\widetilde F$ es un levantamiento de $F$, se tiene que
+ $$\widetilde F(\{0\} \times I)\subset p^{-1}(z_0).$$ 
+ Pero $p^{-1}(z_0)$ es un subespacio discreto (ver ejercicios) y $\{0\} \times I$ es conexo. Además, $\widetilde F(0,0) = y_0 \in p^{-1}(z_0)$
+ y podemos conluir que $\widetilde F(\{0\}\times I)=y_0$. Análogamente, si $F(1,0)=z_1$ y $\widetilde F(1,0)=y_1$, entonces $y_1 \in p^{-1}(z_1)$.
+ Pero $p^{-1}(z_1)$ es de nuevo discreto y $\{1\} \times I$ es conexo. Consecuentemente, $\widetilde F(\{1\} \times I)=y_1$ como se quería probar.
+\end{proof}
+
+\begin{theorem} \label{levantamiento trayectorias homotopicas}
+ Sean $p:Y \to Z$ una funci\'on cubriente entre dos espacios $Y$ y $Z$, $z_0, z_1 \in Z$,  $y_0 \in Y$. Supongamos que $p(y_0) = z_0$ y que
+ $f,g: I\to Z$ son trayectorias entre $z_0$ y $z_1$. Sean $\widetilde f$ y $\widetilde g$ los levantamientos de $f$ y $g$ respectivamente, cuyo punto
+ inicial es $y_0$. Si $f$ y $g$ son trayectorias hom\'otopas, entonces $\widetilde f$ y $\widetilde g$ tambi\'en lo son. En particular,
+ $\widetilde{f}(1) = \widetilde{g}(1)$.
+\end{theorem}
+
+\begin{proof}
+ Sea $H:I \times I\to Z$ una homotopía de trayectorias entre $f$ y $g$. Por la Proposición~\ref{levantamiento homotopia}, hay un levantamiento de 
+ $\widetilde{H}$ de $H$ que es también una homotopía de trayectorias con $\widetilde H(0,0)=y_0$. Entonces $\widetilde H(\{0\} \times I) = y_0$
+ y $\widetilde H(\{1\}\times I) = y_1$ para $y_1\in Y$. 
+ 
+ Notemos que $\widetilde H|_{I\times\{0\}}: I \to Y$ y $\widetilde H|_{I\times\{1\}}: I \to Y$ son trayectorias entre $y_0$ y $y_1$.
+ Más aún,
+ $$p \widetilde H|_{I\times\{0\}}(s) = f(s) \quad \text{y} \quad p \widetilde H|_{I\times\{1\}}(s) = g(s)$$
+ por lo que $\widetilde H|_{I\times\{0\}}$ y $\widetilde H|_{I\times\{1\}}$ son levantamientos de $f$ y $g$ respectivamente. Por la unicidad del
+ levantamiento de una trayectoria (Proposición~\ref{lema 4.1}), 
+ $$\widetilde f = \widetilde H|_{I\times\{0\}} \quad \text{y} \quad \widetilde g = \tilde H|_{I\times\{1\}}.$$
+ Concluimos entonces que $\widetilde f$ y $\widetilde g$ son trayectorias homotópicas.
+\end{proof}
+
+
+\section{El grupo fundamental del círculo y sus aplicaciones}
+
+ Consideremos la funci\'on cubriente $\eta: \mathbb R \to \mathbb S^1 \subset \mathbb C$ definida en el Teorema~\ref{funcion eta}. Notemos que
+ $\eta^{-1}(1) = \mathbb Z$. Usaremos los resultados de la sección anterior para demostrar que $\pi(\mathbb S^1, 1)$ es isomorfo al grupo
+ aditivo $\mathbb Z$.
+
+\begin{theorem}
+ Los grupos $\pi(\mathbb S^1,1)$ y $\mathbb Z$ son isomorfos.
+\end{theorem}
+
+\begin{proof}
+ Para cada lazo $f:I \to \mathbb S^1$ basado en $1 \in \mathbb{S}$, denotemos por $\widetilde f$ al único levantamiento de $f$, tal que
+ $\widetilde f(0)=0$.
+
+\begin{figure*}[h]
+\begin{center}
+      \includegraphics*[scale=.5]{leva}
+\end{center}
+\end{figure*}
+
+ Como la definici\'on de levantamiento implica que $\widetilde f(1) \in \eta^{-1}(1) = \mathbb Z$. Definimos entonces la función
+ $\Phi:\pi(\mathbb S^1,1) \to \mathbb Z$ de la siguiente manera:
+ $$\Phi([f]) = \widetilde f(1).$$
+ Notemos que si $[f]=[g]$, entonces $f$ y $g$ son trayectorias homotópicas que satisfacen las hipótesis del Teorema~\ref{levantamiento trayectorias
+ homotopicas} y por lo tanto $\widetilde f(1)= \widetilde g(1)$, lo cual demustra que $\Phi$ está bien definida. Demostremos que $\Phi$ es un
+ isomorfismo de grupos. \\
+
+ Para demostrar que $\Phi$ es suprayectiva consideremos $n \in \mathbb Z = \eta^{-1}(1) \subset \mathbb R$. Escojamos alguna trayectoria
+ $\widetilde f:[0,1] \to \mathbb R$ con punto inicial en cero y punto final en $n$ (por ejemplo, $\widetilde f(t) = tn$). Entonces
+ $f = \eta \widetilde f$ es un lazo en $1$ y claramente $\Phi([f]) = \widetilde f(1) = n$.
+
+ Veamos que $\Phi$ es inyectiva. Sean $[f],[g] \in \pi(\mathbb S^1,1)$ con 
+ $$\Phi([f]) = \widetilde f(1) = n = \widetilde g(1) = \Phi([g]).$$
+ Entonces $\widetilde f$ y $\widetilde g$ son trayectorias en $\mathbb R$ que coinciden en sus puntos inicial y final respectivamente. Como
+ $\mathbb R$ es un espacio simplemente conexo, $\widetilde f$ y $\widetilde g$ son trayectorias hom\'otopas. Luego, existe una homotopía de trayectorias
+ $H:I \times I \to \mathbb R$ entre $\widetilde f$ y $\widetilde g$. La función $H = \eta \widetilde H:I \times I \to \mathbb S^1$ es entonces una
+ homotopía de trayectorias entre $f$ y $g$, i.e. $[f]=[g]$. \\
+
+ Por último, demostremos que $\Phi$ es un homomorfismo de grupos. Sean $f$ y $g$ dos lazos basados en $1$.
+% Entonces $f*g$ está definida por
+%\begin{equation*}
+%f*g(t)=\begin{cases}
+%f(2t),&\text{ si }t\in[0,1/2],\\
+%g(2t-1),&\text{ si }t\in[1/2,1].
+%\end{cases}
+%\end{equation*}
+
+ Supongamos que $\Phi([f]) = \widetilde f(1) = n$ y $\Phi([g]) = \widetilde g(1) = m$. Definamos la trayectoria $\widetilde h:I \to \mathbb R$ por
+ \begin{equation*}
+  \widetilde h(t) = \begin{cases}
+                      \widetilde f(2t),       & \text{si} \; t \in [0,1/2], \\
+                      n + \widetilde g(2t-1), & \text{si} \; t \in[1/2,1].
+                    \end{cases}
+ \end{equation*}
+ Entonces $\widetilde h(1) = n + \widetilde g(1) = n + m$ y, $\widetilde h$ es un levantamiento de $f*g$. En efecto,
+% para todo entero
+% $k \in \mathbb Z$ y para cualquier punto $r \in \mathbb R$ se tiene que $\eta(r) = \eta(n+r)$, podemos concluir que
+ \begin{equation*}
+  \eta \widetilde h(t) = \begin{cases}
+                          \eta(\widetilde f(2t)),       & \text{si}\; t \in [0,1/2], \\
+                          \eta(n + \widetilde g(2t-1)), & \text{si}\; t \in [1/2,1].
+                         \end{cases}
+                       = \begin{cases}
+                         f(2t),   & \text{si}\; t \in [0,1/2], \\
+                         g(2t-1), & \text{si}\; t \in [1/2,1].
+                         \end{cases}
+                       = f*g(t).
+ \end{equation*}
+ Consecuentemente, $\widetilde h$ es el único levantamiento de $f*g$ que inicia en $0$. Así,
+ $$\Phi([f][g]) = \Phi([f*g]) = \widetilde h(1) = n + m = \Phi([f])+\Phi([g]).$$
+\end{proof}
+
+\begin{definition}
+ Dado un lazo $f:I \to \mathbb S^1$ basado en $1$, el \textbf{grado} de $f$, denotado por $deg~f$, es el entero $\Phi([f])$. 
+\end{definition}
+ 
+\begin{corollary}
+ La circunferencia $\mathbb S^1$ no es contraible.
+\end{corollary}
+
+Ahora  veremos cómo el grupo fundamental del círculo nos ayuda a demostrar algunos teoremas importantes en matemáticas.
+
+
+\subsection{El Teorema del punto fijo de Brouwer}
+
+\begin{definition}
+ Sea $X$ un espacio topológico. Se dice que  $X$ tiene la \textbf{propiedad del punto fijo} si para cualquier función continua $f:X\to X$
+ existe un punto $x_0 \in X$ tal que $f(x_0)=x_0$.
+\end{definition}
+
+ Un teorema debido Brouwer nos dice que los discos euclidianos $\mathbb B^{n} = \{ x \in \mathbb R^{n} \:|\: \| x \| \leq 1\}$ tienen
+ la propiedad del punto fijo para cada $n \in \mathbb{N}$. Anteriormente se ha demostrado su validez para $n=1$. 
+ Las herramientas hasta ahora desarrolladas sin embargo, sólo nos permiten demostrar el caso siguiente $n=2$.
+
+ Para este efecto introduciremos la noción de \emph{retracto} en un espacio.
+
+\begin{definition}
+ Sean $X$ un espacio y $A \subset X$. Una función continua $r:X \to A$ se llama \textbf{retracción} si $r(a)=a$ para toda $a\in A$. En este caso
+ $A$ es llamado \textbf{retracto} de $X$.
+\end{definition}
+
+\begin{lemma}
+ Sean $Y$ un espacio topológico y  $f:\mathbb{S}^n \to Y$ una función continua. Las siguientes afirmaciones son equivalentes.
+ \begin{enumerate}
+  \item $f$ es hom\'otopa a una función constante.
+  \item Existe una función $\tilde f:\mathbb{B}^{n+1}\to Y$ que hace el siguiente diagrama conmutativo.
+        $$\xymatrix{ \mathbb{S}^n \ar[r]^f \ar@{^(->}[d] & Y\\
+                     \mathbb{B}^{n+1} \ar@{-->}[ru]_{\widetilde f}
+                   }$$
+
+ \end{enumerate}
+\end{lemma}
+
+\begin{proof}
+ Supongamos que $f$ es hom\'otopa a una función constante con valor $p \in Y$, $c_p:\mathbb{S}^n \to Y$. Sea $F:\mathbb{S}^n \times [0,1] \to Y$
+ una homotop\'ia con $F(x,0) = f(x)$ y $F(x,1) = p$. Definamos  la función $\widetilde f:\mathbb{B}^{n+1} \to Y $ de la siguiente manera:
+ \begin{displaymath}
+  \widetilde f(x) = \begin{cases}
+                     p,                              & \text{si} \; \|x\| \leq \frac{1}{2}, \\
+                     F\Big(\frac{x}{\|x\|}, 2 - 2 \|x\|\Big) & \text{si} \; \frac{1}{2} \leq \|x\| \leq 1
+                    \end{cases}
+ \end{displaymath}
+ Como $\widetilde f$ es unión de dos funciones continuas con dominios cerrados, las cuales coinciden en la intersección de sus dominios, 
+ esta funci\'on es continua. Además, si $x \in \mathbb{S}^{n-1}$, tenemos que
+ $$\tilde f(x) = F\Big(\frac{x}{\parallel x\parallel },2-2\parallel x\parallel \Big) = F(x,0) = f(x).$$
+ Entonces, $\tilde f$ es la extensión de $f$ que estábamos buscando. \\
+
+ Ahora supongamos que existe una función $\widetilde f$ que extiende a $f$. Definamos la función $H:\mathbb{S}^{n} \times [0,1]\to Y$ como
+ $$H(x,t) = \widetilde f(tx).$$
+ De esta manera, $$H(x,1) = \widetilde f(x) = f(x) \text{ y } H(x,0) = \widetilde f(0).$$
+ Esto nos dice que $f$ es hom\'otopa a la constante con valor
+ $\widetilde{f}(0)$.
+\end{proof}
+
+
+\begin{lemma} \label{equivalencia punto fijo}
+ Los siguientes enunciados son equivalentes:
+ \begin{enumerate}[(a)]
+  \item $\mathbb B^{n}$ tiene la propiedad del punto fijo.
+  \item $\mathbb S^{n-1}$ no es retracto de $\mathbb B^n$.
+  \item $\mathbb S^{n-1}$ no es contraible.
+ \end{enumerate}
+\end{lemma}
+
+\begin{proof}
+ Demostraremos las primeras implicaciones por contradicción.
+
+ $(a)\Rightarrow (b)$. Supongamos que existe una retracción $r:\mathbb B^{n}\to\mathbb S^{n-1}$.
+ Entonces la función $f:\mathbb B^{n} \to \mathbb B^{n-1}$ dada por $f(x)=-r(x)$ es una función continua. Como $\mathbb B^{n}$ tiene la propiedad
+ del punto fijo, existe $x_0 \in \mathbb B^2$ tal que $f(x_0) = x_0$. Pero $r(x_0) \in \mathbb S^{n-1}$, por lo que
+ $x_0 = f(x_0) = -r(x_0)\in \mathbb S^{n-1}$. De este modo, $r(x_0) = x_0$, pues $r$ es una retracción y consecuentemente $r(x_0) = x_0 = -r(x_0)$,
+ lo cual es una contradicción ya que $r(x_0)\in\mathbb{S}^{n-1}$. \\
+
+ $(b)\Rightarrow (c)$. Supongamos que $\mathbb S^{n-1}$ es contraible. Entonces la identidad $Id:\mathbb S^{n-1}\to \mathbb S^{n-1}$ es hom\'otopa
+ a una constante. Por el lema anterior, existe una extensión continua $\widetilde{Id}:\mathbb B^{n} \to \mathbb S^{n-1}$ de $I$. 
+ En este caso $\widetilde{Id}$ es una retracción, lo cual contradice a $(b)$. \\
+
+ $(c)\Rightarrow (b)$. Supongamos que existe una retracción $r:\mathbb B^n\to\mathbb S^{n-1}$. Definamos
+ $H:\mathbb S^{n-1} \times I \to \mathbb S^{n-1}$ por
+ $$H(x,t) = r(tx).$$
+ Entonces $H$ es una homotopía entre la identidad en $\mathbb S^{n-1}$ y una constante, por lo que $\mathbb S^{n-1}$ es contraible, una contradicción. \\
+
+ $(b)\Rightarrow(a)$. Supongamos que existe $f:\mathbb B^{n} \to \mathbb B^{n}$ tal que $f$ no tiene
+ punto fijo. Para cada $x \in \mathbb{B}^n$, definamos por $L_x$ al segmento
+ $$L_x= \{y \in \mathbb{B}^n \:|\: y = tx + (1-t)f(x),\: t>0 \}.$$
+Es decir $L_x$ es el rayo que parte del punto $f(x)$ en dirección del punto $x$.
+ Definamos $r:\mathbb B^n \to \mathbb S^{n-1}$ por
+
+ $$r(x) = L_x \cap \mathbb{S}^{n-1}$$
+
+ la cual est\'a bien definida (ver ejercicio 9). Se puede demostrar tambi\'en que si 
+ $f(x)=(a_1,a_2, \dots, a_n)$ y $x-f(x) = (b_1,b_2, \dots, b_n)$, entonces 
+ $$r(x) = t(x)x + (1-t(x))f(x),$$
+ donde 
+ \begin{equation*}
+  t(x) = \frac{-\sum_{i=1}^na_ib_i + \sqrt{\big{(}\sum_{i=1}^na_ib_i\big{)}^2+\sum_{i=1}^n b_i^2-\sum_{i=1}^na_i^2\sum_{i=1}^nb_i^2}}
+              {\sum_{i=1}^n b_i^2}.
+ \end{equation*}
+ Como $f(x)\neq x$, se tiene que $(b_1,b_2,\dots b_{n})\neq (0,0,\dots 0)$, por lo que $t(x)$ está bien definido y por lo tanto $r$ es una
+ función continua. Además $r(x) \in \mathbb S^{n-1}$ para todo $x \in X$. Por otro lado, si $x \in \mathbb S^{n-1}$, entonces
+ $r(x) = L_x \cap \mathbb S^{n-1} = x$, por lo que $r$ es una retración, lo cual contradice $(b)$.
+\end{proof}
+
+\begin{theorem}[Brouwer]
+ $\mathbb B^2$ tiene la propiedad del punto fijo.
+\end{theorem}
+
+\begin{proof}
+ La demostración se sigue del lema anterior y del hecho que $\mathbb S^1$ no es contraible.
+\end{proof}
+
+
+\subsection{El grupo fundamental de $\mathbb S^n$}
+
+ La compacidad y la conexidad nos han ayudado a saber cuando dos espacios no son homeomorfos. Ahora veremos cómo el grupo fundamental también puede
+ ayudarnos en ese sentido.
+
+\begin{theorem} \label{union simplemente conexos}
+ Sea $X$ un espacio topológico tal que $X = U \cup V$, donde $U$ y $V$ son subconjuntos abiertos de $X$. Si $U$ y $V$ son simplemente conexos 
+ y $U \cap V$ es conexo por trayectorias, entonces $X$ es simplemente conexo.
+\end{theorem}
+
+\begin{proof}
+ Primero demostremos que $X$ es conexo por trayectorias. Sean $x_0$ y $x_1$ dos puntos arbitrarios en $X$. Si $\{x_0,x_1\} \subset U$ \'o
+ $\{x_0,x_1\} \subset V$, al ser $U$ y $V$ conexos por trayectorias existe una trayectoria de $x_0$ a $x_1$. Supongamos entonces que
+ $x_0 \in U$ y $x_1 \in V$. Sea $y \in U \cap V$. Como $U$ es conexo por trayectorias, existe una trayectoria $f:I \to U$ tal que $f(0)=x_0$ y
+ $f(1)=y$. Análogamente, existe $g:I \to V$, tal que $g(0)=y$ y $g(1)=x_1$. Entonces $f*g$ es una trayectoria de $x_0$ a $x_1$, lo cual demuestra
+ que $X$ es conexo por trayectorias. \\
+
+ En virtud del Corolario ~\ref{c.c. implica gfi}, es suficiente demostrar que para cualquier punto $p \in U \cap V$ y para cualquier lazo
+ $\alpha$ basado en $p$, $\alpha$ y $e_p$ son trayectorias hom\'otopas.
+
+ Consideremos entonces $p\in U\cap V$ y un lazo $\alpha:I\to X$ basado en $p$. Como $I$ es compacto y $\alpha^{-1}(U)$, $\alpha^{-1}(V)$ es una
+ cubierta abierta para $I$, podemos, aplicar el lema del número de Lebesque para encontrar puntos $0 = t_0 < t_1 < t_2 < \dots < t_n = 1$ tales que
+ $[t_{i-1},t_{i}] \subset \alpha^{-1}(U)$ \'o $[t_{i-1},t_{i}]\subset \alpha^{-1}(V)$, para todo $i\in\{1,\dots, n\}.$ Consecuentemente,
+ $\alpha([t_{i-1},t_{i}]) \subset U$ \'o $\alpha([t_{i-1},t_{i}])\subset V$ para cada $i \in\{ 1,\dots, n\}$. Para cada $i\in\{1,\dots, n\}$,
+ sea $\alpha_i:I\to X$  la trayectoria dada por
+
+ $$\alpha_i(x) = \alpha((t_i-t_{i-1})x + t_{i-1}), \quad x \in I.$$
+ Entonces $\alpha_i$ es una trayectoria entre $\alpha(t_{i-1})$ y $\alpha(t_i)$. Más aún, $\alpha_i(I) = \alpha([t_{i-1},t_{i}])$,
+ por lo que $\alpha(I)$ está contenido en $U$ o en $V$. Además
+ $$[\alpha] = [\alpha_1*\alpha_2*\dots*\alpha_n].$$
+ pues $\alpha_1*\alpha_2*\dots*\alpha_n$ es una reparametrizaci\'on de $\alpha$ (ejercicio).
+
+ Como $U$, $V$ y $U\cap V$ son conexos por trayectorias, para cada $\alpha(t_i)$, $i\in\{1,\dots n-1\}$, podemos encontrar una trayectoria
+ $\gamma_i:I\to X$ entre $p$ y $\alpha(t_i)$ que satisface las siguientes condiciones:
+ \begin{enumerate}
+  \item si $\alpha(t_i)\in U$, entonces $\gamma_i(I)\subset U$,
+  \item si $\alpha(t_i)\in V$, entonces $\gamma_i(I)\subset V$,
+  \item si $\alpha(t_i)\in U\cap V$, entonces $\gamma_i (I)\subset U\cap V.$
+ \end{enumerate}
+ Notemos que cada $\gamma_{i-1}*\alpha_i*\overline\gamma_i$ es un lazo en $p$ para todo $i\in\{2,\dots n_1\}$. Adem\'as, por la construcción
+ de las trayectorias $\alpha_i$ y $\gamma_i$, se tiene que
+ $$  \gamma_{i-1}*\alpha_i*\overline\gamma_i(I) \subset U  \text{si } \; \alpha(t_i) \in U, $$
+     $$\gamma_{i-1}*\alpha_i*\overline\gamma_i(I)\subset V   \text{si }\; \alpha(t_i)\in V.$$
+ En ambos casos, como $U$ y $V$ son simplemente conexos, se tiene que $[\gamma_{i-1}*\alpha_i*\overline\gamma_i]=[e_p]$. Análogamente,
+ $\alpha_1*\overline{\gamma}_1$ y $\gamma_{n-1}*\alpha_n$ son trayectorias hom\'otopas a $e_p$. Entonces
+ \begin{align*}
+  [\alpha] & = [\alpha_1*\alpha_2*\dots*\alpha_n] \\
+           & = [\alpha_1*\overline\gamma_1*\gamma_1*\alpha_2*\overline\gamma_2*\gamma_2*\dots*\overline\gamma_{n-1}*\gamma_{n-1}*\alpha_n] \\
+           & = ([\alpha_1*\overline\gamma_1])\cdot([\gamma_1*\alpha_2*\overline\gamma_2])\cdot\dots\cdot([\gamma_{n-1}*\alpha_n]) \\
+           & = [e_p]\cdot [e_p]\cdot \dots[e_p]=[e_p].
+ \end{align*}
+ Por lo tanto, podemos conlcuir que $X$ es simplemente conexo.
+\end{proof}
+
+
+\begin{corollary}\label{Snsimpconex}
+ Si $n \geq 2$, entonces $\mathbb S^n$ es simplemente conexo.
+\end{corollary}
+
+\begin{proof}
+ Sean $x,$ y $y$ dos puntos en $\mathbb S^n$, distintos. Entonces $U = \mathbb S^n\setminus\{x\}$ y $V = \mathbb S^n\setminus\{y\}$ son conjuntos
+ abiertos en $\mathbb S^n$. Más aún, $U$ es homeomorfo a $\mathbb R^{n}$ y $V$ es homeomorfo a $\mathbb R^n$, por lo que tanto $U$ como $V$ son
+ simplemente conexos. Además, $U \cap V$ es conexo por trayectorias. Así, podemos aplicar el Teorema~\ref{union simplemente conexos}, y concluir que
+ $\mathbb S^n$ es simplemente conexo.
+\end{proof}
+
+\begin{corollary}
+ El toro $\mathbb S^1\times\mathbb S^1$ no es homeomorfo a la esfera $\mathbb S^2$.
+\end{corollary}
+
+\begin{proof}
+ En virtud del Corolario~\ref{homeo isormor}, es suficiente demostrar que el grupo fundamental de la esfera no es isomorfo al grupo fundamental
+ del toro. Pero $\pi(\mathbb S^2) = \{0\}$, según el corolario \ref{Snsimpconex}, mientras que por el Teorema~\ref{grup fund prod},
+ $\pi(\mathbb S^1\times\mathbb S^1) = \mathbb Z \times \mathbb Z$. Por lo tanto, $\mathbb S^1 \times \mathbb S^1$ no es homeomorfo $\mathbb S^2$,
+ como se quería demostrar.
+\end{proof}
+
+
+\subsection{El teorema fundamental del álgebra} 
+ Ahora veremos una bonita aplicación del grupo fundamental al álgebra. Veremos que a partir del grupo fundamental del círculo, es posible dar una
+ demostraci\'on sencilla del \textit{Teorema Fundamental del Álgebra}.
+
+\begin{theorem}[Teorema Fundamental del Álgebra]
+ Todo polinomio no constante con coeficientes complejos posee una raíz compleja.
+\end{theorem}
+
+\begin{proof}
+ Sea $P(z)=a_0 + a_1 z + a_2 z^2 + \dots + a_{k-1} z^{k_1} + z^{k}$ un polinomio con coeficientes $a_i\in\mathbb C$ para todo $i=0,\dots k-1$
+ ($k>0$). Supongamos que $P$ no posee ninguna raíz. Entonces para todo $z \in \mathbb C$, $P(z)\neq 0$. Así, podemos definir la función
+ $G:I\times[0,\infty)\to\mathbb S^1\subset\mathbb C$ de la siguiente manera:
+ $$G(x,t)=\frac{P(t e^{2\pi ix})}{\|P(t e^{2\pi ix})\|} ~.~ \frac{\|P(t)\|}{P(t)}.$$
+
+ Entonces $G$ está bien definida y es una función continua. Ahora definamos la función $H:I\times I\to \mathbb S^{1}$ de la siguiente manera:
+ \begin{equation*}
+  H(x,t) = \begin{cases}
+            G \left(x,\frac{t}{t-1}\right), & \text{si} \; t \in[0,1),\\
+            e^{2 \pi kix}, & \text{si} \; t = 1.
+           \end{cases}
+ \end{equation*}
+ Para demostrar que $H$ es continua, basta demostrar que 
+ \begin{equation}\label{limite}
+  \lim \limits_{t \to 1} G \left(x,\frac{t}{t-1}\right) = e^{2\pi kix}.
+ \end{equation}
+ Pero $r=\frac{t}{t-1} \to \infty$ cuando $t \to 1$, por lo que
+ \begin{equation*}
+  \lim \limits_{t \to 1} G \left(x,\frac{t}{t-1}\right) = \lim \limits_{r \to \infty} G(x,r).
+ \end{equation*}
+ Ahora bien,
+ $$G(x,r) = \frac{(a_0 + a_1 re^{2\pi ix} + \dots + a_k r^ke^{2\pi k ix})\cdot|a_0 + a_1r + \dots+ a_kr^k|}
+                 {|a_0 + a_1 re^{2\pi ix} + \dots + a_k r^ke^{2\pi k ix}|\cdot(a_0 + a_1r + \dots+ a_kr^k)}.$$
+ Si multiplicamos y dividimos el segundo lado de la ecuación por $r^k/|r^k|$, obtenemos que
+
+ \begin{equation*}
+  G(x,r) = \frac{({a_0}/{r^k} + {a_1 e^{2\pi ix}}/{r^{k-1}} + \dots + a_k e^{2\pi k ix}) \|{a_0}/{r^k} + {a_1}/{r^{k-1}} + \dots +a_k\|}
+                {\|{a_0}/{r^k} + {a_1 e^{2\pi ix}}/{r^{k-1}} + \dots + a_ke^{2\pi k ix}\| ( {a_0}/{r^k} + {a_1}/{r^{k-1}} + \dots +a_k)}
+ \end{equation*}
+ Consecuentemente, 
+ \begin{align*}
+  \lim \limits_{r\to \infty} G(x,r) & = \lim \limits_{r \to \infty} \frac{({a_0}/{r^k} + {a_1 e^{2\pi ix}}/{r^{k-1}} + \dots + a_k e^{2\pi k ix})
+  \|{a_0}/{r^k} + {a_1}/{r^{k-1}} + \dots +a_k\|}{\|{a_0}/{r^k} + {a_1 e^{2\pi ix}}/{r^{k-1}} + \dots + a_ke^{2\pi k ix}\|
+  ( {a_0}/{r^k} + {a_1}/{r^{k-1}} + \dots +a_k)} \\
+                                    & = \frac{(a_k e^{2\pi kix}) \|a_k\|}{a_k \|a_ke^{2\pi kix}\|} \\
+                                    & = e^{2\pi kix}.
+ \end{align*}
+ Así, (\ref{limite}) está demostrado y por lo tanto $H$ es una función continua. Ahora notemos que $H(0,t)=1$ y $H(1,t)=1$ para cada $t \in I$,
+ por lo que $H$ es en realidad una homotopía de trayectorias entre $H_0(x)=H(x,0)$ y $H_1(x)=H(x,1)$. 
+
+Notemos además que $H_0(x)=G(x,0)=1$ y
+ $H_1(x)=e^{2\pi kix}$, por lo que $\text{deg}\;H_0 = 0$ y $\text{deg}\;H_1=k$. Sin embargo, por ser $H_0$ y $H_1$ trayectorias homotópicas,
+ se tiene que $\text{deg}\;H_0 = \text{deg}\;H_1$, lo cual es una contradicción. 
+ Consecuentemente el polinomio $P$ tiene una raíz y por lo tanto el teorema queda demostrado.
+\end{proof}
+
+
+\subsection{El teorema de Borsuk-Ulam}
+
+\begin{theorem}[Borsuk-Ulam] \label{BorsukUlam:teo}
+ No existe funci\'on impar $f:\mathbb{S}^{n+1} \to \mathbb{S}^n$ para $n \geq 0$.
+\end{theorem}
+
+\begin{proof}
+ Para $n=0$ se sigue de la conexidad de la circunferencia $\mathbb{S}^1$. Aqu\'i vamos a demostrar el caso $n=1$.
+
+ Supongamos que existe una funci\'on impar $f:\mathbb{S}^2 \to \mathbb{S}^1$. Consideremos el lazo ecuatorial $\eta:[0,1] \to \mathbb{S}^2$ dada
+ por $\eta(x)=(\cos 2\pi x, \sen 2\pi x, 0)$. Denotemos por $\varphi$ a la composici\'on $f\eta$. Entonces, como $f(-x) = -f(x)$, tenemos que
+ \[ \varphi(x + \frac{1}{2}) = -\varphi(x)   \quad \forall x \in \big[ 0,\frac{1}{2}\big].\]
+ Sea $\widetilde{\varphi}$ el levantamiento de $\varphi$ respecto a la funci\'on cubriente $p:\mathbb{R} \to \mathbb{S}^1, \; p(t) = e^{2 \pi it}$.
+ Como $p \widetilde{\varphi} = \varphi$, tenemos que
+ \[ \widetilde{\varphi}(x + \frac{1}{2}) = \widetilde{\varphi}(x) + \frac{2k(x) + 1}{2},   \]
+ para alg\'un entero $k(x)$ con $x \in [0,\frac{1}{2}]$. Se sigue entonces que $k(x)$ depende continuamente de $x$ en $[0,\frac{1}{2}]$. Como este
+ \'ultimo es conexo, inferimos que $k(x)$ es constante en $[0,1]$. En particular, $k(0)=k(1/2)$. Esto implica que
+ \begin{eqnarray*}
+  \widetilde{\varphi}(1) & = & \widetilde{\varphi}(\frac{1}{2}) + \frac{2k + 1}{2} \\
+  \widetilde{\varphi}(\frac{1}{2}) & = & \widetilde{\varphi}(0) + \frac{2k + 1}{2}.
+ \end{eqnarray*}
+ De modo que $\widetilde{\varphi}(1) = \widetilde{\varphi}(0) + 2k + 1$. Pero $\widetilde{\varphi}(0) = 0$, as\'i que $\widetilde{\varphi}(1)=2k+1$.
+ En particular, $\text{deg}\: \varphi = \widetilde{\varphi}(1)=2k+1 \neq 0$ y $\varphi$ no es nulhomotópica. 
+
+ Por otro lado, $\varphi = f\eta$. Como $\pi(\mathbb{S}^2) = 0$, debemos tener que $\eta$ es nulhom\'otopa en $\mathbb{S}^2$ y por tanto 
+ $\varphi$ es nulhom\'otopa en $\mathbb{S}^1$. Arribamos a una contradicci\'on . Podemos concluir que no existe una función impar $f:\mathbb{S}^2\to\mathbb{S}^1$
+\end{proof}
+
+\begin{corollary}\label{s2enr2antipodales}
+ Para toda funci\'on continua $f:\mathbb{S}^2 \to \mathbb{R}^2$, hay un par de puntos antipodales $x, -x \in \mathbb{S}^2$ tales que
+ $f(x)=f(-x).$
+\end{corollary}
+
+\begin{proof}
+ De no ser este el caso, podemos definir la funci\'on $\varphi:\mathbb{S}^2 \to \mathbb{S}^1$ como
+ \[ \varphi(x) = \frac{f(x)-f(-x)}{\|f(x)-f(-x)\|}   \]
+ la cual es impar, contradiciendo el Teorema \ref{BorsukUlam:teo}.
+\end{proof}
+
+ Este corolario tiene una singular aplicaci\'on:
+
+\begin{example}
+ En cada instante de tiempo, hay sobre la Tierra un par de puntos antipodales con la misma temperatura y presi\'on.
+\end{example}
+
+\begin{corollary}
+ La esfera $\mathbb{S}^2$ no es homeomorfo a ning\'un subconjunto de $\mathbb{R}^2$.
+\end{corollary}
+
+
+\begin{corollary}
+ Para toda funci\'on impar $f:\mathbb{S}^2 \to \mathbb{R}^2$ existe un punto $x \in  \mathbb{S}^2$ tal que $f(x)=0$.
+\end{corollary}
+
+\begin{proof}
+ Si la conclusi\'on es falsa, entonces la funci\'on $\varphi:\mathbb{S}^2 \to \mathbb{S}^1$ definida como $\varphi(x) = \frac{f(x)}{\|f(x)\|}$
+ es impar, contradiciendo el Teorema \ref{BorsukUlam:teo}.
+\end{proof}
+
+\begin{corollary}
+ Sea $\mathbb{S}^2 = A_1 \cup A_2 \cup A_3$, donde $A_1,A_2,A_3$ son subconjuntos cerrados de la esfera. Entonces por lo menos uno de estos conjuntos 
+ contiene un par de elementos antipodales.
+\end{corollary}
+
+\begin{proof}
+ Sean $f_i: \mathbb{S}^2  \to \mathbb{R}$ las funciones de distancia a los $A_i$, i.e.
+ \[ f_i(x) = \inf_{s \in A_i} \|x-s\|.   \] 
+ Sea $f:\mathbb{S}^2 \to \mathbb{R}^2$ dada por $f(x)=(f_1(x),f_2(x))$. Existe entonces, por elcorolario \ref{s2enr2antipodales}  un $x_0 \in \mathbb{S}^2$ tal que $f(x_0) = f(-x_0)$, i.e.
+ \[ f_1(x_0) = f_1(-x_0) \quad \text{y} \quad f_2(x_0) = f_2(-x_0).     \]
+
+ Consideremos dos casos. Si $f_1(x_0) \neq 0$ y $f_2(x_0) \neq 0$, entonces $x_0 \notin A_1 \cup A_2$, por lo que $x_0 \in A_3$. Para este $x_0$, sin
+ embargo, tenemos 
+$$f_1(-x_0) \neq 0 \text{ y } f_2(-x_0) \neq 0,$$
+ de donde $ -x_0 \in A_3$.
+
+ En el otro caso, supongamos que $f_1(x_0)=f_1(-x_0)=0$.
+ Entonces $x_0,-x_0 \in A_1$. 
+\end{proof}
+
+
+\begin{corollary}
+ Ninguna funci\'on continua $f:\mathbb{R}^n \to \mathbb{R}^2$ es biyectiva para $n \neq 2$. En particular, $\mathbb{R}^n \not \cong \mathbb{R}^2$
+ para $n \neq 2$.
+\end{corollary}
+
+\begin{proof}
+ Sea $n >2$. Consideramos la esfera $\mathbb{S}^2$ encajada can\'onicamente en $\mathbb{R}^n$, i.e.
+ \[ \mathbb{S}^2 = \{ (x_1,\ldots,x_n) \:\big|\: \|(x_1,\ldots,x_n)\|=1, \; \text{y} \; x_4 = \ldots = x_n =0 \}.  \]
+ Entonces por el corolario anterior, la restricci\'on $\varphi = f|_{\mathbb{S}^2}$ no es biyectiva.
+
+
+
+
+
+
+\end{proof}
+
+
+\paragraph{Nota} En realidad, $\mathbb{R}^n \not \cong \mathbb{R}^m$ para $n \neq m$. Esto se pude demostrar de la misma manera usando los grupos
+ de homotop\'ia de las dimensiones correspondienes (m\'as altas).
+
+%%%%%%%%%%%%14oct2008%%%%%%%%%%
+
+
+\section{Ejercicios del Capítulo}
+
+\begin{enumerate}
+ \item Sea $p:X\to Y$ un mapeo cubriente. Demuestra que para todo $y\in Y$, el subespacio $p^{-1}(y)$ es discreto.
+ \item Demuestra que si $p:Y\to Z$ es un mapeo cubriente, tal que $p(y_0)=z_0$ para un par de puntos $y_0\in Y$ y $z_0\in Z$, entonces existe una
+       función suprayectiva $\Phi:\pi_1(Z,z_0)\to p^{-1}(z_0)$. Mas aún, demuestra que si $Y$ es simplemente conexo, entonces puede construirse una biyección.
+ \item Demuestra que el grupo fundamental de $\mathbb R^2\setminus \{(0,0)\}$ es isomorfo a $(\mathbb Z,+)$.
+ \item Da un ejemplo de un espacio topológico $X$ y de dos puntos $x,y\in X$ tales que $\pi_1(X,x)$ no sea isomorfo a $\pi_1(X,y)$.
+ \item Sea $X$ un espacio topológico y $x\in X$ un punto arbitrario.
+       \begin{enumerate}
+        \item Si $X$ es discreto ¿qué es $\pi_1(X,x)$?
+        \item Si $X$ es indiscreto ¿qué es $\pi_1(X,x)$?
+       \end{enumerate}
+ \item Sea $f:\mathbb S^1\to\mathbb S^1$ una función continua que no es homotópica  a la función identidad. Demuestra que existe $x\in\mathbb S^1$
+       tal que $f(x)=-x$. ¿Qué puedes decir si $f$ es homotópica a la identidad.
+ \item Demuestra que si el grupo fundamental del círculo fuera trivial, entonces el grupo fundamental de cualquier espacio topológico sería trivial.
+ \item Denotemos por $\mathbb B^{2}=\{x\in\mathbb R^2| \|x\|\leq 1\}$ al disco unitario. Sea $\partial \mathbb B^2$ su frontera. 
+       Demuestra que si $h:\mathbb B^{2}\to \mathbb B^{2}$ es un homeomorfismo, entonces $h(\partial \mathbb B^2)=\partial \mathbb B^2$.
+ \item Demuestra que la retracci\'on $r$ del Lema \ref{equivalencia punto fijo} est\'a bien definida.
+ \item Demuestra que $\alpha_1 * \ldots * \alpha_n$ en el Teorema \ref{union simplemente conexos}, constituye una reparametrizaci\'on de $\alpha$.
+ \item ?`Es cierto el Teorema de Borsuk-Ulam para el toro? Es decir, si $f:\mathbb{S}^1 \times \mathbb{S}^1 \to \mathbb{R}^2$ es continua entonces
+       $f(x,y) = f(-x,-y)$ para alg\'un par $(x,y) \in  \mathbb{S}^1 \times \mathbb{S}^1$.
+ \item ?`Es cierto que todo lazo suprayectivo $f:I \to \mathbb{S}^1$ no es nulhom\'otopo?
+ \item Demostrar que si $f:\mathbb{S}^n \to \mathbb{S}^n$, $n\geq0$ es continua y no suprayectiva entonces $f(x)=f(-x)$ para alg\'un
+       $x \in \mathbb{S}^n$.
+       
+\end{enumerate}
+
