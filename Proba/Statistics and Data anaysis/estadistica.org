@@ -1,10 +1,29 @@
-#+title: Notas de Estadistica
-#+author: Carlos Eduardo artínez Aguilar
+#+title: Notas de Estadistica y Aprendizaje de máquina estadístico-probabilistico
+#+author: Carlos Eduardo Martínez Aguilar
 #+OPTIONS: tex:t
 #+LANGUAGE: esp
-#+SETUPFILE: ~/Templates/latex-export.org
-** Medida y probabilidad.
+#+SETUPFILE: ~/Templates/notes-latex.org
+* Repaso elemental de probabilidades.
 
+** Teoría básica de la probabilidad.
+
+\noindent *\huge Introducción*
+\vspace{0.5cm}\\
+\noindent Al hablar de las bases de una teoría, existe una tendencia en matemáticas a enfocarse en los principios axiomaticos de la misma, la estadística como ciencia se basa en la teoría de la probabilidad como base fundamental de la misma. Esto de por sí trae controversias puesto que la teoría de la probabilidad en su versión convencionalmente aceptada por la comunidad matemática, se fundamenta en la visión Kolmogoroviana basada en la teoría de la medida, la cual trae con sigo las pradojas obenida através de lateoría de conjuntos y el axioma de elección. Esto sin mencionar las particularidades que la estadística como disciplina ha obetnido como disciplina humana a través de los años.
+
+Por otra parte La historia de la probabilidad como rama matemática comienza con Fermat cuando investiga los problemas que un amigo apostador de Pascal le propone. La así llamada "definición clásica" de la probabilidad se puede encontrar por ejemplo en el libro "Teoría Analítica de las Probabilidades" de Laplace donde define
+
+ #+BEGIN_QUOTE
+La probabilidad de un suceso es la razón en número de casos favorables y el número total de casos posibles, siempre que nada obligue a creer que alguno de estos casos debe de tener lugar de preferencia a los demás, lo que hace que todos sean para nosotros, igualmente posibles. -- P.S. Laplace
+ #+END_QUOTE
+
+Al leer uno la definición anterior se da uno cuenta de que ésta es una noción intuitiva, pero claramente incompleta de probabilidad ya que desde el comienzo estanoción no puede tratar facilmente con probabilidades tonde los casos nostan todos "igualmente posibles". Desde los tiempos de Bernoulli (1713) se conocian resultados como la ley (débil) de los grandes números, sin embargo no es hasta el siglo veinte que se considera una base axiomática basada en la teoría de la medida para la teoria probabilística que se encuentra una demostración rigurosa del la ley de los grandes números y el teorema del límite central. Más aún, existen dos vertientes ideológicas distintas de la teoría de la probabilidad
+
++ Una es la Probabilidad ``objertiva'', la cual se basa en la axiomatización dada por la teoría de la medida, la cual fue detallada por Kolmogorov y postula a la probabilidad como el resultado que permite calcular los ``outcomes'' de una serie de experimentos los cuales son en teoría infinitamente repetibles (von Mises).
+
++ La otra es la Probabilidad "subjetiva", propuesta por Keynes, la cual busca responder preguntas como: ``¿Mañana va a lloverá?'' o ``Existe vida en saturno?'' Su influencia mayor está dada por la escuela bayesiana de estadística.
+*** Probabilidad y medida
+\noindent Por nuestra parte haremos uso de la visión Kolmogoroviana de la probabilidad.
 \begin{def.}
 Una /sigma-álgebra/ sobre un conjunto $\Omega$ es una colección de subconjuntos de $\Omega$, la cual denotamos por $\Sigma$ y cumple lo siguiente
 + $\emptyset\in\Sigma$ y $\Omega\in\Sigma$
@@ -23,19 +42,520 @@ A los elementos de $\Sigma$ se les llama como /conjuntos medibles/ o para la pro
 \]
 
 \begin{def.}
-\noindent Entenderemos un /espacio de probabilidad/ como un espacio de medida $(\Omega,\Sigma,\textbf{P})$ con medida uno, es decir un conjunto con una /sigma-álgebra/ $\Sigma$ y una medida *P*, tal que sea una medida de probabilidad, es decir que cumple:
+Dado un conjunto $\Omega$, decimos que una familia de subconjuntos $\mathrm{F}$ de $\Omega$
+    + Es un $\pi$ sistema, si es cerrado bajo intersecciones finitas.
 
-+ $\textbf{P}(A)\geq 0$
-+ $\textbf{P}(\Omega)=1$
-+ Si $\{A_n\}\subset\Sigma$ es tal que $A_n\cap A_{n+1}=\emptyset$, entonces $\textbf{P}(\bigcup A_n)=\sum_{n=1}^{\infty} \textbf{P}(A_n)$
+    + Es un $\lambda$ sistema o sistema de Dynkin si cumple
+      - $\Omega\in\mathrm{F}$
+      - $A,B\in\mathrm{F}$ y $A\subset B$, entonces $A\setminus B\in\mathrm{F}$
+      - Si $\{A_n\}_{n\in\nat}\subset\mathrm{F}$ es una sucesion creciente, entonces $\bigcup_{n\in\nat}A_n\in\mathrm{F}$
+
+\end{def.}
+\begin{lema}
+    Una familia $\Sigma$ de subconjuntos de un conjunto $\Omega$ es una $\sigma$ álgebra si y sólo si es un $\pi$ sistema y $\lambda$ sistema.
+\end{lema}
+\begin{def.}
+Sea $\mathrm{F}$ una familia de subconjuntos de $\Omega$
+    + Definimos a la $\sigma$ álgebra generada por $\mathrm{F}$ como la $\sigma$ álgebra más chica que contiene a $\mathrm{F}$, esto es equivalente a la intersección de todas las $\sigma$ álgebras que contienen a $\mathrm{F}$ y se denotará por $\sigma(\mathrm{F})$.
+    + De forma similar el $\lambda$ sistema generado por $\mathrm{F}$ se denota $\lambda(\mathrm{F})$ y es el $\lambda$ sistema más chico que contiene a $\mathrm{F}$.
+\end{def.}
+\begin{teorema}[Teorema de clases monótonas de Sierpinsky]
+Sea $\mathrm{F}$ un $\pi$ sistema de sunconjuntos de $\om$ y $\mathrm{G}$ un $\lambda$ sistema tal que $\mathrm{F}\subset\mathrm{G}$, entonces $\sigma(\mathrm{F})\subset\mathrm{G}$ o equivalentemente $\lambda(\mathrm{F})=\sigma(\mathrm{F})$
+\end{teorema}
+\noindent\dem Como una $\sigma$ álgebra es un $\pi$ sistema y $\lambda$ sistema, entonces $\lambda(\mathrm{F})\subset\sigma(\mathrm{F})$. Por lo tanto si demostramos que $\lambda(\mathrm{F})$ es una $\sigma$ álgebra, entonces el teorema estaría demostrado, así sólos hay que ver que $\lambda(\mathrm{F})$ es un $\pi$ sistema. Sea $C\in\mathrm{F}$, entonces definimos
+\[
+    \mathrm{G}_{1}:=\{A\in\lambda(\mathrm{F})\,\vert\,A\cap C\in\lambda(\mathrm{F})\}.
+\]
+\noindent Veamos que $\mathrm{G}_1$ es un $\lambda$ sistema
++ Como $\om\cap C=C\in\lambda(\mathrm{F})$, entonces $\om\in\mathrm{F}$
++ Si $A,B\in\mathrm{G}_1$ con $A\subset B$, entonces $A\cap C\subset B\cap C\in\lambda(\mathrm{F})$ y como es $\lambda$ sistema por definición, entonces $A\cap C\setminus B\cap C=(A\setminus B)\cap C\in\lambda(\mathrm{F})$
++ De igual manera, si  $\{A_n\}\subset\mathrm{G}_1$ es una sucesión creciente de subconjuntos, entonces $\bigcup A_n\cap C\in\lambda(\mathrm{F})$ y por lo tanto $\bigcup A_n\mathrm{G}_1$.
+Por lo tanto $D_1$ es un $\lambda$ sistema contenido en $\lambda(\mathrm{F})$ que contiene a $\mathrm{F}$ pues éste es un $\pi$ sistema, así $\lambda(\mathrm{F})\subset\mathrm{G}_1$, por lo tanto $C\cap A\in\lambda(\mathrm{F})$ para todo $C\in\mathrm{F}$ y $A\in\lambda(\mathrm{F})$. Similarmente, si tomamos $A\in\lambda(\mathrm{F})$ fija, definimos
+\[
+    \mathrm{G}_2=\{B\in\lambda(\mathrm{F})\,\vert\,B\cap A\in\lambda(\mathrm{F})\},
+\]
+\noindent se puede demostrar que $\mathrm{G}_2$ es un $\lambda$ sistema que contiene a $\mathrm{F}$, entonces $\lambda(\mathrm{F})\subset\mathrm{G}_2$, así $\lambda(\mathrm{F})$ contiene intersecciones finitas y por lo tanto es una $\sigma$ álgebra.
+\qed\\
+
+\begin{def.}
+\noindent Entenderemos un /espacio de probabilidad/ como un espacio de medida $(\Omega,\Sigma,\prob)$ con medida uno, es decir un conjunto con una /sigma-álgebra/ $\Sigma$ y una medida *P*, tal que sea una medida de probabilidad, es decir que cumple:
+
++ $\prob(A)\geq 0$
++ $\prob(\Omega)=1$
++ Si $\{A_n\}\subset\Sigma$ es tal que $A_n\cap A_{n+1}=\emptyset$, entonces
+\[
+\prob(\bigcup_{n=1}^{\infty} A_n)=\sum_{n=1}^{\infty} \prob(A_n)
+\]
 \end{def.}
 
-Se le denomina a los conjuntos medibles de un espacio de probabilidad como /eventos/ y a dicha medida le llamamos /medida de probabilidad/, así mismo se le denomina al espacio total $X$ como /espacio de muestras/. Así la medida de probabilidad *P* evaluada en un evento $E$, $\textbf{P}(E)$ es naturalmente la probabilidad del evento $E$ y a un evento de probabilidad cero se le conoce como /evento nulo/. Si un evento tiene como complemento un evento nulo, en otra palabras, si el evento tiene probabilidad 1 diremos que el evento es /casi seguro/. Cuando una proposicion ocurre fuera de un conjunto de probabilidad cero, decimos que ocurre /casi seguramente/.
+Se le denomina a los conjuntos medibles de un espacio de probabilidad como /eventos/ y a dicha medida le llamamos /medida de probabilidad/, así mismo se le denomina al espacio total $X$ como /espacio de muestras/. Así la medida de probabilidad *P* evaluada en un evento $E$, $\prob(E)$ es naturalmente la probabilidad del evento $E$ y a un evento de probabilidad cero se le conoce como /evento nulo/. Si un evento tiene como complemento un evento nulo, en otra palabras, si el evento tiene probabilidad 1 diremos que el evento es /casi seguro/. Cuando una proposicion ocurre fuera de un conjunto de probabilidad cero, decimos que ocurre /casi seguramente/.
 
 \eje El ejemplo prototípico son los intervalos finitos de números reales cuya sigma álgebra es el álgebra de los conjuntos /borelianos/ o los /medibles de lebesgue/ y la medida de Lebesgue reescalada para medir exactamente 1 $P([a,b])=1/(b-a)\lambda$, donde $\lambda$ es la medida de lebesque usual.
 
-\eje La forma más simple de definir una probabilidad es mediante una función positiva en un conjunto que se quiera medir, uno de los ejemplos más importantes para la teoría de la probabilidad es /distribución gausiana/ definida en todos los reales:
 
+\noindent \big*Algunas propiedades*
+
+1. $\prob(\emptyset)=0$, pues $\prob(E)=\prob(E\cup\emptyset)=\prob(E)+\prob(\emptyset)$.
+2. $\prob(\om\setminusA)=1-\prob(A)$ para todo evento $A$, pues $1=\prob(\om)=\prob(A\cup(\om\setminus A))=\prob(A)+\prob(\om\setminus A)$.
+3. Si $A_1\subset A_2$, donde $A_1,A_2\in\sig$, entonces $\prob(A_1)\leq\prob(A_2)$, pues
+   \[
+   A_2=A_1\cup(A_2\cap(\om\setminus A_1))\,\implies\prob(A_2)=\prob(A_1)+\prob(A_2\cap(\om\setminus A_1))\geq\prob(A_1)
+   \]
+4. Si $A_1,A_2\in\sig$, entonces
+   \[
+   \prob(A_1\cup A_2)=\prob(A_1)+\prob(A_2)-\prob(A_1\cap A_2)
+   \]
+\noindent\dem Observamos que
+\[
+A_1=(A_1\cap A_2)\cup(A_1\cup(\om\setminus A_2)),\quad A_2=(A_2\cap A_1)\cup(A_2\cup(\om\setminus A_1)).
+\]
+Por lo tanto
+\[
+\prob(A_1)=\prob(A_1\cap A_2)+\prob(A_1\cup(\om\setminus A_2)),\quad \prob(A_2)=\prob(A_2\cap A_1)+\prob(A_2\cup(\om\setminus A_1)).
+\]
+Ahora, por otra parte podemos describir a la unión como 
+\[
+A_1\cup A_2=(A_1\cap A_2)\cup(A_1\cup(\om\setminus A_2))\cup((\om\setminus A_1)\cap A_2).
+\]
+Como éstos conjuntos son disjuntos, nos da
+\[
+\prob(A_1\cup A_2)=\prob(A_1\cap A_2)+\prob(A_1\cup(\om\setminus A_2))+\prob((\om\setminus A_1)\cap A_2).
+\]
+Lo cual aunado a lo anterior, nos da el resutado.
+\eje Demuestre de forma inductiva la siguiente fórmula para $A_1,\dots,A_n\in\sig$
+\begin{align*}
+\prob(A_1\cup A_2\cup\dots\cups A_n)=\sum_{i}\prob(A_i)-\sum_{i\leq j}\prob(A_i\cap A_j)+\\
+\sum_{i\leq j\leq k}\prob(A_i\cap A_j\cap A_k)+\cdots+(-1)^{n-1}\prob(A_1\cap\dots\cap A_n).
+\end{align*}
+
+\begin{lema}
+Sea $(\om,\sig,\prob)$ un espacio de probabilidad tal que $\sig=\sigma(\mathrm{F})$ si $\mu_1$ y $\mu_2$ son medidas en $\sig$ tales que $\mu_1=\mu_2$ en $\mathrm{F}$, entonces $\mu_1=\mu_2$.
+\end{lema}
+\obs A partir de estos resultados se puede demostrar el teorema de extensión de Caratheodory.
+\eje Si *P* y *Q* son dos probabilidades en $(\Omega,\Sigma)$, se puede ver que
+\[
+    \mathrm{F}=\{A\in\Sigma\,\vert\,\textbf{P}(A)=\textbf{Q}(A)\}
+\]
+es un $\lambda$ sistema, entonces si un $\pi$ sistema contenido en $\mathrm{F}$ que genera a $\Sigma$, entonces *P* y *Q* son iguales.
+
+*** Probabilidad condicional e independencia
+\noindent Comunemente se define la probabilidad condicional de un evento $A$ con respecto a otro evento no nulo $B$ como la siguiente fórmula
+\[
+    \prob(A|B)=\frac{\prob(A\cap B)}{\prob(B)},
+\]
+Notamos que entonces $\prob(A\cap B)=\prob(B)\prob(A|B)$.
+\begin{def.}
+Decimos que dos eventos $A,B\in\sig$ son /independientes/ si se cumple que
+\[
+\prob(A|B)=\prob(A),
+\]
+o equivalentemente 
+\[
+\prob(A\cap B)=\prob(A)\prob(B),
+\]
+\end{def.}
+\obs Dado un espacio de probabilidad $(\om,\sig,\prob)$ y un evento no nulo $A\in\sig$, es posible definir el /subespacio de probabilidad/ $(A,\sig_A,\prob_A)$ como $\sig_A=\{A\cap B\,|\,B\in\sig\}$ y $\prob_A(B)=\prob(B|A)$
+
+\eje Demuestre que $(A,\sig_A,\prob_A)$ en efecto es un espacio de probabilidad.
+
+Si nos enfocamos en la indepencenia de $\sigma$ álgebras y queremos describimos a partir de este la noción usual de independencia, entonces se define la independencia como
+\begin{def.}{Independencia}
+Sea $(\om,\sig,\prob)$ un espacio de probabilidad, decimos que una familia de sub $\sigma$ álgebras $\{\mathrm{F}_i\}_{i\in I}$ son \emph{independientes} si para cualquier $\{i_1,\dots,i_n\}\subset I$ subconjunto fininto, se tiene que
+\begin{equation}\label{indepen}
+    \prob(A_{i_1}\cap\dots\cap A_{i_n})=\prod_{j=1}^n\prob(A_{i_j})\hspace{0.2cm}A_{i_j}\in\mathrm{F}_{i_j}.
+\end{equation}
+Similarmente a los eventos que cumplan con la ecuación \ref{indepen}, les llamaremos eventos \emph{independientes}.
+\end{def.}
+
+En términos de de /eventos independientes/ como sabemos la ecuación que se cumple es
+\[
+    \prob(A_{i_1}\cap\dots\cap A_{i_n})=\prod_{j=1}^n\prob(A_{i_j}),
+\]
+\noindent queremos generalizar este tipo de ecuaciones pero en el sentido de $\pi$ sistemas en lugar de en nuestro sentido original de $\sigma$ álgebras ya que estas son más complicadas de usar. Por lo que el siguiente lema es muy útil para este tipo de cuestiones
+\begin{lema}\label{sigma_ind}
+Sean $\mathrm{G}$ y $\mathrm{H}$ sub sigma álgebras de $\sig$ y sean $I$ y $J$ $\pi$ sistemas tales que
+\[
+    \sigma(I)=\mathrm{G},\quad\sigma(J)=\mathrm{H}.
+\]
+Entonces $\mathrm{G}$ y $\mathrm{H}$ son independientes si y solo si
+\[
+    \prob(A\cap B)=\prob(A)\prob(B)\quad A\in J,\,B\in J
+\]
+\end{lema}
+\dem
+Es claro que si las $\sigma$ álgebra son independientes entonces los $\pi$ sistemas son independientes. Por lo que sólo es necesario demostrar que si los $\pi$ sistemas son independientes entonces las $\sigma$ álgebras lo son, entonces dadas $A\in I$ y $B\in J$ fijos, definimos las siguientes medidas finitas
+\[
+    C\mapsto\prob(A\cap C)\quad C\mapsto\prob(B)\prob(C).
+\]
+\noindent Como ambas medidascoinciden en $I$ y $J$, por el lema de clases monótonas coincide en $\sigma(I)=\mathrm{G}$ y $\sigma(J)=\mathrm{H}$ y por lo tanto el lema es válido.
+\qed
+
+*** Ejemplos ilustrativos
+\exe El siguiente problema se encuentra por primera vez en el libro de P. R. Montmort titulado /Essai d'Analyse sur les jeux de Hasard/, publicado en 1708: Se tienen dos urnas con $n$ bolitas, cada una numerada de 1 a $n$. Se va sacando simultaneamente una bolita de cada urna y se quiere hallar la probabilidad de que, al terminar la extracción de todas las bolitas, se haya extraído, por lo menos una vez el mismo número de bolita de cada urna.
+
+\noindent El espacio muestral $\om$ es el espacio de las matrices de $2\times n$ de la forma
+\begin{equation}
+\begin{pmatrix}
+a_1 a_2\dots a_n\\
+b_1 b_2\dots b_n
+\end{pmatrix}
+\quad \{a_i,b_j\}\subset\{1,\dots,n\}\,a_k\neq a_l,\,k\neq l,\,b_k\neq b_l,\,k\neq l.
+\end{equation}
+\noindent Donde las $a_i$ representan los números de las bolitas sacadas de la primera urna y las $b_j$ las bolitas de la segunda urna. El número total de elementos de $\om$ claramente es $(n!)^2$. Sea $A_i$ el conjunto de elementos de $\om$ donde el número $i\in\{1,\dots,n\}$ coincide con el $j=i$ de la segunda sin importar la ubicación. Por lo tanto queremos calcular $\prob(A_1\cup A_2\cup\dots\cup A_n)$. Por lo tanto podemos utilizar la ecuación generalizada de la probabilidad de la unión.
++ Primero calculemos la probabilidad de los eventos individuales $A_i$. Supongamos que fijamos el lugar donde coinciden, entonces en los demás $n-1$ son irrelevantes, es dcir cualquier combinación en los otros $n-1$ lugares es válida, entonces tenemos entonces $((n-1)!)^2$ combinaciones por cada lugar donde coinciden, al tener n de éstos y $(n!)^2$ posibilidades totales, tenemos
+  \[
+  \prob(A_i)=\frac{n((n-1)!)^2}{(n!)^2}=\frac{1}{n},\,\,\sum_{i=1}^n \prob(A_i)=1
+  \]
++ Ahora calculamos las probabilidades de las intersecciones de dos eventos $\prob(A_i\cap A_j)$.En este caso tenemos coincidencia en dos puntos y en el resto $n-2$ son arbitrarias, similarmente al caso anterior tenemos entonces $n(n-1)$ combinaciones de lugares donde pueden coincidir los dos números de bolitas y $((n-2)!)^2$ de posibilidades en los demás, entonces 
+  \[
+  \prob(A_i\cap A_j)=\frac{n(n-1)((n-2)!)^2}{(n!)^2},\,\,\sum_{i<j}^n \prob(A_i\cap A_j)={n\choose2}\frac{1}{n(n-1)}=\frac{1}{2}
+  \]
++ Siguiendo la misma lógica 
+  \[
+  \prob(A_i\cap A_j\cap A_k)=\frac{n(n-1)(n-2)((n-3)!)^2}{(n!)^2}=\frac{1}{n(n-1)(n-2)},
+  \]
+  entonces
+  \[
+  \sum_{i,j,k}\prob(A_i\cap A_j\cap A_k)={n\choose3}\frac{1}{n(n-1)(n-3)}=\frac{1}{3!}.
+  \]
+ + Es decir que podemos generalizar el proceso y concluir por inducción que
+  \[
+  \sum_{i_1,i_2,\dots,i_k}\prob(A_{i_1}\cap A_{i_2}\cap\dots\cap A_{i_k})={n\choose k}\frac{1}{n(n-1)\dots(n-k)}=\frac{1}{k!}.
+  \]
+\noindent Por lo tanto podemos concluir por la fórmula de la probabilidad que
+\[
+  \prob(A_1\cup A_2\cup\dots\cup A_n)=\sum_{k=1}^n (-1)^{k-1}\frac{1}{k!}.
+\]
+Por último notamos que si $n\rightarrow\infty$, esta probabilidad tiende a $1-e^{-1}$
+
+\eje El ejemplo anterior se aplica a casos como el siguiente: Si dos jugadores tienen una baraja de 52 cartas y van sacando una carta a la vez simultaneamente ¿Cuál es la probabilidad de que al terminar saquen la misma carta a la vez?
+
+\exe Cumpleaños compartidos: En una fiesta con con $k$ personas ¿Cuál es la probabilidad de que dos de ellas compartan cumpleaños? 
+
+\exe El esquema de contagio de Polya: Supóngase que se tiene una urna con $n$ bolitas negras y $r$ bolitas rojas. Se saca una bolita y se regresa a la urna donde se sacó con una cantidad fija $c$ de bolitas del mismo color. Se desea hallar la probabilidad de que en $N=k_1+k_2$ estracciones hayan salido $k_1$ bolitas negras y $k_2$ bolitas rojas.
+
+\noindent Consideremos la probabilidad de que las bolitas negras salgan justo en las primeras $k_1$ bolitas al sacarlas. La probabilidad de que las primera boliata sea negra es
+\[
+\frac{n}{n+r}
+\]
+
+*** Distribuciones y variables aleatorias discretas
+
+\noindent Asociadas a los probabilidades están las distribuciones y las variables aleatorias que éstas definen, una distribución es el nombre que se le da a las funciones que definen una probabilidad y se utilizan en la práctica como sinónimos de las probabilidades. Aunadas a las distribuciones estan las /variables aleatorias/ que abreviamos como \textbf{v.a}, las cuales son la fenomenología probabilística de las distribuciones, es decir, los eventos aleatorios los describiremos por medio de las variables aleatorias. Dentro de la práctica estadística tienen un valor importante las disribuciones de probabilidad /discretas/ o /finitas/, a pesar de que se pueden consideara como un caso particular del total de distribuciones, conviente estudiarlas en particular ya que muchas veces en la práctica estadística, éstas son las más frecuentes. 
+
+\begin{def.}
+Una variable aleatoria es una función $X:\om\rightarrow\re$, donde queremos que los conjunos $X^{-1}(B)\in\sig$ para todo $B\subset\re$ boreliano. Si $X$ toma a lo más una cantidad a lo más numerable de valores, diremos que X es una variable aleatoria /discreta/
+\end{def.}
+
+Así, con esta definición el lema anterior (lema \ref{sigma_ind}) tiene el siguiente corolario.
+
+\begin{cor}
+Ahora si $X$ e $Y$ son variables aleatorias en un espacio de probabilidad $(\om,\sig,\prob)$ tales que para todo $\{x,y\}\subset\re$ se cumple
+\[
+    \prob(\{X\leq x\}\cap\{Y\leq y\}):=\prob(X\leq x\,,\, Y\leq y)=\prob(X\leq x)\prob(Y\leq y)
+\]
+entonces $X$ e $Y$ son variables aleatorias independientes
+\end{cor}
+\dem
+Esto es claro de la proposición anterior debido a que la familia de conjuntos $\{X^{-1}(-\infty,x]\,\vert\,x\in\re\}$ es un $\pi$ sistema para $\sigma(X)$ para toda \textbf{v.a} $X$, así del lema anterior se sigue el resultado.
+\qed\\
+
+\obs Toda probabilidad en un espacio discreto, es discreta.
+\begin{def.}
+Una distribucion de probabilidad discreta definida por la variable alearotia $X$ se escribe como la suma
+\[
+    \prob(X\in E)=\sum_{x\in A\cap E}\prob(X=x)\quad E\in\sig
+\]
+\end{def.}
+Donde $A$ es un conjunto numerable que cumple que $\prob(X\in A)=1$
+
+\eje La escalera del diablo es una funcion continua que solo toma un numero numerable de valores fuera de un conjunto de medida cero.
+
+\begin{def.}
+Para una disribucion de probabilidad dicreta asociada a una variable aleatoria $X$ se define la /funcion de masa probabilistica/ o la /funcion de densidad discreta/ como
+\[
+        f_{X}(x)=\prob(X=x)\quad\sum_{x\in\om}f_{X}=1
+\]
+De forma similar se define la /funcion cumulativa de probabilidad/ como
+\[
+        F(x)=\prob(X\leq x)=\sum_{\omega\leq x}f_{X}(\omega)
+\]
+\end{def.}
+
+\exe La distribucion binomial con parametros $n\in\nat$, $p\in[0,1]$ se define por medio de la funcion de masa
+\[
+    \prob(k,n,p)={n\choose k}p^{k}(1-p)^{n-k}\quad{n\choose k}=\frac{n!}{k!(n-k)!}
+\]
+Esta probabilidad mide $k$ outcomes deseados de $n$ eventos independientes
+\exe *Bolados* Si se lanza una moneda un número finito de veces \(n\), una variable aleatoria definida por esa serie de eventos es contar el número de veces que cae en sol
+\[
+    X(n)=|\{\text{veces que cae en sol}\}\in\{0,\dots,n\}|
+\]
+\noindent Así por ejemplo al lanzar una moneda tres veces con una moneda /justa/ (con probabilidades de $1/2$ por cara) tiene la siguiente tabla de probabilidades
+
+|  $X$  |   0   |   1  |  2   |   3   |
+|-------+-------+------+------+-------+
+| $f_X$ | $1/8$ |$3/8$ |$3/8$ | $1/8$ |
+| $F$   | $1/8$ |$1/2$ |$7/8$ |   1   |
+
+La ventaja de las variables aleatorias discretas es que el calculo de sus /valores esperados/ o /promedios/ y sus /variazas/ son mucho más fáciles que en los casos continuos.
+
+\begin{def.}[Valor esperado discreto] 
+Dado un espacio de probabilidad \((\om,\sig,\prob)\) una variable aleatoria discreta \(X\), definimos el valor esperado de \(X\) como
+\[
+    \mu=\esp(X)=\sum_{x\in X(\om)} x\prob(X=x).
+\]
+\end{def.}
+
+\begin{def.}[Valor esperado de una función] 
+Dado un espacio de probabilidad \((\om,\sig,\prob)\) una variable aleatoria discreta \(X\) $g:\re\rightarrow\re$, definimos el valor esperado de \(g(X)\) como
+\[
+    \mu=\esp(X)=\sum_{x\in X(\om)} g(x)\prob(X=x).
+\]
+\end{def.}
+
+\obs Si pensamos a \((\om,\sig,\prob)\) como un espacio de medida finita y discreto, la esperanza no es más que la integral de una función medible real, esto lleva a que todo lo que se define a partir de ahorita se pueda generalizar al caso continuo simplemente intercambiando sumas por integrales. 
+
+*Algunas propiedades de la esperanza:*
+
+1. Si $X$,$Y$ son variables aleatorias y $a$, $b$ son números reales, entonces
+   \[
+   \esp(a\,X+b\,Y)=a\,\esp(X)+b\,\esp(Y).
+   \]
+   \noindent En particular
+   \[
+   \esp(a\,X+b)=a\,\esp(X)+b.
+   \]
+2. Si $X\geq Y$,entonces
+   \[
+   \esp(X)\geq\esp(Y).
+   \]
+3. Si denotamos por 1_A a la función generadora de $A\in\sig$, entonces
+   \[
+   \esp(1_A)=\prob(A)
+   \]
+
+\begin{def.}[Variaza discreta]
+Dado un espacio de probabilidad \((\om,\sig,\prob)\) una variable aleatoria discreta \(X\), definimos su varianza o variación a su valor esperado como
+\[
+    \sigma^2=\mathrm{Var}(X)=\esp((X-\mu)^2)
+\]
+\end{def.}
+
+\begin{def.}[Desviación Estandard]
+Dado un espacio de probabilidad \((\om,\sig,\prob)\) una variable aleatoria discreta \(X\), definimos su /desviación estandard/ como
+\[
+    \sigma(X)=\sqrt{\mathrm{Var}(X)}
+\]
+\end{def.}
+
+\obs \(\sigma^2=\mathrm{Var}(X)=\esp(X^2)-\mu^2\)
+\exe Supongase que se tiene una moneda cargada de tal forma que la probabilidad de obtener sol sea \(0.6\) en lugar de \(0.5\). Si tiramos dos veces esta moneda queremos saber cual es el valor esperado y variaza a la variable aleatoria definida por el númro de veces que la moneda cae en sol. Entonces podemos calcular la probabilidad de que la moneda caiga en sol siguiendo la siguiente tabla
+| AA  | AS | SA | SS  |
+|----+----+----+----+
+| $0.4*0.4$ | $0.4*0.6$ |$0.6*0.4$ |$0.6*0.6$ |
+Lo que nos da la siguiente tabla
+|  X | 0  | 1  |  2 |
+|----+----+----+----+
+| *P*     | 0.16|0.48|0.36|
+Entonces el valor esperado y varianza son
+\begin{align*}
+    \mu=\esp(X)= 0*0.16+1*0.48+2*0.36=1.2\\
+    \sigma^2=\mathrm{Var}(X)=(0-1.2)^2*0.16+(1-1.2)^2*0.48+(2-1.2)^2*0.36&=1.92
+\end{align*}
+
+\exe *La distribuciónde Bernouli* Sirve principalmente para modear un sólo evento donde la probabilidad del evento se denota por \(p\). Así se define la distribución como
+\[
+    P(X=x)=p^{x}(1-p)^{1-x}\quad x\in\{0,1\}.
+\]
+\noindent Donde los valores \(0,1\) son los valores de /fracaso/ o /éxito/, es decir esta probabilidad mide eventos que tienen una probabilidad de pasar o no pasar.
+\eje Demuestre que
+\[
+    \mu=p\quad\sigma^2=p(1-p).
+\]
+*Hint: Vea la combinatoria de los eventos exitosos*
+
+
+\exe La distribución binomial se puede pensar como la distribución de probabilidad de tener /(n/) eventos de bernoulli independientes que sean exitosos
+
+\exe *La distribución hipergeométrica:* Se aplica cuando tenemos sucesiones de eventos que no son independientes, en contraste a la distribucion binomial. Intuivamente suponga que tenemos un sample de \(n\) objetos y escoger \(a\) de estos se consideran exitosos y \(N-a\) son fracasos, donde \(N \geq n\) (por ejemplo cuando se escoge quieres hacen servicio militar) así la distribucion se define como
+\begin{align*}
+\prob(X=x)=\frac{{a\choose x}{N-a\choose n-x}}{{N\choose n}}\\
+x\in\{\max(0,n+a-N),\dots\min(a,n)\}
+\end{align*}
+Posteriormente veremos con más detalle las distribuciones de probabilidad definidas previamente.
+
+\begin{teorema}[Desigualdad de Markov]
+Sea $Z$ una variable aleatoria no negativa y sea $a>0$, entonces
+\[
+\prob(Z\geq a)\leq\frac{\esp[Z]}{a}
+\]
+\end{teorema}
+\dem Claramente se cumple la siguiente desigualdad
+\[
+Z\geq a\,1_{Z\geq a},
+\]
+\noindent así, por las propiedades de las esperanza tenemos
+
+\[
+\esp[Z]\geq a\esp[\,1_{Z\geq a}]=a\,\prob(Z\geq a).
+\]
+\qed
+\begin{cor}[Desigualdad de Chebyshev]
+Sea $X$ una variable aleatoria con esperanza $\mu$, si se aplica la desigualdad de Markov a $Z=(X-\mu)^2$ y se toma $a=\epsilon^2>0$,entonces
+\[
+\prob(|X-\mu|\geq \epssilon)\leq \frac{\sigma^2(X)}{\epsilon^2}
+\]
+\end{cor}
+
+*** Productos de variables e independencia
+\noindent Inicialmente definimos independencia en términos de eventos y probabilidades, sin embargo también es posible definir estos conceptos en términos de variables aleatorias y esperanzas. De cierta manera es más natural el pensar la independencia en estos términos que en en términos de eventos. 
+
+\begin{def.}[Variables aleatorias independientes.]
+Decimos que las variables aleatorias $\{X_i\}_{i\in I}$ en un espacio de probabilidad $(\om,\sig,\prob)$ son \emph{independientes} si \[\{\sigma(X_i)\}_{i\in I}\] son independientes. Equivalentemente, dos variables aleatorias $X$ e $Y$ son independientes si 
+\[
+\esp[XY]=\esp[X]\esp[Y].
+\]
+Se denotará la relación de independencia entre $X$ e $Y$ como $X\ind Y$ y no distinguiremos entre variables aleatorias y $\sigma$ álgebras, e incluso denotaremos $X\ind\mathrm{F}$ cuando una variable aleatoria sea indepeniente de una sub $\sigma$ álgebra.
+\end{def.}
+
+\obs Si la distribución de probabilidad de $X$ es $f_X$ y la distribución de probabilidad de $Y$ y $f_{XY}$, entonces dos v.a son independientes si y sólo si
+\[
+f_{XY}=f_X\,f_Y
+\]
+
+\eje Demueste que las dos definiciones de variables aleatorias independientes son en efecto *equivalentes*.
+
+Entonces la independencia se describe en términos del producto de varaibles aleatorias, sin embargo, existen otras fromas de describir y /medir/ la independencia de variables aleatorias. Una de estas involucra la definición de una nueva operación entre variables aleatorias, la cual relaciona la suma de las variacias de dos variables aleatorias y la varianza de las sumas
+
+\begin{def.}[Covarianza]
+Dadas dos variables aleatorias $X$ e $Y$ con valores esperados finitos $\mu_X$ y $\mu_Y$ respectivamente, se define la covariaza como
+\[
+\mathrm{Cov}(X,Y)=\esp[XY]-\esp[X]\esp[Y]=\esp[(X-\mu_X)(Y-\mu_Y)].
+\]
+\end{def.}
+\exe Demuestre la igualdad entre las dos expresiones de $\mathrm{Cov}(X,Y)$
+\noindent Claramente la covarianza es una forma de medir que tanto se alejan dos variables aleatorias de ser independientes, es decir
+\[
+X\ind Y\text{ si y sólo si }\mathrm{Cov}(X,Y)=0.
+\]
+\begin{teorema}
+Sean $X$ e $Y$ variables aleatorias, entonces
+\begin{equation}
+\mathrm{Var}(X+Y)=\mathrm{Var}(X)+\mathrm{Var}(Y)-2\mathrm{Cov}(X,Y).
+\end{equation}
+En particular, $X$ e $Y$ son independientes si y sólo si 
+\begin{equation}
+\mathrm{Var}(X+Y)=\mathrm{Var}(X)+\mathrm{Var}(Y).
+\end{equation}
+\end{teorema}
+\dem Por definición de la varianza, si $\mu_X$ y $\mu_Y$ son los valores esperados de $X$ e $Y$ y $\mu_{X+Y}$ es el valor esperado de $X+Y$, entonces $\mu_{X+Y}=\mu_X+\mu_y$ y por lo tanto
+\begin{align*}
+&\mathrm{Var}(X+Y)=\esp[(X+Y-\mu_{X+Y})^2]=\esp[(X+Y-(\mu_{X}+\mu_{Y}))^2]\\
+&=\esp[((X-\mu_{X})+(Y-\mu_{Y}))^2]=\esp[(X-\mu_X)^2-2(X-\mu_X)(Y-\mu_Y)+(Y-\mu_Y)^2]\\
+&=\esp[(X-\mu_X)]^2+\esp[(Y-\mu_Y)^2]-2\esp[(X-\mu_X)(Y-\mu_Y)]\\
+&=\mathrm{Var}(X)+\mathrm{Var}(Y)-2\mathrm{Cov}(X,Y).
+\end{align*}
+Por lo tanto es claro que si $X\ind Y$, entonces $\mathrm{Cov}(X,Y)=0$ y por lo tanto
+\[
+\mathrm{Var}(X+Y)=\mathrm{Var}(X)+\mathrm{Var}(Y).
+\]
+\qed
+\exe Suponganse que se tienen dos urnas con cinco bolitas enumerdas de 1 al 5 y se saca una bolita de cada urna ¿Cuál es el valor esperado del produco de los números?
+
+\noindent Usamos $X$ para la variable de la primera urna e $Y$ para la segunda, la probabilidad de cada número es $1/5$, entonces $\esp[X]=\esp[Y]=1/5(1+2+3+4+5)=3$, como ambas variables son independientes $\esp[XY]=\esp[X]\esp[Y]=9$.  
+
+\eje ¿Qué sucede si en lugar de en lugar tomar las bolitas de dos urnas, se sacan dos bolitas de la misma urna?
+
+*** Correlacion y regresión lineal
+\noindent Como se vió, la covarianza es una medida de qué tatnto se alejan dos variables aleatorias de ser independientes. Sin embargo ésta medida tiene el detalle de que no es independiente de las unidades de medida, esto es debido a que
+\[
+\mathrm{Cov}(aX,bY)=ab\,\mathrm{Cov}(X,Y)\quad\forall\,\{a,b\}\subset\re.
+\]
+\noindent Por lo tanto queremos definir una medida que sea invariante bajo cambios de unidades
+\begin{def.}[Coeficiente de correlación de Pearson]
+Se define el /coeficiente de correlación/ entre dos variables aleatories $X$ e $Y$ con desviación estandard $\sigma(X)$ e $\sigma(Y)$ como
+\[
+\rho(X,Y)=\frac{\mathrm{Cov}(X,Y)}{\sigma(X)\sigma(Y)}.
+\]
+\end{def.}
+\noindent Claramente $\rho(aX,bY)=\rho(X,Y)$. Ahora se demostrará que $-1\leq\rho\leq1$. Primero para $\{\alpha,\beta\}\subset\re$, consideramos
+\begin{equation}
+\esp[(\alpha(X-\mu_X))+\beta(Y-\mu_Y))^2]=\alpha^2\sigma^2(X)+\beta^2\sigma^2(Y)-2\alpha\beta\,\mathrm{Cov(X,Y)}\geq 0
+\end{equation}
+\noindent Pues la esperanza de algo positivo es positivo. Como la ecuación anterior es válida para toda $\alpha,\beta\in\re$, en particular si tomamos $\alpha=\sigma(Y)$ y $\beta=\sigma(X)$, al agrupar y elimira la constante $2$ obtenemos
+\[
+\sigma^2(X)\sigma^2(Y)-\sigma(X)\sigma(Y)\mathrm{Cov}(X,Y)\geq0.
+\]
+\noindent Por lo tanto $1\geq\rho(X,Y)$, similarmente se elije $\alpha=-\sigma(Y)$ y $\beta=-\sigma(X)$ para obtener $\rho(X,Y)\geq-1$, por lo tanto $-1\leq\rho(X,Y)\leq1$.
+
+\obs En la discusión anterior, es evidente que si $\rho(X,Y)=\pm1$, entonces exiten $\{\alpha_0,\beta_0\}\subset\re\setminus\{0\}$ tales que
+\[
+\esp[(\alpha_0(X-\mu_x)+\beta_0(Y-\mu_Y))^2]=0\hspace{0.2cm}\implies\hspace{0.2cm}\alpha_0(X-\mu_x)+\beta_0(Y-\mu_Y)=0,
+\]
+\noindent entonces los únicos puntos $(x,y)\in\re^2$ con probabilidades $\prob(X=x)$ y $\prob(Y=y)$ no nulas, cumplen la ecuación
+\[
+\alpha_0(x-\mu_X)+\beta_0(y-\mu_Y)=0.
+\]
+\noindent Es decir que los datos de $X$ e $Y$ son colineales, entonces los datos de $X$ e $Y$ se encuentran en una recta. Entonces el coeficiente de correlación no sólo mide la independencia de las dos variables $X,Y$ (\rho(X,Y)=0 implica que $X\ind Y$), si no que también mide que tanto se encuentran linealmente relacionadas, entre más cerca se encuentren de $1$, más linealmente correlacionadas se encuentran.\vspace{0.5cm}
+\noindent *\Large Regresión lineal*
+\vspace{0.5cm}
+
+
+** Explorando distribuciones a mayor profundidad
+
+*** Distribución binomial y la ley de lo grandes números
+\noindent En 1713 se publica el famoso libro de Jacob Bernoulli /Ars Conjectandi/. En este libro Bernoulli hace una de las primeras referencias a lo que hoy conocemos como inferencia en el sentido estadístico. Además Bernoulli introduce el modelo probabilístico de las "pruebas repetidas" o "pruebas de Bernoulli", las cuales miden la probabilidad de repetidos eventos independientes con una distribuición de tipo Bernoulli, esto da a lugar a la ditribución que se estudia en esta sección, la /distribución binomial/.
+Un ejemplo clásico de esto son las probabilidades de bolados repetidos, donde la probabilidad es una Bernoulli con $p=1/2$ para una moneda justa y $p\in[0,1]\setminus\{1/2\}$ para una moneda cargada. Otro ejemplos claros son los de dados de $4,6,12,20$ etc. caras (tanto justo como cargados).
+
+Otro ejemplo: Supónganse que se van sacando bolitas de una urna con $n$ bolitas negras y $m$ blancas,entonces la probabilidad de sacar una bolita negra es $p=n/(n+m)$ y la de sacar una bolita blanca es $q=1-p=m/(n+m)$. Si $k$ personas van sacando una bolita a la vez de forma aleatoria de tal forma que cuando toman la bolita, la regresan a la bolsa de nuevo, entonces queremos la probabilidad de que esas $k$ personas hayan sacado $r$ bolitas negras y $k-r$ bolitas blancas.
+Claramente los eventos de sacar las bolitas son independientes porque las bolitas se regresan cada que se saca una por lo tanto si importara el orden la probablidad sería $p^r(1-p)^{k-r}$, pero como no importa el orden la combinatoria nos dice entonces que
+\[
+\prob(N=r,B=k-r)=\mathrm{Bin}(r;k,p)={k\choose r}p^r(1-p)^{k-r}.
+\]
+\noindent Donde $N$ representa la variable aleatoria del número de bolitas negras y $B$ las de bolitas blancas. 
+
+Si nos fijamos, claramente esta función es parte del binomio
+\[
+1=1^k=(p+(1-p))^k=\sum_{r=0}^k{k\choose r}p^r(1-p)^{k-r}.
+\]
+\noindent Esto muestra que la distribución binomial es claramente una distribución discreta de probabilidad, donde su función cumulativa de probabilidad es
+\[
+F(k)=\sum_{r\leq k}\mathrm{Bin}(r;k,p)=\sum_{r\leq r}{k\choose r}p^r(1-p)^{k-r}.
+\]
+Todos los ejemplos anteriores siguen el mismo patrón de medir probabilidades de series de eventos de la forma
+\[
+EEEFEF\dots FFEE.
+\]
+\noindent Donde los $E$ representan el "éxito" de un evento con probabilidad $p$ y $F$ representan los fracasos con probabilidad $1-p$.
+
+\eje Demuestre que el cosiente de las funciones binomiales
+\[
+\frac{\mathrm{Bin}(r;k,p)}{\mathrm{Bin}(r-1;k,p)}=\frac{(k-r+1)p-r}{r(p-1)}=1+\frac{(n+1)p-r}{r(1-p)}.
+\]
+\noindent Está acotado.
+
+Calculemos ahora la *esperanza y varianza de Bernoulli* y de ésta deducir la esperanza y varianza de una dristribución binomial.
+
+*** Distribución de Poisson
+Resulta dificil calcular los valores binomiales $\textrm{Bin}(k;n,p)$ cuando $k$ y $n$ son bastante grandes, por lo que es mejor en el sentido computacional hacer aproximaciones relevantes.
+
+Para esto veamos qué sucede si el valor de $p$ tiende a cero al mismo tiempo que $n$ tiende a infinito en una distribución binomial. Además queremos que la esperanza $np$ se mantenga cerca de una constante $np\approx\lambda$, esto nos permite calcular los valores asintóticos de $\textrm{Bin}(k;n,p)$. 
+\begin{align*}
+\textrm{Bin}(k;n,p)&={k\choose n}p^k(1-p)^{n-k}\approx{k\choose n}\Big(\frac{\lambda}{n}\Big)^k\Big(1-\frac{\lambda}{n}\Big)^{n-k}\\
+&=\frac{n!}{k!(n-k)!}\Big(\frac{\lambda}{n}\Big)^k\Big(1-\frac{\lambda}{n}\Big)^{n-k}\\
+&= \Big(\frac{\lambda^k}{k!}\Big)\frac{n!}{[n(1-\lambda/n)]^k(n-k)!}\Big(1-\frac{\lambda}{n}\Big)^{n}\\
+&=\Big(\frac{\lambda^k}{k!}\Big)\frac{(1-1/n)(1-2/n)\dots(1-k/n)}{(1-\lambda/n)^k}\Big(1-\frac{\lambda}{n}\Big)^{n}.\\
+\end{align*}
+\noindent Así si $n\rightarrow\infty$ y dejamos a $k$ fijo, entonces
+\[
+\lim_{n\rightarrow\infty}\textrm{Bin}(n;k,p)=\frac{\lambda^k}{k!}e^{-\lambda}
+\]
+*** Distribuciones e integrales
+
+\noindent Todo lo dicho anteriormente es válido para variables aleatorias continuas, solo se tiene que cambiar de sumas finitas a integrales y suponer finitud de ésta. Los ejemplos vistos previamente han sido ilustrativos para casos más complejos.
+
+\exe La forma más simple de definir una probabilidad es mediante una función positiva en un conjunto que se quiera medir, uno de los ejemplos más importantes para la teoría de la probabilidad es /distribución gausiana/ definida en todos los reales:
 \[
     f(x)=\frac{1}{\sigma\sqrt{2\pi}}e^{-1/2(\frac{x-\mu}{\sigma})^2}\quad \prob(x)=\int_{t\leq x}f(t)dt
 \]
@@ -65,127 +585,20 @@ Dado una probabilidad en los reales $(\re,\mathbb{B}_{\re},\prob)$ y una varible
     \int_{-\infty}^{x}\frac{1}{\sigma\sqrt{2\pi}}e^{(\frac{t-\mu}{\sigma})^2}dt
 \]
 
-*** Distribuciones de probablilidad discretas y variables aleatorias discretas
-
-\noindent Decimos que un espacio de probabilidad $(\om,\sig,\prob)$ es /discreto/ si la cardinalidad de el espacio $\om$ es menor o igual a la cardinalidad de los numeros naturales $\omega$ o $\aleph_0$. Un concepto similar pero no necesariamente equvalente es el de /distribucion de probabilidad discreta/, esta se define como la distribucion de probabilidad de una variable aleatoria $X:\om\rightarrow\re$ que solo toma un numero numerble de valores fuera de un conjunto de probabilidad o medida cero.
-\obs Toda probabilidad en un espacio discreto, es discreta.
-
-Una distribucion de probabilidad discreta definida por la variable alearotia $X$ se escribe como la suma
+*** Momentos y la función generadora
+\noindent Una variable aleatoria $X$, es heuristicamente una función que se comporta de una forma que no permite predicción de los valores que va a tomar, por esta razón se utilza el nombre adjetivo de *aleatoria*, sin embargo, sí hay forma de obtener información de $X$, pricipalmente por medio de su esperanza y varianza, una mide los promedios pesados de los valores posibles y la otra la concentraciones de valores alrededor de dicho promedio. Sin embargo la esparenza y la varianza no son las únicas maneras de extaer información útil de una variable aleatoria, éstas cantidades tienen generalizaciónes a "mayor grado", donde podríamos decir que la esperanza tiene grado 1 y la varianza tiene grado 2. Lo anterior puede que tenga sentido a nivel inituivo, pero podemos precisarlo con mucha más formalidad con la siguiente definición
+\begin{def.}[Momentos de una variable aleatoria]
+Se llama /momento de orden k/ de una variable aleatoria discreta, $X$ a la cantidad
 \[
-    \prob(X\in E)=\sum_{x\in A\cap E}\prob(X=x)\quad E\in\sig
+\alpha_k[X]=\esp[X^k]=\sum_{j\in\nat}x_j^k\prob(X=x_j).
 \]
-
-Donde $A$ es un conjunto numerable que cumple que $\prob(X\in A)=1$
-
-\eje La escalera del diablo es una funcion continua que solo toma un numero numerable de valores fuera de un conjunto de medida cero.
-
-\begin{def.}
-Para una disribucion de probabilidad dicreta asociada a una variable aleatoria $X$ se define la /funcion de masa probabilistica/ o la /funcion de densidad discreta/ como
+En particular $\alpha_1=\esp[X]=\mu$. En este sentido se definen los momentos centrados como
 \[
-        p_{X}(x)=\prob(X=x)\quad\sum_{x\in\om}P_{X}=1
-\]
-De forma similar se de la /funcion cumulativa de probabilidad como
-\[
-        F(x)=\prob(X\leq x)=\sum_{\omega\leq x}p_{X}(\omega)
+\mu_k=\esp[(X-\alpha_1)^k]=\esp[(X-\mu)^k]=\esp[(X-\esp[X])^k].
 \]
 \end{def.}
 
-\eje La distribucion binomial con parametros $n\in\nat$, $p\in[0,1]$ se define por medio de la funcion de masa
-\[
-    \prob(k,n,p)={n\choose k}p^{k}(1-p)^{n-k}\quad{n\choose k}=\frac{n!}{k!(n-k)!}
-\]
-Esta probabilidad mide $k$ outcomes deseados de $n$ eventos independientes
-\begin{def.}
-Una variable aleatoria discreta es una variable aleatoria que toma a lo más una cantidad numerable de valores.
-\end{def.}
-\eje *Bolados* Si se lanza una moneda un número finito de veces \(n\), una variable aleatoria definida por esa serie de eventos es contar el número de veces que cae en sol
-\[
-    X(n)=|\{\text{veces que cae en sol}\}\in\{0,\dots,n\}|
-\]
-La ventaja de las variables aleatorias discretas es que el calculo de sus /valores esperados/ o /promedios/ y sus /variazas/ son mucho más fáciles que en los casos continuos.
-\begin{def.}[Esperanza y Variaza discreta]
-Dado un espacio de probabilidad \((\om,\sig,\prob)\) una variable aleatoria discreta \(X\), definimos el valor esperado de \(X\) como
-\[
-    \mu=\esp(X)=\sum_{x\in X(\om)} x\prob(X=x)
-\]
-y su varianza o variación a su valor esperado como
-\[
-    \sigma^2=\mathrm{Var}(X)=\esp((X-\mu)^2)=\sum_{x\in X(\om)} (x-\mu)^2\prob(X=x)
-\]
-\end{def.}
-\obs \(\sigma^2=\mathrm{Var}(X)=\esp(X^2)-\mu^2\)
-\eje Supongase que se tiene una moneda cargada de tal forma que la probabilidad de obtener sol sea \(0.6\) en lugar de \(0.5\). Si tiramos dos veces esta moneda queremos saber cual es el valor esperado y variaza a la variable aleatoria definida por el númro de veces que la moneda cae en sol. Entonces podemos calcular la probabilidad de que la moneda caiga en sol siguiendo la siguiente tabla
-| AA  | AS | SA | SS  |
-|----+----+----+----+
-| $0.4*0.4$ | $0.4*0.6$ |$0.6*0.4$ |$0.6*0.6$ |
-Lo que nos da la siguiente tabla
-|  X | 0  | 1  |  2 |
-|----+----+----+----+
-| *P*     | 0.16|0.48|0.36|
-Entonces el valor esperado y varianza son
-\begin{align*}
-    \mu=\esp(X)= 0*0.16+1*0.48+2*0.36=1.2\\
-    \sigma^2=\mathrm{Var}(X)=(0-1.2)^2*0.16+(1-1.2)^2*0.48+(2-1.2)^2*0.36&=1.92
-\end{align*}
-\eje *La distribuciónde Bernouli* Sirve principalmente para modear un sólo evento donde la probabilidad del evento se denota por \(p\). Así se define la distribución como
-\[
-    P(X=x)=p^{x}(1-p)^{1-x}\quad x\in\{0,1\}.
-\]
-\noindent Donde los valores \(0,1\) son los valores de /fracaso/ o /éxito/, es decir esta probabilidad mide eventos que tienen una probabilidad de pasar o no pasar. Se puede mostrar que *Tarea*
-\[
-    \mu=p\quad\sigma^2=p(1-p).
-\]
-\obs La distribución binomial se puede pensedr como la distribución de probabilidad de tener /(n/) eventos de bernoulli independientes que sean exitosos *Tarea, Hint: Vea la combinatoria de los eventos exitosos*
-\eje *La distribución hipergeométrica:* Se aplica cuando tenemos sucesiones de eventos que no son independientes, en contraste a la distribucion binomial. Intuivamente suponga que tenemos un sample de \(n\) objetos y escoger \(a\) de estos se consideran exitosos y \(N-a\) son fracasos, donde \(N \geq n\) (por ejemplo cuando se escoge quieres hacen servicio militar) así la distribucion se define como
-\begin{align*}
-\prob(X=x)=\frac{{a\choose x}{N-a\choose n-x}}{{N\choose n}}\\
-x\in\{\max(0,n+a-N),\dots\min(a,n)\}
-\end{align*}
-** Sucesiones de eventos
-\obs Dada una sucesión $\{x_n\}_{n\in\nat}$ denotaremos $x_n\downarrow x$ o $x_n\uparrow x$ si $x_{n+1}\leq x_n$ y $x_{n+1}\geq x_n$ $\lim_{n\rightarrow\infty}x_n=x$ respectivamente. Aplicaremos la misma notación para eventos $\{A_n\}_{n\in\nat}\subset\sig$.\\
-Existen construcciones conjuntistas que son más útiles en el sentido probabilístico, por ejemplo si $\{A_n\}_{n\in\nat}$ es una sucesión de eventos aletorios definimos los conjuntos $\{A_n\text{ i.o.}\}$ y $\{A_n\text{ ult.}\}$ dónde i.o significa ``infinitely often'' y ult ``ultimately'', éstos términos se refieren a el comportamiento de las colas de la sucesión de los eventos
-\begin{align*}
-\{A_n\text{ i.o.}\}=\Big\{\sum_{n\in\nat}1_{A_n}=\infty\Big\}=\bigcap_{n\in\nat}\bigcup_{k\geq n}A_k,\\
-\{A_n\text{ ult.}\}=\Big\{\sum_{n\in\nat}1_{A_n}<\infty\Big\}=\bigcup_{n\in\nat}\bigcap_{k\geq n}A_k.
-\end{align*}
-\noindent Notemos que esto se puede expresar en términos de funciones indicadoras como
-\[
-1_{\{A_n\text{ i.o.}\}}=\limsup_{n\rightarrow\infty}1_{A_n} \hspace{0.3cm} 1_{\{A_n\text{ ult.}\}}=\liminf_{n\rightarrow\infty}1_{A_n}.
-\]
-\noindent Ahora por la /desigualdad de Fatou/ se cumple lo siguiente con respecto a las probabilidades de estos conjuntos
-\[
-\prob(1_{\{A_n\text{ i.o.}\}})\geq\limsup_{n\rightarrow\infty}\prob(A_n)\hspace{0.3cm} \prob({\{A_n\text{ ult.}\}})\leq\liminf_{n\rightarrow\infty}\prob(A_n).
-\]
-\noindent Por la subaditividad y continuidad de la probabilidad se obtiene
-\[
- \prob(\{A_n\text{ i.o.}\})=\lim_{n\rightarrow\infty}\prob(\bigcup_{k\geq n} A_k)\leq\lim_{n\rightarrow\infty}\sum_{k\geq n}\prob(A_k).
-\]
-\obs Si $\sum_{n\in\nat}\prob(A_n)$ entonces las colas tienden a cero y por lo tanto $\prob(\{A_n\text{ i.o.}\})=0$. Esto corresponde a la parte fácil del lema de /Borel-Cantelli/ que veremos en el futuro.
-
-\begin{def.}
-Dado un espacio de probabilidad $(\om,\sig,\prob)$, un espacio medible $(E,S)$ y un conjunto arbitrario $T$, el cual llamaremos a partir de ahora como un \emph{índice arbitrario o abstracto}, es posible definir el espacio medible $E^{T}:=\{f:T\rightarrow E\}$ con la sigma álgebra definida por los mapeos de evaluación, definidos para cada $t\in T$ como $\pi_t:E^{T}\rightarrow E$, $\pi_t(f):=f(t)$. Así si $X:\om\rightarrow E^{T}$ es un elemento aleatorio, se define la función $X(t,\omega)=\pi_t\circ X$, donde $X:T\times\om\rightarrow E$, a esta función le llamaremos un \emph{proceso aleatorio}. Si $T$ es de cardinalidad numerable diremos que $X$ es un proceso de tiempo discreto y si $T$ es de cardinalidad mayor a la numerable, diremos que $X$ es de tiempo continuo.
-\end{def.}
-\obs Un proceso $X:T\times\om\rightarrow E$ es aleatorio (medible) si y solo si para toda $t\in T$, $X_t:\om\rightarrow E$ definida por $X_t(\omega):=X(t,\omega)$ es medible.
-
-*** Medidas con signo
-
-\noindent Además de medidas de probabilidad, existen las /medidas con signo/ es decir, si $(\Omega,\Sigma)$ es un espacio medible, entonces una función $\nu:\Sigma\rightarrow\re$ es una medida con signo si cumple
-
-+ $\nu(\emptyset)=0$.
-+ $\nu$ toma a lo más uno de los valores $\infty$ o $-\infty$.
-+ Si $\{A_n\}\subset\Sigma$ es una sucesión de conjuntos disjuntos, entonces $\nu(\bigcup A_n)=\sum_{n=1}^{\infty} \nu(A_n)$, donde entendemos que para valores finitos la convergencia es absoluta.
-
-\eje Un ejemplo que utilizaremos todo el tiempo es la medida con signo definida por una variable aleatoria $X:\Omega\rightarrow\re$
-\[
-    \nu(A)=\int_{A} X d\textbf{P}=\esp(X1_{A}),
-\]
-en el caso de una variable aleatoria *positiva*, con esperanza finita (o esperanza 1), le llamaremos /distribución de probabilidad/, pero habrá más información sobre estas probabilidades en una sección futura.
-\begin{def.}
-Sea $(\om,\sig,\mu)$ un espacio de medida y $\nu$ una medida con signo, decimos que $\nu$ es absolutamente continua con respecto a $\mu$ (denotado $\nu<<\mu$) si $\mu(A)=0$, entonces $\nu(A)=0$.
-\end{def.}
-\noindent Una medida con signo $\nu$, definida por una variable aleatoria $X$ es absolutamente continua con respecto a la probabilidad *P*. Para cualquier función medible $f:\Omega\rightarrow\re$ *siempre* podemos descomponerla de la siguiente manera $f=f^{+}-f^{-}$, donde $f^{\pm}=\pm f 1_{E^{\pm}}$ y $E^{\pm}=\{x\in\Omega\,\vert\,\pm f >0\}$. De la misma manera una medida con signo definida por $f$, $\nu$ se descompone en $\nu^{\pm}$.
-
-** Esperanza
+*** Esperanza condicional
 \noindent Asi mismo entenderemos a la /esperanza/ de una variable aleatoria como la integral de dicha funcion medible, es decir
 \begin{equation}
     \esp(f(z))=
@@ -194,7 +607,7 @@ Sea $(\om,\sig,\mu)$ un espacio de medida y $\nu$ una medida con signo, decimos 
         & \int_{\Omega}f(z)d\mu
     \end{cases}
 \end{equation}
-Comunemente se define la probabilidad condicional de un evento $A$ con respecto a otro evento $B$ como la siguiente fórmula
+Recordemos que la probabilidad condicional de un evento $A$ con respecto a otro evento $B$ como la siguiente fórmula
 \[
     \prob(A|B)=\frac{\prob(A\cap B)}{\prob(B)},
 \]
@@ -219,12 +632,12 @@ además la función $f$ es única casi donde quiera, a esta función se le conoc
 \end{teorema}
 \noindent Así la existencia de la esperanza condicional proviene de la derivada de Radon-Nikodym de la medida con signo definida por $X$, para el álgebra $\mathrm{F}$, es decir
 \[
-    \nu{\pm}(A)=\int_{A}X^{\pm}d\textbf{P}\hspace{0.5cm}\nu=\nu^{+}-\nu^{-},
+    \nu{\pm}(A)=\int_{A}X^{\pm}d\prob\hspace{0.5cm}\nu=\nu^{+}-\nu^{-},
 \]
-\noindent la cual es absolutamente continua con respecto a la medida de probabilidad *P*, entonces definimos $Y=\frac{d\nu}{d\textbf{P}}[\textbf{P}]$, así simplemente verificamos que en efecto es una esperanza condicional. Por Radon-Nykodym, $Y$ es medible, ahora
+\noindent la cual es absolutamente continua con respecto a la medida de probabilidad *P*, entonces definimos $Y=\frac{d\nu}{d\prob}[\prob]$, así simplemente verificamos que en efecto es una esperanza condicional. Por Radon-Nykodym, $Y$ es medible, ahora
 
-+ $\esp(|Y|)=\int_{\om}|Y|d\textbf{P}=\int_{\om}|X|d\textbf{P}<\infty$
-+ $\esp(X1_A)=\int_{A}Xd\textbf{P}=\nu(A)=\int_{A}Yd\textbf{P}=\esp(Y1_A)$.
++ $\esp(|Y|)=\int_{\om}|Y|d\prob=\int_{\om}|X|d\prob<\infty$
++ $\esp(X1_A)=\int_{A}Xd\prob=\nu(A)=\int_{A}Yd\prob=\esp(Y1_A)$.
 
 Algunas propiedades de la esperanza condicional son las siguientes:
 
@@ -241,89 +654,7 @@ Más aún la esperanza condicional hereda las propiedades que son resultados com
 + Convergencia dominada: Si $\{X_n\}_{n\in\nat}$ es una sucesión de *v.as* convergente $X_n\rightarrow X$, tal que las *v.as* sean integrables, no negativas y se encuentren dominadas por $|X_n|\leq Y$ tal que $\esp(Y|\mathrm{F})<\infty$,  entonces $\esp(X|\mathrm{F})=\lim\esp(X_n|\mathrm{F})$.
 + Desigualdad de Jensen: Si $f:\re\rightarrow\re$ es una función convexa (cóncava) y $X$ es una variable aleatoria, entonces $\esp(f(X)|\mathrm{F})\geq\esp(X|\mathrm{F})$ (resp $\esp(f(X)|\mathrm{F})\leq\esp(X|\mathrm{F})$)
 
-*** Distribuciones de probabilidad
-\noindent Consideremos $(\om,\sig,\prob)$ un espacio de probabilidad y sea $(E,S)$ un espacio medible y $\xi:\om\rightarrow E$ una función medible, a esta función le llamremos /elemento aleatorio/ así existe una función $\xi^{*}:S\rightarrow\sig$, definida como $\xi^{*}(B)=\xi^{-1}(B)$, entonces es posible definir una medida de probabilidad en $(\xi^{*})^{-1}(\sig)$, definida por $\prob\circ\xi^{*}(B)=\prob(\xi^{*}(B))$, a la medida $\prob\circ\xi^{*}$, le llamaremos una /distribución/ de probabilidad y usualmente no distinguiremos entre una medida de probabilidad y una distribución incluso en la absencia de un elemento aleatorio.
-\obs Cuando $E=\re$ y $S=B_{\re}$, un elemento aleatorio es una variable aleatoria y cuando $E=\re^{d}$ y $S=B_{\re^{d}}$ un elemento aleatorio se le conoce como /vector aleatorio/.
-\begin{def.}{Función de una distribución}
-Dado un espacio de probabilidad $(\om,\sig,\prob)$ y un elemento medible $\xi:\om\rightarrow E$, definimos la \textit{función} de distribución como la función $F_{\xi}:\re\rightarrow[0,1]$
-\[
-    F_{\xi}(\alpha)=\prob\circ\xi^{*}(-\infty,\alpha]=\prob(\xi\leq\alpha)
-\]
-\end{def.}
-\noindent *Algunas propidades:* Supongamos que $F$ es la función de distribución asociada a una variable aleatoria $X$, entonces.
- 1. $F:\re\rightarrow[0,1]$ es no decreciente, es decir $F(x)\leq F(y)$ siempre que $x\leq y$.
- 2. \(\lim_{x\rightarrow\infty}F(x)=1\) y $\lim_{x\rightarrow -\infty}F(x)=0$.
- 3. $F$ es continua por la derecha.
-\dem La demostración de estos hechos es evidente, el único que no es inmediatemente obvio es el punto número tres, para esto notamos que si tenemos la susesión $\{x+1/n\}$, entonces por convergencia monónona tenemos que
-\[
-    \lim_{n\rightarrow\infty}\prob\Big(X\leq x+\frac{1}{n}\Big)=\prob\Big(X\leq x\Big)
-\]
-\noindent *Existencia:* Ahora supongamos que $F$ es una función que cumple las propiedades 1.,2. y 3., entonces similar a la existencia de Lebesgue, es posible construir una medida $\nu:\mathbb{B}_{\re}\rightarrow\re^{+}$ tal que $\nu((-\infty,x])=F(x)$. A la medida $\nu$ se le conoce como la medida de Lebesgue-Stieltjes de $F$.
-\eje *(La representación de Skorokhod de una variable aleatoria con una función de distribución prescrita en el intervalo [0,1])*\\
-Supongamos que $F:\re\rightarrow[0,1]$ cumple con las propiedades 1.,2. y 3., como antes, entonces construimos una variable aleatoria en $([0,1],\mathbb{B}[0,1],\lambda)$, donde $\lambda$ es la medida de Lebesgue. Definimos
-\begin{align*}
-    X^{+}(\omega):=\inf\{\,z\,\vert\,F(z)>\omega\}=\sup\{\,y\,\vert\,F(y)\leq\omega\}\\
-    X^{-}(\omega):=\inf\{\,z\,\vert\,F(z)\geq\omega\}=\sup\{\,y\,\vert\,F(y)<\omega\}.
-\end{align*}
-Observemos que por definición de $X^{-}$, si $\omega\leq F(c)$, entonces $X^{-}(\omega)\leq c$. Ahora, si $z>X^{-}(\omega)$, entonces $F(z)\geq\omega$, entonces por continuidad a la derecha de $F$, $F(X^{-}(\omega))\geq\omega$ y por lo tanto
-\[
-     X^{-}(\omega)\leq c \implies \omega\leq F(X^{-}(\omega))\leq F(c)
-\]
-Por lo tanto tenemos que $\{\,\omega\,\vert\,X^{-}(\omega)\leq c\}=\{\,\omega\,\vert\,\omega\leq F(c)\}$ lo que implica que
-\[
-    \prob(X\leq c)=\prob(\omega\leq F(c))=\int_{-\infty}^c F(x)\,dx=F(c)
-\]
-\qed
-\obs $X^{+}$ tiene la mimsa función de distribución ya que
-\[
-$\prob(X^{-} = X^{+})=1$.
-\]
-\eje *(Distribuciones binomiales)*
-** Independencia
-\noindent Nos enfocaremos en indepencenia de $\sigma$ álgebras y describimos a partir de este la noción usual de independencia.
-\begin{def.}{Independencia}
-Sea $(\om,\sig,\prob)$ un espacio de probabilidad, decimos que una familia de sub $\sigma$ álgebras $\{\mathrm{F}_i\}_{i\in I}$ son \emph{independientes} si para cualquier $\{i_1,\dots,i_n\}\subset I$ subconjunto fininto, se tiene que
-\begin{equation}\label{indepen}
-    \prob(A_{i_1}\cap\dots\cap A_{i_n})=\prod_{j=1}^n\prob(A_{i_j})\hspace{0.2cm}A_{i_j}\in\mathrm{F}_{i_j}.
-\end{equation}
-Similarmente a los eventos que cumplan con la ecuación \ref{indepen}, les llamaremos eventos \emph{independientes}.
-\end{def.}
-\begin{def.}{Variables aleatorias independientes.}
-Decimos que las variables aleatorias $\{X_i\}_{i\in I}$ en un espacio de probabilidad $(\om,\sig,\prob)$ son \emph{independientes} si \[\{\sigma(X_i)\}_{i\in I}\] son independientes. Se denotará la relación de independencia entre $X$ e $Y$ como $X\upvDash Y$ y no distinguiremos entre variables aleatorias y $\sigma$ álgebras, e incluso denotaremos $X\upvDash\mathrm{F}$ cuando una variable aleatoria sea indepeniente de una sub $\sigma$ álgebra.
-\end{def.}
-En términos de de /eventos independientes/ como sabemos la ecuación que se cumple es
-\[
-    \prob(A_{i_1}\cap\dots\cap A_{i_n})=\prod_{j=1}^n\prob(A_{i_j}),
-\]
-\noindent queremos generalizar este tipo de ecuaciones pero en el sentido de $\pi$ sistemas en lugar de en nuestro sentido original de $\sigma$ álgebras ya que estas son más complicadas de usar. Por lo que el siguiente lema es muy útil para este tipo de cuestiones
-\begin{lema}
-Sean $\mathrm{G}$ y $\mathrm{H}$ sub sigma álgebras de $\sig$ y sean $I$ y $J$ $\pi$ sistemas tales que
-\[
-    \sigma(I)=\mathrm{G},\quad\sigma(J)=\mathrm{H}.
-\]
-Entonces $\mathrm{G}$ y $\mathrm{H}$ son independientes si y solo si
-\[
-    \prob(A\cap B)=\prob(A)\prob(B)\quad A\in J,\,B\in J
-\]
-\end{lema}
-\dem
-Es claro que si las $\sigma$ álgebra son independientes entonces los $\pi$ sistemas son independientes. Por lo que sólo es necesario demostrar que si los $\pi$ sistemas son independientes entonces las $\sigma$ álgebras lo son, entonces dadas $A\in I$ y $B\in J$ fijos, definimos las siguientes medidas finitas
-\[
-    C\mapsto\prob(A\cap C)\quad C\mapsto\prob(B)\prob(C).
-\]
-\noindent Como ambas medidascoinciden en $I$ y $J$, por el lema de clases monótonas coincide en $\sigma(I)=\mathrm{G}$ y $\sigma(J)=\mathrm{H}$ y por lo tanto el lema es válido.
-\qed\\
-\begin{cor}
-Ahora si $X$ e $Y$ son variables aleatorias en un espacio de probabilidad $(\om,\sig,\prob)$ tales que para todo $\{x,y\}\subset\re$ se cumple
-\[
-    \prob(\{X\leq x\}\cap\{Y\leq y\}):=\prob(X\leq x\,,\, Y\leq y)=\prob(X\leq x)\prob(Y\leq y)
-\]
-entonces $X$ e $Y$ son variables aleatorias independientes
-\end{cor}
-\dem
-Esto es claro de la proposición anterior debido a que la familia de conjuntos $\{X^{-1}(-\infty,x]\,\vert\,x\in\re\}$ es un $\pi$ sistema para $\sigma(X)$ para toda \textbf{v.a} $X$, así del lema anterior se sigue el resultado.
-\qed\\
-\obs En términos de la esperanza conicional, si $X \upvDash\mathrm{F}$, entonces $\esp(X|\mathrm{F})=\esp(X)$, además $Y=\esp(X)$ es $\mathrm{F}$ medible pues
+\obs Para la esperanza conicional, si $X \ind\mathrm{F}$, entonces $\esp(X|\mathrm{F})=\esp(X)$, además $Y=\esp(X)$ es $\mathrm{F}$ medible pues
 \[
     \forall A\in\mathrm{F}\hspace{0.3cm}\esp(X1_A)=\esp(X)\prob(A)=Y\esp(1_A)=\esp(Y1_A)
 \]
@@ -352,4 +683,45 @@ Por monotonía de ambos lados de la ecuación, al tomar el límite cuando $r\upa
     \prod(1-p_n)\leq\esp\Big(-\sum_{n\geq m}p_n\Big)=0.
 \]
 \noindent Por lo que $\prob(\{\om\setminus\limsup E_n\})=0$ \qed
-\eje
+
+
+*** Distribuciones continuas
+\noindent Consideremos $(\om,\sig,\prob)$ un espacio de probabilidad y sea $(E,S)$ un espacio medible y $\xi:\om\rightarrow E$ una función medible, a esta función le llamremos /elemento aleatorio/ así existe una función $\xi^{*}:S\rightarrow\sig$, definida como $\xi^{*}(B)=\xi^{-1}(B)$, entonces es posible definir una medida de probabilidad en $(\xi^{*})^{-1}(\sig)$, definida por $\prob\circ\xi^{*}(B)=\prob(\xi^{*}(B))$, a la medida $\prob\circ\xi^{*}$, le llamaremos una /distribución/ de probabilidad y usualmente no distinguiremos entre una medida de probabilidad y una distribución incluso en la absencia de un elemento aleatorio.
+\obs Cuando $E=\re$ y $S=B_{\re}$, un elemento aleatorio es una variable aleatoria y cuando $E=\re^{d}$ y $S=B_{\re^{d}}$ un elemento aleatorio se le conoce como /vector aleatorio/.
+\begin{def.}{Función de una distribución}
+Dado un espacio de probabilidad $(\om,\sig,\prob)$ y un elemento medible $\xi:\om\rightarrow E$, definimos la \textit{función} de distribución como la función $F_{\xi}:\re\rightarrow[0,1]$
+\[
+    F_{\xi}(\alpha)=\prob\circ\xi^{*}(-\infty,\alpha]=\prob(\xi\leq\alpha)
+\]
+\end{def.}
+\noindent *Algunas propidades:* Supongamos que $F$ es la función de distribución asociada a una variable aleatoria $X$, entonces.
+ 1. $F:\re\rightarrow[0,1]$ es no decreciente, es decir $F(x)\leq F(y)$ siempre que $x\leq y$.
+ 2. \(\lim_{x\rightarrow\infty}F(x)=1\) y $\lim_{x\rightarrow -\infty}F(x)=0$.
+ 3. $F$ es continua por la derecha.
+\dem La demostración de estos hechos es evidente, el único que no es inmediatemente obvio es el punto número tres, para esto notamos que si tenemos la susesión $\{x+1/n\}$, entonces por convergencia monónona tenemos que
+\[
+    \lim_{n\rightarrow\infty}\prob\Big(X\leq x+\frac{1}{n}\Big)=\prob\Big(X\leq x\Big)
+\]
+\noindent *Existencia:* Ahora supongamos que $F$ es una función que cumple las propiedades 1.,2. y 3., entonces similar a la existencia de Lebesgue, es posible construir una medida $\nu:\mathbb{B}_{\re}\rightarrow\re^{+}$ tal que $\nu((-\infty,x])=F(x)$. A la medida $\nu$ se le conoce como la medida de Lebesgue-Stieltjes de $F$.
+\eje *(La representación de Skorokhod de una variable aleatoria con una función de distribución prescrita en el intervalo [0,1])*\\
+
+Supongamos que $F:\re\rightarrow[0,1]$ cumple con las propiedades 1.,2. y 3., como antes, entonces construimos una variable aleatoria en $([0,1],\mathbb{B}[0,1],\lambda)$, donde $\lambda$ es la medida de Lebesgue. Definimos
+\begin{align*}
+    X^{+}(\omega):=\inf\{\,z\,\vert\,F(z)>\omega\}=\sup\{\,y\,\vert\,F(y)\leq\omega\}\\
+    X^{-}(\omega):=\inf\{\,z\,\vert\,F(z)\geq\omega\}=\sup\{\,y\,\vert\,F(y)<\omega\}.
+\end{align*}
+
+Observemos que por definición de $X^{-}$, si $\omega\leq F(c)$, entonces $X^{-}(\omega)\leq c$. Ahora, si $z>X^{-}(\omega)$, entonces $F(z)\geq\omega$, entonces por continuidad a la derecha de $F$, $F(X^{-}(\omega))\geq\omega$ y por lo tanto
+\[
+     X^{-}(\omega)\leq c \implies \omega\leq F(X^{-}(\omega))\leq F(c)
+\]
+Por lo tanto tenemos que $\{\,\omega\,\vert\,X^{-}(\omega)\leq c\}=\{\,\omega\,\vert\,\omega\leq F(c)\}$ lo que implica que
+\[
+    \prob(X\leq c)=\prob(\omega\leq F(c))=\int_{-\infty}^c F(x)\,dx=F(c)
+\]
+\qed
+\obs $X^{+}$ tiene la mimsa función de distribución ya que
+\[
+\prob(X^{-} = X^{+})=1.
+\]
+* Aprendizaje de máquina probabilistico/aprendizaje estadístico
