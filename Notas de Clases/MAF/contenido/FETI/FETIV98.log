@@ -1,0 +1,27 @@
+This is TeX, Version 3.141592 (MiKTeX 2.5) (preloaded format=tex 2006.10.31)  8 NOV 2006 20:21
+**FETIV98.tex
+(FETIV98.tex (exfeti.sty
+\Ancha=\box16
+\pagewidth=\dimen16
+\pageheight=\dimen17
+\ruleht=\dimen18
+\x=\box17
+\y=\box18
+\boxitsep=\dimen19
+\anchito=\dimen20
+\boxitsep=\dimen21
+\z=\box19
+\w=\box20
+) (epsf.tex
+\epsffilein=\read0
+\epsfxsize=\dimen22
+\epsfysize=\dimen23
+\epsftsize=\dimen24
+\epsfrsize=\dimen25
+\epsftmp=\dimen26
+\pspoints=\dimen27
+)
+! I can't find file `\LocalApps\TeXTables.app\stables.tex'.
+l.22 \input /LocalApps/TeXTables.app/stables.tex
+                                                
+Please type another input file name: 

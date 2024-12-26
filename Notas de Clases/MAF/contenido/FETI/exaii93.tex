@@ -1,0 +1,70 @@
+% 20 de oct. 1989
+\newbox\Ancha
+\def\gros#1{{\setbox\Ancha=\hbox{$#1$}
+   \kern-.025em\copy\Ancha\kern-\wd\Ancha
+   \kern.05em\copy\Ancha\kern-\wd\Ancha
+   \kern-.025em\raise.0433em\box\Ancha}}
+%\def\gros#1{\vec #1}
+\font\biggfnt=cmr10 scaled\magstep 3
+\def\ni{\noindent}
+\def\esp{\par \vskip .2 in }
+\baselineskip 22pt
+\magnification 1200
+\centerline{\biggfnt FISICA MODERNA III}\par
+\centerline{Ex\'amen 2}\esp
+En esta primera parte, se estudiar\'a el comportamiento del campo 
+electromagn\'etico cuando se pasa de un sistema de referencia a otro.\par
+\ni 1). Se tiene un ca\~n\'on de electrones que produce un fino haz en una
+regi\'on donde se hace el vac\'{\i}o. La secci\'on transversal del haz
+es despreciable, de tal manera que se puede suponer que el haz se comporta como 
+un hilo cargado de densidad lineal de carga $\lambda$ constante. Sup\'ongase
+adem\'as que todos los electrones viajan a aproximadamente la misma velocidad. 
+Utilizando la ley de Gauss, calcular el campo el\'ectrico en un sistema de 
+referencia ($S^{'}$) que viaje junto con los electrones a a la misma 
+velocidad.\par
+
+\vskip 5 cm
+\ni 2). Sea $\beta$ la velocidad promedio de los electrones medida en el 
+sistema de referencia del laboratorio, ($S$). Calcular el campo 
+electromagn\'etico en el laboratorio mediante una transformaci\'on de 
+Lorentz.\par
+\ni 3). Utilizando la ley de Amp\`ere calcular el campo magn\'etico en el
+laboratorio y comparar con el resultado en 2). ?`    A que se debe la 
+diferencia aparente, (recordar la contracci\'on de Lorentz) ?.\par
+\vfill
+\eject
+En esta segunda parte se estudiar\'a la funci\'on de Green para una 
+part\'{\i}cula descrita por la ecuaci\'on de Klein Gordon unidimensional
+(0+1 dimensiones).\par
+\ni 4). Utilizando la transformada de Fourier definida como
+
+$${\hat G}(\tilde k) \equiv \int e^{-i\tilde k\cdot\tilde x}G(x)d^2 x,$$
+\ni y su inversa definida como
+
+$$ G(\tilde x) \equiv {1\over (2\pi)^2}\int e^{i\tilde k\cdot\tilde x}\hat G(
+\tilde k)d^2k,$$
+
+\ni encontrar la funci\'on $G^+ (\tilde x)$, haciendo la integral de $k^0$ 
+en el plano complejo sobre la trayectoria $\cal C^+$, que rodea al polo
+positivo $\omega_k$, como se ve en la figura
+\vskip 5cm
+\ni {\it Aplicaci\'on}: $m_0 =0$. \par
+\ni 5). Realizar la integraci\'on sobre $k$ para el caso $m_0 = 0$ y
+comprobar que $G^+(\tilde x)$ es una soluci\'on de la ecuaci\'on Kein Gordon
+unidimensional sin masa.\par
+{\it Sugerencia}: la integral del ejercicio 5) est\'a estrechamente
+relacionada con la identidad
+
+$$ {d\theta(x)\over dx} = \delta(x) = {1\over 2\pi}\int^{\infty}_{-\infty}
+e^{-ikx} dk$$
+\vfill
+\eject
+\end
+
+
+
+
+
+
+
+

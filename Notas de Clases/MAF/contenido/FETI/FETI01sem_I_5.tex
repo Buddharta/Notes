@@ -1,0 +1,74 @@
+\input exfeti.sty
+
+
+
+%%Begin InstantTeX Picture
+\let\picnaturalsize=N
+\def\picsize{11cm}
+\def\picfilename{FETI.eps}
+%If you do not have the picture file add:
+%\let\nopictures=Y
+%to the beginning of the file.
+\ifx\nopictures Y\else{\ifx\epsfloaded Y\else\input epsf \fi
+\global\let\epsfloaded=Y
+{\ifx\picnaturalsize N\epsfxsize \picsize\fi \epsfbox{\picfilename}}}\fi
+%%End InstantTeX Picture
+
+\magnification 1200
+\centerline{\medio Profesor: Rodolfo P. Mart\'{\i}nez y Romero}\par
+\centerline{\small \hoy}\par
+\centerline{!`\'Ultimo parcial! Polinomios de "L' llandr"}
+\smal
+\ni 1)  Probar que 
+$$ {\partial\over\partial z}\left[{P_n(\cos\,\theta)\over r^{n + 1}}\right] = -{(n + 1)\over r^{n + 1}}P_{n + 1}(\cos \,\theta).$$
+\ni 2) Comparando el desarrollo en serie de Taylor de la funci\'on generadora, con su desarrollo en t\'erminos de los polinomios de {Legendre,} probar que 
+$$P_n(\cos\,\theta) = {(-1)^n\over n!}r^{n + 1} {\partial^n\over \partial z^n}\left({1\over r}\right) .$$
+\ni Aqu\'{\i}  puede ser \'util le figura siguiente:
+\input epsf.sty
+
+%%Begin InstantTeX Picture
+\let\picnaturalsize=N
+\def\picsize{5cm}
+\def\picfilename{FETI598.eps}
+%If you do not have the picture file add:
+%\let\nopictures=Y
+%to the beginning of the file.
+\ifx\nopictures Y\else{\ifx\epsfloaded Y\else\input epsf \fi
+\global\let\epsfloaded=Y
+\centerline{\ifx\picnaturalsize N\epsfxsize \picsize\fi \epsfbox{\picfilename}}}\fi
+%%End InstantTeX Picture
+
+\ni 3) En mec\'anica cu\'antica, la dispersion de part\'{\i}culas por un potencial central, est\'a relacionada con la llamada {\smali amplitud de onda dispersada,} dada por
+$ f(\theta) = k \sum_{l=0}^\infty (2l + 1) \,e^{i\delta_l}\sen\,\delta_l \,P_l(\cos\theta),$
+\ni donde $l$ es el valor del momento angular orbital, $\delta_l$ es el corrimiento de fase producido por el potencial central sobre la onda de part\'{\i}culas del haz incidente y $\theta$ es el \'angulo de dispersi\'on. Si la secci\'on eficaz de dispersi\'on est\'a dada por $\int f^*(\theta)f(\theta)\, d\Omega,$ mostrar que
+$$ \sigma_{\rm tot} = 4\pi k^2 \sum_{l=0}^\infty (2l + 1)\, \sen^2\delta_l.$$
+\ni 4) Probar que 
+$$ \int_{-1}^1 x^n P_n(x)\,dx = {2^{n + 1}(n!)^2\over (2n + 1)!}.$$
+\vfill
+\eject
+\centerline{\medio F\'ormulas, f\'ormulas....}
+
+\ni a) F\'ormula de  duplicaci\'on:
+$$z!(z-{1\over 2})\,! = \sqrt{\pi} \,2^{-2z} (2z)\,!$$
+\ni b) Funci\'on  Beta: 
+$$ 2\int_0^{\pi/2} \sen^{2z+1}\phi\,\cos^{2\omega +1}\phi\,d\phi = {z! \,\omega!\over (z+\omega+1)!}.$$
+\ni  c) Funci\'on generadora para los polinomios de Legendre:
+$$g(x,t) = (1-2xt + t^2)^{-1/2} = \sum_{n=0}^\infty P_n(x)\,t^n. $$
+\ni d) Relaciones de recurrencia:
+$$  \eqalign{P'_{n + 1} (x) =&\, (n + 1) P_n(x) + xP'_n(x),\cr
+P'_{n-1}(x) =& -n \,P_n(x) + x P'_n (x),\cr
+(1-x^2)\,P'_n(x) =&\, n\,P_{n-1}(x) -nx P_n(x),\cr
+(1-x^2)\,P'_n(x) = &\,(n+1)xP_n(x) - (n + 1)\,P_{n+1}(x).}$$
+\ni  e) F\'ormula de  Rodr\'{\i}gues, (ojo, no son faltas de ortograf\'{\i}a):
+$$ P_n(x) = {1\over 2^n n!}\left({d\over dx} \right)^n (x^2 -1)^n.$$
+\ni f) F\'ormula de ortogonalidad:
+$$ \int_{-1}^1 P_n(x) P_m(x)\,dx = {2\over 2m + 1}\,\delta_{n\,m}.$$
+\ni g) Algunos valores para los $P_n(x)$:
+$$ \eqalign{P_{2n}(0)& = (-1)^n {(2n-1)!!\over (2n)!! },\cr
+P_0(x) &= 1,\cr
+P_{2n + 1}(0) &= 0.}$$
+
+
+\vfill
+\eject
+\end

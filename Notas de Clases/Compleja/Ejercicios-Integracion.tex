@@ -1,0 +1,88 @@
+\documentclass[letterpaper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{lmodern} % Ensures we have the right font
+\usepackage{amsmath, amsthm, amssymb, amsfonts, amssymb, amscd}
+\usepackage[table, xcdraw]{xcolor}
+\usepackage{mdsymbol}
+\usepackage{tikz-cd}
+\usepackage{float}
+\usepackage[spanish, activeacute, ]{babel}
+\usepackage{color}
+\usepackage{transparent}
+\graphicspath{{./figs/}}
+\usepackage{makeidx}
+\usepackage{afterpage}
+\usepackage{array}
+\usepackage{pst-node}
+\newtheorem{teorema}{Teorema}[section]
+\newtheorem{prop}[teorema]{Proposici\'on}
+\newtheorem{cor}[teorema]{Corolario}
+\newtheorem{lema}[teorema]{Lema}
+\newtheorem{def.}{Definici\'on}[section]
+\newtheorem{afir}{Afirmaci\'on}
+\newtheorem{conjetura}{Conjetura}
+\renewcommand{\figurename}{Figura}
+\renewcommand{\indexname}{\'{I}ndice anal\'{\i}tico}
+\newcommand{\zah}{\ensuremath{ \mathbb Z }}
+\newcommand{\rac}{\ensuremath{ \mathbb Q }}
+\newcommand{\nat}{\ensuremath{ \mathbb N }}
+\newcommand{\prob}{\textbf{P}}
+\newcommand{\esp}{\mathbb E}
+\newcommand{\eje}{{\newline \noindent \sc \textbf{Ejemplo. }}}
+\newcommand{\obs}{{\newline \noindent \sc \textbf{Observación. }}}
+\newcommand{\dem}{{\noindent \sc Demostraci\'on. }}
+\newcommand{\bg}{\ensuremath{\overline \Gamma}}
+\newcommand{\ga}{\ensuremath{\gamma}}
+\newcommand{\fb}{\ensuremath{\overline F}}
+\newcommand{\la}{\ensuremath{\Lambda}}
+\newcommand{\om}{\ensuremath{\Omega}}
+\newcommand{\sig}{\ensuremath{\Sigma}}
+\newcommand{\bt}{\ensuremath{\overline T}}
+\newcommand{\li}{\ensuremath{\mathbb{L}}}
+\newcommand{\ord}{\ensuremath{\mathbb{O}}}
+\newcommand{\bs}{\ensuremath{\mathbb{S}^1}}
+\newcommand{\co}{\ensuremath{\mathbb C }}
+\newcommand{\con}{\ensuremath{\mathbb{C}^n}}
+\newcommand{\cp}{\ensuremath{\mathbb{CP}}}
+\newcommand{\rp}{\ensuremath{\mathbb{RP}}}
+\newcommand{\re}{\ensuremath{\mathbb R }}
+\newcommand{\hc}{\ensuremath{\widehat{\mathbb C} }}
+\newcommand{\pslz}{\ensuremath{psl(2,\mathbb Z) }}
+\newcommand{\pslr}{\ensuremath{psl(2,\mathbb R) }}
+\newcommand{\pslc}{\ensuremath{psl(2,\mathbb C) }}
+\newcommand{\hd}{\ensuremath{\mathbb H^2}}
+\author{Carlos Eduardo Martínez Aguilar}
+\date{\today}
+\title{Ejercicios de la sección 2.5}
+\begin{document}
+\maketitle
+\begin{center}
+\href{mailto:cmartineza@ciencias.unam.mx}{cmartineza@ciencias.unam.mx}
+\end{center}
+
+\noindent Estos son algunos ejercicios de la sección 2.5 del libro resueltos para que los estudien para su examen, la numeración es la misma que en el libro. Si tienen alguna duda me la pueden hacer por correo.
+
+\begin{itemize}
+  \item[1] Encuentre el valor máximo de la función $z\mapsto|\sen(z)|$ en $[0,1]\times[-1,1]$ y diga en qué puntos se alcanza.\\
+        \textbf{Respuesta:} Como sabemos de la fórmula de la suma del ángulo para el seno y el hecho de que el máximo se alcanza en la frontera, tenemos que buscar el máximo de $|\sen(t-i)|$, $|\sen(t+i)|$, donde $t\in[0,1]$ o el máximo de $|\sen(is)|$ o $|\sen(1+is)|$, $s\in[-1,1]$. Ahora la fórmula de suma de ángulos nos dice que
+        \[
+            \sen(x+iy)=\sen(x)\cosh(y)+i\cos(x)\senh(y),
+        \]
+        entonces, por paridad de $\cosh$ e imparidad de $\senh$
+        \begin{enumerate}
+          \item $|\sen(t-i)|=|\sen(t)\cosh(-1) + i\cos(t)\senh(-1)|=|\sen(t)(1 + e^2)/(2e)-i\cos(t)(e^{2}-1)/(2e)|$, como en el intervalo $[0,1]$ tanto $\sen$ como $\cos$ son crecientes por lo tanto el máximo se alcanza cuando $t=1$.
+          \item $|\sen(t+i)|=|\sen(t)\cosh(1) + i\cos(t)\senh(1)|=|\sen(t)(1 + e^2)/(2e)+i\cos(t)(e^{2}-1)/(2e)|$, observamos que $(x+iy)\mapsto(x-iy)$ es una isometría y por lo tanto esta expresión es igual numericamente a la del inciso 1.
+          \item $|\sen(is)|=|i\senh(s)|=|\senh(s)|$, como $\senh$ es creciente pues su derivada $\cosh$ es positiva, el máximo se alcanza en $\senh(1)=(e^{2}-1)/2e$ que claramente es menor o igual a los de los anteriores pues estos incluyen el caso $\cos(0)=1$.
+          \item $|\sen(1+is)|=|\sen(1)\cosh(s)+i\cos(1)\senh(s)|$, similar al inciso anterior, podemos observar que $\cosh$ y $\senh$ son crecientes para $s\in [0,1]$, sin embargo en este caso por paridad de $\cosh$ e imparidad de $\senh$ más el hecho de que  $(x+iy)\mapsto(x-iy)$ es una isometría, tenemos que los máximos se alcanzan en $(1,-1)$ y $(1,1)$ ambos con el mismo valor.
+        \end{enumerate}
+        Por lo tanto es claro del análisis anterior que el máximo se alcanza en los puntos $(1,-1)$ y $(1,1)$.
+
+  \item[5] Sea $f$ una función holomorfa en $\Delta=\{|z| < 1 \}$ tal que $|f(z)|=3$, para toda $z\in\Delta$, demueste que $f$ es constante.\\
+        \textbf{Respuesta:} Como para toda bola concéntrica a cero $\Delta_{r}=\{|z|\leq r\}$, donde $0<r<1$, $f\vert_{\Delta_{r}}$ tiene módulo constante y por lo tanto alcanza su máximo en el interior de $\Delta_{r}$, entonces $f$ es constante en $\Delta_{r}$ para todo $0<r<1$ y por lo tanto es constante en $\Delta$.
+  \item[8] Demuestre que no existe función holomorfa $f:\Delta\rightarrow\overline{\Delta}$. tal que $f(0)=0$ y $f(z)=i$, para alguna $z\in\Delta$\\
+        \textbf{Respuesta:} Supongamos que existe tal $f$ con $f(z_{0})=i$ $z_{0}\in\Delta$, como $f(0)=0$, entonces $0\neq z_{0}$. Por lo tanto $0<r=|z_{0}|<1$, entonces sea $\epsilon\in\re^{+}$ tal que  $\rho=r+\epsilon < 1$, entonces siguiendo la notación del ejercicio anterior, $f\vert_{\Delta_{\rho}}$ alcanza su máximo en un punto interior de $\Delta_{\rho}$ pues $|f(z)|\leq 1$ para toda $z\in\Delta$ por definición de $f$ y  $f(z_{0})=i$ que tiene norma $1$ (claramente $z_{0}\in\Delta_{\rho}$). Por lo tanto $f\vert_{\Delta_{\rho}}$ es constante pero $f(0)=0\neq i=f(z_{0})$. Lo cual es contradictorio.
+\end{itemize}
+\end{document}

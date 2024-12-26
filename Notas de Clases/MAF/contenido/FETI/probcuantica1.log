@@ -1,0 +1,470 @@
+This is TeX, Version 3.141592 (Web2C 7.5.4) (format=tex 2006.10.23)  17 NOV 2006 07:03
+**probcuantica1.tex
+(./probcuantica1.tex
+! Undefined control sequence.
+l.1 \documentstyle
+                  [12pt]{article}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.3 \textwidth
+              =17cm
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.5 \begin
+          {document}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.7 \section
+            {Problema \# 1}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.12 \[
+       
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Missing $ inserted.
+<inserted text> 
+                $
+<to be read again> 
+                   \Psi 
+l.13 \Psi
+          (\vec{r},0)=A\left( 2\psi _{100}+\psi _{210}+\sqrt{2}\psi _{211}+\...
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+! Undefined control sequence.
+l.15 \]
+       %
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Please use \mathaccent for accents in math mode.
+\'#1->{\accent 
+               19 #1}
+l.16 en la notaci\'o
+                    n usual y donde $A\;$es un coeficiente por determinar.
+I'm changing \accent to \mathaccent here; wish me luck.
+(Accents are not the same in formulas as they are in text.)
+
+! Missing $ inserted.
+<inserted text> 
+                $
+<to be read again> 
+                   \mskip 
+\;->\mskip 
+           \thickmuskip 
+l.16 en la notaci\'on usual y donde $A\;
+                                        $es un coeficiente por determinar.
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+
+Overfull \hbox (174.75337pt too wide) in paragraph at lines 11--17
+[]\tenrm (1) Al tiempo $\teni t \tenrm = 0 $la fun-cion de onda del ^^Satomo de
+ hidr^^Sogeno es  $	([]\teni ; \tenrm 0) = \teni A [] enlanotaci[]nusualydonde$
+\tenrm A$ $es|
+
+\hbox(9.07217+3.50006)x469.75499, glue set - 1.0
+.\hbox(0.0+0.0)x20.0
+.\tenrm (
+.\tenrm 1
+.\tenrm )
+.\glue 3.33333 plus 1.66666 minus 1.11111
+.etc.
+
+! Undefined control sequence.
+l.29 \subsection
+                {\protect\bigskip SOLUCION}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.29 \subsection{\protect
+                         \bigskip SOLUCION}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.33 \[
+       
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Missing $ inserted.
+<inserted text> 
+                $
+<to be read again> 
+                   ^
+l.34 1=|A|^
+           {2}\left( 4+1+2+3\right) =10|A|^{2}\Longrightarrow A=\frac{1}{\sq...
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+! Undefined control sequence.
+l.34 ...3\right) =10|A|^{2}\Longrightarrow A=\frac
+                                                  {1}{\sqrt{10}%
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.36 \]
+       
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Missing $ inserted.
+<inserted text> 
+                $
+<to be read again> 
+                   \par 
+l.37 
+     
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+
+Overfull \hbox (55.87288pt too wide) in paragraph at lines 31--37
+[]\tenrm Primero de-ter-mi-namos $\teni A $\tenrm por nor-mal-izaci^^Son. Las $
+\teni  [] $\tenrm est^^San ortonor-mal-izadas por lo que 1=|A|$[] [] =|
+
+\hbox(8.14003+2.5)x469.75499, glue set - 1.0
+.\hbox(0.0+0.0)x20.0
+.\tenrm P
+.\tenrm r
+.\tenrm i
+.\tenrm m
+.etc.
+
+! Undefined control sequence.
+l.39 \begin
+           {eqnarray*}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Misplaced alignment tab character &.
+l.40 E &
+        =&<\Psi |H|\Psi > \\
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+! Misplaced alignment tab character &.
+l.40 E &=&
+          <\Psi |H|\Psi > \\
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+! Missing $ inserted.
+<inserted text> 
+                $
+<to be read again> 
+                   \Psi 
+l.40 E &=&<\Psi
+                |H|\Psi > \\
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+Runaway argument?
+ &=&\frac {1}{10}<\left ( 2\psi _{100}+\psi _{210}+\sqrt {2}\psi _{21\ETC.
+! Paragraph ended before \\ was complete.
+<to be read again> 
+                   \par 
+l.55 
+     
+I suspect you've forgotten a `}', causing me to apply this
+control sequence to too much text. How can we recover?
+My plan is to forget the whole thing and hope for the best.
+
+! Missing $ inserted.
+<inserted text> 
+                $
+<to be read again> 
+                   \par 
+l.55 
+     
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+! Undefined control sequence.
+l.57 \begin
+           {eqnarray*}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Missing $ inserted.
+<inserted text> 
+                $
+<to be read again> 
+                   \Psi 
+l.58 \Psi
+          (\vec{r},t) &=&e^{-i\frac{H}{\hbar }t}\Psi (\vec{r},0) \\
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+! Misplaced alignment tab character &.
+l.58 \Psi (\vec{r},t) &
+                       =&e^{-i\frac{H}{\hbar }t}\Psi (\vec{r},0) \\
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+! Misplaced alignment tab character &.
+l.58 \Psi (\vec{r},t) &=&
+                         e^{-i\frac{H}{\hbar }t}\Psi (\vec{r},0) \\
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+! Undefined control sequence.
+l.58 \Psi (\vec{r},t) &=&e^{-i\frac
+                                   {H}{\hbar }t}\Psi (\vec{r},0) \\
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+Runaway argument?
+ \Psi (\vec {r},t) &=&\frac {1}{\sqrt {10}}\left ( 2e^{-i\frac {E_{1}\ETC.
+! Paragraph ended before \\ was complete.
+<to be read again> 
+                   \par 
+l.63 
+     
+I suspect you've forgotten a `}', causing me to apply this
+control sequence to too much text. How can we recover?
+My plan is to forget the whole thing and hope for the best.
+
+! Missing $ inserted.
+<inserted text> 
+                $
+<to be read again> 
+                   \par 
+l.63 
+     
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+! Undefined control sequence.
+l.65 \[
+       
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Missing $ inserted.
+<inserted text> 
+                $
+<to be read again> 
+                   _
+l.66 P_
+       {l=1,m=1}=\sum_{n}|<\psi _{n11}|\Psi (\vec{r},t)>|^{2}
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+! Undefined control sequence.
+l.67 \]
+       %
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Missing $ inserted.
+<inserted text> 
+                $
+<to be read again> 
+                   \mskip 
+\;->\mskip 
+           \thickmuskip 
+l.68 Como $l=n-1,n-2,...0\;
+                           \;$contribuye solo \ $n=2$, por lo que
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+! Undefined control sequence.
+l.69 \begin
+           {eqnarray*}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Missing $ inserted.
+<inserted text> 
+                $
+<to be read again> 
+                   _
+l.70 P_
+       {l=1,m=1} &=&|<\psi _{211}|\Psi (\vec{r},t)>|^{2} \\
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+! Misplaced alignment tab character &.
+l.70 P_{l=1,m=1} &
+                  =&|<\psi _{211}|\Psi (\vec{r},t)>|^{2} \\
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+! Misplaced alignment tab character &.
+l.70 P_{l=1,m=1} &=&
+                    |<\psi _{211}|\Psi (\vec{r},t)>|^{2} \\
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+Runaway argument?
+ P_{l=1,m=1} &=&\frac {1}{10}|e^{-i\frac {E_{2}}{\hbar }t}\sqrt {2}|^\ETC.
+! Paragraph ended before \\ was complete.
+<to be read again> 
+                   \par 
+l.74 
+     
+I suspect you've forgotten a `}', causing me to apply this
+control sequence to too much text. How can we recover?
+My plan is to forget the whole thing and hope for the best.
+
+! Missing $ inserted.
+<inserted text> 
+                $
+<to be read again> 
+                   \par 
+l.74 
+     
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+! Undefined control sequence.
+l.77 \begin
+           {eqnarray*}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Missing $ inserted.
+<inserted text> 
+                $
+<to be read again> 
+                   \Phi 
+l.78 \Phi
+           &=&a\psi _{211}+b\psi _{210}+c\psi _{21-1} \\
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+! Misplaced alignment tab character &.
+l.78 \Phi  &
+            =&a\psi _{211}+b\psi _{210}+c\psi _{21-1} \\
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+! Misplaced alignment tab character &.
+l.78 \Phi  &=&
+              a\psi _{211}+b\psi _{210}+c\psi _{21-1} \\
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+Runaway argument?
+ &=&R_{21}\left ( aY_{11}+bY_{10}+cY_{1-1}\right ) \end {eqnarray*}no\ETC.
+! Paragraph ended before \\ was complete.
+<to be read again> 
+                   \par 
+l.125 
+      
+I suspect you've forgotten a `}', causing me to apply this
+control sequence to too much text. How can we recover?
+My plan is to forget the whole thing and hope for the best.
+
+! Missing $ inserted.
+<inserted text> 
+                $
+<to be read again> 
+                   \par 
+l.125 
+      
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+[1] )
+Output written on probcuantica1.dvi (1 page, 2488 bytes).

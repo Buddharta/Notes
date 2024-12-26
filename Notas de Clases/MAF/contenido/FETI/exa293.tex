@@ -1,0 +1,48 @@
+\newbox\Ancha
+\def\gros#1{{\setbox\Ancha=\hbox{$#1$}
+   \kern-.025em\copy\Ancha\kern-\wd\Ancha
+   \kern.05em\copy\Ancha\kern-\wd\Ancha
+   \kern-.025em\raise.0433em\box\Ancha}}
+%\def\gros#1{\vec #1}
+\font\biggfnt=cmr10 scaled\magstep 3
+\font\bigfnt=cmr10 scaled\magstep1
+\def\ni{\noindent}
+\def\esp{\par \vskip .2 in }
+\baselineskip 22pt
+\magnification 1200
+\centerline{\biggfnt EXAMEN 3}\esp
+\centerline{\bigfnt F\'{\i}sica Moderna III}\esp
+
+\ni 1) Calcular la corriente para una onda plana de un electr\'on 
+libre de energ\'ia positiva y de impulso ${\bf k}$
+%
+$$ u({\bf k}) = \sqrt{{E+m_{{}_0}\over 2E}}\pmatrix{ \chi \cr {}\cr
+{{\gros\sigma}\cdot {\bf k}\over E+m_{{}_0}}\chi \cr}$$
+%
+en donde $\chi$ es un bi-espinor ($\hbar=c=1$).\par
+
+\ni 2) Calcular el conmutador con el hamiltoniano $H={\gros\alpha}\cdot 
+{\bf p}+{\beta}m_{{}_0}$ del operador $ {\gros \sigma}\cdot \hat n$, 
+en donde ${\hat n}$ es un vector unidad. Para simplificar los c\'alculos 
+se puede tomar $\hat n$ paralelo a $ {\bf k}$.\par
+\ni 3) Misma pregunta que en 2 para el operador
+$\beta {\gros \sigma}\cdot\hat n$. \par
+
+\ni 4) Definiremos el vector de polarizaci\'on ${\bf P}$ como:
+%
+$${\bf P}= {\gros \sigma}_{\|}+\beta{\gros \sigma}_{\bot}$$
+en donde
+%
+$${\gros \sigma}_{\|}={({\gros \sigma}\cdot{\bf k}){\bf k}\over |{\bf k}|^2}$$
+y
+$${\gros \sigma}_{\bot}= {\gros \sigma}-{\gros \sigma}_{\|}.$$
+%
+Mostrar que ${\bf P}$  conmuta con el hamiltoniano $H.$\par 
+\ni 5) Calcular $ {\bf P}\cdot{\hat n}$ y ${\bf P}^2.$ 
+?`Se pueden diagonalizar simult\'aneamente $ H,{\bf P}_{{}_x},
+{\bf P}_{{}_y}$ y ${\bf P}_{{}_z}$?\par
+\vfill
+\eject
+\end
+
+

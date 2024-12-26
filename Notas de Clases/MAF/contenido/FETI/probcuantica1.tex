@@ -1,0 +1,126 @@
+\documentstyle[12pt]{article}
+\hoffset=-1.5cm
+\textwidth=17cm
+
+\begin{document}
+
+\section{Problema \# 1}
+
+\bigskip 
+
+(1) Al tiempo $t=0\;$la funcion de onda  del \'atomo de hidr\'ogeno es
+\[
+\Psi (\vec{r},0)=A\left( 2\psi _{100}+\psi _{210}+\sqrt{2}\psi _{211}+\sqrt{3%
+}\psi _{21-1}\right) 
+\]%
+en la notaci\'on usual y donde $A\;$es un coeficiente por determinar.
+
+$\;\;\;\;$(a) ?` Cu\'al es la energ\'\i a del sistema?.
+
+\ \ \ \ (b) Encuentre $\Psi (\vec{r},t)$
+
+\ \ \ \ (c) ?`Cu\'al es la probabilidad al tiempo $t\;$de hallar al sistema con $%
+l=1,$\ $m=+1$\ ?
+
+\ (2) Suponga que una medici\'on nos dice que el \'atomo se encuentra en un
+estado de mpmento angular con  $L=1$ y $L_{x}=+1$.  Escriba la funci\'on de onda inmediatamente
+despues de la medici\'on, en t\'erminos de las funciones $\psi _{nlm}.$
+
+\subsection{\protect\bigskip SOLUCION}
+
+Primero determinamos $A\;$por normalizaci\'on. Las $\psi _{nlm}\;$est\'an
+ortonormalizadas por lo que%
+\[
+1=|A|^{2}\left( 4+1+2+3\right) =10|A|^{2}\Longrightarrow A=\frac{1}{\sqrt{10}%
+}
+\]
+
+a) 
+\begin{eqnarray*}
+E &=&<\Psi |H|\Psi > \\
+&=&\frac{1}{10}<\left( 2\psi _{100}+\psi _{210}+\sqrt{2}\psi _{211}+\sqrt{3}%
+\psi _{21-1}\right) |\times  \\
+&&\left( \left( E_{1}2\psi _{100}+E_{2}\psi _{210}+E_{2}\sqrt{2}\psi
+_{211}+E_{2}\sqrt{3}\psi _{21-1}\right) \right)  \\
+E &=&\frac{1}{10}\left( 2E_{1}+6E_{2}\right) =\frac{1}{5}(E_{1}+3E_{2})
+\end{eqnarray*}%
+donde%
+\[
+E_{n}=-\frac{me^{4}}{2\hbar ^{2}}\frac{1}{n^{2}}
+\]%
+\[
+E=-\frac{me^{4}}{2\hbar ^{2}}\frac{1}{5}\left( 1+\frac{3}{4}\right) =-\frac{7%
+}{40}\frac{me^{4}}{\hbar ^{2}}
+\]
+
+(b)%
+\begin{eqnarray*}
+\Psi (\vec{r},t) &=&e^{-i\frac{H}{\hbar }t}\Psi (\vec{r},0) \\
+\Psi (\vec{r},t) &=&\frac{1}{\sqrt{10}}\left( 2e^{-i\frac{E_{1}}{\hbar }%
+t}\psi _{100}+e^{-i\frac{E_{2}}{\hbar }t}\left( \psi _{210}+\sqrt{2}\psi
+_{211}+\sqrt{3}\psi _{21-1}\right) \right) 
+\end{eqnarray*}
+
+(c)%
+\[
+P_{l=1,m=1}=\sum_{n}|<\psi _{n11}|\Psi (\vec{r},t)>|^{2}
+\]%
+Como $l=n-1,n-2,...0\;\;$contribuye solo \ $n=2$, por lo que 
+\begin{eqnarray*}
+P_{l=1,m=1} &=&|<\psi _{211}|\Psi (\vec{r},t)>|^{2} \\
+P_{l=1,m=1} &=&\frac{1}{10}|e^{-i\frac{E_{2}}{\hbar }t}\sqrt{2}|^{2}=\frac{2%
+}{10}=0.2
+\end{eqnarray*}
+
+
+(2) Como $L=1$,  entonces la nueva funci\'on de onda ser\'a 
+\begin{eqnarray*}
+\Phi  &=&a\psi _{211}+b\psi _{210}+c\psi _{21-1} \\
+&=&R_{21}\left( aY_{11}+bY_{10}+cY_{1-1}\right) 
+\end{eqnarray*}%
+normalizada adecuadamente.%
+\[
+L_{x}=\frac{1}{2}\left( L_{+}+L_{-}\right) 
+\]%
+con%
+\begin{eqnarray*}
+L_{+}Y_{lm} &=&\sqrt{\left( l+m+1\right) \left( l-m\right) }Y_{lm+1} \\
+L_{-}Y_{lm} &=&\sqrt{\left( l-m+1\right) \left( l+m\right) }Y_{lm-1}
+\end{eqnarray*}%
+\begin{eqnarray*}
+L_{+}Y_{11} &=&0,\;L_{+}Y_{10}=\sqrt{2}Y_{11},\;\;L_{+}Y_{1-1}=\sqrt{2}%
+Y_{10}\; \\
+L_{-}Y_{11} &=&\sqrt{2}Y_{10},\;L_{-}Y_{10}=\sqrt{2}Y_{1-1},\;%
+\;L_{-}Y_{1-1}=0\;
+\end{eqnarray*}%
+La\ condicion es 
+\[
+\frac{1}{2}\left( L_{+}+L_{-}\right) \left( aY_{11}+bY_{10}+cY_{1-1}\right)
+=\left( aY_{11}+bY_{10}+cY_{1-1}\right) 
+\]%
+\begin{eqnarray*}
+RHS &=&\frac{1}{2}\left( L_{+}+L_{-}\right) \left(
+aY_{11}+bY_{10}+cY_{1-1}\right)  \\
+&=&\frac{1}{2}\left( L_{+}\right) \left( aY_{11}+bY_{10}+cY_{1-1}\right)  \\
+&&+\frac{1}{2}\left( L_{-}\right) \left( aY_{11}+bY_{10}+cY_{1-1}\right)  \\
+&=&\frac{\sqrt{2}}{2}\left( bY_{11}+cY_{10}\right) +\frac{\sqrt{2}}{2}\left(
+aY_{10}+bY_{1-1}\right)  \\
+&=&\frac{1}{\sqrt{2}}\left( bY_{11}+\left( a+c\right) Y_{10}+bY_{1-1}\right) 
+\end{eqnarray*}%
+Comparando coeficientes de la base%
+\[
+\frac{b}{\sqrt{2}}=a,\;\;\;\frac{\left( a+c\right) }{\sqrt{2}}=b,\;\frac{b}{%
+\sqrt{2}}=c\;\;
+\]%
+\[
+c=a,\;\;\;b=\sqrt{2}a
+\]%
+La normalizacion es%
+\[
+1=a^{2}+b^{2}+c^{2}=4a^{2}\Longrightarrow a=\frac{1}{2}
+\]%
+\[
+\Phi =\frac{1}{2}\left( \psi _{211}+\sqrt{2}\psi _{210}+\psi _{21-1}\right) 
+\]
+
+\end{document}

@@ -1,0 +1,155 @@
+% Created 2024-11-04 Mon 21:41
+% Intended LaTeX compiler: pdflatex
+\documentclass[letterpaper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{longtable}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{capt-of}
+\usepackage{hyperref}
+\usepackage{lmodern} % Ensures we have the right font
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{amsmath, amsthm, amssymb, amsfonts, amssymb, amscd}
+\usepackage[table, xcdraw]{xcolor}
+%\usepackage{mdsymbol}
+\usepackage{tikz-cd}
+\usepackage{float}
+\usepackage[spanish, activeacute, ]{babel}
+\usepackage{color}
+\usepackage{transparent}
+\graphicspath{{./figs/}}
+\usepackage{makeidx}
+\usepackage{afterpage}
+\usepackage{array}
+\usepackage{pst-node}
+\newtheorem{teorema}{Teorema}[section]
+\newtheorem{prop}[teorema]{Proposici\'on}
+\newtheorem{cor}[teorema]{Corolario}
+\newtheorem{lema}[teorema]{Lema}
+\newtheorem{def.}{Definici\'on}[section]
+\newtheorem{afir}{Afirmaci\'on}
+\newtheorem{conjetura}{Conjetura}
+\renewcommand{\figurename}{Figura}
+\renewcommand{\indexname}{\'{I}ndice anal\'{\i}tico}
+\newcommand{\zah}{\ensuremath{ \mathbb Z }}
+\newcommand{\rac}{\ensuremath{ \mathbb Q }}
+\newcommand{\nat}{\ensuremath{ \mathbb N }}
+\newcommand{\prob}{\textbf{P}}
+\newcommand{\esp}{\mathbb E}
+\newcommand{\eje}{{\newline \noindent \sc \textbf{Ejemplo. }}}
+\newcommand{\obs}{{\newline \noindent \sc \textbf{Observación. }}}
+\newcommand{\dem}{{\noindent \sc Demostraci\'on. }}
+\newcommand{\bg}{\ensuremath{\overline \Gamma}}
+\newcommand{\ga}{\ensuremath{\gamma}}
+\newcommand{\fb}{\ensuremath{\overline F}}
+\newcommand{\la}{\ensuremath{\Lambda}}
+\newcommand{\om}{\ensuremath{\Omega}}
+\newcommand{\sig}{\ensuremath{\Sigma}}
+\newcommand{\bt}{\ensuremath{\overline T}}
+\newcommand{\li}{\ensuremath{\mathbb{L}}}
+\newcommand{\ord}{\ensuremath{\mathbb{O}}}
+\newcommand{\bs}{\ensuremath{\mathbb{S}^1}}
+\newcommand{\co}{\ensuremath{\mathbb C }}
+\newcommand{\con}{\ensuremath{\mathbb{C}^n}}
+\newcommand{\cp}{\ensuremath{\mathbb{CP}}}
+\newcommand{\rp}{\ensuremath{\mathbb{RP}}}
+\newcommand{\re}{\ensuremath{\mathbb R }}
+\newcommand{\hc}{\ensuremath{\widehat{\mathbb C} }}
+\newcommand{\pslz}{\ensuremath{\mathrm{PSL}(2,\mathbb Z) }}
+\newcommand{\pslr}{\ensuremath{\mathrm{PSL}(2,\mathbb R) }}
+\newcommand{\pslc}{\ensuremath{\mathrm{PSL}(2,\mathbb C) }}
+\newcommand{\hd}{\ensuremath{\mathbb H^2}}
+\newcommand{\slz}{\ensuremath{\mathrm{SL}(2,\mathbb Z) }}
+\newcommand{\slr}{\ensuremath{\mathrm{SL}(2,\mathbb R) }}
+\newcommand{\slc}{\ensuremath{\mathrm{SL}(2,\mathbb C) }}
+\newcommand{\mdlr}{\ensuremath{\mathrm{M}}}
+\author{Carlos Eduardo Martínez Aguilar}
+\date{\today}
+\title{Dos ejemlos de la prueba M Latex Export}
+\hypersetup{
+ pdfauthor={Carlos Eduardo Martínez Aguilar},
+ pdftitle={Dos ejemlos de la prueba M Latex Export},
+ pdfkeywords={},
+ pdfsubject={},
+ pdfcreator={Emacs 29.4 (Org mode 9.7.11)}, 
+ pdflang={Esp}}
+\begin{document}
+
+\maketitle
+\tableofcontents
+
+\section{Ejercicio 3.1-5}
+\label{sec:org190ee27}
+Se define la siguiente serie de funciones analíticas
+\[
+g(z)=\sum_{n=1}^{\infty}e^{-n}\cos(nz).
+\]
+Demuestre que \(g\) es holomorfa en \(\om=\{z\in\co\,|\,-1<\mathrm{Im}(z)<1\}\).
+
+\dem Primero, para poder aplicar la prueba M de Weierstrass, buscamos una cota para los términos \(|\cos(nz)|\). Entonces por definición de coseno
+\begin{align*}
+|\cos(nz)|&=\big|\frac{e^{inz}-e^{-inz}}{2}\big|\\
+&\leq\frac{|e^{inz}|+|e^{-inz}|}{2}\\
+&=\frac{e^{-n\mathrm{Im}(z)}+e^{n\mathrm{Im}(z)}}{2}.
+\end{align*}
+
+\noindent Donde aplicamos la desigualdad del triángulo para la desigualdad y el hecho \(|e^{i(x+iy)}|=|e^{(ix-y)}|=e^{-y}\). Así para \(K\subset\om\) compacto, sea \(\delta\) la distancia de \(K\) a \(\partial\om=\{\mathrm{Im}(z)=1\}\cup\{\mathrm{Im}(z)=-1\}\), la cual existe pues \(K\) es compacto y \(\partial\om\) es cerrado. Por lo tanto si \(z\in K\), se tiene que \(\pm\mathrm{Im}(z)<1-\delta\). Por lo tanto tenemos que
+
+\begin{align*}
+\sum_{n=1}^{\infty}|e^{-n}\cos(nz)|&=\sum_{n=1}^{\infty}e^{-n}|\cos(nz)|\\
+&\leq \sum_{n=1}^{\infty}e^{-n}e^{n(1-\delta)}\\
+&=\sum_{n=1}^{\infty}e^{-n\delta}\\
+&=\sum_{n=1}^{\infty}(e^{-\delta})^n=\frac{1}{1-e^{-\delta}}<\infty.
+\end{align*}
+
+\noindent Por lo tanto por la prueba M de Weierstrass y el teorema de Weierstrass, ls serie que define a \(g(z)\) converge absoluta y normalmente en \(\om\) y \(g(z)\) es holomorfa en \(\om\).
+\qed
+\section{Ejercicio 3.1-8}
+\label{sec:orgd449b61}
+Se define la siguiente serie de funciones analíticas
+\[
+g(z)=\sum_{n=1}^{\infty}2i\frac{z^n}{z^{2n}+1}.
+\]
+Demuestre que \(g\) es holomorfa en \(\om=\co\setminus\partial\Delta\), donde \(\partial\Delta=\{z\in\co\,|\,|z|=1\}\).
+
+\dem Similar al problema anterior, buscamos una cota para los sumandos
+\[
+\Big|\frac{z^n}{z^{2n}+1}\Big|$.
+\]
+
+Entonces, sea \(D\subset\om\) un disco cerrado y sea \(\delta\) la distancia de \(D\) a \(\partial\Delta\), la cual existe pues ambos son conjuntos compactos. Ahora, existen dos posibilidades; \(|z|<1\) para toda \(z\in D\) o \(|z|>1\) para toda \(z\in D\), si \(|z|< 1\), entonces
+\[
+\vert z^{2n}+1\vert\geq 1-\vert z\vert^{2n}
+\]
+además se cumple que \(|z|^k<|z|\) para todo complejo de norma menor que uno y \(k\in\nat\). Más aún para todo \(z\in D\), se cumple que
+\[
+\vert z\vert<1+\delta\quad\implies\quad\vert z\vert^{2n}<1+\delta\quad\implies\quad-\vert z\vert^{2n}>-(1+\delta).
+\]
+Por lo tanto
+\[
+\vert z^{2n}+1\vert> 1-(1+\delta)=\delta
+\quad\implies\quad\Big|\frac{z^n}{z^{2n}+1}\Big|\leq\frac{|z^n|}{\delta}.
+\]
+
+Ahora si \(|z|>1\), entonces
+
+\[
+\Big|\frac{z^n}{z^{2n}+1}\Big|=\frac{1}{|z^n+z^{-n}|}\leq\frac{1}{|z|^n-|z|^{-n}}\leq\frac{1}{|z|^n-1}\leq\frac{\kappa}{|z|^n}\leq\frac{\kappa}{(1-\delta)^n}.
+\]
+\noindent Donde \(\kappa\in\re^+\) es una cota para la sucesion funciónes en \(D\)
+\[
+f_n(z)=\frac{|z|^n}{|z|^n-1}.
+\]
+\noindent Notamos que \(\kappa\) existe pues el máximo de las \(f_n\) existen y \(f_n\rightarrow 1\) cuando \(n\rightarrow\infty\). Por lo tanto, al igual que en el ejercicio anterior, se puede acotar la serie que define a \(g(z)\) por una geométrica convergente, la convergencia de la serie geométrica en el caso \(|z|<1\) es más sencillo pues podemos suponer que \(|z|<r<1\),entonces el valor que acota la serie de los valores absolutos es \(1/\delta(1-r)\) y el caso \(|z|>1\), se puede verificar que se obtiene
+
+$$\frac{2\kappa}{1-\frac{1}{(1-\delta)}}.$$
+
+Por lo tanto por la prueba M de Weierstrass y el teorema de Weierstrass, ls serie que define a \(g(z)\) converge absoluta y normalmente en \(\om\) y \(g(z)\) es holomorfa en \(\om\).
+\qed
+\end{document}

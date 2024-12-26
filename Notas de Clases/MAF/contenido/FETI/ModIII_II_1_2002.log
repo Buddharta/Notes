@@ -1,0 +1,36 @@
+This is TeX, Version 3.141592 (MiKTeX 2.5) (preloaded format=tex 2006.10.31)  8 NOV 2006 20:20
+**ModIII_II_1_2002.tex
+(ModIII_II_1_2002.tex (exfeti.sty
+\Ancha=\box16
+\pagewidth=\dimen16
+\pageheight=\dimen17
+\ruleht=\dimen18
+\x=\box17
+\y=\box18
+\boxitsep=\dimen19
+\anchito=\dimen20
+\boxitsep=\dimen21
+\z=\box19
+\w=\box20
+)
+\Ancha=\box21
+ (epsf.tex
+\epsffilein=\read0
+\epsfxsize=\dimen22
+\epsfysize=\dimen23
+\epsftsize=\dimen24
+\epsfrsize=\dimen25
+\epsftmp=\dimen26
+\pspoints=\dimen27
+)
+! I couldn't open unamN1.eps, will ignore it.
+\epsfgetbb ...{I couldn't open #1, will ignore it}
+                                                  \else {\epsffileoktrue \ch...
+
+\next #1->\epsfgetbb {#1}
+                         \epsfsetgraph {#1}
+\fetifig ... \picsize \fi \epsfbox {\picfilename }
+                                                  }}\fi \setbox \z =\hbox {}...
+l.54 \fetifig{unamN1.eps}{\titulo}{2.5cm}
+                                         
+? 

@@ -1,0 +1,64 @@
+\input exfeti.sty
+% 20 de oct. 1989
+\newbox\Ancha
+\def\gros#1{{\setbox\Ancha=\hbox{$#1$}
+   \kern-.025em\copy\Ancha\kern-\wd\Ancha
+   \kern.05em\copy\Ancha\kern-\wd\Ancha
+   \kern-.025em\raise.0433em\box\Ancha}}
+%\def\gros#1{\vec #1}
+\font\biggfnt=cmr10 scaled\magstep 3
+\font\bigfnt=cmr10 scaled\magstep 1
+\def\ni{\noindent}
+\def\esp{\par \vskip .2 in }
+\baselineskip 18pt
+\magnification 1200
+\nopagenumbers
+
+\def\ni{\noindent}  
+\baselineskip 15pt    
+\magnification 1200 
+\def\Par{\par\vskip .15in} 
+\def\esp{\Par \vskip .2 in }
+ 
+
+%%Begin InstantTeX Picture
+\let\picnaturalsize=N
+\def\picsize{11cm}
+\def\picfilename{FETI01sem_I_1.eps}
+%If you do not have the picture file add:
+%\let\nopictures=Y
+%to the beginning of the file.
+\ifx\nopictures Y\else{\ifx\epsfloaded Y\else\input epsf \fi
+\global\let\epsfloaded=Y
+{\ifx\picnaturalsize N\epsfxsize \picsize\fi \epsfbox{\picfilename}}}\fi
+%%End InstantTeX Picture
+
+%\centerline{\bigfnt FETI}\par
+
+\centerline{\sl Examen 1}\hfill{\smal \hoy} \Par
+\ni 1) Calcular la integral siguiente
+ $$  \int_0^\infty {x^s\over(e^x-1)}dx = s!\zeta(s + 1)$$
+\ni 2) Demostrar la siguiente relaci\'on  
+$$ \int_{-1}^1 (1-x^2)^{1/2}x^{2n}dx = \cases{{\pi\over 2}& Si $n=0$\cr
+\cr
+\pi {(2n-1)!!\over (2n +2)!!}  & Si $n= 1,2,3...$}$$
+\ni 3) Probar que en la expansi\'on de $ (1+x)^{-1/2} $ el coeficiente $a_n$ de la expansi\'on se puede escribir ya sea en terminos de factoriales o de de dobles factoriales como sigue
+$$  a_n=(-1)^n{(2n)!\over 2^{2n} (n!)^2} = (-1)^n{2n -1)!!\over (2n)!!},\quad n= 1,2,3\dots $$
+
+\ni 4)  Probar que para las funciones $ P^m_m(x)\equiv (2m-1)!!\,(1-x^2)^{m/2} $, llamadas en la literatura {\it Polinomios asociados de Legendre,}  se cumplen las relaciones
+
+$$ \eqalign{&\int_{-1}^1[P_m^m(x)]^2\,dx = {2\over (2m +1) }(2m)!\cr
+&\int_{-1}^1[P_m^m(x)]^2{1\over 1-x^2}\,dx = 2(2m -1)!\cr}$$
+
+
+\ni {\bf Algunas f\'ormulas \'utiles.} \par
+\ni La funci\'on {\it gama}
+$$z! = \int_0^\infty t^z e^{-t}dt $$
+\ni La funci\'on {\it zeta de Riemann.}
+$$  \zeta(s) = \sum_{k=1}^\infty{1\over k^s}$$
+\ni La funci\'on {\it beta}
+$$  B(m + 1, n +1) = 2 \int_0^{\pi/2}\cos^{2m + 1}\theta\,\sen^{2n+1}\theta\,d\theta= {m!\,n!\over (m+n+1)!}$$
+
+\vfill
+\eject
+\end
