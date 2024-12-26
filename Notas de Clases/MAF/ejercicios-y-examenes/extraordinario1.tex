@@ -1,0 +1,94 @@
+\input extrafeti.sty
+
+%%Begin InstantTeX Picture
+\let\picnaturalsize=N
+\def\picsize{11cm}
+\def\picfilename{FETI.eps}
+%If you do not have the picture file add:
+%\let\nopictures=Y
+%to the beginning of the file.
+\ifx\nopictures Y\else{\ifx\epsfloaded Y\else\input epsf \fi
+\global\let\epsfloaded=Y
+{\ifx\picnaturalsize N\epsfxsize \picsize\fi \epsfbox{\picfilename}}}\fi
+%%End InstantTeX Picture
+
+\magnification 1000
+\centerline{\medio Profesor: Rodolfo P. Mart\'{\i}nez y Romero}\par
+\centerline{\it Examen extrordinario}
+\centerline{\small \hoy}\par
+\smal
+\centerline{\subt El examen consta de 5 preguntitas simples}\par
+
+\ni 1) En mec\'anica cu\'antica, la dispersion de part\'{\i}culas por un potencial central, est\'a relacionada con la llamada {\smali amplitud de onda dispersada,} dada por
+$ f(\theta) = k \sum_{l=0}^\infty (2l + 1) \,e^{i\delta_l}\sen\,\delta_l \,P_l(\cos\theta),$
+\ni donde $l$ es el valor del momento angular orbital, $\delta_l$ es el corrimiento de fase producido por el potencial central sobre la onda de part\'{\i}culas del haz incidente y $\theta$ es el \'angulo de dispersi\'on. Si la secci\'on eficaz de dispersi\'on est\'a dada por $\int f^*(\theta)f(\theta)\, d\Omega,$ mostrar que
+$$ \sigma_{\rm tot} = 4\pi k^2 \sum_{l=0}^\infty (2l + 1)\, \sen^2\delta_l.$$
+\ni 2) Calcular la integral
+$$ G(k)= \int_{-\infty}^\infty {e^{ikz}\over z^2 - m^2}\,dz$$
+\ni para los casos a)$ k>0 $y b)$k<0,$ Tomando como referencia el contorno de la figura.  (Esta integral aparece como funci\'on de Green en teor\'{\i}a del campo).
+\input epsf.sty
+
+%%Begin InstantTeX Picture
+\let\picnaturalsize=N
+\def\picsize{5cm}
+\def\picfilename{extraordinario.eps}
+%If you do not have the picture file add:
+%\let\nopictures=Y
+%to the beginning of the file.
+\ifx\nopictures Y\else{\ifx\epsfloaded Y\else\input epsf \fi
+\global\let\epsfloaded=Y
+\centerline{\ifx\picnaturalsize N\epsfxsize \picsize\fi \epsfbox{\picfilename}}}\fi
+%%End InstantTeX Picture
+
+\ni 3) Comparando el desarrollo en serie de Taylor de la funci\'on generadora, con su desarrollo en t\'erminos de los polinomios de {Legendre,} probar que 
+$$P_n(\cos\,\theta) = {(-1)^n\over n!}r^{n + 1} {\partial^n\over \partial z^n}\left({1\over r}\right) .$$
+\ni Aqu\'{\i}  puede ser \'util le figura siguiente:
+\input epsf.sty
+
+%%Begin InstantTeX Picture
+\let\picnaturalsize=N
+\def\picsize{5cm}
+\def\picfilename{FETI598.eps}
+%If you do not have the picture file add:
+%\let\nopictures=Y
+%to the beginning of the file.
+\ifx\nopictures Y\else{\ifx\epsfloaded Y\else\input epsf \fi
+\global\let\epsfloaded=Y
+\centerline{\ifx\picnaturalsize N\epsfxsize \picsize\fi \epsfbox{\picfilename}}}\fi
+%%End InstantTeX Picture
+
+\ni 4) Probar la siguiente representaci\'on integral para la funci\'on de bessel $J_n(x)$
+$$J_n^2(x)={1\over \pi}\int_0^\pi J_{2n}(2x\,\cos\alpha)\,d\alpha = {2\over \pi}\int_0^{\pi/2} J_{2n}(2x\cos\alpha)\,d\alpha.$$
+\ni {\it Sugerencia:}  Una posibilidad es escribir a $J_{2n}(x)$ como una integral doble, digamos sobre $\theta$ y $\phi$ y hacer el cambio de variable $2\alpha=\theta - \phi\,\,;\,\, 2\beta=\theta + \phi.$ Comparar el resultado con alguna representaci\'on integral apropiada.
+\par
+\ni 5) La transformada seno de Fourier se define como
+
+$$\eqalign{\tilde f_s(k) = &\sqrt{2\over \pi}\int_{0}^\infty f_s(t)\,\hbox{sen}\,
+kt\, dt\cr
+ f_s(x) = &\sqrt{2\over \pi}\int_{0}^\infty \tilde f_s(k)\,\hbox{sen}\,
+kx\, dk }$$
+
+\ni y una expresi\'on equivalente para la transformada coseno.
+Muestren que la transformada de Fourier seno y coseno de $e^{-at}$
+son, respectivamente,
+
+$$ \eqalign{\tilde f_s(k) = &\sqrt{2\over \pi}{k\over k^2 +a^2}\cr
+\tilde f_c(k) = &\sqrt{2\over \pi}{a\over k^2 +a^2}} $$
+
+\ni Usando el teorema del residuo, encuentren las relaciones
+inversas
+
+$$  \eqalign{\int_{0}^\infty {k\,\hbox{sen}\,(kx)\over k^2+a^2}\,dk =
+&{\pi\over 2}\,e^{-ax}\cr
+ {}\cr
+ \int_{0}^\infty
+{\hbox{cos}\,(kx)\over k^2+a^2}\,dk = &{\pi\over 2 a}\,e^{-ax}}$$
+
+
+
+\vfill \eject
+\end
+
+\vfill
+\eject
+\end

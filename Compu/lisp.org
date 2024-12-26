@@ -2,7 +2,7 @@
 #+Author: Caros Eduardo Martínez Aguilar
 
 * Introducción
-Lisp es uno de los lenguajes de programación más antiguos que existen, fue creado en 1958 por John McCarthy en el MIT y es pionero de muchas tecnicas de porgramacion moderna como recursión, programación dinámica, calculo lambda. Fue el primer lenguaje interpretado sin necesitar de un compilador, además de tener tipado dinámico y recolector de basura. Su nombre proviene de List Processor ya que la estructura de datos básica es la lista ligada, donde cada elemento de la lista tiene dos punteros, uno lamado "CAR" que apunta a os datos y otro "CDR" que apunta a siguiente elemento de la lista, al final existe un puntero "NIL".
+Lisp es uno de los lenguajes de programación más antiguos que existen, fue creado en 1958 por John McCarthy en el MIT y es pionero de muchas tecnicas de programación moderna como recursión, programación dinámica, calculo lambda. Fue el primer lenguaje interpretado sin necesitar de un compilador, además de tener tipado dinámico y recolector de basura. Su nombre proviene de LISt Processor ya que la estructura de datos básica es la lista ligada, donde cada elemento de la lista tiene dos punteros, uno lamado "CAR" que apunta a os datos y otro "CDR" que apunta a siguiente elemento de la lista, al final existe un puntero "NIL".
 Las expresiones en lisp se conocen como "s-expression" y toda expresión en lisp va entre paréntesis y por lo general son de la forma (operador operandos), donde un operador es unaa función y los operandos son datos aceptados por la función.
 Una de las partes más poderosas de lisp es su poder de creación de MACROS, que es tan poderoso como para crear lenguajes dentro de lisp mismo.
 Al ser un lenguaje tan viejo, no sigue conveciones de UNIX como \(\n\) para nueva linea o \(%s\) en formatos de strings. En su lugar se usa \(~%\) y \(~A\) respectivamente. Además al ser un lenguaje interpretado y dinámico, es muy común el uso de un REPL (Read Eval Print Loop) y por tanto al encontrarse con un error, es posible modificar el código y reintentar desde donde se había quedado el programa y de hecho es posible descompilar una función esspecífica, simplemente en el REPL se escribe \(#'<nombre-de-funcion>\).
@@ -24,6 +24,5 @@ La declaración de una variable se hace conun bloque let
 donde claramente se utiliza el operador \(=\) para asignar a la variable el dato. similarmente, hay bloques para funciones
 #+BEGIN_SRC
 (defun funcion (parametros)
-(;;cuerpo de la función
-))
+(;;cuerpo de la función))
 #+END_SRC

@@ -1,4 +1,4 @@
-% Created 2024-10-06 Sun 18:04
+% Created 2024-10-29 Tue 16:14
 % Intended LaTeX compiler: pdflatex
 \documentclass[letterpaper]{book}
 \usepackage[utf8]{inputenc}
@@ -80,7 +80,7 @@
  pdftitle={Notas de Estadistica y Aprendizaje de máquina estadístico-probabilistico Latex Export},
  pdfkeywords={},
  pdfsubject={},
- pdfcreator={Emacs 28.1 (Org mode 9.5.2)}, 
+ pdfcreator={Emacs 29.4 (Org mode 9.7.11)}, 
  pdflang={Esp}}
 \begin{document}
 
@@ -88,10 +88,10 @@
 \tableofcontents
 
 \part{Repaso elemental de probabilidades.}
-\label{sec:org35c232f}
+\label{sec:org9a00240}
 
 \chapter{Teoría básica de la probabilidad.}
-\label{sec:org9610b27}
+\label{sec:org2f2616e}
 
 \noindent \textbf{\huge Introducción}
 \vspace{0.5cm}\\
@@ -111,7 +111,7 @@ Al leer uno la definición anterior se da uno cuenta de que ésta es una noción
 \item La otra es la Probabilidad "subjetiva", propuesta por Keynes, la cual busca responder preguntas como: ``¿Mañana va a lloverá?'' o ``Existe vida en saturno?'' Su influencia mayor está dada por la escuela bayesiana de estadística.
 \end{itemize}
 \section{Probabilidad y medida}
-\label{sec:org0055f65}
+\label{sec:org8e8e3ed}
 \noindent Por nuestra parte haremos uso de la visión Kolmogoroviana de la probabilidad.
 \begin{def.}
 Una \emph{sigma-álgebra} sobre un conjunto \(\Omega\) es una colección de subconjuntos de \(\Omega\), la cual denotamos por \(\Sigma\) y cumple lo siguiente
@@ -159,7 +159,7 @@ Sea \(\mathrm{F}\) una familia de subconjuntos de \(\Omega\)
 \begin{teorema}[Teorema de clases monótonas de Sierpinsky]
 Sea $\mathrm{F}$ un $\pi$ sistema de sunconjuntos de $\om$ y $\mathrm{G}$ un $\lambda$ sistema tal que $\mathrm{F}\subset\mathrm{G}$, entonces $\sigma(\mathrm{F})\subset\mathrm{G}$ o equivalentemente $\lambda(\mathrm{F})=\sigma(\mathrm{F})$
 \end{teorema}
-\noindent\dem Como una \(\sigma\) álgebra es un \(\pi\) sistema y \(\lambda\) sistema, entonces \(\lambda(\mathrm{F})\subset\sigma(\mathrm{F})\). Por lo tanto si demostramos que \(\lambda(\mathrm{F})\) es una \(\sigma\) álgebra, entonces el teorema estaría demostrado, así sólos hay que ver que \(\lambda(\mathrm{F})\) es un \(\pi\) sistema. Sea \(C\in\mathrm{F}\), entonces definimos
+\noindent\dem Como una \(\sigma\) álgebra s un \(\pi\) sistema y \(\lambda\) sistema, entonces \(\lambda(\mathrm{F})\subset\sigma(\mathrm{F})\). Por lo tanto si demostramos que \(\lambda(\mathrm{F})\) es una \(\sigma\) álgebra, entonces el teorema estaría demostrado, así sólos hay que ver que \(\lambda(\mathrm{F})\) es un \(\pi\) sistema. Sea \(C\in\mathrm{F}\), entonces definimos
 \[
     \mathrm{G}_{1}:=\{A\in\lambda(\mathrm{F})\,\vert\,A\cap C\in\lambda(\mathrm{F})\}.
 \]
@@ -198,7 +198,7 @@ Se le denomina a los conjuntos medibles de un espacio de probabilidad como \emph
 
 \begin{enumerate}
 \item \(\prob(\emptyset)=0\), pues \(\prob(E)=\prob(E\cup\emptyset)=\prob(E)+\prob(\emptyset)\).
-\item \(\prob(\om\setminusA)=1-\prob(A)\) para todo evento \(A\), pues \(1=\prob(\om)=\prob(A\cup(\om\setminus A))=\prob(A)+\prob(\om\setminus A)\).
+\item \(\prob(\om\setminus A)=1-\prob(A)\) para todo evento \(A\), pues \(1=\prob(\om)=\prob(A\cup(\om\setminus A))=\prob(A)+\prob(\om\setminus A)\).
 \item Si \(A_1\subset A_2\), donde \(A_1,A_2\in\sig\), entonces \(\prob(A_1)\leq\prob(A_2)\), pues
 \[
    A_2=A_1\cup(A_2\cap(\om\setminus A_1))\,\implies\prob(A_2)=\prob(A_1)+\prob(A_2\cap(\om\setminus A_1))\geq\prob(A_1)
@@ -240,9 +240,8 @@ Sea $(\om,\sig,\prob)$ un espacio de probabilidad tal que $\sig=\sigma(\mathrm{F
     \mathrm{F}=\{A\in\Sigma\,\vert\,\textbf{P}(A)=\textbf{Q}(A)\}
 \]
 es un \(\lambda\) sistema, entonces si un \(\pi\) sistema contenido en \(\mathrm{F}\) que genera a \(\Sigma\), entonces \textbf{P} y \textbf{Q} son iguales.
-
 \section{Probabilidad condicional e independencia}
-\label{sec:org9d4ac91}
+\label{sec:org6c2eb32}
 \noindent Comunemente se define la probabilidad condicional de un evento \(A\) con respecto a otro evento no nulo \(B\) como la siguiente fórmula
 \[
     \prob(A|B)=\frac{\prob(A\cap B)}{\prob(B)},
@@ -293,9 +292,8 @@ Es claro que si las \(\sigma\) álgebra son independientes entonces los \(\pi\) 
 \]
 \noindent Como ambas medidascoinciden en \(I\) y \(J\), por el lema de clases monótonas coincide en \(\sigma(I)=\mathrm{G}\) y \(\sigma(J)=\mathrm{H}\) y por lo tanto el lema es válido.
 \qed
-
 \section{Ejemplos ilustrativos}
-\label{sec:org7beff8a}
+\label{sec:org4c448eb}
 \exe El siguiente problema se encuentra por primera vez en el libro de P. R. Montmort titulado \emph{Essai d'Analyse sur les jeux de Hasard}, publicado en 1708: Se tienen dos urnas con \(n\) bolitas, cada una numerada de 1 a \(n\). Se va sacando simultaneamente una bolita de cada urna y se quiere hallar la probabilidad de que, al terminar la extracción de todas las bolitas, se haya extraído, por lo menos una vez el mismo número de bolita de cada urna.
 
 \noindent El espacio muestral \(\om\) es el espacio de las matrices de \(2\times n\) de la forma
@@ -337,14 +335,18 @@ entonces
 \]
 Por último notamos que si \(n\rightarrow\infty\), esta probabilidad tiende a \(1-e^{-1}\)
 
-\exe El ejemplo anterior se aplica a casos como el siguiente: Si dos jugadores tienen una baraja de 52 cartas y van sacando una carta a la vez simultaneamente ¿Cuál es la probabilidad de que al terminar saquen la misma carta a la vez?
+\eje El ejemplo anterior se aplica a casos como el siguiente: Si dos jugadores tienen una baraja de 52 cartas y van sacando una carta a la vez simultaneamente ¿Cuál es la probabilidad de que al terminar saquen la misma carta a la vez?
 
 \exe Cumpleaños compartidos: En una fiesta con con \(k\) personas ¿Cuál es la probabilidad de que dos de ellas compartan cumpleaños? 
 
 \exe El esquema de contagio de Polya: Supóngase que se tiene una urna con \(n\) bolitas negras y \(r\) bolitas rojas. Se saca una bolita y se regresa a la urna donde se sacó con una cantidad fija \(c\) de bolitas del mismo color. Se desea hallar la probabilidad de que en \(N=k_1+k_2\) estracciones hayan salido \(k_1\) bolitas negras y \(k_2\) bolitas rojas.
 
+\noindent Consideremos la probabilidad de que las bolitas negras salgan justo en las primeras \(k_1\) bolitas al sacarlas. La probabilidad de que las primera boliata sea negra es
+\[
+\frac{n}{n+r}
+\]
 \section{Distribuciones y variables aleatorias discretas}
-\label{sec:org0d41fee}
+\label{sec:orgd96cf0f}
 
 \noindent Asociadas a los probabilidades están las distribuciones y las variables aleatorias que éstas definen, una distribución es el nombre que se le da a las funciones que definen una probabilidad y se utilizan en la práctica como sinónimos de las probabilidades. Aunadas a las distribuciones estan las \emph{variables aleatorias} que abreviamos como \textbf{v.a}, las cuales son la fenomenología probabilística de las distribuciones, es decir, los eventos aleatorios los describiremos por medio de las variables aleatorias. Dentro de la práctica estadística tienen un valor importante las disribuciones de probabilidad \emph{discretas} o \emph{finitas}, a pesar de que se pueden consideara como un caso particular del total de distribuciones, conviente estudiarlas en particular ya que muchas veces en la práctica estadística, éstas son las más frecuentes. 
 
@@ -526,9 +528,8 @@ Sea $X$ una variable aleatoria con esperanza $\mu$, si se aplica la desigualdad 
 \prob(|X-\mu|\geq \epssilon)\leq \frac{\sigma^2(X)}{\epsilon^2}
 \]
 \end{cor}
-
 \section{Productos de variables e independencia}
-\label{sec:org4eed25f}
+\label{sec:org71c1d10}
 \noindent Inicialmente definimos independencia en términos de eventos y probabilidades, sin embargo también es posible definir estos conceptos en términos de variables aleatorias y esperanzas. De cierta manera es más natural el pensar la independencia en estos términos que en en términos de eventos. 
 
 \begin{def.}[Variables aleatorias independientes.]
@@ -586,9 +587,41 @@ Por lo tanto es claro que si \(X\ind Y\), entonces \(\mathrm{Cov}(X,Y)=0\) y por
 \noindent Usamos \(X\) para la variable de la primera urna e \(Y\) para la segunda, la probabilidad de cada número es \(1/5\), entonces \(\esp[X]=\esp[Y]=1/5(1+2+3+4+5)=3\), como ambas variables son independientes \(\esp[XY]=\esp[X]\esp[Y]=9\).  
 
 \eje ¿Qué sucede si en lugar de en lugar tomar las bolitas de dos urnas, se sacan dos bolitas de la misma urna?
+\section{Momentos y la función generadora}
+\label{sec:org1397db6}
+\noindent Una variable aleatoria \(X\), es heuristicamente una función que se comporta de una forma que no permite predicción de los valores que va a tomar, por esta razón se utilza el nombre adjetivo de \textbf{aleatoria}, sin embargo, sí hay forma de obtener información de \(X\), pricipalmente por medio de su esperanza y varianza, una mide los promedios pesados de los valores posibles y la otra la concentraciones de valores alrededor de dicho promedio. Sin embargo la esparenza y la varianza no son las únicas maneras de extaer información útil de una variable aleatoria, éstas cantidades tienen generalizaciónes a "mayor grado", donde podríamos decir que la esperanza tiene grado 1 y la varianza tiene grado 2. Lo anterior puede que tenga sentido a nivel inituivo, pero podemos precisarlo con mucha más formalidad con la siguiente definición
 
+\begin{def.}[Momentos de una variable aleatoria]
+Se llama \emph{momento de orden k} de una variable aleatoria discreta, \(X\) a la cantidad
+\[
+\alpha_k[X]=\esp[X^k]=\sum_{j\in\nat}x_j^k\prob(X=x_j).
+\]
+En particular \(\alpha_1=\esp[X]=\mu\). En este sentido se definen los momentos centrados como
+\[
+\mu_k=\esp[(X-\alpha_1)^k]=\esp[(X-\mu)^k]=\esp[(X-\esp[X])^k].
+\]
+\end{def.}
+
+\begin{def.}[Función generadora de momentos]
+Sea \(X\) una variable aleatoria discreta con valores en \(\{x_0,x_1,x_2,\dots,\}\subset\re\). Se define la \emph{función generadora demomentos} de \(X\) como
+\[
+M_X(t)=\esp[e^{tX}].
+\]
+Más explicitamente
+\[
+M_X(t)=\sum_{n=0}^{\infty}e^{tx_n}\prob(X=x_n).
+\]
+\end{def.}
+
+\noindent Cuando la función \(M_X(t)\) existe para valores cerca de \(t=0\), entonces es diferenciable y más aun analítica. Ahora, la razón por la cual se le llama \emph{función generadora de momentos} es porque \textbf{es posible obtener todos los momentos de una variable aleatoria por medio de las derivadas de \(M_X(t)\)}. Es por esto que hay una equivalencia entre la distribución de una variable aleatoria y su función generadora de momentos ¿En qué sentido es esta equivalencia? Si \(X,Y\) son variables aletorias, entonces son \emph{identicamente distribuidas} si sus funciones de distribución son iguales, resulta que bajo ciertas condiciones sobre las distribuciones de \(X\) e \(Y\) se puede asegurar que \textbf{si sus funciones generadoras de momentos son iguales (o equivalentemente sus momentos son iguales), entonces son identicamente distribuidas}.
+\begin{teorema}
+Si $X$ tiene una función generadora de momentos $M_X(t)$ definida en una vecindad del cero entonces
+\[
+\esp[X^n]=M_X^{(n)}(0)=\dfrac{d^n}{dt^n}M_X(t)\vert_{t=0}.
+\]
+\end{teorema}
 \section{Correlacion y regresión lineal}
-\label{sec:org812b5a0}
+\label{sec:org53b15fd}
 \noindent Como se vió, la covarianza es una medida de qué tatnto se alejan dos variables aleatorias de ser independientes. Sin embargo ésta medida tiene el detalle de que no es independiente de las unidades de medida, esto es debido a que
 \[
 \mathrm{Cov}(aX,bY)=ab\,\mathrm{Cov}(X,Y)\quad\forall\,\{a,b\}\subset\re.
@@ -621,26 +654,11 @@ Se define el \emph{coeficiente de correlación} entre dos variables aleatories \
 \noindent Es decir que los datos de \(X\) e \(Y\) son colineales, entonces los datos de \(X\) e \(Y\) se encuentran en una recta. Entonces el coeficiente de correlación no sólo mide la independencia de las dos variables \(X,Y\) (\(\rho\)(X,Y)=0 implica que \(X\ind Y\)), si no que también mide que tanto se encuentran linealmente relacionadas, entre más cerca se encuentren de \(1\), más linealmente correlacionadas se encuentran.\vspace{0.5cm}
 \noindent \textbf{\Large Regresión lineal}
 \vspace{0.5cm}
-
-\section{Momentos y la función generadora}
-\label{sec:orga037945}
-\noindent Una variable aleatoria \(X\), es heuristicamente una función que se comporta de una forma que no permite predicción de los valores que va a tomar, por esta razón se utilza el nombre adjetivo de \textbf{aleatoria}, sin embargo, sí hay forma de obtener información de \(X\), pricipalmente por medio de su esperanza y varianza, una mide los promedios pesados de los valores posibles y la otra la concentraciones de valores alrededor de dicho promedio. Sin embargo la esparenza y la varianza no son las únicas maneras de extaer información útil de una variable aleatoria, éstas cantidades tienen generalizaciónes a "mayor grado", donde podríamos decir que la esperanza tiene grado 1 y la varianza tiene grado 2. Lo anterior puede que tenga sentido a nivel inituivo, pero podemos precisarlo con mucha más formalidad con la siguiente definición
-\begin{def.}[Momentos de una variable aleatoria]
-Se llama \emph{momento de orden k} de una variable aleatoria discreta, \(X\) a la cantidad
-\[
-\alpha_k[X]=\esp[X^k]=\sum_{j\in\nat}x_j^k\prob(X=x_j).
-\]
-En particular \(\alpha_1=\esp[X]=\mu\). En este sentido se definen los momentos centrados como
-\[
-\mu_k=\esp[(X-\alpha_1)^k]=\esp[(X-\mu)^k]=\esp[(X-\esp[X])^k].
-\]
-\end{def.}
-
 \chapter{Explorando distribuciones a mayor profundidad}
-\label{sec:org9ccb623}
+\label{sec:orgf1f39fe}
 
 \section{Distribución binomial y la ley de lo grandes números}
-\label{sec:org412b06d}
+\label{sec:org673d912}
 \noindent En 1713 se publica el famoso libro de Jacob Bernoulli \emph{Ars Conjectandi}. En este libro Bernoulli hace una de las primeras referencias a lo que hoy conocemos como inferencia en el sentido estadístico. Además Bernoulli introduce el modelo probabilístico de las "pruebas repetidas" o "pruebas de Bernoulli", las cuales miden la probabilidad de repetidos eventos independientes con una distribuición de tipo Bernoulli, esto da a lugar a la ditribución que se estudia en esta sección, la \emph{distribución binomial}.
 Un ejemplo clásico de esto son las probabilidades de bolados repetidos, donde la probabilidad es una Bernoulli con \(p=1/2\) para una moneda justa y \(p\in[0,1]\setminus\{1/2\}\) para una moneda cargada. Otro ejemplos claros son los de dados de \(4,6,12,20\) etc. caras (tanto justo como cargados).
 
@@ -671,60 +689,98 @@ EEEFEF\dots FFEE.
 \]
 \noindent Está acotado.
 
-Calculemos ahora la \textbf{esperanza y varianza de Bernoulli} y de ésta deducir la esperanza y varianza de una dristribución binomial.
-
+\noindent \textbf{\Large Momentos de la distribución binomial}\\
+Recordemos la \textbf{esperanza y varianza de Bernoulli}, a partir de ésta deducir la esperanza y varianza de una distribución binomial.
 \section{Distribución de Poisson}
-\label{sec:org8c9715a}
+\label{sec:org39abb14}
 Resulta dificil calcular los valores binomiales \(\textrm{Bin}(k;n,p)\) cuando \(k\) y \(n\) son bastante grandes, por lo que es mejor en el sentido computacional hacer aproximaciones relevantes.
 
-Para esto veamos qué sucede si el valor de \(p\) tiende a cero al mismo tiempo que \(n\) tiende a infinito en una distribución binomial. Además queremos que la esperanza \(np\) se mantenga cerca de una constante \(np\approx\lambda\), esto nos permite calcular los valores asintóticos de \(\textrm{Bin}(k;n,p)\). 
+Para esto veamos qué sucede si el valor de \(p\) tiende a cero al mismo tiempo que \(n\) tiende a infinito en una distribución binomial. Además queremos que la esperanza \(np\) se mantenga constante \(np=\lambda\), esto nos permite calcular los valores asintóticos de \(\textrm{Bin}(k;n,p)\).
 \begin{align*}
-\textrm{Bin}(k;n,p)&={k\choose n}p^k(1-p)^{n-k}\approx{k\choose n}\Big(\frac{\lambda}{n}\Big)^k\Big(1-\frac{\lambda}{n}\Big)^{n-k}\\
+\textrm{Bin}(k;n,p)&={k\choose n}p^k(1-p)^{n-k}\\
+&={k\choose n}\Big(\frac{\lambda}{n}\Big)^k\Big(1-\frac{\lambda}{n}\Big)^{n-k}\\
 &=\frac{n!}{k!(n-k)!}\Big(\frac{\lambda}{n}\Big)^k\Big(1-\frac{\lambda}{n}\Big)^{n-k}\\
 &= \Big(\frac{\lambda^k}{k!}\Big)\frac{n!}{[n(1-\lambda/n)]^k(n-k)!}\Big(1-\frac{\lambda}{n}\Big)^{n}\\
 &=\Big(\frac{\lambda^k}{k!}\Big)\frac{(1-1/n)(1-2/n)\dots(1-k/n)}{(1-\lambda/n)^k}\Big(1-\frac{\lambda}{n}\Big)^{n}.\\
 \end{align*}
 \noindent Así si \(n\rightarrow\infty\) y dejamos a \(k\) fijo, entonces
 \[
-\lim_{n\rightarrow\infty}\textrm{Bin}(n;k,p)=\frac{\lambda^k}{k!}e^{-\lambda}
+\lim_{n\rightarrow\infty}\textrm{Bin}(n;k,p)=\frac{\lambda^k}{k!}e^{-\lambda},
 \]
-\section{Distribuciones e integrales}
-\label{sec:org3fb7f51}
+esto es claro del hecho de que \((1+x/n)^n\rightarrow e^x\) cuando \(n\rightarrow\infty\).
 
-\noindent Todo lo dicho anteriormente es válido para variables aleatorias continuas, solo se tiene que cambiar de sumas finitas a integrales y suponer finitud de ésta. Los ejemplos vistos previamente han sido ilustrativos para casos más complejos.
+Esto nos define una nueva distribución de probabilidad, conocida como la \emph{distribución de Poisson} con parámetro \(\lambda\). Esta distribución fue definida por el matemático Siméon Denis Poisson en su trabajo \emph{Recherches sur la probabilité des jugements en matière criminelle et  en matiére civile.} En donde teoriza sobre el número de convicciones erroneas utilizando variables aleatorias que miden la probabilidad de cierto número de "llegadas" en un intervalo de tiempo de longitud dada. En generál la distribución de Poisson modela eventos donde se espera cierto número ocurrencias por unidad de tiempo como llegadas a un banco o tienda.
 
-\exe La forma más simple de definir una probabilidad es mediante una función positiva en un conjunto que se quiera medir, uno de los ejemplos más importantes para la teoría de la probabilidad es \emph{distribución gausiana} definida en todos los reales:
+\begin{def.}[Variable aletoria de Poisson]
+Decimos que una variable aletoria \(X\) con valores en \(\nat\) se encuentra distribuida por una distribución de Poisson de parámetro \(\lambda\), denotada por \(Poisson(\lambda)\) si
 \[
-    f(x)=\frac{1}{\sigma\sqrt{2\pi}}e^{-1/2(\frac{x-\mu}{\sigma})^2}\quad \prob(x)=\int_{t\leq x}f(t)dt
-\]
-
-\begin{def.}
-Dado un espacio de probabilidad \((\om,\sig,\mu)\) una función \(X:\om\rightarrow \re\), se dice que \(X\) es una variable aleatoria si
-\[
-    X^{-1}[E]\in\sig\quad\forall E \quad\text{boreliano}
+        \prob(X=r|\lambda)=\frac{e^{-\lambda}\lambda^r}{r!},\quad r\in\nat.
 \]
 \end{def.}
-\begin{def.}
-Dado un espacio de probabilidad \((\om,\sig,\mu)\) y una varible aleatoria no-negativa \(X:\om\rightarrow \re\) y de integral finita (no necesareamente continua en el sentido usual), se define la \emph{distribución de probabilidad} con función de densidad definida por \(X\) como
+Veamos primero que en efecto la distribución de Poisson es una distribución de probabilidad, es decir hay que verificar que
 \[
-\prob(E)=\int_E Xd\mu
+\sum_{n=0}^{\infty}\prob(X=n|\lambda)=1.
+\]
+Esto es sencillo de demostrar si recordamos la definición de la serie de Taylor de la exponencial
+
+\begin{align*}
+\sum_{n=0}^{\infty}\prob(X=n|\lambda)&=\sum_{n=0}^{\infty}\frac{\lambda^n e^{-\lambda}}{n!}\\
+&=e^{-\lambda}\Big(\sum_{n=0}^{\infty}\frac{\lambda^n}{n!}\Big)=e^{-\lambda}e^{\lambda}=1.
+\end{align*}
+
+Similarmete podemos calcular la esperanza de una variable aleatoria de Poisson es sencillo
+
+\begin{align*}
+\mathbb{E}[X]&=\sum_{n=0}^{\infty}n\prob(X=n|\lambda)\\
+&=\sum_{n=0}^{\infty}\frac{n\lambda^n e^{-\lambda}}{n!}\\
+&=e^{-\lambda}\Big(\sum_{n=1}^{\infty}\frac{\lambda^n}{(n-1)!}\Big)\\
+&=\lambda e^{-\lambda}\Big(\sum_{n=1}^{\infty}\frac{\lambda^{n-1}}{(n-1)!}\Big)=\lambda e^{-\lambda}e^{\lambda}=\lambda.
+\end{align*}
+\section{Distribuciones continuas}
+\label{sec:orgbad89b1}
+
+\noindent Consideremos \((\om,\sig,\prob)\) un espacio de probabilidad y sea \((E,S)\) un espacio medible y \(\xi:\om\rightarrow E\) una función medible, a esta función le llamremos \emph{elemento aleatorio} así existe una función \(\xi^{*}:S\rightarrow\sig\), definida como \(\xi^{*}(B)=\xi^{-1}(B)\), entonces es posible definir una medida de probabilidad en \((\xi^{*})^{-1}(\sig)\), definida por \(\prob\circ\xi^{*}(B)=\prob(\xi^{*}(B))\), a la medida \(\prob\circ\xi^{*}\), le llamaremos una \emph{distribución} de probabilidad y usualmente no distinguiremos entre una medida de probabilidad y una distribución incluso en la absencia de un elemento aleatorio.
+\obs Cuando \(E=\re\) y \(S=B_{\re}\), un elemento aleatorio es una variable aleatoria y cuando \(E=\re^{d}\) y \(S=B_{\re^{d}}\) un elemento aleatorio se le conoce como \emph{vector aleatorio}.
+\begin{def.}{Función de una distribución}
+Dado un espacio de probabilidad \((\om,\sig,\prob)\) y un elemento medible \(\xi:\om\rightarrow E\), definimos la \textit{función} de distribución como la función \(F_{\xi}:\re\rightarrow[0,1]\)
+\[
+    F_{\xi}(\alpha)=\prob\circ\xi^{*}(-\infty,\alpha]=\prob(\xi\leq\alpha)
 \]
 \end{def.}
-
-\begin{def.}
-Dado una probabilidad en los reales \((\re,\mathbb{B}_{\re},\prob)\) y una varible aleatoria no-negativa, se define la \emph{función de probabilidad} relacionada a \(\prob\) como
+\noindent \textbf{Algunas propidades:} Supongamos que \(F\) es la función de distribución asociada a una variable aleatoria \(X\), entonces.
+\begin{enumerate}
+\item \(F:\re\rightarrow[0,1]\) es no decreciente, es decir \(F(x)\leq F(y)\) siempre que \(x\leq y\).
+\item \(\lim_{x\rightarrow\infty}F(x)=1\) y \(\lim_{x\rightarrow -\infty}F(x)=0\).
+\item \(F\) es continua por la derecha.
+\end{enumerate}
+\dem La demostración de estos hechos es evidente, el único que no es inmediatemente obvio es el punto número tres, para esto notamos que si tenemos la susesión \(\{x+1/n\}\), entonces por convergencia monónona tenemos que
 \[
-        f(x)=\prob(\{t\,|\,t\leq x\})
+    \lim_{n\rightarrow\infty}\prob\Big(X\leq x+\frac{1}{n}\Big)=\prob\Big(X\leq x\Big)
 \]
-\end{def.}
-\eje En el caso de la distribución gaussiana, la función de probabilidad fue definida como
-\[
-    \prob(x)=\int_{t\leq x}\frac{1}{\sigma\sqrt{2\pi}}e^{(\frac{t-\mu}{\sigma})^2}dt =
-    \int_{-\infty}^{x}\frac{1}{\sigma\sqrt{2\pi}}e^{(\frac{t-\mu}{\sigma})^2}dt
-\]
+\noindent \textbf{Existencia:} Ahora supongamos que \(F\) es una función que cumple las propiedades 1.,2. y 3., entonces similar a la existencia de Lebesgue, es posible construir una medida \(\nu:\mathbb{B}_{\re}\rightarrow\re^{+}\) tal que \(\nu((-\infty,x])=F(x)\). A la medida \(\nu\) se le conoce como la medida de Lebesgue-Stieltjes de \(F\).
+\eje \textbf{(La representación de Skorokhod de una variable aleatoria con una función de distribución prescrita en el intervalo [0,1])}\\
 
+Supongamos que \(F:\re\rightarrow[0,1]\) cumple con las propiedades 1.,2. y 3., como antes, entonces construimos una variable aleatoria en \(([0,1],\mathbb{B}[0,1],\lambda)\), donde \(\lambda\) es la medida de Lebesgue. Definimos
+\begin{align*}
+    X^{+}(\omega):=\inf\{\,z\,\vert\,F(z)>\omega\}=\sup\{\,y\,\vert\,F(y)\leq\omega\}\\
+    X^{-}(\omega):=\inf\{\,z\,\vert\,F(z)\geq\omega\}=\sup\{\,y\,\vert\,F(y)<\omega\}.
+\end{align*}
+
+Observemos que por definición de \(X^{-}\), si \(\omega\leq F(c)\), entonces \(X^{-}(\omega)\leq c\). Ahora, si \(z>X^{-}(\omega)\), entonces \(F(z)\geq\omega\), entonces por continuidad a la derecha de \(F\), \(F(X^{-}(\omega))\geq\omega\) y por lo tanto
+\[
+     X^{-}(\omega)\leq c \implies \omega\leq F(X^{-}(\omega))\leq F(c)
+\]
+Por lo tanto tenemos que \(\{\,\omega\,\vert\,X^{-}(\omega)\leq c\}=\{\,\omega\,\vert\,\omega\leq F(c)\}\) lo que implica que
+\[
+    \prob(X\leq c)=\prob(\omega\leq F(c))=\int_{-\infty}^c F(x)\,dx=F(c)
+\]
+\qed
+\obs \(X^{+}\) tiene la mimsa función de distribución ya que
+\[
+\prob(X^{-} = X^{+})=1.
+\]
 \section{Esperanza condicional}
-\label{sec:orgb04b580}
+\label{sec:org5805293}
 \noindent Asi mismo entenderemos a la \emph{esperanza} de una variable aleatoria como la integral de dicha funcion medible, es decir
 \begin{equation}
     \esp(f(z))=
@@ -817,50 +873,42 @@ Por monotonía de ambos lados de la ecuación, al tomar el límite cuando \(r\up
     \prod(1-p_n)\leq\esp\Big(-\sum_{n\geq m}p_n\Big)=0.
 \]
 \noindent Por lo que \(\prob(\{\om\setminus\limsup E_n\})=0\) \qed
+\section{Distribuciones integrales}
+\label{sec:org8cc3821}
 
+\noindent Todo lo dicho anteriormente es válido para variables aleatorias continuas, solo se tiene que cambiar de sumas finitas a integrales y suponer finitud de ésta. Los ejemplos vistos previamente han sido ilustrativos para casos más complejos.
 
-\section{Distribuciones continuas}
-\label{sec:org631636c}
-\noindent Consideremos \((\om,\sig,\prob)\) un espacio de probabilidad y sea \((E,S)\) un espacio medible y \(\xi:\om\rightarrow E\) una función medible, a esta función le llamremos \emph{elemento aleatorio} así existe una función \(\xi^{*}:S\rightarrow\sig\), definida como \(\xi^{*}(B)=\xi^{-1}(B)\), entonces es posible definir una medida de probabilidad en \((\xi^{*})^{-1}(\sig)\), definida por \(\prob\circ\xi^{*}(B)=\prob(\xi^{*}(B))\), a la medida \(\prob\circ\xi^{*}\), le llamaremos una \emph{distribución} de probabilidad y usualmente no distinguiremos entre una medida de probabilidad y una distribución incluso en la absencia de un elemento aleatorio.
-\obs Cuando \(E=\re\) y \(S=B_{\re}\), un elemento aleatorio es una variable aleatoria y cuando \(E=\re^{d}\) y \(S=B_{\re^{d}}\) un elemento aleatorio se le conoce como \emph{vector aleatorio}.
-\begin{def.}{Función de una distribución}
-Dado un espacio de probabilidad \((\om,\sig,\prob)\) y un elemento medible \(\xi:\om\rightarrow E\), definimos la \textit{función} de distribución como la función \(F_{\xi}:\re\rightarrow[0,1]\)
+\exe La forma más simple de definir una probabilidad es mediante una función positiva en un conjunto que se quiera medir, uno de los ejemplos más importantes para la teoría de la probabilidad es \emph{distribución gausiana} definida en todos los reales:
 \[
-    F_{\xi}(\alpha)=\prob\circ\xi^{*}(-\infty,\alpha]=\prob(\xi\leq\alpha)
+    f(x)=\frac{1}{\sigma\sqrt{2\pi}}e^{-1/2(\frac{x-\mu}{\sigma})^2}\quad \prob(x)=\int_{t\leq x}f(t)dt
+\]
+
+\begin{def.}
+Dado un espacio de probabilidad \((\om,\sig,\mu)\) una función \(X:\om\rightarrow \re\), se dice que \(X\) es una variable aleatoria si
+\[
+    X^{-1}[E]\in\sig\quad\forall E \quad\text{boreliano}
 \]
 \end{def.}
-\noindent \textbf{Algunas propidades:} Supongamos que \(F\) es la función de distribución asociada a una variable aleatoria \(X\), entonces.
-\begin{enumerate}
-\item \(F:\re\rightarrow[0,1]\) es no decreciente, es decir \(F(x)\leq F(y)\) siempre que \(x\leq y\).
-\item \(\lim_{x\rightarrow\infty}F(x)=1\) y \(\lim_{x\rightarrow -\infty}F(x)=0\).
-\item \(F\) es continua por la derecha.
-\end{enumerate}
-\dem La demostración de estos hechos es evidente, el único que no es inmediatemente obvio es el punto número tres, para esto notamos que si tenemos la susesión \(\{x+1/n\}\), entonces por convergencia monónona tenemos que
+\begin{def.}
+Dado un espacio de probabilidad \((\om,\sig,\mu)\) y una varible aleatoria no-negativa \(X:\om\rightarrow \re\) y de integral finita (no necesareamente continua en el sentido usual), se define la \emph{distribución de probabilidad} con función de densidad definida por \(X\) como
 \[
-    \lim_{n\rightarrow\infty}\prob\Big(X\leq x+\frac{1}{n}\Big)=\prob\Big(X\leq x\Big)
+\prob(E)=\int_E Xd\mu
 \]
-\noindent \textbf{Existencia:} Ahora supongamos que \(F\) es una función que cumple las propiedades 1.,2. y 3., entonces similar a la existencia de Lebesgue, es posible construir una medida \(\nu:\mathbb{B}_{\re}\rightarrow\re^{+}\) tal que \(\nu((-\infty,x])=F(x)\). A la medida \(\nu\) se le conoce como la medida de Lebesgue-Stieltjes de \(F\).
-\eje \textbf{(La representación de Skorokhod de una variable aleatoria con una función de distribución prescrita en el intervalo [0,1])}\\
+\end{def.}
 
-Supongamos que \(F:\re\rightarrow[0,1]\) cumple con las propiedades 1.,2. y 3., como antes, entonces construimos una variable aleatoria en \(([0,1],\mathbb{B}[0,1],\lambda)\), donde \(\lambda\) es la medida de Lebesgue. Definimos
-\begin{align*}
-    X^{+}(\omega):=\inf\{\,z\,\vert\,F(z)>\omega\}=\sup\{\,y\,\vert\,F(y)\leq\omega\}\\
-    X^{-}(\omega):=\inf\{\,z\,\vert\,F(z)\geq\omega\}=\sup\{\,y\,\vert\,F(y)<\omega\}.
-\end{align*}
-
-Observemos que por definición de \(X^{-}\), si \(\omega\leq F(c)\), entonces \(X^{-}(\omega)\leq c\). Ahora, si \(z>X^{-}(\omega)\), entonces \(F(z)\geq\omega\), entonces por continuidad a la derecha de \(F\), \(F(X^{-}(\omega))\geq\omega\) y por lo tanto
+\begin{def.}
+Dado una probabilidad en los reales \((\re,\mathbb{B}_{\re},\prob)\) y una varible aleatoria no-negativa, se define la \emph{función de probabilidad} relacionada a \(\prob\) como
 \[
-     X^{-}(\omega)\leq c \implies \omega\leq F(X^{-}(\omega))\leq F(c)
+        f(x)=\prob(\{t\,|\,t\leq x\})
 \]
-Por lo tanto tenemos que \(\{\,\omega\,\vert\,X^{-}(\omega)\leq c\}=\{\,\omega\,\vert\,\omega\leq F(c)\}\) lo que implica que
+\end{def.}
+\eje En el caso de la distribución gaussiana, la función de probabilidad fue definida como
 \[
-    \prob(X\leq c)=\prob(\omega\leq F(c))=\int_{-\infty}^c F(x)\,dx=F(c)
+    \prob(x)=\int_{t\leq x}\frac{1}{\sigma\sqrt{2\pi}}e^{(\frac{t-\mu}{\sigma})^2}dt =
+    \int_{-\infty}^{x}\frac{1}{\sigma\sqrt{2\pi}}e^{(\frac{t-\mu}{\sigma})^2}dt
 \]
-\qed
-\obs \(X^{+}\) tiene la mimsa función de distribución ya que
-\[
-\prob(X^{-} = X^{+})=1.
-\]
+\section{Momentos continuos y la función característica}
+\label{sec:orgc6d7542}
 \part{Aprendizaje de máquina probabilistico/aprendizaje estadístico}
-\label{sec:orgd247d55}
+\label{sec:orgc79f0a8}
 \end{document}

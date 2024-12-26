@@ -1,0 +1,87 @@
+\input exfeti.sty
+\magnification 1200
+
+%%Begin InstantTeX Picture
+\let\picnaturalsize=N
+\def\picsize{9.5cm}
+\def\picfilename{FETI.eps}
+%If you do not have the picture file add:
+%\let\nopictures=Y
+%to the beginning of the file.
+\ifx\nopictures Y\else{\ifx\epsfloaded Y\else\input epsf \fi
+\global\let\epsfloaded=Y
+{\ifx\picnaturalsize N\epsfxsize \picsize\fi \epsfbox{\picfilename}}}\fi
+%%End InstantTeX Picture
+
+\centerline{\medio Profesor: Rodolfo P. Mart\'{\i}nez y Romero}\par
+\centerline{\it Examen V}
+\centerline{\small \hoy}\par
+\centerline{\subt }\par
+\smal
+\ni 1)  Probar que
+\input /LocalApps/TeXTables.app/stables.tex
+
+$$ H^{(1)}_\nu(x) = {1\over \pi i} \int_{\cal C_{0}} e^{x\, {\rm senh}\theta -\nu\theta}d\theta , $$
+
+
+\ni en donde la trayectoria $\cal C_{0}$ est\'a definida en el siguiente diagrama
+
+\input epsf.sty
+
+%%Begin InstantTeX Picture
+\let\picnaturalsize=N
+\def\picsize{5cm}
+\def\picfilename{FETIV98.eps}
+%If you do not have the picture file add:
+%\let\nopictures=Y
+%to the beginning of the file.
+\ifx\nopictures Y\else{\ifx\epsfloaded Y\else\input epsf \fi
+\global\let\epsfloaded=Y
+\centerline{\ifx\picnaturalsize N\epsfxsize \picsize\fi \epsfbox{\picfilename}}}\fi
+%%End InstantTeX Picture
+
+\ni 2) Probar que 
+$$  K_0\,(x)= \int_0^\infty J_0\,(x\,t)\, {t\over 1+t^2}\,dt .$$
+Aqu\'{\i} un enfoque posible es probar que la integral de arriba satisface la ecuacion de Bessel modificada. Luego debe pasar que l\'{\i}m\hbox{{\hskip -18pt \hbox{\raise -7pt\hbox{$ x\to\infty$}}}}\hbox{\hskip -18pt $K_0(x)= 0$ }y que $K_0(x)$ diverge en el origen, excluyendo a $I_0(x)$ como soluci\'on.\par
+\ni 3) Probar que la funci\'on modificada de Bessel $I_n(x)$ satisface la representaci\'on integral:
+$$  I_n(x)= {1\over 2\pi i}\oint_{\cal C} e^{(x/2)(t + 1/t)} {dt\over t^{n + 1}} .$$
+?` Cu\'al es la curva ${\cal C} $ ({\it plis, plis, plis, contesten la pregunta})?\par
+\ni 4) Probar la representaci\'on integral de {\it Poisson} para las funciones de bessel esf\'ericas
+$$  j_n(z) ={z^n\over 2^{n+1} n!}\int_0^\pi \cos(z\,\cos\,\theta)\,\sen^{2n +1 }\theta\,d\theta .$$
+\centerline{\medio F\'ormulas, f\'ormulas....}
+\ni a) F\'ormula de {\smali duplicaci\'on}
+$$z!(z-{1\over 2})\,! = \sqrt{\pi}\, 2^{-2z} (2z)\,!$$
+\ni b) Funci\'on {\smali Beta} 
+$$ 2\int_0^{\pi/2} \sen^{2z+1}\phi\,\cos^{2\omega +1}\phi\,d\phi = {z! \,\omega!\over (z+\omega+1)!} .$$
+\ni c) Desarrollo en serie de potencias para la funci\'on esf\'erica de {\it Bessel}
+$$  j_n(x) = 2^n x^n \sum_{k=0}^\infty (-1)^k {(k +n)!\over k!(2k + 2n +1)!}x^{2k} .$$
+\ni  d) La {\it primera modificada de Bessel}
+$$  I_\nu(x) \equiv i^{-\nu}J_\nu(ix) .$$
+\ni e) La  {\it segunda modificada de  Bessel}
+$$  K_\nu(x) \equiv {\pi\over 2} i^{\nu + 1}H^{(1)}_\nu(ix) = {\pi\over 2} i^{\nu + 1}[J_\nu(ix) + i\,N(ix)] .$$
+\ni f) Ecuaci\'on de {\it Bessel modificada}
+$$  x^2{d^2\over dx^2} \,y\,(x) + x\,{d\over dx}y\,(x) -(x^2 + \nu^2) \,y\,(x) =0 .$$
+\ni g) La funci\'on generadora de las funciones de {\it Bessel}
+$$  g\,(x,t) \equiv e^{(x/2)(t-1/t)} .$$
+\ni h) La representaci\'on integral para las funciones $H_\nu^{(1)}\,(x)$ de {\it Hankel}
+$$  H_\nu^{(1)}\,(x) = {1\over i\pi}\int_0^{\infty e^{i\pi}}e^{(x/2)(t-1/t)}{dt\over t^{\nu + 1}} .$$
+\ni En donde la trayectoria de integraci\'on est\'a dada por la figura siguiente:
+\Par
+
+
+
+%%Begin InstantTeX Picture
+\let\picnaturalsize=N
+\def\picsize{7cm}
+\def\picfilename{FETIV198.eps}
+%If you do not have the picture file add:
+%\let\nopictures=Y
+%to the beginning of the file.
+\ifx\nopictures Y\else{\ifx\epsfloaded Y\else\input epsf \fi
+\global\let\epsfloaded=Y
+\centerline{\ifx\picnaturalsize N\epsfxsize \picsize\fi \epsfbox{\picfilename}}}\fi
+%%End InstantTeX Picture
+
+\vfill
+\eject
+\end

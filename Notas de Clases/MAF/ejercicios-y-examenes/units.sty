@@ -1,0 +1,570 @@
+%
+%                   File -->  UNITS . sty
+% SECCION. sty transfiere nombres y numeros de las secciones
+% a los headlines. En las paginas pares, el headline
+% da el numero de la seccion y en las paginas
+% impares, va el contenido. However ...
+% en el caso de las unidades de vectores, el que aparezca el numero de
+% la seccion es poco importante. Mas importa saber en cual unidad
+% estamos, asi que hice un cambio en este sentido, en
+% el BOX X.
+%
+% ----------------------------------------------------------  PAGE SIZE
+\hsize=30.3pc   % 12.78 cm     ( Es  32pc in Paper.sty)
+\vsize=44pc          % 45pc in Paper.sty
+\newdimen\pagewidth    \newdimen\pageheight  \newdimen\ruleht
+\pagewidth=\hsize    \pageheight=\vsize  \ruleht=.3pt
+\baselineskip=14pt    % 12pt in Paper.sty
+\mathsurround=3pt 
+\widowpenalty=9999
+ % ----------------------------------------------------------------------  FONTS
+\font\chiquita = cmr7 
+\font\chica    = cmr9
+\font\titulo   = cmr10 scaled 1728
+\font\sl       = cmsl9 scaled 1200
+\font\sll      = cmsl10 scaled\magstep1
+\font\slll     = cmsl10 scaled\magstep2
+\font\n        = cmbx9 scaled 1200
+\font\san      = cmss9
+\font\label    = cmss9 scaled 1200
+\font\tituloa  = cmr10 scaled 1728
+\font\chaparra = cmr10
+%
+% ---------------------------------------------------------   BEGIN SECTION
+\newbox\x    \newbox\y
+\setbox\x = \hbox{\chica }
+
+\gdef\sectionbreak{\bigskip\bigskip}
+\gdef\sec#1. #2.{\sectionbreak
+\setbox\y=\hbox{\chica #2} 
+\ni \setbox0=\vbox{\hbox{\bf #1. \kern2pt #2 } \vskip2pt\hrule height.8pt }
+\copy0 \nobreak \medskip }
+% --------------------------------------------------------- The Headlines
+
+\def\superstrut{\vbox to 10pt{}}   
+
+\def\leftheadline{\hbox to \pagewidth{\superstrut  \llap{\bf \folio\kern2pc} 
+\copy\x \hfil}}
+\def\rightheadline{\hbox to \pagewidth{\superstrut \hfil 
+\copy\y \rlap{\kern2pc \bf \folio}}}
+
+
+% ----------------------------------------------------------------- SHIP OUT
+\def\onepageout#1{\shipout\vbox{%
+\offinterlineskip%
+      \vbox to 3pc{%
+      \iftitle \global\titlefalse
+      \else\ifodd\pageno\rightheadline\else\leftheadline\fi\fi \vfill}
+      \vbox to \pageheight{%
+      \ifvoid\topins\else\unvbox\topins\fi
+      #1% 
+      \ifvoid\footins\else
+      \vskip\skip\footins \kern-3pt
+     \hrule height\ruleht width .3\pagewidth  \kern-\ruleht \kern3pt
+      \unvbox\footins\fi}
+\vbox to 3pc{\vfil \line{\hss \copy\finalnotice }}
+      \boxmaxdepth=\maxdepth }}
+\output{\onepageout{\unvbox255}\advancepageno}
+
+% --------------------------------------------------------Pagina INICIAL
+\newif\iftitle
+\def\titlepage{\global\titletrue}
+ 
+\gdef\unidad#1{\titlepage 
+\setbox0=\vbox{\hbox{\tafontt #1 \kern2pt} \vskip3pt \hrule height1pt} \copy0}
+%
+% --------------------------------------------- CITAS AL FIN DE LA UNIDAD
+%                                             Ref: The Texbook, seite 419
+\outer\def\endeunit{
+%\ifodd\pageno \else\vfill\eject\null\fi
+   \begingroup\bigskip\vfill
+    \def\eject{\endgroup\eject}
+    \def\par{\ifhmode\/\endgraf\fi}\obeylines
+    \sl \baselineskip=12pt \interlinepenalty=10000
+    \leftskip=0pt plus 40pc minus \parindent \parfillskip=0pt
+    \everypar{\sl}}
+\def\autor#1 (#2){\medskip\noindent --- #1\unskip\enspace(#2)}
+%
+% -------------------------------------------------------------------SKIPS
+\parskip=4pt  
+\baselineskip = 15pt
+\parindent=40pt
+\hfuzz=4pt
+% ------------------------------------------------------ CENTRADO EN IMPRESORA
+%\voffset=.4in    \hoffset=.55in
+% ----------------------------------------------------------------------------
+\scrollmode          % Speeds up procesing by Tex
+% ----------------------------------------------------------------- DEFINICION
+\def\definicion{
+\setbox0=\vbox{\hbox{\san \kern7pt def}  \vskip-6pt 
+\hbox{\hskip9pt = \hskip2pt }}\copy0}
+% ------------------------------------------------------------------ I G N O R E
+\long\def\ignorethis#1\endignore{}
+
+% -----------------------------------------------------    M I S C E L A N E A S
+% comi=comillas izquierda
+% inti=interrogacion izquierda  exi=exclamacion izquierda
+\chardef\comi=92  \chardef\inti=62   \chardef \exi=60
+\def\={\kern4pt = \kern4pt}
+\def\c{\comi \ts}
+\def\ex{\exi \ts} 
+%\chardef\sol=\char'46
+\gdef\ts{\kern .16667em}
+
+\def\aster{\lower .5ex  \hbox{\kern-1.5pt \char42 \kern1.5pt }}
+
+\def\bb{$\sqcup$\llap{$\sqcap$}}                 % Dibuja peque\~no cuadradito
+
+
+
+\def\u#1{\underbar{#1}\>}
+\def\up#1{\vskip-#1\baselineskip}
+\def\upa{\vskip-\baselineskip}
+\def\ubungen{\bigskip \titulito{Ejercicios} \bigskip}
+%    
+\def\sub#1{\setbox0 = \hbox{\lower 4pt \hbox{$\scriptstyle #1 $}} 
+\copy0 }
+\def\rlap#1{\hbox to 0pt{#1 \hss}}
+\def\llap#1{\hbox to 0pt{\hss #1}}
+\gdef\eg{\endgraf \relax}
+%
+%  -------------------------------------- SECCIONES, TITULOS y SUBTITULOS
+%
+\def\subtit#1{ \vskip 2.2\baselineskip
+        \setbox0 = \vbox {\hbox{\n #1} \vskip3pt \hrule height1pt}
+        \copy0  \nobreak \vskip \baselineskip}
+
+\def\tit#1{ \par \bigskip
+        \setbox0 = \vbox {\hbox{\tituloa \kern10pt #1 \kern10pt}
+ \vskip2pt \hrule height.8pt}
+\centerline{\copy0} \par \bigskip}
+
+\def\titulito#1{ \par \bigskip
+        \setbox0 = \vbox {\hbox{\label \kern4pt #1 \kern4pt} \vskip3pt \hrule 
+height.6pt}
+\centerline{\copy0} \par \bigskip}
+\def\ax#1#2{\smallskip  \noindent 
+\hbox{\n Axioma  \kern10pt #1 .--}   \vskip2pt \hrule height.5pt
+       {\sl #2}  \hrule height.5pt \medskip} 
+
+% -------------------------------------------------------------------------
+\def\df#1#2{\smallskip  \noindent 
+\hbox{\n Definicion  \kern10pt #1 .--}   \vskip2pt \hrule height.5pt
+       {\sl #2} \medskip \hrule height.5pt \medskip} 
+
+\def\ejem#1{\medskip  \noindent  Ejemplo \vskip2pt \hrule height.5pt
+      {\san  #1 } \medskip \hrule height.5pt \medskip} 
+
+\def\example#1#2{\medskip  \noindent 
+       {\n Ejemplo \kern4pt #1 .}  \vskip2pt \hrule height.5pt
+       {\san #2} \medskip \hrule height.5pt \medskip} 
+
+\def\ejer#1{\medskip  \noindent 
+       {\n Ejercicio \kern10pt}  \vskip2pt \hrule height.5pt
+       {\sl #1} \smallskip \hrule height.5pt \medskip} 
+
+\def\ubungen{\bigskip \tit{Ejercicios} \bigskip}
+
+\def\definicion{\hbox{\quad $ \buildrel \rm def \over = $ \quad }}
+\def\onehalf{\hbox{${1 \over 2}\negthinspace $}}
+\def\unmedio{\hbox{${1 \over 2}\negthinspace $}}
+\def\untercio{\hbox{${1 \over 3}\negthinspace $}}
+\def\tresmedios{\hbox{$ {3\over 2} \negthinspace $}}
+\def\uncuarto{\hbox{${1\over 4} $}}
+\def\cuatrotercios{\hbox{${4\over 3} $}}
+\def\unsexto{\hbox{${1\over 6} $}}
+\def\ni{\noindent}
+%
+% --------------------------------------------------------------------- ESPACIOS
+%
+% See The TexBook page 349 for the definitios of
+% all this glues.  \smallskipamount aprox 3pt, then 6 and 12pt. 
+
+\gdef\,{\ifmmode\mskip\thinmuskip\else\kern\smallskipamount\fi}
+\gdef\>{\ifmmode\mskip\medmuskip\else\kern\medskipamount\fi}
+\gdef\;{\ifmmode\mskip\thickmuskip\else\kern\bigskipamount\fi}
+\gdef\!{\ifmmode\mskip-\thinmuskip\else\kern-1.5pt\fi}
+% ----------------------------------------------------------------------- LET'S
+\let\es=\enskip                 
+% ---------------------------------------------------------------------- E J E S
+% Dibuja  ejes ortogonales
+% solamente hay que indicar etiquetas ejes. Ejem. \ejes{Y}{X}
+
+\newdimen\equis    \equis=.45\hsize       
+% 1pt = 0.35149384  mm
+
+\def\ejes#1#2{\vbox{%
+\hbox{\kern-2mm #1} \vskip-2.5mm
+\moveright1.7mm \hbox{\vrule height30mm width.02mm depth10mm }
+\vskip-2mm
+\hbox to \equis{\hrulefill} 
+\hbox to \equis{\hfill #2}}}  
+
+% Si se quieren dos pares de ejes, lado a lado, la orden es por ej.
+
+%    \ejes{y}{x} \vskip-44.25mm  \hskip .45\hsize \ejes{A}{B}
+% ----------------------------------------------------------------    B O X I T
+\newdimen\boxitsep   \boxitsep=7pt
+\def\boxit#1{\vbox{\hrule \hbox {\vrule \kern \boxitsep
+       \vbox{\kern \boxitsep #1 \kern \boxitsep }
+       \kern \boxitsep \vrule}
+       \hrule  } \relax}
+
+\def\enmarca#1{\setbox0 = \hbox{#1}                   % Rodea con un marco
+               \setbox1 = \vbox{\boxit{\box0}}
+               $$  \copy1 $$ }
+
+\def\marco#1{\setbox0 = \hbox{#1}
+               \setbox1 = \vbox{\boxit{\box0}}\copy1  }
+%
+% ------------------------------------------- PONE ECUACION DENTRO DE UN MARCO
+%
+\def\ecmarco#1#2{\bigskip\line{\hskip\the\parindent
+\setbox0=\hbox{$\displaystyle #2 $ }\boxit{\box0}
+\hfill \raise3ex \hbox{#1)\kern40pt }}\medskip}
+% -------------------------------------------------------------  EMPTY BOX
+%                                         Dibuja una caja sin nada adentro.
+\newdimen\altocaja  \altocaja=1.5cm
+\newdimen\anchocaja \anchocaja=1.5cm
+\def\caja{
+       \hbox{\vsize=\altocaja
+     \vbox to \altocaja{\hsize=\anchocaja\hbox to\anchocaja{}
+     \vfill\kern0pt}}}
+\setbox0=\vbox{\boxit{\caja} \hbox{\hbox to\anchocaja{\hss Fig. 3.-- 
+\hss }}}
+% -------------------------  Void Kasten -----------
+\newdimen\altomarco  \newdimen\anchomarco 
+
+\def\voidkasten#1#2{\altomarco=#1 mm  \anchomarco=#2 mm
+\boxitsep=0pt
+\vbox{\boxit{
+\hbox{\vsize=\altomarco
+     \vbox to \altomarco{\hsize=\anchomarco \hbox to\anchomarco{}
+     \vfill\kern0pt}}}}}
+
+
+
+
+% ----------------------------------------------------------- ANGOSTO
+\def\angosto#1{                                       % Parrafo angosto
+\def\nulo{\parindent=1pc {\narrower\smallskip #1 \smallskip \parindent=0pt }}  
+\def\nonulo{{\narrower\smallskip #1 \smallskip }}
+\ifdim\parindent=0pt \nulo \else  \nonulo  \fi}
+\newdimen\separacion
+
+\gdef\ang#1{\tolerance=5000  \separacion=\baselineskip 
+\parindent=2pc
+\baselineskip=12pt \bigskip\centerline{\parbox{28pc} {\chaparra #1}} \relax
+\hsize=\alte \baselineskip=\separacion \tolerance=\altetol \bigskip}
+
+% --------------------------------------------------------------------
+\def\p{\par}
+\def\seite{\vfill\eject}
+
+\def\derechos{\copyright\ \uppercase\expandafter{\romannumeral\year}}
+\def\seite{\vfill\eject}
+% -----------------------------------------------------------------------  LINK
+\newdimen\alte  \alte =\hsize                     % Columna derecha para dibujo
+\newcount\altetol  \altetol=\tolerance
+
+\long\def\parbox#1#2{\vbox{\hsize=#1 \noindent #2}}
+\newdimen\lancho    \lancho=3in
+
+\gdef\link#1{\tolerance=5000 \bigskip\leftline{\parbox{\lancho} {#1}} \relax
+\hsize=\alte  \tolerance=\altetol \bigskip}
+%
+% If we use \newdimen , Tex expects  "units" while if we want
+% to keep just a pure number, we must use  \newcount
+%
+% ------------------------------------------------------------------  R E C H T
+\newdimen\rancho    \rancho=3in
+\newdimen\separacion
+\gdef\recht#1{\separacion=\baselineskip \baselineskip=12pt \rightline{\parbox{\rancho \raggedright}{#1}} \relax
+\hsize=\alte \baselineskip=\separacion }
+
+% ---------------------------------------------------------  DOS COLUMNITAS
+\newdimen\anchito
+\anchito=.5\hsize   \advance\anchito by -1pc
+
+\def\zweikasten#1#2{
+\hbox{\vtop{\hsize\anchito \noindent #1} \hskip4pc
+\vtop{\hsize\anchito  \noindent #2 }}}
+
+
+\newdimen\boxitsep\boxitsep1pc
+
+\def\Boxit#1{\vtop{\hrule\hbox{\vrule\kern\boxitsep
+  \vbox{\kern\boxitsep #1\kern\boxitsep}\relax\kern\boxitsep\vrule}\hrule}}
+
+\def\zwei#1#2{\hbox{\vtop{\hsize\anchito\noindent #1} 
+\hskip20pt \vtop{\hsize\anchito\noindent #2}}}
+%
+% El macro que sigue no solamente escribe en dos columnas,
+% sino que les pone un marco
+
+\def\zweimitframe#1#2{\hbox{\Boxit{\hsize\anchito\noindent #1 \medskip }
+\hskip10pt\Boxit{\hsize\anchito\noindent #2 \medskip }}}
+% -----------------------------------------------------------------------
+
+\def\cut{-\break\hfil}
+
+\def\lftcol#1{\vbox{\halign{##\hfil\cr #1\cr}}}
+
+\def\ctrcol#1{\centerline{\vbox{\halign{\hfil ##\hfil\cr #1\cr}}}}
+\def\rtcol#1{\rightline{\vbox{\halign{\hfil ##\cr #1\cr}}}}
+
+% ------------------------------------------------------------- NUMERO ECUACION
+\newcount\numec
+% This is just a temporary moth-ball of a good definition.
+%\gdef\e#1{ \advance \numec by 1
+%$$ #1 \eqno\the\numec\;)\kern40pt $$}
+% ------------------------------------------------------
+% ATENTI ! En este macro  los caracteres que delimitan
+%          a los parametros #1 y #2 son:
+%          a la izquierda un espacio despues de  \e
+%          y el final de la ecuacion es un \par
+%          que puede ser reemplazado por una linea vacia.
+\gdef\e #1 #2\par{\medskip  \noindent
+\line{$\displaystyle \hskip\the\parindent #2 \hfill 
+#1 \;)\kern40pt$} \medskip}
+
+% Ecuacion sin numero  follows
+\gdef\esn #1\par{\smallskip  \noindent
+\line{$\displaystyle \hskip\the\parindent #1 \hfill $} \smallskip}
+
+
+
+% ----------------------------------------------------------   NUMERO EJERCICIO
+\newcount\numej       \newdimen\corrige
+\def\ej{ \bigskip
+\advance \numej by1   \corrige=-2\baselineskip
+\advance\corrige by 9pt
+\setbox0=\hbox{\the \numej}
+\hbox to 0pt{\hss
+\vbox{\hrule\hbox{\vrule\kern2pt
+          \vbox{\kern2pt \box0\kern2pt}\kern2pt\vrule}\hrule}
+\enskip  }\penalty11000  \vskip\corrige \noindent}
+%  ------------------------------------------------------- F I G U R A S
+\newdimen\rulehtt     \rulehtt=0.5pt%        % at final we take out rules
+\newdimen\ruledpth   \ruledpth=0pt%        % by setting \rulehtt=0
+\newdimen\rulelength \rulelength=1pc%      % and \rulelength=0
+\rulehtt=0pt   \rulelength=0pt
+%---------------------------------------------------------------------
+\def\setucorner#1{\hbox to #1{\vrule width\rulelength height\rulehtt 
+       \hfil \vrule width \rulelength}
+\vskip -\rulehtt
+    \hbox to #1{\vrule height\rulelength width\rulehtt depth\ruledpth
+       \hfil \vrule width\rulehtt depth\ruledpth}}
+%----------------------------------------------------------------------
+\def\setbcorner#1{%
+  \vskip -2\rulelength%
+  \hbox to #1{\vrule height\rulelength width\rulehtt depth\ruledpth%
+   \hfil \vrule width\rulehtt depth\ruledpth}%
+   \vskip -\rulelength%
+   \hbox to #1{\vrule width\rulelength height\rulehtt%
+\hfil \vrule width \rulelength}}
+
+% This defines a figure caption makro  #1 is the figure and #2 is the caption
+% Figure and  caption are  set into  box0. Box1 is \hsize less the width of Box0
+
+\def\figcap#1#2{\noindent {\bf Figura #1.-- \kern3pt}
+\spaceskip=.3em plus .2em minus .2em {\san #2}}
+% -----------------------------------------------------------------------
+\newdimen\artsurround  \artsurround=1.5pc
+\newdimen\sideartspace \sideartspace=2em  % horizontal space to caption
+% 
+% ------------------- \figg#1#2#3#4
+%
+% -------------------------------------- Como usar  --------------------
+%
+%      # 1  -->  numero de la figura    (Antes era alto dibujo)
+%      # 2       altura del dibujo en  cm.
+%      # 3       ancho del dibujo en cm.
+%      # 4       leyenda 
+%
+\def\figg#1#2#3#4{%
+  \setbox0=\vbox{\advance\hsize by -\artsurround \figcap{#1}{#4}}
+  \dimen0=\ht0%
+  \advance\dimen0 by \dp0%
+  \advance\dimen0 by \artsurround%
+  \dimen1=#2cm%
+     \advance\dimen0 by \dimen1%
+\leftline{%                            % Figura es cargada a la izquierda
+   \vbox to \dimen1{%
+     \setucorner{#3cm}%
+       \vfill%
+     \setbcorner{#3cm}%
+   }%
+}%
+\nointerlineskip%
+\vskip \artsurround%
+\box0}                                 % coloca la leyenda
+% -----------------------------------------------------------------
+%    -------------- Now the right or left skips  --------------
+%
+% This is the case when the figure is at the left.
+
+\def\lfig#1#2#3#4{%       
+\dimen0=#2cm
+      \setbox0=\vbox to \dimen0{%
+       \advance \hsize by -#3cm%
+       \advance \hsize by -\sideartspace%
+       \vfill%                      % push figcap to the bottom
+       {\figcap{#1}{#4}}%           % of the box
+    }
+    \setbox1 =\hbox to #3cm{\vbox to \ht0{
+       \setucorner{#3cm}%
+       \vfill%
+       \setbcorner{#3cm}%
+   }}%
+   \hbox{\box1 \hskip \sideartspace \box0}%   %do actual setting
+}
+% ---------------Now the figure will be placed at the right hand side.
+\def\rfig#1#2#3#4{%         
+\dimen0=#2cm
+       \setbox0=\vbox to \dimen0{%
+       \advance \hsize by -#3cm%
+      \advance \hsize by -\sideartspace%
+       \vfill%                      % push figcap to the bottom
+       {\figcap{#1}{#4}}%           % of the box
+    }
+    \setbox1 =\hbox to #3cm{\vbox to \ht0{
+       \setucorner{#3cm}%
+       \vfill%
+       \setbcorner{#3cm}%
+   }}%
+   \hbox{\box0 \hskip \sideartspace \box1}%   %do actual setting
+}
+%
+%\def\fig#1#2#3#4{\ifodd\count0 \rfig{#1}{#2}{#3}{#4} \else 
+%\lfig{#1}{#2}{#3}{#4} \fi}
+
+\def\fig#1#2#3#4{\rfig{#1}{#2}{#3}{#4}\relax}
+% -----------------------------------------------------------------   H E U T E
+\gdef\hoy{\ifcase\month\or
+ Enero\or Febrero\or Marzo\or Abril\or Mayo\or Junio\or
+ Julio\or Agosto\or Septiembre\or Octubre\or Noviembre\or Diciembre \fi
+ \space\number\day, \number\year}
+
+\newbox\finalnotice
+\setbox\finalnotice=\hbox{\chica Dario Moreno --- \jobname---\hoy }
+
+
+\def\fine{\vfill  \rightline{ Dario Moreno \kern12pt \derechos \kern12pt 
+\jobname \kern12pt -- \hoy}   \eject \end}
+\def\ende{\vfill  \leftline{\san Dario Moreno \kern12pt \jobname \kern6pt 
+\version -- \hoy}   \eject \end}
+
+% --------------------------------------------------------------------- C I T A
+\def\cita#1{\hbox{$^{\kern1pt #1)} $ }}
+% ------------------------------------------------------
+%\showthe\parskip
+%\showthe\hfuzz
+ 
+% -------------------------------- Ejercicio Propuesto ---------------
+%
+% ESTE MACRO PONE EN EL MARGEN EL NUMERO DEL EJERCICIO
+% QUE SE PROPONE AL LECTOR
+%
+% EL FUNCIONAMIENTO CORRECTO DE ESTOS MACROS (PRIMITIVOS)
+% DEPENDE CRITICAMENTE DE UN DETALLE :
+% HAY QUE ESCRIBIR \ub  AL FINAL DE UN PARRAFO, y pegado
+% con la linea que se est\'a terminando. Entonces \ub
+% debe ser la ultima instruccion antes de una linea en blanco.
+%
+%      ESTO NO ESTA ANDANDO 100 % BIEN !
+%
+
+\def\bull{\vrule height 1.1ex width .8ex depth -.4ex}
+\def\numeroejemplo#1{% 
+\setbox0=\hbox{\label \bull \kern4pt  E -- #1 }}
+\def\rightex {\hfill \rlap{\kern4pc \copy0 }} 
+\def\leftex{\par \llap{\copy0 \kern2pc } \vskip-\baselineskip }
+\def\ub#1{\numeroejemplo#1
+\ifodd\pageno\rightex\else\leftex\fi }
+%
+\newbox\grafi
+\def\grafitti#1{\setbox\grafi=\hbox{\label #1}%
+\def\rightg {\hfill \rlap{\kern2pc \copy\grafi }} 
+\def\leftg{\par \llap{\copy\grafi \kern2pc }}
+\ifodd\pageno\rightg\else\leftg\fi\relax }
+%
+% ---------------------------------------------------- PROGRAMAS COMPUTACION
+%  ----------------- Para transcribir programas en Basic -------------
+% Attenti ! La siguiente definicion la llamamos  \c
+% porque corresponde a una linea con un COMENTARIO, pero choca
+% con la abreviatura  \c  para  \comi   COMILLAS
+\def\c#1#2{\hbox to \hsize{\san #1 \hss \san #2 }}
+\def\nu{\null}
+\def\s{\hskip1pc}
+\def\ss{\hskip2pc}
+\def\sss{\hskip3pc}
+\def\ssss{\hskip4pc}
+\def\sssss{\hskip5pc}
+
+% --------------------------------------------------------------  CONTINUIDAD
+%               Estos son macros que escriben archivos que ayudan a llevar la
+%               continuidad de los diversos files de un capitulo
+%               El file <CONT- ...> contendra nombre del job
+%               last page, last equation number y last excercise.
+\newwrite\continuidad
+%\immediate\openout\continuidad=conti-2
+\def\cont{\write\continuidad{\jobname}\write\continuidad{Last page 
+\the\count0} \write\continuidad{Last equation  \the\numec} 
+\write\continuidad{Last excercise   \the\ejj }\relax}
+
+%\def\fin{\ifprueba  \proofend  \else \bye \fi}
+
+\def\fine{ \write\continuidad{\the\count0} \write\continuidad{\the\numec}
+\vfill \noindent \jobname \kern3pt --\hoy \eject \end}
+
+%
+% --------------------------------------------------   M A T E M A T I C A S
+%
+\def\sen{\hbox{\rm sen}}      \def\cos{\hbox{\rm cos}}
+
+\def\li{\hbox{\raise2pt \hbox{$\displaystyle \lim _{\ee \to 0} $}}}
+%
+%  ....................................................... V E C T O R E S 
+
+\def\vA{\hbox{$\> \vec A \>$ }}   \def\vB{\hbox{$\> \vec B \>$ }}
+\def\vC{\hbox{$\> \vec C \>$ }}   \def\Du{\hbox{$\> \vec u \>$ }}
+\def\Dt{\hbox{$\> \vec t \>$ }}   \def\Dc{\hbox{$\> \vec c \>$ }}
+\def\Dd{\hbox{$\> \vec d \>$ }}   \def\vP{\hbox{$\> \vec P \>$ }}
+\def\vE{\hbox{$\> \vec E \>$ }}   \def\vQ{\hbox{$\> \vec Q \>$ }}
+\def\vV{\hbox{$\> \vec V $ }}
+%  .................................................... VECTORES UNITARIOS
+\def\xh{\hbox{$ \kern2pt \widehat x \kern2pt $}}
+\def\yh{\hbox{$ \kern2pt \widehat y \kern2pt $}}
+\def\zh{\hbox{$ \kern2pt \widehat z \kern2pt $}}
+\def\th{\hbox{$ \kern2pt \widehat t \kern2pt $}}
+%  ................................................ C A L I G R A F I C A S
+\gdef\A{\hbox{$\cal \> A $\kern5pt}}
+\gdef\R{\hbox{$\cal \> R $\kern5pt}}
+% .....................................PRIMAS  Y  LETRAS CON BARRAS  Arriba
+\gdef\pr{\hbox{$^{\prime} $}}
+\def\xb{\hbox{$ \bar x $}}
+\def\yb{\hbox{$ \bar y $}}
+\def\zb{\hbox{$ \bar z $}}
+\def\tb{\hbox{$ \bar t $}}
+\def\R{\hbox{\kern2pt\bf R}}
+\def\RT{\hbox{\kern2pt${\bf R}^{\rm T}$}\kern2pt}
+\def\RI{\hbox{\kern2pt${\bf R}^{-1}$}\kern2pt}
+%
+\elevenpoint
+\endinput
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

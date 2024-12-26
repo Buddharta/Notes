@@ -1,0 +1,109 @@
+\input exfeti.sty
+
+% 20 de oct. 1989
+\newbox\Ancha
+\def\gros#1{{\setbox\Ancha=\hbox{$#1$}
+   \kern-.025em\copy\Ancha\kern-\wd\Ancha
+   \kern.05em\copy\Ancha\kern-\wd\Ancha
+   \kern-.025em\raise.0433em\box\Ancha}}
+%\def\gros#1{\vec #1}
+\font\titulo=cmbxti10 scaled 5000
+\font\biggfnt=cmr10 scaled\magstep 3
+
+\font\bigfnt=cmr10 scaled\magstep 1
+\def\ni{\noindent}
+\def\esp{\par \vskip .2 in }
+\baselineskip 18pt \nopagenumbers
+
+\def\ni{\noindent}
+\baselineskip 15pt \magnification 1200
+\def\Par{\par\vskip .15in}
+\def\esp{\Par \vskip .2 in }
+%----------------------------------empieza--------------------------------------
+
+ \centerline{\bigggfnt F\'{\i}sica  Moderna III}\Par
+\centerline{{\bf Profesor:}  {\it Rodolfo P. Mart\'{\i}nez y Romero}}\Par
+
+{\baselineskip 8pt \centerline{\it Examen 2}\par
+\centerline{\small \hoy}
+\Par
+
+%-----------------------------------figura---------------------------------------------
+
+%\newbox\z
+\gdef\fetifig#1#2#3{\setbox1=\vbox{
+%%Empieza figura
+\let\picnaturalsize=N
+\def\picsize{#3}
+\def\picfilename{#1}
+%If you do not have the picture file add:
+%\let\nopictures=Y
+%to the beginning of the file.
+\ifx\nopictures Y\else{\ifx\epsfloaded Y\else\input epsf \fi
+\global\let\epsfloaded=Y \hskip 2cm{\ifx\picnaturalsize
+N\epsfxsize \picsize\fi \epsfbox{\picfilename}}}\fi
+%%Termina figura
+ \setbox\z=\hbox{}
+\copy\z}
+ \setbox2=\vbox{\vskip
+4pt\splittopskip=\baselineskip\hsize 5cm {\hskip -60pt
+{\titulo#2}}} \centerline{$\hskip -3cm\vcenter{\box1}\hskip
+-4.8cm\vcenter{\box2}\hfill$} }
+%\input epsf.sty
+\vskip -125pt 
+\fetifig{unamN4.eps}{\titulo}{2.5cm}
+
+
+\vskip 30pt
+
+\libro
+
+\ni 1).  Calcular la velocidad para una onda plana de la forma
+
+$$ u({\bf k}) = \sqrt{{E+m_{{}_0}\over 2E}}\pmatrix{ \chi \cr {}\cr
+{{\gros\sigma}\cdot {\bf k}\over E+m_{{}_0}}\chi \cr },$$
+
+\ni en donde $\chi$ es un bi-espinor ($\hbar=c=1$).\Par
+
+\ni 2). {\negrit Momento infinito.} En este problema estudiaremos el comportamiento ultrarrelativista de una soluci\'on libre de la ecuaci\'on de Dirac. Pondremos una representaci\'on en donde $\alpha^3$ sea diagonal: 
+
+$$ \beta = \pmatrix{
+0 & \sigma^3 \cr
+\sigma^3 & 0 \cr
+},\quad \alpha^3=\pmatrix{I & 0 \cr0 & -I \cr}, \quad\alpha^2 = \pmatrix{0 & \sigma^2 \cr
+\sigma^2 & 0 \cr},\quad \alpha^1= \pmatrix{0 & \sigma^1 \cr\sigma^1 & 0 \cr}.$$\Par
+
+\ni a) Tomen $\vec{\hbox{\bf p}}  \parallel  \hat{\hbox{\bf k}}.$ Prueben entonces que en el l\'{\i}mite ultrarrelativista ($v\rightarrow  1)$ , la ecuaci\'on de Dirac se reescribe como 
+
+$$\left( 1 \mp \alpha^3\right) \Psi =0, $$
+
+\ni cuya soluci\'on es $\Psi = \psi_\pm = 1/2\left( 1 \pm \alpha^3\right) \psi . $ En donde $\psi $ es un espinor arbitrario.\par
+\ni b) Probar que para los componentes de abajo de la funci\'on de onda, o sea para $\psi_-$, en el l\'{\i}mite ultrarrelativista se obtiene
+
+$$ \psi_- \rightarrow 0.  $$
+
+\ni Es decir, ahora los componentes de abajo de la funcion de onda se comportan como {\it  peque\~nos componentes}, pero para el caso ultrarrelativista. Para probarlo, pongan  su sistema de referencia en el  CM de la part\'{\i}cula y apliquen una transformacion de Lorentz $ \Lambda(- \hat{\hbox{\bf k}}) $ para pasar al laboratorio. Recuerden que $ |\hat{\hbox{\bf k}}| = \gamma m_0 v $ y que entonces tenemos
+
+$$ \Lambda(- \hat{\hbox{\bf k}}) = {1\over \sqrt{2(1 +\gamma)}}\left[ 1 + \gamma  + \alpha_3 v\gamma \right]  $$
+
+
+\Par
+\ni 3). Supongamos que la funci\'on de onda del \'atomo de hidr\'ogeno se encuentra  en el nivel exitado n=2.  Supongamos ahora que se realiza una medici\'on del momento angular sobre el sistema y se obtiene que $ j_x = 3/2. $ ?`Cu\'al es la probabilidad de que una segunda medici\'on (realizada un poco despu\'es) d\'e como resultado $j_z = 1/2$?
+
+\ni Me parece que solamente necesitan que
+
+$$ J_\pm {\cal Y}_{jm}(\theta,\phi)= \sqrt{j(j+1) - m(m\pm 1)} \, {\cal Y}_{jm\pm 1}(\theta,\phi).$$
+\ni para el tercer problema, en tanto que para el primero es \'util acordarse de
+$$ \left(\gros\sigma\cdot \hbox{\bf A}\right) \left(\gros\sigma\cdot \hbox{\bf B}\right)  = \hbox{\bf A}\cdot \hbox{\bf B} + i \gros\sigma\cdot(\hbox{\bf A}\times\hbox{\bf B} )$$
+
+ \vfill
+\eject
+\end
+
+
+
+
+
+
+
+

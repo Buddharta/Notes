@@ -1,0 +1,58 @@
+\input exfeti.sty
+
+
+
+%%Begin InstantTeX Picture
+\let\picnaturalsize=N
+\def\picsize{9cm}
+\def\picfilename{FETI.eps}
+%If you do not have the picture file add:
+%\let\nopictures=Y
+%to the beginning of the file.
+\ifx\nopictures Y\else{\ifx\epsfloaded Y\else\input epsf \fi
+\global\let\epsfloaded=Y
+{\ifx\picnaturalsize N\epsfxsize \picsize\fi \epsfbox{\picfilename}}}\fi
+%%End InstantTeX Picture
+
+
+\centerline{\medio Profesor: Rodolfo P. Mart\'{\i}nez y Romero}\par
+\centerline{\it Examen a}
+\centerline{\small \hoy}\par
+\smal
+\ni 1)  { Probar que}
+\input /LocalApps/TeXTables.app/stables.tex
+
+$$  \int_0^{\pi/2} {d\phi\over [1 - {k}^{2}\, \sen^2\phi]^{\,\nu}} = {\pi\over 2}\,\,{}_2\hskip -1ptF_1(\nu,{1\over 2};1;k^2)$$
+\ni 2) Probar que 
+\Par
+\begintable
+ 1)  $ n! = m! (m + 1)_{n - m}$\hfill | 2) \hfill  $(2n - 2m)! = 2^{2n - 2m} (n-m)!({1\over 2})_{n-m}$ \elt
+ 3) $(c)_{n+m}=(c)_n(c+n)_m$\hfill | 4) $(c)_n=(-1)^m(c)_{n-m}(-c-n+1)_m$\hfill \elt
+ 5) \hfill $(c)_n=(-1)^{n-m}(c)_m(-c-n+1)_{n-m}$ | 6) $(-n)_{m-k}=(-n)_{m-n}(m-2n)_{n-k}$\hfill 
+\endtable
+
+\ni 3) Probar que
+$$ {d^m\over dx^m}(x^n\,e^x) = {m!\over (m-n)!} \, e^x \,\,{}_1\hskip -2ptF_1(-n;m-n +1;-x);\quad m>n$$
+\Par
+\input epsf.tex
+
+
+\centerline{\medio F\'ormulas, f\'ormulas....}
+
+\ni a)  S\'{\i}mbolos de {\smali Pochhammer}\Par
+\input /LocalApps/TeXTables.app/stables.tex
+\begintable
+  1)  $b(b + 1)_k = (b)_{k + 1} = (b + k)(b)_k  $\hfill | 2)  $n! = (n -m)!(n -m + 1)_m$\hfill \elt
+ 3)  $(c - m + 1)_m = (-1)^m(-c)_m$\hfill | 4)  $(n + m)! = n! (n + 1)_m$\hfill 
+\endtable
+\catcode`\|=12
+\par
+\ni b) F\'ormula de {\smali duplicaci\'on}
+$$z!(z-{1\over 2})\,! = \sqrt{\pi}\, 2^{-2z} (2z)\,!$$
+\ni c) Funci\'on {\smali Beta} 
+$$ 2\int_0^{\pi/2} \sen^{2z+1}\phi\,\cos^{2\omega +1}\phi\,d\phi = {z! \,\omega!\over (z+\omega+1)!}$$
+
+
+\vfill
+\eject
+\end

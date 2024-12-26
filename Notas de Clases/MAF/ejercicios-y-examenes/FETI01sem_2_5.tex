@@ -1,0 +1,137 @@
+
+\input exfeti.sty
+
+% 20 de oct. 1989
+\newbox\Ancha
+\def\gros#1{{\setbox\Ancha=\hbox{$#1$}
+   \kern-.025em\copy\Ancha\kern-\wd\Ancha
+   \kern.05em\copy\Ancha\kern-\wd\Ancha
+   \kern-.025em\raise.0433em\box\Ancha}}
+%\def\gros#1{\vec #1}
+\font\titulo=cmbxti10 scaled 5000
+\font\biggfnt=cmr10 scaled\magstep 3
+
+\font\bigfnt=cmr10 scaled\magstep 1
+\def\ni{\noindent}
+\def\esp{\par \vskip .2 in }
+\baselineskip 18pt \nopagenumbers
+
+\def\ni{\noindent}
+\baselineskip 15pt \magnification 1100
+\def\Par{\par\vskip .15in}
+\def\esp{\Par \vskip .2 in }
+%----------------------------------empieza--------------------------------------
+
+ \centerline{\biggfnt Funciones
+Especiales}\par\centerline{\slll y}\par
+ \centerline{\biggfnt Transformadas Integrales}\Par
+
+{\baselineskip 8pt \centerline{\it Examen 5}\par
+\centerline{\small \hoy}
+\Par
+
+%-----------------------------------figura---------------------------------------------
+
+%\newbox\z
+\gdef\fetifig#1#2#3{\setbox1=\vbox{
+%%Empieza figura
+\let\picnaturalsize=N
+\def\picsize{#3}
+\def\picfilename{#1}
+%If you do not have the picture file add:
+%\let\nopictures=Y
+%to the beginning of the file.
+\ifx\nopictures Y\else{\ifx\epsfloaded Y\else\input epsf \fi
+\global\let\epsfloaded=Y \hskip 2cm{\ifx\picnaturalsize
+N\epsfxsize \picsize\fi \epsfbox{\picfilename}}}\fi
+%%Termina figura
+ \setbox\z=\hbox{}
+\copy\z}
+ \setbox2=\vbox{\vskip
+4pt\splittopskip=\baselineskip\hsize 5cm {\hskip -60pt
+{\titulo#2}}} \centerline{$\hskip -3cm\vcenter{\box1}\hskip
+-4.8cm\vcenter{\box2}\hfill$} }
+%\input epsf.sty
+\vskip -150pt 
+\fetifig{unamN3.eps}{\titulo}{2.5cm}
+
+
+\vskip 70pt
+\libro
+
+\ni 1.a) Mostrar que la expansi\'on de Fourier de $\hbox{cos}\,x$ es: 
+
+  $$ \hbox{cos}\,ax={2a\hbox{sen}\,a\pi \over \pi}\left[{1\over 2a^2} + \sum_{m=1}^\infty{(-1)^m\hbox{cos}\,mx\over (a^2 - m^2)}\right].$$
+
+\ni b) A partir de este resultado, prueben que,
+
+$$  a\pi \hbox{cot}\, a\pi = 1-2\sum_{p=1}^\infty \zeta(2p)a^{2p}.$$
+
+
+\ni 2) Muestren que la $\delta(x-a)$ de Dirac desarrollada como una serie {\it seno} de Fourier en el  medio intervalo $[0,L]$ se escribe como
+
+$$  \delta(x-a) = {2\over L} \sum_{n=1}^\infty \hbox{\rm sen} \left( {n\pi a\over L}\right)\hbox{\rm sen} \left( {n\pi x\over L}\right).$$
+
+\ni Notar que en realidad esta serie describe a $-\delta(x+a) + \delta(x-a)$ en el intervalo completo $[-L,L]$. 
+
+\ni 3) A partir de la transformada de Fourier y de su inversa,
+prueben que el cambio de variables,
+
+$$ \eqalign{x\rightarrow \,&\hbox{ln}\,t \cr ik\rightarrow\, &
+\alpha -\gamma} $$
+
+ \ni lleva a las expresiones
+
+ $$\eqalign{G(\alpha)= & \int_{0}^\infty F(x) \, x^{\alpha -1}\, dx\cr
+ F(x) = & {1\over 2\pi i}\int_{\gamma -i\infty}^{\gamma + i\infty}
+  G(\alpha) x^{-\alpha}\, d\alpha  }$$
+
+  \ni Estas integrales se llaman transformaciones de {\it Mellin.} (La segunda integral es en realidad una integral de {\it
+Bromwich}, como la que se usa en la inversa de la transformada de
+ Laplace)\par
+
+
+
+\ni 4) La transformada seno de Fourier se define como
+
+$$\eqalign{\tilde f_s(k) = &\sqrt{2\over \pi}\int_{0}^\infty f_s(t)\,\hbox{sen}\,
+kt\, dt\cr
+ f_s(x) = &\sqrt{2\over \pi}\int_{0}^\infty \tilde f_s(k)\,\hbox{sen}\,
+kx\, dk }$$
+
+\ni y una expresi\'on equivalente para la transformada coseno.
+Muestren que la transformada de Fourier seno y coseno de $e^{-at}$
+son, respectivamente,
+
+$$ \eqalign{\tilde f_s(k) = &\sqrt{2\over \pi}{k\over k^2 +a^2}\cr
+\tilde f_c(k) = &\sqrt{2\over \pi}{a\over k^2 +a^2}} $$
+
+\ni Usando el teorema del residuo, encuentren las relaciones
+inversas
+
+$$  \eqalign{\int_{0}^\infty {k\,\hbox{sen}\,(kx)\over k^2+a^2}\,dk =
+&{\pi\over 2}\,e^{-ax}\cr
+ {}\cr
+ \int_{0}^\infty
+{\hbox{cos}\,(kx)\over k^2+a^2}\,dk = &{\pi\over 2 a}\,e^{-ax}}$$
+
+
+
+
+
+\ni {\bf Algunas f\'ormulas \'utiles.} \Par
+
+\ni Serie de Fourier en el intervalo $-\pi\leq x \leq \pi$
+
+$$f(x) = {a_0\over 2} + \sum_{m=1}^\infty a_m\hbox{cos}\,mx \, +  \sum_{m=1}^\infty b_m\hbox{sen}\,mx,$$
+
+\ni en donde 
+
+$$ a_0 = {1\over \pi}\int_{-\pi}^\pi f(x)\, dx,\quad a_m = {1\over \pi} \int_{-\pi}^\pi f(x)\,\hbox{cos}\,mx\, dx,\quad  b_m = {1\over \pi}
+\int_{-\pi}^\pi f(x)\,\hbox{sen}\,mx\, .$$
+
+
+\ni La funci\'on {\it Zeta de Riemann:}
+$$  \zeta(s) = \sum_{k=1}^\infty{1\over k^s},\qquad \zeta(2)= {\pi^2\over 6}.$$
+\vfill \eject
+\end
