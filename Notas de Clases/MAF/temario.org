@@ -1,5 +1,115 @@
-#+author: Carlos Eduardo artínez Aguilar
+#+author: Carlos Eduardo Martínez Aguilar
 #+title: Temario de Matemáticas Avanzadas para la Física
 #+LANGUAGE: esp
 #+OPTIONS: tex:t
 #+SETUPFILE: ~/Templates/notes-latex.org
+
+El nombre "Matemáticas Avanzadas para la Física" es bastante peculiar para un curso de un semestre de licenciatura, es un nombre muy poco descriptivo para una materia, uno al leerlo o escucharlo inmediatamente se puede preguntar "¿A qué se refiere con "Matemáticas Avanzadas"?", "¿Qué se abarca en un curso así?" o "¿No se supone que los primeros 5 semestres de la carrera de física se dedican al estudio de matemáticas avanzadas para la física?". Si se está familiariazado con temas de física (se esperara que la mayor parte de las personas que toman este curso lo estén), entonces al escuchar "Matemáticas Avanzadas", uno se puede imaginar casi cualquier tema de matemáticas desarrollado durante el último siglo ya que es muy dificil encontrar ramas de la matemática que no se apliquen a los problemas físicos de los últimos años, desde topología algebraica hasta temas de estadística paramétrica.
+Sin embargo, este es un curso preciso de licenciatura, por lo cual se debe acotar en los temas que se deber abordar, al revisar el temario de este curso, es claro que la mentalidad que se utilizó en su elaboración fue la de intentar abarcar los temas con aplicabilidad a la mayor parte de la física actual, al mismo tiempo se intentó mantener continuidad con el antiguo plan de estudios de física, en el cual la presente materia no existía y en su lugar se daba un curso de "Funciones Especiales y Transformadas Integrales" o "FETI" en corto. Viendo esto, queda más claro que "Matemáticas Avanzadas para la Física" se refiere más precisamente a "métodos del analisis matemático, funcional y complejo para el estudio de soluciones de ecuaciones diferenciales ordinarias y parciales originarias de la física".
+Muchas presonas que han cusado esta materia nos han mencionado que el problema con una materia así es que los profesores tienden a enfocarse solamente en los métodos para terminar con el amplio temario, en lugar de desarrollar la intuición física y matemática para la resolución de éstos problemas. Nosotros como matemáticos impartiremos un curso de matemáticas, sin embargo esto no significa que nos enfocaremos en demostrar teoremas o solamente desarrollar la teoría, significa que expondremos la intución matemática detrás de los problemas sin perder el rigor matemático que permite generalizar estos métodos para otros problemas y al mismo tiempo sin ignorar la aplicabilidad de estos métodos. Intentaremos mostrar que a pesar que parece que son muchos métodos y mucha teoría, en realidad estos métodos son una extensión del álgebra lineal por medio del cálculo para la soluón de ecuaciones diferenciales. Aunado a estos pretendemos que esta materia sea una preparación matemática para la mecánicua cuántica por lo que haremos énfasis en problemas de mecánica cuántica y en la teoría espectral de operadores, además que utilizaremos la notación de Dirac para espacios de Hilbert.
+
+* TEMARIO
+
+*Introducción y conceptos preliminares*
+-i) Análisis Vectorial.
+-ii) Teorema de Helmholtz.
+-iii) Series y criterios de convergencia.
+-iv) Series de funciones (criterio de Cèsaro).
+-v) Productos infinitos.
+
+II.- Teoría de la medida:
+i) Conceptos.
+ii) Resultados b{asicos.
+
+III.- Espacios prehilbert:
+i) Definición y ejemplos.
+ii) Norma y producto interno o escalar.
+iii) Geometría del espacio prehilbertiano.
+iv) La métrica de un espacio normado.
+
+IV.- Ortogonalidad:
+i) Denfinición y Ejemplos.
+ii) Familias ortogonales.
+iii) Propiedades de ortogonalidad.
+iv) Ortogonalización.
+v) Aplicaciones.
+
+V.- Espacios de Hilbert:
+i) Denfinición y Ejemplos.
+ii) El lema de F. Riesz.
+iii) El teorema de proyección.
+iv) Aplicaciones.
+v) Desigualdad de Bessel.
+vi) La igualdad de Parseval (Teorema de Riezs).
+ii) Operadores en un espacio de Hilbert.
+
+VI.- Función Gama, función Beta, función Zeta* y Delta de Dirac:
+i) Denfinición de la función Gama de Euler.
+ii) Propiedades .
+iii) Denfinición de la función Beta y su relación con la función Gama.
+iv) Denfinición de la Delta de Dirac.
+v) Propiedades.
+vi) Aplicaciones.
+vii) Función Zeta de Riemann.*
+
+VII.- Análisis de Fourier:
+i) Series de Fourier.
+ii) Condiciones de Dirichlet.
+iii) El teorema básico.
+iv) Serie de fourier compleja.
+v) Teorema de Riemann-Lebesgue.
+vi) Convergencia de las series de Fourier.
+vii) Teorema de Fourier.
+viii) Series ortogonales en 2 variables.
+ix) Aplicaciones.
+
+III.- Transformada de Fourier:
+i) Transformada seno y coseno de Fourier.
+ii) Propiedades de las transformadas de Fourier.
+iii) Aplicaciones.
+
+IX.- Transformada de Laplace:
+i) Denfinición.
+ii) Relación con las transformadas de Fourier.
+iii) Propiedades.
+iv) Aplicaciones.
+
+X.- Series Ortogonales de polinomios:
+i) Polinomios de Legendre.
+ii) Polinomios de Hermite.
+iii) Polinomios de Laguerre.
+iv) Funciones generadoras.
+
+XI.- Ecuaciones de la Fsica:
+i) Ecuaciones diferenciales parciales.
+ii) Condiciones de la frontera.
+iii) Ecuacion de Helmholtz en una dimensión.
+iv) Ecuacion de Helmholtz en dos dimensiones.
+v) Solución en problemas con valores en la frontera (con el formalismo de Fourier).
+
+XII.- Ecuaciones de onda*:
+i) Separación de variables.
+ii) Ecuación de Schrödinger.
+iii) Ecuación de Calor.
+
+XIII.- Ecuación de Laplace:
+i) Ecuación de Laplace en 2 dimensiones.
+ii) Armónicos esféricos.
+iii) Ecuación de Laplace en coordenadas cilíndricas.
+iv) Funciones de Bessel.
+
+Bibliografía:
+
+[ I ] Arfken, George B. et all, "Mathematical Methods for Physicist, A Comprehensive Guide.", Ed. Elsevier, Seventh Edition.
+
+[ II ] Appfel, Walter, "Mathematics for Physics & Physicists.", Ed. Princeton University Press, 2007.
+
+[ III ] Churchill R. V. and Brown J. W., "Fourier Series and Boundary Value Problems", Ed McGraw-Hill.
+
+[ IV ] Churchill Ruel V., "Modern; Operational Mathematics in Engineering"
+
+[ V ] Courant R and D. Hilbert, "Methods of Mathematical Physics.", vol. 1 y 2.
+
+[ VI ] Tijonov A, "Ecuaciones de la Física Matemática", Ed. MIR Moscu, Segunda edicion, 1980.
+
+[ VII ] Vladimirov V. S. , "Equations of Mathematical Physics", Ed. URSS Moscow, 1996.
