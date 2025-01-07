@@ -1,0 +1,205 @@
+% Created 2025-01-06 Mon 18:37
+% Intended LaTeX compiler: pdflatex
+\documentclass[letterpaper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{longtable}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{capt-of}
+\usepackage{hyperref}
+\usepackage{lmodern} % Ensures we have the right font
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{amsmath, amsthm, amssymb, amsfonts, amssymb, amscd}
+\usepackage[table, xcdraw]{xcolor}
+%\usepackage{mdsymbol}
+\usepackage{tikz-cd}
+\usepackage{float}
+\usepackage[spanish, activeacute, ]{babel}
+\usepackage{color}
+\usepackage{transparent}
+\graphicspath{{./figs/}}
+\usepackage{afterpage}
+\usepackage{array}
+\usepackage{pst-node}
+\newcommand{\ind}{\perp\!\!\!\!\perp}
+\newtheorem{teorema}{Teorema}[section]
+\newtheorem{prop}[teorema]{Proposici\'on}
+\newtheorem{cor}[teorema]{Corolario}
+\newtheorem{lema}[teorema]{Lema}
+\newtheorem{def.}{Definici\'on}[section]
+\newtheorem{afir}{Afirmaci\'on}
+\newtheorem{conjetura}{Conjetura}
+\renewcommand{\figurename}{Figura}
+\newcommand{\zah}{\ensuremath{ \mathbb Z }}
+\newcommand{\rac}{\ensuremath{ \mathbb Q }}
+\newcommand{\nat}{\ensuremath{ \mathbb N }}
+\newcommand{\prob}{\textbf{P}}
+\newcommand{\esp}{\mathbb E}
+\newcommand{\eje}{{\newline \noindent \sc \textbf{Ejercicio. }}}
+\newcommand{\exe}{{\newline \noindent \sc \textbf{Ejemplo. }}}
+\newcommand{\obs}{{\newline \noindent \sc \textbf{Observación. }}}
+\newcommand{\sol}{{\newline \noindent \sc \textbf{Solución. }}}
+\newcommand{\dem}{{\noindent \sc Demostraci\'on. }}
+\newcommand{\bg}{\ensuremath{\overline \Gamma}}
+\newcommand{\ga}{\ensuremath{\gamma}}
+\newcommand{\fb}{\ensuremath{\overline F}}
+\newcommand{\la}{\ensuremath{\Lambda}}
+\newcommand{\om}{\ensuremath{\Omega}}
+\newcommand{\sig}{\ensuremath{\Sigma}}
+\newcommand{\bt}{\ensuremath{\overline T}}
+\newcommand{\li}{\ensuremath{\mathbb{L}}}
+\newcommand{\ord}{\ensuremath{\mathbb{O}}}
+\newcommand{\bs}{\ensuremath{\mathbb{S}^1}}
+\newcommand{\co}{\ensuremath{\mathbb C }}
+\newcommand{\con}{\ensuremath{\mathbb{C}^n}}
+\newcommand{\cp}{\ensuremath{\mathbb{CP}}}
+\newcommand{\rp}{\ensuremath{\mathbb{RP}}}
+\newcommand{\re}{\ensuremath{\mathbb R }}
+\newcommand{\hc}{\ensuremath{\widehat{\mathbb C} }}
+\newcommand{\pslz}{\ensuremath{\mathrm{PSL}(2,\mathbb Z) }}
+\newcommand{\pslr}{\ensuremath{\mathrm{PSL}(2,\mathbb R) }}
+\newcommand{\pslc}{\ensuremath{\mathrm{PSL}(2,\mathbb C) }}
+\newcommand{\hd}{\ensuremath{\mathbb H^2}}
+\newcommand{\slz}{\ensuremath{\mathrm{SL}(2,\mathbb Z) }}
+\newcommand{\slr}{\ensuremath{\mathrm{SL}(2,\mathbb R) }}
+\newcommand{\slc}{\ensuremath{\mathrm{SL}(2,\mathbb C) }}
+\newcommand{\mdlr}{\ensuremath{\mathrm{M}}}
+\author{Carlos Eduardo Martínez Aguilar}
+\date{\today}
+\title{Temario de Matemáticas Avanzadas para la Física Latex Export}
+\hypersetup{
+ pdfauthor={Carlos Eduardo Martínez Aguilar},
+ pdftitle={Temario de Matemáticas Avanzadas para la Física Latex Export},
+ pdfkeywords={},
+ pdfsubject={},
+ pdfcreator={Emacs 29.4 (Org mode 9.7.11)}, 
+ pdflang={Esp}}
+\begin{document}
+
+\maketitle
+
+\noindent El nombre ``Matemáticas Avanzadas para la Física'' es bastante peculiar para un curso de un semestre de licenciatura, es un nombre muy poco descriptivo para una materia, uno al leerlo o escucharlo inmediatamente se puede preguntar ``¿A qué se refiere con ``Matemáticas Avanzadas''?'', ``¿Qué se abarca en un curso así?'' o ``¿No se supone que los primeros 5 semestres de la carrera de física se dedican al estudio de matemáticas avanzadas para la física?''. Si se está familiariazado con temas de física (se esperara que la mayor parte de las personas que toman este curso lo estén), entonces al escuchar ``Matemáticas Avanzadas'', uno se puede imaginar casi cualquier tema de matemáticas desarrollado durante el último siglo ya que es muy dificil encontrar ramas de la matemática que no se apliquen a los problemas físicos de los últimos años, desde topología algebraica hasta temas de estadística paramétrica.
+Sin embargo, este es un curso preciso de licenciatura, por lo cual se debe acotar en los temas que se deber abordar, al revisar el temario de este curso, es claro que la mentalidad que se utilizó en su elaboración fue la de intentar abarcar los temas con aplicabilidad a la mayor parte de la física actual, al mismo tiempo se intentó mantener continuidad con el antiguo plan de estudios de física, en el cual la presente materia no existía y en su lugar se daba un curso de ``Funciones Especiales y Transformadas Integrales'' o ``FETI'' en corto. Viendo esto, queda más claro que ``Matemáticas Avanzadas para la Física'' se refiere más precisamente a ``métodos del analisis matemático, funcional y complejo para el estudio de soluciones de ecuaciones diferenciales ordinarias y parciales originarias de la física''.
+Muchas presonas que han cusado esta materia nos han mencionado que el problema con una materia así es que los profesores tienden a enfocarse solamente en los métodos para terminar con el amplio temario, en lugar de desarrollar la intuición física y matemática para la resolución de éstos problemas. Nosotros como matemáticos impartiremos un curso de matemáticas, sin embargo esto no significa que nos enfocaremos en demostrar teoremas o solamente desarrollar la teoría, significa que expondremos la intución matemática detrás de los problemas sin perder el rigor matemático que permite generalizar estos métodos para otros problemas y al mismo tiempo sin ignorar la aplicabilidad de estos métodos. Intentaremos mostrar que a pesar que parece que son muchos métodos y mucha teoría, en realidad estos métodos son una extensión del álgebra lineal por medio del cálculo para la soluón de ecuaciones diferenciales. Aunado a estos pretendemos que esta materia sea una preparación matemática para la mecánicua cuántica por lo que haremos énfasis en problemas de mecánica cuántica y en la teoría espectral de operadores, además que utilizaremos la notación de Dirac  para espacios de Hilbert.\\
+\vspace{1cm}
+
+\noindent \textbf{TEMARIO} (El orden puede variar un poco).
+
+\begin{enumerate}
+\item Introducción y conceptos preliminares:
+\begin{itemize}
+\item Espacios vectoriales y notación de Dirac.
+\item Espacios Hilbert como espacios vectoriales de dimensión infinita.
+\item Funcionales lineales, operadores y sus representaciones.
+\item Formalismo de la teoría de la medida y el teorema de Riemann-Lebesgue.
+\item Repaso de convergencia de series y variable compleja.
+\end{itemize}
+
+\item Análisis de Fourier:
+\begin{itemize}
+\item Series de Fourier.
+\item Condiciones de Dirichlet.
+\item Convergencia de las series de Fourier.
+\item Teorema de Fourier.
+\item Series ortogonales en 2 variables.
+\item Aplicaciones.
+\end{itemize}
+
+\item Teoría de Strurm-Liouville
+\begin{itemize}
+\item Operadores auto adjuntos.
+\item Operadores diferenciales auto adjuntos.
+\item Funciones propias y funciones de peso.
+\item Funciones de Green para ecuaciones no homogeneas.
+\end{itemize}
+
+\item Ecuación de Laplace:
+\begin{itemize}
+\item Ecuación de Laplace en 2 dimensiones.
+\item Separación de Variables
+\item Armónicos esféricos.
+\item Ecuación de Laplace en coordenadas cilíndricas.
+\item Ecuación y Funciones de Bessel.
+\end{itemize}
+
+\item Funciones Especiales y Polinomios Ortogonales:
+\begin{itemize}
+\item Definición y Ejemplos.
+\item Familias ortogonales de polinomios (Laguerre, Hermite, Legendre y otros).
+\item Función generadora y Aplicaciones.
+\item Definición de la función Beta y su relación con la función Gama.
+\item Definición de la Delta de Dirac.
+\item Función Zeta de Riemann.*
+\end{itemize}
+
+\item Ecuaciones de Onda:
+\begin{itemize}
+\item Análisis Vectorial y Teorema de descomposición de Helmholtz.
+\item La Cuerda y la membrana circular vibrantes
+\item Condiciones de la frontera.
+\item Ecuación de Helmholtz en una y dos dimensiones.
+\item Solución en problemas con valores en la frontera (con el formalismo de Fourier).
+\item Ecuación de Shrodinger como ecuación de onda y ejemplos.
+\end{itemize}
+
+\item Ecuaciones de Calor:
+\begin{itemize}
+\item Solución fundamental.
+\item El flujo de calor.
+\item Movimiento Browniano*.
+\end{itemize}
+
+\item Distribuciones (funciones generalizadas):
+\begin{itemize}
+\item Distribuciones.
+\item Derivadas débiles.
+\item La delta de dirac y la función de Heaviside.
+\item Funciones de Schwartz y distribuciones temperadas.
+\end{itemize}
+
+\item Transformadas Integrales:
+\begin{itemize}
+\item Transformada de Fourier.
+\item Propiedades y aplicaciones de la transformada de Fourier.
+\item Transformada de Laplace.
+\item Propiedades y aplicaciones de la transformada de Laplace.
+\item Relación con las transformadas de Fourier.
+\item Transformada de Fourier discreta y algoritmos*.
+\end{itemize}
+
+\item Funciones de Green para ecuaciones diferenciales parciales:
+\begin{itemize}
+\item Transformada de Fourier para la ecuación de calor.
+\item Transformada de Fourier para la ecuación de onda.
+\item La ecuación de Poisson.
+\end{itemize}
+\end{enumerate}
+
+Los temas con * se considerarrán como extra y sólo si hay tiempo.
+
+\textbf{NOTA 1}: Sólo hemos mencionado los temas matemáticos, aunado a esto se verán varios ejemplos físicos con énfasis en la mecánica cuantica como el pozo cuántico, el oscilador armónico cuántico y el átomo de hidrógeno.
+
+\textbf{NOTA 2}: Además de la bibliografía, se harán unas notas de clases.\\
+\vspace{1cm}
+
+
+\textbf{Bibliografía}:
+
+\begin{itemize}
+\item H.F. Weinberger ``A First Course In Partial Differential Equations With Complex Variables and Transform Methods'', Dover Books On Mathematics, New York.
+\item N.N. Lebedev ``Special Functions \& Their Applications'', Dover Books On Mathematics, New York.
+\item Arfken, George B. et all, ``Mathematical Methods for Physicist, A Comprehensive Guide.'', Ed. Elsevier, Seventh Edition.
+\item Appfel, Walter, ``Mathematics for Physics \& Physicists.'', Ed. Princeton University Press, 2007.
+\item Churchill R. V. and Brown J. W., ``Fourier Series and Boundary Value Problems'', Ed McGraw-Hill.
+\item Courant R and D. Hilbert, ``Methods of Mathematical Physics.'', vol. 1 y 2.
+\item Tijonov A, ``Ecuaciones de la Física Matemática'', Ed. MIR Moscu, Segunda edición, 1980.
+\item Vladimirov V. S. , ``Equations of Mathematical Physics'', Ed. URSS Moscow, 1996.
+\item E. Kreyszig ``Introductory Functional Analysis With Applications'', John Wily \& Sons.
+\end{itemize}
+\end{document}
