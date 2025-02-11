@@ -1,0 +1,102 @@
+% Created 2025-02-06 Thu 20:56
+% Intended LaTeX compiler: pdflatex
+\documentclass[letterpaper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{longtable}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{capt-of}
+\usepackage{hyperref}
+\usepackage{lmodern} % Ensures we have the right font
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{amsmath, amsthm, amssymb, amsfonts, amssymb, amscd}
+\usepackage[table, xcdraw]{xcolor}
+%\usepackage{mdsymbol}
+\usepackage{tikz-cd}
+\usepackage{float}
+\usepackage[spanish, activeacute, ]{babel}
+\usepackage{color}
+\usepackage{transparent}
+\graphicspath{{./figs/}}
+\usepackage{makeidx}
+\usepackage{afterpage}
+\usepackage{array}
+\usepackage{braket}
+\usepackage{pst-node}
+\newtheorem{teorema}{Teorema}[section]
+\newtheorem{prop}[teorema]{Proposici\'on}
+\newtheorem{cor}[teorema]{Corolario}
+\newtheorem{lema}[teorema]{Lema}
+\newtheorem{def.}{Definici\'on}[section]
+\newtheorem{afir}{Afirmaci\'on}
+\newtheorem{conjetura}{Conjetura}
+\renewcommand{\figurename}{Figura}
+\renewcommand{\indexname}{\'{I}ndice anal\'{\i}tico}
+\newcommand{\zah}{\ensuremath{ \mathbb Z }}
+\newcommand{\rac}{\ensuremath{ \mathbb Q }}
+\newcommand{\nat}{\ensuremath{ \mathbb N }}
+\newcommand{\prob}{\textbf{P}}
+\newcommand{\esp}{\mathbb E}
+\newcommand{\eje}{{\newline \noindent \sc \textbf{Ejemplo. }}}
+\newcommand{\obs}{{\newline \noindent \sc \textbf{Observación. }}}
+\newcommand{\dem}{{\noindent \sc Demostraci\'on. }}
+\newcommand{\bg}{\ensuremath{\overline \Gamma}}
+\newcommand{\ga}{\ensuremath{\gamma}}
+\newcommand{\fb}{\ensuremath{\overline F}}
+\newcommand{\la}{\ensuremath{\Lambda}}
+\newcommand{\om}{\ensuremath{\Omega}}
+\newcommand{\sig}{\ensuremath{\Sigma}}
+\newcommand{\bt}{\ensuremath{\overline T}}
+\newcommand{\li}{\ensuremath{\mathbb{L}}}
+\newcommand{\ord}{\ensuremath{\mathbb{O}}}
+\newcommand{\bs}{\ensuremath{\mathbb{S}^1}}
+\newcommand{\co}{\ensuremath{\mathbb C }}
+\newcommand{\con}{\ensuremath{\mathbb{C}^n}}
+\newcommand{\cp}{\ensuremath{\mathbb{CP}}}
+\newcommand{\rp}{\ensuremath{\mathbb{RP}}}
+\newcommand{\re}{\ensuremath{\mathbb R }}
+\newcommand{\hc}{\ensuremath{\widehat{\mathbb C} }}
+\newcommand{\pslz}{\ensuremath{\mathrm{PSL}(2,\mathbb Z) }}
+\newcommand{\pslr}{\ensuremath{\mathrm{PSL}(2,\mathbb R) }}
+\newcommand{\pslc}{\ensuremath{\mathrm{PSL}(2,\mathbb C) }}
+\newcommand{\hd}{\ensuremath{\mathbb H^2}}
+\newcommand{\slz}{\ensuremath{\mathrm{SL}(2,\mathbb Z) }}
+\newcommand{\slr}{\ensuremath{\mathrm{SL}(2,\mathbb R) }}
+\newcommand{\slc}{\ensuremath{\mathrm{SL}(2,\mathbb C) }}
+\newcommand{\mdlr}{\ensuremath{\mathrm{M}}}
+\date{\today}
+\title{Tarea 1 (Del Amor y la Amistad)}
+\begin{document}
+
+\maketitle
+
+\textbf{Fecha de entrega: Viernes 14 de Febrero de 2025}
+
+\begin{enumerate}
+\item Demuestre la Identidad de polarización y la igualdad de Parserval (teorema de Pitágoras):
+Sea \((H,\braket{\cdot|\cdot})\) un espacio de Hilbert y \(\beta=\{\ket{\phi_n}\}_{n\in\nat}\) una base de Schauder ortornormal, entonces para cada \(\ket{\psi}\in H\)
+\[
+        \|\psi\|^2=\sum_{n=0}^{\infty}|\braket{\phi_n|\psi}|^2.
+   \]
+\item Obtenga los coeficientes de Fourier complejos (con la base \(\{e^{int}\}_{n\in\zah}\)) para la función \(f(\theta)=\theta\) en el intervalo \([-\pi,\pi)\), use el hecho de que \(f(-\theta)=-f(\theta)\) para deducir la serie de Fourier real de \(f\).
+\item Demuestre que \(f_n(x)=n^2xe^{-nx}\) es una susesión de funciones continuas en \(\re\) que converge uniformemente a \(0\) en los intervalos \([a,\infty)\) con \(a>0\).
+\item Sea \(A\in\textrm{M}_{n\times n}(\co)\) una matriz con entradas complejas, demuestre que la matriz exponencial de \(A\)
+\[
+        \exp(A)=\sum_{n=0}^{\infty}\frac{A^n}{n!}\quad\text{donde } A^0=I_n.
+   \]
+Existe y además \(\|\exp(A)\|\leq e^{\|A\|}\), donde \(\|A\|\) es la norma del operador definido por la matriz \(A\). Calcule \(\exp(A)\) para una matriz diagonal
+\[
+        \begin{pmatrix}\lambda_1 & 0 & \dots & 0\\
+                       0 & \lambda_2 & \dots & 0\\
+                                \vdots\\
+                       0 & 0 & \dots & \lambda_n
+        \end{pmatrix}.
+   \]
+\end{enumerate}
+\end{document}
