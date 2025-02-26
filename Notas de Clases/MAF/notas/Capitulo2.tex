@@ -1,0 +1,1212 @@
+% Created 2025-01-06 Mon 18:37
+% Intended LaTeX compiler: pdflatex
+\documentclass[letterpaper]{book}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{longtable}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{capt-of}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage{amsmath, amsthm, amssymb, amsfonts, amssymb, amscd}
+\usepackage[table, xcdraw]{xcolor}
+%\usepackage{mdsymbol}
+\usepackage{tikz-cd}
+\usepackage{float}
+\usepackage[spanish, activeacute, ]{babel}
+\usepackage{color}
+\usepackage{transparent}
+\graphicspath{{./figs/}}
+\usepackage{afterpage}
+\usepackage{array}
+\usepackage{pst-node}
+\usepackage{imakeidx}
+\usepackage{braket}
+
+\newcommand{\ind}{\perp\!\!\!\!\perp}
+\newtheorem{teorema}{Teorema}[section]
+\newtheorem{prop}[teorema]{Proposici\'on}
+\newtheorem{cor}[teorema]{Corolario}
+\newtheorem{lema}[teorema]{Lema}
+\newtheorem{def.}{Definici\'on}[section]
+\newtheorem{afir}{Afirmaci\'on}
+\newtheorem{conjetura}{Conjetura}
+\renewcommand{\figurename}{Figura}
+
+\newcommand{\zah}{\ensuremath{ \mathbb Z }}
+\newcommand{\rac}{\ensuremath{ \mathbb Q }}
+\newcommand{\nat}{\ensuremath{ \mathbb N }}
+\newcommand{\prob}{\textbf{P}}
+\newcommand{\esp}{\mathbb E}
+\newcommand{\exe}{{\noindent \sc \textbf{Ejercicio. }}}
+\newcommand{\eje}{{\noindent \sc \textbf{Ejemplo. }}}
+\newcommand{\obs}{{\noindent \sc \textbf{Observación. }}}
+\newcommand{\sol}{{\noindent \sc \textbf{Solución. }}}
+\newcommand{\dem}{{\noindent \sc \textbf{Demostraci\'on. }}}
+\newcommand{\QED}{\ensuremath{\hspace*{0em plus 1fill}\blacksquare}}
+
+\newcommand{\bg}{\ensuremath{\overline \Gamma}}
+\newcommand{\ga}{\ensuremath{\gamma}}
+\newcommand{\fb}{\ensuremath{\overline F}}
+\newcommand{\la}{\ensuremath{\Lambda}}
+\newcommand{\om}{\ensuremath{\Omega}}
+\newcommand{\sig}{\ensuremath{\Sigma}}
+\newcommand{\bt}{\ensuremath{\overline T}}
+\newcommand{\li}{\ensuremath{\mathbb{L}}}
+\newcommand{\ord}{\ensuremath{\mathbb{O}}}
+\newcommand{\bs}{\ensuremath{\mathbb{S}^1}}
+\newcommand{\co}{\ensuremath{\mathbb C }}
+\newcommand{\con}{\ensuremath{\mathbb{C}^n}}
+\newcommand{\cp}{\ensuremath{\mathbb{CP}}}
+\newcommand{\rp}{\ensuremath{\mathbb{RP}}}
+\newcommand{\re}{\ensuremath{\mathbb R }}
+\newcommand{\hc}{\ensuremath{\widehat{\mathbb C} }}
+\newcommand{\pslz}{\ensuremath{\mathrm{PSL}(2,\mathbb Z) }}
+\newcommand{\pslr}{\ensuremath{\mathrm{PSL}(2,\mathbb R) }}
+\newcommand{\pslc}{\ensuremath{\mathrm{PSL}(2,\mathbb C) }}
+\newcommand{\hd}{\ensuremath{\mathbb H^2}}
+\newcommand{\slz}{\ensuremath{\mathrm{SL}(2,\mathbb Z) }}
+\newcommand{\slr}{\ensuremath{\mathrm{SL}(2,\mathbb R) }}
+\newcommand{\slc}{\ensuremath{\mathrm{SL}(2,\mathbb C) }}
+\newcommand{\mdlr}{\ensuremath{\mathrm{M}}}
+\author{Carlos Eduardo Martínez Aguilar}
+\date{\today}
+\title{Notas de MAF}
+\hypersetup{
+ pdfauthor={Carlos Eduardo Martínez Aguilar},
+ pdftitle={Notas de Matemáticas Avanzadas para la Física},
+ pdfkeywords={},
+ pdfsubject={},
+ pdflang={Esp}}
+
+\makeindex
+\begin{document}
+
+\maketitle
+\tableofcontents
+
+\chapter{Introducción}
+
+\noindent El nombre ``Matemáticas Avanzadas para la Física'' es bastante peculiar para un curso de un semestre de licenciatura, es un nombre muy poco descriptivo para una materia, uno al leerlo o escucharlo inmediatamente se puede preguntar ``¿A qué se refiere con ``Matemáticas Avanzadas''?'', ``¿Qué se abarca en un curso así?'' o ``¿No se supone que los primeros 5 semestres de la carrera de física se dedican al estudio de matemáticas avanzadas para la física?''. Si se está familiariazado con temas de física (se esperara que la mayor parte de las personas que toman este curso lo estén), entonces al escuchar ``Matemáticas Avanzadas'', uno se puede imaginar casi cualquier tema de matemáticas desarrollado durante el último siglo ya que es muy dificil encontrar ramas de la matemática que no se apliquen a los problemas físicos de los últimos años, desde topología algebraica hasta temas de estadística paramétrica.
+Sin embargo, este es un curso preciso de licenciatura, por lo cual se debe acotar en los temas que se deber abordar, al revisar el temario de este curso, es claro que la mentalidad que se utilizó en su elaboración fue la de intentar abarcar los temas con aplicabilidad a la mayor parte de la física actual, al mismo tiempo se intentó mantener continuidad con el antiguo plan de estudios de física, en el cual la presente materia no existía y en su lugar se daba un curso de ``Funciones Especiales y Transformadas Integrales'' o ``FETI'' en corto. Viendo esto, queda más claro que ``Matemáticas Avanzadas para la Física'' se refiere más precisamente a ``métodos del analisis matemático, funcional y complejo para el estudio de soluciones de ecuaciones diferenciales ordinarias y parciales originarias de la física''.
+Muchas presonas que han cusado esta materia nos han mencionado que el problema con una materia así es que los profesores tienden a enfocarse solamente en los métodos para terminar con el amplio temario, en lugar de desarrollar la intuición física y matemática para la resolución de éstos problemas. Nosotros como matemáticos impartiremos un curso de matemáticas, sin embargo esto no significa que nos enfocaremos en demostrar teoremas o solamente desarrollar la teoría, significa que expondremos la intución matemática detrás de los problemas sin perder el rigor matemático que permite generalizar estos métodos para otros problemas y al mismo tiempo sin ignorar la aplicabilidad de estos métodos. Intentaremos mostrar que a pesar que parece que son muchos métodos y mucha teoría, en realidad estos métodos son una extensión del álgebra lineal por medio del cálculo para la soluón de ecuaciones diferenciales. Aunado a estos pretendemos que esta materia sea una preparación matemática para la mecánica cuántica por lo que haremos énfasis en problemas de mecánica cuántica y en la teoría espectral de operadores, además que utilizaremos la notación de Dirac para espacios de Hilbert.\\
+%%\vspace{1cm}
+%%
+
+\chapter{Espacios de Hilbert}
+
+\section{Espacios vectoriales y notación de Dirac}
+
+\noindent Comencemos recordando algunos hechos sobre vectores y espacios vectoriales, pero ahora desde la perspectiva y notación de Dirac. La notación de Dirac se asocia principalmente a la mecánica cuántica, sin embargo, es marco teoríco general para los espacios de Hilbert, los cuales con son los que trabajaremos pricipalmente en este curso. La notación de Dirac funciona explicitamente para trabajar con espacios de Hilbert de funciones (todo espacio de Hilbert es el fondo un espacio de funciones), donde el vector asociado a una función $\phi$ se denota como $\ket{\phi}$, al cual llamado ``ket''. Por lo tanto, un espacio vectorial sobre un campo \(\mathbb{F}\) (en este curso siempre tomaremos \(\mathbb{F} = \mathbb{R}\) o \(\mathbb{F} = \mathbb{C}\)) se concibe como un conjunto \(V\) de kets, el cual es dotado las operaciones de adición \(+\) y producto escalar \(\cdot\) que cumplen las siguientes propiedades
+
+\begin{itemize}
+    \item \textbf{Conmutatividad}: \(\ket{\phi} + \ket{\psi} = \ket{\psi} + \ket{\phi}\quad\forall\,\{\ket{\psi},\ket{\phi}\}\subset V.\)
+    \item \textbf{Asociatividad}: \((\ket{\varphi}+\ket{\phi}) + \ket{\psi} = \ket{\varphi}+(\ket{\psi} + \ket{\phi})\quad\forall\,\{\ket{\psi},\ket{\phi},\ket{\varphi}\}\subset V.\)
+    \item \textbf{Identidad}: \(\exists! \, 0 \in V\) tal que \(0 + \ket{\phi} = \ket{\phi}\quad\forall\,\ket{\phi}\in V.\)
+\end{itemize}
+
+Del último punto, haremos notar que $0$ y $\ket{0}$ son distintos vectores, $0$ será simepre el vector nulo y $\ket{0}$ será un vector no nulo que representa su número en una base numerada. Ahora, la operación de multiplicación por un escalar \(\lambda \in \co\) cumple
+
+\begin{itemize}
+    \item \textbf{Distributidad en \(V\)}: \(\lambda(\ket{\phi_1} + \ket{\phi_2}) = \lambda\ket{\phi_1} + \lambda\ket{\phi_2}\quad\forall\,\{\ket{\phi_1},\ket{\phi_2}\}\subset V,\,\lambda\in\co.\)
+    \item \textbf{Distributidad en \(\co\)}: \((\lambda + \mu)\ket{\phi} = \lambda\ket{\phi} + \mu\ket{\phi}\quad\forall\,\ket{\phi}\in V,\,\{\lambda,\mu\}\subset\co.\)
+\end{itemize}
+
+A menudo trabajaremos con espacios vectoriales dotados de un producto interno, lo cual otorga una forma generalizada de trabajar con funcionales lieales, veremos más de esto en la parte de operadores y funcionales.
+\begin{def.}
+Un \emph{producto interno o producto Hermitiano} es un mapeo \( \braket{\cdot|\cdot} : V^{*} \times V \to \co\) que cumple \footnote{¡Cuidado! Es muy común que algunos autores definan el producto interno como lineal en la primera entrada, en lugar de la segunda como lo he hecho aquí. He elegido esta forma para maximizar la concordancia con tus clases de Mecánica Cuántica}
+
+\begin{itemize}
+    \item \textbf{Simetría conjugada}: \(\braket{\phi | \psi} = \overline{\braket{\psi | \phi}}\)
+    \item \textbf{Linealidad}: \(\braket{\phi | \lambda \psi} = \lambda\braket{\phi|\psi}\quad\forall\,\lambda\in\co.\)
+    \item \textbf{Aditividad}: \(\braket{\varphi | \phi + \psi} = \braket{\varphi | \phi} + \braket{\varphi|\psi}\)
+    \item \textbf{Definida positiva}: \(\braket{\phi | \phi} \geq 0\,\forall \bra{\psi} \in V\), con igualdad si y solo si \(\phi = 0\).
+\end{itemize}
+\end{def.}
+Vemos ahora algunos ejemplos de los espacios con producto interno más comjnes
+\eje Los espacios \(\re^n\) y \(\co^n\) con el producto punto usual son espacios vectoriales con un producto interno, donde el producto punto usual lo definimos como
+\[
+\text{En \(\re^n\) se define como: }(x_1,\dots,x_n)\cdot(y_1,\dots,y_n)=x_1y_1+\dots+x_ny_n
+\]
+\[
+\text{En \(\co^n\) se define como: }(\alpha_1,\dots,\alpha_n)\cdot(\beta_1,\dots,\beta_n)=\overline{\alpha_1}\beta_1+\dots+\overline{\alpha_n}\beta_n
+\]
+\eje Normalmente trabajaremos con espacios de funciones, uno de los más simples es \(\mathcal{C}[a,b]=\{f:[a,b]\rightarrow\co\,:\,\text{f es continua}\}\), con el producto interno
+\[
+\braket{f|g}=\int_a^b\overline{f}(t)g(t)dt.
+\]
+Nota que si nuestros vectores son reales, entonces la propiedad \(\braket{u|v} = \overline{\braket{v|u}}\) implica que \(\braket{\cdot|\cdot}\) es simétrica en sus argumentos. En este caso, el mapeo \(\braket{\cdot|\cdot}: V^{*} \times V \to \re\) es bilineal. Si \(\mathbb{F} = \co\), el mapa a veces se llama sesquilineal. Es aquí donde es necesario mencionar los ``bras'' como parte de la notación de Dirac, los bras se denotn por el símbolo contrario a los ``kets'', $\bra{\varphi}$ y estos representan \emph{vectores duales o covectores}, o equivalentemente, funcionales lineales \hbox{$\bra{\varphi}:V\rightarrow\mathbb{F}$} con aplicación dada por el ``braket'' $\bra{\varphi}\ket{\phi}=\braket{\varphi|\phi}$, esto significa que los funcionales lineales provienen del producto interno y por lo tanto $V\cong V^{*}$ canonicamente por medio del ``braket''. Esta es una propiedad exclusiva a los espacios vectoriales con producto interno y más aún a los \emph{espacios de Hilbert}, esto lo veremos a mayor profundidad en la sección de operdores lineales. Se le conoce a los espacios vectoriales con producto interno como \emph{espacios Hermitianos} aunque esta distinción no es ampliamente usada.
+
+Un producto interno en \(V\) proporciona automáticamente a un espacio vectorial una norma, la cual permite realizar operaciones típicas del análisis matemático y de la geometría en \(V\).
+\begin{def.}
+Una norma en \(V\) es una función \(\Vert\cdot\Vert:V\rightarrow\re^{+}\) que cumple lo siguiente
+\begin{itemize}
+    \item \textbf{Definida positiva}: \(\Vert\phi\Vert \geq 0\,\forall \bra{\psi} \in V\), con igualdad si y solo si \(\phi = 0\).
+    \item \textbf{Homogeneidad}: \(\Vert \lambda \psi\Vert = |\lambda|\Vert\phi\Vert\quad\forall\,\lambda\in\co.\)
+    \item \textbf{Desigualdad del triángulo}: \(\Vert \phi + \psi\Vert \leq \Vert\phi\Vert + \Vert\psi\Vert\quad\forall\,\{\ket{\psi},\ket{\phi}\}\subset V.\)
+\end{itemize}
+\end{def.}
+\eje Dada una función continua \(f: \om\subset\re^n \to \mathbb{R}\) (o \(\mathbb{C}\)), donde \(\om\) es un subconjunto compacto, la \emph{norma del supremo} se define como
+    \[
+    \|f\|_\infty = \sup_{x \in X} |f(x)|.
+    \]
+A un espacio vectoral con una norma \(\Vert\cdot\Vert\) se le llama \emph{espacio normado}. Ahora, para definir una norma para un producto normado, podemos definir la longitud de un vector \(\ket{\phi}\) como la norma \(\Vert\phi\Vert=\sqrt{\braket{\phi|\phi}}\). Aquí es importante recalcar que no todo espacio vectorial normado tiene un producto interno y más aún, se pueden clasificar las normas que vienen de un producto interno con la \emph{ley del paralelogramo}
+
+\[
+\Vert x+y\Vert^2+\Vert x-y\Vert^2=2\big(\Vert x\Vert^2+\Vert y\Vert^2\big)
+\]
+\noindent relacionada con la ley del paralelogramo, esta la identidad de polarización, la cual permite recuperar el producto interno a travez de su norma
+\[
+\braket{x|y}=\frac{1}{4}\big(\Vert x+y\Vert^2-\Vert x-y\Vert^2-i\Vert x+iy\Vert^2+i\Vert x-iy\Vert^2\big)
+\]
+\exe Demuestre la ley de polarización para un espacio con producto interno.
+
+Aunado a la identidad de polarización, está la desigualdad de Cauchy-Schwartz que relaciona a la norma de los vectores con su producto interno
+\begin{equation}
+  |\braket{x|y}|\leq\| x\|\,\| y\|
+\end{equation}
+\exe Demuestre la desigualdad de Cauchy-Schwarz para espacios vectoriales de dimensión finita.
+Para espacios vectoriales reales con producto interno, es posible definir el ángulo entre dos vectores, en cuyo caso se define como
+
+\[
+\theta = \arccos\left(\frac{\braket{u | v}}{\sqrt{\braket{u | u}} \sqrt{\braket{v | v}}}\right).
+\]
+
+\noindent donde la desigualdad de Cauchy-Schwartz \(\braket{u | v}^2 \leq \Vert u\Vert^2\Vert v \Vert^2\) asegura que esto tenga sentido.
+
+\begin{def.}
+Un conjunto de vectores \(\beta=\{\ket{\phi_{\alpha}}\,:\,\alpha\in \Lambda \}\) forma una base de Hammel de \(V\) si cualquier elemento \(u \in V\) puede escribirse de manera única como cobinación lineal de sus elementos, es decir
+\[
+u = \sum_{i\in F\subset\Lambda} \lambda_i \ket{\phi_i},
+\]
+
+\noindent para algunos escalares \(\lambda_i\in\mathbb{F}\), donde \(F\subset\Lambda\) es un conjunto finito.
+
+\noindent Dado cualquier conjunto \(\beta\subset V\) el conjunto de combinaciones lineales de elementos de \(\beta\) se denotará \(\langle\beta\rangle\).
+
+\noindent Una base \(\{\ket{\phi_{\alpha}}\}\) es ortogonal con respecto al producto interno si \(\braket{\phi_i | \phi_j}=\delta_{ij}\), la base es ortonormal si \(\Vert \phi_i\Vert = 1\).
+
+\noindent La dimensión del espacio vectorial es el número o cardinalidad de cualquier base.
+\end{def.}
+
+\begin{teorema}
+  Todo espacio vectorial tiene una base.
+\end{teorema}
+
+Cuando tenemos una base ortonormal, podemos usar el producto interno para descomponer explícitamente un vector general en esta base por medio de proyecciones. Por ejemplo, si
+
+\[
+u = \sum_{i=1}^n \lambda_i \ket{\phi_i},
+\]
+entonces
+\[
+\braket{\phi_j| u} = \braket{\phi_j| \sum_{i=1}^n \lambda_i \ket{\phi_i}} = \sum_{i=1}^n \lambda_i\braket{\phi_j |\phi_i} = \lambda_j,
+\]
+
+donde usamos las propiedades de aditividad y linealidad de \(\braket{\cdot|\cdot}\), así como la ortonormalidad de la base, entonces podemos escribir a \(u\) como
+\begin{equation}
+u = \sum_{i=1}^n \ket{\phi_i}\braket{\phi_i|u}.
+\end{equation}
+
+En general \(\ket{\phi}\bra{\psi}\) es el \emph{operador proyección o proyector en el espacio generado por \(\ket{\psi}\)} y en general, una base ortonormal se puede caracterizar por la siguiente igualdad entre el operador identidad en elpacio total \(V\) y la suma de las proyecciones en los espacios de las componentes de la base
+\begin{equation}
+I_{V}=\sum_{\alpha\in\Lambda}\ket{\phi_{\alpha}}\bra{\phi_{\alpha}}.
+\end{equation}
+\exe Demuestre que cualesquiera dos bases tienen el mismo número de vectores.
+
+\subsection{Proceso de Gram-Schmidt}
+
+\noindent El proceso de Gram-Schmidt es un método para transformar un conjunto de vectores linealmente independientes \(\{\ket{\phi_1}, \ket{\phi_2}, \dots, \ket{\phi_n}\}\) en un conjunto de vectores ortonormales \(\{\ket{e_1}, \ket{e_2}, \dots, \ket{e_n}\}\) que generan el mismo subespacio vectorial. El primer vector de la base ortonormal se obtiene normalizando \(\ket{\phi_1}\)
+
+\[
+\ket{e_1} = \frac{\ket{\phi_1}}{\Vert\phi_1\Vert},
+\]
+
+Para cada vector \(\ket{\phi_i}\) con \(i > 1\), se calcula su proyección sobre los vectores ortonormales ya obtenidos y se resta esta proyección de \(\ket{\phi_i}\) para obtener un vector ortogonal a todos los anteriores. Luego, se normaliza el resultado, es decir para \(i = 2, 3, \dots, n\) sea
+
+\[
+\ket{\psi_i} = \ket{\phi_i} - \sum_{j=1}^{i-1} \braket{e_j | \phi_i} \ket{e_j},
+\]
+
+\noindent por lo que
+
+\[
+\ket{e_i} = \frac{\ket{\psi_i}}{\Vert\psi_i\Vert}.
+\]
+
+El conjunto resultante \(\{\ket{e_1}, \ket{e_2},\dots \ket{e_n}\}\) es una base ortonormal ya que claremente son vectores de norma 1 y para todo \(k<i\)
+\begin{align*}
+\braket{e_j|\psi_i}&=\braket{e_k|\ket{\phi_i} - \sum_{j=1}^{i-1} \braket{e_j | \phi_i} \ket{e_j}}= \braket{e_k|\phi_i}-\sum_{j=1}^{i-1} \braket{e_j | \phi_i} \braket{e_k|e_j}\\
+                   &=\braket{e_k|\phi_i}-\sum_{j=1}^{i-1} \braket{e_j | \phi_i} \delta_{kj}=\braket{e_k|\phi_i}-\braket{e_k | \phi_i}=0.
+\end{align*}
+
+\section{Espacios de Banach y Hilbert}
+
+\noindent Al trabajar con espacios vectoriales de dimensión infinita, serán necesarias las nociones métricas y topológicas de dichos espacios, es decir a partir de ahora siempre trabajaremos en espacios donde podremos hablar de \emph{convergencia}, esto es pues trabajaremos muchas veces con \emph{series} (de Fourier o Laurent) en lugar de sumas.
+Empezemos recordando las nociones de \emph{convergencia} y \emph{sucesíon de Cauchy}, sea \(X,\Vert\cdot\Vert\) un espacio normado, decimos que una sucesión \(\{\ket{x_n}\}_{n\in\nat}\subset X\) es
+\begin{itemize}
+  \item Convergente si existe \(\ket{\chi}\in X\) tal que para toda \(\epsilon\in\re^{+}\), existe \(N\in\nat\) tal que \(\Vert x_n-\chi\Vert<\epsilon\) si \(N<n\) y de denota \(\ket{x_n}\rightarrow\ket{\chi}\).
+  \item De Cauchy si para toda \(\epsilon\in\re^{+}\), existe \(N\in\nat\) tal que \(\Vert x_n-x_m\Vert<\epsilon\) si \(N<n,\,N<m\).
+  \end{itemize}
+\exe Pruebe que toda susesión convergente es de Cauchy.
+\begin{def.}
+  A un espacio vectorial normado \((X,\Vert\cdot\Vert)\) se le llama un \emph{espacio de Banach}, si es completo en el sentido métrico, es decir, si toda sucesión de Cauchy es convergente. Igualmente a un espacio con producto interno \((H,\braket{\cdot|\cdot})\) se le llama \emph{espacio de Hilbert} si es un espacio de Banach con su norma inducida.
+  \end{def.}
+\eje Todo espacio vectorial sobre \(\re\) (y por lo tanto sobre \(\co\)) de dimensión finita es completo, la prueba de esto requiere un poco más de teoría pero en sí se sigue del hecho de que \(\re\) es completo.\\
+La noción de convergencia, nos permite hablar de la cerradura de un conjunto para espacios normados, además permite también hablar de subconjuntos o subespacios \emph{densos}.
+\begin{def.}
+  Sea \(X,\Vert\cdot\Vert\) un espacio normado y sea \(\om\subset X\), definimos la cerradura de \(\om\), denotado por \(\overline{\om}\) como el conjunto de puntos límite de \(\om\), es decir, \(\ket{x}\in\overline{\om}\), si y sólo si existe una susesión \(\{\ket{x_n}\}_{n\in\nat}\subset\om\) tal que \(\ket{x_n}\rightarrow\ket{x}\).
+  \end{def.}
+Claramanete \(A\subset\overline{\om}\), pues podemos tomar siempre las sucesiones contantes en \(a_n=a\in\om\). Decimos que un conjunto es \emph{cerrado} si \(\om=\overline{\om}\).\\
+\exe Demuestre que todo subespacio de dimensión finita es cerrado.\\
+
+Ahora con la nociones de susesiones y convergencia, es posible hablar claramente de nociones como \emph{series de Fourier} y \emph{series de polinomios ortogonales}. Primero definimos una serie en un espacio normado como la susesion convergente de sumas finitas, donde representamos a su límite como una suma infinita, a la cual llamamos una \emph{serie convergente}
+\[
+    S_k=\sum_{n=1}^k\ket{\phi_n}\rightarrow S=\sum_{n=1}^{\infty}\ket{\phi_n}\text{ cuando }k\rightarrow\infty.
+\]
+
+Así podemos hablar de bases para espacios vectoriales donde en lugar de expresar todos los vectores como sumas finitas, podemos representarlos como series de vectores básicos, esto facilita mucho la forma en la que podemos representar vectores, por ejemplo definir una base de Hammel para el espacio \(\mathcal{C}[a,b]\) es muy complicado y se necesitan una cantidad no numerable de vectores, pero con series vamos a poder encontrar una base incluso numerable.
+
+\begin{def.}
+  Sea \((X,\|\cdot\|)\) un espacio vectorial normado, decimos que un subconjunto \(\beta\subset X\) es una base de Schauder si el espacio generado por \(\beta\), \(V=\langle\beta\rangle\) es denso en \(X\), es decir
+  \[
+    X=\overline{V}=\overline{\langle\beta\rangle}.
+  \]
+  En el caso de un espacio con producto interno \(H,\braket{\cdot|\cdot}\), si para todo par de vectores \(\{\ket{e_i},\ket{e_j}\}\subset\beta\), se cumple
+  \[
+    \braket{e_i|e_j}=\delta_{ij},
+  \]
+  entonces como en el caso de las bases de Hammel, decimos que \(\beta\) es una base \emph{ortonormal}.
+  \end{def.}
+\obs Si se aplica el proceso de Gram-Schmidt para una base de Schauder, se obtiene una base de Schauder ortonormal.\\
+
+
+\section{Operadores Lineales}
+\noindent Durante todo el curso trabajaremos con ecuaciones diferenciales (ordinarias o praciales) lineales, algunos ejemplos son
+\begin{itemize}
+    \item \textbf{Ecuación de Laplace}:
+    \[
+    \nabla^2 \phi = 0,
+    \]
+    donde \(\nabla^2\) es el Laplaciano.
+
+    \item \textbf{Ecuación de Calor}:
+    \[
+    \frac{\partial u}{\partial t} = \alpha \nabla^2 u,
+    \]
+    donde \(u(\mathbf{x}, t)\) es la temperatura en la posición \(\mathbf{x}\) y tiempo \(t\), y \(\alpha\) es la difusividad térmica.
+
+    \item \textbf{Ecuación de Onda}:
+    \[
+    \frac{\partial^2 u}{\partial t^2} = c^2 \nabla^2 u,
+    \]
+    donde \(u(\mathbf{x}, t)\) es la amplitud de la onda en la posición \(\mathbf{x}\) y tiempo \(t\), y \(c\) es la velocidad de propagación de la onda.
+
+    \item \textbf{Ecuación de Schrödinger}:
+   \[
+   i\hbar \frac{\partial \psi(\mathbf{x}, t)}{\partial t} = \hat{H} \psi(\mathbf{x}, t)= \Big(-\frac{\hbar^2}{2m}\nabla^2+V(\mathbf{x})\Big)\psi(\mathbf{x}, t),
+   \]
+    donde \(\psi(\mathbf{x})\) es la función de onda, \(V(\mathbf{x})\) es el potencial, \(\hbar\) es la constante de Planck reducida y \(m\) es la masa de la partícula.
+
+    \item \textbf{Operadores de Sturm-Liouville}:
+    \[
+    \mathcal{L} \phi = -\frac{d}{dx} \left( p(x) \frac{d\phi}{dx} \right) + q(x) \phi = \lambda w(x) \phi,
+    \]
+    donde \(\mathcal{L}\) es el operador de Sturm-Liouville, \(p(x)\), \(q(x)\) y \(w(x)\) son funciones dadas, \(\phi(x)\) es la función propia y \(\lambda\) es el valor propio asociado.
+\end{itemize}
+
+\noindent La linealidad en estas ecuaciones significa que si se nos dan dos soluciones \(\phi_1\) y \(\phi_2\) de una de estas ecuaciones (digamos, la ecuación de onda), entonces \(\lambda_1 \phi_1 + \lambda_2 \phi_2\) también es una solución para constantes arbitrarias \(\lambda_1\) y \(\lambda_2\), esto quiere decir que la abstracción adecuada para estas ecuaciones son los \emph{operadores lineales}, de esta forma podemos pensar a una ecuación diferencial en términos de \emph{operador diferencial lineal}
+
+Con una posible excepción, la razón real por la que todas estas ecuaciones son lineales es la misma: son aproximaciones. La forma más común en que surgen las ecuaciones lineales es al perturbar ligeramente un sistema general. Independientemente de las ecuaciones complicadas que gobiernan la dinámica de la teoría subyacente, si solo consideramos el primer orden en las pequeñas perturbaciones, encontraremos una ecuación lineal esencialmente por definición. Por ejemplo, la ecuación de onda dará una buena descripción de las ondulaciones en la superficie de un estanque tranquilo o de la luz que viaja a través de un panel de vidrio.
+
+La posible excepción es la ecuación de Schrödinger en la Mecánica Cuántica. Conocemos muchas formas de generalizar esta ecuación, como hacerla relativista o pasar a la Teoría Cuántica de Campos, pero en cada caso, el análogo de la ecuación de Schrödinger siempre permanece exactamente lineal.
+\begin{def.}
+  Sean \(V\) y \(W\) espacios vectoriales sobre el mismo campo \(\mathbb{F}\), se define un operador o transformación lineal entre \(V\) y \(W\) como una función \(\mathcal{L}:V\rightarrow W\) que cumple
+  \[
+    \mathcal{L}(\lambda_1\ket{\phi_1}+\lambda_2\ket{\phi_2})= \lambda_1\mathcal{L}\ket{\phi_1}+\lambda_2\mathcal{L}\ket{\phi_2}\quad\forall\{\ket{\phi_1},\ket{\phi_2}\}\subset V,\,\{\lambda_1,\lambda_2\}\subset\mathbb{F}
+  \]
+\noindent en el caso que \(W=\mathbb{F}\), en lugar de llamar a \(\mathcal{L}\) operador lineal, se le llama \emph{funcional lineal}.
+\end{def.}
+Recordemos que todo operador lineal \(\mathcal{L}\) tiene sus espacios núcleo (o Kernel) e imagen, los cuales se definen
+\begin{itemize}
+  \item El núcleo o kernel \(\textrm{Ker}(\mathcal{L})=\{\ket{\phi}\in V \,:\,\mathcal{L}\ket{\phi}=0\}\).
+  \item La imagen \(\textrm{Im}(\mathcal{L})=\{\mathcal{L}\ket{\phi}\in W\,:\,\ket{\phi}\in V\}\).
+  \end{itemize}
+Notamos que tanto el núcleo como la imagen son espacios vectoriales.\\
+\eje Sea \(\mathcal{C}^1(a,b)\) el espacio de funciones continuamente diferenciables en el intervalo abierto \((a,b)\subset\re\), entonces el operador \emph{derivada} \(D:\mathcal{C}^1(a,b)\rightarrow\mathcal{C}(a,b)\), definido como
+\[
+D[f](x)=\dfrac{df}{dx}(x)=f'(x).
+\]
+\noindent es un operador lineal. Más en general, están los \emph{polinomios diferenciales}, los cuales son expresiones de tipo
+\[
+    \mathcal{L}=\alpha_n(z)D^n+\dots+\alpha_1(z)D+a_0(z)I,\text{ $\alpha_i(z)$ función compleja.}
+\]
+\eje En espacios vectoriales de dimensión finita se pueden categorizar todos los operadores lineales entre ellos, ensí todos son matrices con entradas en al campo, en el caso de espacios complejos, toda trasformación lineal \(T:\co^n\rightarrow\co^m\) está dado por una matriz \(A\in\textrm{M}_{n\times m}(\co)\) de tal forma que \(T(Z)=AZ\) en la bases canónicas de \(\co^n\) y \(\co^m\) respectivamente. En el caso \(m=1\), tenemos los funcionales lineales, los cuales todos se evaluán pr medio de la multiplicación de un vector columna por una matriz de \(n\times 1\) columnas, es decir, si \(f:\co^n\rightarrow\co\) es un fucnional lineal, entonces
+\[
+f(z_1,\dots,z_n)=(\alpha_1,\dots,\alpha_n)\begin{pmatrix}z_1\\ \vdots \\ z_n\end{pmatrix}=\sum_{k=1}^n \alpha_kz_k = (\overline{\alpha}_1,\dots,\overline{\alpha}_n)\cdot(z_1,\dots,z_n).
+\]
+\noindent Por lo tanto podemos pensar al funcional lineal \(f\) como el vector \((\overline{\alpha}_1,\dots,\overline{\alpha}_n)\in\con\), tal que \(f(z_1,\dots,z_n)=(\overline{\alpha}_1,\dots,\overline{\alpha}_n)\cdot(z_1,\dots,z_n)\).
+
+\begin{def.}
+Sean \((X, \|\cdot\|_X)\) y \((Y, \|\cdot\|_Y)\) dos espacios normados. Un operador lineal \(T: X \to Y\) se dice \textbf{acotado} si existe una constante \(C > 0\) tal que para todo \(x \in X\) se cumple
+\[
+\|T(x)\|_Y \leq C \|x\|_X.
+\]
+La menor de tales constantes \(C\) se denomina la \textbf{norma del operador} \(T\) y se denota por \(\|T\|\).
+\end{def.}
+\exe Demuestre que ee puede demostrar que es posible calcular la norma de un operador acotado como
+\[
+\|A\|=\sup\{\|A\ket{\psi}\|\,:\,\|\psi\|=1\}=\sup\{\frac{\|A\ket{\psi}\|}{\|\psi\|}\,:\,\ket{\psi}\neq 0\}.
+\]
+\obs Sea \(T: X \to Y\) un operador lineal entre espacios normados. Las siguientes afirmaciones son equivalentes:
+\begin{enumerate}
+    \item \(T\) es continuo en \(X\).
+    \item \(T\) es continuo en cero \(0 \in X\).
+    \item \(T\) es Lipschitz continuo en \(X\).
+    \item \(T\) es acotado.
+\end{enumerate}
+
+\eje Un ejemplo clásico de operador de Fredholm es el operador integral definido por
+\[
+T(f)(x) = \int_a^b K(x, y) f(y) \, dy,
+\]
+donde \(K(x, y)\) es un núcleo continuo en \([a, b] \times [a, b]\). Este operador actúa sobre el espacio de funciones continuas \(C([a, b])\) y es un operador de Fredholm con índice cero, observamos que como \(K\) es continua y  \([a, b] \times [a, b]\) es compacto, entonces \(\|T\|\leq(b-a)\|K\|_{\infty}\).
+
+\obs Dados \((X,\|\cdot\|_X)\) y \((Y,\|\cdot\|_Y)\) espacios normados, se denota el espacio de operadores acotados como
+\[
+\mathcal{B}(X,Y)=\{A:X\to Y\,:\,\text{ A es acotado}\}.
+\]
+\noindent Este espacio es un espacio vectorial normado ya que \(\|\cdot\|_Y\) es una norma por lo tanto claramente se cumple que
+\begin{itemize}
+    \item \(\|A\| \geq 0\,\forall A \in\mathcal{B}(X,Y) \), con igualdad si y solo si \(\|A\ket{psi}\| = 0\,\forall\psi\in X\implies A = 0\).
+    \item \(\|\lambda A\| = |\lambda|\|A\|\quad\forall\,\lambda\in\co.\)
+    \item \(\|(A + B)\ket{\psi}\| \leq \|A\ket{\psi}\| + \|B\ket{\psi}\|\leq \|A\|\|\psi\| + \|B\|\|\psi\| \implies\| A + B\| \leq \|A\| + \|B\|\quad\forall\,\{A,B\}\subset\mathcal{B}(X,Y).\)
+\end{itemize}
+
+Por lo tanto los espacios \(\mathcal{B}(X,Y)\) son espacios normados, uno naturalmente se puede prefuntar ¿Cuándo son espacios de Banach? y la respuesta es bastante sencilla, sólo se necesita que \(Y\) sea de Banach, en generál resulta que los espacios de funciones continuas de muchas índoles \(\mathcal{C}(X,Y)\) son completos cuando \(Y\) también lo es, sin embargo la demostración de este hecho se sale de los propósitos del curso.
+
+Aunado a lo anterior, si \(A:X\to Y\) y \(B:Y\to Z\) con \((Z,\|\cdot\|)\) normado, son operadores acotados entonces \(\|BA\|\leq\|A\|B\|\). Por lo tanto para operadores \(A:X\to X\), denotado \(\mathcal{B}(X)\), se cumple que
+\[
+\|AB\|\leq\|A\|\|B\|\,\,\forall A,B\in\mathcal{B}(X)\implies\|A^n\|\leq\|A\|^n\,\forall n\in\nat.
+\]
+
+\begin{def.}
+Sea \(\mathcal{A},\|\cdot\|_{\mathcal{A}}\) un espacio de Banach tal que además de las operaciones de suma y producto por excalar, tiene una operación producto \(\mathcal{A}\times\mathcal{A}\to\mathcal{A}\) que cumple
+\begin{itemize}
+    \item \textbf{Distributividad:} \(\alpha(\beta+\gamma)=\alpha\beta+\alpha\gamma\quad\forall\alpha,\beta,\gamma\in\mathcal{A}\).
+    \item \textbf{Coninuidad de multiplicación:} \(\|\alpha\beta\|\leq\|\alpha\|\|\beta\|\,\forall\alpha,\beta\in\mathcal{A}\)
+\end{itemize}
+entonces llamaremos a \(\mathcal{A}\) un \emph{álgebra de Banach}
+\end{def.}
+
+\eje Si \(X\) es un espacio de Banach, entonces \(\mathcal{B}\) es un álgebra de Banach
+
+Ahora si  nos centramos un poco en los funcionales lineales, si \((V,\braket{\cdot|\cdot})\) es un espacio vectorial con producto interno, y \(\ket{\psi}\) es un vector fijo, notamos que el mapeo \(f_{\psi}:\ket{\phi}\mapsto\braket{\psi|\phi}\) es claramente un funcional lineal por los axiomas del producto interno, más aún por la desigualdad de Cauchy-Schwarz, para toda \(\ket{\phi}\), se tiene
+\[
+|f_{\psi}\ket{\phi}|=|\braket{\psi|\phi}|\leq\|\psi\|\,\|\phi\|\,\implies\,\|f_{\psi}\|\leq\|\psi\|
+\]
+\begin{def.}
+Sea \(X,\|\cdot\|\) un espacio vectorial normado, definimos el espacio dual como \(V^*=\{f:X\rightarrow\co\,:\,f \text{es linal y continua}\}\)
+\end{def.}
+
+Por lo anterior, entonces se establece que en un espacio con producto interno \((H,\braket{\cdot|\cdot})\), existe un operador lineal acotado \(\varphi:H\rightarrow H^*\)
+
+\begin{teorema}{Representación de Riez}
+  Sea \((H,\braket{\cdot|\cdot})\) un espacio de Hilbert, entonces el operador lineal acotado \(\varphi:H\rightarrow H^*\) definido por
+  \[
+  \varphi\ket{\psi}=f_{\psi}\quad f_{\psi}\ket{\phi}=\braket{\psi|\phi}
+  \]
+  es un \emph{isomorfimo isométrico}.
+  \end{teorema}
+A partir de ahora nos olvisaremos de la notación \(f_{\psi}\) y simplemente usaremos la notación clásica de Dirac \(\bra{\psi}\).
+
+\obs Si \((H,\braket{\cdot|\cdot})\) es un espacio con producto interno no completo, como hemos mencionado \(\co\) es de Banach y por lo tanto \(H^{*}\) es también un espacio de Banach, por lo tanto no es posible que \(H\cong H^{*}\) ya que esto implicaría que \(H\) sería completo.
+
+\subsection{Criterios de convergencia de series}
+\noindent Ya hemos mencionado sobre convergencia de series, sin embargo determinar cuando una serie es convergente o no requiere de un meticuloso análisis. Recordemos que hemos definimos una serie en un espacio normado como la susesion convergente de sumas finitas, donde representamos a su límite como una suma infinita \(\sum_{n=0}^{\infty}\ket{\psi_n}\), la cual decimos que es una \emph{serie convergente} si
+\[
+    S_k=\sum_{n=1}^k\ket{\phi_n}\rightarrow S=\sum_{n=1}^{\infty}\ket{\phi_n}\text{ cuando }k\rightarrow\infty.
+\]
+\noindent Más aún si la serie de números reales definidos por sus normas  \(\sum_{n=0}^{\infty}\|\psi_n\|\) converge, entonces diremos que la serie converge \emph{absolutamente}.
+Por lo tanto aqui se presentan los criterios más comunes de convergencia de series para espacios de \emph{Banach}, por lo que todos los epacios que consideraremos en esta sección son de esta índole. El primer criterio y además el más útil es el \emph{criterio de Cauchy}
+\begin{prop}{Criterio de Cauchy}
+  Sea \(\sum_{n=0}^{\infty}\ket{\phi_n}\) una serie en un espacio de Banach, ésta es convergente si y sólo si \(\forall\epsilon\in\re^{+}\) existe \(N\in\nat\) tal que si \(n>N\)
+  \[
+    \|\sum_{m=n+1}^{n+k}\ket{\phi_m}\|<\epsilon\quad\forall k\in\nat
+  \]
+\end{prop}
+\dem La demostración se sigue del hecho de que al estar trabajando en espacio completo entonces son equivalentes para la susesión de sumas parciales
+\[
+    S_n=\sum_{m=0}^{n}\ket{\phi_m}\text{ es convergente }\Leftrightarrow\,\{S_n\}_{n\in\nat}\text{ es de Cauchy}.
+\]
+\noindent Por lo tanto, al ser de Cauchy, para todo \(\epsilon\in\re^{+}\) existe \(N\in\nat\) tal que si \(n>N\)
+\[
+   \|S_n-S_{n+k}\|=\|\sum_{m=0}^{n}\ket{\phi_m}-\sum_{m=0}^{n+k}\ket{\phi_m}\|=\|\sum_{m=n+1}^{n+k}\ket{\phi_m}\|<\epsilon\quad\forall k\in\nat.
+\]
+\obs Si se aplica el criterio anterior al caso \(k=1\), entonces tenemos que los elementos de una serie necesariamente deben cumplir
+\[
+    \ket{\psi_n}\rightarrow 0\text{ cuando } n\to\infty
+\]
+si no, la serie \emph{diverge}.
+\QED
+\begin{prop}
+  Si la serie \(\sum_{n=0}^{\infty}\ket{\psi_n}\) converge absolutamente, entonces converge.
+  \end{prop}
+\dem Aplicando el criterio de Cauchy para la serie \(\sum_{n=0}^{\infty}\|\psi_n\|\) y la desigualdad del triángulo, entonces sea \(\epsilon\in\re\) y \(N\in\nat\) tal que para todo \(n>N\)
+\[
+ \|\sum_{m=n+1}^{n+k}\ket{\psi_m}\|\leq \sum_{m=n+1}^{n+k}\|\psi_m\|<\epsilon\quad\forall k\in\nat
+\]
+entonces por el criterio de Cauchy, \(\sum_{n=0}^{\infty}\ket{\psi_n}\) converge.
+\QED\\
+Ahora el siguiente teorema nos permite analizar las series en espacios de Banach como series de números reales
+\begin{teorema}{Prueba M de Weierstrass}
+  Sea \(\{\ket{\phi_n}\}_n\) una susesión en un espacio de Banach y \(\{M_n\}_{n\in\nat}\subset\re^{+}\) una sucesión real positiva tal que se satisface
+  \begin{align*}
+    &i)\,\|\phi_n\|\leq M_n \quad\forall n\in\nat.\\
+    &ii)\sum_{n=0}^{\infty}M_n\text{ converge}.
+    \end{align*}
+  entonces la serie de vectores
+  \[
+    \sum_{n=0}^{\infty}\ket{\phi}
+  \]
+  converge.
+\end{teorema}
+\dem Como \(\sum_{n=0}^{\infty}M_n\) converge, al igual que en la proposición anterior aplicamos el criterio de Cauchy y la desigualdad del triangulo, entonces sea \(\epsilon\in\re\) y \(N\in\nat\) tal que para todo \(n>N\)
+\[
+ \|\sum_{m=n+1}^{n+k}\ket{\psi_m}\|\leq \sum_{m=n+1}^{n+k}\|\psi_m\|\leq \sum_{m=n+1}^{n+k}M_m<\epsilon\quad\forall k\in\nat
+\]
+entonces por el criterio de Cauchy, \(\sum_{n=0}^{\infty}\ket{\psi_n}\) converge absolutamente.
+\QED\\
+\eje Sea \(A\) un operador acotado en un espacio de banach,entonces el operador \(\exp(A)\) existe y además es acotado y su norma cumple que \(\|\exp(A)\|\leq e^{\|A\|}\), donde \(\exp(A)\) se define como la serie con sumas parciales
+\[
+S_k=\sum_{n=0}^{k}\frac{A^n}{n!}\implies\exp(A)=\sum_{n=0}^{\infty}\frac{A^n}{n!}.
+\]
+entonces por la desigualdad del triangulo y el hecho de que para todo \(\rho\in\re\) la serie exponencial converge
+\[
+e^{\rho}=\sum_{n=0}^{\infty}\frac{\rho^n}{n!},
+\]
+tenemos que \(\|A^n/n!\|\leq\|A\|^n/n!=M_n\), entonces por la prueba M, la serie definida por las sumas \(S_k\) convergen y por lo tanto \(\exp(A)\) existe y
+\[
+\|\exp(A)\|=\Big\|\sum_{n=0}^{\infty}\frac{A^n}{n!}\Big\|\leq\sum_{n=0}^{\infty}\Big\|\frac{A^n}{n!}\Big\|\leq\sum_{n=0}^{\infty}\frac{\|A\|^n}{n!}=e^{\|A\|}.
+\]
+
+\subsubsection{Criterios de convergencia de series reales.}
+\noindent El teorema de la prueba M de Weierstrass implica que la convergencia de muchas series en espacios de Banach se pueden determinar de la convergencia de series de números reales, por lo tanto recordamos alguos criterios comunes de series reales. Primero veamos un ejemplo muy útil
+
+\eje Si \(\rho\in[0,1)\), entonces la \emph{serie geométrica} converge, donde se define y calcula la serie geométrica como
+\[
+\sum_{n=0}^{\infty}\rho^n=\frac{1}{1-\rho}.
+\]
+Donde por inducción se demuestra que la serie de sumas parciales es
+\[
+s_n=\sum_{k=0}^{n}\rho^k=\frac{1-\rho^{n+1}}{1-\rho}\to\frac{1}{1-\rho}\text{ cuando }n\to\infty,\,\rho<1.
+\]
+Por lo tanto, esta serie \emph{diverge} si \(\rho=1\). Una observación es que entonces para operadores en espacios de Banach, si \(\|A\|=1\), entonces la convergencia de la serie
+\[
+\sum_{n=0}^{\infty}A^n.
+\]
+\text{NO} puede ser determinada por la prueba M, pero \emph{no significa que converja}.
+
+
+\begin{prop}{Criterio de Comparación.}
+Sean \(\sum_{n=1}^\infty a_n\) y \(\sum_{n=1}^\infty b_n\) dos series tales que \(0 \leq a_n \leq b_n\) para todo \(n\). Si \(\sum_{n=1}^\infty b_n\) converge, entonces \(\sum_{n=1}^\infty a_n\) también converge
+\end{prop}
+\dem Dado que \(0 \leq a_n \leq b_n\), las sumas parciales de \(\sum a_n\) están acotadas por las sumas parciales de \(\sum b_n\). Como \(\sum b_n\) converge, sus sumas parciales están acotadas. Por lo tanto, las sumas parciales de \(\sum a_n\) también están acotadas y, por el teorema de convergencia monótona, \(\sum a_n\) converge.
+
+
+\begin{prop}{Criterio del Cociente.}
+Sea \(\sum_{n=1}^\infty a_n\) una serie con \(a_n > 0\) para todo \(n\), si el límite
+\[
+L = \lim_{n \to \infty} \frac{a_{n+1}}{a_n},
+\]
+existe, entonces
+\begin{itemize}
+\item Si \(L < 1\), la serie converge.
+\item Si \(L > 1\), la serie diverge.
+\item Si \(L = 1\), el criterio no es concluyente.
+\end{itemize}
+\end{prop}
+\dem Supongamos primero que \(L < 1\), entonces, existe \(N \in \mathbb{N}\) y \(r \in (L, 1)\) tal que para todo \(n \geq N\),
+\[
+\frac{a_{n+1}}{a_n} < r.
+\]
+Por lo tanto, \(a_{n+1} < r a_n\), así si iteramos \(k\) veces la misma desigualdad, obtenemos \(a_{n+k} < r^k a_n\).
+Entonces por el criterio de comparación tenemos la siguiente  comparacion de series
+\[
+    \sum_{k=n}^\infty a_k<\sum_{k=0}^\infty r^k a_n.
+    \]
+Como la segunda serie es una serie geométrica convergente (pues \(r < 1\)), que acota a la serie original a partir de \(n\), entonces converge.
+Ahora si \(L > 1\), existe \(N \in \mathbb{N}\) tal que para todo \(n \geq N\),
+\[
+\frac{a_{n+1}}{a_n} > 1.
+\]
+Esto implica que \(a_{n+1} > a_n\), por lo que los términos no tienden a cero y la serie diverge.
+\QED\\
+\eje Las series
+\[
+\sum_{n=1}^{\infty}\frac{1}{n}\text{ y }\sum_{n=1}^{\infty}\frac{1}{n^2}
+\]
+tienen como limite de sus cosientes 1, pero una converge y la otra diverge.
+Normalmente es muy restrictivo perdir que la susesión de raices tenga un límite ya que no en todos los casos esto sucede
+\begin{prop}{Criterio de la Raíz.}
+Sea \(\sum_{n=1}^\infty a_n\) una serie con \(a_n \geq 0\) para todo \(n\). Si existe un límite:
+\[
+L = \lim_{n \to \infty} \sqrt[n]{a_n},
+\]
+entonces:
+\begin{itemize}
+    \item Si \(L < 1\), la serie converge.
+    \item Si \(L > 1\), la serie diverge.
+    \item Si \(L = 1\), el criterio no es concluyente.
+\end{itemize}
+\end{prop}
+\dem Supongamos \(L < 1\). Entonces, existe \(N \in \mathbb{N}\) y \(r \in (L, 1)\) tal que para todo \(n \geq N\),
+\[
+\sqrt[n]{a_n} < r.
+\]
+Por lo tanto, \(a_n < r^n\) para \(n \geq N\). La serie \(\sum_{n=N}^\infty r^n\) es una serie geométrica convergente (pues \(r < 1\)), y por el criterio de comparación, \(\sum_{n=1}^\infty a_n\) converge.
+
+Si \(L > 1\), existe \(N \in \mathbb{N}\) tal que para todo \(n \geq N\),
+\[
+\sqrt[n]{a_n} > 1.
+\]
+Esto implica que \(a_n > 1\), por lo que los términos no tienden a cero y la serie diverge.
+\QED\\
+\begin{def.}{limsup y liminf.}
+Sea \(\{x_n\}_{n\in\nat}\subset\re\) una susesión de números reales, entonces se definen el límite superior y límite inferior como
+\begin{itemize}
+\item \textbf{Límite superior:}
+    \[\limsup_{n\to\infty}x_n=\inf\{\sup\{x_m\,:\,m\geq n\}\,:\,n\in\nat\}\]
+\item \textbf{Límite inferior:}
+    \[\liminf_{n\to\infty}x_n=\sup\{\inf\{x_m\,:\,m\geq n\}\,:\,n\in\nat\}\]
+\end{itemize}
+\end{def.}
+\obs Los límites superiores e inferiores siempre existen y cumplen
+\[
+\liminf_{n\to\infty}x_n\leq\limsup_{n\to\infty}
+\]
+\exe Demuestre que si \(\{X_n\}_{n\in\nat}\subset\re\) converge a un límite \(L\), entonces
+\[
+\limsup_{n\to\infty}x_n=L=\liminf_{n\to\infty}x_n
+\]
+Así se pueden refinar las pruebas del cosiente y la raiz para una serie
+\[
+\sum_{n=1}^\infty a_n
+\]
+se cumplen
+\begin{itemize}
+    \item Si \(\limsup|a_{n+1}|/|a_n| < 1\), la serie converge.
+    \item Si \(\liminf|a_{n+1}/a_n| > 1\), la serie diverge.
+    \item Si \(\liminf|a_{n+1}|/|a_n| \leq 1\leq\limsup|a_{n+1}/a_n|\), el criterio no es concluyente.
+\end{itemize}
+\noindent Similarmente para la prueba de la raiz se puede cambiar el límite de la raiz con
+\[
+L=\limsup_{n\to\infty}\sqrt[n]{|a_n|}
+\]
+\obs Las series
+\[
+\sum_{n=1}^{\infty}\frac{1}{n}\text{ y }\sum_{n=1}^{\infty}\frac{1}{n^2}
+\]
+tienen como limite de sus raies 1, pero una converge y la otra diverge.
+\subsubsection{Propiedades de las Series Convergentes}
+\noindent\textbf{Linealidad}:
+Si \(\sum_{n=1}^\infty a_n = A\) y \(\sum_{n=1}^\infty b_n = B\), entonces para cualquier \(\alpha, \beta \in \mathbb{R}\),
+\[
+\sum_{n=1}^\infty (\alpha a_n + \beta b_n) = \alpha A + \beta B.
+\]
+\dem Sean \(S_N = \sum_{n=1}^N a_n\) y \(T_N = \sum_{n=1}^N b_n\). Entonces:
+\[
+\sum_{n=1}^N (\alpha a_n + \beta b_n) = \alpha S_N + \beta T_N.
+\]
+Tomando el límite cuando \(N \to \infty\), obtenemos:
+\[
+\lim_{N \to \infty} \left( \alpha S_N + \beta T_N \right) = \alpha A + \beta B.
+\]
+\QED\\
+\noindent\textbf{Multiplicación de Series (Teorema de Mertens)}:
+Si \(\sum_{n=1}^\infty a_n = A\) y \(\sum_{n=1}^\infty b_n = B\) son series absolutamente convergentes, entonces su producto de Cauchy converge a \(AB\), donde el producto de Cauchy se define como:
+\[
+\sum_{n=1}^\infty c_n, \quad \text{con } c_n = \sum_{k=1}^n a_k b_{n-k}.
+\]
+\dem Sean \(A_n\) y \(B_n\) las sumas parciales que convergen a \(A\) y \(B\) respectivamente, es decir \(A_n\to A\) \(B_n\to B\) cuando \(n\to\infty\), similarmente sean
+\[
+C_n=\sum_{k=1}^n c_k,  \text{ y }\beta_n=B_n-B.
+\]
+\noindent Por lo tanto
+\begin{align*}
+C_n&=a_0+(a_0b_1+a_1b_0)+\dots+(a_0b_n+a_1b_{n-1}+\dots+a_nb_0)\\
+    &=a_0B_n+a_1B_{n-1}+\dots+a_nB_0\\
+    &=a_0(B+\beta_n)+a_1(B+\beta_{n-1})+\dots+a_n(B+\beta_0)\\
+    &=A_nB+a_0\beta_n+a_1\beta_{n-1}+\dots+a_n\beta_0.
+\end{align*}
+Ahora con esto se define la susesión
+\[
+\gamma_n=a_0\beta_n+a_1\beta_{n-1}+\dots+a_n\beta_0
+\]
+Como \(A_nB\to AB\), es suficiente ver que \(\gamma_n\to0\), pero esto es claro del hecho de que la serie de \(a's\) es absolutemente convergente y del hecho de que \(\beta\to0\), pues si llamamos \(\alpha\) al límite de la suma de valores absolutos de las \(a's\) y tomamos \(\epsilon\in\re^{+}\), entonces  existe \(N\in\nat\) tal que \(|\beta_n|<\epsilon\) si \(n\geq N\)
+\begin{align*}
+|\gamma_n|&\leq |a_0||\beta_n|+|a_1||\beta_{n-1}|+\dots +|a_{n-N-1}||\beta_{N+1}| +|a_{n-N}||\beta_{N}|+\dots+|a_n||\beta_0|\\
+        &\leq \epsilon\alpha +|a_{n-N}||\beta_{N}|+\dots+|a_n||\beta_0|.
+\end{align*}
+\noindent Por lo tanto como \(|a_n|\to0\) por convergencia uniforme, tenemos que
+\[
+\limsup_{n\to\infty} |\gamma_n|\leq\epsilon\alpha\quad\forall\epsilon\in\re^{+}.
+\]
+\noindent Por lo tanto \(|\gamma_n|\to0\).\QED\\
+\obs Nótese que las hipótesis del resultado anterior se pueden debilitar, pidiendo que sólo una de las series sea absolutamente convergente.
+\begin{teorema}
+Supongase que \(\{a_n\}_{n\in}\nat\) es una susesión de números positivos decreciente \(a_1\geq a_2\geq a_3\geq\dots\geq a_n\geq\dots\geq0\),entonces
+\[
+\sum_{n=1}^\infty a_n\text{ converge }\iff  \sum_{k=0}^\infty 2^ka_{2^k}\text{ converge}
+\]
+\end{teorema}
+\dem Vemos como se comportan las sumas parciales de ambas series, es decir, resvisamos el comportamiento de
+\begin{align*}
+&s_n=a_1+a_2+\dots+a_n\\
+&t_k=a_1+2a_2+\dots+2^ka_{2^k}.
+\end{align*}
+\noindent Notamos que si \(n<2^k\), por la monotonía de la susesión de los \(\{a_n\}\), se cumple que
+\[s_n\leq a_1 + (a_2+a_3)+(a_4+a_5+a_6+a_7)+\dots+(a_{2^k}+\dots+a_{2^k+1-1})\leq t_k.\]
+Por otra parte si \(n>2^k\), entonces
+\[s_n\geq a_1 + a_2+(a_3+a_4)+\dots+(a_{2^k+1}+\dots+a_{2^k})\geq\frac{1}{2} t_k.\]
+\QED\\
+\eje La función
+\[
+\zeta(p)=\sum_{n=1}^{\infty}\frac{1}{n^p}
+\]
+Converge si \(p>1\) y diverge si \(p<1\), si aplicamos el teorema anterior con la serie
+\[
+\sum_{n=1}^{\infty}2^k\frac{1}{2^{kp}}=\sum_{n=1}^{\infty}2^{k(1-p)},
+\]
+\noindent la cual claramente converge si y sólo si \(1-p<0\).
+\subsection{Un repaso de funcionse analíticas complejas}
+\noindent Para nuestros propósitos las funciones de variable compleja serán de fundamental importancia, tanto para el cálculo de integrales (transformadas de Fourier) y resolución de ecuaciones diferenciales parciales (como la ecuación de Laplace en dimensión 2), como para la aplicación de funciones analítcas a operadores (como ya se vio en el caso de la exponencial). Además vamos a ver que las funciones analíticas complejas son un caso particular de espacio de soluciones de ecuaciones difernciales parciales.
+\begin{def.}
+Una función \(f:\om\subset\co\to\co\), decimos que es una fucnión \emph{analítica} si podemos describir localcalmente cerca de cada \(z_0\in\om\) a \(f\) como una serie convergente de potencias
+\[
+f(z)=\sum_{n=1}^{\infty}a_n(z-z_0)^n
+\]
+\end{def.}
+En los cursos básicos de varaiable compleja ven que esta definición de función analítica compleja es equivalente a la propiedad de holomorficidad (diferenciabilidad compleja), por el teorema de Taylor, es decir toda funcion analítica \(f(z) = u(x, y) + iv(x, y)\) es derivable en \(z_0 = x_0 + iy_0\), es  decir, se satisfacen las ecuaciones de Cauchy-Riemann
+\[
+\frac{\partial u}{\partial x} = \frac{\partial v}{\partial y} \quad \text{y} \quad \frac{\partial u}{\partial y} = -\frac{\partial v}{\partial x}.
+\]
+\noindent Este es un sistema de ecuaciones diferenciales parciales, el cual es qeuvalente a dos ecuaciones de Laplace, ya que tanto la parte real \(u\), como la parte imaginaria \(v\), son funciones \emph{armónicas}, ahondaremos sobre esto porsteriormente.
+
+Además, la derivada de una función holomorfa es holomorfa y por lo todas sus derivadas también lo son y así se calculan los coeficientes de la serie de potencias como
+\[
+a_n = \frac{f^{(n)}(z_0)}{n!}.
+\]
+Más aún los coeficientes \(a_n\) son únicos, en el sentido de que dos series de potencias con los mismos coeficientes alrededor de \(z_0\) son iguales como funciones, por lo tanto si
+\[
+f(z)=\sum_{n=1}^{\infty}a_n(z-z_0)^n\quad g(z)=\sum_{n=1}^{\infty}b_n(z-z_0)^n,
+\]
+entonces por la linealidad de las series convergentes
+\[
+\alpha f(z)+\beta g(z)=\sum_{n=1}^{\infty}(\alpha a_n+\beta b_n)(z-z_0)^n\quad\forall\{\alpha,\beta\}\subset\co,
+\]
+y por el teorema de Mertens
+\[
+f(z)g(z)=\sum_{n=1}^{\infty}\Big( \sum_{k=1}^n a_k b_{n-k}\Big)(z-z_0)^n
+\]
+
+\noindent\textbf{Teoremas Importantes}
+
+\begin{enumerate}
+\item \textbf{Teorema de Cauchy}:
+Si \(f(z)\) es analítica en un conjunto simplemente conexo \(D\) y \(\gamma\) es una curva cerrada simple en \(D\), entonces:
+\[
+\oint_\gamma f(z) \, dz = 0.
+\]
+
+\item \textbf{Fórmula Integral de Cauchy}:
+Si \(f(z)\) es analítica en un conjunto simplemente conexo \(D\) y \(\gamma\) es una curva cerrada simple en \(D\) que encierra a \(z_0\), entonces:
+\[
+f(z_0) = \frac{1}{2\pi i} \oint_\gamma \frac{f(z)}{z - z_0} \, dz.
+\]
+
+\item \textbf{Teorema de Liouville}:
+Si \(f(z)\) es una función entera (analítica en todo \(\mathbb{C}\)) y acotada, entonces \(f(z)\) es constante.
+
+\item \textbf{Teorema Fundamental del Álgebra}:
+Todo polinomio no constante con coeficientes complejos tiene al menos una raíz en \(\mathbb{C}\).
+
+\item \textbf{Teorema del Módulo Máximo}:
+Si \(f(z)\) es analítica en un conjunto abierto y conexo, entonces \(|f(z)|\) no puede alcanzar un máximo local en ese conjunto a menos que \(f\) sea constante.
+
+\item \textbf{Principio de Continuación analítica}:
+Si dos funciones analíticas coinciden en un conjunto con un punto de acumulación, entonces son idénticas en todo su dominio común.
+\end{enumerate}
+\subsubsection{Convergencia de funciones analíticas}
+\noindent Ahora también trabajaremos con \emph{series y susesiones} de funciones analíticas, donde se trabaja con la noción de \emph{convergencia normal},
+\begin{def.}
+Sea \(\om\subset\co\) una región y \(\{f_n\}_{n\in\nat}\) una susesión de funciones analíticas, decimos que \(f_n\to f\) \emph{normalmente} si para todo compacto (disco cerrado) \(K\subset\om\)
+\(\{f_n|_{K}\}\) converge \emph{uniformemente}.
+\end{def.}
+
+\noindent{\textbf{Algunos conceptos y teoremas importantes}}
+
+\begin{enumerate}
+
+\item \textbf{Radio de Convergencia}:
+Dada una serie de potencias \(\sum_{n=0}^\infty a_n (z - z_0)^n\), el \textbf{radio de convergencia} \(R\) es el número real no negativo tal que la serie converge absolutamente para \(|z - z_0| < R\) y diverge para \(|z - z_0| > R\). Si \(R = \infty\), la serie converge para todo \(z \in \mathbb{C}\).
+
+\item \textbf{Fórmula de Cauchy-Hadamard}:
+El radio de convergencia \(R\) de una serie de potencias \(\sum_{n=0}^\infty a_n (z - z_0)^n\) está dado por:
+\[
+R = \frac{1}{\limsup_{n \to \infty} |a_n|^{1/n}}.
+\]
+
+\item \textbf{Criterio del Cociente}:
+Si el límite \(\lim_{n \to \infty} \left| \frac{a_{n+1}}{a_n} \right|\) existe, entonces el radio de convergencia es:
+\[
+R = \frac{1}{\lim_{n \to \infty} \left| \frac{a_{n+1}}{a_n} \right|}.
+\]
+
+\item \textbf{Teorema de Convergencia normal de Weierstrass}:
+Si una sucesión de funciones analíticas \(\{f_n(z)\}\) converge normalmente a una función \(f(z)\) en un conjunto abierto \(D\), entonces \(f(z)\) es analítica en \(D\). Además, las derivadas de \(f_n(z)\) convergen uniformemente a las derivadas de \(f(z)\) en todo subconjunto compacto de \(D\) (normalmente).
+
+\item \textbf{Lema de Abel}:
+Si la serie de potencias \(\sum_{n=0}^\infty a_n (z - z_0)^n\) converge en \(z = z_1 \neq z_0\), entonces converge normal y absolutamente para todo \(z\) tal que \(|z - z_0| < |z_1 - z_0|\).
+
+\end{enumerate}
+\subsection{Funciones Meromorfas y Polos}
+
+\noindent Las funciones meromorfas son una generalización de las funciones analíticas que permiten singularidades aisladas llamadas polos.
+
+\begin{def.}{Función Meromorfa.}
+\noindent Una función \(f:\om\subset\co\to\co\) es \emph{meromorfa} en un conjunto abierto \(\om \subseteq \mathbb{C}\) si es analítica en \(\om\) excepto en un conjunto de polos aislados. Un polo es una singularidad donde \(f(z)\) tiende a infinito, trabajaremos con tres tipos se singularidades
+
+\begin{enumerate}
+\item \textbf{Polo}:
+Un punto \(z_0\) es un \emph{polo} de orden \(k\) de \(f(z)\) si \(f(z)\) no es analítica en \(z_0\), pero existe un entero positivo \(k\) tal que:
+\[
+\lim_{z \to z_0} (z - z_0)^{k+1} f(z)=0
+\]
+El menor \(k\) que satisface esta condición se llama el \emph{orden} del polo.
+
+\item \textbf{Polo Simple}: Si \(k = 1\), el polo se llama \emph{polo simple}.
+
+\item \textbf{Singularidad escencial}: Si no existe  ningún \(k > 0\), tal que el límite existe, entonces llamamos \(z_0\) una \emph{singularidad escencial}.
+\end{enumerate}
+\end{def.}
+
+\begin{teorema}{Teorema de Laurent}
+Para una función meromorfa \(f:\om\subset\co\to\co\), existen
+\begin{enumerate}
+\item \textbf{Serie de Laurent}:
+Si \(f(z)\) que es analítica en una región anular \(\{R_1 < |z - z_0| < R_2\}\) puede expresarse como una \emph{serie de Laurent}:
+\[
+f(z) = \sum_{n=-\infty}^\infty a_n (z - z_0)^n,
+\]
+donde los coeficientes \(a_n\) están dados por:
+\[
+a_n = \frac{1}{2\pi i} \oint_\gamma \frac{f(z)}{(z - z_0)^{n+1}} \, dz,
+\]
+y \(\gamma\) es una curva cerrada simple en la región anular.
+
+\item \textbf{Parte Principal}:
+La parte de la serie de Laurent con potencias negativas de \((z - z_0)\) se llama la \textbf{parte principal} de \(f(z)\) en \(z_0\). Esta parte captura el comportamiento de \(f(z)\) cerca del polo \(z_0\).
+
+\item \textbf{Parte Analítica}:
+La parte de la serie de Laurent con potencias no negativas de \((z - z_0)\) se llama la \textbf{parte analítica} de \(f(z)\) en \(z_0\).
+\end{enumerate}
+\end{teorema}
+\noindent\subsubsection{Residuos y su Cálculo}
+
+\begin{def.}{Residuo}
+Dada una función \(f(z)\) con un polo aislado en \(z_0\), el \emph{residuo} de \(f(z)\) en \(z_0\) es el coeficiente \(a_{-1}\) de la serie de Laurent de \(f(z)\) alrededor de \(z_0\). Se denota por:
+\[
+\text{Res}(f, z_0) = a_{-1}.
+\]
+\end{def.}
+\noindent\textbf{Cálculo del Residuo en un Polo de Orden \(k\)}:
+Si \(z_0\) es un polo de orden \(m\) de \(f(z)\), entonces:
+\[
+\text{Res}(f, z_0) = \frac{1}{(k-1)!} \lim_{z \to z_0} \frac{d^{k-1}}{dz^{k-1}} \left( (z - z_0)^k f(z) \right).
+\]
+
+\begin{teorema}{Teorema del Residuo}
+Si \(f(z)\) es analítica en un conjunto abierto \(\om\) excepto en un número finito de singularidades aisladas \(z_1, z_2, \dots, z_n\), y \(\gamma\) es una curva cerrada simple en \(\om\) que no pasa por ninguna singularidad, entonces:
+\[
+\oint_\gamma f(z) \, dz = 2\pi i \sum_{k=1}^n \text{Res}(f, z_k).
+\]
+\end{teorema}
+
+\subsection{Aplicaciones al Cálculo de Integrales}
+
+\begin{enumerate}
+\item \textbf{Integrales Impropias Reales}:
+Para evaluar integrales impropias de la forma:
+\[
+\int_{-\infty}^\infty f(x) \, dx,
+\]
+donde \(f(x)\) es una función racional sin polos en el eje real y que decae suficientemente rápido en el infinito, se considera la integral en el plano complejo sobre un semicírculo en el semiplano superior o inferior. Si \(f(z)\) tiene polos en el semiplano superior en \(z_1, z_2, \dots, z_n\), entonces:
+\[
+\int_{-\infty}^\infty f(x) \, dx = 2\pi i \sum_{k=1}^n \text{Res}(f, z_k).
+\]
+
+\item \textbf{Integrales de Funciones Trigonométricas}:
+Para evaluar integrales de la forma:
+\[
+\int_0^{2\pi} R(\cos \theta, \sin \theta) \, d\theta,
+\]
+donde \(R\) es una función racional, se hace la sustitución \(z = e^{i\theta}\). La integral se transforma en una integral de contorno en el plano complejo:
+\[
+\int_0^{2\pi} R(\cos \theta, \sin \theta) \, d\theta = \oint_{|z|=1} R\left( \frac{z + z^{-1}}{2}, \frac{z - z^{-1}}{2i} \right) \frac{dz}{iz}.
+\]
+Los residuos de los polos dentro del círculo unitario se suman para obtener el valor de la integral.
+
+\item \textbf{Transformada de Fourier}:
+La transformada de Fourier de una función \(f(x)\) se define como:
+\begin{equation}
+\hat{f}(\xi) = \int_{-\infty}^\infty f(x) e^{-i \xi x} \, dx.
+\end{equation}
+Si \(f(x)\) es una función racional sin polos en el eje real y que decae suficientemente rápido en el infinito, la integral puede evaluarse usando el teorema del residuo. Para \(\xi > 0\), se cierra el contorno en el semiplano inferior, y para \(\xi < 0\), se cierra en el semiplano superior. Si \(f(z)\) tiene polos en el semiplano superior en \(z_1, z_2, \dots, z_n\), entonces:
+\[
+\hat{f}(\xi) = 2\pi i \sum_{k=1}^n \text{Res}(f(z) e^{-i \xi z}, z_k) \quad \text{para } \xi > 0.
+\]
+Si \(f(z)\) tiene polos en el semiplano inferior en \(w_1, w_2, \dots, w_m\), entonces:
+\[
+\hat{f}(\xi) = -2\pi i \sum_{k=1}^m \text{Res}(f(z) e^{-i \xi z}, w_k) \quad \text{para } \xi < 0.
+\]
+\end{enumerate}
+
+\section{Teoría de la Medida}
+\noindent La teoría de la medida nos proporciona un marco teorico lo suficientemente robusto y abstracto como para fundamentar la teoría de integración completamente y al mismo tiempo fundamentar la teoría de los espacios de Hilbert (y por lo tanto la teoría de sus álgebras de operadores, la cual es una teoría muy importatnte para la teoría cuántica) y proporcionar los ejemplos más importantes de espacios de Banach. Muchos matemáticos con inclinaciones más aplicadas tienden a tener una cierta aversión a la teroría de la medida (véase ET Jaynes) por su inclinaciones a la abstración y generalización, ya que es verdad que el nivel de generalización de la teoría de la medida es el mismo que la teoría de los conjuntos con el axioma de eleción o la teoría de funciones computables. Aunque sea verdad que ciertos aspectos de esta teoría se pueden sentir un tanto asperos para alguien que los estudia por primera vez, también es verdad que ela analisis moderno requiere de las herramientas que la teoría de la medida provee.
+
+\begin{def.}{$\sigma$-Álgebras.}
+Una $\sigma$-álgebra $\sig$ sobre un conjunto $X$ es una colección de subconjuntos de $X$ cerrada bajo complementos y uniones numerables. Formalmente
+\begin{itemize}
+    \item $X \in \sig$.
+    \item Si $A \in \sig$, entonces $A^c \in \sig$.
+    \item Si $\{A_n\}_{n \in\nat} \subseteq \sig$, entonces
+      \[
+      \bigcup_{n=1}^\infty A_n \in \sig.
+      \]
+\end{itemize}
+Un conjunto con una sigma álgebra $(X,\sig)$ le llamamos un espacio \emph{medible}.
+\end{def.}
+\obs Si $\{A_n\}_{n \in \mathbb{N}} \subseteq \sig$, entonces $\bigcap_{n\in\nat} A_n \in \sig$ ya que claramente $\{A_n^c\}_{n \in \mathbb{N}} \subseteq \sig$ y por lo tanto $\bigcap_{n\in\nat} A_n=(\bigcup_{n\in\nat} A_n^c)^c\in\sig$.\\
+\obs El nombre ``$\sigma$-álgebra'' viene de dos partes, una es el prefijo $\sigma$ que significa ``numerable'' el cual viene del hecho de que las $\sigma$-álgebras son cerradas bajo uniones numerables. La segunda parte ``álgebra'' viene del hecho de que en efecto son un álgebra de conjuntos, donde la suma y el producto se definen como
+\begin{itemize}
+    \item \textbf{Suma: Diferencia simétrica}: $A\oplus B:=A\triangle B=(A\setminus B)\cup(B\setminus A)=(A\cap B^c)\cup(B\cap A^c)$.
+    \item \textbf{Producto: Intersección de conjuntos}: $A\cdot B:= A\cap B$.
+\end{itemize}
+esto hace que toda $\sigma$-álgebra sea un álgebra en el sentido (valga la redundancia) algebraico.
+
+\eje Los dos ejemplos más simples y por lo tanto considerados como ejemplos triviales son:
+\begin{itemize}
+    \item \textbf{$\sigma$-álgebra trivial}: $\{\emptyset, X\}$.
+    \item \textbf{$\sigma$-álgebra total}: $\sig=\mathcal{P}(X)=\{A\subset X\}$.
+\end{itemize}
+
+Claramente no sólo se puede quedar uno con los ejemplos más simples y para esto es necesario la noción de $\sigma$-ágebra generada
+\begin{def.}
+  Sea $X$ un conjunto y sea $\Lambda\subset\mathcal{P}(X)$ una familia de conjuntos de $X$, se define la sigma álgebra generada por $\Lambda$ como la $\sigma$-álgebra más chica que contiene a $\Lambda$, formalmente es
+  \[
+  \sigma(\Lambda):=\bigcap\{\sig\,:\,\Lambda\subset\sig,\,\sig\,\,\sigma\text{-álgebra}\}
+  \]
+\end{def.}
+\eje \textbf{$\sigma$-álgebra de Borel}: Generada por los abiertos de un espacio topológico $X$, también conocida como la topología de $X$, normalmente denotada por $\tau_X$. Se denota por $\mathbb{B}(X)=\sigma(\tau_X)$. En $\mathbb{R}^n$, la denotamos por $\mathbb{B}(\mathbb{R}^n)$ y es generada por las bolas abiertas, si $n=1$, es generada por intervalos abiertos.
+
+\obs Los puntos son conjuntos cerrados y por lo tanto Borel medibles, por lo tanto cualquier subconjunto \emph{numerable} es medible, eso quiere decir que tanto $\rac$ como $\re\setminus\rac$ son medibles. Más aún, podemos verificar la enormidad de la sigma álgebra de Borel $\mathbb{B}(\re)$ notando que todo intervalo es parte del álgebra ya que los intervalos cerrados con complementos de abiertos, ahora los semicerrados se pueden ver como intersecciones numerables
+\[
+[a,b)=\bigcap_{n=1}^{\infty}(a-\frac{1}{n},b)\quad(a,b]=\bigcap_{n=1}^{\infty}(a,b+\frac{1}{n})
+\]
+En general se puenden definir las familia $\mathcal{F}_{\sigma}$ de conjuntos que se obienen como unión numerable de conjuntos cerrados y $\mathcal{G}_{\delta}$ como la familia de conjuntos que se obtienen como intersección numerable de conjuntos cerrados inductivamente se puede definir los conjuntos $\mathcal{G}_{\sigma\delta}$ como las uniones numerables de conjuntos $\mathcal{G}_{\delta}$ y los conjuntos $\mathcal{F}_{\delta\sigma}$ como las intersecciones numerables de conjuntos $\mathcal{F}_{\sigma}$ y seguir así ad infinitum, claramente todos estos conjuntos pertenecen a $\mathbb{B}(\re)$ y sin embargo se puede demostrar que nunca van a agotar a $\mathbb(\re)$. Sin embargo $\mathbb(\re)$ no puede ser $\mathcal{P}(\re)$ pues al mismo tiempo se pude demostrar que el álgebra de Borel tiene la misma cardinalidad de $\re$.
+\subsection{Medidas}
+\begin{def.}
+Una medida $\mu$ en $(X, \sig)$ es una función $\mu: \sig \to [0, \infty]$ que satisface:
+\begin{enumerate}
+    \item $\mu(\emptyset) = 0$.
+    \item $\sigma$-aditividad: Para $\{A_n\}_{n \in \mathbb{N}}$ disjuntos, se cumple que
+      \[
+      \mu\left(\bigcup_{n=1}^\infty A_n\right) = \sum_{n=1}^\infty \mu(A_n).
+      \]
+\end{enumerate}
+Decimos que la terna $(X,\sig,\mu)$ es un espacio de \emph{medida}
+\end{def.}
+
+\eje Los ejemplos con los que trabajraremos pricipalmente:
+\begin{itemize}
+    \item \textbf{Medida de conteo}: $\mu(A) = |A|$ si $A$ es finito, $\mu(A) = \infty$ si no, en particular si $X$ es finito entonces $\mu$ se puede sedinir para cualquier conjunto.
+    \item \textbf{Medida de Lebesgue}: La única medida $\lambda$ en $\mathcal{B}(\mathbb{R})$ que asigna a cada rectángulo $[a,b]$ su medida es la longitud $b - a$.
+    \item \textbf{Medida de Lebesgue en $\re^n$}: La única medida $\lambda$ en $\mathcal{B}(\mathbb{R}^n)$ que asigna a cada rectángulo $[a_1, b_1] \times \dots \times [a_n, b_n]$ su volumen $\prod_{i=1}^n (b_i - a_i)$.
+\end{itemize}
+
+\exe Si $(X,\sig,\mu)$ es un espacio de medida y $E\in\sig$ es un conjunto no nulo, entonces $(E,\sig_E,\mu_E)$ es un espacio de medida con $\sig_E=\{A\cap E\,:\,A\in\sig\}$ y $\mu_E(A)=\mu(E\cap A)$
+
+\obs Una medida de longitud máxima 1 se le llama \emph{medida de probabilidad} y todo espacio de medida finita se puede normalizar a un espacio de probabilidad si se divide entre la medida total.
+
+\eje \textbf{La medida del conjunto de Cantor:} Se define el conjunto de cantor $\mathcal{C}$ en $[0,1]$ como la intersección numerable de los conjuntos $C_n$ obtetnidos recursivamente quitando el tercio de en medio en los intervalos definidos en $C_{n-1}$, donde $C_0=[0,1]$, entonces $C_1=[0,1/3]\cup[2/3,1]$, $C_1=[0,1/9]\cup[2/9,1/3]\cup[2/3,7/9]\cup[8/9,1]$, etc. Entonces el conjunto de cantor se define como la intersección
+\[
+\mathcal{C}=\bigcap_{n=0}^{\infty}C_n
+\]
+Entonces, al ser el conjunto de Cantor un conjunto cerrado, ¿Cuánto es la medida de Lebesgue de $\mathcal{C}$? La forma más sencilla es obteniendo la medida de su complemento, es decir la suma de las medidas de los intervalos que retiramos, analizando bien el procedimiento en el que se obtuvo $\mathcal{C}$
+\begin{align*}
+\lambda(\mathcal{C})&=1-\lambda(\mathcal{C}^c)=1-\lambda\Big(\bigcup_{n=1}^{\infty}C_n^c\Big)=1-\sum_{n=1}^{\infty}\lambda({C_n^c})\\
+                    &=1-\sum_{n=1}^{\infty}\frac{2^{n-1}}{3^n}=1-\frac{1}{3}\sum_{n=0}^{\infty}\frac{2^{n}}{3^n}=1-\frac{1}{3}\Big(\frac{1}{1-2/3}\Big)=0.
+\end{align*}
+\obs Se puede demostrar que $\mathcal{C}$ tiene la misma cardinalidad que $\re$ viendo la expansión en base $3$ de los elementos en $\mathcal{C}$.
+\begin{def.}
+Decimos que un conjunto $E$ es \emph{nulo} o de medida cero si $\mu(E)=0$, si una proposición se cumple en un espacio de medida $(X,\sig,\mu)$ \emph{salvo} un conjunto de medida cero, decimos que la proposición se cumple \emph{casi donde quiera} o \emph{casi siempre} y se abrevia como c.s..
+
+  Más aún, un espacio de medida se dice \emph{completa} si para todo nulo $N\in\sig$ se cumple que todo subconjunto $M\subset N$ pertenece a $\sig$, es decir $\mathcal{P}(N)\subset\sig$
+\end{def.}
+\obs La sigma álgebra de Borel no es completa, pero el teorema de \emph{Caratheodory-Hopf} asegura que toda medida se puede completar, el resultado de este proceso es conocida como la $\sigma$-álgebra de Lebesque y ésta tiene la misma cardinalidad que $\mathcal{P}(\re)$ ¿Por qué?
+\subsection{Funciones Medibles e Integrales}
+\noindent Una de las principales ventajas de la teoría de la medida es que expande ampliamente las familias de funciones que son integrables, sin embargo la naturaleza de las propociciones que se cumplen casi siempre es que se pierde hasta cierto punto el comportamiento puntual de las funciones.
+\begin{def.}
+Una función $f: X \to \mathbb{R}$ es $\sig$-medible si se cumplen alguna de las siguientes propiedades equivalentes
+\begin{itemize}
+  \item $f^{-1}((-\infty, a]) \in \sig$ para todo $a \in \mathbb{R}$
+  \item $f^{-1}((-\infty, a) \in \sig$ para todo $a \in \mathbb{R}$
+  \item $f^{-1}((a, \infty)) \in \sig$ para todo $a \in \mathbb{R}$
+  \item $f^{-1}([a, \infty)) \in \sig$ para todo $a \in \mathbb{R}$
+  \item $f^{-1}((a, b)) \in \sig$ para todo $\{a,b\} \subset \mathbb{R}$
+  \item $f^{-1}([a, b]) \in \sig$ para todo $\{a,b\} \subset \mathbb{R}$
+  \item $f^{-1}([a, b)) \in \sig$ para todo $\{a,b\} \subset \mathbb{R}$
+  \item $f^{-1}([a, b)) \in \sig$ para todo $\{a,b\} \subset \mathbb{R}$
+\end{itemize}
+\end{def.}
+\exe Sea $\{f_n\}$ una susesión de funciones medibles tal que $\{f_n(x)\}$ es acotada ara toda $x\in X$, demuestre que las siguientes funciones son medibles
+\begin{enumerate}
+\item $m_n(x)=\min\{f_i(x)\,:\,i\in\{1,2,\dots,n\}\}$
+\item $M_n(x)=\max\{f_i(x)\,:\,i\in\{1,2,\dots,n\}\}$
+\item $m(x)=\inf\{f_n(x)\,:\,n\in\nat\}$
+\item $M(x)=\min\{f_n(x)\,:\,n\in\nat\}$
+\item $f^{*}(x)=\limsup_{n\to\infty}f_n(x)$
+\item $f_*(x)=\liminf_{n\to\infty}f_n(x)$
+\end{enumerate}
+\eje Dado $E\in\sig$, se define la \emph{función característica o función indicadora} de $E$ como
+\[
+\chi_E(x)=
+    \begin{cases}
+        1 & \text{ si } x\in E \\
+        0 & \text{ si } x\not\in E.
+    \end{cases}
+\]
+\noindent $\chi_E$ es claramente medible pues $\chi_E^{-1}(a, b)$ es $X,\emptyset$ o $E$ dependiendo de $a$ y $b$.
+\eje Algunas funciones famosas son funciones características, por ejemplo la función de Heaviside ya que $[0,\infty]\in\mathbb(\re)$
+\[
+H(x)=\chi_{[0,\infty)}(x)=
+    \begin{cases}
+        1 & \text{ si } x\geq 0 \\
+        0 & \text{ si } x<0.
+    \end{cases}
+\]
+\noindent otra función característa es la función de Dirichlet
+\[
+\chi_{\rac}(x)=
+    \begin{cases}
+        1 & \text{ si } x\in\rac \\
+        0 & \text{ si } x\not\in\rac.
+    \end{cases}
+\]
+\exe Demuestre que las combinaciones lineales de funciones medibles son medibles.
+\begin{def.}{Funciones Simples.}
+Una función \emph{simple} es de la forma
+\[
+s = \sum_{i=1}^n a_i \chi_{A_i},\text{ donde }A_i \in \sig.
+\]
+\end{def.}
+\begin{def.}
+Sea $s$ una función simple, se define su integral si
+\[
+s = \sum_{i=1}^n a_i \chi_{A_i},\implies\int s \, d\mu = \sum_{i=1}^n a_i \mu(A_i).
+\]
+\end{def.}
+\obs Se puede demostrar que toda función medible no negativa es aproximable por una susesión \emph{creciente} o \emph{decreciente} de funciones simples, la proposición más formal es la siguiente
+\begin{prop}
+  Sea $(X,\sig)$ un espacio medible y $f:X\to\re$ una función medible no negativa, entonces existe $\{s_n\}_{n\in\nat}$ una susesión de funciones medibles no negativas tales que
+  \begin{enumerate}
+    \item $s_n\leq s_{n+1}\leq f$
+    \item $\forall x \in X,\, f(x)=\lim_{n\to\infty}s_n(x).$
+    \item Si $f$ es acotada, entonces $s_n\to f$ uniformemente en $X$.
+  \end{enumerate}
+  \end{prop}
+\begin{def.}{Integral de Lebesgue.}
+Para $f \geq 0$ medible, la integral se define como:
+\[
+\int f \, d\mu = \sup \left\{ \int s \, d\mu : s \text{ simple}, 0 \leq s \leq f \right\}.
+\]
+Decimos que $f$ es integrable si dicho supremo es finito.
+\end{def.}
+\obs Para funciones generales, $f$ se descompone en $f^+$ y $f^-$, es decir $f=f^{+}-f^{-}$, donde se definen $f^+=\max\{f,0\}$ y $f^{-}=\max\{-f,0\}$ ambas positivas, entonces
+\[
+\int f \, d\mu = \int f^{+}\,d\mu-\int f^{-}\,d\mu.
+\]
+Más aún, se define $|f|=f^{+}+f^{-}$ y decimos que $f$ es integrable ó de tipo $\mathcal{L}^1(X,\mu)$ si $|f|$ es integrable.
+
+\noindent\textbf{Propiedades Clave}
+\begin{itemize}
+    \item Linealidad:
+      \[
+      \int (af + bg) \, d\mu = a\int f \, d\mu + b\int g \, d\mu\quad\forall{a,b}\subset\re.
+      \]
+    \item Monotonicidad: Si $f \leq g$, entonces
+      \[
+      \int f \, d\mu \leq \int g \, d\mu.
+      \]
+    \item Desigualdad del valor absoluto
+      \[
+      \Big|\int f \, d\mu\Big| \leq \int |f| \, d\mu.
+      \]
+\end{itemize}
+
+\exe Se define la integral en un subconjunto medible $E\in\sig$ como
+\[
+\int_E f \, d\mu = \int f\chi_E\,d\mu.
+\]
+Pruebe que si $f\geq 0$, entonces la función $\mu_f:\sig\to\re$ definida como
+\[
+\mu_f(E)=\int_E f \, d\mu.
+\]
+Es una medida y que todo subconjunto nulo de $\mu$ es subconjunto nulo de $\mu_f$.
+\begin{teorema}{de Lebesgue.}
+Sea $f:[a,b]\to\re$ una función acotada, entonces
+\begin{itemize}
+  \item $f$ es Riemann-integrable si y sólo si es continua casi donde quiera relativo a $\lambda$
+  \item  Si $f$ es Riemann-integrable, entonces es Lebesgue integrable y
+\[
+\int_a^b f(x) \, dx=\int_{[a,b]} f \, d\lambda.
+\]
+  \end{itemize}
+\end{teorema}
+\obs Para definir funciones integrables con valores complejos, sólo es necesario fijarse en su parte real e imaginaria.
+\subsection{Convergencia de Funciones Medibles}
+\noindent Ahora veremos los teorema de convergencia más importantes para las manipulaciones de funciones más comunes en ecuaciones diferenciales, es decir loa teoremas que permiten intercambiar límites e integrales y así obterner continuidad de los peradores integrales.
+\noindent\textbf{Tipos de Convergencia}
+\begin{itemize}
+    \item \textbf{Puntual}: $f_n(x) \to f(x)$ para toda $x\in X$.
+    \item \textbf{Casi en todas partes (c.t.p.)}: $f_n(x) \to f(x)$ excepto en un conjunto de medida cero.
+    \item \textbf{Casi uniforme (c.u.)}: $f_n \to f$ uniformemente excepto en un conjunto de medida cero.
+\end{itemize}
+Ahora mencionamos algunos de los teorema más importantes sobre convergencia de funciones integrables
+\begin{teorema}{Convergencia Monótona.}
+  Sea $\{f_n\}_{n\in\nat}$ una susesión de funciones tales que $f_n \leq f_{n+1}$ para toda $n\in\nat$ tal que $f_n\to f$ c.t.p., entonces
+\[
+  \lim_{n \to \infty} \int f_n \, d\mu = \int f \, d\mu.
+  \]
+  \end{teorema}
+Sin embargo el teorema más importante de convergencia es
+\begin{teorema}{Convergencia Dominada.}
+Sea $\{f_n\}_{n\in\nat}$ una susesión de funciones integrables $f_n \to f$ c.t.p. y $|f_n| \leq g$ c.t.p. con $g$ integrable, entonces $f$ es integrable y
+\[
+ \int_E f \, d\mu=\lim_{n \to \infty} \int_E f_n \, d\mu.
+\]
+\noindent Para toda $E\in\sig$.
+\end{teorema}
+
+\exe\textbf{Lema de Fatou}: Si $\{f_n\}_{n\in\nat}$ es una susesión de funciones integrables tal que $f_n \geq 0$, entonces
+\[
+\int \liminf_{n \to \infty} f_n \, d\mu \leq \liminf_{n \to \infty} \int f_n \, d\mu.
+\]
+El siguiente es un corolario que usaremos todo el tiempo.
+\begin{cor}
+  Sean $(X,\sig,\mu)$ un espacio de medida y $a<b$. Si $F:X\times(a,b)\to\re$ es una función tal que para toda $t\in(a,b)$ la función $F_t:X\to\re$ definida por $F_t(x)=F(x,t)$ es medible y para todo $x\in X$, la función $F_x:(a,b)\to\re$ definida por $F_x(t)=F(x,t)$ es continua, más aún, si existe $g\in\mathcal{L}^1(X,\mu)$ tal que $|F(x,t)|\leq|g(x)|$ para todo $(x,t)\in X\times(a,b)$, entonces la función integral
+\begin{equation}
+  f(t)=\int F_t\,d\mu\quad\text{es continua.}
+  \end{equation}
+\end{cor}
+\dem Sea $t_n\to t$ una susesión convergente en $(a,b)$, veamos que $f(t_n)\to f(t)$, pero como $F(x,t)$ siempre está dominada, entonces la susesión $F_{t_n}$ tambiésn esta dominada, además por continuidad de $F_x$, $F_{t_n}\to F_t$ puntuamente, así
+\[
+f(t)=\int F_t(x)\,d\mu=\int\lim_{n\to\infty}F_{t_n}\,d\mu=\lim_{n\to\infty}\int F_{t_n}\,d\mu=\lim_{n\to\infty}f(t_n)
+\]
+\QED\\
+\begin{cor}
+Siguiendo las mismas hipótesis que en el corloario anterior, si además $F$ es deribable con respecto a $t$ y existe $t_0$ tal que $F_{t_0}$ es integrable y más aún, existe $h\in\mathcal{L}^1(X,\mu)$ tal que $|\partial_t F(x,t)|\leq|h(x)|$ para todo $(x,t)\in X\times(a,b)$, entonces la función integral
+\begin{equation}
+  f(t)=\int F_t\,d\mu\text{ es diferenciable y } f'(t)=\int \dfrac{\partial F}{\partial t}(x,t)\,d\mu(x)
+  \end{equation}
+\end{cor}
+\dem Sea $t_n\to t$ una susesión convergente en $(a,b)$ tal que $t_n\neq t$, definimos la susesión funciones
+\[
+f_n(x)=\frac{F_{t_n}(x)-F_t(x)}{t_n-t},
+\]
+entonces $f_n(x)\to\partial_tF(x,t)$, pero como $\partial_t F(x,t)$ siempre está dominada, entonces por la desigualdad del punto medio la susesión $f_{n}$ tambiésn esta dominada por una $h_1$ integrable, así
+\[
+\lim_{n\to\infty}\frac{f(t_n)-f(t)}{t_n-t}\,d\mu=\lim_{n\to\infty}\int f_{n}\,d\mu=\int\lim_{n\to\infty}f_{n}\,d\mu=\int \dfrac{\partial F}{\partial t}(x,t)\,d\mu
+\]
+\QED\\
+\noindent\textbf{Los espacios clásicos de Banach}
+\noindent Unos espacios que son particularmente importantes para la teoría de ecuaciones diferenciales parciales que sólo mencionaremos brevemente, son los espacios clásicos de Banach comunmente denotados como $\mathcal{L}^p(X,\mu)$.
+\begin{def.}
+  Se denota $\mathcal{L}^1(X,\mu)$ al espacio de funciones integrables y se define su norma como
+\[
+  \|f\|_1=\int|f|\,d\mu.
+\]
+  \end{def.}
+\obs No es muy dificil demostrar que $\mathcal{L}^1(X,\mu)$ es un espacio vectorial normado usando las propiedades de la integral, salvo una pequeña sutileza, se tienen que identificar funciones como \emph{idénticas si son iguales salvo un conjunto de medida cero} o identicas casi en todas partes.\\
+\eje Si $X=\{1,\dots,n\}$ y $\sig=\mathcal{P}(X)$, entonces toda $f:X\to\co$ es medible y más aún si $\mu(E)=|E|$ es la medida de conteo, toda función es integrable, ahora si $a:X\to\co$ es una función, en particular es simple
+\[
+ a=\sum^n_{i=1}a(i)\chi_{\{i\}}\implies\int a\,d\mu=\sum^n_{i=1}a(i),\,\int |a|\,d\mu=\sum^n_{i=1}|a(i)|
+ \]
+entonces se puede definir un isomorfimso con $\con$ como sigue
+\[
+\varphi:\mathcal{L}^1(X,\mu)\to\con\quad\mapsto(a(1),\dots,a(n))\in\con.
+\]
+\eje Siguiendo la lógica del ejemplo anterior, si $X=\nat$, $\sig=\mathcal{P}(\nat)$, y $\mu$ la medida de conteo entonces $\mathcal{L}^1(\nat,\mu)$ es el espacio de funciones \emph{absolutamente convergentes.}\\
+Más en general se definen los espacios clásiscos de Banach (porque fueron los primeros ejemploa conocidos de espacios de Banach) como
+\begin{def.}{Espacios $\mathcal{L}^p(X,\mu)$.} Sea $(X,\sig,\mu)$ un espacio de medida y $p\in[1,\infty)$, decimos que $f\in\mathcal{L}^p(X,\mu)$ si $|f|^p\in\mathcal{L}^1$, se puede demostrar que éste es un espacio vectorial normado, donde su norma se define como
+\[
+\|f\|_p = \left(\int |f|^p \, d\mu\right)^{1/p}.
+\]
+\end{def.}
+\begin{teorema}
+  Para $(X,\sig,\mu)$ y $p\in[1,\infty)$, los espacios $\mathcal{L}^p(X,\mu)$ son completos y por lo tanto de Banach, en particular si $X=\om\subset\re^n$ con $\om$ una región, los espacios $\mathcal{L}^p(\om,\lambda)$ son la completción de los espacios de funciones continuas, $\mathcal{C}^{p}(\om)$ con $f\in\mathcal{C}^{p}(\om)$ si y sólo si $|f|^p$ es riemann integrable.
+  \end{teorema}
+\obs Nos enfocaremos en los espacios $\mathcal{L}^2(X,\mu)$ ya que estos son los únicos que tienen un producto interno y por lo tanto son de Hilbert, donde
+\[
+\braket{\phi|\psi}=\int\overline{\phi}(x)\psi(x)\,d\mu(x)\text{ para }\{\psi,\phi\}\subset\mathcal{L}^2(X,\mu).
+\]
+%%\chapter{Series de Fourier}
+%%\noindent Ahora tenemos las herramientas para establecer las \emph{series de Fourier} como aproximadores de funciones, sin embargo para hacer esto, haremos uso de un teorema muy importante en el análisis matemático, llamado el \emph{Teorema de Stonne-Weierstrass}, por lo que necesitamos las iguientes definiciones
+%%
+%%\begin{def.}{Álgebra de Funciones.}
+%%    Sea \(\om\subset\re^n\) un espacio compacto. Un conjunto \(\mathcal{A}\) de funciones continuas \(f: \om \to \mathbb{R}\) (o \(\mathbb{C}\)) se llama una \emph{álgebra} si es cerrado bajo:
+%%    \begin{itemize}
+%%        \item Suma: \(f + g \in \mathcal{A}\) para todo \(f, g \in \mathcal{A}\).
+%%        \item Producto: \(f \cdot g \in \mathcal{A}\) para todo \(f, g \in \mathcal{A}\).
+%%        \item Multiplicación por escalares: \(\alpha f \in \mathcal{A}\) para todo \(\alpha \in \mathbb{R}\) (o \(\mathbb{C}\)) y \(f \in \mathcal{A}\).
+%%    \end{itemize}
+%%\end{def.}
+%%\begin{def.}{Conjunto de funciones que Separan Puntos.}
+%%Un conjunto \(\mathcal{A}\) de funciones en \(\om\) se dice que \textbf{separa puntos} si para todo par de puntos distintos \(x, y \in \om\), existe una función \(f \in \mathcal{A}\) tal que \(f(x) \neq f(y)\).
+%%\end{def.}
+%%
+%%\begin{teorema}{Teorema de Stone-Weierstrass.}
+%%Sea \(\om\subset\re^n\) un espacio compacto y \(\mathcal{A}\) una subálgebra de \(C(\om, \mathbb{R})\) (o \(C(\om, \mathbb{C})\)), el espacio de todas las funciones continuas en \(\om\) con valores en \(\mathbb{R}\) (o \(\mathbb{C}\)). Si \(\mathcal{A}\) satisface:
+%%\begin{enumerate}
+%%    \item \(\mathcal{A}\) contiene las funciones constantes.
+%%    \item \(\mathcal{A}\) separa puntos.
+%%\end{enumerate}
+%%Entonces, \(\mathcal{A}\) es \textbf{densa} en \(C(\om, \mathbb{R})\) (o \(C(\om, \mathbb{C})\)) con respecto a la norma del supremo. Es decir, para toda función continua \(f \in C(\om, \mathbb{R})\) (o \(C(\om, \mathbb{C})\)) y para todo \(\epsilon > 0\), existe una función \(g \in \mathcal{A}\) tal que:
+%%\[
+%%\|f - g\|_\infty < \epsilon.
+%%\]
+%%\end{teorema}
+
+
+
+\begin{thebibliography}{9}
+
+\bibitem{Wein} H.F. Weinberger ``A First Course In Partial Differential Equations With Complex Variables and Transform Methods'', Dover Books On Mathematics, New York.
+\bibitem{Lebedev} N.N. Lebedev ``Special Functions \& Their Applications'', Dover Books On Mathematics, New York.
+\bibitem{Afken} Arfken, George B. et all, ``Mathematical Methods for Physicist, A Comprehensive Guide.'', Ed. Elsevier, Seventh Edition.
+\bibitem{Appfel} Appfel, Walter, ``Mathematics for Physics \& Physicists.'', Ed. Princeton University Press, 2007.
+\bibitem{Churchill} Churchill R. V. and Brown J. W., ``Fourier Series and Boundary Value Problems'', Ed McGraw-Hill.
+\bibitem{Cour-Hil} Courant R and D. Hilbert, ``Methods of Mathematical Physics.'', vol. 1 y 2.
+\bibitem{Tijoniv} Tijonov A, ``Ecuaciones de la Física Matemática'', Ed. MIR Moscu, Segunda edición, 1980.
+\bibitem{Vladimiriv} Vladimirov V. S. , ``Equations of Mathematical Physics'', Ed. URSS Moscow, 1996.
+\bibitem{Kreyszig} E. Kreyszig ``Introductory Functional Analysis With Applications'', John Wily \& Sons.
+
+\end{thebibliography}
+
+\end{document}

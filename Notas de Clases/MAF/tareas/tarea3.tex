@@ -1,0 +1,124 @@
+% Created 2025-02-06 Thu 20:56
+% Intended LaTeX compiler: pdflatex
+\documentclass[letterpaper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{longtable}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{capt-of}
+\usepackage{hyperref}
+\usepackage{lmodern} % Ensures we have the right font
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{amsmath, amsthm, amssymb, amsfonts, amssymb, amscd}
+\usepackage[table, xcdraw]{xcolor}
+%\usepackage{mdsymbol}
+\usepackage{tikz-cd}
+\usepackage{float}
+\usepackage[spanish, activeacute, ]{babel}
+\usepackage{color}
+\usepackage{transparent}
+\graphicspath{{./figs/}}
+\usepackage{makeidx}
+\usepackage{afterpage}
+\usepackage{array}
+\usepackage{braket}
+\usepackage{pst-node}
+\newtheorem{teorema}{Teorema}[section]
+\newtheorem{prop}[teorema]{Proposici\'on}
+\newtheorem{cor}[teorema]{Corolario}
+\newtheorem{lema}[teorema]{Lema}
+\newtheorem{def.}{Definici\'on}[section]
+\newtheorem{afir}{Afirmaci\'on}
+\newtheorem{conjetura}{Conjetura}
+\renewcommand{\figurename}{Figura}
+\renewcommand{\indexname}{\'{I}ndice anal\'{\i}tico}
+\newcommand{\zah}{\ensuremath{ \mathbb Z }}
+\newcommand{\rac}{\ensuremath{ \mathbb Q }}
+\newcommand{\nat}{\ensuremath{ \mathbb N }}
+\newcommand{\prob}{\textbf{P}}
+\newcommand{\esp}{\mathbb E}
+\newcommand{\eje}{{\newline \noindent \sc \textbf{Ejemplo. }}}
+\newcommand{\obs}{{\newline \noindent \sc \textbf{Observación. }}}
+\newcommand{\dem}{{\noindent \sc Demostraci\'on. }}
+\newcommand{\bg}{\ensuremath{\overline \Gamma}}
+\newcommand{\ga}{\ensuremath{\gamma}}
+\newcommand{\fb}{\ensuremath{\overline F}}
+\newcommand{\la}{\ensuremath{\Lambda}}
+\newcommand{\om}{\ensuremath{\Omega}}
+\newcommand{\sig}{\ensuremath{\Sigma}}
+\newcommand{\bt}{\ensuremath{\overline T}}
+\newcommand{\li}{\ensuremath{\mathbb{L}}}
+\newcommand{\ord}{\ensuremath{\mathbb{O}}}
+\newcommand{\bs}{\ensuremath{\mathbb{S}^1}}
+\newcommand{\co}{\ensuremath{\mathbb C }}
+\newcommand{\con}{\ensuremath{\mathbb{C}^n}}
+\newcommand{\cp}{\ensuremath{\mathbb{CP}}}
+\newcommand{\rp}{\ensuremath{\mathbb{RP}}}
+\newcommand{\re}{\ensuremath{\mathbb R }}
+\newcommand{\hc}{\ensuremath{\widehat{\mathbb C} }}
+\newcommand{\pslz}{\ensuremath{\mathrm{PSL}(2,\mathbb Z) }}
+\newcommand{\pslr}{\ensuremath{\mathrm{PSL}(2,\mathbb R) }}
+\newcommand{\pslc}{\ensuremath{\mathrm{PSL}(2,\mathbb C) }}
+\newcommand{\hd}{\ensuremath{\mathbb H^2}}
+\newcommand{\slz}{\ensuremath{\mathrm{SL}(2,\mathbb Z) }}
+\newcommand{\slr}{\ensuremath{\mathrm{SL}(2,\mathbb R) }}
+\newcommand{\slc}{\ensuremath{\mathrm{SL}(2,\mathbb C) }}
+\newcommand{\mdlr}{\ensuremath{\mathrm{M}}}
+\date{\today}
+\title{Tarea 3}
+\begin{document}
+
+\maketitle
+
+\textbf{Fecha de entrega: Sábado 1 de Marzo de 2025}
+
+\begin{enumerate}
+\item Sea $\{f_n\}$ una susesión de funciones medibles tal que $\{f_n(x)\}$ es acotada ara toda $x\in X$, demuestre que las siguientes funciones son medibles
+\begin{enumerate}
+\item $m_n(x)=\min\{f_i(x)\,:\,i\in\{1,2,\dots,n\}\}$
+\item $M_n(x)=\max\{f_i(x)\,:\,i\in\{1,2,\dots,n\}\}$
+\item $m(x)=\inf\{f_n(x)\,:\,n\in\nat\}$
+\item $M(x)=\min\{f_n(x)\,:\,n\in\nat\}$
+\item $f^{*}(x)=\limsup_{n\to\infty}f_n(x)$
+\item $f_*(x)=\liminf_{n\to\infty}f_n(x)$
+\end{enumerate}
+\emph{Sugerencia: Encuentre los análogos conjuntistas de supremos e ínfimos.}
+
+\item El propósito de este ejercicio es demostrar que las integrales de funciones positivas son medidas, en particular las integrales de una distribución de probabilidad son una \emph{medida de probabilidad}
+  \begin{itemize}
+  \item Sean $A$ y $B$ conjuntos cualesquiera, $\chi_A$ y $\chi_B$ sus respectivas fucniones características, demuestre que para la unión $A\cup B$ y la intersección $A\cap B$
+    \begin{align*}
+    \chi_{A\cup B}&=\chi_A+\chi_B-\chi_{A\cap B}\\
+    \chi_{A\cap B}&=\chi_A\chi_B
+    \end{align*}
+  \item Sea $(X,\sig,\mu)$ un espacio de medida y $E\in\sig$ un conjunto nulo, demuestre que para toda $f:X\to\re$ se cumple que
+    \[
+    \int_E f d\mu=\int f\chi_E=0.
+    \]
+  \emph{Sugerencia: Demuestrelo para funciones simples y use el teorema de aproximación.}
+  \item Sea la función $N(x;\sigma,\nu)$, la distribución normal donde $\sigma$ y $\nu$ son prarámetros constantes que representan la media y desviación estandard, demuestre que la función $\mu_{\sigma\nu}:\mathbb{B}(\re)\to\re$ definida como
+  \[
+  \mu_{\sigma\nu}(E)=\int_{E}N(x;\sigma,\nu)\,d\lambda=\int\frac{1}{\sqrt{2\pi\sigma^2}}e^{-\frac{(x-\nu)^2}{2\sigma^2}}\chi_E\,d\lambda.
+  \]
+  Es una medida, con $\mu_{\sigma\nu}(\re)=1$ y que todo conjunto nulo de lebesgue en $\mathbb{B}(\re)$ es nulo para $\mu_{\sigma\nu}$\\
+  \end{itemize}
+\item Sea $X=\nat$, $\sig=\mathcal{P}(\nat)$ y $\mu:\sig\to\re^{+}$ definida por
+  \[
+  \mu(E)=\sum_{j\in E}  \frac{1}{2^j}\text{ ó }\mu(\emptyset)=0.
+  \]
+\begin{itemize}
+  \item[i)] Demuestre que $\mu$ es una medida con $\mu(X)=1$
+  \item[ii)] Sea $f_n=2^n\chi_{\{n+1,n+1,\dots\}}$, demuestre que
+      \[
+      \int_{\nat}f_n\,d\mu=1 \quad\forall n\in\nat\text{ y que } f_n\to 0.
+      \]
+      Explique por qué no se cumple el teorma de convergencia dominada.
+\end{itemize}
+\end{enumerate}
+\end{document}
