@@ -1,0 +1,115 @@
+% Created 2025-01-06 Mon 18:37
+% Intended LaTeX compiler: pdflatex
+\documentclass[letterpaper]{book}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{longtable}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{capt-of}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage{amsmath, amsthm, amssymb, amsfonts, amssymb, amscd}
+\usepackage[table, xcdraw]{xcolor}
+%\usepackage{mdsymbol}
+\usepackage{tikz-cd}
+\usepackage{float}
+\usepackage[spanish, activeacute, ]{babel}
+\usepackage{color}
+\usepackage{transparent}
+\graphicspath{{./figs/}}
+\usepackage{afterpage}
+\usepackage{array}
+\usepackage{pst-node}
+\usepackage{imakeidx}
+\usepackage{braket}
+
+\usepackage{subfiles} % Best loaded last in the preamble
+
+
+
+\newcommand{\ind}{\perp\!\!\!\!\perp}
+\newtheorem{teorema}{Teorema}[section]
+\newtheorem{prop}[teorema]{Proposici\'on}
+\newtheorem{cor}[teorema]{Corolario}
+\newtheorem{lema}[teorema]{Lema}
+\newtheorem{def.}{Definici\'on}[section]
+\newtheorem{afir}{Afirmaci\'on}
+\newtheorem{conjetura}{Conjetura}
+\renewcommand{\figurename}{Figura}
+
+\newcommand{\zah}{\ensuremath{ \mathbb Z }}
+\newcommand{\rac}{\ensuremath{ \mathbb Q }}
+\newcommand{\nat}{\ensuremath{ \mathbb N }}
+\newcommand{\prob}{\textbf{P}}
+\newcommand{\esp}{\mathbb E}
+\newcommand{\exe}{{\noindent \sc \textbf{Ejercicio. }}}
+\newcommand{\eje}{{\noindent \sc \textbf{Ejemplo. }}}
+\newcommand{\obs}{{\noindent \sc \textbf{Observación. }}}
+\newcommand{\sol}{{\noindent \sc \textbf{Solución. }}}
+\newcommand{\dem}{{\noindent \sc \textbf{Demostraci\'on. }}}
+\newcommand{\QED}{\ensuremath{\hspace*{0em plus 1fill}\blacksquare}}
+
+\newcommand{\bg}{\ensuremath{\overline \Gamma}}
+\newcommand{\ga}{\ensuremath{\gamma}}
+\newcommand{\fb}{\ensuremath{\overline F}}
+\newcommand{\la}{\ensuremath{\Lambda}}
+\newcommand{\om}{\ensuremath{\Omega}}
+\newcommand{\sig}{\ensuremath{\Sigma}}
+\newcommand{\bt}{\ensuremath{\overline T}}
+\newcommand{\li}{\ensuremath{\mathbb{L}}}
+\newcommand{\ord}{\ensuremath{\mathbb{O}}}
+\newcommand{\bs}{\ensuremath{\mathbb{S}^1}}
+\newcommand{\co}{\ensuremath{\mathbb C }}
+\newcommand{\con}{\ensuremath{\mathbb{C}^n}}
+\newcommand{\cp}{\ensuremath{\mathbb{CP}}}
+\newcommand{\rp}{\ensuremath{\mathbb{RP}}}
+\newcommand{\re}{\ensuremath{\mathbb R }}
+\newcommand{\hc}{\ensuremath{\widehat{\mathbb C} }}
+\newcommand{\pslz}{\ensuremath{\mathrm{PSL}(2,\mathbb Z) }}
+\newcommand{\pslr}{\ensuremath{\mathrm{PSL}(2,\mathbb R) }}
+\newcommand{\pslc}{\ensuremath{\mathrm{PSL}(2,\mathbb C) }}
+\newcommand{\hd}{\ensuremath{\mathbb H^2}}
+\newcommand{\slz}{\ensuremath{\mathrm{SL}(2,\mathbb Z) }}
+\newcommand{\slr}{\ensuremath{\mathrm{SL}(2,\mathbb R) }}
+\newcommand{\slc}{\ensuremath{\mathrm{SL}(2,\mathbb C) }}
+\newcommand{\mdlr}{\ensuremath{\mathrm{M}}}
+\author{Carlos Eduardo Martínez Aguilar}
+\date{\today}
+\title{Notas de MAF}
+\hypersetup{
+ pdfauthor={Carlos Eduardo Martínez Aguilar},
+ pdftitle={Notas de Matemáticas Avanzadas para la Física},
+ pdfkeywords={},
+ pdfsubject={},
+ pdflang={Esp}}
+
+\makeindex
+\begin{document}
+
+\maketitle
+\tableofcontents
+\subfile{Capitulo1}
+\subfile{Capitulo2}
+
+
+
+\begin{thebibliography}{9}
+
+\bibitem{Wein} H.F. Weinberger ``A First Course In Partial Differential Equations With Complex Variables and Transform Methods'', Dover Books On Mathematics, New York.
+\bibitem{Lebedev} N.N. Lebedev ``Special Functions \& Their Applications'', Dover Books On Mathematics, New York.
+\bibitem{Afken} Arfken, George B. et all, ``Mathematical Methods for Physicist, A Comprehensive Guide.'', Ed. Elsevier, Seventh Edition.
+\bibitem{Appfel} Appfel, Walter, ``Mathematics for Physics \& Physicists.'', Ed. Princeton University Press, 2007.
+\bibitem{Churchill} Churchill R. V. and Brown J. W., ``Fourier Series and Boundary Value Problems'', Ed McGraw-Hill.
+\bibitem{Cour-Hil} Courant R and D. Hilbert, ``Methods of Mathematical Physics.'', vol. 1 y 2.
+\bibitem{Tijoniv} Tijonov A, ``Ecuaciones de la Física Matemática'', Ed. MIR Moscu, Segunda edición, 1980.
+\bibitem{Vladimiriv} Vladimirov V. S. , ``Equations of Mathematical Physics'', Ed. URSS Moscow, 1996.
+\bibitem{Kreyszig} E. Kreyszig ``Introductory Functional Analysis With Applications'', John Wily \& Sons.
+
+\end{thebibliography}
+
+\end{document}

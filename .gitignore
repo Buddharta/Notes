@@ -19,3 +19,6 @@ Elliptic-Curves/Books
 Proba/Videos
 *~
 *.DS_*
+*.idx
+*.ilg
+*.ind
