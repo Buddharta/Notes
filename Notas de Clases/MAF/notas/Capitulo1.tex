@@ -324,7 +324,7 @@ Sea \(X,\|\cdot\|\) un espacio vectorial normado, definimos el espacio dual como
 
 Por lo anterior, entonces se establece que en un espacio con producto interno \((H,\braket{\cdot|\cdot})\), existe un operador lineal acotado \(\varphi:H\rightarrow H^*\)
 
-\begin{teorema}{Representación de Riez}
+\begin{teorema}[Representación de Riez]
   Sea \((H,\braket{\cdot|\cdot})\) un espacio de Hilbert, entonces el operador lineal acotado \(\varphi:H\rightarrow H^*\) definido por
   \[
   \varphi\ket{\psi}=f_{\psi}\quad f_{\psi}\ket{\phi}=\braket{\psi|\phi}
@@ -342,7 +342,7 @@ A partir de ahora nos olvisaremos de la notación \(f_{\psi}\) y simplemente usa
 \]
 \noindent Más aún si la serie de números reales definidos por sus normas  \(\sum_{n=0}^{\infty}\|\psi_n\|\) converge, entonces diremos que la serie converge \emph{absolutamente}.
 Por lo tanto aqui se presentan los criterios más comunes de convergencia de series para espacios de \emph{Banach}, por lo que todos los epacios que consideraremos en esta sección son de esta índole. El primer criterio y además el más útil es el \emph{criterio de Cauchy}
-\begin{prop}{Criterio de Cauchy}
+\begin{prop}[Criterio de Cauchy]
   Sea \(\sum_{n=0}^{\infty}\ket{\phi_n}\) una serie en un espacio de Banach, ésta es convergente si y sólo si \(\forall\epsilon\in\re^{+}\) existe \(N\in\nat\) tal que si \(n>N\)
   \[
     \|\sum_{m=n+1}^{n+k}\ket{\phi_m}\|<\epsilon\quad\forall k\in\nat
@@ -372,7 +372,7 @@ si no, la serie \emph{diverge}.
 entonces por el criterio de Cauchy, \(\sum_{n=0}^{\infty}\ket{\psi_n}\) converge.
 \QED\\
 Ahora el siguiente teorema nos permite analizar las series en espacios de Banach como series de números reales
-\begin{teorema}{Prueba M de Weierstrass}
+\begin{teorema}[Prueba M de Weierstrass]
   Sea \(\{\ket{\phi_n}\}_n\) una susesión en un espacio de Banach y \(\{M_n\}_{n\in\nat}\subset\re^{+}\) una sucesión real positiva tal que se satisface
   \begin{align*}
     &i)\,\|\phi_n\|\leq M_n \quad\forall n\in\nat.\\
@@ -421,13 +421,13 @@ Por lo tanto, esta serie \emph{diverge} si \(\rho=1\). Una observación es que e
 \text{NO} puede ser determinada por la prueba M, pero \emph{no significa que converja}.
 
 
-\begin{prop}{Criterio de Comparación.}
+\begin{prop}[Criterio de Comparación]
 Sean \(\sum_{n=1}^\infty a_n\) y \(\sum_{n=1}^\infty b_n\) dos series tales que \(0 \leq a_n \leq b_n\) para todo \(n\). Si \(\sum_{n=1}^\infty b_n\) converge, entonces \(\sum_{n=1}^\infty a_n\) también converge
 \end{prop}
 \dem Dado que \(0 \leq a_n \leq b_n\), las sumas parciales de \(\sum a_n\) están acotadas por las sumas parciales de \(\sum b_n\). Como \(\sum b_n\) converge, sus sumas parciales están acotadas. Por lo tanto, las sumas parciales de \(\sum a_n\) también están acotadas y, por el teorema de convergencia monótona, \(\sum a_n\) converge.
 
 
-\begin{prop}{Criterio del Cociente.}
+\begin{prop}[Criterio del Cociente]
 Sea \(\sum_{n=1}^\infty a_n\) una serie con \(a_n > 0\) para todo \(n\), si el límite
 \[
 L = \lim_{n \to \infty} \frac{a_{n+1}}{a_n},
@@ -461,7 +461,7 @@ Esto implica que \(a_{n+1} > a_n\), por lo que los términos no tienden a cero y
 \]
 tienen como limite de sus cosientes 1, pero una converge y la otra diverge.
 Normalmente es muy restrictivo perdir que la susesión de raices tenga un límite ya que no en todos los casos esto sucede
-\begin{prop}{Criterio de la Raíz.}
+\begin{prop}[Criterio de la Raíz]
 Sea \(\sum_{n=1}^\infty a_n\) una serie con \(a_n \geq 0\) para todo \(n\). Si existe un límite:
 \[
 L = \lim_{n \to \infty} \sqrt[n]{a_n},
@@ -485,7 +485,7 @@ Si \(L > 1\), existe \(N \in \mathbb{N}\) tal que para todo \(n \geq N\),
 \]
 Esto implica que \(a_n > 1\), por lo que los términos no tienden a cero y la serie diverge.
 \QED\\
-\begin{def.}{limsup y liminf.}
+\begin{def.}[limsup y liminf]
 Sea \(\{x_n\}_{n\in\nat}\subset\re\) una susesión de números reales, entonces se definen el límite superior y límite inferior como
 \begin{itemize}
 \item \textbf{Límite superior:}
@@ -687,7 +687,7 @@ Si la serie de potencias \(\sum_{n=0}^\infty a_n (z - z_0)^n\) converge en \(z =
 
 \noindent Las funciones meromorfas son una generalización de las funciones analíticas que permiten singularidades aisladas llamadas polos.
 
-\begin{def.}{Función Meromorfa.}
+\begin{def.}[Función Meromorfa]
 \noindent Una función \(f:\om\subset\co\to\co\) es \emph{meromorfa} en un conjunto abierto \(\om \subseteq \mathbb{C}\) si es analítica en \(\om\) excepto en un conjunto de polos aislados. Un polo es una singularidad donde \(f(z)\) tiende a infinito, trabajaremos con tres tipos se singularidades
 
 \begin{enumerate}
@@ -704,7 +704,7 @@ El menor \(k\) que satisface esta condición se llama el \emph{orden} del polo.
 \end{enumerate}
 \end{def.}
 
-\begin{teorema}{Teorema de Laurent}
+\begin{teorema}[Teorema de Laurent]
 Para una función meromorfa \(f:\om\subset\co\to\co\), existen
 \begin{enumerate}
 \item \textbf{Serie de Laurent}:
@@ -727,7 +727,7 @@ La parte de la serie de Laurent con potencias no negativas de \((z - z_0)\) se l
 \end{teorema}
 \noindent\subsubsection{Residuos y su Cálculo}
 
-\begin{def.}{Residuo}
+\begin{def.}[Residuo]
 Dada una función \(f(z)\) con un polo aislado en \(z_0\), el \emph{residuo} de \(f(z)\) en \(z_0\) es el coeficiente \(a_{-1}\) de la serie de Laurent de \(f(z)\) alrededor de \(z_0\). Se denota por:
 \[
 \text{Res}(f, z_0) = a_{-1}.
@@ -739,7 +739,7 @@ Si \(z_0\) es un polo de orden \(m\) de \(f(z)\), entonces:
 \text{Res}(f, z_0) = \frac{1}{(k-1)!} \lim_{z \to z_0} \frac{d^{k-1}}{dz^{k-1}} \left( (z - z_0)^k f(z) \right).
 \]
 
-\begin{teorema}{Teorema del Residuo}
+\begin{teorema}[Teorema del Residuo]
 Si \(f(z)\) es analítica en un conjunto abierto \(\om\) excepto en un número finito de singularidades aisladas \(z_1, z_2, \dots, z_n\), y \(\gamma\) es una curva cerrada simple en \(\om\) que no pasa por ninguna singularidad, entonces:
 \[
 \oint_\gamma f(z) \, dz = 2\pi i \sum_{k=1}^n \text{Res}(f, z_k).
@@ -788,7 +788,7 @@ Si \(f(z)\) tiene polos en el semiplano inferior en \(w_1, w_2, \dots, w_m\), en
 \section{Teoría de la Medida}
 \noindent La teoría de la medida nos proporciona un marco teorico lo suficientemente robusto y abstracto como para fundamentar la teoría de integración completamente y al mismo tiempo fundamentar la teoría de los espacios de Hilbert (y por lo tanto la teoría de sus álgebras de operadores, la cual es una teoría muy importatnte para la teoría cuántica) y proporcionar los ejemplos más importantes de espacios de Banach. Muchos matemáticos con inclinaciones más aplicadas tienden a tener una cierta aversión a la teroría de la medida (véase ET Jaynes) por su inclinaciones a la abstración y generalización, ya que es verdad que el nivel de generalización de la teoría de la medida es el mismo que la teoría de los conjuntos con el axioma de eleción o la teoría de funciones computables. Aunque sea verdad que ciertos aspectos de esta teoría se pueden sentir un tanto asperos para alguien que los estudia por primera vez, también es verdad que ela analisis moderno requiere de las herramientas que la teoría de la medida provee.
 
-\begin{def.}{$\sigma$-Álgebras.}
+\begin{def.}[$\sigma$-Álgebras.]
 Una $\sigma$-álgebra $\sig$ sobre un conjunto $X$ es una colección de subconjuntos de $X$ cerrada bajo complementos y uniones numerables. Formalmente
 \begin{itemize}
     \item $X \in \sig$.
@@ -918,7 +918,7 @@ H(x)=\chi_{[0,\infty)}(x)=
     \end{cases}
 \]
 \exe Demuestre que las combinaciones lineales de funciones medibles son medibles.
-\begin{def.}{Funciones Simples.}
+\begin{def.}[Funciones Simples]
 Una función \emph{simple} es de la forma
 \[
 s = \sum_{i=1}^n a_i \chi_{A_i},\text{ donde }A_i \in \sig.
@@ -939,7 +939,7 @@ s = \sum_{i=1}^n a_i \chi_{A_i},\implies\int s \, d\mu = \sum_{i=1}^n a_i \mu(A_
     \item Si $f$ es acotada, entonces $s_n\to f$ uniformemente en $X$.
   \end{enumerate}
   \end{prop}
-\begin{def.}{Integral de Lebesgue.}
+\begin{def.}[Integral de Lebesgue]
 Para $f \geq 0$ medible, la integral se define como:
 \[
 \int f \, d\mu = \sup \left\{ \int s \, d\mu : s \text{ simple}, 0 \leq s \leq f \right\}.
@@ -977,7 +977,7 @@ Pruebe que si $f\geq 0$, entonces la función $\mu_f:\sig\to\re$ definida como
 \mu_f(E)=\int_E f \, d\mu.
 \]
 Es una medida y que todo subconjunto nulo de $\mu$ es subconjunto nulo de $\mu_f$.
-\begin{teorema}{de Lebesgue.}
+\begin{teorema}[de Lebesgue]
 Sea $f:[a,b]\to\re$ una función acotada, entonces
 \begin{itemize}
   \item $f$ es Riemann-integrable si y sólo si es continua casi donde quiera relativo a $\lambda$
@@ -997,14 +997,14 @@ Sea $f:[a,b]\to\re$ una función acotada, entonces
     \item \textbf{Casi uniforme (c.u.)}: $f_n \to f$ uniformemente excepto en un conjunto de medida cero.
 \end{itemize}
 Ahora mencionamos algunos de los teorema más importantes sobre convergencia de funciones integrables
-\begin{teorema}{Convergencia Monótona.}
+\begin{teorema}[Convergencia Monótona]
   Sea $\{f_n\}_{n\in\nat}$ una susesión de funciones tales que $f_n \leq f_{n+1}$ para toda $n\in\nat$ tal que $f_n\to f$ c.t.p., entonces
 \[
   \lim_{n \to \infty} \int f_n \, d\mu = \int f \, d\mu.
   \]
   \end{teorema}
 Sin embargo el teorema más importante de convergencia es
-\begin{teorema}{Convergencia Dominada.}
+\begin{teorema}[Convergencia Dominada]
 Sea $\{f_n\}_{n\in\nat}$ una susesión de funciones integrables $f_n \to f$ c.t.p. y $|f_n| \leq g$ c.t.p. con $g$ integrable, entonces $f$ es integrable y
 \[
  \int_E f \, d\mu=\lim_{n \to \infty} \int_E f_n \, d\mu.
@@ -1062,7 +1062,7 @@ entonces se puede definir un isomorfimso con $\con$ como sigue
 \]
 \eje Siguiendo la lógica del ejemplo anterior, si $X=\nat$, $\sig=\mathcal{P}(\nat)$, y $\mu$ la medida de conteo entonces $\mathcal{L}^1(\nat,\mu)$ es el espacio de funciones \emph{absolutamente convergentes.}\\
 Más en general se definen los espacios clásiscos de Banach (porque fueron los primeros ejemploa conocidos de espacios de Banach) como
-\begin{def.}{Espacios $\mathcal{L}^p(X,\mu)$.} Sea $(X,\sig,\mu)$ un espacio de medida y $p\in[1,\infty)$, decimos que $f\in\mathcal{L}^p(X,\mu)$ si $|f|^p\in\mathcal{L}^1$, se puede demostrar que éste es un espacio vectorial normado, donde su norma se define como
+\begin{def.}[Espacios $\mathcal{L}^p(X,\mu)$] Sea $(X,\sig,\mu)$ un espacio de medida y $p\in[1,\infty)$, decimos que $f\in\mathcal{L}^p(X,\mu)$ si $|f|^p\in\mathcal{L}^1$, se puede demostrar que éste es un espacio vectorial normado, donde su norma se define como
 \[
 \|f\|_p = \left(\int |f|^p \, d\mu\right)^{1/p}.
 \]

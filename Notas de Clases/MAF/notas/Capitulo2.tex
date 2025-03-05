@@ -130,8 +130,7 @@ donde los coeficientes \(a_n\) y \(b_n\) son
 \[
   a_n = \frac{2}{L} \int_0^L f(x) \cos\left(\frac{n\pi x}{L}\right) \, d\lambda\quad b_n = \frac{2}{L} \int_0^L f(x) \sin\left(\frac{n\pi x}{L}\right) \, d\lambda.
 \]
-\obs \(\)
-En el caso del pozo infinito, las funciones de onda \(\varphi_n(x)\) son funciones seno, lo que corresponde a una serie de Fourier en senos
+\obs En el caso del pozo infinito, las funciones de onda \(\varphi_n(x)\) son funciones seno, lo que corresponde a una serie de Fourier en senos
 \[
 f(x) = \sum_{n=1}^\infty b_n \sin\left(\frac{n\pi x}{L}\right),
 \]
@@ -222,7 +221,7 @@ Ahora existe un caso ``especial'', cuando \(n = m = 0\), \(\cos(0x) = 1\) y \(\s
 \[
 \int_{-\pi}^{\pi} 1 \, dx = 2\pi.
 \]
-
+\obs Similarmente es f\'acil demostrar que el conjunto de funciones \(\{e^{int}/\sqrt{2\pi}\}_{n\in\nat}\) es un conjunto ortonormal para las funciones \(f:[-\pi,\pi]\to\co\).
 \subsection{Convergencia y Fórmula de Dirichlet}
 \noindent Usando que \(\{\cos(nx),\sin(nx)\}_{n\in\nat}\) es un sistema ortogonal de funciones podemos garantizar la convergencia de los coeficientes de las series de Fourier. Para demostrar esto usaremos la \emph{desigualdad de Bessel}
 \begin{teorema}
@@ -237,8 +236,184 @@ Ahora existe un caso ``especial'', cuando \(n = m = 0\), \(\cos(0x) = 1\) y \(\s
 \]
 entonces \(\|\psi-\phi\|^2=\braket{\psi-\phi|\psi-\phi}\geq0\). Por lo que calculamos
 \begin{align*}
-  \braket{\psi-\phi|\psi-\phi}&=\braket{\psi-\sum_{i\in\Lambda}\braket{e_i|\psi}\ket{e_i}|\psi-\sum_{j\in\Lambda}\braket{e_j|\psi}\ket{e_j}}\\
-  &=\braket{\psi|\psi}-\sum_{j\in\Lambda}\overline{\braket{e_j|\psi}}\braket{\psi|e_j}-\sum_{i\in\Lambda}\braket{e_i|\psi}\braket{e_i|\psi}+\sum_{i,j\in\Lambda}\braket{e_i|\psi}\overline{\braket{e_j|\psi}}\braket{e_i|e_j}\\
-  &=\braket{\psi|\psi}-\sum_{i\in\Lambda}|\braket{e_i|\psi}|^2\geq0
+  &\braket{\psi-\phi|\psi-\phi}=\braket{\psi-\sum_{i\in\Lambda}\braket{e_i|\psi}\ket{e_i}|\psi-\sum_{j\in\Lambda}\braket{e_j|\psi}\ket{e_j}}=\\
+  &\braket{\psi|\psi}-\braket{\psi|\sum_{j\in\Lambda}\braket{e_j|\psi}\ket{e_j}}-\braket{\sum_{i\in\Lambda}\braket{e_i|\psi}\ket{e_i}|\psi}+\sum_{i,j\in\Lambda}\braket{e_i|\psi}\overline{\braket{e_j|\psi}}\braket{e_i|e_j}=\\
+  &\|\psi\|^{2}-2\textrm{Re}\left(\braket{\psi | \sum_{i\in\Lambda}\braket{e_{i}|\psi}\ket{e_{i}}}\right)+\sum_{i\in\Lambda}|\braket{e_i|\psi}|^2=\\
+  &\|\psi\|^{2}-2\sum_{i\in\Lambda}|\braket{e_i|\psi}|^2+\sum_{i\in\Lambda}|\braket{e_i|\psi}|^2\geq0.
+\end{align*}
+Lo cual demuestra el teorema.\\
+\QED
+\begin{cor}
+La proposici\'on anterior aplicada al conjunto ortonormal\\ \hbox{\(\{\cos(nx)/\sqrt{\pi},\sin/\sqrt{\pi}\}_{n\in\nat}\cup\{1/\sqrt{2\pi}\}\)} implica la \emph{desigualdad de Bessel cl\'asica}
+\begin{equation}
+  \|f\|^{2}\geq\|s_{n}(f)\|^{2}=\frac{a_{0}^{2}}{2}+\sum_{k=1}^{n-1}(a_{k}^{2}+b_{k}^{2})
+\end{equation}
+\end{cor}
+Lo anterior demuestra que la susesi\'on de n\'umeros complejos \(\{c_{k}=a_{k}+ib_{k}\}\) definidos por el producto interno de una funci'on cuadrado integrable \(f\) con un conjuto ortonormal (en particular los monomios trigonom\'etricos), es absolutamente convergente. M\'as a\'un, de lo anterior podemos deducir que \(a_{n}\to0\) y \(b_{n}\to0\) este hecho es un caso particular del conocido como el lema de Riemann-Lebesgue
+\begin{lema}[de Riemann-Lebesgue]
+  Sea \(f\in\mathcal{L}^{2}[a,b]\), entonces
+  \begin{equation}
+    \hat{f}(s)=\int_{-\infty}^{\infty}f(t)e^{-i2\pi st}d\,\lambda(t),\text{ entonces }g(s)\to 0\text{ cuando }s\to\infty.
+    \end{equation}
+  \end{lema}
+  \noindent Veremos m\'as de esto cuando estudiemos la transformada de Fourier, aqu\'i es claro que las fuciones son complejas de valor absoluto al cuadrado integrables.
+  Ahora, podemos entonces garantizar que \(s_{n}(f)\) converge en \(\mathcal{L}^{2}[-\pi,\pi]\) a la conocida \emph{serie de Fourier de} \(f\), pero esto no significa que las series de Fourier converjan puntualmente, de hecho en 1922 Kolmogorov logr\'o construir una funci\'on continua \(\Psi\) cuya serie de fourier es casi siempre divergente. %(v\'ease \ref{kol1}).
+  Por lo tanto para grantizar la convegencia puntual y absoluta de las series de Fourier, necesitaremos de m\'as herramientas.
+  Primero, hacemos notar la siguiente identidad trigonom\'etrica
+  \begin{equation}
+    \frac{1}{2}+\cos\theta+\cos2\theta+\dots+\cos n\theta=\frac{\sin(n+\frac{1}{2})\theta}{2\sin\frac{\theta}{2}}.
+  \end{equation}
+  La demostraci\'on de este hecho se sigue del c\'alculo de sumas geom\'etricas
+  \[
+    z+z^{2}+\dots+z^{n}=\frac{1-z^{n+1}}{1-z}-1\quad\forall z\in\co.
+  \]
+  En particular para \(z=e^{i\theta}\), como \(\text{Re}(e^{i\theta})=1/2(e^{i\theta}+e^{-i\theta})=\cos\theta\) tenemos que
+  \[
+    \cos\theta+\dots+\cos n\theta=\frac{1}{2}\left(\frac{1-e^{i(n+1)\theta}}{1-e^{i\theta}}-1+\frac{1-e^{-i(n+1)\theta}}{1-e^{-i\theta}}-1\right).
+  \]
+  \noindent Ahora dividimos y multiplicamos por \(e^{-i\theta/2}\) en la primera fracci\'on y por \(e^{i\theta/2}\) en la segunda, para obetener
+  \begin{align*}
+    &\frac{1}{2}\left(\frac{e^{-i\frac{\theta}{2}}-e^{i(n+\frac{1}{2})\theta}}{ e^{-i\frac{\theta}{2}}-e^{i\frac{\theta}{2}}} + \frac{e^{i\frac{\theta}{2}}-e^{-i(n+\frac{1}{2})\theta}}{ e^{i\frac{\theta}{2}}-e^{-i\frac{\theta}{2}}} -2\right)=\\
+    &\frac{1}{2}\left(\frac{e^{-i\frac{\theta}{2}}-e^{i(n+\frac{1}{2})\theta}}{2i\sin\frac{\theta}{2}} - \frac{e^{i\frac{\theta}{2}}-e^{-i(n+\frac{1}{2})\theta}}{2i\sin\frac{\theta}{2}} -2\right).
   \end{align*}
-\end{document}
+  Donde recordamos que \(e^{i\theta}-e^{-i\theta}=2i\sin\theta\), aplicando dos veces la misma ecuaci\'on se obtiene el resultado.
+  \begin{def.}
+    Se define el \emph{kernel de Dirichlet} de orden \(n\) como la funci\'on
+    \[
+      D_{n}(x)=\frac{1}{2}+\cos(x)+\dots+\cos(nx)=\frac{\sin(n+\frac{1}{2})x}{2\sin\frac{x}{2}}.
+    \]
+  \end{def.}
+  \begin{prop}
+    Sea \(f\in\mathcal{L}^{2}[-\pi,\pi]\), entonces
+    \[
+      s_{n}(f)(x)=\frac{1}{\pi}\int_{[-\pi,\pi]}f(t)D_{n}(t-x)\,d\lambda(t)
+    \]
+  \end{prop}
+  \dem Por definic\'on de \(s_{n}(f)\), linealidad de la integral y la identidad trigono\'etrica de suma angular del coseno
+  \[
+    \cos(\alpha\pm\beta)=\cos\alpha\cos\beta\mp\sin\alpha\sin\beta.
+  \]
+  Tenemos que
+  \begin{align*}  s_{n}(f)(x)&=\frac{a_{0}}{2}+\frac{1}{\pi}\sum_{k=1}^{n-1}\left(\int f(t)\cos(kt)\right)\cos(kx)+\left(\int f(t)\sin(kt)\right)\sin(kx)\\
+    &=\frac{1}{\pi}\int_{-\pi}^{\pi}f(t)\left(\frac{1}{2}+\sum_{k=1}^{n-1}\cos(kt)\cos(kx)+\sin(kt)\sin(kx)\right)\,d\lambda(t)\\
+    &=\frac{1}{\pi}\int_{-\pi}^{\pi}f(t)\left(\frac{1}{2}+\sum_{k=1}^{n-1}\cos(kt)\cos(kx)+\sin(kt)\sin(kx)\right)\,d\lambda(t)\\
+    &=\frac{1}{\pi}\int_{-\pi}^{\pi}f(t)\left(\frac{1}{2}+\sum_{k=1}^{n-1}\cos(k(t-x))\right)\,d\lambda(t)\\
+    &=\frac{1}{\pi}\int_{-\pi}^{\pi}f(t)\frac{\sin(n+\frac{1}{2})(t-x)}{2\sin\big(\frac{t-x}{2}\big)})\,d\lambda(t)\\
+    &=\frac{1}{\pi}\int_{[-\pi,\pi]}f(t)D_{n}(t-x)\,d\lambda(t).
+  \end{align*}
+  Ahora examinaremos m\'as a fondo la funci\'on del kernel de Dirichlet
+  \begin{lema}
+    El kernel de Dirichlet \(D_{n}\) cumple con las siguientes propiedades
+    \begin{enumerate}
+      \item \(D_{n}(-x)=D_{n}(x)\).
+      \item \(\int_{-\pi}^{\pi}D_{n}(x)\,dx=2/\pi\int_{0}^{\pi}D_{n}(x)\,dx=1\).
+      \item \(|D_{n}(x)|\leq n+\frac{1}{2}\) y \(D_{n}(0)=n+\frac{1}{2}\).
+      \item \(|\frac{|\sin(n+1/2)x|}{|x|}|\leq |D_{n}(x)|\leq\frac{\pi}{2x}\) para \(x\in(0,\pi)\) y para toda \(n\in\nat\)
+      \item Los n\'umeros de Lebesgue \(\lambda_{n}\) cumplen que \(4/\pi^{2}\log(n)\leq\lambda_{n}\leq 3+\log(n)\), donde se define
+            \[
+            \lambda_{n}=\frac{1}{\pi}\int_{-\pi}^{\pi}|D_{n}(x)|\,dx.
+            \]
+      \end{enumerate}
+    \end{lema}
+    \dem Las primeras tres propiedades son evidentes de la definic\'ion de \(D_{n}\), ahora para la cuarta propiedad recordamos que
+    \[
+      \frac{2t}{\pi}\leq\sin t\leq t\quad t\in(0,\frac{\pi}{2}),
+    \]
+    o equivalentemente
+    \[
+      \frac{2t}{\pi}\leq2\sin \frac{t}{2}\leq t\quad t\in(0,\pi).
+    \]
+    Por lo tanto, si invertimos y multiplicamos por \(|\sin(n+1/2)t|\) que es menor a 1, obtenemos el resultado. Para el \'ultimo punto, aplicando los puntos anterioires se tiene que
+    \begin{align*} \lambda_{n}
+      &=\frac{2}{\pi}\int_{0}^{\pi}|D_{n}(x)|\,dx=\frac{2}{\pi}\int_{0}^{\pi}|\frac{\sin(n+\frac{1}{2})x}{2\sin\frac{x}{2}}|\,dx\\
+      &\leq \frac{2}{\pi}\left(\int_{0}^{1/n}(n+\frac{1}{2})\,dx+\int_{1/n}^{\pi}\frac{\pi}{2x}\,dx\right)\\
+      &=\frac{2n+1}{\pi n}+\log(\pi)+\log(n)\leq 3+\log(n).
+    \end{align*}
+    Ahora para la otra desiguladad, procedemos similarmente con las desigualdades del inciso anterior y la dem\'as propiedades,
+    \begin{align*} \lambda_{n}
+      &=\frac{2}{\pi}\int_{0}^{\pi}|D_{n}(x)|\,dx=\frac{2}{\pi}\int_{0}^{\pi}|\frac{\sin(n+\frac{1}{2})x}{2\sin\frac{x}{2}}|\,dx\\
+      &\geq \frac{2}{\pi}\int_{0}^{\pi}\frac{|\sin(n+\frac{1}{2})x|}{x}\,dx\\
+      &=\frac{2}{\pi}\int_{0}^{(n+1/2)\pi}\big|\frac{\sin x}{x}\big|\,dx\\
+      &\geq\frac{2}{\pi}\int_{0}^{n\pi}\big|\frac{\sin x}{x}\big|\,dx\\
+      &=\frac{2}{\pi}\sum_{k=1}^{n}\int_{(k-1)\pi}^{k\pi}|\frac{\sin x}{x}|\,dx\\
+      &\geq\frac{2}{\pi}\sum_{k=1}^{n}\int_{(k-1)\pi}^{k\pi}\frac{1}{k\pi}|\sin x|\,dx\\
+      &=\frac{4}{\pi^{2}}\sum_{k=1}^{n}\frac{1}{k}\geq\frac{4}{\pi^{2}}\log(n).
+    \end{align*}
+    \QED\\
+    \obs Si \(f:[-\pi,\pi]\to\re\) es una funci'on acotada casi donde quiera (en particular si es continua), entonces
+    \begin{align*}
+      |s_{n}(f)(x)|&\leq\frac{1}{\pi}\int_{[-\pi,\pi]}|f(t)D_{n}(t-x)|\,d\lambda(t)\\
+      &=\frac{1}{\pi}\int_{[-\pi,\pi]}|f(x+t)D_{n}(t)|\,d\lambda(t)\leq\lambda_{n}\|f\|_{\infty}.
+    \end{align*}
+    Donde \(\|\cdot\|_{\infty}\) denota la norma infinito. En particular
+    \[
+      \|s_{n}(f)\|\leq\lambda_{n}\|f\|_{\infty}.
+    \]
+    \QED\\
+    \obs Se puede demostrar que \(\lambda_{n}\) es la mejor cota para la desigualdad anterior, es decir \(\lambda_{n}\) es la norma del operador proyecci'on en los subespacios de polinomios tigonom'etricos, n'otese que la norma del contradominio es la norma \(\|\cdot\|_{\infty}\) y no la norma \(\|\cdot\|_{2}\). M'as 'aun, recordemos que \(\|f\|_2\leq2\pi\|f\|_{\infty}\) en \([-\pi,\pi]\).\\
+    \obs
+    \[
+      \bigg|\sum_{n=1}^{\infty}a_{n}\cos nx+b_{n}\sin nx\bigg|\leq\sum_{n=1}^{\infty}|a_{n}\cos nx|+|b_{n}\sin nx|\leq\sum_{n=1}^{\infty}|a_{n}|+|b_{n}|.
+    \]
+    \begin{teorema}
+      Sea \(f\) una funci\'on continua en \([-\pi,\pi]\) y diferenciable por tramos, entonces si \(f'\) es acotada, la serie de Fourier de \(f\) converge uniformemente en \([-\pi,\pi]\). En particular la serie de fourier de toda funci\'on diferenciable converge uniformemente.
+    \end{teorema}
+    \dem Como \(f'\) es continua por tramos y acotada, entonces claramente es cuadrado inegrable, por lo tanto por la desigualdad de Bessel, si definimos
+    \[
+      a'_n=\frac{1}{\pi}\int_{-\pi}^{\pi}f'(x)\cos nx\,d\lambda\quad b'_n=\frac{1}{\pi}\int_{\pi}^{\pi} f'(x) \sin nx\,d\lambda.
+    \]
+    Entonces la desigualdad de Bessel garantiza que
+    \[
+      \sum_{n=1}^{\infty}a_{n}^{'2}+b_{n}^{'2}<\infty.
+    \]
+    Ahora, usando integraci\'on por partes se pucalcular
+    \begin{align*}
+      a'_n&=\frac{1}{\pi}\int_{-\pi}^{\pi}f'(x)\cos nx\,d\lambda\\
+            &=\frac{1}{\pi}\left(f(x)\cos(nx)\bigg|_{-\pi}^{\pi}+\int_{\pi}^{\pi} f(x)n\sin nx\,d\lambda\right)=nb_{n}.
+    \end{align*}
+    An'alogamente se demuestra que \(b'_{n}=na_{n}\), entonces al ser estas susesiones cuadrado sumables, se tiene que
+    \[
+      \sum_{n=1}^{\infty}n^{2}a_{n}^{2}<\infty\text{ y }\sum_{n=1}^{\infty}n^{2}b_{n}^{2}<\infty.
+    \]
+    Por lo tanto por Cauchy-Swartz
+    \[
+      \sum_{n=1}^{\infty}|a_{n}|=\sum_{n=1}^{\infty}n|a_{n}|\frac{1}{n}<
+      \left(\sum_{n=1}^{\infty}n^{2}a_{n}^{2}\right)^{\frac{1}{2}}\left(\sum_{n=1}^{\infty}\frac{1}{n^{2}}\right)^{\frac{1}{2}}<\infty.
+    \]
+    An'alogamente la serie de \(b_{n}'s\) es \emph{absolutamente convergente} y por lo tanto por la prueba M de Weierstrass, es uniformemente convergente.\\
+    \QED
+    \subsection{El teorema de Fej'er}
+    \noindent Ahora para garantizar la convergencia absoluta de los polinomios trigonom'etricos para funciones continuas, ser'a necesario modificar el kernal de Dirichlet ligeramente, la inspiraci'on de esta modificaci'on vine de las sumas de Ces\`aro para susesiones, las cuales en general tienen mejores propiedades de convergencia
+    \begin{def.}
+      Sea \(\{s_{n}\}_{n\in\nat}\), se define la susesi'on de Ces\`aro como
+      \[
+        \sigma_{n}=\frac{1}{n}\sum_{n=1}^{n}s_{n}
+      \]
+      \end{def.}
+    \begin{teorema}
+      Sea \(\{s_{n}\}_{n\in\nat}\) una susesi'on de n'umeros reales, si \(s_{n}\to s\), entonces la susesi'on se Ces\`aro \(\{\sigma_{n}\}_{n\in\nat}\) converge y adem'as \(\sigma_{n}\to s\).
+    \end{teorema}
+    Similarmente, se modifican las series de Fourier o m'as bien los poliniomios trigonom'etricos para obtener susesiones con mejores propiedades de convegencia. Dada \(f\in\mathcal{L}^{2}[-\pi,\pi]\), se define la susesi'on de polynomios trigonom'etricos siguiente
+    \begin{align*}
+      \sigma_{n}(f)(x)&=\frac{1}{n}\sum_{k=0}^{n-1}s_{k}(f)(x)\\
+      &=\frac{1}{\pi}\int_{-\pi}^{\pi} f(t)\left(\frac{1}{n}\sum_{k=0}^{n-1}D_{k}(t-x)\right)\,d\lambda(t)\\
+      &=\frac{1}{\pi}\int_{-\pi}^{\pi} f(t)K_{n}(t-x)\,d\lambda(t).
+    \end{align*}
+    \begin{def.}
+      Se define el \emph{kernel de Fej'er} como
+      \[
+        K_{n}(x)=\frac{1}{n}\sum_{k=0}^{n-1}D_{k}(x).
+      \]
+    \end{def.}
+    Al igual que el kernel de Dirichlet, el kernel de Fej'er tiene una identidad trigonom'etrica que facilita si escritura
+    \[
+      K_{n}(x)=\frac{1}{n}\sum_{k=0}^{n-1}\frac{\sin(2k+1)\frac{x}{2}}{s\sin\frac{x}{2}}
+    \]
+    \begin{teorema}
+      asdf
+    \end{teorema}
+    De hecho este es un caso particular de una familia de teoremas sobre \emph{operadores kernels} en intervalos cerrados \([a,b]\), pero en particular para nuestro caso
+    \begin{teorema}
+      asdf
+      \end{teorema}
+  \end{document}
