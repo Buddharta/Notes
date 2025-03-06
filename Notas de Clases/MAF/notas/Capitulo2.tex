@@ -409,11 +409,29 @@ Lo anterior demuestra que la susesi\'on de n\'umeros complejos \(\{c_{k}=a_{k}+i
     \[
       K_{n}(x)=\frac{1}{n}\sum_{k=0}^{n-1}\frac{\sin(2k+1)\frac{x}{2}}{s\sin\frac{x}{2}}
     \]
-    \begin{teorema}
-      asdf
+    \begin{teorema}[Teorema de Fejér]
+      Sea \(f\in\mathcal{C}[-\pi,\pi]\), entonces \(\sigma_n(f)\) converge \emph{absolutamente a} \(f\).
     \end{teorema}
     De hecho este es un caso particular de una familia de teoremas sobre \emph{operadores kernels} en intervalos cerrados \([a,b]\), pero en particular para nuestro caso
     \begin{teorema}
-      asdf
-      \end{teorema}
+      Sea \(\{k_n\}_{n\in\nat}\subset\mathcal{C}[-\pi,\pi]\) una susesión de funciones que cumplen las siguiente propiedades
+      \begin{enumerate}
+        \item \(k_n\geq 0\) para toda \(n\in\nat\).
+        \item \((1/\pi)\int_{-\pi}^{\pi}k_n(x)\,dx=1\).
+        \item \((\int_{\delta\leq|t|\leq\pi}k_n(x)\,dx\to0\) cuando \(n\to\infty\)para toda \(\delta\in\re^+\).
+      \end{enumerate}
+      Entonces la  susesión convolución \(1/\pi f*k_n\) converge uniformemente a \(f\), es decir
+      \[
+      \frac{1}{\pi}\int_{-\pi}^{\pi} f(t)k_{n}(t-x)\,d\lambda(t)\to f(x)\text{ uniformemente.}
+      \]
+    \end{teorema}
+    \dem Sea \(\epsilon\in\re^+\) como \(f\) es continua en un intervalo compacto, entonces sea \(\|f\|_{\infty}\) el valor máximo de \(|f|\), ademas es \emph{uniformemente continua}, es decir, existe \(\delta\in\re^+\) tal que \(|f(x)-f(x+t)|<\epsilon\) para toda \(x\) y \(|t|<\delta\). Ahora como \(k_n\) no son negativos, entonces
+    \begin{align*}
+      \bigg|f(x)-\frac{1}{\pi}\int_{-\pi}^{\pi} f(t)k_{n}(t-x)\,dt\bigg|&=
+      \frac{1}{\pi}\bigg|\int_{-\pi}^{\pi} [f(x)-f(x+t)]k_{n}(t)\,dt\bigg|\\
+      &\leq\frac{1}{\pi}\int_{-\pi}^{\pi} |f(x)-f(x+t)|k_{n}(t)\,dt\\
+      &\leq\frac{\epsilon}{\pi}\int_{|t|<\epsilon}k_n+ \frac{2\|f\|_{\infty}}{\pi}\int_{\delta\leq|t|\leq\pi}k_{n}(t)\,dt\\
+      & < \epsilon+\epsilon=2\epsilon.
+      \end{align*}
+    Para \(n\) lo suficientemente grande.
   \end{document}
