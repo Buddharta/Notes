@@ -1,0 +1,221 @@
+%---------------Fonts------------------------------
+
+\font\bigfnt=cmr10 scaled\magstep 1 
+\font\biggfnt=cmr10 scaled\magstep 3    
+\font\bigggfnt=cmr10 scaled\magstep 5 
+\font\smalll=cmr5
+\font\small=cmr7
+\font\smal=cmbx7 scaled\magstep 0
+\font\med=cmbx7 scaled\magstep 3
+\font\medio=cmbx7 scaled\magstep 2
+\font\subt=cmsl10 scaled \magstep 1
+\font\subto=cmsl10 scaled\magstep 0
+ \font\numera=cmbx7 scaled\magstep 2 
+\font\grande=cmbxti10 scaled\magstep 3
+\font\negrit=cmbxti10 scaled\magstep 0
+\font\prueba=cmvtt10 scaled 1000
+\font\libro = cmss10
+\font\chiquita = cmr7 
+\font\chica    = cmr9
+\font\titulo   = cmr10 scaled 1728
+\font\sl       = cmsl9 scaled 1200
+\font\sll      = cmsl10 scaled\magstep1
+\font\slll     = cmsl10 scaled\magstep2
+\font\n        = cmbx9 scaled 1200
+\font\san      = cmss9
+\font\label    = cmss9 scaled 1200
+\font\tituloa  = cmr10 scaled 3000
+\font\chaparra = cmr10
+\font\gotica=ygoth scaled\magstep 3
+\font\gotico=yfrak scaled\magstep 5
+\font\mano=schwell scaled \magstep 0
+\font\manu=suet14 scaled\magstep 2
+\font\got=yinit scaled\magstep 1
+\font\cirilica=wncyi10 scaled\magstep 1
+\font\rpp=rpplri scaled\magstep 1
+\font\goti=yswab scaled\magstep 3
+\font\bastarda=pbas at 15pt
+\font\parkav=pparkav scaled\magstep 2
+
+%-------------Espacios----------------------------
+
+\def\ni{\noindent}  
+%\baselineskip 15pt    
+%\magnification 1200 
+\def\Par{\par\vskip .15in} 
+\def\esp{\Par \vskip .2 in } 
+
+%----------------Letras griegas negritas----------
+
+\newbox\Ancha \def\gros#1{{\setbox\Ancha=\hbox{$#1$} 
+\kern-.025em\copy\Ancha\kern-\wd\Ancha 
+\kern.05em\copy\Ancha\kern-\wd\Ancha 
+\kern-.025em\raise.0433em\box\Ancha}} %\def\gros#1{\vec #1}
+
+%-------------------Tama\~no-------------------------
+
+
+\hsize=30.3pc   % 12.78 cm     ( Es  32pc en Paper.sty)
+\vsize=44pc          % 45pc en Paper.sty
+\newdimen\pagewidth    \newdimen\pageheight  \newdimen\ruleht
+\pagewidth=\hsize    \pageheight=\vsize  \ruleht=.3pt
+\baselineskip=14pt    % 12pt en Paper.sty
+\mathsurround=3pt 
+\widowpenalty=9999
+\voffset= .5\baselineskip
+%\hsize=6.25truein
+%\interlinepenalty=1000
+\topskip 22pt
+
+% \leftskip=.7 cm %Esta instrucci\'on cambia el margen %izquierdo 
+% \vsize 18.3 cm   
+%\voffset= .6 cm
+
+%--------------------Encabezado-------------------
+
+\nopagenumbers
+
+%\footline={\ifnum\pageno=1\hss \hss
+%\else\hss\tenrm-- \folio\ --\hss\fi}
+
+\newbox\x  \newbox\y 
+\def\sec#1 #2.{\mark{#2}\setbox\x=\hbox{\smal #2}
+\ni \setbox0=\vbox{\hbox{\bf #1 \kern2pt #2 } \vskip2pt}
+\copy0 \nobreak }
+
+\gdef\cap#1. {\setbox\y=\hbox{\smal #1} 
+\ni \setbox1=\vbox{\centerline{\hbox{\grande #1 }} \vskip2pt}
+%\copy1    % Pone el titulo del capitulo, pero no me gusta 
+\nobreak }
+\headline={\ifnum\pageno=1\hss\smal Funciones  Especiales y Transformadas Integrales\else\encabezado\fi}
+
+\def\encabezado{ \ifodd\pageno\derecho \else \izquierdo\fi}
+ 
+\def\derecho{ {\centerline{\smal{\botmark }} \hss{\numera \folio}}}
+
+\def\izquierdo{{\numera \folio}\hss{\centerline{\copy\y}}}
+
+
+%----------------------- Marcos------------
+\newdimen\boxitsep   \boxitsep=7pt
+\def\boxit#1{\vbox{\hrule \hbox {\vrule \kern \boxitsep
+       \vbox{\kern \boxitsep #1 \kern \boxitsep }
+       \kern \boxitsep \vrule}
+       \hrule  } \relax}
+
+\def\enmarca#1{\setbox0 = \hbox{#1}       % Rodea con un marco
+               \setbox1 = \vbox{\boxit{\box0}}
+               $$  \copy1 $$ }
+
+\def\marco#1{\setbox0 = \hbox{#1}
+               \setbox1 = \vbox{\boxit{\box0}}\copy1  }
+
+
+% ---------- Pone ecuaci\'on dentro de un marco-------
+%
+\def\ecmarco#1#2{\bigskip\line{\hskip\the\parindent
+\setbox0=\hbox{$\displaystyle #2 $ }\boxit{\box0}
+\hfill \raise3ex \hbox{#1)\kern40pt }}\medskip}
+
+
+% -------------------Dos columnas-----------------
+\newdimen\anchito
+\anchito=.5\hsize   \advance\anchito by -1pc
+
+\def\doscolumnas#1#2{
+\hbox{\vtop{\hsize\anchito \noindent #1} \hskip4pc
+\vtop{\hsize\anchito  \noindent #2 }}}
+
+
+\newdimen\boxitsep\boxitsep1pc
+
+\def\Boxit#1{\vtop{\hrule\hbox{\vrule\kern\boxitsep
+  \vbox{\kern\boxitsep #1\kern\boxitsep}\relax\kern\boxitsep\vrule}\hrule}}
+
+\def\dos#1#2{\hbox{\vtop{\hsize\anchito\noindent #1} 
+\hskip20pt \vtop{\hsize\anchito\noindent #2}}}
+%
+% El macro que sigue no solamente escribe en dos columnas,
+% sino que les pone un marco
+
+\def\dosconmarco#1#2{\hbox{\Boxit{\hsize\anchito\noindent #1 \medskip }
+\hskip10pt\Boxit{\hsize\anchito\noindent #2 \medskip }}}
+
+%------------------------------   Hoy -----------------------
+\gdef\hoy{\ifcase\month\or
+ Enero\or Febrero\or Marzo\or Abril\or Mayo\or Junio\or
+ Julio\or Agosto\or Septiembre\or Octubre\or Noviembre\or Diciembre \fi
+  \space\number\day, \number\year}
+
+%---------------------Gr\'aficas -----------------------------
+%-------------Primero a la izquierda------------------------
+%
+%  Manera de usar \izqfig{#1}{#2}{#3}{#4}{#5}
+%  #1-> Nombre del archivo gr\'afico en formato .eps
+%  #2-> N\'umero de la figura
+%  #3-> El texto que va al lado. Aqu\'{\i} es necesario tejer
+%  el texto para no pasarse. Si se pasa uno un poquito, no es
+%  grave, porque los centros de las cajas est\'an alineados
+%  #4-> Pie de figura
+%  #5-> Tama\~no de la figura en cm, hasta 5cm
+%
+\newbox\z
+\gdef\izqfig#1#2#3#4#5{ 
+\setbox1=\vbox{
+%%Empieza figura
+\let\picnaturalsize=N
+\def\picsize{#5cm}
+\def\picfilename{#1}
+%If you do not have the picture file add:
+%\let\nopictures=Y
+%to the beginning of the file.
+\ifx\nopictures Y\else{\ifx\epsfloaded Y\else\input epsf \fi
+\global\let\epsfloaded=Y
+\centerline{\ifx\picnaturalsize N\epsfxsize \picsize\fi \epsfbox{\picfilename}}}\fi
+%%Termina figura
+\setbox\z=\hbox{\small Figura #2 \kern2pt #4.}
+\centerline{\copy\z}}
+\setbox2=\vbox{\vskip 4pt\splittopskip=\baselineskip\hsize 6.5cm #3\vfill}
+\centerline{$\hskip -3.7cm\vcenter{\box1}\hskip -2.8cm\vcenter{\box2}\hfill$}
+}
+%--------------Ahora a la derecha------------------------
+\newbox\w 
+\gdef\derfig#1#2#3#4#5{ 
+\setbox1=\vbox{
+%%Empieza figura
+\let\picnaturalsize=N
+\def\picsize{#5cm}
+\def\picfilename{#1}
+%If you do not have the picture file add:
+%\let\nopictures=Y
+%to the beginning of the file.
+\ifx\nopictures Y\else{\ifx\epsfloaded Y\else\input epsf \fi
+\global\let\epsfloaded=Y
+\centerline{\ifx\picnaturalsize N\epsfxsize \picsize\fi \epsfbox{\picfilename}}}\fi
+%%Termina figura
+\setbox\w=\hbox{\small Figura #2 \kern2pt #4.}
+\centerline{\copy\w}}
+\setbox2=\vbox{\vskip 4pt\baselineskip=14pt\splittopskip=\baselineskip\hsize 6.5cm #3\vfill}
+\centerline{$\hskip 3.6cm\vcenter{\box2}\hskip -2.9cm\vcenter{\box1}\hfill$}
+}
+
+
+%-----------------Miscel\'anea------------------
+
+\def\sen{\hbox{sen}}  
+\def\cos{\hbox{cos}}
+ 
+\def\porlotanto{\mathinner{\hbox{ .\hskip 3pt.}}\raise 5pt\hbox{\hskip -7pt.}}
+
+\def\Porlotanto{\mathinner{\hbox{\biggfnt .\hskip 3pt.}}\raise 8pt\hbox{\biggfnt\hskip -10pt.}}
+
+\def\PorLotanto{\mathinner{\hbox{\bigggfnt .\hskip 4pt.}}\raise 8pt\hbox{\bigggfnt\hskip -13.5pt.}}
+
+\def\PorLoTanto{\mathinner{\bullet\hbox{\hskip 4pt}\bullet}\raise 9pt\hbox{\hskip -14pt$ \bullet$}}
+
+
+
+
+
+
+

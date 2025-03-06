@@ -1,0 +1,79 @@
+\input exfeti.sty
+
+
+
+%%Begin InstantTeX Picture
+\let\picnaturalsize=N
+\def\picsize{11cm}
+\def\picfilename{FETI.eps}
+%If you do not have the picture file add:
+%\let\nopictures=Y
+%to the beginning of the file.
+\ifx\nopictures Y\else{\ifx\epsfloaded Y\else\input epsf \fi
+\global\let\epsfloaded=Y
+{\ifx\picnaturalsize N\epsfxsize \picsize\fi \epsfbox{\picfilename}}}\fi
+%%End InstantTeX Picture
+
+\magnification 1000
+\centerline{\medio Profesor: Rodolfo P. Mart\'{\i}nez y Romero}\par
+\centerline{\it }
+\centerline{\small \hoy}\par
+\smal
+\ni {\subt El examen consta de 5 preguntas a escoger 4. Las preguntas otativas son la 4 y la 5.}  \par
+\ni 1)  Probar que toda funci\'on  $B_\nu(x)$ que satisfaga  las relaciones de recurrencia
+$$  \eqalign{B'_\nu(x) =& B_{\nu -1}(x) -\left({\nu\over x}\right)B_\nu(x)\cr
+B'_\nu(x) = & -B_{\nu + 1} + \left({\nu\over x}\right)B_\nu(x)\cr}$$
+\ni es soluci\'on de la ecuaci\'on diferencial de Bessel\par
+\ni 2) Probar que entre dos ceros sucesivos de $J_n(x)$ hay uno y solamente un cero de $J_{n+1}(x)$
+
+\ni 3) Probar que
+$$J_{1/2}(x) = {1\over 2\pi i}\sqrt{{x\over 2}}\int_{\cal C} z^{-3/2}e^{z-x^2/4z}dz$$
+\par
+\ni en donde ${\cal C}$ es la trayectoria de la figura
+\input epsf.sty
+
+
+%%Begin InstantTeX Picture
+\let\picnaturalsize=N
+\def\picsize{8cm}
+\def\picfilename{FETI498.eps}
+%If you do not have the picture file add:
+%\let\nopictures=Y
+%to the beginning of the file.
+\ifx\nopictures Y\else{\ifx\epsfloaded Y\else\input epsf \fi
+\global\let\epsfloaded=Y
+\centerline{\ifx\picnaturalsize N\epsfxsize \picsize\fi \epsfbox{\picfilename}}}\fi
+%%End InstantTeX Picture
+\ni 4) Probar que las dos f\'ormulas siguientes son iguales
+ 
+$$ \eqalign{T =& \,1 -{1\over 2ka}\int_0^{2ka}J_0(x)\, dx,\cr
+T=& \,1- {1\over ka}\sum_{n=0}^\infty J_{2n + 1}(2ka).}  $$
+
+\ni 5) Probar que 
+
+$$  J_0(x) = {2\over \pi}\int_0^1 {\cos xt\over \sqrt{1-t^2}}\,dt$$
+\centerline{\medio F\'ormulas, f\'ormulas....}
+
+\ni a)  S\'{\i}mbolos de {\smali Pochhammer}\Par
+\input /LocalApps/TeXTables.app/stables.tex
+\begintable
+  1)  $b(b + 1)_k = (b)_{k + 1} = (b + k)(b)_k  $\hfill | 2)  $n! = (n -m)!(n -m + 1)_m$\hfill \elt
+ 3)  $(c - m + 1)_m = (-1)^m(-c)_m$\hfill | 4)  $(n + m)! = n! (n + 1)_m$\hfill \elt
+ 5)  $ n! = m! (m + 1)_{n - m}$\hfill | 6) \hfill  $(2n - 2m)! = 2^{2n - 2m} (n-m)!({1\over 2})_{n-m}$ \elt
+ 7) $(c)_{n+m}=(c)_n(c+n)_m$\hfill | 8) $(c)_n=(-1)^m(c)_{n-m}(-c-n+1)_m$\hfill \elt
+ 9) \hfill $(c)_n=(-1)^{n-m}(c)_m(-c-n+1)_{n-m}$ | \hskip -4pt 10) $(-n)_{m-k}=(-n)_{m-n}(m-2n)_{n-k}$\hfill 
+\endtable
+\catcode`\|=12
+\par
+\ni b) F\'ormula de {\smali duplicaci\'on}
+$$z!(z-{1\over 2})\,! = \sqrt{\pi} \,2^{-2z} (2z)\,!$$
+\ni c) Funci\'on {\smali Beta} 
+$$ 2\int_0^{\pi/2} \sen^{2z+1}\phi\,\cos^{2\omega +1}\phi\,d\phi = {z! \,\omega!\over (z+\omega+1)!}$$
+\ni  d) Serie de potencias de la funci\'on {\smali Bessel}
+$$J_\nu(x) =\sum_{k=0}^\infty {(-1)^k\over k!\,(k + \nu)! } \left({x\over 2}\right)^{\nu + 2k}.$$
+\ni e) Relaciones de recurrencia
+$$  J_{\nu -1}(x) + J_{\nu + 1}(x) = \left({2\nu\over x}\right) J_\nu (x),\qquad J_{\nu -1}(x) - J_{\nu + 1}(x) = 2\, J_\nu'(x).$$
+
+\vfill
+\eject
+\end

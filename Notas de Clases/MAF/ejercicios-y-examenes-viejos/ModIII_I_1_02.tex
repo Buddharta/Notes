@@ -1,0 +1,98 @@
+\input exfeti.sty
+
+% 20 de oct. 1989
+\newbox\Ancha
+\def\gros#1{{\setbox\Ancha=\hbox{$#1$}
+   \kern-.025em\copy\Ancha\kern-\wd\Ancha
+   \kern.05em\copy\Ancha\kern-\wd\Ancha
+   \kern-.025em\raise.0433em\box\Ancha}}
+%\def\gros#1{\vec #1}
+\font\titulo=cmbxti10 scaled 5000
+\font\biggfnt=cmr10 scaled\magstep 3
+
+\font\bigfnt=cmr10 scaled\magstep 1
+\def\ni{\noindent}
+\def\esp{\par \vskip .2 in }
+\baselineskip 18pt \nopagenumbers
+
+\def\ni{\noindent}
+\baselineskip 15pt \magnification 1200
+\def\Par{\par\vskip .15in}
+\def\esp{\Par \vskip .2 in }
+%----------------------------------empieza--------------------------------------
+
+ \centerline{\bigggfnt F\'{\i}sica Moderna III}\Par
+\centerline{{\bf Profesor:}  {\it Rodolfo P. Mart\'{\i}nez y Romero}}\Par
+
+{\baselineskip 8pt \centerline{\it Examen 1}\par
+\centerline{\small \hoy}
+\Par
+
+%-----------------------------------figura---------------------------------------------
+
+%\newbox\z
+\gdef\fetifig#1#2#3{\setbox1=\vbox{
+%%Empieza figura
+\let\picnaturalsize=N
+\def\picsize{#3}
+\def\picfilename{#1}
+%If you do not have the picture file add:
+%\let\nopictures=Y
+%to the beginning of the file.
+\ifx\nopictures Y\else{\ifx\epsfloaded Y\else\input epsf \fi
+\global\let\epsfloaded=Y \hskip 2cm{\ifx\picnaturalsize
+N\epsfxsize \picsize\fi \epsfbox{\picfilename}}}\fi
+%%Termina figura
+ \setbox\z=\hbox{}
+\copy\z}
+ \setbox2=\vbox{\vskip
+4pt\splittopskip=\baselineskip\hsize 5cm {\hskip -60pt
+{\titulo#2}}} \centerline{$\hskip -3cm\vcenter{\box1}\hskip
+-4.8cm\vcenter{\box2}\hfill$} }
+%\input epsf.sty
+\vskip -125pt 
+\fetifig{unamN4.eps}{\titulo}{2.5cm}
+
+
+\vskip 70pt
+
+%\n
+\ni 1) Calcular el impulso m\'{\i}nimo del mes\'on $\pi^{-}$  necesario
+para producir el mes\'on $\rho$ en  la reacci\'on $\pi^- +P\to\rho+n$, sobre protones en reposo. Las masas de cada part\'{\i}cula son aproximadamente:
+
+$$\matrix{m_\pi =& 0.14 \quad\hbox{Gev.}\cr
+          m_\rho =& 0.76 \quad\hbox{Gev.}\cr
+          m_p = & 0.94 \quad\hbox{Gev.}\cr}
+$$
+
+\input epsf.tex
+%%Begin InstantTeX Picture
+\let\picnaturalsize=N
+\def\picsize{10cm}
+\def\picfilename{ex1.eps}
+%If you do not have the picture file add:
+%\let\nopictures=Y
+%to the beginning of the file.
+\ifx\nopictures Y\else{\ifx\epsfloaded Y\else\input epsf \fi
+\let\epsfloaded=Y
+\centerline{\ifx\picnaturalsize N\epsfxsize \picsize\fi \epsfbox{\picfilename}}}\fi
+%%End InstantTeX Picture
+
+
+\ni 2). Prueben que para una colisi\'on el\'astica, 
+
+$$  s + t+ u = 2(m_1^2 + m_2^2),$$
+
+\ni en donde $ s= (\tilde{p}_1 + \tilde{p}) ,\quad  t= (\tilde{p}_1 - \tilde{p}_3) ,\quad u= (\tilde{p}_1 - \tilde{p}_4 ).$ Recordemos que se define $ \tilde{p} $  como $\tilde{p}\equiv(E,\hbox{\bf p}). $
+
+\vfill
+\eject
+\end
+
+
+
+
+
+
+
+
