@@ -1,54 +1,117 @@
-\input exfeti.sty
-% 20 de oct. 1989
-\newbox\Ancha
-\def\gros#1{{\setbox\Ancha=\hbox{$#1$}
-   \kern-.025em\copy\Ancha\kern-\wd\Ancha
-   \kern.05em\copy\Ancha\kern-\wd\Ancha
-   \kern-.025em\raise.0433em\box\Ancha}}
-%\def\gros#1{\vec #1}
-\font\biggfnt=cmr10 scaled\magstep 3
-\font\bigfnt=cmr10 scaled\magstep 1
-\def\ni{\noindent}
-\def\esp{\par \vskip .2 in }
-\baselineskip 18pt
-\nopagenumbers
+% Created 2025-02-06 Thu 20:56
+% Intended LaTeX compiler: pdflatex
+\documentclass[letterpaper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{longtable}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{capt-of}
+\usepackage{hyperref}
+\usepackage{lmodern} % Ensures we have the right font
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{amsmath, amsthm, amssymb, amsfonts, amssymb, amscd}
+\usepackage[table, xcdraw]{xcolor}
+%\usepackage{mdsymbol}
+\usepackage{tikz-cd}
+\usepackage{float}
+\usepackage[spanish, activeacute, ]{babel}
+\usepackage{color}
+\usepackage{transparent}
+\graphicspath{{./figs/}}
+\usepackage{makeidx}
+\usepackage{afterpage}
+\usepackage{array}
+\usepackage{braket}
+\usepackage{pst-node}
+\newtheorem{teorema}{Teorema}[section]
+\newtheorem{prop}[teorema]{Proposici\'on}
+\newtheorem{cor}[teorema]{Corolario}
+\newtheorem{lema}[teorema]{Lema}
+\newtheorem{def.}{Definici\'on}[section]
+\newtheorem{afir}{Afirmaci\'on}
+\newtheorem{conjetura}{Conjetura}
+\renewcommand{\figurename}{Figura}
+\renewcommand{\indexname}{\'{I}ndice anal\'{\i}tico}
+\newcommand{\zah}{\ensuremath{ \mathbb Z }}
+\newcommand{\rac}{\ensuremath{ \mathbb Q }}
+\newcommand{\nat}{\ensuremath{ \mathbb N }}
+\newcommand{\prob}{\textbf{P}}
+\newcommand{\esp}{\mathbb E}
+\newcommand{\eje}{{\newline \noindent \sc \textbf{Ejemplo. }}}
+\newcommand{\obs}{{\newline \noindent \sc \textbf{Observación. }}}
+\newcommand{\dem}{{\noindent \sc Demostraci\'on. }}
+\newcommand{\bg}{\ensuremath{\overline \Gamma}}
+\newcommand{\ga}{\ensuremath{\gamma}}
+\newcommand{\fb}{\ensuremath{\overline F}}
+\newcommand{\la}{\ensuremath{\Lambda}}
+\newcommand{\om}{\ensuremath{\Omega}}
+\newcommand{\sig}{\ensuremath{\Sigma}}
+\newcommand{\bt}{\ensuremath{\overline T}}
+\newcommand{\li}{\ensuremath{\mathbb{L}}}
+\newcommand{\ord}{\ensuremath{\mathbb{O}}}
+\newcommand{\bs}{\ensuremath{\mathbb{S}^1}}
+\newcommand{\co}{\ensuremath{\mathbb C }}
+\newcommand{\con}{\ensuremath{\mathbb{C}^n}}
+\newcommand{\cp}{\ensuremath{\mathbb{CP}}}
+\newcommand{\rp}{\ensuremath{\mathbb{RP}}}
+\newcommand{\re}{\ensuremath{\mathbb R }}
+\newcommand{\hc}{\ensuremath{\widehat{\mathbb C} }}
+\newcommand{\pslz}{\ensuremath{\mathrm{PSL}(2,\mathbb Z) }}
+\newcommand{\pslr}{\ensuremath{\mathrm{PSL}(2,\mathbb R) }}
+\newcommand{\pslc}{\ensuremath{\mathrm{PSL}(2,\mathbb C) }}
+\newcommand{\hd}{\ensuremath{\mathbb H^2}}
+\newcommand{\slz}{\ensuremath{\mathrm{SL}(2,\mathbb Z) }}
+\newcommand{\slr}{\ensuremath{\mathrm{SL}(2,\mathbb R) }}
+\newcommand{\slc}{\ensuremath{\mathrm{SL}(2,\mathbb C) }}
+\newcommand{\mdlr}{\ensuremath{\mathrm{M}}}
+\date{\today}
+\title{Examen 1 de MAF}
+\begin{document}
 
-\def\ni{\noindent}  
-\baselineskip 15pt    
-\magnification 1100 
-\def\Par{\par\vskip .15in} 
-\def\esp{\Par \vskip .2 in }
- 
-%%Begin InstantTeX Picture
-\let\picnaturalsize=N
-\def\picsize{3cm}
-\def\picfilename{unamN4.eps}
-%If you do not have the picture file add:
-%\let\nopictures=Y
-%to the beginning of the file.
-\ifx\nopictures Y\else{\ifx\epsfloaded Y\else\input epsf \fi
-\let\epsfloaded=Y
-{\ifx\picnaturalsize N\epsfxsize \picsize\fi \epsfbox{\picfilename}}}\fi
-%%End InstantTeX Picture
+\maketitle
 
-\centerline{\bigfnt MAF}\par
+\noindent\textbf{Instrucciones: Tienen 2 horas y media para resolver el examen. Cada problema vale 2.5 puntos. TODAS sus hojas de examen deben tener su nombre SIN EXCEPCION.}
 
-\centerline{\it Examen 1}\par\centerline{\small\hoy}\Par
-\ni 1) Calcular las integrales siguientes\par
-\ni  $$ \int_{-1}^1 (1-x^2)^{1/2}x^{2n}dx = \cases{{\pi\over 2}& Si $n=0$\cr
-\cr
-\pi {(2n-1)!!\over (2n +2)!!}  & Si $n= 1,2,3...$}$$
+\begin{enumerate}
+\item Sea \(J\in\textrm{M}_{2\times 2}(\co)\) la matriz,
+\[
+      J=\begin{pmatrix} 0 & 1\\
+                       -1 & 0
+        \end{pmatrix}.
+\]
+Calcule la matriz exponencial y demuestre que
+\[
+        A(\theta)=\exp(\theta J)=\cos\theta I_{2} + \sin\theta J.
+   \]
+Donde \(I_{2}\) es la matriz identidad, además muestre que \(\det(A(\theta))=\|A(\theta)\|=1\).
+\item Utilice el m'etodo de Bernoulli o m'etodo de separaci'on de variables para resolver el problema de la cuerda vibrante de longitud \(L\) con extremos fijos, es decir, utilice el m'etodo para reducir la ecuaci'on
+  \[
+  \dfrac{\partial^{2} u}{\partial t^{2}}=\dfrac{\partial^{2}u}{\partial x^{2}}
+  \]
+  a dos ecuaciones ordinarias. Utilize las condiciones de frontera \(u(0,t)=u(L,t)=0\) para demostrar que las frecuencias en dicha cuerda son \emph{discretas}.
+\noindent\emph{Punto extra: Suponga que las series de Fourier son densas determinar la soluci'on con condici'on inicial
+  \[
+  u(x,0)=\phi(x),\,\phi(0)=\phi(L).\text{ donde $\phi$ es diferenciable.}
+  \]
+ Calcule la soluci'on para $\phi(x)=x(x-L)$}
+\item Demuestre que dada \(X,\sig,\mu\) un espacio de medida, y \(\mathbb{B}_{\re}\) la \(\sigma\)-álgebra de borel en \(\re\) y \(f:X\to\re\) una funci'on no negativa. La funci'on
+\[
+\nu:\sig\to\re\quad\nu(E)=\int_{E}fd\,\mu
+\]
+es una medida tal que todo conjunto nulo de \((\sig,\mu)\) es nulo para \((\sig,\nu)\).
+\item La función Gamma para los reales positivos, \(\Gamma:\re^{+}\to\re\)
+  \begin{itemize}
+    \item Sea \(\alpha>0\), pruebe que \(\int_0^{\infty}e^{-x}x^{\alpha-1}\,dx=\Gamma(\alpha)\) existe.\\
+    \emph{Sugerencia: Examine por separado la integral en \((0,1)\) y \([1,\infty)\) y acote adecuadamente}.
 
+    \item Demuestre que \((\Gamma)(z+1)=z\Gamma(z)\), calcule \(\Gamma(n)\) para toda \(n\in\nat\)
+    \end{itemize}
 
-\ni 2) La aproximaci\'on de {\it Bloch--Gruneissen} para el c\'alculo de la resistencia el\'ectrica $\rho$ en un metal monovalente es 
-
- $$\rho= C{T^5\over \Theta^6} \int_0^{\Theta/T}{x^5\over(e^x-1)\,(1-e^{-x})}dx.$$
-
-\ni donde $C$ es una constante y $\Theta$ es la llamada temperatura de Debye, la cual depende del material. Demostrar que en el l\'{\i}mite cuando $T\to0$, $\rho$ vale
-$$  \rho = 5!\zeta(5) C{T^5\over \Theta^6}.$$
-
-\ni 3) Probar que la $\zeta(s)$ de Riemann se puede poner como  
-
-$$   \zeta(s)=-{(-s)!\over 2\pi i} \int_{\cal C} {(-z)^{s-1} \over e^z -1} \,dz,$$
-
-\end
+\end{enumerate}
+\end{document}
