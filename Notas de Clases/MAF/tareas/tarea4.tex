@@ -71,51 +71,39 @@
 \newcommand{\slc}{\ensuremath{\mathrm{SL}(2,\mathbb C) }}
 \newcommand{\mdlr}{\ensuremath{\mathrm{M}}}
 \date{\today}
-\title{Examen 1 de MAF}
+\title{Tarea 4}
 \begin{document}
 
 \maketitle
 
-\noindent\textbf{Instrucciones: Tienen 2 horas y media para resolver el examen. Cada problema vale 2.5 puntos. TODAS sus hojas de examen deben tener su nombre SIN EXCEPCION.}
+\textbf{Fecha de entrega: Sabado 15 de Marzo de 2025}
 
 \begin{enumerate}
-\item Sea \(J\in\textrm{M}_{2\times 2}(\co)\) la matriz,
-\[
-      J=\begin{pmatrix} 0 & 1\\
-                       -1 & 0
-        \end{pmatrix}.
-\]
-Calcule la matriz exponencial y demuestre que
-\[
-        A(\theta)=\exp(\theta J)=\cos\theta I_{2} + \sin\theta J.
-   \]
-Donde \(I_{2}\) es la matriz identidad, además muestre que \(\det(A(\theta))=\|A(\theta)\|=1\).
-\item Utilice el m'etodo de Bernoulli o m'etodo de separaci'on de variables para resolver el problema de la cuerda vibrante de longitud \(L\) con extremos fijos, es decir, utilice el m'etodo para reducir la ecuaci'on
-  \[
-  \dfrac{\partial^{2} u}{\partial t^{2}}=\dfrac{\partial^{2}u}{\partial x^{2}}
-  \]
-  a dos ecuaciones ordinarias. Utilize las condiciones de frontera \(u(0,t)=u(L,t)=0\) para demostrar que las frecuencias en dicha cuerda son \emph{discretas}.
-\noindent\emph{Punto extra: Suponga que las series de Fourier son densas determinar la soluci'on con condici'on inicial
-  \[
-  u(x,0)=\phi(x),\,\phi(0)=\phi(L).\text{ donde $\phi$ es diferenciable.}
-  \]
- Calcule la soluci'on para $\phi(x)=x(x-L)$}
-\item Demuestre que dada \(X,\sig,\mu\) un espacio de medida, y \(\mathbb{B}_{\re}\) la \(\sigma\)-álgebra de borel en \(\re\) y \(f:X\to\re\) una funci'on no negativa. La funci'on
-\[
-\nu:\sig\to\re\quad\nu(E)=\int_{E}fd\,\mu
-\]
-es una medida tal que todo conjunto nulo de \((\sig,\mu)\) es nulo para \((\sig,\nu)\).
-\item La función Gamma para los reales positivos, \(\Gamma:\re^{+}\to\re\)
-  \begin{itemize}
-    \item Pruebe que
-    \[
-        \Gamma(z)=\int_0^{\infty}e^{-x}x^{z-1}\,dx
-    \]
-    Existe.
-\emph{Sugerencia: Examine por separado la integral en \((0,1)\) y \([1,\infty)\) y acote adecuadamente}.
-
-    \item Demuestre que \((\Gamma)(z+1)=z\Gamma(z)\), calcule \(\Gamma(n)\) para toda \(n\in\nat\)
-    \end{itemize}
-
+  \item Sea \(X=(\mathcal{C}[a,b],\|\cdot\|_{\infty})\) el espacio de \emph{Banach} de las funciones continuas en \([a,b]\) a \(\co\) con la norma del supremo (tambi'en llamada norma infinito) y sea \(Y=(\mathcal{C}[a,b],\|\cdot\|_{2})\) el mismo espacio pero ahora con la norma 2 o la norma dada por el producto interno tambi'en conocida como la norma de \emph{las funciones cuadrado inegrables}.
+        \begin{itemize}
+          \item[a)] Demuestre que el operador identidad \(I:X\to Y\) \(I\phi=\phi\) es inyectivo, supreyectivo y continuo. Calcule su norma.\\
+            \emph{\textbf{NOTA: Tenga mucho cuidado con la noci'on de continuidad, f'ijese con mucho cuidado en las normas.}}
+          \item[b)] Explique por qu'e es imposible que \(I:Y\to X\) sea continuo.\\
+            \emph{Sugerencia: vea que propiedades tiene un espacio y el otro no.}
+          \item[c)] Concluya que cualquier conjunto denso \(D\subset X\) es denso en \(Y\), en particular los polinomios trigonom'etricos.
+        \end{itemize}
+  \item Sea \(\mathcal{T}_{m}\) el espacio de polinomios trigonom'etricos de grado \(m\) y \(T\in\mathcal{T}_{m}\),
+        \[
+        T(x)=\frac{\alpha_{0}}{2}+\sum_{k=1}^{m}\alpha_{k}\cos(kx)+\beta_{k}\sin(kx)
+        \]
+        \begin{itemize}
+          \item[a)] Muestre que \(s_{n}(T)(x)=T(x)\) para toda \(n\geq m\).
+          \item[b)] Calcule \(\|f-T\|^{2}_{2}\).\\
+                \emph{Sugerencia:Desarrolle el cuadrado, calcule el producto de \(f\) con \(T\) en t'erminos de los cofiecientes de Fourier de \(f\).}
+          \item[c)] Concluya que
+                \[
+                \inf\{\|f-T\|^{2}_{2}\,:\,T\in\mathcal{T}_{m}\}=\|f-s_{m}(f)\|^{2}_{2}
+                \]
+        \end{itemize}
+  \item Sea \(f:[-\pi,\pi]\to\co\) diferenciable, tal que
+        \[
+        f(x)=\sum_{n\in\zah}c_{n}e^{int},\quad f'(x)=\sum_{n\in\zah}c'_{n}e^{int}
+        \]
+        Calcule los \(c'_{n}\) en t'erminos de \(c_{n}\), justifique formalmente. Explique entonces que sucede con las series de \(\mathrm{Re}(f)\) e \(\mathrm{Im}(f)\).
 \end{enumerate}
 \end{document}
