@@ -6,26 +6,22 @@
 
 \noindent *PROPUESTA DE TEMARIO*
 
-1. Introducción y conceptos preliminares:
-   - Espacios vectoriales y notación de Dirac.
-   - Espacios Hilbert como espacios vectoriales de dimensión infinita.
-   - Funcionales lineales, operadores y sus representaciones.
-   - Formalismo de la teoría de la medida y el teorema de Riemann-Lebesgue.
-   - Repaso de convergencia de series y variable compleja.
+1. Funciones El'ipticas.
+   - Funciones simplemente peri'odicas y sus series de Fourier.
+   - Funciones doblemente peri'odicas y su latiz de periodos.
+   - Bases can'onicas y el grupo modular.
+   - La teor'ia de Weierstrass y la funci'on $\wp$.
+   - La funci'on modular $\lambda$.
 
-2. Análisis de Fourier:
-   - Series de Fourier.
-   - Condiciones de Dirichlet.
-   - Convergencia de las series de Fourier.
-   - Teorema de Fourier.
-   - Series ortogonales en 2 variables.
-   - Aplicaciones.
+2. Formas Modulares
+   - El orbifold modular.
+   - Series de Einsenstein.
+   - El anillo de formas modulares.
 
-3. Teoría de Strurm-Liouville
-   - Operadores auto adjuntos.
-   - Operadores diferenciales auto adjuntos.
-   - Funciones propias y funciones de peso.
-   - Funciones de Green para ecuaciones no homogeneas.
+3. Curvas eli'ticas
+   - El conjunto soluci'on a $y^2=4x^3-g_2x-g_3$ y sus propiedad geometrico algebraicas.
+   - Parametrizaci'on con la funci'on $\wp$.
+   - Las curvas el'ipticas como toros.
 
 4. Ecuación de Laplace:
    - Ecuación de Laplace en 2 dimensiones.
