@@ -383,7 +383,7 @@ Lo anterior demuestra que la susesi\'on de n\'umeros complejos \(\{c_{k}=a_{k}+i
     An'alogamente la serie de \(b_{n}'s\) es \emph{absolutamente convergente} y por lo tanto por la prueba M de Weierstrass, es uniformemente convergente.\\
     \QED
     \subsection{El teorema de Fej'er}
-    \noindent Ahora para garantizar la convergencia absoluta de los polinomios trigonom'etricos para funciones continuas, ser'a necesario modificar el kernal de Dirichlet ligeramente, la inspiraci'on de esta modificaci'on vine de las sumas de Ces\`aro para susesiones, las cuales en general tienen mejores propiedades de convergencia
+    \noindent Ahora para garantizar la convergencia absoluta de los polinomios trigonom'etricos para funciones continuas, ser'a necesario modificar el kernel de Dirichlet ligeramente, la inspiraci'on de esta modificaci'on vine de las sumas de Ces\`aro para susesiones, las cuales en general tienen mejores propiedades de convergencia
     \begin{def.}
       Sea \(\{s_{n}\}_{n\in\nat}\), se define la susesi'on de Ces\`aro como
       \[
@@ -407,8 +407,13 @@ Lo anterior demuestra que la susesi\'on de n\'umeros complejos \(\{c_{k}=a_{k}+i
     \end{def.}
     Al igual que el kernel de Dirichlet, el kernel de Fej'er tiene una identidad trigonom'etrica que facilita si escritura
     \[
-      K_{n}(x)=\frac{1}{n}\sum_{k=0}^{n-1}\frac{\sin(2k+1)\frac{x}{2}}{s\sin\frac{x}{2}}
+      K_{n}(x)=\frac{1}{n}\sum_{k=0}^{n-1}\frac{\sin^{2}\frac{(2k+1)}{2}x}{2n\sin^{2}\frac{x}{2}}.
     \]
+    Esto se demuestra usando la identidad de suma angular dos veces para mostrar que \(2\sin\theta\sin(2k+1)\theta=\cos2k\theta-\cos(2k+2)\theta\) y por lo tanto la siguiente suma, es una suma telesc'opica de cosenos
+    \begin{align*}
+      2\sin\theta\sum_{k=0}^{n-1}\sin(2k+1)\theta&=\sum_{k=0}^{n-1}[cos2k\theta-\cos(2k+2)\theta]\\
+                                                 &=1-\cos2n\theta.
+      \end{align*}
     \begin{teorema}[Teorema de Fejér]
       Sea \(f\in\mathcal{C}[-\pi,\pi]\), entonces \(\sigma_n(f)\) converge \emph{absolutamente a} \(f\).
     \end{teorema}
@@ -418,20 +423,26 @@ Lo anterior demuestra que la susesi\'on de n\'umeros complejos \(\{c_{k}=a_{k}+i
       \begin{enumerate}
         \item \(k_n\geq 0\) para toda \(n\in\nat\).
         \item \((1/\pi)\int_{-\pi}^{\pi}k_n(x)\,dx=1\).
-        \item \((\int_{\delta\leq|t|\leq\pi}k_n(x)\,dx\to0\) cuando \(n\to\infty\)para toda \(\delta\in\re^+\).
+        \item \((\int_{\delta\leq|t|\leq\pi}k_n(x)\,dx\to0\) cuando \(n\to\infty\) para toda \(\delta\in\re^+\).
       \end{enumerate}
       Entonces la  susesión convolución \(1/\pi f*k_n\) converge uniformemente a \(f\), es decir
       \[
       \frac{1}{\pi}\int_{-\pi}^{\pi} f(t)k_{n}(t-x)\,d\lambda(t)\to f(x)\text{ uniformemente.}
       \]
     \end{teorema}
-    \dem Sea \(\epsilon\in\re^+\) como \(f\) es continua en un intervalo compacto, entonces sea \(\|f\|_{\infty}\) el valor máximo de \(|f|\), ademas es \emph{uniformemente continua}, es decir, existe \(\delta\in\re^+\) tal que \(|f(x)-f(x+t)|<\epsilon\) para toda \(x\) y \(|t|<\delta\). Ahora como \(k_n\) no son negativos, entonces
+    \dem Sea \(\epsilon\in\re^+\) como \(f\) es continua en un intervalo compacto, entonces sea \(\|f\|_{\infty}\) el valor máximo de \(|f|\), ademas, \(f\) es \emph{uniformemente continua}, es decir, existe \(\delta\in\re^+\) tal que \(|f(x)-f(x+t)|<\epsilon\) para toda \(x\) y \(|t|<\delta\). Ahora como \(k_n\) no son negativos, entonces
     \begin{align*}
       \bigg|f(x)-\frac{1}{\pi}\int_{-\pi}^{\pi} f(t)k_{n}(t-x)\,dt\bigg|&=
       \frac{1}{\pi}\bigg|\int_{-\pi}^{\pi} [f(x)-f(x+t)]k_{n}(t)\,dt\bigg|\\
       &\leq\frac{1}{\pi}\int_{-\pi}^{\pi} |f(x)-f(x+t)|k_{n}(t)\,dt\\
-      &\leq\frac{\epsilon}{\pi}\int_{|t|<\epsilon}k_n+ \frac{2\|f\|_{\infty}}{\pi}\int_{\delta\leq|t|\leq\pi}k_{n}(t)\,dt\\
+      &\leq\frac{\epsilon}{\pi}\int_{|t|<\delta}k_n(t)+ \frac{2\|f\|_{\infty}}{\pi}\int_{\delta\leq|t|\leq\pi}k_{n}(t)\,dt\\
       & < \epsilon+\epsilon=2\epsilon.
       \end{align*}
-    Para \(n\) lo suficientemente grande.
+      Para \(n\) lo suficientemente grande.
+      \QED\\
+      Ahora claramente el kernel fe Fej'er satisface las primeras dos condiciones, sin embargo para mostrar la tercera se necesita algo m'as de an'alisis, como el seno  es creciente en \(\delta\leq|t|\leq\pi\), entonces
+      \[
+        0\leq K_{n}(t)=\frac{\sin^{2}(nt/2)}{2n\sin^{2}(t/2)}\leq\frac{1}{2n\sin^{2}(\delta/2)}\to0\quad(n\to\infty).
+      \]
+
   \end{document}
