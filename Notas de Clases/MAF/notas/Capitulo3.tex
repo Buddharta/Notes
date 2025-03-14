@@ -1,0 +1,276 @@
+\documentclass[main.tex]{subfiles}
+\begin{document}
+\chapter{Teor'ia de Sturm-Liouville}
+\noindent Si recordamos la motivaci'on para el estudio de las series de Fourier, intentamos encontrar soluciones generales para la \emph{ecuación de Schrödinger en una dimensión} con potencial \(V(x)\) \emph{independiente del tiempo}. Para resolverla utilizamos el \emph{método de separación de variables o método de Bernoulli}, el cual divide el problema en dos ecuaciones,
+
+\begin{enumerate}
+    \item \textbf{Ecuación Temporal}:
+    \[
+    i\hbar \dfrac{d \phi(t)}{dt} = E \phi(t).
+    \]
+    Cuya solución es
+    \[
+    \phi(t) = \phi(0) e^{-iEt/\hbar}.
+    \]
+
+    \item \textbf{Ecuación Espacial}:
+    \[
+    -\frac{\hbar^2}{2m} \dfrac{d^2 \varphi(x)}{dx^2} + V(x) \varphi(x) = E \varphi(x).
+    \]
+    La cual define el \emph{operador hamiltoniano cuántico}
+    \[
+    H =-\frac{\hbar^2}{2m} \dfrac{d^2 }{dx^2} + V(x)I,
+    \]
+    además \(E\) representa la energía del estado estacionario, la energía cumplen con una ecuación del tipo
+    \[
+    H\varphi=E\varphi,
+    \]
+    también conocida como ecuación de vectores propios o \emph{ecuación espectral}.
+\end{enumerate}
+La ecuaci'on  espectral para el operador hamiltoniano con un potencial independiente del tiempo, es es el tipo de ecuaciones y el tipo de operadores que estudiaremos en esta secci'on, estos operadores son conocidos como los operadores de \emph{Sturm-Liouville}. Estos operadores provienen de manera natural de la resoluci'on de ecuaciones diferenciales parcialers con ciertas condiciones de frontera, de la misma forma que cuando resolvimos la ecuaci'on de Schrödinger. El nombre de esta teor'ia y operadores proviene de los matem'aticos \emph{Jaques Sturm} y \emph{Joseph Liouville} quienes estudiaron este tipo de ecuaciones en el siglo XIX.
+
+\begin{def.}{Operadores de Sturm-Liouville}
+  Sean \(p(x)\) y \(q(x)\)son funciones dadas, se define \(\mathcal{L}\) el operador de Sturm-Liouville como
+  \[
+    \mathcal{L}= -\frac{d}{dx} \left( p(x) \dfrac{d}{dx} \right) + q(x)I.
+  \]
+  Ahora, estudiaremos el caso cuando \(\phi(x)\) es una función propia y \(\lambda\) es el valor propio asociado con un peso \(w(x)\), es decir la ecuaci'on
+  \[
+    \mathcal{L}\phi(x)= -\frac{d}{dx}\left( p(x) \dfrac{d\phi}{dx}(x)\right) + q(x)\phi(x)=\lambda w(x)\phi(x).
+  \]
+\end{def.}
+\section{Ecuaciones diferenciales lineales de orden dos.}
+\noindent Comenzamos con un repaso de ecuaciones diferenciales ordinarias de orden dos, as'i, cc consideramos la ecuación diferencial ordinaria de segundo orden en el intervalo real \( I \), dada por
+\[
+a_0(x) y'' + a_1(x) y' + a_2(x) y = f(x),
+\]
+donde \( a_0 \), \( a_1 \), \( a_2 \) y \( f \) son funciones complejas definidas en \(I\). Cuando \(f\equiv 0\) en \(I\), la ecuación se llama \textbf{homogénea}; de lo contrario, se llama \textbf{no homogénea}. Cualquier función (compleja) \(\phi \in C^2(I)\) es una solución de la ecuación si la sustitución de \(y\) por \(\phi\) resulta en la identidad
+
+\[
+a_0(x) \phi''(x) + a_1(x) \phi'(x) + a_2(x) \phi(x) = f(x) \quad \text{para todo } x \in I.
+\]
+
+Si denotamos el operador diferencial de segundo orden
+
+\[
+L = a_0(x) \frac{d^2}{dx^2} + a_1(x) \frac{d}{dx} + a_2(x)I,
+\]
+
+entonces la ecuaci'on la escribimos la forma \(Ly= f\). El operador \(L\) es lineal, es decir,
+\[
+L(c_1 \phi + c_2 \psi) = c_1 L\phi + c_2 L\psi\quad\forall \phi, \psi \in C^2(I),\,c_1,c_2 \in\co
+\]
+
+De igual manera si
+
+\[
+L\phi = 0, \quad L\psi = 0,
+\]
+
+entonces
+
+\[
+L(c_1 \phi + c_2 \psi) = c_1 L\phi + c_2 L\psi = 0,
+\]
+
+para cualquier par de constantes \( c_1 \) y \( c_2 \). Esto se conoce como el \textbf{principio de superposición}.
+Si la función \(a_0\) no se anula en ningún punto de \(I\), la ecuación puede dividirse por \(a_0\) para obtener
+\[
+y'' + q(x) y' + r(x) y = g(x),\quad q=(x)\frac{a_1(x)}{a_0(x)},\,r(x)=\frac{a_2(x)}{a_0(x)},\,g(x)=\frac{f(x)}{a_0(x)}.
+\]
+Claramente ambas ecuaciones son equivalentes, en el sentido de que tienen el mismo conjunto de soluciones. La ecuación se dice entonces \textbf{regular} en \(I\); de lo contrario, si existe un punto \( c \in I \) donde \( a_0(c) = 0 \), la ecuación es \textbf{singular}, y \(c\) se denomina \textbf{punto singular} de la ecuación.
+
+De acuerdo con el teorema de existencia y unicidad para ecuaciones lineales, si las funciones \(q\), \(r\) y \(g\) son continuas en \(I\) y \(x_0\) es un punto en \(I\), entonces, para cualesquiera dos números \(\xi\) y \(\eta\), existe una única solución \( \phi \) en \( I \) tal que
+\[
+\phi(x_0) = \xi, \quad \phi'(x_0) = \eta.
+\]
+
+A continuación, enumeramos algunas propiedades bien conocidas de las soluciones de la ecuación, que pueden encontrarse en muchas introducciones estándar a las ecuaciones diferenciales ordinarias.
+
+\begin{enumerate}
+    \item La ecuación homogénea:
+    \[
+    y'' + q(x) y' + r(x) y = 0, \quad x \in I,
+    \]
+    tiene dos soluciones linealmente independientes \( y_1(x) \) y \( y_2(x) \) en \( I \). Una combinación lineal de estas dos soluciones:
+    \[
+    c_1 y_1 + c_2 y_2,
+    \]
+    donde \(c_1\) y \(c_2\) son constantes arbitrarias, es la \textbf{solución general}; es decir, cualquier solución de la ecuación está dada por esta combinaci'on para algunos valores de \(c_1\) y \(c_2\). Cuando \(c_1=c_2=0\), obtenemos la llamada \textbf{solución trivial} la cual, siempre es una solución de la ecuación homogénea. Por el teorema de unicidad, es la única solución si \(\xi=\eta=0\).
+
+    \item Si \(y_p(x)\) es cualquier solución particular de la ecuación no homogénea, entonces
+    \[
+    y_p + c_1 y_1 + c_2 y_2
+    \]
+    es la solución general de la ecuaci'on no homogenea. Aplicando las condiciones iniciales, las constantes \( c_1 \) y \( c_2 \) se determinan y obtenemos la solución única del sistema de ecuaciones.
+
+    \item Cuando los coeficientes \(q\) y \(r\) son constantes, la solución general de la ecuación tiene la forma
+    \[
+    y(x)=c_1 e^{m_1 x} + c_2 e^{m_2 x},
+    \]
+    donde \( m_1 \) y \( m_2 \) son las raíces del polinomio caracter'istico \(m^2+qm+r=0\) cuando las raíces son distintas. Si \( m_1 = m_2 = m \), entonces por variaci'on de par'ametros, la solución toma la forma
+    \[
+    y(x)=c_1 e^{m x} + c_2 x e^{m x},
+    \]
+    donde las funciones \( e^{m x} \) y \( x e^{m x} \) son claramente linealmente independientes.
+
+    \item Cuando \(a_0(x)=x^2\), \(a_1(x)=ax\) y \(a_2(x)=b\), donde \(a\) y \(b\) son constantes, la versión homogénea de la ecuación se convierte en
+    \[
+    x^2 y'' + a x y' + b y = 0,
+    \]
+    que se llama la \textbf{ecuación de Cauchy-Euler}, su solución general está dada por
+    \[
+    y(x)=c_1 x^{m_1} + c_2 x^{m_2},
+    \]
+    donde \(m_1\) y \(m_2\) son las raíces distintas de \(m^2+(a-1)m+b=0\). De igual manera usando variaci'on de par'ametros, cuando \(m_1=m_2=m\), la solución es
+    \[
+    y(x)=c_1 x^m + c_2 x^m \log x.
+    \]
+
+    \item El \emph{teorema de Cauchy-Kovaleskaya} asegura que si los coeficientes \(q(x)\) y \(r(x)\) son funciones analíticas en algún punto \(x_0\) en el interior de \(I\), es decir, cada uno puede representarse en un intervalo abierto centrado en \(x_0\) por una serie de potencias en \((x-x_0)\), entonces la solución general también es analítica en \(x_0\) y se representa por una serie de potencias de la forma
+    \[
+    y(x)=\sum_{n=0}^\infty c_n (x - x_0)^n\text{ alrededor de }x_{0}.
+    \]
+    La serie converge en la intersección de los dos intervalos de convergencia (de \(q(x)\) y \(r(x)\)) e \(I\). El \emph{m'etodo de Frobenius} nos dice que si sustituimos esta serie en la ecuación, podemos expresar los coeficientes \(c_n\), para todo \(n\in\{2, 3, 4,\dots\}\), en términos de \(c_0\) y \(c_1\), que permanecen arbitrarios, veremos m'as de esto cuando veamos las \emph{funciones de Bessel}.
+\end{enumerate}
+
+Con \( I = [a, b] \), las soluciones de la ecuación pueden estar sujetas a condiciones de frontera en \(a\) y \(b\). Estas pueden tomar una de las siguientes formas
+
+\begin{enumerate}
+    \item[(i)] \( y(c) = \xi \), \( y'(c) = \eta \), \( c \in \{a, b\} \),
+    \item[(ii)] \( y(a) = \xi \), \( y(b) = \eta \),
+    \item[(iii)] \( y'(a) = \xi \), \( y'(b) = \eta \).
+\end{enumerate}
+
+Cuando las condiciones de frontera se dan en el mismo punto \(c\), como en \((i)\), a menudo se denominan \textbf{condiciones iniciales}, como se mencionó anteriormente. Para obtener una solución única de la ecuación, el punto \(c\) no necesita, en general, ser uno de los extremos del intervalo \(I\), y puede ser cualquier punto interior. Pero en esta presentación, como en la mayoría de las aplicaciones físicas, las condiciones de contorno (o iniciales) siempre se imponen en los extremos de \(I\). Las formas \((i)\) a \((iii)\) de las condiciones de contorno pueden generalizarse mediante el par de ecuaciones
+
+\begin{align*}
+&\alpha_1 y(a) + \alpha_2 y'(a) + \alpha_3 y(b) + \alpha_4 y'(b) = \xi,\\
+&\beta_1 y(b) + \beta_2 y'(b) + \beta_3 y(a) + \beta_4 y'(a) = \eta,
+\end{align*}
+
+donde \( \alpha_i \) y \( \beta_i \) son constantes que satisfacen \( \sum_{i=1}^4 |\alpha_i| > 0 \) y \( \sum_{i=1}^4 |\beta_i| > 0 \), es decir, tales que no todos los \( \alpha_i \) o \( \beta_i \) son cero. El sistema de ecuaciones anterior se llama un \textbf{problema de valores de frontera}.
+
+Las condiciones de frontera se llaman \textbf{homogéneas} si \( \xi = \eta = 0 \), y \textbf{separadas} si \( \alpha_3 = \alpha_4 = \beta_3 = \beta_4 = 0 \). Las condiciones de frontera separadas, que tienen la forma
+
+\[
+\alpha_1 y(a) + \alpha_2 y'(a) = \xi, \quad \beta_1 y(b) + \beta_2 y'(b) = \eta,
+\]
+
+son de particular importancia en este estudio. Otro par importante de condiciones homogéneas, que resultan de una elección especial de los coeficientes, está dado por
+
+\[
+y(a) = y(b), \quad y'(a) = y'(b).
+\]
+
+Las ecuaciones se llaman \textbf{condiciones de contorno periódicas} y significa que las soluciones se pueden expresar en t'erminos de sus \emph{series de Fourier}. Nótese que las condiciones periódicas están acopladas, no separadas.
+\begin{def.}[Wronskiano]
+Para cualesquiera dos funciones \( f, g \in C^1 \), el determinante
+\[
+W(f, g)(x) = \begin{vmatrix}
+f(x) & g(x) \\
+f'(x) & g'(x)
+\end{vmatrix} = f(x)g'(x) - g(x)f'(x)
+\]
+se llama el \textbf{Wronskiano} de \( f \) y \( g \). El símbolo \( W(f, g)(x) \) a veces se abrevia como \( W(x) \).
+\end{def.}
+
+El Wronskiano deriva su importancia en el estudio de ecuaciones diferenciales de los siguientes lemas.
+
+\begin{lema}
+Si \(y_1\) y \(y_2\) son soluciones de la ecuación homogénea
+\[
+y'' + q(x) y' + r(x) y = 0, \quad x \in I,
+\]
+donde \( q \in C(I) \), entonces o bien \( W(y_1, y_2)(x) = 0 \) para todo \( x \in I \), o bien \( W(y_1, y_2)(x) \neq 0 \) para cualquier \( x \in I \).
+\end{lema}
+
+\section{Operadores y sus adjuntos}
+\noindent Ahora pensaremos a las ecuaciones como \emph{operadores}, entonces pensaremos en \emph{operadores lineales en espacios de Hilbert} de la forma $T:\mathcal{H}\to\mathcal{H}$. Recordemos que
+\begin{itemize}
+    \item El \textbf{dominio} de $T$, denotado $\mathcal{D}(T)$, es el subespacio de $\mathcal{H}$ donde $T$ está definido.
+    \item El \textbf{rango} de $T$, denotado $\mathcal{R}(T)$, es el conjunto $\{T(x) : x \in \mathcal{D}(T)\}$.
+\end{itemize}
+\begin{def.}
+Dado un operador $T$ en $\mathcal{H}$, su \textbf{adjunto} $T^*$ es el operador que satisface
+\[
+\braket{T^{*}(\psi)|\phi}=\braket{\psi| T(\phi)}, \quad \forall \ket{\phi} \in \mathcal{D}(T), \, \bra{\psi} \in \mathcal{D}(T^*).
+\]
+\end{def.}
+Podemos demostrar la existencia del operador adjunto gracias al \textbf{teorema de representaci'on de Riez}(\ref{riez}), ya que como \(T\) es lineal, entonces para todo \(\bra{\psi}\in\mathcal{H}^{*},\,\ket{\phi}\mapsto\braket{\psi|T(\phi)}\) tambi'en es lineal, entonces por representaci'on de Riez exite un \emph{bra que depende de} \(\psi\), al cual denotamos por \(T^{*}\bra{\psi}\in\mathcal{H}^{*}\) tal que
+\[
+  \braket{T^{*}(\psi)|\phi}=\braket{\psi| T(\phi)}, \quad \forall \ket{\phi} \in \mathcal{D}(T), \, \bra{\psi} \in \mathcal{D}(T^*).
+\]
+\noindent Adem'as como \(\braket{\cdot|\cdot}\) y \(T\) son lineales, entonces \(T^{*}:D(T^{*})\to\mathcal{H}^{*}\) es un operador lineal y si \(T\) es \emph{acotado}, entonces \(T^{*}\) tambi'en lo es.
+
+\noindent\textbf{Propiedades del Adjunto}
+\begin{itemize}
+    \item $(T^*)^* = T$ (si $T$ es cerrado y densamente definido).
+    \item $(\alpha T)^* = \overline{\alpha} T^*$ para $\alpha \in \co$.
+    \item $(T + S)^* = T^* + S^*$ si $\mathcal{D}(T) \cap \mathcal{D}(S)$ es denso.
+    \item $(TS)^* = S^* T^*$ si $\mathcal{D}(TS)$ es denso.
+\end{itemize}
+
+\begin{def.}{Operadores Autoadjuntos}
+Un operador $T$ es \textbf{autoadjunto} si $T = T^*$. Esto implica:
+\[
+  \braket{T(\psi)|\phi}=\braket{\psi| T(\phi)}, \quad \forall \ket{\phi} \in \mathcal{D}(T), \, \bra{\psi} \in \mathcal{D}(T^*).
+\]
+Los operadores autoadjuntos son fundamentales en mecánica cuántica, ya que representan observables físicos.
+\end{def.}
+\eje\textbf{Matrices Hermitianas}
+En $\mathcal{H} = \con$, un operador $T$ puede representarse como una matriz $A\in\co^{n \times n}$. $A$ es \textbf{Hermitiana} (autoadjunta) si:
+\[
+A = A^*, \quad \text{donde } A^* = \overline{A}^T.
+\]
+Por ejemplo, la matriz
+\[
+A = \begin{pmatrix}
+2 & i \\
+-i & 3
+\end{pmatrix}
+\]
+es Hermitiana, ya que $A^* = A$.
+
+\eje\textbf{Operadores Unitarios}
+Un operador $U$ es \textbf{unitario} si
+\[
+U^* U = U U^* = I,
+\]
+donde $I$ es el operador identidad. Los operadores unitarios preservan el producto interno
+\[
+\langle U(x), U(y) \rangle = \langle x, y \rangle, \quad \forall x, y \in \mathcal{H}.
+\]
+
+\eje\textbf{Matrices Unitarias}
+En $\mathbb{C}^n$, una matriz $U \in \mathbb{C}^{n \times n}$ es unitaria si
+\[
+U^* U = U U^* = I.
+\]
+Por ejemplo, la matriz
+\[
+U = \frac{1}{\sqrt{2}} \begin{pmatrix}
+1 & -i \\
+1 & i
+\end{pmatrix}
+\]
+es unitaria, ya que $U^* U = I$.
+\section{Teorema Espectral}
+Para operadores autoadjuntos $T$ en $\mathcal{H}$, el \textbf{teorema espectral} establece que existe una medida espectral $E$ tal que
+\[
+T = \int_{\sigma(T)} \lambda \, dE(\lambda),
+\]
+donde $\sigma(T)$ es el espectro de $T$. En el caso de matrices Hermitianas, esto se reduce a la diagonalización
+\[
+A = U \Lambda U^*,
+\]
+donde $\Lambda$ es diagonal y $U$ es unitaria.
+
+\section{Aplicaciones en Física}
+\begin{itemize}
+    \item En mecánica cuántica, los operadores autoadjuntos representan observables, y sus valores propios corresponden a los resultados de mediciones.
+    \item Los operadores unitarios describen evolución temporal y simetrías.
+    \item Los operadores compactos aparecen en problemas de scattering y teoría espectral.
+\end{itemize}
+
+\end{document}

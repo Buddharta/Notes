@@ -1,0 +1,461 @@
+\documentclass[main.tex]{subfiles}
+\begin{document}
+\chapter{Funciones Especiales}
+\noindent
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%---------- Sección ---------%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Función Gamma}
+\noindent La función $\Gamma$ ha sido el trabajo central de muchos matemáticos tras el transcurso de la historia y por ello mismo la literatura sobre esta es muy grande, aquí exponemos los resultados más relevantes que utilizaremos, todos ellos provienen de~\cite{epelde}, salvo la \textit{Fórmula de Stirling} que se puede consultar en~\cite[p. 12]{specf}. La funci\'on $\Gamma$ es una de las extensiones m\'as utilizadas de la funci\'on factorial a los n\'umeros complejos; est\'a definida para todos los n\'umeros complejos a excepci\'on de los enteros negativos, en donde tiene polos. Es por esta razón que es común que se trabaje con $1/\Gamma$, pues ahora los polos se convierten en ceros, con lo que tenemos una función entera.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%-------- Definición --------%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{def.}\label{d1.1} % Definición 1.1
+Sea $z\in\mathbb{C}$ tal que $Re(z)>0$. La función $\Gamma$ está definida como sigue:
+\begin{equation}\label{eq1.0}
+  \Gamma(z)=\int_{0}^{\infty}e^{-t}\,t^{z-1}dt.
+\end{equation}
+\end{def.}
+\begin{teorema}\label{gamma-n}
+Sea $n$ entero, entonces
+\[
+  \Gamma(n+1)=n!.
+\]
+\end{teorema}
+Integrando~\eqref{eq1.0} por partes obtenemos el siguiente lema.
+\begin{lema}\label{l1.1} % Lema 1.1
+  La funci\'on $\Gamma$ satisface la siguiente relacion de recurrencia
+  \[
+    \Gamma(z+1)=z\,\Gamma(z).
+  \]
+\end{lema}
+\indent La función $\Gamma$ resuelve el problema de interpolación del factorial, no sólo para reales, sino para complejos. Esto se puede ver, dado que para todo $n\in\mathbb{N}\cup\{0\}$,
+\[
+  \Gamma(n+1)=n!.
+\]
+\indent Las siguientes expresiones son definiciones alternativas de la función $\Gamma$ para todo valor complejo $z$, salvo enteros negativos.
+\begin{enumerate}
+  \item La función $\Gamma$ definida por Euler:
+        \[
+          \Gamma(z)=\lim_{n\to\infty}\frac{n!\,n^{z}}{z(z+1)(z+2)\cdots(z+n)}.
+        \]
+  \item La función $\Gamma$ definida por Weierstrass:
+        \[
+          \frac{1}{\Gamma(z)}=z\,e^{\gamma z}\,\prod_{n=1}^{\infty}\left\{\left(1+\frac{z}{n}e^{-z/n}\right)\right\},
+        \]
+        donde
+        \begin{equation}
+          \label{eq1.1}
+          \gamma=\lim_{n\to\infty}\left(1+\frac{1}{2}+\frac{1}{3}+\cdots+\frac{1}{n}-\log\,n\right)\approx 0.5772.
+        \end{equation}
+\end{enumerate}
+Como consecuencia de estas definiciones, tenemos las siguientes propiedades de la función $\Gamma$.
+Algo de contexto, estaremos hablando de ecuaciones diferenciales de segundo orden con coeficientes que varían en los racionales, por ejemplo $\ddot{w}+f(t)\dot{w}+g(t)w=0$.\\
+En donde $f,g$ son funciones analíticas.\\
+A la vez, preferimos la notación matricial, podemos escribir
+\begin{align*}
+  z_{1}&=\dot{w}\\
+  z_{2}&=w\\
+\end{align*}
+con esto obtenemos que $\dot{z}_{1}=\ddot{w}$ y $\dot{z}_{2}=z_{1}$, por lo que
+\[
+  \dot{z}_{1}+f(t)z_{1}+g(t)z_{2}=0,
+\]
+y de aquí observamos que
+\begin{align*}
+  \dot{z}_{1}&=-f(t)z_{1}-g(t)z_{2}\\
+  \dot{z}_{2}&=z_{1}
+\end{align*}
+entonces
+\begin{gather*}
+  \begin{bmatrix}%
+			\dot{z}_{1}\\
+			\dot{z}_{2}
+		\end{bmatrix}
+		=
+		\begin{bmatrix}
+			-f(t) & -g(t)\\
+			1 & 0
+		\end{bmatrix}
+		\begin{bmatrix}
+			z_1\\
+			z_2
+		\end{bmatrix}
+	\end{gather*}
+
+\begin{teorema}% Ejercicio 01 %
+  Sean $a_{1},a_{2},\ldots,a_{n}$ e $\infty$ los puntos singulares regulares de
+  \begin{equation}
+    \label{eq1}
+    \frac{d^2w}{dz^2}+p(z)\frac{dw}{dz}+q(z)w=0
+  \end{equation}
+\end{teorema}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%-------- Proposición -------%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{prop}\label{p1.1} %Proposición 1.1
+  Si $n\in\mathbb{N}$, entonces
+  \begin{equation}
+    \label{eq1.2}
+    \frac{\Gamma'(n+1)}{\Gamma(n+1)}=-\gamma+1+\frac{1}{2}+\frac{1}{3}+\cdots+\frac{1}{n},
+  \end{equation}
+  donde $\gamma$ es la constante de Euler definida en \eqref{eq1.1}.
+\end{prop}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%-------- Proposición -------%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{prop}\label{p1.2} %Proposición 1.2
+  Sea $z\in\mathbb{C}$, entonces
+  \begin{equation}
+    \label{eq1.3}
+    \Gamma(2z)=\frac{2^{2z-1}}{\sqrt{\pi}}\,\Gamma(z)\,\Gamma\left(z+1/2\right).
+  \end{equation}
+\end{prop}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%-------- Proposición -------%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{prop}\label{p1.3} % Proposición 1.3
+  Sea $z\in\mathbb{C}\backslash\mathbb{Z}$, entonces
+  \begin{equation}
+    \label{eq1.4}
+    \Gamma(z)\,\Gamma(1-z)=\frac{\pi}{\sen\,\pi z},
+  \end{equation}
+  y en particular para $z=1/2$,
+  \[
+    \Gamma(1/2)=\sqrt{\pi}.
+  \]
+\end{prop}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%-------- Proposición -------%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{prop}{\emph{\textbf{(Fórmula de Stirling)}}}\label{p1.4} % Proposición 1.4
+  La función $\Gamma$ tiene la siguiente representación asintótica
+  \[
+    \Gamma(z)=\sqrt{2\pi}\,z^{z-1/2}\,e^{-z}\,\left[1+O(|z|^{-1})\right].
+  \]
+\end{prop}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%---------- Sección ---------%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Método de Frobenius}
+\noindent Cuando se tiene una ecuación diferencial de la forma
+\[
+  \ddot{w}+p(z)\dot{w}+q(z)w=0,
+\]
+en donde cero es un punto singular regular se puede obtener una solución en serie de potencias. El método consiste en proponer como solución a una serie de la forma
+\[
+  w(z)=\sum_{i=0}^{\infty}a_{k}z^{k+r},\quad r\geq2.
+\]
+Se procede a derivar y a sustituir en la ecuación diferencial y de ahí se extrae el coeficiente de la menor potencia de $z$, con esto tenemos la siguiente definición.
+\begin{def.}\label{d1.2} % Definición 1.2
+  La ecuación indicial es el coeficiente, igualado a cero, que acompaña a la menor potencia en la serie infinita.
+\end{def.}
+Ésta ecuación merece su definición debido a que nos permite extraer, últimamente, dos soluciones linealmente independientes siempre que la diferencia entre las raíces no sea un entero, en este caso se puede recurrir al método de variación de parámetros (ver~\cite[pp. 137-138]{laura1}). Con esto, obtenemos los coeficientes de la ecuación diferencial uno a uno, otorgándonos la libertad de elegir al primero a nuestra conveniencia.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% ----------- Old draft ------------%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\noindent Consideremos la ecuación diferencial $\ddot{w}+p(t)\dot{w}+q(t)w=0$ con ~\cite{laura1}
+\[
+  p(t)=\sum_{i=0}^{\infty}b_{i}t^{i-1},\quad\text{ y }\quad q(t)=\sum_{i=0}^{\infty}c_{i}t^{i-2}.
+\]
+Procedemos a proponer una solución en series de potencias $w(t)=\sum_{n=0}^{\infty}a_{n}t^{n+r}$. Sustituyendo las derivadas en nuestra ecuación, multiplicando antes por $t^{2}$, obtenemos
+\begin{align*}
+  t^{2}\ddot{w}+t^{2}p(t)\dot{w}+t^{2}q(t)w
+  &=\sum_{n=0}^{\infty}(n+r)(n+r-1)a_{n}t^{n+r}+p(t)\sum_{n=0}^{\infty}(n+r)a_{n}t^{n+r+1}+q(t)\sum_{n=0}^{\infty}a_{n}t^{n+r+2}\\
+  &=\sum_{n=0}^{\infty}(n+r)(n+r-1)a_{n}t^{n+r}+\hat{p}(t)\sum_{n=0}^{\infty}(n+r)a_{n}t^{n+r}+\hat{q}(t)\sum_{n=0}^{\infty}a_{n}t^{n+r}\\
+  &=\sum_{n=0}^{\infty}\left[(n+r)(n+r-1)+\hat{p}(t)(n+r)+\hat{q}(t)\right]a_{n}t^{n+r}.
+\end{align*}
+En donde $\hat{p}$ y $\hat{q}$ son de la forma $\sum$\footnote{singularidad removible?}. Ahora, igualando los coeficientes a 0 tenemos, para $n=0$, que $[r(r-1)+b_{0}r+c_{0}]a_{0}=0$, esto es
+\[
+  r^{2}+(b_{0}-1)r+c_{0}=0.
+\]
+Esta ecuación nos permite, por medio de sus raíces, obtener una solución determinando el primer coeficiente y consiguiendo los demás a partir de éste. Por este motivo, se amerita la siguiente definición.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% ------- End Old Frobenius --------%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%-------- Old old frobenius part ---------%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+El método de Frobenius, nombrado en honor al matemático Ferdinand Georg Frobenius, es una manera de encontrar una solución, en forma de una serie de potencias infinita, de una ecuación diferencial ordinaria de segundo orden con coeficientes
+\[
+  z^{2}\,\ddot{u}(z)+z\,p(z)\,\dot{u}(z)+q(z)\,u(z)=0,
+\]
+en la vecindad de un punto singular regular $z_{0}$.\\
+\indent Más puntualmente, si $z_{0}=0$, buscamos una solución en forma de serie de potencias
+\[
+  u(z)=z^{r}\sum_{k=0}^{\infty}a_{k}z^{k},\quad a_{0}\neq0.
+\]
+Derivando,
+\[
+  \dot{u}(z)=\sum_{k=0}^{\infty}(k+r)a_{k}z^{k+r-1},
+\]
+y
+\[
+  \ddot{u}(z)=\sum_{k=0}^{\infty}(k+r)(k+r-1)a_{k}z^{k+r-2}.
+\]
+Sustituyendo ahora en la ecuación orignal,
+\begin{align*}
+  &z^{2}\sum_{k=0}^{\infty}(k+r)(k+r-1)a_{k}z^{k+r-2}+zp(z)\sum_{k=0}^{\infty}(k+r)a_{k}z^{k+r-1}+q(z)\sum_{k=0}^{\infty}a_{k}z^{k+r}\\
+  &=\sum_{k=0}^{\infty}(k+r)(k+r-1)a_{k}z^{k+r}+p(z)\sum_{k=0}^{\infty}(k+r)a_{k}z^{k+r}+q(z)\sum_{k=0}^{\infty}a_{k}z^{k+r}\\
+  &=\sum_{k=0}^{\infty}\left[(k+r-1)(k+r)a_{k}z^{k+r}+p(z)(k+r)a_{k}z^{k+r}+q(z)a_{k}z^{k+r}\right]\\
+  &=\sum_{k=0}^{\infty}\left[(k+r-1)(k+r)+p(z)(k+r)+q(z)\right]a_{k}z^{k+r}\\
+  &=[r(r-1)+p(z)r+q(z)]a_{0}z^{r}+\sum_{k=1}^{\infty}[(k+r-1)(k+r)+p(z)(k+r)+q(z)]a_{k}z^{k+r}=0.
+\end{align*}
+La expresión $r(r-1)+p(0)\,r+q(0)=I(r)$ es conocida como la \textit{ecuación indicial}, que es cuadrática en $r$. De forma más concisa, esto lo vemos en la siguiente definición.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+-------- Definición --------%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{def.}\label{d1.2} % Definición 1.2
+% La ecuación indicial es el coeficiente que acompaña a la menor potencia en la serie infinita.
+\end{def.}
+En nuestro ejemplo, este es el $r$-ésimo coeficiente, pero es posible que el exponente más pequeño sea $r-2$, $r-1$ o algo más, dependiendo de la ecuación diferencial dada.\\
+\indent Lo importante es empezar en el índice de mismo valor, que en nuestro ejemplo es $k=1$; uno puede tener expresiones complicadas, sin embargo, al encontrar las soluciones de la ecuacion indicial, la atención está dirigida sólo hacia el coeficiente de la menor potencia de $z$.\\
+\indent Utilizando esto, la expresión general para los coeficentes de $z^{k+r}$ está dada por
+\[
+  I(k+r)a_{k}+\sum_{j=0}^{k-1}\frac{(j-r)p^{k-j}(0)+q^{k-j}(0)}{(k-j)!}a_{j}.
+\]
+\indent Estos coeficientes deben ser cero, dado que deben ser soluciones de la ecuación diferencial, así
+\begin{align*}
+  I(k+r)a_{k}+\sum_{j=0}^{k-1}\frac{(j-r)p^{k-j}(0)+q^{k-j}(0)}{(k-j)!}a_{j}&=0\\
+  \sum_{j=0}^{k-1}\frac{(j-r)p^{k-j}(0)+q^{k-j}(0)}{(k-j)!}a_{j}&=-I(k+r)a_{k}\\
+  \frac{1}{-I(k+r)}\sum_{j=0}^{k-1}\frac{(j-r)p^{k-j}(0)+q^{k-j}(0)}{(k-j)!}a_{j}&=a_{k}.
+\end{align*}
+\indent La solución en series con $a_{k}$,
+\[
+  U_{r}(z)=\sum_{k=0}^{\infty}a_{k}z^{k+r},
+\]
+satisface
+\[
+  z^{2}\ddot{U}_{r}(z)+zp(z)\dot{U}_{r}(z)+q(z)U_{r}(z)=I(r)z^{r}.
+\]
+\indent Si escogemos una de las soluciones a la ecuación indicial para $r$ en $U_{r}(z)$, obtenemos una solución de la ecuación diferencial. Si la diferencia entre las raíces no es entero, obtenemos otra más, linealmente independiente de la solución asociada a la primera solución.\\
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%---------- Sección ---------%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Funciones de Bessel de primer tipo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%-------- Definición --------%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\noindent~\cite{epelde} Las funciones de Bessel son aquellas que son solución de un tipo de ecuación diferencial, como vemos a continuación.
+\begin{def.}\label{d1.3} % Definición 1.3
+  Sea $\nu\in\mathbb{C}$. La ecuación diferencial
+  \begin{equation}
+    \label{eq1.5}
+    z^{2}\frac{d^{2}w}{dz^{2}}+z\frac{dw}{dz}+(z^{2}-\nu^{2})w=0,
+  \end{equation}
+  es conocida como ecuación de Bessel de orden $\nu$.
+\end{def.}
+Para encontrar soluciones de este tipo de ecuaciones utilizamos el método de Frobenius, el cual consiste en contrar soluciones de la forma
+\[
+  \sum_{r=0}^{\infty}a_{r}z^{\alpha+r},\quad a_{0}\neq0,
+\]
+en donde tenemos que determinar una constante $\alpha$ y los coeficientes $a_{j}$, para toda $j\in\mathbb{N}\cup\{0\}$. Las primera y segunda derivadas de $w$ con respecto a $z$ están dadas por
+\[
+  \frac{dw}{dz}=\sum_{r=0}^{\infty}a_{r}(\alpha+r)z^{\alpha+r-1},\quad\frac{d^{2}w}{dz^{2}}=\sum_{r=0}^{\infty}a_{r}(\alpha+r)(\alpha+r-1)z^{\alpha+r-2}.
+\]
+Ahora, sustituyendo en la ecuación~\eqref{eq1.5},
+\begin{align*}
+  z^{2}\sum_{r=0}^{\infty}a_{r}(\alpha+r)(\alpha+r-1)z^{\alpha+r-2}+z\sum_{r=0}^{\infty}a_{r}(\alpha+r)z^{\alpha+r-1}+(z^{2}-\nu^{2})\sum_{r=0}^{\infty}a_{r}z^{\alpha+r}&=0\\
+  \sum_{r=0}^{\infty}a_{r}(\alpha+r)(\alpha+r-1)z^{\alpha+r}+\sum_{r=0}^{\infty}a_{r}(\alpha+r)z^{\alpha+r}+\sum_{r=0}^{\infty}a_{r}\nu^{2}z^{\alpha+r}+\sum_{r=0}^{\infty}a_{r}z^{\alpha+r+2}&=0\\
+  \sum_{r=0}^{\infty}a_{r}(\alpha+r)(\alpha+r-1)z^{\alpha+r}+\sum_{r=0}^{\infty}a_{r}(\alpha+r-\nu^{2})z^{\alpha+r}+\sum_{r=0}^{\infty}a_{r}z^{\alpha+r+2}&=0\\
+  \sum_{r=0}^{\infty}\big((\alpha+r)(\alpha+r-1)+(\alpha+r)-\nu^{2}\big)a_{r}z^{\alpha+r}+\sum_{r=2}^{\infty}a_{r-2}z^{\alpha+r}&=0\\
+  \sum_{r=0}^{\infty}\big((\alpha+r)(\alpha+r-1+1)-\nu^{2}\big)a_{r}z^{\alpha+r}+\sum_{r=2}^{\infty}a_{r-2}z^{\alpha+r}&=0\\
+  \sum_{r=0}^{\infty}\big((\alpha+r)^{2}-\nu^{2}\big)a_{r}z^{\alpha+r}+\sum_{r=2}^{\infty}a_{r-2}z^{\alpha+r}&=0.
+\end{align*}
+De esto, tenemos que todos los coeficientes que acompañana a las potencias de $z$ deben ser cero, es decir, se tiene lo siguiente
+Primero, notemos que el primer término de la serie está dado por
+\[
+  (\alpha^{2}-\nu^{2})a_{0}z^{\alpha}=0,
+\]
+es decir, $(\alpha^{2}-\nu^{2})a_{0}=0$.\\
+El segundo término de la serie es
+\[
+  \big((\alpha+1)^{2}-\nu^{2}\big)a_{1}z^{\alpha+1},
+\]
+o bien, $\big((\alpha+1)^{2}-\nu^{2}\big)a_{1}=0$.\\
+Y para los términos cuando $r\geq2$, dado que ya empieza a correr el índice en la segunda serie, obtenemos que
+\[
+  \big((\alpha)+r)^{2}-\nu^{2}\big)a_{r}z^{\alpha+r}+a_{r-2}z^{\alpha+r}.
+\]
+Es decir, $\big((\alpha)+r)^{2}-\nu^{2}\big)a_{r}+a_{r-2}=0$. En resumen,
+\begin{align*}
+  &(\alpha^{2}-\nu^{2})a_{0}=0,\\
+  &\big((\alpha+1)^{2}-\nu^{2}\big)a_{1}=0,\\
+  &\big((\alpha+r)^{2}-\nu^{2}\big)a_{r}+a_{r-2}=0,\,\text{ para toda }r\geq2.\\
+\end{align*}
+Recordemos que $a_{0}\neq0$, por lo que tenemos que $\alpha=\pm\nu$; escogiendo $\alpha=\nu$, obtenemos que las otras dos ecuaciones se convierten en
+\[
+  (2\nu+1)a_{1}=0
+\]
+y
+\[
+  r(2\nu+r)a_{r}+a_{r-2}=0\,\,\text{ para toda }r\geq2.
+\]
+Con esto,
+\[
+  a_{1}=0,\quad\,a_{r}=-\frac{a_{r-2}}{r(2\nu+r)},
+\]
+siempre que $\nu\notin\mathbb{Z}^{-}$, pues de no ser así, el denominador se anularía para alguna $r\geq2$.\\
+Así,
+\begin{align*}
+  a_{2}&=-\frac{a_{0}}{2^{2}(\nu+1)}\\
+  a_{3}&=-\frac{a_{1}}{3(2\nu+3)}=0\\
+  a_{4}&=-\frac{a_{2}}{2^{2}(\nu+2)}\\
+  a_{5}&=-\frac{a_{3}}{5(2\nu+5)}=0\\
+       &\vdots
+\end{align*}
+observamos que todo los coeficientes con índice impar son cero, mientras los pares están dados por la siguiente fórmula de recurrencia
+\[
+  a_{2r}=-\frac{a_{2r-2}}{2^{2}r(\nu+r)},\,\,r\in\mathbb{N}.
+\]
+Ahora,
+\begin{align*}
+  a_{2}&=-\frac{a_{0}}{2^{2}(\nu+1)}\\
+  a_{4}&=-\frac{a_{2}}{2^{2}\cdotp 2(\nu+2)}=\frac{a_{0}}{2^{4}\cdotp 2(\nu+1)(\nu+2)}\\
+  a_{6}&=-\frac{-a_{4}}{2^{2}\cdotp 3(nu+3)}=-\frac{a_{0}}{2^{6}\cdotp 3!(\nu+1)(\nu+2)(\nu+3)}\\
+       &\vdots\\
+  a_{2r}&=\frac{(-1)^{r}a_{0}}{2^{2r}\cdotp r!\prod_{k=1}^{r}(\nu+k)},\quad\text{ para todo }r\in\mathbb{N}.
+\end{align*}
+Teniendo en cuenta que podemos escoger $a_{0}$, lo escogemos como sigue
+\[
+  a_{0}=\frac{1}{2^{\nu}\,\Gamma(\nu+1)}.
+\]
+Estamos en condiciones de dar una solución a la ecuación~\eqref{eq1.5}.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%-------- Definición --------%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{def.}
+  Sea $\nu\in\mathbb{C}$ tal que $2\nu$ no sea un entero negativo. Entonces
+  \begin{equation}
+    \label{eq1.6}
+    J_{\nu}(z)=\sum_{r=0}^{\infty}\frac{(-1)^{r}(z/2)^{\nu+2r}}{r!\,\Gamma(\nu+r-1)},
+  \end{equation}
+  es llamada \textit{función de Bessel del primer tipo de orden $\nu$ y argumento $z$}.\\
+  El mismo proceso puede ser aplicado para $\alpha=-\nu$. Ahora tenemos
+  \begin{equation}
+    \label{eq1.7}
+    J_{-\nu}(z)=\sum_{r=0}^{\infty}\frac{(-1)^{r}(z/2)^{-\nu+2r}}{r!\,\Gamma(-\nu+r-1)},
+  \end{equation}
+  siempre que $2\nu$ no sea un entero positivo.
+\end{def.}
+Para trabajar con estas expresiones, es conveniente que las series~\eqref{eq1.6} y~\eqref{eq1.7} sean absolutamente convergentes, esto se muestra en el siguiente lema.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%----------- Lema -----------%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{lema}\label{l1.2} % Lema 1.2
+  Las series que definen las funciones de Bessel del primer tipo de orden $\nu$ y $-\nu$ son absolutamente convergentes para toda $z\neq0$.
+\end{lema}
+\obs
+  Dado que las series \eqref{eq2.2} y \eqref{eq2.3} son absolutamente convergentes para toda $z\neq0$, podemos diferenciarlas término a término.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%-------- Proposición -------%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{prop}\label{p1.5} % Proposición 1.5
+  Si $\nu\in\mathbb{C}\backslash\{k/2\,|\,k\in\mathbb{Z}\}$, las funciones de Bessel del primer tipo $J_{\nu}$ y $J_{-\nu}$ son linealmente independientes. En tal caso, para toda solución $w$ de~\eqref{eq1.5}, existen $A,B\in\mathbb{C}$ tales que
+  \[
+    w(z)=A\,J_{\nu}(z)+B\,J_{-\nu}(z).
+  \]
+\end{prop}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%---------- Sección ---------%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Funciones de Bessel de segundo y tercer tipo}
+\noindent Vimos que $J_{\nu}(z)$ y $J_{-\nu}(z)$ son linealmente independientes cuando $\nu$ no es un entero. Ahora buscamos una solución a la ecuación de Bessel independiente de $J_{\nu}$ cuando $\nu$ sea un entero.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%-------- Definición --------%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{def.}\label{d1.5} % Definición 1.5
+  Sea $\nu\in\mathbb{C}$ constante. Entonces
+  \begin{equation}
+    \label{eq1.8}
+    Y_{\nu}(z)=\lim_{\alpha\to\nu}\frac{(\cos\,\alpha\pi)J_{\alpha}(z)-J_{-\alpha}(z)}{\sen\,\alpha\pi},
+  \end{equation}
+  es llamada \textit{función de Bessel de segundo tipo de orden $\nu$ y argumento $z$}.
+\end{def.}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%-------- Observación -------%
+%%%%%%%%%%%%%%%%%%%%%%%%
+\obs% Observación 1.1
+  Cuando $\nu$ no es un entero, el límite es obtenido sustituyendo y
+  \[
+    Y_{\nu}(z)=\frac{(\cos\,\nu\pi)J_{\nu}(z)-J_{-\nu}(z)}{\sen\,\nu\pi}.
+  \]
+  Dado que $Y_{\nu}$ es una combinación lineal de las soluciones de~\eqref{eq1.5}, también es solución.\\
+ Sin embargo, cuando $\nu=n\in\mathbb{Z}$, la expresión de arriba toma la forma $(0/0)$, y tomamos el límite.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%-------- Proposición -------%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{prop}\label{p1.6)} % Proposición 1.6
+  Para todo entero $n$, la función de Bessel de segundo orden $Y_{n}$ es una solución de la ecuación de Bessel, y es linealmente independiente de $J_{n}$.
+\end{prop}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%--------- Corlario --------%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{cor}\label{c1.1} % Corlario 1.1
+  La solución general de la ecuación de Bessel~\eqref{eq1.5} de orden $\nu\in\mathbb{C}$ es
+  \[
+    w(z)=aJ_{\nu}(z)+bY_{\nu}(z),\,\,a,b\in\mathbb{C}.
+  \]
+\end{cor}
+En algunas ocasiones, es interesante expresar soluciones de la ecuación de Bessel en maneras distintas. Por lo tanto, definimos funciones de Bessel del tercer tipo en términos de $J_{\nu}(z)$ y $Y_{\nu}(z)$.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%-------- Definición --------%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{def.}\label{d1.6} % Definición 1.6
+  Sea $\nu\in\mathbb{C}$ constante, entonces
+  \begin{align}
+    H_{\nu}^{(1)}(z)&=J_{\nu}(z)+iY_{\nu}(z),\label{eq1.9}\\
+    H_{\nu}^{(2)}(z)&=J_{\nu}(z)-iY_{\nu}(z)\label{eq1.10}
+  \end{align}
+  son llamadas \textit{funciones de Hankel} o \textit{funciones de Bessel del tercer tipo de órden $\nu$}.
+\end{def.}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%-------- Proposición -------%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{prop}\label{p1.7} % Proposición 1.7
+  Dada una constante $\nu\in\mathbb{C}$, las funciones de Hankel de orden $\nu$ son linealmente independientes y la solución general de~\eqref{eq1.5} puede ser expresada como
+  \[
+    w(z)=aH_{\nu}^{(1)}(z)+bH_{\nu}^{(2)}(z),\,\,a,b\in\mathbb{C}.
+  \]
+\end{prop}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%---------- Sección ---------%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Propiedades de las funciones de Bessel}
+\noindent En seguida enunciaremos algunas propiedades de las funciones de Bessel.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%-------- Proposición -------%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{prop}\label{p1.8} % Proposición 1.8
+  Sea $\nu\in\mathbb{C}$. Entonces,
+  \begin{align}
+    J_{\nu+1}(z)&=\frac{\nu}{z}J_{\nu}(z)-J'_{\nu}(z),\label{eq1.11},\\
+    J_{\nu-1}(z)&=\frac{\nu}{z}J_{\nu}(z)+J'_{\nu}(z),\label{eq1.12}.
+  \end{align}
+\end{prop}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%--------- Corlario --------%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{cor}\label{c.12} % Corlario 1.2
+  Si $\nu\in\mathbb{C}$,
+  \begin{align}
+    J_{\nu-1}(z)+J_{\nu+1}(z)&=\frac{2\nu}{z}J_{\nu}(z),\label{eq1.13}\\
+    J_{\nu-1}(z)-J_{\nu+1}(z)&=2J'_{\nu}(z),\label{eq1.14}
+  \end{align}
+\end{cor}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%---------- Sección ---------%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}
