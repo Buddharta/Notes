@@ -179,29 +179,161 @@ El Wronskiano deriva su importancia en el estudio de ecuaciones diferenciales de
 
 \begin{lema}
 Si \(y_1\) y \(y_2\) son soluciones de la ecuación homogénea
-\[
+\begin{equation}\label{eq-homogenea}
 y'' + q(x) y' + r(x) y = 0, \quad x \in I,
-\]
+\end{equation}
 donde \( q \in C(I) \), entonces o bien \( W(y_1, y_2)(x) = 0 \) para todo \( x \in I \), o bien \( W(y_1, y_2)(x) \neq 0 \) para cualquier \( x \in I \).
 \end{lema}
+\dem Recodamos que \(W(y_{1},y_{2})(x)=y_{1}(x)y'_{2}(x)-y'_{1}(x)y_{2}(x)\), entonces al clacular su derivada se obtiene que
+\[
+  W'(y_{1},y_{2})=(y'_{1}y'_{2}+y_{1}y^{''}_{2})-(y^{''}_{1}y_{2}+y'_{1}y'_{2})=y_{1}y^{''}_{2}-y^{''}_{1}y_{2}.
+\]
+Ahora como \(y_{1}\),\(y_{2}\) son soluciones de la ecuaci'on homogenea \ref{eq-homogenea}, entonces
+\begin{align*}
+  y_1'' + q(x) y_1' + r(x) y_1 = 0\\
+  y_2'' + q(x) y_2' + r(x) y_2 = 0.\\
+\end{align*}
+Por lo que si multipllicamos por \(y_{2}\) a la primera ecuaci'on y por \(y_{1}\) a la primera, obtenemosl al restarlas
+\begin{align*}
+  & y''_{2}(x)y_1(x)-y(x)_{2}y''_1(x) + q(x)(y'_{2}y_1-y_{2}(x)y_1'(x))=0\\
+  &\text{entonces } W'(y_{1},y_{2})(x) + q(x)W(y_{1},y_{2})(x)= 0.\\
+\end{align*}
+As'i al integrar se obtiene que
+\[
+  W(y_{1},y_{2})=c\exp\left(-\int_{a}^{x}q(t)\,dt\right)\quad x\in I.
+\]
+\QED\\
+\obs Las consecuencias del lema anterior son que las soluciones de la ecuaci'on \ref{eq-homogenea} o son \emph{linealmente independientes} o son linealmente dependientes.
+\section{Los ceros de las soluciones}
+\noindent Resolver ecuaciones diferenciales es en general bastante complicado e incluso imposible, por lo menos explicitamente en t'erminos de funciones elementales. Sin embargo es posible obterer informaci'on qualitativa de las soluciones, por ejemplo es posible determinar ortogonalidad de las soluciones. Este es un tema amplio en el estudio de las ecuaciones diferenciales, sin embargo en esta secci'on estudiaremos los ceros de la ecuaciones lineales de orden dos, ya que incluso estas no siempre tienen soluciones en t'erminos de funciones elementales. En concreto primero estudiaremos los ceros de las soluciones a ecuaciones del tipo
 
-\section{Operadores y sus adjuntos}
-\noindent Ahora pensaremos a las ecuaciones como \emph{operadores}, entonces pensaremos en \emph{operadores lineales en espacios de Hilbert} de la forma $T:\mathcal{H}\to\mathcal{H}$. Recordemos que
+\begin{equation}
+y'' + q(x) y' + r(x) y = 0, \quad x \in I,
+\end{equation}
+
+Primero, estudiamos el ejemplo protot'ipico de estas ecuaciones (uno que s'i es \emph{soluble}) y luego veremos que el comportamieto de sus ceros son t'ipicos para este tipo de ecuaciones.
+
+\eje La ecuaci'on de segundo grado m'as simple
+\[
+  y''(x)+y(x)=0\quad x\in\re.
+\]
+Cuyas soluciones linealmente independientes son \(\cos(x)\) y \(\sin(x)\) (las bases de los fen'omenos ondulatorios), ya que como podemos observar
+\[
+  W(\cos,\sin)(x)=\cos^{2}(x)+\sin^{2}(x)=1,
+\]
+es decir en general las soluciones son de la forma
+\[
+  y(x)=c_{1}\cos(x)+c_{2}\sin(x).
+\]
+Ahora si nos fijamos \(\sin(x)=0\) si \(x\in\{n\pi\,:\,n\in\zah\}\) y \(\cos(x)=0\) si y s'olo si \hbox{\(x\in\{(2k+1)/2\pi\,:\,k\in\zah\}\)}. Es decir, por la forma ondulatoria de las soluciones, los ceros son \emph{aisaldos e intercalados}
+\[
+  \dots-\frac{3\pi}{2}<-\pi<-\frac{\pi}{2}<0<\frac{\pi}{2}<\pi<\frac{3\pi}{2}<\dots
+\]
+Ahora, si modificamos esta ecuaci'on un poco a la ecuaci'on
+\[
+  y''(x)+ky(x)=0\quad k\in\re\text{ constante y }x\in\re,
+\]
+si \(k>0\) las soluciones son practicamente las mismas y s'olo se multiplica por \(k\) en el argumento y los ceros siguen siendo aislados e intercalados, sin embargo si \(k<0\), entonces las soluciones son \(e^{\sqrt{|k|}x}\) y \(e^{-\sqrt{|k|}x}\) la cuales nunca se anulan y las combiaciones lineales tienen a lo m'as un cero.
+
+\begin{lema}
+  Si \(y(x)\) es una soluci'on no trivial de la ecuaci'on \ref{eq-homogenea}, entonces los ceros de \(y(x)\) son aislados en \(I\).
+\end{lema}
+\dem Si \(y(x_{0})=0\), entonces \(y'(x_{0})\neq0\) pues por unicidad, si la derivada se anula, \(y\) ser'ia la soluci'on trivial, por lo que \(y'(x)\neq\) en un subinvervalo de \(I\) \((\epsilon-x_{0},\epsilon-x_{0})\), lo cual implica que alredor de \(x_{0}\), \(y\) es \textbf{extrictamente} creciente o decreciente y por lo que no hay ning'un otro cero en dicho intervalo.
+\QED\\
+
+\begin{teorema}[Teorema de separaci'on de Sturm]
+Si \(y_1\) y \(y_2\) son soluciones linealmente independientes de la ecuación
+\[
+y'' + q(x) y' + r(x) y = 0, \quad x\in I,
+\]
+entonces los ceros de \(y_1\) son distintos de los de \(y_2 \), y las dos secuencias de ceros se alternan, es decir, \(y_1\) tiene exactamente un cero entre dos ceros sucesivos de \(y_2\), y viceversa.
+\end{teorema}
+\dem Dado que \( y_1 \) y \( y_2 \) son linealmente independientes, su Wronskiano
+\[
+W(y_1, y_2)(x) = y_1(x) y_2'(x) - y_2(x) y_1'(x)
+\]
+no se anula y, por lo tanto, tiene un signo constante en \(I\). Nótese primero que \(y_1\) y \( y_2 \) no pueden tener un cero común, de lo contrario \(W\) se anularía ahí. Entonces, suponemos que \(x_1\) y \(x_2\) son dos ceros sucesivos de \(y_2\) respectivamente, entonces
+\[
+W(x_1) = y_1(x_1) y_2'(x_1) = 0,
+\]
+\[
+W(x_2) = y_1(x_2) y_2'(x_2) = 0,
+\]
+y los números \( y_1(x_1) \), \( y_1(x_2) \), \( y_2'(x_1) \) y \( y_2'(x_2) \) son todos distintos de cero. Dado que \( y_2' \) es continua en \(I\), \(x_1\) tiene una vecindad abierta \(U_1\) donde el signo de \(y_2'\) no cambia, y de manera similar existe un abierto \(U_2\) de \(x_2\) donde \(y_2'\) no cambia de signo. Sin embargo, los signos de \(y_2'\) en \(U_1\cap  I\) y \(U_2\cap I\) no pueden ser iguales, ya que si \(y_2\) es creciente en uno de los intervalos, entonces debe ser decreciente en el otro. Para que \(W(x)\) tenga un signo constante en \(I\), \( y_1(x_1) \) y \( y_1(x_2) \) deben tener signos opuestos; por lo tanto, \(y_1\), siendo continua, tiene al menos un cero entre \(x_1\) y \(x_2\). No puede haber más de un cero, ya que si \(x_3\) y \(x_4\) son dos ceros de \( y_1 \) que se encuentran entre \(x_1\) y \(x_2\), podemos usar el mismo argumento para concluir que \(y_2\) se anula entre \(x_3\) y \(x_4\). Pero esto contradice la suposición de que \(x_1\) y \(x_2\) son ceros consecutivos de \( y_2 \).\QED\\
+\begin{cor}
+Si dos soluciones de \(y'' + q(x) y' + r(x)y=0\) tienen un cero común en \(I\), entonces son linealmente dependientes.
+\end{cor}
+Para estudiar la distribución de ceros de la ecuación \ref{eq-homogenea}, sería mucho más conveniente si pudiéramos eliminar el término medio \(q y'\) transformando la ecuación a
+\[
+u'' + \rho(x) u = 0.
+\]
+Para ello lo que se hace es tomar
+\[
+y(x) = u(x) v(x),
+\]
+de modo que
+\begin{align*}
+y'(x) &= u'(x) v(x) + u(x) v'(x),\\
+y''(x) &= u''(x) v(x) + 2 u'(x) v'(x) + u(x) v''(x).
+\end{align*}
+Sustituyendo en la ecuación obtenemos
+\[
+v u'' + (2 v' + q v) u' + (v'' + q v' + r v) u = 0.
+\]
+Así, eligiendo \( 2 v' + q v = 0 \), tenemos que
+\[
+v(x) = \exp\left(-\frac{1}{2} \int_a^x q(t) \, dt\right),
+\]
+y
+\[
+\rho(x) = r(x) - \frac{1}{4} q^2(x) - \frac{1}{2} q'(x).
+\]
+La función exponencial \(v\) nunca se anula en \(\re\), por lo que los ceros de \(u\) coinciden con los de \(y\).
+\begin{teorema}[Teorema de Comparación de Sturm]
+Sean \( \phi \) y \( \psi \) soluciones no triviales de las ecuaciones
+\[
+y'' + r_1(x) y = 0, \quad u'' + r_2(x) u = 0, \quad x \in I,
+\]
+respectivamente, y supongamos que \( r_1(x) \geq r_2(x) \) para todo \( x \in I \). Entonces, \( \phi \) tiene al menos un cero entre cada dos ceros consecutivos de \( \psi \), a menos que \( r_1(x) \equiv r_2(x) \) y \( \phi \) sea un múltiplo constante de \( \psi \).
+\end{teorema}
+
+\dem Sean \( x_1 \) y \( x_2 \) dos ceros consecutivos de \( \psi \) en \( I \), y supongamos que \( \phi \) no tiene ceros en el intervalo abierto \( (x_1, x_2) \). Asumamos que tanto \( \phi \) como \( \psi \) son positivas en \( (x_1, x_2) \); de lo contrario, cambiamos el signo de la función negativa. Dado que \( \phi' \) y \( \psi' \) son continuas, se sigue que \( \psi'(x_1) \geq 0 \) y \( \psi'(x_2) \leq 0 \), y por lo tanto, el Wronskiano de \( \phi \) y \( \psi \) satisface
+\[
+W(x_1) = \phi(x_1) \psi'(x_1) \geq 0, \quad W(x_2) = \phi(x_2) \psi'(x_2) \leq 0.
+\]
+Pero como
+\[
+W'(x) = \phi(x) \psi''(x) - \phi''(x) \psi(x) = [r_1(x) - r_2(x)] \phi(x) \psi(x) \geq 0 \quad \text{para todo } x \in (x_1, x_2),
+\]
+\( W \) es una función creciente en \( (x_1, x_2) \). Esto contradice la ecuación (2.17) a menos que \( r_1(x) - r_2(x) \equiv 0 \) y \( W(x) \equiv 0 \), en cuyo caso \( \phi \) y \( \psi \) son linealmente dependientes.
+\QED\\
+\begin{cor}
+Sea \( \phi \) una solución no trivial de \( y'' + r(x) y = 0 \) en \( I \). Si \( r(x) \leq 0 \), entonces \( \phi \) tiene a lo sumo un cero en \( I \).
+\end{cor}
+\dem Si la solución \( \phi \) tiene dos ceros en \( I \), digamos \( x_1 \) y \( x_2 \), entonces, por el Teorema 2.10, la solución \( \psi(x) \equiv 1 \) de \( u'' = 0 \) debe anularse en \( (x_1, x_2) \), lo cual es imposible.
+\begin{def.}
+  Si una soluci'on de \ref{eq-homogenea}, tiene infinitos ceros, entonces diremos que las soluciones son \emph{ondulatorias}.
+\end{def.}
+\obs Veremos que la funciones de Bessel son \emph{ondulatorias}.
+\section{Operadores adjuntos de Hilbert}
+\noindent Ahora pensaremos a las ecuaciones previamente mencionadas como \emph{operadores} en \(\mathcal{L}^{2}(I)\), entonces hablaremos un poco de \emph{operadores lineales en espacios de Hilbert} de la forma $T:V\subset\mathcal{H}\to\mathcal{H}$. Recordemos que el dominio e imagen se definen como
 \begin{itemize}
     \item El \textbf{dominio} de $T$, denotado $\mathcal{D}(T)$, es el subespacio de $\mathcal{H}$ donde $T$ está definido.
-    \item El \textbf{rango} de $T$, denotado $\mathcal{R}(T)$, es el conjunto $\{T(x) : x \in \mathcal{D}(T)\}$.
+    \item La \textbf{imagen} de $T$, denotado $\mathcal{R}(T)$, es el conjunto $Im(T)=\{T(x) : x \in \mathcal{D}(T)\}$.
 \end{itemize}
+En los epacios de Hilbert es posible definir a partir de un operador lineal y continuo, \(T\) un operador especial \(T^{*}\), el cual es llamado el \emph{operador adjunto de Hilbert de \(T\)}. Vale la pena mencionar que la noci'on de \emph{operador adjunto} es genral y no necesariamente excludsiva a los espacios de Hilbert o espacios con producto interno, sin embargo la retpresentaci'on que usaremos utilizando el producto interno, s'i es unica en esoacios de Hilbert. Podemos definir y representar al operador adjunto gracias al \textbf{teorema de representaci'on de Riez} (teorema \ref{riez}), ya que para \(T\) lineal, entonces para todo \(\bra{\psi}\in\mathcal{H}^{*},\,\ket{\phi}\mapsto\braket{\psi|T(\phi)}\) tambi'en es lineal, entonces por representaci'on de Riez exite un \emph{bra que depende de} \(\psi\), al cual denotamos por \(T^{*}\bra{\psi}\in\mathcal{H}^{*}\) tal que
+\[
+  \braket{T^{*}(\psi)|\phi}=\braket{\psi| T(\phi)}, \quad \forall \ket{\phi} \in \mathcal{D}(T), \, \bra{\psi} \in \mathcal{D}(T^*).
+\]
+\noindent Adem'as como \(\braket{\cdot|\cdot}\) y \(T\) son lineales, entonces \(T^{*}:D(T^{*})\to\mathcal{H}^{*}\) es un operador lineal y si \(T\) es \emph{acotado}, entonces \(T^{*}\) tambi'en lo es.
+
 \begin{def.}
 Dado un operador $T$ en $\mathcal{H}$, su \textbf{adjunto} $T^*$ es el operador que satisface
 \[
 \braket{T^{*}(\psi)|\phi}=\braket{\psi| T(\phi)}, \quad \forall \ket{\phi} \in \mathcal{D}(T), \, \bra{\psi} \in \mathcal{D}(T^*).
 \]
 \end{def.}
-Podemos demostrar la existencia del operador adjunto gracias al \textbf{teorema de representaci'on de Riez}(\ref{riez}), ya que como \(T\) es lineal, entonces para todo \(\bra{\psi}\in\mathcal{H}^{*},\,\ket{\phi}\mapsto\braket{\psi|T(\phi)}\) tambi'en es lineal, entonces por representaci'on de Riez exite un \emph{bra que depende de} \(\psi\), al cual denotamos por \(T^{*}\bra{\psi}\in\mathcal{H}^{*}\) tal que
-\[
-  \braket{T^{*}(\psi)|\phi}=\braket{\psi| T(\phi)}, \quad \forall \ket{\phi} \in \mathcal{D}(T), \, \bra{\psi} \in \mathcal{D}(T^*).
-\]
-\noindent Adem'as como \(\braket{\cdot|\cdot}\) y \(T\) son lineales, entonces \(T^{*}:D(T^{*})\to\mathcal{H}^{*}\) es un operador lineal y si \(T\) es \emph{acotado}, entonces \(T^{*}\) tambi'en lo es.
+
 
 \noindent\textbf{Propiedades del Adjunto}
 \begin{itemize}
@@ -239,7 +371,7 @@ U^* U = U U^* = I,
 \]
 donde $I$ es el operador identidad. Los operadores unitarios preservan el producto interno
 \[
-\langle U(x), U(y) \rangle = \langle x, y \rangle, \quad \forall x, y \in \mathcal{H}.
+\braket{ U(x)| U(y)} = \braket{ x | y}, \quad \forall x, y \in \mathcal{H}.
 \]
 
 \eje\textbf{Matrices Unitarias}
@@ -255,22 +387,22 @@ U = \frac{1}{\sqrt{2}} \begin{pmatrix}
 \end{pmatrix}
 \]
 es unitaria, ya que $U^* U = I$.
-\section{Teorema Espectral}
-Para operadores autoadjuntos $T$ en $\mathcal{H}$, el \textbf{teorema espectral} establece que existe una medida espectral $E$ tal que
-\[
-T = \int_{\sigma(T)} \lambda \, dE(\lambda),
-\]
-donde $\sigma(T)$ es el espectro de $T$. En el caso de matrices Hermitianas, esto se reduce a la diagonalización
-\[
-A = U \Lambda U^*,
-\]
-donde $\Lambda$ es diagonal y $U$ es unitaria.
-
-\section{Aplicaciones en Física}
-\begin{itemize}
-    \item En mecánica cuántica, los operadores autoadjuntos representan observables, y sus valores propios corresponden a los resultados de mediciones.
-    \item Los operadores unitarios describen evolución temporal y simetrías.
-    \item Los operadores compactos aparecen en problemas de scattering y teoría espectral.
-\end{itemize}
-
+%%\section{Teorema Espectral}
+%%Para operadores autoadjuntos $T$ en $\mathcal{H}$, el \textbf{teorema espectral} establece que existe una medida espectral $E$ tal que
+%%\[
+%%T = \int_{\sigma(T)} \lambda \, dE(\lambda),
+%%\]
+%%donde $\sigma(T)$ es el espectro de $T$. En el caso de matrices Hermitianas, esto se reduce a la diagonalización
+%%\[
+%%A = U \Lambda U^*,
+%%\]
+%%donde $\Lambda$ es diagonal y $U$ es unitaria.
+%%
+%%\section{Aplicaciones en Física}
+%%\begin{itemize}
+%%    \item En mecánica cuántica, los operadores autoadjuntos representan observables, y sus valores propios corresponden a los resultados de mediciones.
+%%    \item Los operadores unitarios describen evolución temporal y simetrías.
+%%    \item Los operadores compactos aparecen en problemas de scattering y teoría espectral.
+%%\end{itemize}
+%%
 \end{document}
