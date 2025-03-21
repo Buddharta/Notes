@@ -42,45 +42,45 @@ La ecuaci'on  espectral para el operador hamiltoniano con un potencial independi
 \section{Ecuaciones diferenciales lineales de orden dos.}
 \noindent Comenzamos con un repaso de ecuaciones diferenciales ordinarias de orden dos, as'i, cc consideramos la ecuación diferencial ordinaria de segundo orden en el intervalo real \( I \), dada por
 \[
-a_0(x) y'' + a_1(x) y' + a_2(x) y = f(x),
+a_0(x)y''+a_1(x)y'+a_2(x)y= f(x),
 \]
-donde \( a_0 \), \( a_1 \), \( a_2 \) y \( f \) son funciones complejas definidas en \(I\). Cuando \(f\equiv 0\) en \(I\), la ecuación se llama \textbf{homogénea}; de lo contrario, se llama \textbf{no homogénea}. Cualquier función (compleja) \(\phi \in C^2(I)\) es una solución de la ecuación si la sustitución de \(y\) por \(\phi\) resulta en la identidad
+donde \(a_0\), \(a_1\), \(a_2\) y \(f\) son funciones complejas definidas en \(I\). Cuando \(f\equiv 0\) en \(I\), la ecuación se llama \textbf{homogénea}; de lo contrario, se llama \textbf{no homogénea}. Cualquier función (compleja) \(\phi \in C^2(I)\) es una solución de la ecuación si la sustitución de \(y\) por \(\phi\) resulta en la identidad
 
 \[
-a_0(x) \phi''(x) + a_1(x) \phi'(x) + a_2(x) \phi(x) = f(x) \quad \text{para todo } x \in I.
+a_0(x)\phi''(x)+a_1(x)\phi'(x)+a_2(x)\phi(x)=f(x) \quad \text{para todo }x\in I.
 \]
 
 Si denotamos el operador diferencial de segundo orden
 
 \[
-L = a_0(x) \frac{d^2}{dx^2} + a_1(x) \frac{d}{dx} + a_2(x)I,
+L=a_0(x)\frac{d^2}{dx^2}+a_1(x)\frac{d}{dx}+a_2(x)I,
 \]
 
 entonces la ecuaci'on la escribimos la forma \(Ly= f\). El operador \(L\) es lineal, es decir,
 \[
-L(c_1 \phi + c_2 \psi) = c_1 L\phi + c_2 L\psi\quad\forall \phi, \psi \in C^2(I),\,c_1,c_2 \in\co
+L(c_1\phi+c_2\psi)=c_1L\phi+c_2 L\psi\quad\forall\phi,\psi \in C^2(I),\,c_1,c_2\in\co
 \]
 
 De igual manera si
 
 \[
-L\phi = 0, \quad L\psi = 0,
+L\phi = 0, \quad L\psi=0,
 \]
 
 entonces
 
 \[
-L(c_1 \phi + c_2 \psi) = c_1 L\phi + c_2 L\psi = 0,
+L(c_1\phi+c_2\psi)=c_1L\phi+c_2L\psi=0,
 \]
 
-para cualquier par de constantes \( c_1 \) y \( c_2 \). Esto se conoce como el \textbf{principio de superposición}.
+para cualquier par de constantes \(c_1\) y \(c_2\). Esto se conoce como el \textbf{principio de superposición}.
 Si la función \(a_0\) no se anula en ningún punto de \(I\), la ecuación puede dividirse por \(a_0\) para obtener
 \[
-y'' + q(x) y' + r(x) y = g(x),\quad q=(x)\frac{a_1(x)}{a_0(x)},\,r(x)=\frac{a_2(x)}{a_0(x)},\,g(x)=\frac{f(x)}{a_0(x)}.
+y'' + p(x) y' + q(x) y = g(x),\quad p(x)=\frac{a_1(x)}{a_0(x)},\,q(x)=\frac{a_2(x)}{a_0(x)},\,g(x)=\frac{f(x)}{a_0(x)}.
 \]
-Claramente ambas ecuaciones son equivalentes, en el sentido de que tienen el mismo conjunto de soluciones. La ecuación se dice entonces \textbf{regular} en \(I\); de lo contrario, si existe un punto \( c \in I \) donde \( a_0(c) = 0 \), la ecuación es \textbf{singular}, y \(c\) se denomina \textbf{punto singular} de la ecuación.
+Claramente ambas ecuaciones son equivalentes, en el sentido de que tienen el mismo conjunto de soluciones. La ecuación se dice entonces \textbf{regular} en \(I\); de lo contrario, si existe un punto \(c\in I\) donde \(a_0(c)=0\), la ecuación es \textbf{singular}, y \(c\) se denomina \textbf{punto singular} de la ecuación.
 
-De acuerdo con el teorema de existencia y unicidad para ecuaciones lineales, si las funciones \(q\), \(r\) y \(g\) son continuas en \(I\) y \(x_0\) es un punto en \(I\), entonces, para cualesquiera dos números \(\xi\) y \(\eta\), existe una única solución \( \phi \) en \( I \) tal que
+De acuerdo con el teorema de existencia y unicidad para ecuaciones lineales, si las funciones \(q\), \(r\) y \(g\) son continuas en \(I\) y \(x_0\) es un punto en \(I\), entonces, para cualesquiera dos números \(\xi\) y \(\eta\), existe una única solución \(\phi\) en \(I\) tal que
 \[
 \phi(x_0) = \xi, \quad \phi'(x_0) = \eta.
 \]
@@ -88,43 +88,43 @@ De acuerdo con el teorema de existencia y unicidad para ecuaciones lineales, si 
 A continuación, enumeramos algunas propiedades bien conocidas de las soluciones de la ecuación, que pueden encontrarse en muchas introducciones estándar a las ecuaciones diferenciales ordinarias.
 
 \begin{enumerate}
-    \item La ecuación homogénea:
+    \item La ecuación homogénea
     \[
-    y'' + q(x) y' + r(x) y = 0, \quad x \in I,
+    y''+p(x)y'+q(x)y=0,\quad x\in I,
     \]
-    tiene dos soluciones linealmente independientes \( y_1(x) \) y \( y_2(x) \) en \( I \). Una combinación lineal de estas dos soluciones:
+    tiene dos soluciones linealmente independientes \(y_1(x)\) y \(y_2(x)\) en \(I\). Una combinación lineal de estas dos soluciones
     \[
-    c_1 y_1 + c_2 y_2,
+    c_1y_1+c_2y_2,
     \]
     donde \(c_1\) y \(c_2\) son constantes arbitrarias, es la \textbf{solución general}; es decir, cualquier solución de la ecuación está dada por esta combinaci'on para algunos valores de \(c_1\) y \(c_2\). Cuando \(c_1=c_2=0\), obtenemos la llamada \textbf{solución trivial} la cual, siempre es una solución de la ecuación homogénea. Por el teorema de unicidad, es la única solución si \(\xi=\eta=0\).
 
     \item Si \(y_p(x)\) es cualquier solución particular de la ecuación no homogénea, entonces
     \[
-    y_p + c_1 y_1 + c_2 y_2
+    y_p+c_1y_1+c_2y_2
     \]
-    es la solución general de la ecuaci'on no homogenea. Aplicando las condiciones iniciales, las constantes \( c_1 \) y \( c_2 \) se determinan y obtenemos la solución única del sistema de ecuaciones.
+    es la solución general de la ecuaci'on no homogenea. Aplicando las condiciones iniciales, las constantes \(c_1\) y \(c_2\) se determinan y obtenemos la solución única del sistema de ecuaciones.
 
-    \item Cuando los coeficientes \(q\) y \(r\) son constantes, la solución general de la ecuación tiene la forma
+    \item Cuando los coeficientes \(p\) y \(q\) son constantes, la solución general de la ecuación tiene la forma
     \[
     y(x)=c_1 e^{m_1 x} + c_2 e^{m_2 x},
     \]
-    donde \( m_1 \) y \( m_2 \) son las raíces del polinomio caracter'istico \(m^2+qm+r=0\) cuando las raíces son distintas. Si \( m_1 = m_2 = m \), entonces por variaci'on de par'ametros, la solución toma la forma
+    donde \(m_1\) y \(m_2\) son las raíces del polinomio caracter'istico \(m^2+pm+q=0\) cuando las raíces son distintas. Si \(m_1=m_2=m\), entonces por variaci'on de par'ametros, la solución toma la forma
     \[
-    y(x)=c_1 e^{m x} + c_2 x e^{m x},
+    y(x)=c_1 e^{m x}+c_2xe^{m x},
     \]
-    donde las funciones \( e^{m x} \) y \( x e^{m x} \) son claramente linealmente independientes.
+    donde las funciones \(e^{mx}\) y \(xe^{mx}\) son claramente linealmente independientes.
 
     \item Cuando \(a_0(x)=x^2\), \(a_1(x)=ax\) y \(a_2(x)=b\), donde \(a\) y \(b\) son constantes, la versión homogénea de la ecuación se convierte en
     \[
-    x^2 y'' + a x y' + b y = 0,
+    x^2y''+axy'+by=0,
     \]
     que se llama la \textbf{ecuación de Cauchy-Euler}, su solución general está dada por
     \[
-    y(x)=c_1 x^{m_1} + c_2 x^{m_2},
+    y(x)=c_1 x^{m_1}+c_2 x^{m_2},
     \]
     donde \(m_1\) y \(m_2\) son las raíces distintas de \(m^2+(a-1)m+b=0\). De igual manera usando variaci'on de par'ametros, cuando \(m_1=m_2=m\), la solución es
     \[
-    y(x)=c_1 x^m + c_2 x^m \log x.
+    y(x)=c_1 x^m+c_2x^m\log x.
     \]
 
     \item El \emph{teorema de Cauchy-Kovaleskaya} asegura que si los coeficientes \(q(x)\) y \(r(x)\) son funciones analíticas en algún punto \(x_0\) en el interior de \(I\), es decir, cada uno puede representarse en un intervalo abierto centrado en \(x_0\) por una serie de potencias en \((x-x_0)\), entonces la solución general también es analítica en \(x_0\) y se representa por una serie de potencias de la forma
@@ -134,38 +134,38 @@ A continuación, enumeramos algunas propiedades bien conocidas de las soluciones
     La serie converge en la intersección de los dos intervalos de convergencia (de \(q(x)\) y \(r(x)\)) e \(I\). El \emph{m'etodo de Frobenius} nos dice que si sustituimos esta serie en la ecuación, podemos expresar los coeficientes \(c_n\), para todo \(n\in\{2, 3, 4,\dots\}\), en términos de \(c_0\) y \(c_1\), que permanecen arbitrarios, veremos m'as de esto cuando veamos las \emph{funciones de Bessel}.
 \end{enumerate}
 
-Con \( I = [a, b] \), las soluciones de la ecuación pueden estar sujetas a condiciones de frontera en \(a\) y \(b\). Estas pueden tomar una de las siguientes formas
+Con \(I=[a,b]\), las soluciones de la ecuación pueden estar sujetas a condiciones de frontera en \(a\) y \(b\). Estas pueden tomar una de las siguientes formas
 
 \begin{enumerate}
-    \item[(i)] \( y(c) = \xi \), \( y'(c) = \eta \), \( c \in \{a, b\} \),
-    \item[(ii)] \( y(a) = \xi \), \( y(b) = \eta \),
-    \item[(iii)] \( y'(a) = \xi \), \( y'(b) = \eta \).
+    \item[(i)] \(y(c)=\xi\), \(y'(c)=\eta\), \(c\in\{a,b\}\),
+    \item[(ii)] \(y(a)=\xi\), \(y(b)=\eta\),
+    \item[(iii)] \(y'(a)=\xi\), \(y'(b)=\eta\).
 \end{enumerate}
 
 Cuando las condiciones de frontera se dan en el mismo punto \(c\), como en \((i)\), a menudo se denominan \textbf{condiciones iniciales}, como se mencionó anteriormente. Para obtener una solución única de la ecuación, el punto \(c\) no necesita, en general, ser uno de los extremos del intervalo \(I\), y puede ser cualquier punto interior. Pero en esta presentación, como en la mayoría de las aplicaciones físicas, las condiciones de contorno (o iniciales) siempre se imponen en los extremos de \(I\). Las formas \((i)\) a \((iii)\) de las condiciones de contorno pueden generalizarse mediante el par de ecuaciones
 
 \begin{align*}
-&\alpha_1 y(a) + \alpha_2 y'(a) + \alpha_3 y(b) + \alpha_4 y'(b) = \xi,\\
-&\beta_1 y(b) + \beta_2 y'(b) + \beta_3 y(a) + \beta_4 y'(a) = \eta,
+&\alpha_1 y(a)+\alpha_2 y'(a)+\alpha_3y(b)+\alpha_4y'(b)=\xi,\\
+&\beta_1 y(b)+\beta_2y'(b)+\beta_3y(a)+\beta_4y'(a)=\eta,
 \end{align*}
 
-donde \( \alpha_i \) y \( \beta_i \) son constantes que satisfacen \( \sum_{i=1}^4 |\alpha_i| > 0 \) y \( \sum_{i=1}^4 |\beta_i| > 0 \), es decir, tales que no todos los \( \alpha_i \) o \( \beta_i \) son cero. El sistema de ecuaciones anterior se llama un \textbf{problema de valores de frontera}.
+donde \(\alpha_i\) y \(\beta_i\) son constantes que satisfacen \(\sum_{i=1}^4|\alpha_i|>0\) y \(\sum_{i=1}^4|\beta_i|>0\), es decir, tales que no todos los \(\alpha_i\) o \(\beta_i\) son cero. El sistema de ecuaciones anterior se llama un \textbf{problema de valores de frontera}.
 
-Las condiciones de frontera se llaman \textbf{homogéneas} si \( \xi = \eta = 0 \), y \textbf{separadas} si \( \alpha_3 = \alpha_4 = \beta_3 = \beta_4 = 0 \). Las condiciones de frontera separadas, que tienen la forma
+Las condiciones de frontera se llaman \textbf{homogéneas} si \(\xi=\eta=0\), y \textbf{separadas} si \(\alpha_3=\alpha_4=\beta_3=\beta_4=0\). Las condiciones de frontera separadas, que tienen la forma
 
 \[
-\alpha_1 y(a) + \alpha_2 y'(a) = \xi, \quad \beta_1 y(b) + \beta_2 y'(b) = \eta,
+\alpha_1y(a)+\alpha_2y'(a)=\xi,\quad\beta_1y(b)+\beta_2y'(b)=\eta,
 \]
 
 son de particular importancia en este estudio. Otro par importante de condiciones homogéneas, que resultan de una elección especial de los coeficientes, está dado por
 
 \[
-y(a) = y(b), \quad y'(a) = y'(b).
+y(a)=y(b),\quad y'(a)=y'(b).
 \]
 
 Las ecuaciones se llaman \textbf{condiciones de contorno periódicas} y significa que las soluciones se pueden expresar en t'erminos de sus \emph{series de Fourier}. Nótese que las condiciones periódicas están acopladas, no separadas.
 \begin{def.}[Wronskiano]
-Para cualesquiera dos funciones \( f, g \in C^1 \), el determinante
+Para cualesquiera dos funciones \(f,g\in C^1\), el determinante
 \[
 W(f, g)(x) = \begin{vmatrix}
 f(x) & g(x) \\
@@ -180,9 +180,9 @@ El Wronskiano deriva su importancia en el estudio de ecuaciones diferenciales de
 \begin{lema}
 Si \(y_1\) y \(y_2\) son soluciones de la ecuación homogénea
 \begin{equation}\label{eq-homogenea}
-y'' + q(x) y' + r(x) y = 0, \quad x \in I,
+y''+p(x)y'+q(x)y=0,\quad x\in I,
 \end{equation}
-donde \( q \in C(I) \), entonces o bien \( W(y_1, y_2)(x) = 0 \) para todo \( x \in I \), o bien \( W(y_1, y_2)(x) \neq 0 \) para cualquier \( x \in I \).
+donde \(q in C(I)\), entonces o bien \(W(y_1,y_2)(x)=0\) para todo \(x\in I\), o bien \(W(y_1,y_2)(x)\neq0\) para cualquier \(x\in I\).
 \end{lema}
 \dem Recodamos que \(W(y_{1},y_{2})(x)=y_{1}(x)y'_{2}(x)-y'_{1}(x)y_{2}(x)\), entonces al clacular su derivada se obtiene que
 \[
@@ -190,17 +190,17 @@ donde \( q \in C(I) \), entonces o bien \( W(y_1, y_2)(x) = 0 \) para todo \( x 
 \]
 Ahora como \(y_{1}\),\(y_{2}\) son soluciones de la ecuaci'on homogenea \ref{eq-homogenea}, entonces
 \begin{align*}
-  y_1'' + q(x) y_1' + r(x) y_1 = 0\\
-  y_2'' + q(x) y_2' + r(x) y_2 = 0.\\
+  y_1''+p(x)y_1'+q(x)y_1=0\\
+  y_2''+p(x)y_2'+q(x)y_2=0.\\
 \end{align*}
 Por lo que si multipllicamos por \(y_{2}\) a la primera ecuaci'on y por \(y_{1}\) a la primera, obtenemosl al restarlas
 \begin{align*}
-  & y''_{2}(x)y_1(x)-y(x)_{2}y''_1(x) + q(x)(y'_{2}y_1-y_{2}(x)y_1'(x))=0\\
-  &\text{entonces } W'(y_{1},y_{2})(x) + q(x)W(y_{1},y_{2})(x)= 0.\\
+  & y''_{2}(x)y_1(x)-y(x)_{2}y''_1(x) + p(x)(y'_{2}y_1-y_{2}(x)y_1'(x))=0\\
+  &\text{entonces } W'(y_{1},y_{2})(x) + p(x)W(y_{1},y_{2})(x)= 0.\\
 \end{align*}
 As'i al integrar se obtiene que
 \[
-  W(y_{1},y_{2})=c\exp\left(-\int_{a}^{x}q(t)\,dt\right)\quad x\in I.
+  W(y_{1},y_{2})=c\exp\left(-\int_{a}^{x}p(t)\,dt\right)\quad x\in I.
 \]
 \QED\\
 \obs Las consecuencias del lema anterior son que las soluciones de la ecuaci'on \ref{eq-homogenea} o son \emph{linealmente independientes} o son linealmente dependientes.
@@ -208,7 +208,7 @@ As'i al integrar se obtiene que
 \noindent Resolver ecuaciones diferenciales es en general bastante complicado e incluso imposible, por lo menos explicitamente en t'erminos de funciones elementales. Sin embargo es posible obterer informaci'on qualitativa de las soluciones, por ejemplo es posible determinar ortogonalidad de las soluciones. Este es un tema amplio en el estudio de las ecuaciones diferenciales, sin embargo en esta secci'on estudiaremos los ceros de la ecuaciones lineales de orden dos, ya que incluso estas no siempre tienen soluciones en t'erminos de funciones elementales. En concreto primero estudiaremos los ceros de las soluciones a ecuaciones del tipo
 
 \begin{equation}
-y'' + q(x) y' + r(x) y = 0, \quad x \in I,
+y''+p(x)y'+q(x)y=0,\quad x\in I,
 \end{equation}
 
 Primero, estudiamos el ejemplo protot'ipico de estas ecuaciones (uno que s'i es \emph{soluble}) y luego veremos que el comportamieto de sus ceros son t'ipicos para este tipo de ecuaciones.
@@ -244,32 +244,30 @@ si \(k>0\) las soluciones son practicamente las mismas y s'olo se multiplica por
 \begin{teorema}[Teorema de separaci'on de Sturm]
 Si \(y_1\) y \(y_2\) son soluciones linealmente independientes de la ecuación
 \[
-y'' + q(x) y' + r(x) y = 0, \quad x\in I,
+y''+p(x)y'+q(x)y=0, \quad x\in I,
 \]
 entonces los ceros de \(y_1\) son distintos de los de \(y_2 \), y las dos secuencias de ceros se alternan, es decir, \(y_1\) tiene exactamente un cero entre dos ceros sucesivos de \(y_2\), y viceversa.
 \end{teorema}
-\dem Dado que \( y_1 \) y \( y_2 \) son linealmente independientes, su Wronskiano
+\dem Dado que \(y_1\) y \(y_2\) son linealmente independientes, su Wronskiano
 \[
-W(y_1, y_2)(x) = y_1(x) y_2'(x) - y_2(x) y_1'(x)
+W(y_1,y_2)(x)=y_1(x)y_2'(x)-y_2(x)y_1'(x)
 \]
-no se anula y, por lo tanto, tiene un signo constante en \(I\). Nótese primero que \(y_1\) y \( y_2 \) no pueden tener un cero común, de lo contrario \(W\) se anularía ahí. Entonces, suponemos que \(x_1\) y \(x_2\) son dos ceros sucesivos de \(y_2\) respectivamente, entonces
-\[
-W(x_1) = y_1(x_1) y_2'(x_1) = 0,
-\]
-\[
-W(x_2) = y_1(x_2) y_2'(x_2) = 0,
-\]
-y los números \( y_1(x_1) \), \( y_1(x_2) \), \( y_2'(x_1) \) y \( y_2'(x_2) \) son todos distintos de cero. Dado que \( y_2' \) es continua en \(I\), \(x_1\) tiene una vecindad abierta \(U_1\) donde el signo de \(y_2'\) no cambia, y de manera similar existe un abierto \(U_2\) de \(x_2\) donde \(y_2'\) no cambia de signo. Sin embargo, los signos de \(y_2'\) en \(U_1\cap  I\) y \(U_2\cap I\) no pueden ser iguales, ya que si \(y_2\) es creciente en uno de los intervalos, entonces debe ser decreciente en el otro. Para que \(W(x)\) tenga un signo constante en \(I\), \( y_1(x_1) \) y \( y_1(x_2) \) deben tener signos opuestos; por lo tanto, \(y_1\), siendo continua, tiene al menos un cero entre \(x_1\) y \(x_2\). No puede haber más de un cero, ya que si \(x_3\) y \(x_4\) son dos ceros de \( y_1 \) que se encuentran entre \(x_1\) y \(x_2\), podemos usar el mismo argumento para concluir que \(y_2\) se anula entre \(x_3\) y \(x_4\). Pero esto contradice la suposición de que \(x_1\) y \(x_2\) son ceros consecutivos de \( y_2 \).\QED\\
+no se anula y, por lo tanto, tiene un signo constante en \(I\). Nótese primero que \(y_1\) y \(y_2\) no pueden tener un cero común, de lo contrario \(W\) se anularía ahí. Entonces, suponemos que \(x_1\) y \(x_2\) son dos ceros sucesivos de \(y_2\) respectivamente, entonces
+\begin{align*}
+W(x_1)&=y_1(x_1)y_2'(x_1)\neq0,\\
+W(x_2)&=-y_1(x_2) y_2'(x_2)\neq0,
+\end{align*}
+y los números \(y_1(x_1)\), \(y_1(x_2)\), \(y_2'(x_1)\) y \(y_2'(x_2)\) son todos distintos de cero. Dado que \(y_2'\) es continua en \(I\), \(x_1\) tiene una vecindad abierta \(U_1\) donde el signo de \(y_2'\) no cambia, y de manera similar existe un abierto \(U_2\) de \(x_2\) donde \(y_2'\) no cambia de signo. Sin embargo, los signos de \(y_2'\) en \(U_1\cap I\) y \(U_2\cap I\) no pueden ser iguales, ya que si \(y_2\) es creciente en uno de los intervalos, entonces debe ser decreciente en el otro. Para que \(W(x)\) tenga un signo constante en \(I\), \(y_1(x_1)\) y \(y_1(x_2)\) deben tener signos opuestos; por lo tanto, \(y_1\), siendo continua, tiene al menos un cero entre \(x_1\) y \(x_2\). No puede haber más de un cero, ya que si \(x_3\) y \(x_4\) son dos ceros de \(y_1\) que se encuentran entre \(x_1\) y \(x_2\), podemos usar el mismo argumento para concluir que \(y_2\) se anula entre \(x_3\) y \(x_4\). Pero esto contradice la suposición de que \(x_1\) y \(x_2\) son ceros consecutivos de \(y_2\).\QED\\
 \begin{cor}
-Si dos soluciones de \(y'' + q(x) y' + r(x)y=0\) tienen un cero común en \(I\), entonces son linealmente dependientes.
+Si dos soluciones de \(y''+p(x)y'+q(x)y=0\) tienen un cero común en \(I\), entonces son linealmente dependientes.
 \end{cor}
-Para estudiar la distribución de ceros de la ecuación \ref{eq-homogenea}, sería mucho más conveniente si pudiéramos eliminar el término medio \(q y'\) transformando la ecuación a
+Para estudiar la distribución de ceros de la ecuación \ref{eq-homogenea}, sería mucho más conveniente si pudiéramos eliminar el término medio \(qy'\) transformando la ecuación a
 \[
-u'' + \rho(x) u = 0.
+u''+\rho(x)u=0.
 \]
 Para ello lo que se hace es tomar
 \[
-y(x) = u(x) v(x),
+y(x)=u(x)v(x),
 \]
 de modo que
 \begin{align*}
@@ -278,43 +276,63 @@ y''(x) &= u''(x) v(x) + 2 u'(x) v'(x) + u(x) v''(x).
 \end{align*}
 Sustituyendo en la ecuación obtenemos
 \[
-v u'' + (2 v' + q v) u' + (v'' + q v' + r v) u = 0.
+v(x)u''(x)+ (2v'(x)+p(x)v(x))u'(x) + (v''(x)+p(x)v'(x)+r(x)v(x))u(x)=0.
 \]
-Así, eligiendo \( 2 v' + q v = 0 \), tenemos que
+Así, eligiendo \(2v'(x)+p(x)v(x)=0\), tenemos que
 \[
-v(x) = \exp\left(-\frac{1}{2} \int_a^x q(t) \, dt\right),
+v(x)=\exp\left(-\frac{1}{2}\int_a^xp(t)\,dt\right),
 \]
 y
 \[
-\rho(x) = r(x) - \frac{1}{4} q^2(x) - \frac{1}{2} q'(x).
+\rho(x)=q(x)-\frac{1}{4}p^2(x)-\frac{1}{2}p'(x).
 \]
 La función exponencial \(v\) nunca se anula en \(\re\), por lo que los ceros de \(u\) coinciden con los de \(y\).
-\begin{teorema}[Teorema de Comparación de Sturm]
-Sean \( \phi \) y \( \psi \) soluciones no triviales de las ecuaciones
+\begin{teorema}[Teorema de Comparación de Sturm]\label{strum-comp}
+Sean \(\phi\) y \(\psi\) soluciones no triviales de las ecuaciones
 \[
-y'' + r_1(x) y = 0, \quad u'' + r_2(x) u = 0, \quad x \in I,
+y''+r_1(x)y=0,\quad u''(x)+r_2(x)u(x)=0,\quad x\in I,
 \]
-respectivamente, y supongamos que \( r_1(x) \geq r_2(x) \) para todo \( x \in I \). Entonces, \( \phi \) tiene al menos un cero entre cada dos ceros consecutivos de \( \psi \), a menos que \( r_1(x) \equiv r_2(x) \) y \( \phi \) sea un múltiplo constante de \( \psi \).
+respectivamente, y supongamos que \(r_1(x)\geq r_2(x)\) para todo \(x\in I\). Entonces, \(\phi\) tiene al menos un cero entre cada dos ceros consecutivos de \(\psi\), a menos que \(r_1(x)\equiv r_2(x)\) y \(\phi\) sea un múltiplo constante de \(\psi\).
 \end{teorema}
-
-\dem Sean \( x_1 \) y \( x_2 \) dos ceros consecutivos de \( \psi \) en \( I \), y supongamos que \( \phi \) no tiene ceros en el intervalo abierto \( (x_1, x_2) \). Asumamos que tanto \( \phi \) como \( \psi \) son positivas en \( (x_1, x_2) \); de lo contrario, cambiamos el signo de la función negativa. Dado que \( \phi' \) y \( \psi' \) son continuas, se sigue que \( \psi'(x_1) \geq 0 \) y \( \psi'(x_2) \leq 0 \), y por lo tanto, el Wronskiano de \( \phi \) y \( \psi \) satisface
+\dem Sean \(x_1\) y \(x_2\) dos ceros consecutivos de \(\psi\) en \(I\), y supongamos que \(\phi\) no tiene ceros en el intervalo abierto \((x_1,x_2)\). Asumamos que tanto \(\phi\) como \(\psi\) son positivas en \((x_1, x_2)\); de lo contrario, cambiamos el signo de la función negativa. Dado que \(\phi'\) y \(\psi'\) son continuas, se sigue que \(\psi'(x_1)\geq0\) y \(\psi'(x_2)\leq0\), y por lo tanto, el Wronskiano de \(\phi\) y \(\psi\) satisface
 \[
-W(x_1) = \phi(x_1) \psi'(x_1) \geq 0, \quad W(x_2) = \phi(x_2) \psi'(x_2) \leq 0.
+W(x_1)=\phi(x_1)\psi'(x_1)\geq0,\quad W(x_2)=\phi(x_2)\psi'(x_2)\leq 0.
 \]
 Pero como
 \[
-W'(x) = \phi(x) \psi''(x) - \phi''(x) \psi(x) = [r_1(x) - r_2(x)] \phi(x) \psi(x) \geq 0 \quad \text{para todo } x \in (x_1, x_2),
+W'(x)=\phi(x)\psi''(x)-\phi''(x)\psi(x)=[r_1(x)-r_2(x)]\phi(x)\psi(x)\geq0\quad\forall x\in(x_1,x_2),
 \]
-\( W \) es una función creciente en \( (x_1, x_2) \). Esto contradice la ecuación (2.17) a menos que \( r_1(x) - r_2(x) \equiv 0 \) y \( W(x) \equiv 0 \), en cuyo caso \( \phi \) y \( \psi \) son linealmente dependientes.
+\(W\) es una función creciente en \((x_1,x_2)\). Esto contradice las desigualdades anteriores a menos que \(r_1(x)-r_2(x)\equiv0\) y \(W(x)\equiv0\), en cuyo caso \(\phi\) y \(\psi\) son linealmente dependientes.
 \QED\\
 \begin{cor}
-Sea \( \phi \) una solución no trivial de \( y'' + r(x) y = 0 \) en \( I \). Si \( r(x) \leq 0 \), entonces \( \phi \) tiene a lo sumo un cero en \( I \).
+Sea \(\phi\) una solución no trivial de \(y''+r(x)y=0\) en \(I\). Si \(r(x)\leq0\), entonces \(\phi\) tiene a lo sumo un cero en \(I\).
 \end{cor}
-\dem Si la solución \( \phi \) tiene dos ceros en \( I \), digamos \( x_1 \) y \( x_2 \), entonces, por el Teorema 2.10, la solución \( \psi(x) \equiv 1 \) de \( u'' = 0 \) debe anularse en \( (x_1, x_2) \), lo cual es imposible.
+\dem Si la solución \(\phi\) tiene dos ceros en \(I\), digamos \(x_1\) y \(x_2\), entonces, por el Teorema \ref{strum-comp}, la solución \(\psi(x)\equiv1\) de \(u''= 0\) debe anularse en \((x_1,x_2)\), lo cual es imposible.
 \begin{def.}
   Si una soluci'on de \ref{eq-homogenea}, tiene infinitos ceros, entonces diremos que las soluciones son \emph{ondulatorias}.
 \end{def.}
-\obs Veremos que la funciones de Bessel son \emph{ondulatorias}.
+\eje Veremos que la funciones de Bessel son \emph{ondulatorias}. Las funciones de Bessel son las soluciones a las ecuaciones
+\begin{equation}\label{eq-bessel}
+  y''+\frac{1}{x}y'+\left(1-\frac{\nu^{2}}{x^{2}}\right)y=0,\quad x\in\re^{+}
+\end{equation}
+conocidas como las \emph{ecuaciones de Bessel de orden\(\nu\).} Multiplicando por \(v(x)=e^{1/2\log(x)}=\sqrt{x}\), estas ecuaciones se transforman en
+\[
+  u''+\left(1+\frac{1-4\nu^{2}}{4x^{2}}\right)u=0.
+\]
+Observamos que
+\[
+  q(x)=1+\frac{1-4\nu^{2}}{4x^{2}}\implies\begin{cases}
+                                          q(x)\geq1\text{ si } \nu\in[0,\frac{1}{2}],\\
+                                          q(x)<1\text{ si } \nu>\frac{1}{2}.\\
+                                         \end{cases}
+\]
+Ahora podemos comparar con \(u''+u=0\) para obtener que para cualquier soluci'on a la ecuaci'on de Bessel se cumple alguna de las siguientes opciones
+\begin{enumerate}
+\item[i)] Si \(\nu\in[0,1/2]\), entonces todos los subintervalos de \(\re^{+}\) de longitud \(\pi\) tienen \textbf{por lo menos} un cero.
+\item[ii)] Si \(\nu>1/2\), entonces todos los intervalos de longitud \(pi\) de \(\re^{+}\) tienen \textbf{al menos} un cero.
+\item[iii)]Si\(\nu=1/2\), entonces la distancia entre ceros es \textbf{exactemente} \(pi\).
+
+\end{enumerate}
 \section{Operadores adjuntos de Hilbert}
 \noindent Ahora pensaremos a las ecuaciones previamente mencionadas como \emph{operadores} en \(\mathcal{L}^{2}(I)\), entonces hablaremos un poco de \emph{operadores lineales en espacios de Hilbert} de la forma $T:V\subset\mathcal{H}\to\mathcal{H}$. Recordemos que el dominio e imagen se definen como
 \begin{itemize}
@@ -337,12 +355,13 @@ Dado un operador $T$ en $\mathcal{H}$, su \textbf{adjunto} $T^*$ es el operador 
 
 \noindent\textbf{Propiedades del Adjunto}
 \begin{itemize}
-    \item $(T^*)^* = T$ (si $T$ es cerrado y densamente definido).
-    \item $(\alpha T)^* = \overline{\alpha} T^*$ para $\alpha \in \co$.
-    \item $(T + S)^* = T^* + S^*$ si $\mathcal{D}(T) \cap \mathcal{D}(S)$ es denso.
-    \item $(TS)^* = S^* T^*$ si $\mathcal{D}(TS)$ es denso.
+  \item $(T^*)^* = T$ (si $T$ es cerrado y densamente definido).
+  \item $(\alpha T)^* = \overline{\alpha} T^*$ para $\alpha \in \co$.
+  \item $(T + S)^* = T^* + S^*$ si $\mathcal{D}(T) \cap \mathcal{D}(S)$ es denso.
+  \item $(TS)^* = S^* T^*$ si $\mathcal{D}(TS)$ es denso.
+  \item Si $\lambda$ es valor propio de $T$, entonces $\overline{\lambda}$ es valor propio de $T^{*}$.
 \end{itemize}
-
+\dem
 \begin{def.}{Operadores Autoadjuntos}
 Un operador $T$ es \textbf{autoadjunto} si $T = T^*$. Esto implica:
 \[
@@ -364,6 +383,14 @@ A = \begin{pmatrix}
 \]
 es Hermitiana, ya que $A^* = A$.
 
+Algunas propiedades de los operadores autoadjuntos
+\begin{itemize}
+  \item Sus valores poropios son reales ya que si \(\ket{\phi}\) es vector propio de norma uno de $T$ autoadjunto con valor propio \(\lambda\), entonces
+        \begin{align*}
+        \lambda=\lambda\|\phi\|^{2}=\lambda\braket{\phi|\phi}=\braket{\phi|\lambda\phi}+
+        \end{align*}
+  \item Sus vectores propios de valores distintos son ortogonales
+\end{itemize}
 \eje\textbf{Operadores Unitarios}
 Un operador $U$ es \textbf{unitario} si
 \[
@@ -387,17 +414,13 @@ U = \frac{1}{\sqrt{2}} \begin{pmatrix}
 \end{pmatrix}
 \]
 es unitaria, ya que $U^* U = I$.
-%%\section{Teorema Espectral}
-%%Para operadores autoadjuntos $T$ en $\mathcal{H}$, el \textbf{teorema espectral} establece que existe una medida espectral $E$ tal que
-%%\[
-%%T = \int_{\sigma(T)} \lambda \, dE(\lambda),
-%%\]
-%%donde $\sigma(T)$ es el espectro de $T$. En el caso de matrices Hermitianas, esto se reduce a la diagonalización
-%%\[
-%%A = U \Lambda U^*,
-%%\]
-%%donde $\Lambda$ es diagonal y $U$ es unitaria.
-%%
+\begin{teorema}[Teorema Espectral]
+Sea \(T\) un operador autoadjunto (matriz hermitiana) en $\con$, entonces existe una base ortonormal de \(\con\) de vectores propios tal que la matriz de cambio de base \(U\) es unitaria y
+\[
+UTU^{*}= \begin{pmatrix}\lambda_{1}& 0 & \dots & 0\\ 0 & \lambda_{2} & \dots & 0\\ \vdots & \vdots & \cdots & \vdots\\ 0 & 0 & \dots & \lambda_{n} \end{pmatrix}
+\]
+\end{teorema}
+\subsection{Operadores de Sturm-Liouville autoadjuntos}
 %%\section{Aplicaciones en Física}
 %%\begin{itemize}
 %%    \item En mecánica cuántica, los operadores autoadjuntos representan observables, y sus valores propios corresponden a los resultados de mediciones.
