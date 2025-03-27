@@ -339,7 +339,7 @@ Ahora podemos comparar con \(u''+u=0\) para obtener que para cualquier soluci'on
     \item El \textbf{dominio} de $T$, denotado $\mathcal{D}(T)$, es el subespacio de $\mathcal{H}$ donde $T$ está definido.
     \item La \textbf{imagen} de $T$, denotado $\mathcal{R}(T)$, es el conjunto $Im(T)=\{T(x) : x \in \mathcal{D}(T)\}$.
 \end{itemize}
-En los epacios de Hilbert es posible definir a partir de un operador lineal y continuo, \(T\) un operador especial \(T^{*}\), el cual es llamado el \emph{operador adjunto de Hilbert de \(T\)}. Vale la pena mencionar que la noci'on de \emph{operador adjunto} es genral y no necesariamente excludsiva a los espacios de Hilbert o espacios con producto interno, sin embargo la retpresentaci'on que usaremos utilizando el producto interno, s'i es unica en esoacios de Hilbert. Podemos definir y representar al operador adjunto gracias al \textbf{teorema de representaci'on de Riez} (teorema \ref{riez}), ya que para \(T\) lineal, entonces para todo \(\bra{\psi}\in\mathcal{H}^{*},\,\ket{\phi}\mapsto\braket{\psi|T(\phi)}\) tambi'en es lineal, entonces por representaci'on de Riez exite un \emph{bra que depende de} \(\psi\), al cual denotamos por \(T^{*}\bra{\psi}\in\mathcal{H}^{*}\) tal que
+En los epacios de Hilbert es posible definir a partir de un operador lineal y continuo, \(T\) un operador especial \(T^{*}\), el cual es llamado el \emph{operador adjunto de Hilbert de \(T\)}. Vale la pena mencionar que la noci'on de \emph{operador adjunto} es genral y no necesariamente exclusiva a los espacios de Hilbert o espacios con producto interno, sin embargo la retpresentaci'on que usaremos utilizando el producto interno, s'i es unica en esoacios de Hilbert. Podemos definir y representar al operador adjunto gracias al \textbf{teorema de representaci'on de Riez} (teorema \ref{riez}), ya que para \(T\) lineal, entonces para todo \(\bra{\psi}\in\mathcal{H}^{*},\,\ket{\phi}\mapsto\braket{\psi|T(\phi)}\) tambi'en es lineal, entonces por representaci'on de Riez exite un \emph{bra que depende de} \(\psi\), al cual denotamos por \(T^{*}\bra{\psi}\in\mathcal{H}^{*}\) tal que
 \[
   \braket{T^{*}(\psi)|\phi}=\braket{\psi| T(\phi)}, \quad \forall \ket{\phi} \in \mathcal{D}(T), \, \bra{\psi} \in \mathcal{D}(T^*).
 \]
@@ -351,24 +351,57 @@ Dado un operador $T$ en $\mathcal{H}$, su \textbf{adjunto} $T^*$ es el operador 
 \braket{T^{*}(\psi)|\phi}=\braket{\psi| T(\phi)}, \quad \forall \ket{\phi} \in \mathcal{D}(T), \, \bra{\psi} \in \mathcal{D}(T^*).
 \]
 \end{def.}
-
-
+\obs Si $\braket{\phi|\psi}=0$ para toda $\psi$, entonces $\bra{\phi}=0$ pues $\|\phi\|^{2}=\braket{\phi|\phi}=0$, por esto mismo si $\braket{\phi|T\psi}=0$ para toda $\bra{\phi}$, entonces $T=0$, o equivalentemente
+\[
+  \braket{\phi|T\psi}=\braket{\phi|S\psi},\,\forall\ket{\phi},\ket{\psi}\in\mathcal{H}\implies\,S=T.
+\]
 \noindent\textbf{Propiedades del Adjunto}
-\begin{itemize}
-  \item $(T^*)^* = T$ (si $T$ es cerrado y densamente definido).
-  \item $(\alpha T)^* = \overline{\alpha} T^*$ para $\alpha \in \co$.
+\begin{enumerate}
   \item $(T + S)^* = T^* + S^*$ si $\mathcal{D}(T) \cap \mathcal{D}(S)$ es denso.
   \item $(TS)^* = S^* T^*$ si $\mathcal{D}(TS)$ es denso.
+  \item $(T^*)^* = T$ (si $T$ es cerrado y densamente definido).
+  \item $(\alpha T)^* = \overline{\alpha} T^*$ para $\alpha \in \co$.
+  \item $\|T\|=\|T^{*}\|$, o equivalentemente $\|T\|^{2}=\|T^{*}\|\|T\|=\|T\|\|T^{*}\|$.
   \item Si $\lambda$ es valor propio de $T$, entonces $\overline{\lambda}$ es valor propio de $T^{*}$.
-\end{itemize}
-\dem
+\end{enumerate}
+\dem Sean $\ket{\phi}$ y $\ket{\psi}$ arbitarios, para demostrar $1.$, simplemente calculamos
+\begin{align*}
+  \braket{(S+T)^{*}\phi|\psi}&=\braket{\phi|(S+T)\psi}=\braket{\phi|S\psi+T\psi}\\
+  &=\braket{\phi|T\psi}+\braket{\phi|S\psi}=\braket{T^{*}\phi|\psi}+\braket{S^{*}\phi|\psi}=\braket{(S^{*}+T^{*})\phi|\psi}.
+\end{align*}
+Por lo tanto $(S+T)^{*}=S^{*}+T^{*}$, para $2.$
+\[
+  \braket{\phi|TS\psi}=\braket{T^{*}\phi|S\psi}=\braket{S^{*}T^{*}\phi|\psi}.
+\]
+$3.$ Sea $(T^{*})^{*}=T^{**}$, entonces comprobamos que para todo $\ket{\phi},\ket{\psi}\in\mathcal{D}(T)$, se cumple
+\[
+  \braket{T^{**}\phi|\psi}=\braket{\phi|T^{*}\psi}=\braket{T\phi|\psi}.
+  \]
+Por lo tanto $T=T^{**}$, si $T$ es cerrado y densamente definida, es decir $\mathcal{D}(T)=\mathcal{H}$. Para $4.$,
+\[
+  \braket{\phi|(\alpha T)\psi}=\braket{\phi|\alpha(T\psi)}=\braket{\overline{\alpha}\phi|T\psi}=\braket{T^{*}(\overline{\alpha}\phi)|\psi}=\braket{\overline{\alpha}T^{*}\phi|\psi}.
+\]
+Por lo tanto $(\alpha T)^{\alpha}=\overline{\alpha}T^{*}$. Para $5.$, por los incisos $2.$ y $3.$, $(T^{*}T)^{*}=T^{*}T$ simplemente calculamos para toda $\ket{\phi}$
+\[
+  \|T\phi\|^{2}=\braket{T\phi|T\phi}=\braket{T^{*}T\phi|\phi}\leq\|T^{*}\|T\|\|\phi\|^{2}.
+\]
+Lo que implica que $\|T\|^{2}\leq\|T^{*}\|\|T\|$, haciendo lo mismo con $T^{*}$ y recordando que $T^{**}=T$ se obtiene la otra desigualdad, notamos que esto implica que $T^{*}T=0$, entonces $T=0$ pues $\|T\|$ es norma.
+Por 'ultimo, sea $\lambda$ valor propio de $T$ y $\ket{\phi}$ es tal que $T\phi=\lambda\ket{\phi}$, entonces sea $\ket{\psi}$
+\[
+  \braket{\overline{\lambda}\psi|\phi}=\braket{\psi|\lambda\phi}=\braket{\phi|T\phi}=\braket{T^{*}\psi|\phi}
+\]
+Como $\ket{\psi}$ es arbitraria, entonces tiene que existir una tal que $T^{*}\psi=\overline{\lambda}\ket{\psi}$.
 \begin{def.}{Operadores Autoadjuntos}
-Un operador $T$ es \textbf{autoadjunto} si $T = T^*$. Esto implica:
+Un operador $T$ es \textbf{autoadjunto} si $T = T^*$, es decir
 \[
   \braket{T(\psi)|\phi}=\braket{\psi| T(\phi)}, \quad \forall \ket{\phi} \in \mathcal{D}(T), \, \bra{\psi} \in \mathcal{D}(T^*).
 \]
 Los operadores autoadjuntos son fundamentales en mecánica cuántica, ya que representan observables físicos.
 \end{def.}
+\eje Para todo operador $T$, como vimos anteriormente $S=T^{*}T$ es autoadjunto pues
+\[
+  S^{*}=(T^{*}T)^{*}=T^{*}T^{**}=T^{*}T=S.
+\]
 \eje\textbf{Matrices Hermitianas}
 En $\mathcal{H} = \con$, un operador $T$ puede representarse como una matriz $A\in\co^{n \times n}$. $A$ es \textbf{Hermitiana} (autoadjunta) si:
 \[
@@ -387,9 +420,13 @@ Algunas propiedades de los operadores autoadjuntos
 \begin{itemize}
   \item Sus valores poropios son reales ya que si \(\ket{\phi}\) es vector propio de norma uno de $T$ autoadjunto con valor propio \(\lambda\), entonces
         \begin{align*}
-        \lambda=\lambda\|\phi\|^{2}=\lambda\braket{\phi|\phi}=\braket{\phi|\lambda\phi}+
+        \lambda=\lambda\|\phi\|^{2}=\lambda\braket{\phi|\phi}=\braket{\phi|\lambda\phi}=\braket{\phi|T\phi}=\braket{T\phi|\phi}=\overline{\lambda}
         \end{align*}
-  \item Sus vectores propios de valores distintos son ortogonales
+  \item Sus vectores propios de valores distintos son ortogonales, es decir, si $\ket{\phi}$ tiene valor propio $\lambda$ y $\ket{\psi}$ tiene valor propio \emph{distinto} $\mu$, entonces
+        \begin{align*}
+        \lambda\braket{\psi|\phi}=\braket{\psi|\lambda\phi}=\braket{\psi|T\phi}=\braket{T\psi|\phi}=\braket{\mu\psi|\phi}=\mu\braket{\psi|\phi}
+        \end{align*}
+        Recordamos que $\mu$ es real por el punto anterior, entoces si $\braket{\psi|\psi}$ no es cero $\mu=\lambda$ lo cual es imposible.
 \end{itemize}
 \eje\textbf{Operadores Unitarios}
 Un operador $U$ es \textbf{unitario} si
@@ -420,6 +457,7 @@ Sea \(T\) un operador autoadjunto (matriz hermitiana) en $\con$, entonces existe
 UTU^{*}= \begin{pmatrix}\lambda_{1}& 0 & \dots & 0\\ 0 & \lambda_{2} & \dots & 0\\ \vdots & \vdots & \cdots & \vdots\\ 0 & 0 & \dots & \lambda_{n} \end{pmatrix}
 \]
 \end{teorema}
+\obs Notamos que si $T$ es autoadjunto l'imite de operadores con rango de dimensi'on finita, entonces es va'lido  el teorema espectral para $T$ si lo hacemos en cada uno de sus componentes de dimension finita.
 \subsection{Operadores de Sturm-Liouville autoadjuntos}
 %%\section{Aplicaciones en Física}
 %%\begin{itemize}
