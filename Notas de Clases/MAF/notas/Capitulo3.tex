@@ -427,6 +427,7 @@ Algunas propiedades de los operadores autoadjuntos
         \lambda\braket{\psi|\phi}=\braket{\psi|\lambda\phi}=\braket{\psi|T\phi}=\braket{T\psi|\phi}=\braket{\mu\psi|\phi}=\mu\braket{\psi|\phi}
         \end{align*}
         Recordamos que $\mu$ es real por el punto anterior, entoces si $\braket{\psi|\psi}$ no es cero $\mu=\lambda$ lo cual es imposible.
+
 \end{itemize}
 \eje\textbf{Operadores Unitarios}
 Un operador $U$ es \textbf{unitario} si
@@ -499,7 +500,7 @@ es decir, $a_{0}$, $a_{1}$ y $a_{2}$ son funciones \emph{reales} y $a_{1}=a_{0}'
 \]
 los cuales ya hab'iamos definido como \emph{operadores de Sturm-Liouville}. Ahora para que $L$ sea \emph{auto adjunto}, es necesario que se cumpla
 \[
-  p(x)(\phi(x)'\overline{\psi(x)}-\phi(x)\overline{\psi(x)'})=0\text{ para todas }x\in(a,b)\,\text{ y }\phi,\psi.
+  p(\phi'\overline{\psi}-\phi\overline{\psi'})=0\text{ para todas }\phi,\psi.
 \]
 Ahora, nosotros estaremos interesados en el problema de valores propios de $-L$, es decir en resolver ecuaciones del tipo
 \[
@@ -529,7 +530,28 @@ esta es una ecuaci'on diferencial de orden uno cuya soluci'on claramente es
 \[
   \rho(x)=\frac{c}{a_{0}(x)}\exp\left(\int_{a}^{x}\frac{a_{1}(t)}{a_{0}(t)}\,dt\right).
 \]
-Escogiento una $c$ adecuada podemos suponer que $\rho(x)>0$. Por lo tanto simempre podemos multiplicar a $L$ por una funcion positiva tal que el resultado sea formalmene autoadjunto sin embargo
+Escogiento una $c$ adecuada podemos suponer que $\rho(x)>0$. Por lo tanto simempre podemos multiplicar a $L$ por una funcion positiva tal que el resultado sea formalmene autoadjunto sin embargo, esto modifica el problema original ya que al umtiplicar por $\rho$, en realidad estamos resolviendo un problema de valores propio de tipo
+\[
+  \rho(x)Lu(x)+\rho(x)\lambda u(x)=0.
+\]
+\noindent Donde la condici'on para que $L$ sea autoadjunto ahora se transforma en
+\[
+  \rho p(\phi'\overline{\psi}-\phi\overline{\psi'})|_{a}^{b}=0\text{ para todas }\phi,\psi.
+\]
+Esto sugiere \emph{modificar el producti interno o  la medida} para que se siga cumpliendo la condici'on de operador auto adjunto, es decir se toma el producto interno
 \begin{equation} \braket{\phi|\psi}_{\rho}=\int_{a}^{b}\overline{\phi(x)}\psi(x)\rho(x)\,d\lambda(x)=\int_{a}^{b}\overline{\phi(x)}\psi(x)\,d\mu_{\rho}(x).
 \end{equation}
+\noindent Donde la medida modificada es
+\[
+  \mu_{\rho}(E):=\int_{E}\rho(x)\,d\lambda(x)\quad E\in\mathbb{B}(\re).
+\]
+\obs Suponinendo que $\rho(x)$ es continua en $x\in[a,b]$ intervalo compacto, entonces existen $\{c_{1},c_{2}\}\subset\re^{+}$ tales que $0<c_{1}<\rho(x)<c_{2}<\infty$ para toda $x\in[a,b]$, esto implica que
+\begin{equation}\label{norm-equiv}
+  \sqrt{c_{1}}\|u\|_{2}\leq\|u\|_{\rho}\leq\sqrt{c_{2}}\|u\|_{2}.
+\end{equation}
+Es decir
+\[
+  \int_{a}^{b}|u(x)|^{2}\,d\lambda(x)<\infty\iff \int_{a}^{b}|u(x)|^{2}\,d\mu_{\rho}(x)<\infty,
+\]
+es decir, los espacios $\mathcal{L}^{2}([a,b],\lambda)$ y $\mathcal{L}^{2}([a,b],\mu_{\rho})$ contienen a las mismas funciones y m'as a'un, las desigualdades \ref{norm-equiv} en el leguange de espacios normados se le conoce como \emph{normas equivalentes} y esto significa que ambos espacios tienen \emph{la misma topolog'ia}, es decir las nociones de convergencia son equivalentes, sin embargo el producto punto es \textbf{distinto.}
 \end{document}
