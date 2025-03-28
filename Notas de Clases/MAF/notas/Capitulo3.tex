@@ -457,13 +457,79 @@ Sea \(T\) un operador autoadjunto (matriz hermitiana) en $\con$, entonces existe
 UTU^{*}= \begin{pmatrix}\lambda_{1}& 0 & \dots & 0\\ 0 & \lambda_{2} & \dots & 0\\ \vdots & \vdots & \cdots & \vdots\\ 0 & 0 & \dots & \lambda_{n} \end{pmatrix}
 \]
 \end{teorema}
-\obs Notamos que si $T$ es autoadjunto l'imite de operadores con rango de dimensi'on finita, entonces es va'lido  el teorema espectral para $T$ si lo hacemos en cada uno de sus componentes de dimension finita.
+\obs Notamos que si $T$ es autoadjunto l'imite de operadores con rango de dimensi'on finita, entonces es v'alido  el teorema espectral para $T$ si lo hacemos en cada uno de sus componentes de dimension finita.
 \subsection{Operadores de Sturm-Liouville autoadjuntos}
-%%\section{Aplicaciones en Física}
-%%\begin{itemize}
-%%    \item En mecánica cuántica, los operadores autoadjuntos representan observables, y sus valores propios corresponden a los resultados de mediciones.
-%%    \item Los operadores unitarios describen evolución temporal y simetrías.
-%%    \item Los operadores compactos aparecen en problemas de scattering y teoría espectral.
-%%\end{itemize}
-%%
+\noindent Ahora veremos cu'al es el adjunto de un operador diferencial ordinario de orden dos
+\[
+L=a_0(x)\frac{d^2}{dx^2}+a_1(x)\frac{d}{dx}+a_2(x)I,\quad x\in [a,b]\subset\re,\{a_{0},a_{1},a_{2}\}\subset\mathcal{C}^{2}[a,b]
+\]
+El cual se define como un operador
+\[
+  L:\mathcal{L}^{2}([a,b],\mu)\cap\mathcal{C}^{2}[a,b]\to\mathcal{L}^{2}([a,b],\mu).
+\]
+\noindent Donde $\mu$ va a ser la \emph{medida de Lebesgue} $\lambda$ o una medida derivada de la misma. Ahora usamos integraci'on por partes para calcular $L^{*}$
+\begin{align*}
+  \braket{\phi|L\psi}&=\int_{a}^{b}\overline{\phi}(a_{0}(x)\psi''+a_{1}(x)\psi'+a_{2}(x)\psi)\,d\lambda(x)\\
+                     &=\int_{a}^{b}a_{0}\overline{\phi}\psi''+a_{1}\overline{\phi}\psi'+a_{2}\overline{\phi}\psi\,d\lambda(x)\\
+                     &=a_{0}\overline{\phi}\psi'|_{a}^{b}-\int_{a}^{b}(a_{0}(x)\overline{\phi})'\psi'\,d\lambda(x)\\
+                     &+a_{1}\overline{\phi}\psi|_{a}^{b}-\int_{a}^{b}(a_{1}(x)\overline{\phi})'\psi\,d\lambda(x)
+                     +\int_{a}^{b}\overline{\phi}a_{2}\psi\,d\lambda(x)\\
+                     &=(a_{0}\overline{\phi}\psi'-\psi(a_{0}\overline{\phi})')|_{a}^{b} +\int_{a}^{b}(a_{0}(x)\overline{\phi})''\psi\,d\lambda(x)\\
+                     &a_{1}\overline{\phi}\psi|_{a}^{b}-\int_{a}^{b}(a_{1}\overline{\phi})'\psi\,d\lambda
+                       +\int_{a}^{b}\overline{\phi}a_{2}\psi\,d\lambda(x)\\
+                     &=\braket{(\overline{a_{0}}\phi)''-(\overline{a_{1}}\phi)'+\overline{a_{0}}\phi|\psi}+
+                       [a_{0}(\overline{\phi}\psi'-\psi\overline{\phi}')+(a_{1}-a_{0}')\overline{\phi}\psi]|_{a}^{b}
+\end{align*}
+Esto es indicativo de la definici'on de $L^{*}$, es decir definimos $L^{*}$ el \emph{adjunto formal} como
+\begin{align*}
+  L^{*}\phi(x)&=(\overline{a_{0}}(x)\phi)''-(\overline{a}_{1}(x)\phi)'+\overline{a_{2}}(x)\phi\\
+             &=\overline{a_{0}(x)}\phi''+(2\overline{a_{0}(x)}'-\overline{a_{1}(x)})\phi'+(\overline{a_{0}(x)}''-\overline{a_{1}(x)}'+\overline{a_{2}(x)}\phi
+\end{align*}
+Por lo tanto,
+\[
+  L^{*}=\overline{a_0(x)}\frac{d^2}{dx^2}+(2\overline{a_{0}(x)}'-\overline{a_1(x)})\frac{d}{dx}+(\overline{a_{0}(x)}''-\overline{a_{1}(x)}'+\overline{a_2(x)})I.
+\]
+Entonces para que $L$ sea \emph{formalmente autoadjunto,} es necesario que
+\[
+  \overline{a_{0}}=a_{0},\quad 2\overline{a_{0}}'-\overline{a_{1}}=a_{1},\quad\overline{a_{0}}''-\overline{a_{1}}'+\overline{a_{2}}=a_{2},
+\]
+es decir, $a_{0}$, $a_{1}$ y $a_{2}$ son funciones \emph{reales} y $a_{1}=a_{0}'$, en cuyo caso, escribimos $a_{0}=p$ y $a_{2}=q$ y por lo tanto el operador se escribe de la forma
+\[
+    L=\frac{d}{dx} \left( p(x) \dfrac{d}{dx} \right) + q(x)I,
+\]
+los cuales ya hab'iamos definido como \emph{operadores de Sturm-Liouville}. Ahora para que $L$ sea \emph{auto adjunto}, es necesario que se cumpla
+\[
+  p(x)(\phi(x)'\overline{\psi(x)}-\phi(x)\overline{\psi(x)'})=0\text{ para todas }x\in(a,b)\,\text{ y }\phi,\psi.
+\]
+Ahora, nosotros estaremos interesados en el problema de valores propios de $-L$, es decir en resolver ecuaciones del tipo
+\[
+  Lu+\lambda u=0.
+\]
+La raz'on por la cual nos interesan los valores propios de $L$ y no de $-L$ es porque los valores propios de $L$ resultan negativos cuando $p>0$, como el caso de $y''+ky=0$.
+
+\eje El operador $L=-(\dfrac{d^{2}}{dx^{2}})$ es formalmente autoadjunto ($p=-1$ y $q=0$), recordamos que sus \emph{eigenfunciones o funciones propias} son las soluciones a la ecuaci'on
+\[
+  u''+\lambda u=0.
+\]
+M'as a'un si imponemos condiciones de forntera $u(0)=u(\pi)=0$ entonces es f'acil ver que necesariamente $\lambda>0$ y como se vio previamente los vectores propios normalizados son los monomios trigonom'etricos
+\[
+  \sqrt{\frac{2}{\pi}}\sin(nx)\quad n\in\nat.
+\]
+Los cuales sabemos que son \emph{ortonormales}.
+
+\noindent Ahora, \textbf{¿Qu'e se puede hacer cuando $a_{0}'\neq a_{1}$ en $L$?}. Resulta que podemos multiplicar a $L$ por una funci'on positiva $\rho(x)>0$ de tal forma que $L$ es \emph{formalmente autoadjunto} para un \emph{producto punto} modificado o \emph{medida modificada}. Primero, sea
+\[
+L=a_0(x)\frac{d^2}{dx^2}+a_1(x)\frac{d}{dx}+a_2(x)I,\quad x\in [a,b]\subset\re,
+\]
+\noindent donde $a_{0}\in\mathcal{C}^{2}(a,b)$ $a_{1}\in\mathcal{C}^{1}(a,b)$ y $a_{2}\in\mathcal{C}[a,b]$, entonces si consideramos el operador $\tilde{L}=\rho L$, sabemos por lo anteriormente discutido que $\tilde{L}$ es formalmente autoadjunto si y s'olo si
+\[
+  \rho a_{1}=(\rho a_{0})'=\rho'a_{0}+\rho a_{0}',
+\]
+esta es una ecuaci'on diferencial de orden uno cuya soluci'on claramente es
+\[
+  \rho(x)=\frac{c}{a_{0}(x)}\exp\left(\int_{a}^{x}\frac{a_{1}(t)}{a_{0}(t)}\,dt\right).
+\]
+Escogiento una $c$ adecuada podemos suponer que $\rho(x)>0$. Por lo tanto simempre podemos multiplicar a $L$ por una funcion positiva tal que el resultado sea formalmene autoadjunto sin embargo
+\begin{equation} \braket{\phi|\psi}_{\rho}=\int_{a}^{b}\overline{\phi(x)}\psi(x)\rho(x)\,d\lambda(x)=\int_{a}^{b}\overline{\phi(x)}\psi(x)\,d\mu_{\rho}(x).
+\end{equation}
 \end{document}
