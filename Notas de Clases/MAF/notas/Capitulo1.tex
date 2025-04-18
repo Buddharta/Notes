@@ -283,7 +283,7 @@ La menor de tales constantes \(C\) se denomina la \textbf{norma del operador} \(
 \[
 T(f)(x) = \int_a^b K(x, y) f(y) \, dy,
 \]
-donde \(K(x, y)\) es un núcleo continuo en \([a, b] \times [a, b]\). Este operador actúa sobre el espacio de funciones continuas \(C([a, b])\) y es un operador de Fredholm con índice cero, observamos que como \(K\) es continua y  \([a, b] \times [a, b]\) es compacto, entonces \(\|T\|\leq(b-a)\|K\|_{\infty}\).
+donde \(K(x, y)\) es un núcleo continuo en \([a, b] \times [a, b]\). Este operador actúa sobre el espacio de funciones continuas \(C([a, b])\) y es un operador de Fredholm con índice cero, observamos que como \(K\) es continua y  \([a, b] \times [a, b]\) es compacto, entonces \(\|T\|\leq\sqrt{b-a}\|K\|_{\infty}\).
 
 \obs Dados \((X,\|\cdot\|_X)\) y \((Y,\|\cdot\|_Y)\) espacios normados, se denota el espacio de operadores acotados como
 \[
@@ -345,7 +345,7 @@ Por lo tanto aqui se presentan los criterios más comunes de convergencia de ser
 \begin{prop}[Criterio de Cauchy]
   Sea \(\sum_{n=0}^{\infty}\ket{\phi_n}\) una serie en un espacio de Banach, ésta es convergente si y sólo si \(\forall\epsilon\in\re^{+}\) existe \(N\in\nat\) tal que si \(n>N\)
   \[
-    \|\sum_{m=n+1}^{n+k}\ket{\phi_m}\|<\epsilon\quad\forall k\in\nat
+    \left\|\sum_{m=n+1}^{n+k}\ket{\phi_m}\right\|<\epsilon\quad\forall k\in\nat
   \]
 \end{prop}
 \dem La demostración se sigue del hecho de que al estar trabajando en espacio completo entonces son equivalentes para la susesión de sumas parciales

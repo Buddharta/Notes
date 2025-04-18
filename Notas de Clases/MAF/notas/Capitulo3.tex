@@ -554,4 +554,145 @@ Es decir
   \int_{a}^{b}|u(x)|^{2}\,d\lambda(x)<\infty\iff \int_{a}^{b}|u(x)|^{2}\,d\mu_{\rho}(x)<\infty,
 \]
 es decir, los espacios $\mathcal{L}^{2}([a,b],\lambda)$ y $\mathcal{L}^{2}([a,b],\mu_{\rho})$ contienen a las mismas funciones y m'as a'un, las desigualdades \ref{norm-equiv} en el leguange de espacios normados se le conoce como \emph{normas equivalentes} y esto significa que ambos espacios tienen \emph{la misma topolog'ia}, es decir las nociones de convergencia son equivalentes, sin embargo el producto punto es \textbf{distinto.}
+
+\section*{El oscilador arm'onico cu'antico y los polinomonios de Herminte}
+\noindent Ahora veremos uno de los ejemplos m'as importantes de un problema de Strum-Liouville, el operador hamiltioniano para un potencial independiente del tiempo, es decir la ecuaci'on
+\begin{equation}\label{hamilton}
+    H\varphi=-\frac{\hbar^2}{2m} \frac{d^2 \varphi(x)}{dx^2} + V(x) \varphi(x) = E \varphi(x).
+\end{equation}
+por las discusiones anteriores, sabemos que es \emph{formalmente autadjunto}, entonces $E\in\re$, adem'as como $\hbar^{2}/2m>0$, entonces $E\in\re^{=}$. Ahora como ejemplo espec'ifico, consideramos el potencial $V(x) = \frac{1}{2}m\omega^{2}x^2$,entonces la ecuación queda como
+\begin{equation}
+\left[-\frac{\hbar^2}{2m}\frac{d^2}{dx^2} + \frac{1}{2}m\omega^2x^2\right]\phi(x) = E\phi(x)
+\end{equation}
+Para resoverla, realizamos el cambio de variable
+\[
+  \xi = \sqrt{\frac{m\omega}{\hbar}}x,
+\]
+\noindent adem'as tomamos $\lambda = 2E/\hbar\omega$ y la ecuación se transforma en
+
+\begin{equation}\label{oscil2}
+\frac{d^2\psi}{d\xi^2} + (\lambda - \xi^2)\psi = 0
+\end{equation}
+Para resolver la ecuaci'on hacemos el an'alsis asint'otico $\xi \to \pm\infty$, entonces dominan los términos cuadráticos
+\begin{equation}
+\frac{d^2\psi}{d\xi^2} \approx \xi^2\psi \implies \psi(\xi) \sim e^{-\xi^2/2}
+\end{equation}
+as'i proponemos
+\begin{equation}\label{oscil-herm}
+\psi(\xi) = H(\xi)e^{-\xi^2/2}.
+\end{equation}
+Resulta que $H(\xi)$ son \emph{los polinomios de Hermite} ya que cumplen con la famosa \textbf{ecuación fiferencial de Hermite}, esto es ya que al sustituir \ref{oscil-herm} en la ecuaci'on \ref{oscil2}, se obtiene
+\begin{align*}
+  \dfrac{d\psi}{d\xi}&=\dfrac{dH}{d\xi}e^{-\xi^{2}/2}-\xi H(\xi)e^{-\xi/2}
+                       =\left(\dfrac{dH}{d\xi}-\xi H(\xi)\right)e^{-\xi^{2}/2}\\
+  \dfrac{d^{2}\psi}{d\xi^{2}}&=\left(\dfrac{d^{2}H}{d\xi^{2}}-H(\xi)-\xi\dfrac{dH}{d\xi}\right)e^{\xi^{2}/2}+
+                               \xi\left(\dfrac{dH}{d\xi}-\xi H(\xi)\right)e^{-\xi^{2}/2}\\
+                     &=\left(\dfrac{d^{2}H}{d\xi^{2}}-2\xi\dfrac{dH}{d\xi}+(\xi^{2}-1)H(\xi)\right)e^{\xi^{2}/2}\\
+  &\implies\frac{d^2\psi}{d\xi^2}+(\lambda-\xi^2)\psi=\left(H''(\xi)-2\xi H'(\xi)+(\lambda-1)H(\xi)\right)e^{\xi^{2}/2}\\
+  &\implies H''(\xi) - 2\xi H'(\xi) + (\lambda - 1)H(\xi) = 0.
+\end{align*}
+Ahora para encontrar las soluciones de esta ecuaci'on diferencial lineal y ordianaria de orden dos, se utiliza el \emph{m'etodo de Frobenius}, veremos este m'etodo con mayor profundidad en el siguiente cap'itulo, pero como ejemplo de este m'etodo, esta ecuaci'on es muy ilustrativa.
+
+\section*{Método de Frobenius}
+\noindent Por el teorema de \emph{Cauchy-kovalevskaya}, podemos asegurar que las soluciones de una ecuaci'on diferencial lineal con coeficientes anal'iticos, son anal'iticas. Por lo tanto, podemos buscat soluciones en serie de potencias alrededor de \(\xi = 0\)
+\begin{equation}
+H(\xi) = \sum_{k=0}^\infty a_k \xi^k,
+\end{equation}
+entonces calculamos las derivadas
+\begin{align*}
+H'(\xi) &= \sum_{k=1}^\infty k a_k \xi^{k-1} \\
+H''(\xi) &= \sum_{k=2}^\infty k(k-1) a_k \xi^{k-2}
+\end{align*}
+Sustituyendo en la ecuaci'on de Hermite, obtenemos
+\begin{equation}
+\sum_{k=2}^\infty k(k-1)a_k\xi^{k-2}-2\xi\sum_{k=1}^\infty k a_k \xi^{k-1} + (\lambda - 1) \sum_{k=0}^\infty a_k \xi^k = 0
+\end{equation}
+Igualando coeficientes para cada potencia de \(\xi\)
+\[
+\sum_{k=0}^\infty \left[(k+2)(k+1)a_{k+2} + (-2k + \lambda - 1)a_k\right] \xi^k = 0
+\]
+Esto determina una relación de recurrencia en los coeficientes de la serie ya que para que la serie sea solución \(\forall \xi\), ya que se debe cumplir
+\begin{equation}
+a_{k+2} = \frac{2k - (\lambda - 1)}{(k+2)(k+1)} a_k
+\end{equation}
+Aplicando la recursi'on hasta los primeros coeficientes implica que todos los coeficientes depenenden de $a_{0}$ si son pares y $a_{1}$ si son inpares, y podemos escribir a $H(\xi)$ como
+\[
+  H(\xi)=a_{0}H_{par}(\xi)+a_{1}H_{inpar}(\xi).
+\]
+Ahora, para obtener soluciones físicamente aceptables es necesario que las soluciones sean \emph{polinomios}, es decir, exigimos que la serie corte en algún \(k = n\). Esto se debe a que para tener soluciones f'isicamente acjpetables, es necesario que las soluciones sean \emph{integrabes}, ya que es necesario obterner una  \emph{distribuci'on de probabilidad} que describa el comportamiento de la onda cu'antica. Cuando las soluciones no son polinomios, \textbf{no} son inegrables ya que 
+
+\[
+  a_{j+2}\approx\frac{2}{j}a_{j}\text{ y asi } a_{j}\approx \frac{C}{(j/2)!}\quad C\in\re^{+},
+\]
+entonces si nos fijamos solamente en los coeficientes pares obtenemnos que la parte par de $H$ cumple
+\[
+  H_{par}(\xi)\approx C\sum_{j+0}^{\infty}=Ce^{\xi^{2}}
+\]
+y esto har'ia que la soluci'on no fuera integrable, se puede hacer algo similar para los coeficientes impares, por lo tanto es necesario exigir que $H(\xi)$ sea un polinomio.
+
+La conocida \emph{soluci'on algebraica} a este problema utiliza los famosos \emph{operadores de creaci'on y aniquilaci'on}, esta forma de solucionar el problema hace m'as evidente las siguientes consecuencias de cuatizaci'on:
+\[
+2n - (\lambda - 1) = 0 \implies \lambda = 2n + 1
+\]
+Lo cual reproduce la cuantización de energía
+\[
+E_n = \hbar\omega\left(n + \frac{1}{2}\right)
+\]
+As'i las soluciones son
+\begin{itemize}
+\item \textbf{Solución par}: \(a_1 = 0\), \(a_0 \neq 0\)
+\[
+H_{n=2k}(\xi) = \sum_{m=0}^{\lfloor n/2 \rfloor} (-1)^m \frac{n!}{(n-2m)!m!} (2\xi)^{n-2m}
+\]
+
+\item \textbf{Solución impar}: \(a_0 = 0\), \(a_1 \neq 0\)
+\[
+H_{n=2k+1}(\xi) = \sum_{m=0}^{\lfloor (n-1)/2 \rfloor} (-1)^m \frac{n!}{(n-2m)!m!} (2\xi)^{n-2m}
+\]
+\end{itemize}
+As'i, se toman alternadamente $a_{1}=0$ o $a_{0}=1$ para cada $n\in\nat$ seg'un su paridad, con esto se obtiene la familia completa de soluciones $\{H_{n}(\xi)\}_{n\in\nat}$ que son \emph{ortogonales} cuando se considera el producto punto modificado por $e^{\xi^{2}/2}$, los primeros polinomios son
+\begin{enumerate}
+  \item $H_{0}=1$
+  \item $H_{1}=2\xi$
+  \item $H_{2}=4\xi^{2}-2$
+  \item $H_{3}=8\xi^{3}-12\xi$
+  \item $H_{4}=16\xi-48\xi^2=12$
+\end{enumerate}
+\noindent\textbf{La funci'on generadora}
+Muchas familias de polinomios tienen una \emph{funcion generadora}, en general una funci'on generadora es una serie \emph{formal}
+\[
+  \mathcal{G}(\xi,z)
+\]
+\begin{equation}
+H_n(\xi) = (-1)^n e^{\xi^2}\frac{d^n}{d\xi^n}e^{-\xi^2}
+\end{equation}
+con relaciones de recurrencia
+\begin{align}
+H_{n+1}(\xi) &= 2\xi H_n(\xi) - 2n H_{n-1}(\xi) \\
+\frac{d}{d\xi}H_n(\xi) &= 2n H_{n-1}(\xi)
+\end{align}
+
+Las soluciones completas son
+\begin{equation}
+\psi_n(x) = \left(\frac{m\omega}{\pi\hbar}\right)^{1/4}\frac{1}{\sqrt{2^n n!}}H_n\left(\sqrt{\frac{m\omega}{\hbar}}x\right)e^{-m\omega x^2/2\hbar}
+\end{equation}
+
+\begin{itemize}
+\item Estado fundamental ($n=0$):
+\begin{equation}
+\psi_0(x) = \left(\frac{m\omega}{\pi\hbar}\right)^{1/4}e^{-m\omega x^2/2\hbar}, \quad E_0 = \frac{1}{2}\hbar\omega
+\end{equation}
+
+\item Primer excitado ($n=1$):
+\begin{equation}
+\psi_1(x) = \left(\frac{m\omega}{\pi\hbar}\right)^{1/4}\sqrt{2}\left(\sqrt{\frac{m\omega}{\hbar}}x\right)e^{-m\omega x^2/2\hbar}
+\end{equation}
+\end{itemize}
+
+Los polinomios satisfacen
+\begin{equation}
+\int_{-\infty}^\infty H_n(\xi)H_m(\xi)e^{-\xi^2}d\xi = \sqrt{\pi}2^n n! \delta_{nm}
+\end{equation}
+lo que garantiza la ortonormalidad de las $\psi_n(x)$.
+Las funciones propias $\{\psi_n\}_{n=0}^\infty$ forman una base completa en $L^2(\mathbb{R})$.
 \end{document}
