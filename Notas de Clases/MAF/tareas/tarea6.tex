@@ -1,0 +1,117 @@
+% Created 2025-02-06 Thu 20:56
+% Intended LaTeX compiler: pdflatex
+\documentclass[letterpaper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{longtable}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{capt-of}
+\usepackage{hyperref}
+\usepackage{lmodern} % Ensures we have the right font
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{amsmath, amsthm, amssymb, amsfonts, amssymb, amscd}
+\usepackage[table, xcdraw]{xcolor}
+%\usepackage{mdsymbol}
+\usepackage{tikz-cd}
+\usepackage{float}
+\usepackage[spanish, activeacute, ]{babel}
+\usepackage{color}
+\usepackage{transparent}
+\graphicspath{{./figs/}}
+\usepackage{makeidx}
+\usepackage{afterpage}
+\usepackage{array}
+\usepackage{braket}
+\usepackage{pst-node}
+\newtheorem{teorema}{Teorema}[section]
+\newtheorem{prop}[teorema]{Proposici\'on}
+\newtheorem{cor}[teorema]{Corolario}
+\newtheorem{lema}[teorema]{Lema}
+\newtheorem{def.}{Definici\'on}[section]
+\newtheorem{afir}{Afirmaci\'on}
+\newtheorem{conjetura}{Conjetura}
+\renewcommand{\figurename}{Figura}
+\renewcommand{\indexname}{\'{I}ndice anal\'{\i}tico}
+\newcommand{\zah}{\ensuremath{ \mathbb Z }}
+\newcommand{\rac}{\ensuremath{ \mathbb Q }}
+\newcommand{\nat}{\ensuremath{ \mathbb N }}
+\newcommand{\prob}{\textbf{P}}
+\newcommand{\esp}{\mathbb E}
+\newcommand{\eje}{{\newline \noindent \sc \textbf{Ejemplo. }}}
+\newcommand{\obs}{{\newline \noindent \sc \textbf{Observación. }}}
+\newcommand{\dem}{{\noindent \sc Demostraci\'on. }}
+\newcommand{\bg}{\ensuremath{\overline \Gamma}}
+\newcommand{\ga}{\ensuremath{\gamma}}
+\newcommand{\fb}{\ensuremath{\overline F}}
+\newcommand{\la}{\ensuremath{\Lambda}}
+\newcommand{\om}{\ensuremath{\Omega}}
+\newcommand{\sig}{\ensuremath{\Sigma}}
+\newcommand{\bt}{\ensuremath{\overline T}}
+\newcommand{\li}{\ensuremath{\mathbb{L}}}
+\newcommand{\ord}{\ensuremath{\mathbb{O}}}
+\newcommand{\bs}{\ensuremath{\mathbb{S}^1}}
+\newcommand{\co}{\ensuremath{\mathbb C }}
+\newcommand{\con}{\ensuremath{\mathbb{C}^n}}
+\newcommand{\cp}{\ensuremath{\mathbb{CP}}}
+\newcommand{\rp}{\ensuremath{\mathbb{RP}}}
+\newcommand{\re}{\ensuremath{\mathbb R }}
+\newcommand{\hc}{\ensuremath{\widehat{\mathbb C} }}
+\newcommand{\pslz}{\ensuremath{\mathrm{PSL}(2,\mathbb Z) }}
+\newcommand{\pslr}{\ensuremath{\mathrm{PSL}(2,\mathbb R) }}
+\newcommand{\pslc}{\ensuremath{\mathrm{PSL}(2,\mathbb C) }}
+\newcommand{\hd}{\ensuremath{\mathbb H^2}}
+\newcommand{\slz}{\ensuremath{\mathrm{SL}(2,\mathbb Z) }}
+\newcommand{\slr}{\ensuremath{\mathrm{SL}(2,\mathbb R) }}
+\newcommand{\slc}{\ensuremath{\mathrm{SL}(2,\mathbb C) }}
+\newcommand{\mdlr}{\ensuremath{\mathrm{M}}}
+\date{\today}
+\title{Tarea 6}
+\begin{document}
+
+\maketitle
+
+\textbf{Fecha de entrega: Lunes 7 de Abril de 2025}
+
+\begin{enumerate}
+  \item El prop'osito de este problema es encontrar los vectores y valores propios de la ecuacion de \emph{Cauchy-Euler} con valores de fontera
+        \begin{align*}
+          x^{2}y''+xy'+\lambda y=0,\quad x\in(1,b)\\
+          y(1)=y(b)=0
+        \end{align*}
+        \begin{itemize}
+          \item Encuentre $r(x)$ (que depende de $\lambda$) de tal forma que la ecuaci'on anterior es equivalente a $y''+r(x)y=0$, utilice el teorema de comparaci'on de Sturm para comparar con $y''+y=0$ y determinar para qu'e $\lambda$ se obtienen soluciones \emph{oscilantes}.
+          \item Resuelva la ecuaci'on de arriba recordando que es de Cauchy-Euler y por lo tanto $y=x^{m}$, encuentre $m$ asumiendo $\lambda>0$.
+          \item Use las condiciones de frontera para encontrar el espectro del operador $L$ y demostrar que es \emph{discreto}, donde
+                \[
+                L=x^{2}\dfrac{d^{2}}{dx^{2}}+x\dfrac{d}{dx}.
+                \]
+          \item Muestre que $L$ \textbf{NO} es formalmente autoadjunto y calcule la funci'on peso $\rho(x)$ que lo hace autoadjunto.
+          \item Calcule el \emph{producto interno modificado} con el para mostrar que en efecto son ortogonales.
+        \end{itemize}
+  \item Sea $y''-2xy+(K-1)y=0$ la \emph{ecuaci'on de Hermite}, encuentre $\rho$ que la hace \textbf{formalmente autoadjunta}.
+
+  \item Sea $L$ el operador de Sturm-Liouville
+        \[
+       L=\frac{d}{dx} \left( p(x) \dfrac{d}{dx} \right) + q(x)I.
+        \]
+        \noindent Demuestre la \emph{identidad de Lagrange}
+        \[
+        (\phi L\psi-\psi L\phi)(x)=\dfrac{d [p(x)(\phi\psi'-\psi\phi')]}{dx}.
+        \]
+        \noindent Integre para demostrar la \emph{F'ormula de Green.}
+        \[
+        \int_{a}^{b}(\phi L\psi-\psi L\phi)(x)\,dx=[p(x)(\phi\psi'-\psi\phi')]|_{a}^{b}.
+        \]
+%%  \item Utilice el m'etodo de variacion de par'ametros para encontrar la funcion de Green de las siguientes ecuaciones y resuelva (expresado en t'erminos de la integral $f$ y $G$).
+%%        \begin{enumerate}
+%%          \item $y''-5y'+6y=f(x)$
+%%          \item $y''+y'=f(x)$
+%%        \end{enumerate}
+\end{enumerate}
+\end{document}

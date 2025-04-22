@@ -555,7 +555,7 @@ Es decir
 \]
 es decir, los espacios $\mathcal{L}^{2}([a,b],\lambda)$ y $\mathcal{L}^{2}([a,b],\mu_{\rho})$ contienen a las mismas funciones y m'as a'un, las desigualdades \ref{norm-equiv} en el leguange de espacios normados se le conoce como \emph{normas equivalentes} y esto significa que ambos espacios tienen \emph{la misma topolog'ia}, es decir las nociones de convergencia son equivalentes, sin embargo el producto punto es \textbf{distinto.}
 
-\section*{El oscilador arm'onico cu'antico y los polinomonios de Herminte}
+\subsection{El oscilador arm'onico cu'antico y los polinomonios de Herminte}
 \noindent Ahora veremos uno de los ejemplos m'as importantes de un problema de Strum-Liouville, el operador hamiltioniano para un potencial independiente del tiempo, es decir la ecuaci'on
 \begin{equation}\label{hamilton}
     H\varphi=-\frac{\hbar^2}{2m} \frac{d^2 \varphi(x)}{dx^2} + V(x) \varphi(x) = E \varphi(x).
@@ -659,23 +659,32 @@ As'i, se toman alternadamente $a_{1}=0$ o $a_{0}=1$ para cada $n\in\nat$ seg'un 
   \item $H_{4}=16\xi-48\xi^2=12$
 \end{enumerate}
 \noindent\textbf{La funci'on generadora}
-Muchas familias de polinomios tienen una \emph{funcion generadora}, en general una funci'on generadora es una serie \emph{formal}
+Muchas familias de polinomios tienen una \emph{funcion generadora}, en general una funci'on generadora es una serie \emph{formal} cuyos coeficientes son la familia de polinomios en cuestion, en el caso de los polinomios de Hermite, la funci'on generadora proviene de la expansi'on en serie de Taylor de la funci'on
 \[
-  \mathcal{G}(\xi,z)
+  \mathcal{G}(\xi,z)=e^{2z\xi-\xi^{2}}=\sum_{n=0}^{\infty}\frac{H_{n}(\xi)z^{n}}{n!}
 \]
+Por lo tanto se puede calcular los polinomios de Hermite como
 \begin{equation}
 H_n(\xi) = (-1)^n e^{\xi^2}\frac{d^n}{d\xi^n}e^{-\xi^2}
 \end{equation}
-con relaciones de recurrencia
+entonces, al derivar esta serie con respecto a $z$ y con respecto a $\xi$ y al igualar las series resultantes (por unicidad de sus coeficientes) se obtienen las relaciones de recurrencia
 \begin{align}
 H_{n+1}(\xi) &= 2\xi H_n(\xi) - 2n H_{n-1}(\xi) \\
-\frac{d}{d\xi}H_n(\xi) &= 2n H_{n-1}(\xi)
+\frac{d}{d\xi}H_n(\xi) &= 2n H_{n-1}(\xi).
 \end{align}
+De las cuales se obtiene la ecuaci'on diferncial de Hermite
+\[
+  H_{n}''(\xi) - 2\xi H_{n}'(\xi) + 2nH_{n}(\xi) = 0.
+\]
 
-Las soluciones completas son
+\exe  Derive la funci'on generadora con respecto a $z$ y $\xi$ para obtener las relaciones de recurrencia, demuestre que los polinomios de Hermite como fueron definidos anteriormente cumplen con las relaciones de recurrencia y encuentre la ecuaci'on diferencial de los polinomios de Hermite a partir de las relaciones de recurrencia.
+
+Por 'ultimo las las soluciones completas normalizadas al oscilador arm'onico son
 \begin{equation}
 \psi_n(x) = \left(\frac{m\omega}{\pi\hbar}\right)^{1/4}\frac{1}{\sqrt{2^n n!}}H_n\left(\sqrt{\frac{m\omega}{\hbar}}x\right)e^{-m\omega x^2/2\hbar}
 \end{equation}
+
+De donde es importante resaltar las primeras soluciones ya que corresponden con los \emph{niveles m'as bajos de energ'ia} posible
 
 \begin{itemize}
 \item Estado fundamental ($n=0$):
@@ -689,10 +698,55 @@ Las soluciones completas son
 \end{equation}
 \end{itemize}
 
-Los polinomios satisfacen
+Por lo que hemos visto, la teor'ia de Sturm-Liouville establece formalmente que los polinomios Hermite satisfacen
 \begin{equation}
 \int_{-\infty}^\infty H_n(\xi)H_m(\xi)e^{-\xi^2}d\xi = \sqrt{\pi}2^n n! \delta_{nm}
 \end{equation}
-lo que garantiza la ortonormalidad de las $\psi_n(x)$.
-Las funciones propias $\{\psi_n\}_{n=0}^\infty$ forman una base completa en $L^2(\mathbb{R})$.
+lo que garantiza la ortonormalidad de las soluciones $\psi_n(x)$.
+En las siguientes secciones veremos que Las funciones propias $\{\psi_n\}_{n=0}^\infty$ forman una base completa en $L^2(\mathbb{R})$.
+
+\section{Las funciones de Green y Existencia de funciones propias}
+\noindent Como hemos visto, buscamos resolver el problema de vetores propios y valores propios para los operadores de Sturm-Liouville $-\mathcal{L}$, donde
+\begin{equation}\label{SL-eq}
+  \mathcal{L}=\dfrac{d}{dx}\left(p(x)\dfrac{d}{dx}\right)+q(x)I\quad x\in[a,b]
+\end{equation}
+es decir, buscamos resolver la ecuacion diferencial $\mathcal{L}\phi+\lambda\phi=0$ con las condiciones de frontera
+\begin{align*}\label{SL-fron}
+  &\alpha_{1}\phi(a)+\alpha_{2}\phi'(a)=0\quad|\alpha_{1}|+|\alpha_{2}|>0\\
+  &\beta_{1}\phi(b)+\beta_{2}\phi'(b)=0\quad|\beta_{1}|+|\beta_{2}|>0
+\end{align*}
+Como hemos visto, esto hace que $\mathcal{L}$ sea autoadjunto y por lo tanto sus valores propios son reales y sus vectores propios de valores propios distintos sean ortogonales. Ahora lo que queremos es determinar a todovector como \emph{superposici'on} de vectores propios de $\mathcal{L}$, es decir, definimos los espacios propios
+\[
+  E_{\lambda}=\mathrm{Ker}(\mathcal{L}+\lambda I),\lambda\in\co
+\]
+asi definimos al \emph{espactro puntual} como los $\lambda\in\co$ tal que $E_{\lambda}\neq 0$ y denotamos al espectro de $\mathcal{L}$ como $\sigma(\mathcal{L})$, en nuetro caso $\sigma(\mathcal{L})\subset\re$, pero para operadores en general eso no es cierto. Entonces queremos que se cumpla la siguiente descomposici'on
+\[
+  \mathcal{L}^{2}([a,b],\mu)=\bigoplus_{\lambda\in\sigma(\mathcal{L})}E_{\lambda}.
+\]
+Para encontrar los vectores propios de nuestros operadores, usaremos las \emph{funciones de Green}, las cuales en general resulevel el problema $\mathcal{L}\phi=f$ con condiciones de frontera \ref{SL-fron} para $f$ continua.f\begin{def.}
+  Una funci'on de Green para el problema de Dirichlet (Sturm-Liouville) dado por
+\begin{align*}
+  &\mathcal{L}=\dfrac{d}{dx}\left(p(x)\dfrac{d}{dx}\right)+q(x)I\quad x\in[a,b]\\
+  &\alpha_{1}\phi(a)+\alpha_{2}\phi'(a)=0\quad|\alpha_{1}|+|\alpha_{2}|>0\\
+  &\beta_{1}\phi(b)+\beta_{2}\phi'(b)=0\quad|\beta_{1}|+|\beta_{2}|>0
+\end{align*}
+es una funci'on continua $G:[a,b]\times[a,b]\to\re$ que cumple con las siguientes propiedades
+\begin{enumerate}
+\item Simetr'ia: $G(x,t)=G(t,x)$, adem'as de cumplir con las condiciones de frontera \ref{SL-fron} en cada variable
+\begin{align*}\label{Green-fron}
+  &\alpha_{1}G(a,t)+\beta_{2}\dfrac{\partial G}{\partial x}(b,t)=0\quad\alpha_{1}G(x,a)+\beta_{2}\dfrac{\partial G}{\partial t}(x,b)=0\\
+  &\alpha_{2}G(a,t)+\beta_{2}\dfrac{\partial G}{\partial x}(b,t)=0\quad\alpha_{2}G(x,a)+\beta_{2}\dfrac{\partial G}{\partial t}(x,b)=0
+\end{align*}
+  \item $G$ es diferenciable en $[a,b][a,b]\setminus\Delta$ donde $\Delta=\{x=t\}$, adem'as, en dicho conjunto $G$ cumple con la ecuaci'on differencial en una de sus variables, es decir, para cada $t$ se cumple
+  \[
+    \mathcal{L}[G(x,t)]=p(x)\dfrac{\partial^{2} G}{\partial x^{2}}(x,t)+p'(x) + \dfrac{\partial G}{\partial x}+q(x)G(x,t)=0
+  \]
+  \item $\dfrac{\partial G}{\partial x}$ tiene una discontinuidad en $\Delta$, donde se cumple
+        \begin{equation}
+          \dfrac{\partial G}{\partial x}(x^{+},x)-\dfrac{\partial G}{\partial x}(x^{-},x):=\lim_{\delta\to^{+}0}\left(\dfrac{\partial G}{\partial x}(x+\delta,x)-\dfrac{\partial G}{\partial x}(x-\delta,x)\right)=\frac{1}{p(x)}
+          \end{equation}
+\end{enumerate}
+\end{def.}
+\subsubsection*{Construcci'on de la funci'on de Green:}
+Primero, notamos que podemos suponer que
 \end{document}
