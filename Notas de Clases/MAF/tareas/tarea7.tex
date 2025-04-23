@@ -1,0 +1,110 @@
+% Created 2025-02-06 Thu 20:56
+% Intended LaTeX compiler: pdflatex
+\documentclass[letterpaper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{longtable}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{capt-of}
+\usepackage{hyperref}
+\usepackage{lmodern} % Ensures we have the right font
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{amsmath, amsthm, amssymb, amsfonts, amssymb, amscd}
+\usepackage[table, xcdraw]{xcolor}
+%\usepackage{mdsymbol}
+\usepackage{tikz-cd}
+\usepackage{float}
+\usepackage[spanish, activeacute, ]{babel}
+\usepackage{color}
+\usepackage{transparent}
+\graphicspath{{./figs/}}
+\usepackage{makeidx}
+\usepackage{afterpage}
+\usepackage{array}
+\usepackage{braket}
+\usepackage{pst-node}
+\newtheorem{teorema}{Teorema}[section]
+\newtheorem{prop}[teorema]{Proposici\'on}
+\newtheorem{cor}[teorema]{Corolario}
+\newtheorem{lema}[teorema]{Lema}
+\newtheorem{def.}{Definici\'on}[section]
+\newtheorem{afir}{Afirmaci\'on}
+\newtheorem{conjetura}{Conjetura}
+\renewcommand{\figurename}{Figura}
+\renewcommand{\indexname}{\'{I}ndice anal\'{\i}tico}
+\newcommand{\zah}{\ensuremath{ \mathbb Z }}
+\newcommand{\rac}{\ensuremath{ \mathbb Q }}
+\newcommand{\nat}{\ensuremath{ \mathbb N }}
+\newcommand{\prob}{\textbf{P}}
+\newcommand{\esp}{\mathbb E}
+\newcommand{\eje}{{\newline \noindent \sc \textbf{Ejemplo. }}}
+\newcommand{\obs}{{\newline \noindent \sc \textbf{Observación. }}}
+\newcommand{\dem}{{\noindent \sc Demostraci\'on. }}
+\newcommand{\bg}{\ensuremath{\overline \Gamma}}
+\newcommand{\ga}{\ensuremath{\gamma}}
+\newcommand{\fb}{\ensuremath{\overline F}}
+\newcommand{\la}{\ensuremath{\Lambda}}
+\newcommand{\om}{\ensuremath{\Omega}}
+\newcommand{\sig}{\ensuremath{\Sigma}}
+\newcommand{\bt}{\ensuremath{\overline T}}
+\newcommand{\li}{\ensuremath{\mathbb{L}}}
+\newcommand{\ord}{\ensuremath{\mathbb{O}}}
+\newcommand{\bs}{\ensuremath{\mathbb{S}^1}}
+\newcommand{\co}{\ensuremath{\mathbb C }}
+\newcommand{\con}{\ensuremath{\mathbb{C}^n}}
+\newcommand{\cp}{\ensuremath{\mathbb{CP}}}
+\newcommand{\rp}{\ensuremath{\mathbb{RP}}}
+\newcommand{\re}{\ensuremath{\mathbb R }}
+\newcommand{\hc}{\ensuremath{\widehat{\mathbb C} }}
+\newcommand{\pslz}{\ensuremath{\mathrm{PSL}(2,\mathbb Z) }}
+\newcommand{\pslr}{\ensuremath{\mathrm{PSL}(2,\mathbb R) }}
+\newcommand{\pslc}{\ensuremath{\mathrm{PSL}(2,\mathbb C) }}
+\newcommand{\hd}{\ensuremath{\mathbb H^2}}
+\newcommand{\slz}{\ensuremath{\mathrm{SL}(2,\mathbb Z) }}
+\newcommand{\slr}{\ensuremath{\mathrm{SL}(2,\mathbb R) }}
+\newcommand{\slc}{\ensuremath{\mathrm{SL}(2,\mathbb C) }}
+\newcommand{\mdlr}{\ensuremath{\mathrm{M}}}
+\date{\today}
+\title{Tarea 7 (Tarea de los chavites)}
+\begin{document}
+
+\maketitle
+
+\textbf{Fecha de entrega: Mi'ercoles 30 de Abril de 2025}
+
+\begin{enumerate}
+  \item El prop'osito de este problema es calcular la funci'on generadora de los polinomio de Hermite a partir de las ecuaciones recursivas. 
+        \begin{itemize}
+          \item En clase vimos que los polinomio de Hermite son solucion a la ecuaci'on $H_{n}''(x)-2xH_{n}(x)+2nH_{n}(x)=0,$ para cada $n\in\nat$ y se calculan como
+\[
+      H_{n}=\sum_{k=0}^{\lfloor n/2\rfloor}\frac{(-1)^{k}n!}{k!(n-2k)!}(2x)^{n-2k},\quad\lfloor\cdot\rfloor\text{ es la funci'on piso.}
+\]
+          A partir de la ecuaci'on de $H_{n}$ y su definici'on, demuestre que se cumplen las relaciones de recurrencia
+          \begin{align*}
+            H'_{n}(x)&=2nH_{n-1}(x)\\
+            H_{n+1}(x)&=2xH_{}(x)-2nH_{n-1}(x).
+          \end{align*}      
+          \item Se define la \emph{funcion generadora} para la familia $\{H_{n}\}_{n\in\nat}$ como la \emph{serie formal}
+          \[
+                \mathcal{G}(x,z):=\sum_{n=0}\frac{H_{n}(x)}{n!}z^{n}=1+\sum_{n=1}\frac{H_{n}(x)}{n!}z^{n}
+          \]
+                Utilice las relaciones de recurrencia y derive formalmente (derive t'ermino a t'ermino) para mostrar que
+          \begin{equation}\label{gen-herm}
+                \dfrac{\partial\mathcal{G}}{\partial z}(x,z)=2x\mathcal{G}(x,z)-2z\mathcal{G}
+          \end{equation}
+                \emph{Hint:Antes de derivar, haga los cambios de 'indices y factorize de tal forma que al derivar se obtenga $\mathcal{G}$}
+          \item Integre la ecuaci'on \ref{gen-herm} con respecto a $z$ para obtener la ecuaci'on generadora vista en clase.
+        \end{itemize}
+  \item Encuentre las \emph{funciones de Green de los siguientes problemas y resuelva las ecuaciones}
+        \begin{enumerate}
+          \item $y''-5y'+6y=f(x)$
+          \item $y''+y'=f(x)$
+        \end{enumerate}
+\end{enumerate}
+\end{document}
