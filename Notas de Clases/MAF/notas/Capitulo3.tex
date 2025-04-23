@@ -711,10 +711,10 @@ En las siguientes secciones veremos que Las funciones propias $\{\psi_n\}_{n=0}^
   \mathcal{L}=\dfrac{d}{dx}\left(p(x)\dfrac{d}{dx}\right)+q(x)I\quad x\in[a,b]
 \end{equation}
 es decir, buscamos resolver la ecuacion diferencial $\mathcal{L}\phi+\lambda\phi=0$ con las condiciones de frontera
-\begin{align*}\label{SL-fron}
+\begin{eqnarray}\label{SL-fron}
   &\alpha_{1}\phi(a)+\alpha_{2}\phi'(a)=0\quad|\alpha_{1}|+|\alpha_{2}|>0\\
   &\beta_{1}\phi(b)+\beta_{2}\phi'(b)=0\quad|\beta_{1}|+|\beta_{2}|>0
-\end{align*}
+\end{eqnarray}
 Como hemos visto, esto hace que $\mathcal{L}$ sea autoadjunto y por lo tanto sus valores propios son reales y sus vectores propios de valores propios distintos sean ortogonales. Ahora lo que queremos es determinar a todovector como \emph{superposici'on} de vectores propios de $\mathcal{L}$, es decir, definimos los espacios propios
 \[
   E_{\lambda}=\mathrm{Ker}(\mathcal{L}+\lambda I),\lambda\in\co
@@ -723,8 +723,10 @@ asi definimos al \emph{espactro puntual} como los $\lambda\in\co$ tal que $E_{\l
 \[
   \mathcal{L}^{2}([a,b],\mu)=\bigoplus_{\lambda\in\sigma(\mathcal{L})}E_{\lambda}.
 \]
-Para encontrar los vectores propios de nuestros operadores, usaremos las \emph{funciones de Green}, las cuales en general resulevel el problema $\mathcal{L}\phi=f$ con condiciones de frontera \ref{SL-fron} para $f$ continua.f\begin{def.}
-  Una funci'on de Green para el problema de Dirichlet (Sturm-Liouville) dado por
+Para encontrar los vectores propios de nuestros operadores, usaremos las \emph{funciones de Green}, las cuales en general resulevel el problema $\mathcal{L}\phi=f$ con condiciones de frontera \ref{SL-fron} para $f$ continua.
+
+\begin{def.}
+Una funci'on de Green para el problema de Dirichlet (Sturm-Liouville) dado por
 \begin{align*}
   &\mathcal{L}=\dfrac{d}{dx}\left(p(x)\dfrac{d}{dx}\right)+q(x)I\quad x\in[a,b]\\
   &\alpha_{1}\phi(a)+\alpha_{2}\phi'(a)=0\quad|\alpha_{1}|+|\alpha_{2}|>0\\
@@ -747,6 +749,31 @@ es una funci'on continua $G:[a,b]\times[a,b]\to\re$ que cumple con las siguiente
           \end{equation}
 \end{enumerate}
 \end{def.}
+
 \subsubsection*{Construcci'on de la funci'on de Green:}
-Primero, notamos que podemos suponer que
+\noindent Primero, notamos que podemos suponer que la 'unica solucion a la ecuaci'on $\mathcal{L}\phi=0,$ con las condiciones de frontera \ref{SL-fron} es $\phi=0$, es decir, suponemos que $0$ no es valor propio de $-\mathcal{L}$. Esto siempre es posible ya que si $\alpha\in\re$ no e valor propio de $-\mathcal{L}$, entonces el operador $\mathcal{L}_{\alpha}=\mathcal{L}+\alpha I$, entonces $\lambda$ es valor propio de $-\mathcal{L}$ si y s'olo si $\lambda-\alpha$ es valor propio de $-\mathcal{L_{\alpha}}$, como $\alpha$ no es valor propio de $-\mathcal{L}$, entonces $0$ no es valor propio de $-\mathcal{L}_{\alpha}$. Observamos que para que esto sea v'alido, es necesario que existan reales que no sean valores propios, eso lo veremos con mas detalle posteriormente.
+Ahora para contruir $G$, por el teorema de existencia y unicidad, existen dos funciones linealmente independientes $\{v_{1},v_{2}\}$ de la ecuaci'on homogenea $\mathcal{L}\phi=0$ tales que
+\begin{align*}
+  &v_{1}(a)=\alpha_{2},\,v'_{1}(a)=-\alpha_{1}\quad\implies\quad\alpha_{1}v_{1}(a)+\alpha_{2}v'_{1}(a)=0\\
+  &v_{2}(b)=\beta_{2},\,v'_{2}(b)=-\beta_{1}\quad\implies\quad\beta_{1}v_{2}(b)+\beta_{2}v'_{2}(b)=0
+\end{align*}
+Observamos que si $v_{1}=cv_{2}$ tendr'iamos dos soluciones a $\mathcal{L}\phi=0$ con las condiciones de frontera \ref{SL-fron}, as'i definimos
+\begin{equation}
+  G(x,t)=\begin{cases}
+    v_{1}(t)v_{2}(x)[p(x)W(v_{1},v_{2})(x)]^{-1}\quad a\leq t\leq x\leq b\\
+    v_{1}(x)v_{2}(t)[p(x)W(v_{1},v_{2})(x)]^{-1}\quad a\leq x\leq t\leq b.
+  \end{cases}
+\end{equation}
+Entonces, como  $p(x)\neq0$ y $W(v_{1},v_{2})\neq0$, $G$ esta bien definida y es continua, m'as a'un la identidad de Lagrange implica que $p(x)W(v_{1},v_{2})(x)\equiv c$ es constante, ya que
+\[
+  [p(W(v_{1},v_{2})]':=[p(v_{1}v'_{2}-v'_{1}v_{2})]'=v_{1}\mathcal{L}v_{2}-v_{2}\mathcal{L}v_{1}\equiv 0.
+\]
+Veamos que $G$ es funci'on de Green; primero $G(x,t)=G(t,x)$ de la definicion, adem'as por como se definieron las condiciones iniciales de $\{v_{1},v_{2}\}$, es claro que $G$ cumple \ref{Green-fron}. Ahora, $G$ claramente es de clase $\mathcal{C}^{2}\left([a,b]\times[a,b]\setminus\Delta\right)$ y como $p(x)W(v_{1},v_{2})(x)\equiv c$ calculamos
+  \begin{align*}
+    &\mathcal{L}[G(x,t)]=p(x)\dfrac{\partial^{2} G}{\partial x^{2}}(x,t)+p'(x) + \dfrac{\partial G}{\partial x}+q(x)G(x,t)=\\
+    &\begin{cases}
+    c^{-1}v_{1}(t)[p(x)v''_{2}(x)+p'(x)v'_{2}(x)+q(x)v_{2}(x)]=0\quad a\leq t\leq x\leq b\\
+    c^{-1}v_{2}(t)[p(x)v''_{1}(x)+p'(x)v'_{1}(x)+q(x)v_{1}(x)]=0\quad a\leq x\leq t\leq b.
+  \end{cases}
+    \end{align*}
 \end{document}
