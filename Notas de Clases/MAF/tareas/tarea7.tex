@@ -81,7 +81,7 @@
 \begin{enumerate}
   \item El prop'osito de este problema es calcular la funci'on generadora de los polinomio de Hermite a partir de las ecuaciones recursivas. 
         \begin{itemize}
-          \item En clase vimos que los polinomio de Hermite son solucion a la ecuaci'on $H_{n}''(x)-2xH_{n}(x)+2nH_{n}(x)=0,$ para cada $n\in\nat$ y se calculan como
+          \item[a)] En clase vimos que los polinomio de Hermite son solucion a la ecuaci'on $H_{n}''(x)-2xH_{n}(x)+2nH_{n}(x)=0,$ para cada $n\in\nat$ y se calculan como
 \[
       H_{n}=\sum_{k=0}^{\lfloor n/2\rfloor}\frac{(-1)^{k}n!}{k!(n-2k)!}(2x)^{n-2k},\quad\lfloor\cdot\rfloor\text{ es la funci'on piso.}
 \]
@@ -90,7 +90,7 @@
             H'_{n}(x)&=2nH_{n-1}(x)\\
             H_{n+1}(x)&=2xH_{}(x)-2nH_{n-1}(x).
           \end{align*}      
-          \item Se define la \emph{funcion generadora} para la familia $\{H_{n}\}_{n\in\nat}$ como la \emph{serie formal}
+          \item[b)] Se define la \emph{funcion generadora} para la familia $\{H_{n}\}_{n\in\nat}$ como la \emph{serie formal}
           \[
                 \mathcal{G}(x,z):=\sum_{n=0}\frac{H_{n}(x)}{n!}z^{n}=1+\sum_{n=1}\frac{H_{n}(x)}{n!}z^{n}
           \]
@@ -99,12 +99,12 @@
                 \dfrac{\partial\mathcal{G}}{\partial z}(x,z)=2x\mathcal{G}(x,z)-2z\mathcal{G}
           \end{equation}
                 \emph{Hint:Antes de derivar, haga los cambios de 'indices y factorize de tal forma que al derivar se obtenga $\mathcal{G}$}
-          \item Integre la ecuaci'on \ref{gen-herm} con respecto a $z$ para obtener la ecuaci'on generadora vista en clase.
+          \item[c)] Integre la ecuaci'on \ref{gen-herm} con respecto a $z$ para obtener la ecuaci'on generadora vista en clase.
         \end{itemize}
-  \item Encuentre las \emph{funciones de Green de los siguientes problemas y resuelva las ecuaciones}
+  \item Encuentre las \emph{funciones de Green de los siguientes problemas de frontera y ``resuelva'' las ecuaciones}. En caso de una funci'on abstracta, simplemente deje expresada la soluci'on en t'erinos de $f$. 
         \begin{enumerate}
-          \item $y''-5y'+6y=f(x)$
-          \item $y''+y'=f(x)$
+          \item $y''=x^{2}$ en $[0,1]$ donde $y(0)=y(1)=0$
+          \item $y''+k^{2}y=f(x)$ en $[a,b]$, donde $y(a)=y(b)=0$.
         \end{enumerate}
 \end{enumerate}
 \end{document}

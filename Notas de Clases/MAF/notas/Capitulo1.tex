@@ -1023,7 +1023,7 @@ El siguiente es un corolario que usaremos todo el tiempo.
   f(t)=\int F_t\,d\mu\quad\text{es continua.}
   \end{equation}
 \end{cor}
-\dem Sea $t_n\to t$ una susesión convergente en $(a,b)$, veamos que $f(t_n)\to f(t)$, pero como $F(x,t)$ siempre está dominada, entonces la susesión $F_{t_n}$ tambiésn esta dominada, además por continuidad de $F_x$, $F_{t_n}\to F_t$ puntuamente, así
+\dem Sea $t_n\to t$ una susesión convergente en $(a,b)$, veamos que $f(t_n)\to f(t)$, pero como $F(x,t)$ siempre está dominada, entonces la susesión $F_{t_n}$ también esta dominada, además por continuidad de $F_x$, $F_{t_n}\to F_t$ puntuamente, así
 \[
 f(t)=\int F_t(x)\,d\mu=\int\lim_{n\to\infty}F_{t_n}\,d\mu=\lim_{n\to\infty}\int F_{t_n}\,d\mu=\lim_{n\to\infty}f(t_n)
 \]
@@ -1033,7 +1033,7 @@ Siguiendo las mismas hipótesis que en el corloario anterior, si además $F$ es 
 \begin{equation}
   f(t)=\int F_t\,d\mu\text{ es diferenciable y } f'(t)=\int \dfrac{\partial F}{\partial t}(x,t)\,d\mu(x)
   \end{equation}
-\end{cor}
+\end{cor}\label{dom-dif}
 \dem Sea $t_n\to t$ una susesión convergente en $(a,b)$ tal que $t_n\neq t$, definimos la susesión funciones
 \[
 f_n(x)=\frac{F_{t_n}(x)-F_t(x)}{t_n-t},

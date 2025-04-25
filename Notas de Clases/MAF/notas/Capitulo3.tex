@@ -775,5 +775,158 @@ Veamos que $G$ es funci'on de Green; primero $G(x,t)=G(t,x)$ de la definicion, a
     c^{-1}v_{1}(t)[p(x)v''_{2}(x)+p'(x)v'_{2}(x)+q(x)v_{2}(x)]=0\quad a\leq t\leq x\leq b\\
     c^{-1}v_{2}(t)[p(x)v''_{1}(x)+p'(x)v'_{1}(x)+q(x)v_{1}(x)]=0\quad a\leq x\leq t\leq b.
   \end{cases}
-    \end{align*}
+  \end{align*}
+  As'i claramente $\mathcal{L}G=0$. Por 'ultimo, vemos la discontinuidad de la parcial con respecto a $x$ de $G$ en la diagonal, es decir,
+  \begin{align*} 
+    \lim_{\delta\to^{+}0}\dfrac{\partial G}{\partial x}(x,x+\delta)-\dfrac{\partial G}{\partial x}(x,x-\delta)
+    &=\frac{1}{c}\lim_{\delta\to0}[v_{1}(x)v'_{2}(x+\delta)-v'_{1}(x-\delta)v_{2}(x)]\\
+    &=\frac{W(v_{1},v_{2})(x)}{p(x)W(v_{1},v_{2})(x)}=\frac{1}{p(x)}.
+  \end{align*}
+  Por lo tanto, $G$ es una funci'on de Green. Ahora definimos el siguiente operador tipo Fredholm en $\mathcal{L}^{2}([a,b],\mu)$
+  \[
+    T[\phi](x)=\int_{a}^{b}\phi(t)G(x,t)\,d\mu(t).
+  \]
+  \obs La definici'on de la funcion de Green y la demostraci'on de sus exitencia son v'alidas pra cualquier operador diferncial lineal de orden dos.
+  \begin{teorema}
+    Sea $L$ un operador lineal diferencial de segundo orden y $G$ su funci'on de Green asociada a un problema de frontera de tipo \ref{SL-fron} tal que $0$ no sea un valor propio. Sea $T$ el operador de tipo Fredholm definido por $G$, entonces $T$ es el operador inverso al operador $L$, es decir
+    \[
+      L[\phi]=f\,\iff\,\phi=T[f]\,\text{ y }\,T[L[\phi]]=\phi.
+    \]
+    Donde $\phi$ cumple las condiciones de frontera. Es decir, $T$ proporciona las soluciones a cualquier ecuaci'on diferencial lineal no homogenea de orden dos.
+  \end{teorema}
+  \dem Primero demostremos que $T[f]$ cumple con la ecuacion determinada por
+  \[
+    L=p(x)\dfrac{d^{2}}{dx^{2}}+q(x)\dfrac{d}{dx}+r(x)I.
+  \]
+  Sabemos que $T[f]$ es una funci'on de clase $\mathcal{C}^{2}[a,b]$ ya que $G$ es continua y diferenciable casi donde quiera, as'i por el corolario \ref{dom-dif} $T[f]$ dos veces diferenciable. Entonces al calcular las derivadas obtenemos
+ \begin{align*}
+   (T f)(x)&= \int_{a}^{x} G(x, \xi)f(\xi)\,d\xi + \int_{x}^{b} G(x, \xi)f(\xi)\,d\xi, \\
+   (T f)'(x)&=\int_{a}^{x}\dfrac{\partial G}{\partial x}(x, \xi)f(\xi)\,d\xi +
+              \int_{x}^{b} \dfrac{\partial G}{\partial x}(x, \xi)f(\xi)\,d\xi, \\
+   (T f)''(x)&=\int_{a}^{x} \dfrac{\partial^{2} G}{\partial x^{2}}(x, \xi)f(\xi)\,d\xi +
+              \dfrac{\partial G}{\partial x}(x, x^{-})f(x^{-}) \\
+           &\quad + \int_{x}^{b} G_{xx}(x, \xi)f(\xi)\,d\xi - G_x(x, x^{+})f(x^{+}),
+\end{align*}
+donde hemos usado la continuidad de $G$ y $f$ en $\xi = x$ para obtener $(T f)'(x)$. Como
+\[
+  \dfrac{\partial G}{\partial x}(x, x^{-}) - \dfrac{\partial G}{\partial x}(x, x^{+}) = \frac{1}{p(x)},
+\]
+entonces obtenemos
+\[
+  (T f)''(x) = \int_{a}^{x} \dfrac{\partial^{2}G}{\partial x^{2}}(x, \xi)f(\xi)\,d\xi + \int_{x}^{b}
+  \dfrac{\partial^{2}G}{\partial^{2}x}(x, \xi)f(\xi)\,d\xi + \frac{f(x)}{p(x)}.
+\]
+Por lo tanto, por linealidad de la integral, calculamos
+\begin{align*}
+  L[T[f]]&=p(x)(T[f])''+q(x)(T[f])'+r(x)T[f]\\
+         &=\int_{a}^{x} L[G(x,\xi)]f(\xi)\,d\xi + \int_{x}^{b} L[G(x,\xi)]f(\xi)\,d\xi+f(x)\\
+         &=f(x)
+\end{align*}
+Por lo tanto $L[T[f]]=f$, m'as a'un, claramente $T[f]$ cumple con las condiciones de frontera pues $G$ las cumple y la integral es lineal y conmuta con la derivaci'on con respecto a $x$. Ahora calculamos la composici'on opuesta, es decir, sea $\phi$ funci'on de clase $\mathcal{C}^{2}[a,b]$ que cumple con las condiciones de frontera \ref{SL-fron}, entonces calculamos
+
+\begin{align*}
+T(L\phi)(x) &= \int_{a}^{x}G(x,\xi)L\phi(\xi)\,d\xi+\int_{x}^{b} G(x,\xi)L\phi(\xi)\,d\xi \\
+            &=\left.p(\xi)\left[\phi'(\xi)G(x,\xi)-\phi(\xi)\dfrac{\partial G}{\partial\xi}(x,\xi)\right]\right|_{a}^{x}
+            +\int_{a}^{x} \phi(\xi)L_{\xi}[G(x,\xi)]\,d\xi\\
+            &+\left. p(\xi)\left[\phi'(\xi)G(x,\xi)-\phi(\xi) \dfrac{\partial G}{\partial\xi}(x,\xi)\right]
+              \right|_{x}^{b}+\int_{x}^{b} \phi(\xi)L_{\xi}[G(x,\xi)]\,d\xi \\
+\end{align*}
+Donde las integrales se hicieron por partes para disminuir los t'erminos de las derivadas de $\phi$ e incrementar las derivadas parciales de G con respecto a $\xi$, es decir en los terminos usuales de la integraci'on por partes
+\[
+\int_{a}^{b}u(\xi)\,dV(\xi)\,d\xi=\left.uV\right|_{a}^{b}-\int_{a}^{b}V\,du\,d\xi,
+\]
+se escoge las derivadas de $\phi$ como el termino $dV$ el numero de veces correspondiente as'i es claro que $L_{\xi}[G(x,\xi)]$ es el operador $L$ pero en t'erminos de las derivadas $d/d\xi$. Por lo tanto, como $G(x,\xi)=G(\xi,x)$, entonces $L_{\xi}G=0$ y por lo tanto en el calculo final se obtiene que
+\begin{align*}
+  T(L\phi)(x)&=\left. p(\xi)\phi(\xi)\dfrac{\partial G}{\partial \xi}(x,\xi)\right|_{x^-}^{x^+}+
+               \left. p(\xi)\left[\phi'(\xi)G(x,\xi)-\phi(\xi)\dfrac{\partial G}{\partial \xi}(x,\xi)\right]\right|_{a}^{b}\\
+            &=\phi(x).
+\end{align*}
+Pues $G$ es funcion de Green y por lo tanto cumple con las condiciones de frontera (junto con $\phi$) adem'as
+\[
+  \left.\dfrac{\partial G}{\partial \xi}(x,\xi)\right|_{x^-}^{x^+}=\frac{1}{p(x)}
+\]
+Por lo tanto $T=L^{-1}$. \QED
+
+\eje Considere el problema de valores en la frontera
+\begin{align*}
+u'' + k^2 u &= 0, \quad 0 < x < 1,\,k\in\re\\
+u(0) = u(1) &= 0.
+\end{align*}
+Como ya hemos visto, la solución general de la ecuación diferencial es
+\[
+  v(x) = c_1 \cos(kx) + c_2 \sin(kx)
+\]
+Notamos que $\alpha_1=\beta_1=1$ y $\alpha_2=\beta_2=0$, entonces buscamos la solución $v_1$ que satisface las siguientes condiciones iniciales en $x = 0$
+\[
+v_1(0) = \alpha_2 = 0, \quad v_1'(0) = -\alpha_1 = -1.
+\]
+Lo cual implica que $c_1=0$ y $kc_2= -1$. As'i $v_{1}$ es facil de calcular
+\[
+v_1(x) = -\frac{1}{k} \sin(kx).
+\]
+Ahora, la solución $v_2$ satisface las condiciones
+\[
+v_2(1) = \beta_2 = 0, \quad v_2'(1) = -\beta_1 = -1,
+\]
+se encuentra resolviendo el sistema
+\begin{align*}
+  v_{2}(x)=\gamma_{1}\cos(kx)+\gamma_{2}\sin(kx)\implies\gamma_{1}\cos(k)+\gamma_{2}\sin(k)=0\\
+  v'_{2}(x)=-\gamma_{1}k\sin(kx)+\gamma_{2}k\cos(kx)\implies\gamma_{1}k\sin(k)-\gamma_{2}k\cos(k)=1.
+\end{align*}
+es decir, invirtiendo la matriz definida por el sistema tenemos que
+\begin{equation}
+  \begin{pmatrix}
+    \gamma_{1}\\
+    \gamma_{2}
+  \end{pmatrix} = \frac{1}{k}
+  \begin{pmatrix}
+    k\cos(k) && \sin(k)\\
+    k\sin(k) && -\cos(k)
+  \end{pmatrix}
+  \begin{pmatrix}
+    0\\
+    1
+  \end{pmatrix}
+\end{equation}
+Por lo tanto
+\[
+  v_2(x) = \frac{\sin k}{k} \cos(kx) - \frac{\cos k}{k} \sin(kx).
+\]
+Entonces la funcion de Green es
+\begin{equation}
+G(x, \xi) =
+\begin{cases}
+c^{-1} v_1(\xi)v_2(x), & 0 \leq \xi \leq x \leq 1, \\
+c^{-1} v_1(x)v_2(\xi), & 0 \leq x \leq \xi \leq 1.
+\end{cases}
+\end{equation}
+Donde la constante $c$ está dada por 
+\begin{align*}
+  &\begin{vmatrix}
+    -\sin(kx)/k && -\cos(kx)\\
+    -\sin(k)/k\cos(kx)-\cos(k)/k\sin(kx) && -(\sin(k)\sin(kx)+\cos(k)\cos(kx))
+  \end{vmatrix}\\
+  &=\frac{\sin(k)}{k}
+\end{align*}
+Las otras propiedades de la funcion de Green son f'aciles de verificar.
+
+\obs El oprador de tipo Fredholm $T$ definido por una funci'on de Green $G$ es un operador acotado en $\mathcal{L}^{2}([a,b],\mu)$ y en $(\mathcal{C},\|\cdot\|_{\infty})$ pues $G$ es continua en $[a,b]\times[a,b]$ como hemos visto previamente, donde $\|T\|\leq\sqrt{b-a}\|G\|_{\infty}$ en $\mathcal{L}^{2}$ y $\|T\|\leq(b-a)\|G\|_{\infty}$ con la norma infinito.
+
+\subsubsection*{Calculo del espectro:}
+\noindent Al principio de esta secci'on usamos el hecho de que not todo n'umero real va a ser parte del espectro de un operador de Strum-Liouville, el siguiente lema lo demuestra
+\begin{lema}
+  Los valores propio de un operador de Strum-Liouville $-\mathcal{L}$ se encuentran acotados inferiormente.
+  \end{lema}
+  \dem Sea $\phi\in\mathcal{C}^{2}$ que cumplan las condiciones de frontera \ref{SL-fron}, etnonces si calculamos
+  \begin{align*}  \braket{-\mathcal{L}\phi\phi}&=\int_{a}^{b}\left(-(p(z)\phi'(x))'\overline{\phi(x)}-q(x)|\phi(x)|^{2}\right)\\
+                              &=\int_{a}^{b}\left((p(z)\phi'(x))|\phi(x)|^{2}-q(x)|\phi(x)|^{2}\right)
+                                                +p(a)\phi'(a)\phi(a)-p(b)\phi'(b)\phi(b)\\
+                              &=\int_{a}^{b}\left((p(z)\phi'(x))|\phi(x)|^{2}-q(x)|\phi(x)|^{2}\right)
+                              +p(a)\frac{\beta_{1}}{\beta_{2}}\phi(a)^{2}-p(b)\frac{\alpha_{1}}{\alpha_{2}}\phi(b)^{2}.
+  \end{align*}
+  Entonces si $\phi$ es vector propio con valor propio $\lambda$ y suponemos que tenemos como condiciones de frontera $\phi(a)=\phi(b)=0.$ Entonces
+  \[
+    \lambda\|\phi\|_{2}^{2}=\int_{a}^{b}\left((p(z)\phi'(x))|\phi(x)|^{2}-q(x)|\phi(x)|^{2}\right)\geq-\|\phi\|^{2}_{2}\|q\|_{\infty}.
+  \]
+  Por lo tanto $-\|q\|_{\infty}$ es una cota inferior para $\lambda$
 \end{document}
