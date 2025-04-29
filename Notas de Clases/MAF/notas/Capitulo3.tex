@@ -962,4 +962,26 @@ Ahora lo que se busca es resolver un problema de Sturm-Liouville \ref{SL}, es de
 \mathcal{L}\phi+\lambda\phi=0\implies\phi+\lambda T\phi=0\implies T\phi=\frac{-1}{\lambda}\phi.
 \]
 Es decir, obtenemos una ecuacion de valores propios/vectores propios de $T$, el cual es un operador más fácil de estudiar.
+
+\begin{teorema}
+ Sea $T$ un operador el operdor de tipo Fredholm en $C([a,b])$ definido por la función de Green $G$ asociada a un problema de Strum-Liouville. Entonces $\|T\|$ o $-\|T\|$ es un valor propio de $T$.
+  \end{teorema}
+\dem Por definición de norma de operadores
+\[
+\|T\| = \sup\{|\braket{T\phi | \phi}| : \phi \in C([a,b]), \|\phi\| = 1\}
+\]
+y como $\langle Tu,u\rangle$ es un número real, se tiene que
+\[
+\|T\| = \sup \langle Tu,u\rangle \quad \text{o} \quad \|T\| = -\inf \langle Tu,u\rangle
+\]
+para $\|u\| = 1$.
+
+Supongamos que $\|T\| = \sup \langle Tu,u\rangle$. Entonces existe una sucesión de funciones $\{u_k\} \subset C([a,b])$ con $\|u_k\| = 1$ tal que
+\[
+\langle Tu_k, u_k \rangle \to \|T\| \quad \text{cuando} \quad k \to \infty
+\]
+
+Como $\{Tu_k\}$ es uniformemente acotada y equicontinua, por el teorema de Ascoli-Arzelà existe una subsucesión $\{Tu_{k_j}\}$ que converge uniformemente en $[a,b]$ a una función continua $\phi_0$.
+
+Demostraremos que $\phi_0$ es una función propia de $T$ correspondiente al valor propio $\mu_0 = \|T\|$.
 \end{document}
