@@ -5,9 +5,8 @@
 #+SETUPFILE: ~/Templates/latex-export.org
 
 \noindent *PROPUESTA DE TEMARIO*
-
-1. Funciones El'ipticas.
-   - Funciones simplemente peri'odicas y sus series de Fourier.
+1. Funciones El'ipticas
+   - Funciones simplemete peri'odicas y sus series de Fourier.
    - Funciones doblemente peri'odicas y su latiz de periodos.
    - Bases can'onicas y el grupo modular.
    - La teor'ia de Weierstrass y la funci'on $\wp$.
@@ -18,19 +17,25 @@
    - Series de Einsenstein.
    - El anillo de formas modulares.
 
-3. Curvas eli'ticas
+3. Curvas elipt'icas
    - El conjunto soluci'on a $y^2=4x^3-g_2x-g_3$ y sus propiedad geometrico algebraicas.
    - Parametrizaci'on con la funci'on $\wp$.
    - Las curvas el'ipticas como toros.
 
+4. Superficies de Riemann
+   - Cartas holomorfas y funciones holomorfas en superficies.
+   - Ejemplos de superficies de Riemann.
+   - El plano proyectivo y curvas algebraicas.
+
+5. Uniformización de superficies de Riemann
+   - Repaso del teorema de mapo de Riemann.
+   - Mapeos conformes en polinomios y la fórmula de Schwarz-Christoffel.
+   - Métricas Riemannianas en superficies.
+   - El espacio hiperbólico y sus cosientes.
+   - Lema de weyl.
+   - Teorema de Uniformzación.
+
 *Bibliografía*:
 
-- H.F. Weinberger ``A First Course In Partial Differential Equations With Complex Variables and Transform Methods'', Dover Books On Mathematics, New York.
-- N.N. Lebedev ``Special Functions & Their Applications'', Dover Books On Mathematics, New York.
-- Arfken, George B. et all, ``Mathematical Methods for Physicist, A Comprehensive Guide.'', Ed. Elsevier, Seventh Edition.
-- Appfel, Walter, ``Mathematics for Physics & Physicists.'', Ed. Princeton University Press, 2007.
-- Churchill R. V. and Brown J. W., ``Fourier Series and Boundary Value Problems'', Ed McGraw-Hill.
-- Courant R and D. Hilbert, ``Methods of Mathematical Physics.'', vol. 1 y 2.
-- Tijonov A, ``Ecuaciones de la Física Matemática'', Ed. MIR Moscu, Segunda edición, 1980.
-- Vladimirov V. S. , ``Equations of Mathematical Physics'', Ed. URSS Moscow, 1996.
-- E. Kreyszig ``Introductory Functional Analysis With Applications'', John Wily & Sons.
+- L.V. Ahlfors ``Complex Analysis'', McGraw-Hill, Tokyo.
+- S. Donaldson ``Riemann Surfaces'', Oxford Graduate Text In Mathematics, London, 2011.

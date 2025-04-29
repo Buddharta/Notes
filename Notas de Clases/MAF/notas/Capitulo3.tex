@@ -928,5 +928,38 @@ Las otras propiedades de la funcion de Green son f'aciles de verificar.
   \[
     \lambda\|\phi\|_{2}^{2}=\int_{a}^{b}\left((p(z)\phi'(x))|\phi(x)|^{2}-q(x)|\phi(x)|^{2}\right)\geq-\|\phi\|^{2}_{2}\|q\|_{\infty}.
   \]
-  Por lo tanto $-\|q\|_{\infty}$ es una cota inferior para $\lambda$
+  Por lo tanto $-\|q\|_{\infty}$ es una cota inferior para $\lambda$. Por otro lado, si $\phi$ satisface las condiciones de forntera \ref{SL-fron},
+entonces el siguiente argumento dimensional muestra que no puede haber más de dos funciones propias linealmente independientes de $-\mathcal{L}$ con valores propios menores que $\|q\|_{\infty}$.
+
+Buscando una contradicción, supongamos que $-\mathcal{L}$ tiene tres funciones propias linealmente independientes $\phi_1$, $\phi_2$ y $\phi_3$ con sus correspondientes valores propios $\lambda_1$, $\lambda_2$ y $\lambda_3$ todos menores que $\|q\|$. Podemos asumir, sin pérdida de generalidad, que las funciones propias son ortonormales. Dado que
+\[
+\alpha_1 \phi_i(a) + \alpha_2 \phi_i'(a) = 0, \quad \beta_1 \phi_i(b) + \beta_2 \phi_i'(b) = 0, \quad i = 1,2,3,
+\]
+emos que cada uno de los seis vectores $(\phi_i(a), \phi_i'(a))$ y $(\phi_i(b), \phi_i'(b))$ yace en un subespacio unidimensional de $\mathbb{R}^2$. Por lo tanto, los tres vectores $\mathbf{u}_i = (\phi_i(a), \phi_i'(a), \phi_i(b), \phi_i'(b))$ yacen en un subespacio bidimensional de $\mathbb{R}^4$. Podemos entonces formar una combinación lineal $c_1 \mathbf{u}_1 + c_2 \mathbf{u}_2 + c_3 \mathbf{u}_3$, donde no todos los coeficientes son cero, tal que
+\[
+c_1 \mathbf{u}_1 + c_2 \mathbf{u}_2 + c_3 \mathbf{u}_3 = 0.
+\]
+Esto implica que:
+\[
+c_1 \phi_1(a) + c_2 \phi_2(a) + c_3 \phi_3(a) = 0,
+\]
+\[
+c_1 \phi_1(b) + c_2 \phi_2(b) + c_3 \phi_3(b) = 0.
+\]
+
+La función
+\[
+v(x) = c_1 \phi_1(x) + c_2 \phi_2(x) + c_3 \phi_3(x)
+\]
+es por tanto una función propia de $-L$ que satisface $v(a) = v(b) = 0$, y en consecuencia su valor propio está acotado inferiormente por $\|q\|$. Sin embargo, esto contradice la desigualdad
+\[
+\langle -L v, v \rangle = \lambda_1 |c_1|^2 + \lambda_2 |c_2|^2 + \lambda_3 |c_3|^2 < \|q\|(|c_1|^2 + |c_2|^2 + |c_3|^2) = \|q\| \|v\|^2.
+\]
+\QED.
+
+Ahora lo que se busca es resolver un problema de Sturm-Liouville \ref{SL}, es decir resolver la ecuacion $\mathcal{L}\phi+\lambda\phi=0$ con su correspondientes condiciones de frontera \ref{SL-fron}. Entonces como el operador $T$ es el operador inverso a $\mathcal{L}$ tenemos
+\[
+\mathcal{L}\phi+\lambda\phi=0\implies\phi+\lambda T\phi=0\implies T\phi=\frac{-1}{\lambda}\phi.
+\]
+Es decir, obtenemos una ecuacion de valores propios/vectores propios de $T$, el cual es un operador más fácil de estudiar.
 \end{document}
