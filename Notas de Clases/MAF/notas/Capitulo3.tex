@@ -1,6 +1,6 @@
 \documentclass[main.tex]{subfiles}
 \begin{document}
-\chapter{Teor'ia de Sturm-Liouville}
+\chapter{Teor'ia de Sturm-Liouville}\label{cap3}
 \noindent Si recordamos la motivaci'on para el estudio de las series de Fourier, intentamos encontrar soluciones generales para la \emph{ecuación de Schrödinger en una dimensión} con potencial \(V(x)\) \emph{independiente del tiempo}. Para resolverla utilizamos el \emph{método de separación de variables o método de Bernoulli}, el cual divide el problema en dos ecuaciones,
 
 \begin{enumerate}
@@ -910,15 +910,15 @@ Donde la constante $c$ está dada por
 \end{align*}
 Las otras propiedades de la funcion de Green son f'aciles de verificar.
 
-\obs El oprador de tipo Fredholm $T$ definido por una funci'on de Green $G$ es un operador acotado en $\mathcal{L}^{2}([a,b],\mu)$ y en $(\mathcal{C},\|\cdot\|_{\infty})$ pues $G$ es continua en $[a,b]\times[a,b]$ como hemos visto previamente, donde $\|T\|\leq\sqrt{b-a}\|G\|_{\infty}$ en $\mathcal{L}^{2}$ y $\|T\|\leq(b-a)\|G\|_{\infty}$ con la norma infinito.
+\obs El operador de tipo Fredholm $T$ definido por una funci'on de Green $G$ es un operador acotado en $\mathcal{L}^{2}([a,b],\mu)$ y en $(\mathcal{C},\|\cdot\|_{\infty})$ pues $G$ es continua en $[a,b]\times[a,b]$ como hemos visto previamente, donde $\|T\|\leq\sqrt{b-a}\|G\|_{\infty}$ en $\mathcal{L}^{2}$ y $\|T\|\leq(b-a)\|G\|_{\infty}$ con la norma infinito.
 
-\subsubsection*{Calculo del espectro:}
+\subsection{Calculo del espectro}
 \noindent Al principio de esta secci'on usamos el hecho de que not todo n'umero real va a ser parte del espectro de un operador de Strum-Liouville, el siguiente lema lo demuestra
 \begin{lema}
   Los valores propio de un operador de Strum-Liouville $-\mathcal{L}$ se encuentran acotados inferiormente.
   \end{lema}
   \dem Sea $\phi\in\mathcal{C}^{2}$ que cumplan las condiciones de frontera \ref{SL-fron}, etnonces si calculamos
-  \begin{align*}  \braket{-\mathcal{L}\phi\phi}&=\int_{a}^{b}\left(-(p(z)\phi'(x))'\overline{\phi(x)}-q(x)|\phi(x)|^{2}\right)\\
+  \begin{align*}  \braket{-\mathcal{L}\phi\,|\,\phi}&=\int_{a}^{b}\left(-(p(z)\phi'(x))'\overline{\phi(x)}-q(x)|\phi(x)|^{2}\right)\\
                               &=\int_{a}^{b}\left((p(z)\phi'(x))|\phi(x)|^{2}-q(x)|\phi(x)|^{2}\right)
                                                 +p(a)\phi'(a)\phi(a)-p(b)\phi'(b)\phi(b)\\
                               &=\int_{a}^{b}\left((p(z)\phi'(x))|\phi(x)|^{2}-q(x)|\phi(x)|^{2}\right)
@@ -926,16 +926,16 @@ Las otras propiedades de la funcion de Green son f'aciles de verificar.
   \end{align*}
   Entonces si $\phi$ es vector propio con valor propio $\lambda$ y suponemos que tenemos como condiciones de frontera $\phi(a)=\phi(b)=0.$ Entonces
   \[
-    \lambda\|\phi\|_{2}^{2}=\int_{a}^{b}\left((p(z)\phi'(x))|\phi(x)|^{2}-q(x)|\phi(x)|^{2}\right)\geq-\|\phi\|^{2}_{2}\|q\|_{\infty}.
+    \lambda\|\phi\|_{2}^{2}=\int_{a}^{b}\left((p(x)|\phi'(x)|^{2}-q(x)|\phi(x)|^{2}\right)\geq-\|\phi\|^{2}_{2}\|q\|_{\infty}.
   \]
-  Por lo tanto $-\|q\|_{\infty}$ es una cota inferior para $\lambda$. Por otro lado, si $\phi$ satisface las condiciones de forntera \ref{SL-fron},
+  Por lo tanto $-\|q\|_{\infty}$ es una cota inferior para $\lambda$. Por otro lado, si $\phi$ satisface las condiciones de frontera \ref{SL-fron},
 entonces el siguiente argumento dimensional muestra que no puede haber más de dos funciones propias linealmente independientes de $-\mathcal{L}$ con valores propios menores que $\|q\|_{\infty}$.
 
-Buscando una contradicción, supongamos que $-\mathcal{L}$ tiene tres funciones propias linealmente independientes $\phi_1$, $\phi_2$ y $\phi_3$ con sus correspondientes valores propios $\lambda_1$, $\lambda_2$ y $\lambda_3$ todos menores que $\|q\|$. Podemos asumir, sin pérdida de generalidad, que las funciones propias son ortonormales. Dado que
+Buscando una contradicción, supongamos que $-\mathcal{L}$ tiene tres funciones propias linealmente independientes $\phi_1$, $\phi_2$ y $\phi_3$ con sus correspondientes valores propios $\lambda_1$, $\lambda_2$ y $\lambda_3$ todos menores que $\|q\|_{\infty}$. Podemos asumir, sin pérdida de generalidad, que las funciones propias son ortonormales. Dado que
 \[
 \alpha_1 \phi_i(a) + \alpha_2 \phi_i'(a) = 0, \quad \beta_1 \phi_i(b) + \beta_2 \phi_i'(b) = 0, \quad i = 1,2,3,
 \]
-emos que cada uno de los seis vectores $(\phi_i(a), \phi_i'(a))$ y $(\phi_i(b), \phi_i'(b))$ yace en un subespacio unidimensional de $\mathbb{R}^2$. Por lo tanto, los tres vectores $\mathbf{u}_i = (\phi_i(a), \phi_i'(a), \phi_i(b), \phi_i'(b))$ yacen en un subespacio bidimensional de $\mathbb{R}^4$. Podemos entonces formar una combinación lineal $c_1 \mathbf{u}_1 + c_2 \mathbf{u}_2 + c_3 \mathbf{u}_3$, donde no todos los coeficientes son cero, tal que
+emos que cada uno de los seis vectores $\boldsymbol{\phi}^{a}_{i}=(\phi_i(a), \phi_i'(a))$ y $\boldsymbol{\phi}^{b}_{i}=(\phi_i(b), \phi_i'(b))$ yace en un subespacio unidimensional de $\mathbb{R}^2$. Por lo tanto, los tres vectores $\mathbf{u}_i = (\boldsymbol{\phi}_i^{a},\boldsymbol{\phi}_i^{b})$ yacen en un subespacio bidimensional de $\mathbb{R}^4$. Podemos entonces formar una combinación lineal $c_1 \mathbf{u}_1 + c_2 \mathbf{u}_2 + c_3 \mathbf{u}_3$, donde no todos los coeficientes son cero, tal que
 \[
 c_1 \mathbf{u}_1 + c_2 \mathbf{u}_2 + c_3 \mathbf{u}_3 = 0.
 \]
@@ -963,25 +963,199 @@ Ahora lo que se busca es resolver un problema de Sturm-Liouville \ref{SL}, es de
 \]
 Es decir, obtenemos una ecuacion de valores propios/vectores propios de $T$, el cual es un operador más fácil de estudiar.
 
-\begin{teorema}
+\obs El siguiente resultado hace uso del \emph{Teorema de Arzelà-Ascoli} el cual da condiciones de convergencia de susesiones de funciones uniformemente acotadas y equicontinuas.
+
+\begin{def.}
+La sucesión se dice \textbf{uniformemente equicontinua} si, para todo $\varepsilon > 0$, existe un $\delta > 0$ tal que
+\[
+|f_n(x) - f_n(y)| < \varepsilon
+\]
+siempre que $|x - y| < \delta$ para todas las funciones $f_n$ en la sucesión. (Aquí, $\delta$ puede depender de $\varepsilon$, pero no de $x$, $y$ o $n$.)
+\end{def.}
+
+\begin{def.}
+Por definición, una sucesión $\{f_n\}_{n\in\nat}$ de funciones continuas en un intervalo $I = [a, b]$ es \textbf{uniformemente acotada} si existe un número $M$ tal que
+\[
+|f_n(x)| \leq M
+\]
+para toda función $f_n$ perteneciente a la sucesión y para todo $x \in [a, b]$. (Aquí, $M$ debe ser independiente de $n$ y $x$.)
+\end{def.}
+
+\begin{teorema}[Teorema de Arzelà-Ascoli]
+Considere una sucesión de funciones continuas con valores reales $\{f_n\}_{n\in\nat}$ definidas en un intervalo cerrado y acotado $[a, b]$ de la recta real. Si esta sucesión es uniformemente acotada y uniformemente equicontinua, entonces existe una subsucesión $\{f_{n_k}\}_{k\in\nat}$ que converge uniformemente.
+
+\noindent El recíproco también es v'alido, en el sentido de que si toda subsucesión de $\{f_n\}$ tiene a su vez una subsucesión uniformemente convergente, entonces $\{f_n\}$ es uniformemente acotada y equicontinua.
+\end{teorema}
+\noindent As'i notamos que para un operador acotado como $T$, la familia de funciones $\{T\phi\,:\,\|\phi\|=1\}$ es una familia \emph{uniformemente acotada y equicontinua}.
+\begin{lema}\label{norm-eigen}
  Sea $T$ un operador el operdor de tipo Fredholm en $C([a,b])$ definido por la función de Green $G$ asociada a un problema de Strum-Liouville. Entonces $\|T\|$ o $-\|T\|$ es un valor propio de $T$.
-  \end{teorema}
-\dem Por definición de norma de operadores
+\end{lema}
+\dem Por definición de norma de operadores y densidad de las funciones continuas en $\mathcal{L}^{2}([a,b],\mu)$.
 \[
-\|T\| = \sup\{|\braket{T\phi | \phi}| : \phi \in C([a,b]), \|\phi\| = 1\}
+\|T\| = \sup\{|\braket{T\phi | \phi}| : \phi \in \mathcal{C}([a,b]), \|\phi\| = 1\}
 \]
-y como $\langle Tu,u\rangle$ es un número real, se tiene que
+y como $\braket{ T\phi |\phi}$ es un número real, se tiene que
 \[
-\|T\| = \sup \langle Tu,u\rangle \quad \text{o} \quad \|T\| = -\inf \langle Tu,u\rangle
+\|T\| = \sup \braket{T\phi|\phi} \quad \text{o} \quad \|T\| = -\inf \braket{ T\phi|\phi}
 \]
-para $\|u\| = 1$.
+para $\|\phi\| = 1$.
 
-Supongamos que $\|T\| = \sup \langle Tu,u\rangle$. Entonces existe una sucesión de funciones $\{u_k\} \subset C([a,b])$ con $\|u_k\| = 1$ tal que
+Supongamos que $\|T\| = \sup \braket{T\phi|\phi}$. Entonces existe una sucesión de funciones $\{\phi_k\} \subset C([a,b])$ con $\|\phi_k\| = 1$ tal que
 \[
-\langle Tu_k, u_k \rangle \to \|T\| \quad \text{cuando} \quad k \to \infty
+\braket{ T\phi_k| \phi_k } \to \|T\| \quad \text{cuando} \quad k \to \infty
 \]
 
-Como $\{Tu_k\}$ es uniformemente acotada y equicontinua, por el teorema de Ascoli-Arzelà existe una subsucesión $\{Tu_{k_j}\}$ que converge uniformemente en $[a,b]$ a una función continua $\phi_0$.
+Como $\{T\phi_k\}$ es uniformemente acotada y equicontinua, por el teorema de Arzelà-Ascoli existe una subsucesión $\{T\phi_{k_j}\}$ que converge uniformemente en $[a,b]$ a una función continua $\varphi_0$.
 
-Demostraremos que $\phi_0$ es una función propia de $T$ correspondiente al valor propio $\mu_0 = \|T\|$.
+Demostraremos que $\varphi_0$ es una función propia de $T$ correspondiente al valor propio $\mu_0 = \|T\|$, entonces si $j \to \infty$ tenemos
+\[
+\sup_{x \in [a,b]} |T \phi_{k_j}(x) - \varphi_0(x)| \to 0,
+\]
+lo que implica que
+\begin{equation}
+\|T \phi_{k_j} - \varphi_0\| \to 0
+\end{equation}
+y por lo tanto $\|T \phi_{k_j}\| \to \|\varphi_0\|$. Además, como $\braket{T\phi_{k_j}| \phi_{k_j}}\to\mu_0$,
+\begin{equation}
+\|T\phi_{k_j}-\mu_0\phi_{k_j}\|^2=\|T\phi_{k_j}\|^2+\mu_0^2-2\mu_0\braket{T\phi_{k_j}|\phi_{k_j}}\to\|\varphi_0\|^2 - \mu_0^2,
+\end{equation}
+de donde $\|\varphi_0\|^2 \geq \mu_0^2 > 0$, y por lo tanto la función $\varphi_0$ no puede ser idénticamente nula en $[a,b]$.
+
+Como $\|T\phi_{k_j}\|^2 \leq \|T\|^2 \|\phi_{k_j}\|^2 = \mu_0^2$, se sigue de la ecuacion anterior que
+\[
+0\leq\|T\phi_{k_j}-\mu_0\phi_{k_j}\|^2 \leq2\mu_0^2-2\mu_0\braket{T\phi_{k_j}|\phi_{k_j}}.
+\]
+Pero $\braket{T\phi_{k_j}|\phi_{k_j}} \to \mu_0$, lo que significa que al tomar l'imite, obtenemos
+\[
+\|T\phi_{k_j} - \mu_0 \phi_{k_j}\|\to 0.
+\]
+Por 'ultimo tomando los siguientes l'imites
+\[
+0\leq\|T\varphi_0-\mu_0\varphi_0\|\leq\|T\varphi_0-T(T\phi_{k_j})\|+\|T(T\phi_{k_j})-\mu_0T\phi_{k_j}\|+ \mu_0\|T\phi_{k_j} - \varphi_0\|,
+\]
+
+cuando $j\to\infty$. Como $T$ es acotado, sesigue que $\|T\phi\|\leq\|T\|\|\phi\|$ y concluimos que $\|T\varphi_0-\mu_0\varphi_0\|=0$. Como $T\varphi_0 - \mu_0\varphi_0$ es continua, esto implica que $T \varphi_0(x) = \mu_0 \varphi_0(x)$ para todo $x \in [a,b]$.
+
+Si $\|T\| = -\inf \braket{T\phi|\phi}$, el argumento es analogo. \QED.
+
+\subsection{Existencia de los valores propios.}
+\begin{teorema}
+  El operador de tipo Fredholm $T$ inverso a un operador de Sturm-Liouville $\mathcal{L}$ de la forma \ref{SL-eq} con condiciones de frontera del tipo \ref{SL-Fron} tiene una susesi'on infinita de funciones propias $\{\psi_{n}\}_{n\in\nat}$ que son ortonormales en $\mathcal{L}^{2}([a,b],\mu)$.
+\end{teorema}
+\dem  Siguiendo la notaci'on del lema \ref{norm-eigen}. Sea
+\[
+\psi_0 = \frac{\varphi_0}{\|\varphi_0\|},
+\]
+El vector propio normalizado de $T$ con valor propio $\pm\|T\|$. M'as a'un sea la funcio'on
+\[
+G_1(x,\xi) = G(x,\xi) - \mu_0 \psi_0(x)\overline{\psi}_0(\xi),
+\]
+y sea $T_{1}$ su operador integral de tipo Fredholm asociado, es decir
+\[
+(T_1\phi)(x)=\int_a^bG_1(x,\xi)\phi(\xi)d\xi=T\phi(x)-\mu_0\braket{\phi|\psi_0}\psi_0(x) \quad \text{para toda }\phi\in \mathcal{C}([a, b]).
+\]
+
+Ahora, la función $G_1$ tiene las mismas propiedades de regularidad y simetría que $G$, por lo que el lema \ref{norm-eigen} aplica al operador autoadjunto $T_1$. Si $\|T_1\| \neq 0$, definimos
+\[
+\sup\{|\braket{T_1\phi|\phi}|\,:\, \phi \in \mathcal{C}([a, b]),\|\phi\|=1\}=|\mu_1|,
+\]
+Donde $\mu_1$ es un número real no nulo que, por el lema \ref{norm-eigen}, es un valor propio de $T_1$ correspondiente a una función propia $\varphi_1\in\mathcal{C}([a,b])$; es decir,
+\[
+T_1 \varphi_1 = \mu_1 \varphi_1.
+\]
+Sea entonces $\psi_1 = \varphi_1 / \|\varphi_1\|$. Entonces, para cualquier $\phi \in \mathcal{C}([a,b])$
+\[
+\braket{T_1\phi|\psi_0}=\braket{T\phi|\psi_0}-\mu_0\braket{\phi|\psi_0}\|\psi_0\|^{2}=\braket{\phi|T\psi_0} - \mu_0\braket{\phi| \psi_0}= 0
+\]
+pues $T \psi_0 = \mu_0 \psi_0$. En particular, $\braket{T_1\psi_1|\psi_0}=\mu_1\braket{\psi_1|\psi_0}=0,$ y por lo tanto $\psi_1$ es ortogonal a $\psi_0$.
+
+Ahora claramente $\psi_1$ es también una función propia de $T$, y el valor propio asociado satisface
+\[
+|\mu_1| = \|T \psi_1\| \leq \|T\| = |\mu_0|.
+\]
+Entonces progresivamente definimos
+\[
+G_2(x,\xi)=G_1(x,\xi)-\mu_1\overline{\psi}_1(\xi)\psi_1(x)=G(x,\xi)-\sum_{k=0}^1 \mu_k\overline{\psi}_k(\xi)\psi_k(x),
+\]
+y subsecuentemente el operador
+\[
+T_2\phi=T_1\phi-\mu_1\braket{\psi_{1}|\phi}\psi_1=T\phi-\sum_{k=0}^1\mu_k\braket{\psi_k|\phi}\psi_k,
+\]
+y procediendo como antes, deducimos la existencia de una tercera función propia normalizada $\psi_2$ de $T$ asociada a un valor propio real $\mu_2$ tal que $\psi_2$ es ortogonal tanto a $\psi_0$ como a $\psi_1$ y $|\mu_2| \leq |\mu_1|$.
+
+Así obtenemos una sucesión ortonormal de funciones propias $\psi_0, \psi_1, \psi_2, \dots$ de $T$ correspondiente a la sucesión de valores propios $|\mu_0|\geq|\mu_1|\geq|\mu_2|\geq\dots$.
+Es decir, defninimos las funciones y operadores
+\begin{align}\label{Green-gen}
+  G_{n}(x,\xi)&=G(x,\xi)-\sum_{n=0}^{n-1}\mu_{k}\psi_{k}(x)\overline{\psi_{k}(\xi)},\\
+  T_{n}[\phi]&=T[\phi]-\sum_{k=0}^{n-1} \mu_k \braket{\psi_k|\phi}\psi_k.
+\end{align}
+La sucesión de funciones propias termina solo si $\|T_n\|=0$ para algún $n$. En cuyo caso
+\[
+ 0=\mathcal{L}[T_n\phi]=\mathcal{L}T\phi-\sum_{k=0}^{n-1} \mu_k \braket{\psi_k|\phi}\mathcal{L}[\psi_k]=
+  \phi-\sum_{k=0}^{n-1} \braket{\psi_k|\phi}\mathcal{L}[\psi_k],
+\]
+para todo $\phi\in \mathcal{C}([a,b])$, lo que implicaría
+\[
+  \phi=\sum_{k=0}^{n-1}\mu_k\braket{\psi_k|\phi}\mathcal{L}[\psi_k]=
+  \sum_{k=0}^{n-1}\braket{\psi_k|\phi}\mathcal{L}[T\psi_k]=\sum_{k=0}^{n-1} \braket{\psi_k|\phi}\psi_k.
+\]
+
+Pero como ningún conjunto finito de funciones propias puede generar $C([a,b])$, esta última igualdad no puede cumplirse para todo $u \in C([a,b])$. En consecuencia, $\|T_n\| > 0$ para todo $n \in \mathbb{N}$, y hemos demostrado el resultado. \QED
+
+\subsection{Base de Schauder de vectores propios}
+
+\noindent Hasta ahora hemos demostrado que para un problema de Sturm-Liouville con operador $\mathcal{L}$, existe un n'umero infinito de valores propios crecientes y sus correspondientes funciones propias ortogonales entre s'i es decir
+\[
+  \sigma(\mathcal{L})=\{\lambda_{0}<\lambda_{1}<\dots<\lambda_{n}\dots\}\quad\text{con}\quad
+  \{\psi_{n}\}_{n\in\nat}\quad\braket{\psi_{n}|\psi_{m}}=\delta_{n,m}.
+\]
+Ahora, para demostrar el \emph{teorema espectral para operadores de Sturm-Liouville}, es necesario demostrar que el conjunto de funciones propias es completo, es decir, para toda $\phi\in\mathcal{L}^{2}([a,b],\mu)$ se cumple
+\[
+  \phi=\sum_{n=0}^{\infty}\braket{\psi_{n}|\phi}\psi_{n}.
+\]
+Como hemos visto, esto es equivalente a que la \emph{desigualdad de Bessel} \ref{eq-bessel} sea igualdad. Primero demostraremos que es to es cierto para $\phi\in\mathcal{C}^{2}[a,b]$ y luego usaremos el hecho de que los polinomios trigonom'etricos son densos en $\mathcal{L}^{2}[a,b]$ y por lo tanto, $\mathcal{C}^{2}[a,b]$ es denso en $\mathcal{L}^{2}[a,b]$.
+\begin{teorema}
+  Sea $\phi\in\mathcal{C}^{2}[a,b]$ que satisface las condiciones de frontera \ref{SL-fron}, entonces la serie
+  \[
+    \sum_{n=0}^{\infty}\braket{\psi_{n}|\phi}\psi_{n}\quad\text{converge uniformemente a }\phi.
+  \]
+\end{teorema}
+\dem Sea $x\in[a,b]$ fija, calculamos
+\[
+  \braket{\psi_{n}|G(x,\cdot)}=T[\overline{\psi}_{n}]=\mu_{n}\overline{\psi}_{n}(x)\quad\forall\,n\in\nat.
+\]
+Entonces, si aplicamos la desigualdad de Bessel a $G(x,\cdot)$, entonces tenemos que para toda $x\in[a,b]$, se cumple que
+\[
+  \sum_{n=0}\mu^{2}|\psi_{n}(x)|\leq\int_{a}^{b}|G(x,\xi)|^{2}\,d\xi.
+\]
+Integrando con respeco a $x$ y recordando que $G$ es acotada, tenemos que
+\[
+  \sum_{n=0}^{\infty}\mu_{n}^{2}\leq(b-a)^{2}\|G(x,\xi)\|^{2}_{\infty}.
+\]
+Por lo tanto $\sum\mu_{n}$ es cuadrado sumable y por lo tanto $|\mu_{n}|\to0$. Por otra parte, como sabemos, $\mu_{n}$ es el valor propio y  norma del operador previamente definido \ref{Green-gen} $T_{n}$, es decir, para todo $\phi\in\mathcal{C}[a,b]$,
+\[
+  \|T_{n}[\phi]\|=\left\|T[\phi]-\sum_{k=0}^{n-1}\mu_{k}\braket{\psi_{k}|\phi}\psi_{k}\right\|\leq|\mu_{k}|\|\psi\|\to0.
+\]
+Ahora, si $n>m$, entonces
+\[
+  \sum_{k=m}^{n}\mu_{k}\braket{\psi_{k}|\phi}\psi_{k}=T\left[\sum_{k=m}^{n}\braket{\psi_{k}|\phi}\psi_{k}\right]
+\]
+Como $\|T\phi\|\leq\sqrt{b-a}\|G\|_{\infty}\|\phi\|_{2}$, entonces
+\[
+  \left\|\sum_{k=m}^{n}\mu_{k}\braket{\psi_{k}|\phi}\psi_{k}\right\|\leq
+  \sqrt{b-a}\|G\|_{\infty}\left(\sum_{k=m}^{n}|\braket{\psi_{k}|\phi}|^{2}\right)^{1/2},
+\]
+y por la desigualdad de Bessel, el t'ermino de la derecha tiende a cero cuando $n,m\to\infty$. Por lo tanto, $\sum\braket{\psi_{n}|\phi}\psi_{n}$ converge uniformemente a una funci'on continua y adem'as claramente de lo anterior se cumple que
+\[
+  T[\phi]=\sum_{n=0}^{\infty}\mu_{n}\braket{\psi_{n}|\phi}\psi_{n}.
+\]
+Por lo tanto, como $\phi\in\mathcal{C}^{2}[a,b]$ y cumple con las condiciones de frontera, $\phi=T[\mathcal{L}\phi]$, entonces si aplicamos $\mathcal{L}$ por la derecha a la ecuaci'on anterior, usando que $\psi_{n}=\mathcal{L}T[\psi_{n}]=\mathcal{L}[\mu_{n}\psi_{n}]$ obtenemos que
+\[
+  \phi(x)=\sum_{n=0}^{\infty}\braket{\psi_{n}|\phi}\psi_{n}(x)\quad x\in[a,b].
+\]
+Por lo tanto si $V=\{\phi\in\mathcal{C}^{2}\,:\,\phi\text{ cumple con las condiciones de frontera}\}$, entonces
+  \begin{equation}\label{sum-proy}
+    I_{V}=\sum_{n\in\nat}\ket{\psi_{n}}\bra{\psi_{n}}.
+  \end{equation}
+  Observamos que las condiciones de forntera son \emph{cerradas}. Ahora para demostrar que la ecuaci'on \ref{sum-proy} es v'alida en todo $\mathcal{L}^{2}([a,b],\mu)$ recordamos que demostramos que los polinomios triginometricos son \textbf{densos} en $\mathcal{L}^{2}([a,b],\mu)$ y son funciones de claramente de clase $\mathcal{C}^{2}$ m'as a'un como las condiciones de frontera son condiciones en un conjunto de \emph{medida cero}, podemos asumir que la ecuaci'on \ref{sum-proy} es v'alida para el espacio $V$ de todos los poliniomios trigonom'etricos ya que un conjunto de medida cero no afecta  en la convergenncia $\mathcal{L}^{2}$ por 'ultimo como la identidad y plas proyecciones son continuas (como hemos visto) podemos concluir por densidad que \ref{sum-proy} es v'alida para todo $\mathcal{L}^{2}$. \QED
 \end{document}

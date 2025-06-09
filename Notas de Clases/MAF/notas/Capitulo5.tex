@@ -1,113 +1,147 @@
 \documentclass[main.tex]{subfiles}
 \begin{document}
-\chapter{Aplicaciones a las Ecuaciones Diferenciales Parciales}
-\noindent En este cap'itulo aplicaremos las t'ecnicas y teorias de los cap'itulos anteriores en las ecuaciones deferenciales parciales lineales. Para hacer esto, haremos uso de diversas t'ecnicas que permiten ``disminuir'' la dimensionalidad del problema, para as'i obtener una ecuaci'on diferencial ordinaria, estas t'ecnicas incluyen el m'etdo de Bernoulli y el uso de coordenadas adecuadas, sin embargo estas tecnicas se pueden asociar a m'etodos de \emph{simetr'ias y acciones de grupos de Lie} adem'as de sus \emph{funciones especiales} asociadas, sin embargo no hermos uso de esta tecnicas ya que salen del enfoque del curso.
-
-M'as a'un nos enfocaremos en las ecuaciones parciales m'as comunes, en espec'ifico: \emph{la ecuaci'on de Laplace, la ecuaci'on de calor y la ecuaci'on de onda,} las cuales corresponden con los tipos de operadores: \emph{el'ipticos, parabo'olicos e hiperb'olicos} respectivamente, discutiremos un poco sobre estos, mostraremos el origen de esta clasificacion en el caso de ecuaciones parciales lineales en dos variables, pero los ejemplos protot'ipicoa tambi'ern ser'an discutidos en m'as variables.
-
-\section{Metodo de Bernoulli}
-\noindent Aunque es un m'etodo que ya utilizamos en \ref{cap2-schro} y la asumimos en el inicio de \ref{cap3}. Sin embargo ahora lo veremos con mayor profundidad, cabe mencionar que en lugar de resolver una ecuaci'on parcial con condiciones de frontera usando ecuaciones ordinarias, lo que se busca con el \emph{m'etodo de Bernoulli}, es encontrar infinitas soluciones a una ecuaci'on parcial donde \textit{casi} se cumplan las condiciones de frontera y buscar la soluci'on esparada como una \emph{combinacion} de 'estas, es por eso que tambi'es es necesario mecnionar el \emph{principio de superposici'on} en esta secci'on. Cabe mencionar que a pesar de que se ha utilizado para las ecuaciones parciales que hemos encontrado, no siempre se puede aplicar, a continuaci'on vemos qu'e condiciones se tienen que cumplir
-\begin{teorema}
-  Consideremos la siguiente ecuacion definida por un \emph{operador diferencial lineal parcial de orden dos} en dos variables general;
-  \begin{equation}\label{edp-lin-ord-2}
-    a_{11}\dfrac{\partial^{2}\phi}{\partial\xi^{2}}+2a_{12}\dfrac{\partial^{2}\phi}{\partial\xi\partial\eta}+
-    a_{22}\dfrac{\partial^{2}\phi}{\partial\eta^{2}}+a_{10}\dfrac{\partial\phi}{\partial\xi}+
-    a_{01}\dfrac{\partial\phi}{\partial\eta}+a_{00}\phi=0.
-  \end{equation}
-  M'as a'un supongamos existe un cambio de coordenadas
-\begin{equation}
-  \begin{cases}
-    x=x(\xi,\eta)\\
-    y=y(\xi,\eta),
-  \end{cases}
-    \quad\text{donde}\quad
-    \begin{vmatrix}
-      \partial_{\xi}x && \partial_{\eta}x\\
-      \partial_{\xi}y && \partial_{\eta}y
-    \end{vmatrix}\neq0,\\
-  \end{equation}
-  tal que la ecuaci'on resultante quede del tipo
-  \begin{equation}\label{edp-lin-red-2}
-    \alpha_{11}\dfrac{\partial^{2}\phi}{\partial x^{2}}+\alpha_{22}\dfrac{\partial^{2}\phi}{\partial y^{2}}
-    +\alpha_{10}\dfrac{\partial\phi}{\partial x}+\alpha_{01}\dfrac{\partial\phi}{\partial y}+\alpha_{00}\phi=0.
-  \end{equation}
-  Es decir que no contiene un t'ermino con derivadas \emph{cruzadas} y por 'ultimo, si exite una funci'on $\beta(x,y)$ tal que los cocientes cumplen:
-  \begin{align*}
-    \frac{\alpha_{11}}{\beta}&=\gamma_{11}(x),\frac{\alpha_{10}}{\beta}=\gamma_{10}(x),\text{ dependen s'olo de }x.\\
-    \frac{\alpha_{22}}{\beta}&=\gamma_{22}(y),\frac{\alpha_{01}}{\beta}=\gamma_{01}(y),\text{ depende s'olo de }y.\\
-    \frac{\alpha_{00}}{\beta}&=\Gamma_{1}(x)+\Gamma_{2}(y).
-  \end{align*}
-  Entonces el m'etodo de Bernoulli reduce la ecuaci'on \ref{edp-lin-ord-2} a dos ecuaciones diferenciales ordinarias lineales.
-  \end{teorema}
-  \dem Supongamos que la ecuaci'on se encuentra en forma reducida \ref{edp-lin-red-2} y sustituimos
-  \[
-    \phi(x,y)=\varphi(x)\psi(y).
-  \]
-  As'i obtenemos
-  \begin{align*}
-    &\alpha_{11}(x,y)\varphi(x)''\psi(y)+\alpha_{22}(x,y)\varphi(x)\psi''(y)+\alpha_{10}(x,y)\varphi(x)'\psi(x)+\\
-    &\alpha_{01}(x,y)\varphi(x)\psi'(y)+\alpha_{00}(x,y)\varphi(x)\psi(y)=0.
-  \end{align*}
-  Ahora por las hi'otesis podemos dividir entre la funci'on
-  \[
-    \beta(x,y)\varphi(x)\psi(y),
-  \]
-  para obteber la siguiente ecuaci'on, donde separamos los t'erminos dependientes de ``x'' y los dependientes de ``y'' para obterner
-  \begin{equation}
-    \gamma_{11}(x)\frac{\varphi''(x)}{\varphi(x)}+\gamma_{10}(x)\frac{\varphi'(x)}{\varphi(x)}+\Gamma_{1}(x)=
-    -\left(\gamma_{22}(y)\frac{\psi''(y)}{\psi(y)}+\gamma_{01}(y)\frac{\psi'(y)}{\psi(y)}+\Gamma_{2}(y)\right)
-  \end{equation}
-  Asi similarmente a lo que hicimos en \ref{cap2-schro}, como ambas son ecuaciones dependientes de distintas variables, es decir, ambas ecuaciones son iguales a una constante $\lambda$ y obtenemos
-  \begin{align*}
-    &\gamma_{11}(x)\varphi''(x)+\gamma_{10}(x)\varphi'(x)+\Gamma_{1}(x)\varphi(x)-\lambda=0\\
-    &\gamma_{22}(y)\psi''(y)+\gamma_{01}(y)\psi'(y)+\Gamma_{2}(y)\psi(y)+\lambda\psi=0.
-  \end{align*}
-  \QED
-
-  \obs El m'etodo de Bernoulli es aplicable para las ecuaciones de Schrodinger con potenciales independientes del tiempo.
-
-  \eje Sea
-  \[
-      \dfrac{\partial^{2}\phi}{\partial r^{2}}+\frac{1}{r}\dfrac{\partial\phi}{\partial r}+\frac{1}{r^{2}}+\dfrac{\partial^{2}\phi}{\partial\theta^{2}}=0.
-    \]
-    En esta ecuacion tenemos $\alpha_{11}=1,\alpha_{10}=1/r,\alpha_{22}=1/r^{2}$. Adem'as no hay terminos de derivadas mixtas. En este caso $\beta=1/r^{2}$ y por lo tanto $\gamma_{22}=1,\gamma_{10}=r,\gamma_{11}=r^{2}$.
-
-    \obs Se puede denmostrar que la ecuaci'on \ref{edp-lin-ord-2} siempre se puede reducir a una ecuacion de la forma
-    \begin{enumerate}
-      \item Si $a^{2}_{12}-a_{11}a_{22}>0$ la ecuaci'on se le llama \emph{hiperb'olica} y se reduce a
-            \[
-            \dfrac{\partial^{2}\phi}{\partial x^{2}}-\dfrac{\partial^{2}\phi}{\partial y^{2}}+\text{ derivadas de orden 1 y 0 }=0.
-            \]
-      \item Si $a^{2}_{12}-a_{11}a_{22}=0$ la ecuaci'on se le llama \emph{parab'olica} y se reduce a
-            \[
-            \dfrac{\partial^{2}\phi}{\partial x^{2}}+\text{ derivadas de orden 1 y 0 }=0.
-            \]
-      \item Si $a^{2}_{12}-a_{11}a_{22}<0$ la ecuaci'on se le llama \emph{el'iptica} y se reduce a
-            \[
-            \dfrac{\partial^{2}\phi}{\partial x^{2}}+\dfrac{\partial^{2}\phi}{\partial y^{2}}+\text{ derivadas de orden 1 y 0 }=0.
-            \]
-    \end{enumerate}
-
-    \obs En m'as dimensiones el m'etodo de Bernoulli reduce la ecuacion parcial a un sistema igual al n'umero de dimensiones, pero se necesitan ajustar las hipotesis para incluir \emph{todas} las combinaciones de derivadas, algo que es complicado de escribir y por eso se omite. Adem'as la clasificaci'on tambi'en se usa para mayores dimensiones.
-\section{Principio de Superposici'on}
-\noindent Utilizando el m'etodo de Bernoulli, es posible reducir una ecuacion diferencial parcial lineal de orden $k$ en $n$ variables a un \emph{sistema de ecuaciones diferenciales ordinarias lineales de orden $k$}, en el caso anterior $k=2$ y $n=2$, por lo tanto se obtienen un sistema de dos ecuaciones diferenciales lineales, ordinarias de orden dos que adem'as dependen de un par'ametro $\lambda$, es decir dos problemas tipo \emph{Stutm-liouville}, sin embargo, es necesario imponer \emph{condiciones de frontera}, es decir, buscamos $\phi:\om\subset\re\to\re$ que cumpla la ecuaci'on \ref{edp-lin-red-2}, adem'as, la fontera de $\om$, $\partial\om$ es una curva $\mathcal{C}^{1}$ por tramos parametrizada por $\sigma:I\to\partial\om$, $\sigma(s)=(x(s),y(s))$ con vector normal $\hat{n}$, entonces buscamos que la funci'on $\phi$ cumla;
-\begin{equation}
-  \alpha\phi(x(s),y(s))+\beta\dfrac{\partial\phi}{\partial \hat{n}}(x(s),y(s))=0.
+\chapter{Funciones Especiales}
+\noindent
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%---------- Sección ---------%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Función Gamma}
+\noindent La función $\Gamma$ ha sido el trabajo central de muchos matemáticos tras el transcurso de la historia y por ello mismo la literatura sobre esta es muy grande, aquí exponemos los resultados más relevantes que utilizaremos, todos ellos provienen de~\cite{epelde}, salvo la \textit{Fórmula de Stirling} que se puede consultar en~\cite[p. 12]{specf}. La funci\'on $\Gamma$ es una de las extensiones m\'as utilizadas de la funci\'on factorial a los n\'umeros complejos; est\'a definida para todos los n\'umeros complejos a excepci\'on de los enteros negativos, en donde tiene polos. Es por esta razón que es común que se trabaje con $1/\Gamma$, pues ahora los polos se convierten en ceros, con lo que tenemos una función entera.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%-------- Definición --------%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{def.}\label{d1.1} % Definición 1.1
+Sea $z\in\mathbb{C}$ tal que $Re(z)>0$. La función $\Gamma$ está definida como sigue:
+\begin{equation}\label{eq1.0}
+  \Gamma(z)=\int_{0}^{\infty}e^{-t}\,t^{z-1}dt.
 \end{equation}
-Donde, en la ecuaci'on anterior tenemos la derivada normal $\partial\phi/\partial\hat{n}=\nabla\phi\cdot\hat{n}$. Es decir, por lo tanto el con m'etodo de Bernoulli, resolviendo \emph{los problemas de Sturm-Liouville} derivados de la ecuaci'on original, tenemos una familia de soluciones
+\end{def.}
+\begin{teorema}\label{gamma-n}
+Sea $n$ entero, entonces
 \[
-  \phi_{\lambda}(x,y)=\varphi_{\lambda}(x)\psi_{\lambda}(y).
+  \Gamma(n+1)=n!.
 \]
-Ahora buscamos, a partir de dicha \emph{familia de soluciones}, obtener el espacio de soluciones generales. En los casos que hemos dicutido hasta ahorita, 'esta es una familia \emph{numerable} de soluciones y por lo tanto una soluci'on general por linealidad deber'ia ser algo del estilo
+\end{teorema}
+Integrando~\eqref{eq1.0} por partes obtenemos el siguiente lema.
+\begin{lema}\label{l1.1} % Lema 1.1
+  La funci\'on $\Gamma$ satisface la siguiente relacion de recurrencia
+  \[
+    \Gamma(z+1)=z\,\Gamma(z).
+  \]
+\end{lema}
+\indent La función $\Gamma$ resuelve el problema de interpolación del factorial, no sólo para reales, sino para complejos. Esto se puede ver, dado que para todo $n\in\mathbb{N}\cup\{0\}$,
 \[
-  \phi(x,y)=\sum_{n=0}^{\infty}A_{n}\phi_{\lambda_{n}}(x,y)=\sum_{n=0}^{\infty}A_{n}\varphi_{\lambda_{n}}(x)\psi_{\lambda_{n}}(y).
+  \Gamma(n+1)=n!.
 \]
-Sin embargo es posible que dicha familia de soluciones sea \emph{no numerable}, sobretodo en mayores dimensiones, en cuyo caso, por el \emph{teorema espectral}, la soluci'on general se escribe de la forma
+\indent Las siguientes expresiones son definiciones alternativas de la función $\Gamma$ para todo valor complejo $z$, salvo enteros negativos.
+\begin{enumerate}
+  \item La función $\Gamma$ definida por Euler:
+        \[
+          \Gamma(z)=\lim_{n\to\infty}\frac{n!\,n^{z}}{z(z+1)(z+2)\cdots(z+n)}.
+        \]
+  \item La función $\Gamma$ definida por Weierstrass:
+        \[
+          \frac{1}{\Gamma(z)}=z\,e^{\gamma z}\,\prod_{n=1}^{\infty}\left\{\left(1+\frac{z}{n}e^{-z/n}\right)\right\},
+        \]
+        donde
+        \begin{equation}
+          \label{eq1.1}
+          \gamma=\lim_{n\to\infty}\left(1+\frac{1}{2}+\frac{1}{3}+\cdots+\frac{1}{n}-\log\,n\right)\approx 0.5772.
+        \end{equation}
+\end{enumerate}
+Como consecuencia de estas definiciones, tenemos las siguientes propiedades de la función $\Gamma$.
+Algo de contexto, estaremos hablando de ecuaciones diferenciales de segundo orden con coeficientes que varían en los racionales, por ejemplo $\ddot{w}+f(t)\dot{w}+g(t)w=0$.\\
+En donde $f,g$ son funciones analíticas.\\
+A la vez, preferimos la notación matricial, podemos escribir
+\begin{align*}
+  z_{1}&=\dot{w}\\
+  z_{2}&=w\\
+\end{align*}
+con esto obtenemos que $\dot{z}_{1}=\ddot{w}$ y $\dot{z}_{2}=z_{1}$, por lo que
 \[
-  \phi(x,y)=\int A(\lambda)\phi_{\lambda}(x,y)\,\mu(\lambda)=\int A(\lambda)\varphi_{\lambda}(x)\psi_{\lambda}(y)\,\mu(\lambda).
+  \dot{z}_{1}+f(t)z_{1}+g(t)z_{2}=0,
 \]
-Donde $\mu$ es la \emph{medida espectral}, sin embargo nosotros s'olo consideraremnos el caso en el que tengamos espectro \emph{discrto}, con esto en mente el siguiente teorema nos permite resolver esto en el caso \emph{discreto}
-  \section{Método de Frobenius}
+y de aquí observamos que
+\begin{align*}
+  \dot{z}_{1}&=-f(t)z_{1}-g(t)z_{2}\\
+  \dot{z}_{2}&=z_{1}
+\end{align*}
+entonces
+\begin{gather*}
+  \begin{bmatrix}%
+			\dot{z}_{1}\\
+			\dot{z}_{2}
+		\end{bmatrix}
+		=
+		\begin{bmatrix}
+			-f(t) & -g(t)\\
+			1 & 0
+		\end{bmatrix}
+		\begin{bmatrix}
+			z_1\\
+			z_2
+		\end{bmatrix}
+	\end{gather*}
+
+\begin{teorema}% Ejercicio 01 %
+  Sean $a_{1},a_{2},\ldots,a_{n}$ e $\infty$ los puntos singulares regulares de
+  \begin{equation}
+    \label{eq1}
+    \frac{d^2w}{dz^2}+p(z)\frac{dw}{dz}+q(z)w=0
+  \end{equation}
+\end{teorema}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%-------- Proposición -------%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{prop}\label{p1.1} %Proposición 1.1
+  Si $n\in\mathbb{N}$, entonces
+  \begin{equation}
+    \label{eq1.2}
+    \frac{\Gamma'(n+1)}{\Gamma(n+1)}=-\gamma+1+\frac{1}{2}+\frac{1}{3}+\cdots+\frac{1}{n},
+  \end{equation}
+  donde $\gamma$ es la constante de Euler definida en \eqref{eq1.1}.
+\end{prop}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%-------- Proposición -------%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{prop}\label{p1.2} %Proposición 1.2
+  Sea $z\in\mathbb{C}$, entonces
+  \begin{equation}
+    \label{eq1.3}
+    \Gamma(2z)=\frac{2^{2z-1}}{\sqrt{\pi}}\,\Gamma(z)\,\Gamma\left(z+1/2\right).
+  \end{equation}
+\end{prop}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%-------- Proposición -------%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{prop}\label{p1.3} % Proposición 1.3
+  Sea $z\in\mathbb{C}\backslash\mathbb{Z}$, entonces
+  \begin{equation}
+    \label{eq1.4}
+    \Gamma(z)\,\Gamma(1-z)=\frac{\pi}{\sen\,\pi z},
+  \end{equation}
+  y en particular para $z=1/2$,
+  \[
+    \Gamma(1/2)=\sqrt{\pi}.
+  \]
+\end{prop}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%-------- Proposición -------%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{prop}{\emph{\textbf{(Fórmula de Stirling)}}}\label{p1.4} % Proposición 1.4
+  La función $\Gamma$ tiene la siguiente representación asintótica
+  \[
+    \Gamma(z)=\sqrt{2\pi}\,z^{z-1/2}\,e^{-z}\,\left[1+O(|z|^{-1})\right].
+  \]
+\end{prop}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%---------- Sección ---------%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Método de Frobenius}
 \noindent Cuando se tiene una ecuación diferencial de la forma
 \[
   \ddot{w}+p(z)\dot{w}+q(z)w=0,

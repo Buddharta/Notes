@@ -1,0 +1,133 @@
+% Created 2025-02-06 Thu 20:56
+% Intended LaTeX compiler: pdflatex
+\documentclass[letterpaper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{longtable}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{capt-of}
+\usepackage{hyperref}
+\usepackage{lmodern} % Ensures we have the right font
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{amsmath, amsthm, amssymb, amsfonts, amssymb, amscd}
+\usepackage[table, xcdraw]{xcolor}
+%\usepackage{mdsymbol}
+\usepackage{tikz-cd}
+\usepackage{float}
+\usepackage[spanish, activeacute, ]{babel}
+\usepackage{color}
+\usepackage{transparent}
+\graphicspath{{./figs/}}
+\usepackage{makeidx}
+\usepackage{afterpage}
+\usepackage{array}
+\usepackage{braket}
+\usepackage{pst-node}
+\newtheorem{teorema}{Teorema}[section]
+\newtheorem{prop}[teorema]{Proposici\'on}
+\newtheorem{cor}[teorema]{Corolario}
+\newtheorem{lema}[teorema]{Lema}
+\newtheorem{def.}{Definici\'on}[section]
+\newtheorem{afir}{Afirmaci\'on}
+\newtheorem{conjetura}{Conjetura}
+\renewcommand{\figurename}{Figura}
+\renewcommand{\indexname}{\'{I}ndice anal\'{\i}tico}
+\newcommand{\zah}{\ensuremath{ \mathbb Z }}
+\newcommand{\rac}{\ensuremath{ \mathbb Q }}
+\newcommand{\nat}{\ensuremath{ \mathbb N }}
+\newcommand{\prob}{\textbf{P}}
+\newcommand{\esp}{\mathbb E}
+\newcommand{\eje}{{\newline \noindent \sc \textbf{Ejemplo. }}}
+\newcommand{\obs}{{\newline \noindent \sc \textbf{Observación. }}}
+\newcommand{\dem}{{\noindent \sc Demostraci\'on. }}
+\newcommand{\bg}{\ensuremath{\overline \Gamma}}
+\newcommand{\ga}{\ensuremath{\gamma}}
+\newcommand{\fb}{\ensuremath{\overline F}}
+\newcommand{\la}{\ensuremath{\Lambda}}
+\newcommand{\om}{\ensuremath{\Omega}}
+\newcommand{\sig}{\ensuremath{\Sigma}}
+\newcommand{\bt}{\ensuremath{\overline T}}
+\newcommand{\li}{\ensuremath{\mathbb{L}}}
+\newcommand{\ord}{\ensuremath{\mathbb{O}}}
+\newcommand{\bs}{\ensuremath{\mathbb{S}^1}}
+\newcommand{\co}{\ensuremath{\mathbb C }}
+\newcommand{\con}{\ensuremath{\mathbb{C}^n}}
+\newcommand{\cp}{\ensuremath{\mathbb{CP}}}
+\newcommand{\rp}{\ensuremath{\mathbb{RP}}}
+\newcommand{\re}{\ensuremath{\mathbb R }}
+\newcommand{\hc}{\ensuremath{\widehat{\mathbb C} }}
+\newcommand{\pslz}{\ensuremath{\mathrm{PSL}(2,\mathbb Z) }}
+\newcommand{\pslr}{\ensuremath{\mathrm{PSL}(2,\mathbb R) }}
+\newcommand{\pslc}{\ensuremath{\mathrm{PSL}(2,\mathbb C) }}
+\newcommand{\hd}{\ensuremath{\mathbb H^2}}
+\newcommand{\slz}{\ensuremath{\mathrm{SL}(2,\mathbb Z) }}
+\newcommand{\slr}{\ensuremath{\mathrm{SL}(2,\mathbb R) }}
+\newcommand{\slc}{\ensuremath{\mathrm{SL}(2,\mathbb C) }}
+\newcommand{\mdlr}{\ensuremath{\mathrm{M}}}
+\date{\today}
+\title{Examen 1 de MAF}
+\begin{document}
+
+\maketitle
+\noindent\textbf{Instrucciones: Tienen hasta el Mi'ercoles a las 11:59 pm para resolver el examen. Cada problema vale 2.5 puntos.}
+
+\begin{enumerate}
+
+  \item Sean $y_{1}(x)$, $y_{2}(x)$ soluciones linealmente independientes de la ecuaci'on homogenea
+        \[
+            y''(x)+p(x)y'(x)+q(x)y=0,\quad x\in I.
+        \]
+        Muestre que
+        \[
+        p(x)=\frac{y_{2}(x)y''_{1}(x)-y_{1}(x)y''_{2}(x)}{W(y_{1},y_{2})(x)}\quad q(x)=\frac{y'_{1}(x)y''_{2}(x)-y'_{2}(x)y''_{1}(x)}{W(y_{1},y_{2})(x)}
+        \]
+
+  \item Resuelva la ecuaci'on do \emph{Cauchy-Euler} con valores de fontera
+        \begin{align*}
+          x^{2}y''+xy'+\lambda y=0,\quad x\in(1,b)\\
+          y(1)=y(b)=0
+        \end{align*}
+        \begin{itemize}
+          \item Encuentre el espectro.
+          \item Calcule la funci'on peso $\rho(x)$ que la hace autoadjunta y calcule \emph{producto interno modificado} para mostrar que las soluciones son en efecto son ortogonales.
+        \end{itemize}
+
+  \item El prop'osito de este problema es calcular la funci'on generadora de los polinomio de Hermite a partir de las ecuaciones recursivas.
+        \begin{itemize}
+          \item[a)] En clase vimos que los polinomio de Hermite son solucion a la ecuaci'on $H_{n}''(x)-2xH_{n}(x)+2nH_{n}(x)=0,$ para cada $n\in\nat$ y se calculan como
+\[
+      H_{n}=\sum_{k=0}^{\lfloor n/2\rfloor}\frac{(-1)^{k}n!}{k!(n-2k)!}(2x)^{n-2k},\quad\lfloor\cdot\rfloor\text{ es la funci'on piso.}
+\]
+          A partir de la ecuaci'on de $H_{n}$ y su definici'on, demuestre que se cumplen las relaciones de recurrencia
+          \begin{align*}
+            H'_{n}(x)&=2nH_{n-1}(x)\\
+            H_{n+1}(x)&=2xH_{}(x)-2nH_{n-1}(x).
+          \end{align*}
+          \item[c)] Demuestre inductivamente que se cumple la f'ormula de Rodrigues
+                \[
+                H_{n}(x)=(-1)^{n}e^{x^{2}}\dfrac{d^{n}e^{-x^{2}}}{dx^{n}}
+                \]
+          \item[d)] Utilice la f'ormula de Rodrigues para demostrar que
+                \[
+                \braket{H_{n}|H_{m}}_{e^{-x^{2}}}=\int_{\infty}^{\infty}e^{-x^{2}}H_{n}(x)H_{m}(x)=2^{n}\sqrt{\pi}n!\delta_{nm}
+                \]
+        \end{itemize}
+\noindent\emph{Punto extra: Calcule la funcion generadora de los polinomios de Hermite y demuestre que en efecto es funci'on generadora}
+
+  \item Sean
+\begin{equation}
+  y''+\frac{1}{x}y'+\left(1-\frac{\nu^{2}}{x^{2}}\right)y=0,\quad x\in\re^{+}
+\end{equation}
+las \emph{ecuaciones de Bessel de orden \(\nu\).} Encuentre \(v(x)>0\) tal que \hbox{\(y(x)=u(x)v(x)\)}, donde $u$ es solucion a la ecuaci'on
+\[
+  u''+\left(1+\frac{1-4\nu^{2}}{4x^{2}}\right)u=0.
+\]
+Compare con \(u''+u=0\) para demostrar que si \(\nu\in[0,1/2]\), entonces las soluciones son ondulatorias.
+\end{enumerate}
+\end{document}

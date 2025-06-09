@@ -1,0 +1,181 @@
+
+% Created 2025-02-06 Thu 20:56
+% Intended LaTeX compiler: pdflatex
+\documentclass[letterpaper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{longtable}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{capt-of}
+\usepackage{hyperref}
+\usepackage{lmodern} % Ensures we have the right font
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{amsmath, amsthm, amssymb, amsfonts, amssymb, amscd}
+\usepackage[table, xcdraw]{xcolor}
+%\usepackage{mdsymbol}
+\usepackage{tikz-cd}
+\usepackage{float}
+\usepackage[spanish, activeacute, ]{babel}
+\usepackage{color}
+\usepackage{transparent}
+\graphicspath{{./figs/}}
+\usepackage{makeidx}
+\usepackage{afterpage}
+\usepackage{array}
+\usepackage{braket}
+\usepackage{pst-node}
+\newtheorem{teorema}{Teorema}[section]
+\newtheorem{prop}[teorema]{Proposici\'on}
+\newtheorem{cor}[teorema]{Corolario}
+\newtheorem{lema}[teorema]{Lema}
+\newtheorem{def.}{Definici\'on}[section]
+\newtheorem{afir}{Afirmaci\'on}
+\newtheorem{conjetura}{Conjetura}
+\renewcommand{\figurename}{Figura}
+\renewcommand{\indexname}{\'{I}ndice anal\'{\i}tico}
+\newcommand{\zah}{\ensuremath{ \mathbb Z }}
+\newcommand{\rac}{\ensuremath{ \mathbb Q }}
+\newcommand{\nat}{\ensuremath{ \mathbb N }}
+\newcommand{\prob}{\textbf{P}}
+\newcommand{\esp}{\mathbb E}
+\newcommand{\eje}{{\newline \noindent \sc \textbf{Ejemplo. }}}
+\newcommand{\obs}{{\newline \noindent \sc \textbf{Observación. }}}
+\newcommand{\dem}{{\noindent \sc Demostraci\'on. }}
+\newcommand{\bg}{\ensuremath{\overline \Gamma}}
+\newcommand{\ga}{\ensuremath{\gamma}}
+\newcommand{\fb}{\ensuremath{\overline F}}
+\newcommand{\la}{\ensuremath{\Lambda}}
+\newcommand{\om}{\ensuremath{\Omega}}
+\newcommand{\sig}{\ensuremath{\Sigma}}
+\newcommand{\bt}{\ensuremath{\overline T}}
+\newcommand{\li}{\ensuremath{\mathbb{L}}}
+\newcommand{\ord}{\ensuremath{\mathbb{O}}}
+\newcommand{\bs}{\ensuremath{\mathbb{S}^1}}
+\newcommand{\co}{\ensuremath{\mathbb C }}
+\newcommand{\con}{\ensuremath{\mathbb{C}^n}}
+\newcommand{\cp}{\ensuremath{\mathbb{CP}}}
+\newcommand{\rp}{\ensuremath{\mathbb{RP}}}
+\newcommand{\re}{\ensuremath{\mathbb R }}
+\newcommand{\hc}{\ensuremath{\widehat{\mathbb C} }}
+\newcommand{\pslz}{\ensuremath{\mathrm{PSL}(2,\mathbb Z) }}
+\newcommand{\pslr}{\ensuremath{\mathrm{PSL}(2,\mathbb R) }}
+\newcommand{\pslc}{\ensuremath{\mathrm{PSL}(2,\mathbb C) }}
+\newcommand{\hd}{\ensuremath{\mathbb H^2}}
+\newcommand{\slz}{\ensuremath{\mathrm{SL}(2,\mathbb Z) }}
+\newcommand{\slr}{\ensuremath{\mathrm{SL}(2,\mathbb R) }}
+\newcommand{\slc}{\ensuremath{\mathrm{SL}(2,\mathbb C) }}
+\newcommand{\mdlr}{\ensuremath{\mathrm{M}}}
+\date{\today}
+\title{Examen FINAL de MAF}
+\begin{document}
+
+\maketitle
+\noindent\textbf{Instrucciones: Tienen hasta el Jueves a las 11:59 pm para resolver el examen. Cada problema vale 2 puntos.}
+
+\begin{enumerate}
+\item Utilice el m'etodo de Bernoulli o m'etodo de separaci'on de variables para resolver el problema de la cuerda vibrante de longitud \(L\) con extremos fijos, es decir, utilice el m'etodo para reducir la ecuaci'on
+  \[
+  \dfrac{\partial^{2} u}{\partial t^{2}}=\dfrac{\partial^{2}u}{\partial x^{2}}
+  \]
+  a dos ecuaciones ordinarias. Utilize las condiciones de frontera \(u(0,t)=u(L,t)=0\) para demostrar que las frecuencias en dicha cuerda son \emph{discretas}.Calcule la soluci'on para la condicion inicial $\phi(x)=x(x-L)$.
+\item La función Gamma se define como \(\Gamma:\{\textrm{Re}(z)\in\re^{+}\}\subset\co\to\co\)
+  \begin{itemize}
+    \item Pruebe que
+    \[
+        \Gamma(z)=\int_0^{\infty}e^{-x}x^{z-1}\,dx
+    \]
+    esta bien definida.
+    \item Demuestre que \((\Gamma)(z+1)=z\Gamma(z)\), calcule \(\Gamma(n)\) para toda \(n\in\nat\)
+    \item Muestre que \(\Gamma(1/2)=\sqrt{\pi}\) y use el inciso anterior para calcular \(\Gamma(n+1/2)\)
+    \item Demuestre que
+          \[
+          \Gamma(z)\Gamma(z-1)=\frac{\pi}{\sin(\pi z)}
+          \]
+  \end{itemize}
+
+  \item El prop'osito de este problema es calcular la funci'on generadora de los polinomio de Hermite a partir de las ecuaciones recursivas.
+        \begin{itemize}
+          \item[a)] En clase vimos que los polinomio de Hermite son solucion a la ecuaci'on $H_{n}''(x)-2xH_{n}(x)+2nH_{n}(x)=0,$ para cada $n\in\nat$ y se calculan como
+\[
+      H_{n}=\sum_{k=0}^{\lfloor n/2\rfloor}\frac{(-1)^{k}n!}{k!(n-2k)!}(2x)^{n-2k},\quad\lfloor\cdot\rfloor\text{ es la funci'on piso.}
+\]
+          A partir de la ecuaci'on de $H_{n}$ y su definici'on, demuestre que se cumplen las relaciones de recurrencia
+          \begin{align*}
+            H'_{n}(x)&=2nH_{n-1}(x)\\
+            H_{n+1}(x)&=2xH_{}(x)-2nH_{n-1}(x).
+          \end{align*}
+          \item[c)] Demuestre inductivamente que se cumple la f'ormula de Rodrigues
+                \[
+                H_{n}(x)=(-1)^{n}e^{x^{2}}\dfrac{d^{n}e^{-x^{2}}}{dx^{n}}
+                \]
+          \item[d)] Utilice la f'ormula de Rodrigues para demostrar que
+                \[
+                \braket{H_{n}|H_{m}}_{e^{-x^{2}}}=\int_{\infty}^{\infty}e^{-x^{2}}H_{n}(x)H_{m}(x)=2^{n}\sqrt{\pi}n!\delta_{nm}
+                \]
+          \item[e)] Encuentre la serie de Fourier generalizada o serie de Fourier-Hermite (serie de Fourier en t'erminos de los polinomios de Hermite) de $x^{2r}$ y $x^{2r+1}$ respectivamente.
+        \end{itemize}
+
+  \item Este problema es para resolver el Laplaciano tres dimencional
+        \begin{itemize}
+                \item[a)] Calcule el Laplaciano
+        \[
+        \nabla^{2}=\dfrac{\partial^{2}}{\partial x^{2}}+\dfrac{\partial^{2}}{\partial y^{2}}+\dfrac{\partial^{2}}{\partial z^{2}}
+        \]
+        en coordenadas esfericas y cilindricas, las cuales se definen como
+        \begin{align*}
+          \text{Esfericas: }(x,y,z)&=r(\sin\theta\cos\phi,\sin\theta\sin\phi,\cos\theta),\\ &r=\sqrt{x^{2}+y^{2}+z^{2}}\quad\phi=\arctan\left(\frac{y}{x}\right)\,\theta=\arccos\left(\frac{z}{r}\right)\\
+          \text{Polares: }(x,y,z)&=(r\cos\theta,r\sin\theta,z),\\
+          &r=\sqrt{x^{2}+y^{2}}\quad\theta=\arctan\left(\frac{y}{x}\right)
+        \end{align*}
+          \item[b)] Utilice el \emph{m'etodo de Bernoulli} para encontrar los sistemas de ecuaciones relacionados a la \emph{ecuaci'on de Laplace} en coordenadas cartesianas, esfericas y cilindricas (tres dimensiones).
+          \item[c)] \emph{Resuelva} los sistemas obtenidos para la ecuaci'on de laplace $\nabla^{2}\psi=0$ en el conjunto $\Omega=\{(x,y,z)\,:\,0\leq x\leq a,\,0\leq y\leq b, \,0\leq z\}$ en coordenadas cartesianas con condiciones de Dirichlet
+        \begin{align*}
+          &\psi(0,y,z)=0\quad\psi(a,y,z)=0\\
+          &\psi(x,0,z)=0\quad\psi(x,b,z)=0\\
+          &\psi(x,y,0)=f(x,y)\quad\psi(x,y,z)\to0\,\text{ cuando }z\to\infty\\
+        \end{align*}
+  \end{itemize}
+  \item Sean
+\begin{equation}
+  \dfrac{d}{dx}\left[(1-x^{2})y'(x)\right]+n(n+1)y=0,\quad x\in [-1,1]
+\end{equation}
+        las \emph{ecuaciones de Legengre de orden \(n\),} y sean $P_{n}(x)$ sus soluciones polinomiales tales que $P_{n}(1)=1$.
+        \begin{itemize}
+          \item[a)] Demuestre la \emph{f'ormula de Rodrigues}
+                \[
+                \dfrac{d^{n}}{dx^{n}}(x^{2}-1)=2^{n}n!P_{n}(x),
+                \]
+                y utilicela para demostrar que $\braket{x^{m}|P_{n}(x)}=0$ para todo $m<n$, conluya que $\{P_{n}\}$ es una familia ortogonal de funciones
+
+          \item[b)] Calcule la serie de Fourier-Legendre o serie de Fourier generalizada en t'erminos de los polinomios de Legendre de la funcion de Heaviside
+                \[
+                H(x)=
+                \begin{cases}
+                  0\quad -1\leq x <0\\
+                  1\quad 0\leq x \leq 1
+                  \end{cases}
+                \]
+          \item[c)] Demuestre que se cumplen las ecuaciones de recurrencia
+        \begin{align*}
+          P'_{n+1}(x)-P'_{n-1}(x)&=(2n+1)P_{n}(x)\\
+          (n+1)P_{n+1}(x)-nP_{n-1}(x)&=(2n+1)xP_{n}(x)\\
+        \end{align*}
+          \item[d)] Utilice las ecuaciones de recurrencia anteriores para demostrar que la \emph{funcion generadora}
+                \[
+                \mathcal{F}(x,z)=\sum_{n=0}^{\infty}P_{n}(x)z^{n}
+                \]
+                cumple
+                \[
+                (1-2xz+z^{2})\dfrac{\partial\mathcal{F}}{\partial z}=(x-z)\mathcal{F}(x,z)
+                \]
+          \item[e)] Resuelva la ecuacion diferncial anterior para caluclar la funcion generadora.
+        \end{itemize}
+
+\end{enumerate}
+\end{document}
