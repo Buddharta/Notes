@@ -1,28 +1,99 @@
 #+title:Notas de Lisp
 #+Author: Caros Eduardo Martínez Aguilar
-
+#+OPTIONS: tex:t
+#+LANGUAGE: esp
+#+SETUPFILE: ~/Templates/notes-latex.org
 * Introducción
 Lisp es uno de los lenguajes de programación más antiguos que existen, fue creado en 1958 por John McCarthy en el MIT y es pionero de muchas tecnicas de programación moderna como recursión, programación dinámica, calculo lambda. Fue el primer lenguaje interpretado sin necesitar de un compilador, además de tener tipado dinámico y recolector de basura. Su nombre proviene de LISt Processor ya que la estructura de datos básica es la lista ligada, donde cada elemento de la lista tiene dos punteros, uno lamado "CAR" que apunta a os datos y otro "CDR" que apunta a siguiente elemento de la lista, al final existe un puntero "NIL".
-Las expresiones en lisp se conocen como "s-expression" y toda expresión en lisp va entre paréntesis y por lo general son de la forma (operador operandos), donde un operador es unaa función y los operandos son datos aceptados por la función.
+Las expresiones en lisp se conocen como /"s-expression"/ y toda expresión en lisp va entre paréntesis y por lo general son de la forma (operador operandos), donde un operador es una función y los operandos son datos aceptados por la función.
 Una de las partes más poderosas de lisp es su poder de creación de MACROS, que es tan poderoso como para crear lenguajes dentro de lisp mismo.
-Al ser un lenguaje tan viejo, no sigue conveciones de UNIX como \(\n\) para nueva linea o \(%s\) en formatos de strings. En su lugar se usa \(~%\) y \(~A\) respectivamente. Además al ser un lenguaje interpretado y dinámico, es muy común el uso de un REPL (Read Eval Print Loop) y por tanto al encontrarse con un error, es posible modificar el código y reintentar desde donde se había quedado el programa y de hecho es posible descompilar una función esspecífica, simplemente en el REPL se escribe \(#'<nombre-de-funcion>\).
+Al ser un lenguaje tan viejo, no sigue conveciones de UNIX como \(\n\) para nueva linea o \(%s\) en formatos de strings. En su lugar se usa \(~%\) y \(~A\) respectivamente. Además al ser un lenguaje interpretado y dinámico, es muy común el uso de un REPL (Read Eval Print Loop) y por tanto al encontrarse con un error, es posible modificar el código y reintentar desde donde se había quedado el programa y de hecho es posible descompilar una función esspecífica, simplemente en el REPL se escribe
+
+#+begin_src
+#'<nombre-de-funcion>
+#+end_src
+De hecho el dinamismo de LISP y el uso de su REPL van más allá que simplemente modificar errores cuando se encuentran, LISP esta pensando como un entorno de programación dinámico en donde el código se modifica mientra se usa.
 ** Sintaxis básica
 Todo en LISP esa entre paréntesis, de tal forma que los bloques básicos para todo programa son de la forma
-#+BEGIN_SRC
+#+BEGIN_SRC LISP
 (operador datos)
 #+END_SRC
 Por ejemplo la suma de de dos números se escribe
-#+BEGIN_SRC
-(+ a b) ;;suma de numeros en abstracto, por ejemplo en el REPL al evaluar la siguiente expresion obetnemos algo del estilo
->(+ 2 3)
+#+BEGIN_SRC LISP
+(+ a b)
+(+ 2 3)
 5 (3 bits, #x5, #o5, #b101)
 #+END_SRC
 La declaración de una variable se hace conun bloque let
-#+BEGIN_SRC
+#+BEGIN_SRC LISP
 (let (= variable dato))
 #+END_SRC
 donde claramente se utiliza el operador \(=\) para asignar a la variable el dato. similarmente, hay bloques para funciones
-#+BEGIN_SRC
+#+BEGIN_SRC LISP
 (defun funcion (parametros)
 (;;cuerpo de la función))
 #+END_SRC
+Podemos definir a LISP desde sus elementos mas simples (o atomos) y con la sintaxis anterior como /expresiones simbólicas/, en inglés /Symbolic expression/ o abreviadamente /s-expression/. Ahora una forma formal, consisa y elegante de expresar estructuras abstractas que se tuliza mucho en ciencias de la computación, es la notación o ecuaciones de las /formas de Backus-Naur/ y se usan para la descripción de lenguages y gramáticas libres de contexto. Lo que se busca es expresar una objetos abstractos la cual denotamos como *<objeto>* y queremos que dicha expresion sea sintácica y por lo tanto /sólo es una representación/ y no el objeto en si, esto se denota como
+#+BEGIN_SRC LISP
+<objeto> ::= <expresión>
+#+END_SRC
+Por ejemplo, nos números naturales son entes abractos que se representan como numerales (cadenas de dígitos), entonces la representación de Backus-Naur de los numerales es
+#+BEGIN_SRC
+<digit> ::= 0|1|2|3|4|5|6|7|8|9|
+<numeral> ::= <digit>|<numeral><digit>
+#+END_SRC
+Es decir, decimos que un numeral es un dígito (que puese ser cualuiera del 0 a 9) o una concatenacion de un numeral y un dígito, esta es una /descripción inductiva o generativa/, es decir parte de elementos básicos y de ahí todos los elementos se pueden expresar a partir de los más básicos.
+Similarmente podemos expresar a LISP con expresiones simbólicas *<sexpr>* , para definirlas, primero definimos los átomos, los átomos se definen a partir de los *<numeral>*, sus fórmulas de Backus-Naur son
+#+begin_src
+ <digit> ::= 0|1|2|3|4|5|6|7|8|9|
+<numeral> ::= <digit>|<numeral><digit>
+<atom letter> ::= A|B|C|...|Z
+<literal atom> ::=<atom letter>
+<literal atom> ::=<literal atom><atom letter>
+<literal atom> ::=<literal atom><numeral>
+<atom> ::=<literal atom>|<numeral>|-<numeral>
+#+end_src
+Es decir, en LISP un átomo es una expresión numérica (incluyendo signo)   o cualquier "string" que no comience con un número (cualquier concatenacion de caracteres que no comience con un número).  Es posible incluir una variedad mas amplia de caracteres para definir los átomos de LISP sin enmbargo, para niestros popósitos con los que hemos definido, estos son suficientes. Ahora a partir de los átomos pdemos definir las *<sexpr>*, de hecho la definicion de las *<sexpr>* es bastante simples, todos los átomos son s-expressions y las s-expressions que no sean átomos son pares de tipo \((A_1,A_2)\), donde \(A_i\) son /s-expressions/ es decir, su ecuacion de Backus-Naur es
+#+begin_src
+<sexpr> ::= <atom> | (<sexpr>,<sexpr>)
+#+end_src
+Entonce por ejemplo A, (NIL , 1), (def, (n, (T 1)) son todas /s-expressions/. Notamos que todo numeral es un átomo y por lo tanto todo numeral es una /s-expression/ y por lo tanto los pares de numerales son /s-expressions/ lo cual podemos codificar los números racionales como /s-expressions/.
+*** Representación con árboles
+        Es de notarse que podemos representar las /s-expressions/ graficamente con árboles, los cuales llamaremos /LIPS-trees/ o /L-Trees/, aqui hay un ejemplo
+        #+begin_src
+  ROOT
+  |
+  +--+---- B
+  |  |
+  |  +---- NIL
+  +-- A
+        #+end_src
+        Notamos que estos son atomos binarios, los cuales se definen recursivamente, en el mismo sentido, los /L-trees/ se definen como; todo *<atom>* es un /L-tree/, si \(\alpha_1,\alpha_2\) son /L-trees/, entonces el par \((\alpha_1,\alpha_2\) también son /L-trees/. Así ambas expresiones son equivalentes, donde los átomos se muestran como los nodos finales u hojas del árbol, notamos que todo /L-tree/ tiene dos sub-arboles, uno izquierdo y otro derecho. Otra forma de representar estos /L-trees/ es la siguiente forma
+        #+begin_src
+         +-----+-----+      +-----+-----+
+     --->| A   |  .--|----> |  B  |  C  |
+         +-----+-----+      +-----+-----+
+        #+end_src
+Que representa la expresión \((A,(B,C))\). Notemos que esta sólo es un a forma de expresar las /s-expressions/ se pueden usar cuaqluier tipo de paréntesis o usar punto en lugar de  comma, de hecho en LISP normalmente no se usa comma y se pone un espacio, pero usarmos comma para mayor claridad.
+Con esto hemos demostrado que existen varias representaciones para el mismo onjeto abstracto, de la misma forma que el numeral romano "IV" y el arábigo "4" representa el mismo nú<literal atom> ::=<atom letter>|<literal atom><atom letter>|<literal atom><digit>
+mero. Así si tenemos un dominio \(D\) y un domino \(E\), entonces estudiaremos funcionses de representación \(\mathfrak{R}:D\to E\) las cuales por lo genral se definiral inductivamente. Por ejemplo hemos definido \(\mathfrak{R}:\textrm{<sexpr>}\to \textrm{L-tree}\) tomando
+\[
+        \mathfrak{R}[<atom>]=<atom>\quad \mathfrak{R}[(\alpha,\beta)]=( \mathfrak{R}[\alpha], \mathfrak{R}[\beta]).
+\]
+** Funciones
+Una vez definida la sintaxis valida, necesitamos hacer /algo/ con ella, en específico necesitamos /computar/ con la sintaxis para tener un /lenguage funcional/, por lo tanto necesitamos descibir las funciones cuyo dominio sean las *<sexpr>*. Ahora, en computación la noción de /algoritmo/ es más importante que la noción abstracta de /función matemática/ donde la implementación es menos relevante. Bajo el formalismo de la teoría de conjuntos, una función es un /conjunto de pares ordenados/, es decir que no hay distinción entre una función y su gráfica, sin importar cómo se calcula la imagen de la función
+\[
+f=\{(x_0,f(x_0)),(x_1,f(x_1)),\dots,(x_n,f(x_n))\}.
+\]
+La /imagen/ es el conjunto de los valores que toma la función. Hemos notado que en efecto no es necesario saber /cómo/ se calculan los valores de la función, sólo es necesrio suponer que es posible calcularos. El /dominio/ o /dominio de discurso/ de una función son los /todos los posibles argumentos \(x_i\) que puede tener una función/, es decir todos los \(x\) que pueden tener un valor \(f(x)\), este conjunto lo denotaremos como \(D\). Si el dominio de una función \(f\) es \(D\), decimos que la /función es total/ sin embargo si el dominio es un subconjunto propio de \(D\), decimos que \(f\) es una /una función parcial/. Las funciones parciales son más comunes en computación aunque  las nociones son realtivas al /dominio de discurso/ y las funciones se pueden extender como timpicamente se extienden las funciones en matemáticas.
+Como buscamos un modelo de computación, nesesitamos saber qué hacer respecto a las funciones parciales ya que la mayor parte de los programas tienen resultados que son sincomputables dependiendo de las circumstancias (necesitamos un núnero finito de valores por ejemplo). En particular, necesitamos saber que hacer con las condiciones de error de los programas, es decir vamos a definir una clase de errores con los cuales definimos los  valores de \(f(x)\) cuando no es possible computar dicho valor. Llamaremos a estos valores como "no especificados" y usaremos el símbolo \(\bot\) para los argumentos que tengan estos valores.
+Cuando definamos estructuras de datos nuevas, vamos a querer definir las funciones que ya hemos definidos para dominio cada vez mayores, por ejemplo si tenemos una función factorial, matemáticamente se define para los naturales como
+\[
+\textrm{fract}=\{(0,1),(1,1),(2,2),(3,6),\dots,(n,n!)\}.
+\]
+Entonces, hemos definido ya los numerales, así podemos definir el factorial para los numerales positivos. Sin embargo en cursos de matemáticas avanzadas, se ve que es posible definir el factorial para los números reales e incluso los números complejos, entonces si podemos definir estos números como un tipo de datos básico, necesitamos poder definir \(\texrm{fact}\) para dichos tipos de datos.
+Asi se precede igual que en matemáticas, se define \(f\) en \(D\) y queremos definirla para un dominio más amplio \(D\cup E\), donde definiremos \(f(e)=f(\bot)\) para \(e\in E\). Si \(f(\bot)=\bot \) diremos que \(f\) es /estricta/. Para hacer esto expandemos la noción de /s-expressions/.
+\[
+\mathcal{S}=\mathbf{<sexpr>}\cup\{\bot\}
+\]
+Así, vamos a definir fucniones /completas/ en \(\mathcal{S}\) o parciales sobre *<sexpr>*, busacresmos representaciones algoritmicas para dichas funciones en LISP. Así la primera función que consideraremos es /cons/, esta función de dos variables se usa para /simplificar s-expressions/

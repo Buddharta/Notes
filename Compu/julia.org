@@ -1,0 +1,42 @@
+#+title: Notas de Julia
+#+Author: Caros Eduardo Martínez Aguilar
+#+OPTIONS: tex:t
+#+LANGUAGE: esp
+#+SETUPFILE: ~/Templates/notes-latex.org
+* Introducción
+Estas son unas notas sobree Julia pensadas para mi, alguien que ya sabe sobre programación y que quiere usar Julia para apliaciones matemáticas avanzadas.
+Conviene intalarjulia con "juliaup" ya que con esete commando se puede actualizar julia, además yo uso emacs entonces conviene intalar "julia-mode" y "snail" para taner un entorno de programacion como si fuera LISP, en el sentido de que se puede usar su REPL todo el tiempo.
+#+begin_src Shell
+$ juliaup
+#+end_src
+** Variables Básicas
+Las variables se definen y declaran al mismo tiempo, es opcional decir el tipo de dato que son
+#+begin_src Julia
+nombre-de-variable::TipoDeDato = dato
+#+end_src
+Si se quiere saber el tipo de dato de alguna variable, digamos "x" se puede usar la función que regresa el tipo de dato de "x", la sintaxis para eso es
+#+begin_src Julia
+typeof(x)
+#+end_src
+Para los nombres de las variables se puede usar unicode y por ejemplo puede uno escribir una variable como \gamma y usar <TAB> y el editor muestra la letra griega gamma, además hay contrantes predeterminadas como \pi o \euler que son las esperadas.
+***  Variables Numéricas
+Los tipos de datos numéricos básicos en julia son Int32, Int64, Float64 y Float32, además de estas varientes, exixsten varientes de 128 y BigInt, BigFloat.  Un tipo de dato curioso que no se encuentra mucho en otros lenguajes es el de los numeros racionales o fracciones que se denota como Rational{Int64} (tipo de datos parmértico) y se expresan de la forma a//b, Tambien existe la division entera con la función div() aunque también se puede usar \div y esto muestra el caracter de división si se usa <TAB>. Además también existen enteros, racionales y  flotantes /complejos/, donde para la unidad imaginaria se usa im, es decir, se pueden definir variables del tipo
+#+begin_src Julia
+x = 2 + 3im
+y = 2.2 + 3.1im
+z = 2//3 + 3//5im
+#+end_src
+*** Char y Strings
+Como en los lenguajes derivados de C, Julia tiene Char para caracteres simples, los cuales de declaran con comillas simples
+#+begin_src Julia
+caracter::Char='c'
+#+end_src
+Además también hay Strings que se dedinen con comillas dobles
+#+begin_src Julia
+string::String = "Hello, World!"
+#+end_src
+** Macros
+Julia es un lenguage que se parece mucho a Scheme y LISP, sin embargo algo que tiene distinto a estos lenguajes es que sus macros no son como cualquier función, entonces los macros se indican con @ al principio. De hecho es posible usar Julia desde una REPL de scheme usando
+#+begin_src Shell
+$ julia --lisp
+#+end_src

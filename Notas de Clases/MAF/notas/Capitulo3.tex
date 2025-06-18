@@ -518,7 +518,7 @@ M'as a'un si imponemos condiciones de forntera $u(0)=u(\pi)=0$ entonces es f'aci
 \]
 Los cuales sabemos que son \emph{ortonormales}.
 
-\noindent Ahora, \textbf{¿Qu'e se puede hacer cuando $a_{0}'\neq a_{1}$ en $L$?}. Resulta que podemos multiplicar a $L$ por una funci'on positiva $\rho(x)>0$ de tal forma que $L$ es \emph{formalmente autoadjunto} para un \emph{producto punto} modificado o \emph{medida modificada}. Primero, sea
+\noindent Ahora, \textbf{¿Qu'e se puede hacer cuando $a_{0}'\neq a_{1}$ en $L$?}. Resulta que podemos multiplicar a $L$ por una funci'on positiva $\rho(x)>0$ de tal forma que $L$ es \emph{formalmente autoadjunto} para un \emph{producto interno modificado} o \emph{medida modificada}. Primero, sea
 \[
 L=a_0(x)\frac{d^2}{dx^2}+a_1(x)\frac{d}{dx}+a_2(x)I,\quad x\in [a,b]\subset\re,
 \]
@@ -553,7 +553,7 @@ Es decir
 \[
   \int_{a}^{b}|u(x)|^{2}\,d\lambda(x)<\infty\iff \int_{a}^{b}|u(x)|^{2}\,d\mu_{\rho}(x)<\infty,
 \]
-es decir, los espacios $\mathcal{L}^{2}([a,b],\lambda)$ y $\mathcal{L}^{2}([a,b],\mu_{\rho})$ contienen a las mismas funciones y m'as a'un, las desigualdades \ref{norm-equiv} en el leguange de espacios normados se le conoce como \emph{normas equivalentes} y esto significa que ambos espacios tienen \emph{la misma topolog'ia}, es decir las nociones de convergencia son equivalentes, sin embargo el producto punto es \textbf{distinto.}
+es decir, los espacios $\mathcal{L}^{2}([a,b],\lambda)$ y $\mathcal{L}^{2}([a,b],\mu_{\rho})$ contienen a las mismas funciones y m'as a'un, las desigualdades \ref{norm-equiv} en el leguange de espacios normados se le conoce como \emph{normas equivalentes} y esto significa que ambos espacios tienen \emph{la misma topolog'ia}, es decir las nociones de convergencia son equivalentes, sin embargo el producto interno es \textbf{distinto.}
 
 \subsection{El oscilador arm'onico cu'antico y los polinomonios de Herminte}
 \noindent Ahora veremos uno de los ejemplos m'as importantes de un problema de Strum-Liouville, el operador hamiltioniano para un potencial independiente del tiempo, es decir la ecuaci'on
@@ -911,7 +911,11 @@ Donde la constante $c$ está dada por
 Las otras propiedades de la funcion de Green son f'aciles de verificar.
 
 \obs El operador de tipo Fredholm $T$ definido por una funci'on de Green $G$ es un operador acotado en $\mathcal{L}^{2}([a,b],\mu)$ y en $(\mathcal{C},\|\cdot\|_{\infty})$ pues $G$ es continua en $[a,b]\times[a,b]$ como hemos visto previamente, donde $\|T\|\leq\sqrt{b-a}\|G\|_{\infty}$ en $\mathcal{L}^{2}$ y $\|T\|\leq(b-a)\|G\|_{\infty}$ con la norma infinito.
-
+\obs El m'etdodo de variac'on de par'ametros para resolver una ecuacion diferencial no homogenea nos otorga una forma de clacular la funci'on de green. Recordando el m'etodo de variaci'on de par'ametros para resolver una ecuaci'on diferencial no homogenea, se busca $y\in\mathcal{C}^{2}[a,b]$ tal que
+\[
+  \mathcal{L}[y](x)=f(x)\quad\forall x\in[a,b] \text{ y }y(a)=y(b)=0.
+\]
+Donde $\mathcal{L}$ es cualquier operador diferencial lineal ordinario de orden dos, pero en este caso lo supondremos que ya lo tenemos trnsformado en un operador de Strum-Liouville. El m'etodo de variaci'on de par'ametros supone
 \subsection{Calculo del espectro}
 \noindent Al principio de esta secci'on usamos el hecho de que not todo n'umero real va a ser parte del espectro de un operador de Strum-Liouville, el siguiente lema lo demuestra
 \begin{lema}

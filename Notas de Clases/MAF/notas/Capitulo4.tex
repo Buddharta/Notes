@@ -90,7 +90,7 @@ M'as a'un nos enfocaremos en las ecuaciones parciales m'as comunes, en espec'ifi
 
     \obs En m'as dimensiones el m'etodo de Bernoulli reduce la ecuacion parcial a un sistema igual al n'umero de dimensiones, pero se necesitan ajustar las hipotesis para incluir \emph{todas} las combinaciones de derivadas, algo que es complicado de escribir y por eso se omite. Adem'as la clasificaci'on tambi'en se usa para mayores dimensiones.
 \section{Principio de Superposici'on}
-\noindent Utilizando el m'etodo de Bernoulli, es posible reducir una ecuacion diferencial parcial lineal de orden $k$ en $n$ variables a un \emph{sistema de ecuaciones diferenciales ordinarias lineales de orden $k$}, en el caso anterior $k=2$ y $n=2$, por lo tanto se obtienen un sistema de dos ecuaciones diferenciales lineales, ordinarias de orden dos que adem'as dependen de un par'ametro $\lambda$, es decir dos problemas tipo \emph{Stutm-liouville}, sin embargo, es necesario imponer \emph{condiciones de frontera}, es decir, buscamos $\phi:\om\subset\re\to\re$ que cumpla la ecuaci'on \ref{edp-lin-red-2}, adem'as, la fontera de $\om$, $\partial\om$ es una curva $\mathcal{C}^{1}$ por tramos parametrizada por $\sigma:I\to\partial\om$, $\sigma(s)=(x(s),y(s))$ con vector normal $\hat{n}$, entonces buscamos que la funci'on $\phi$ cumla;
+\noindent Utilizando el m'etodo de Bernoulli, es posible reducir una ecuacion diferencial parcial lineal de orden $k$ en $n$ variables a un \emph{sistema de ecuaciones diferenciales ordinarias lineales de orden $k$}, en el caso anterior $k=2$ y $n=2$, por lo tanto se obtienen un sistema de dos ecuaciones diferenciales lineales, ordinarias de orden dos que adem'as dependen de un par'ametro $\lambda$, es decir dos problemas tipo \emph{Sturm-Liouville}, sin embargo, es necesario imponer \emph{condiciones de frontera}, es decir, buscamos $\phi:\om\subset\re\to\re$ que cumpla la ecuaci'on \ref{edp-lin-red-2}, adem'as, la fontera de $\om$, $\partial\om$ es una curva $\mathcal{C}^{1}$ por tramos parametrizada por $\sigma:I\to\partial\om$, $\sigma(s)=(x(s),y(s))$ con vector normal $\hat{n}$, entonces buscamos que la funci'on $\phi$ cumla;
 \begin{equation}
   \alpha\phi(x(s),y(s))+\beta\dfrac{\partial\phi}{\partial \hat{n}}(x(s),y(s))=0.
 \end{equation}
@@ -106,8 +106,140 @@ Sin embargo es posible que dicha familia de soluciones sea \emph{no numerable}, 
 \[
   \phi(x,y)=\int A(\lambda)\phi_{\lambda}(x,y)\,\mu(\lambda)=\int A(\lambda)\varphi_{\lambda}(x)\psi_{\lambda}(y)\,\mu(\lambda).
 \]
-Donde $\mu$ es la \emph{medida espectral}, sin embargo nosotros s'olo consideraremnos el caso en el que tengamos espectro \emph{discrto}, con esto en mente el siguiente teorema nos permite resolver esto en el caso \emph{discreto}
-  \section{Método de Frobenius}
+Donde $\mu$ es la \emph{medida espectral}, sin embargo nosotros s'olo consideraremnos el caso en el que tengamos espectro \emph{discreto}, con esto en mente el siguiente teorema nos permite resolver esto en el caso \emph{discreto}
+
+\subsection{Las funciones de Green como superposici'on de funciones propias}
+\noindent Una aplicacion a lo que hemos visto anteriormente es la posibidad de calcular la funcion de Green de un operador diferencial lineal ordinario de orden dos. Supongamos que $\mathcal{L}$ es un operador diferencial lineal ordinario de orden dos,
+en el cap'itulo anterior logramos resolver las ecuaciones de tipo con ciertos valores de frontera de tipo \ref{SL-fron} en el intervalos $[a,b]$
+\[
+  \mathcal{L}[\psi_{n}]=\lambda_{n}\rho(x)\psi_{n}(x).
+\]
+Las cuales nos daban una \emph{descomposici'on espectral} del operador $\mathcal{L}$, es decir obtenemos la posibilidad de expresar cualquier funci'on cuadrado integrable $f$ por medio de las funciones propias $\phi_{n}$ con valores propios $\lambda_{n}$, en particular, si se quiere resolver la \emph{ecuaci'on no homogenea}
+\[
+  \mathcal{L}[\phi](x)=f(x),
+\]
+entonces podemos expresar a la soluci'on $\phi$ como una \emph{superposici'on de funciones propias}
+\[
+  \phi(x)=\sum_{n=0}^{\infty}\gamma_{n}\psi_{n}(x).
+\]
+Donde $\gamma_{n}\in\co$, por lo tanto al aplicar $\mathcal{L}$ obtenemos
+\[
+  f(x)=\mathcal{L}[\phi](x)=\mathcal{L}\left[\sum_{n=0}^{\infty}\gamma_{n}\phi\psi_{n}\right](x)=
+  \sum_{n=0}^{\infty}\gamma_{n}\lambda_{n}\rho(x)\psi_{n}(x).
+\]
+Ahora al aplicar el poducto interno con $\psi_{k}$ obtenemos
+\[
+  \braket{\psi_{k}|f}=\int_{a}^{b}\overline{\psi_{k}}(\xi)f(\xi)\,d\xi=
+  \sum_{n=0}^{\infty}\int_{a}^{b}\gamma_{n}\lambda_{n}\overline{\psi_{k}(\xi)}\psi_{n}(\xi)\rho(\xi)\,d\xi.
+\]
+Por la ortogonormalidad de la base $\{\psi_{n}\}_{n\in\nat}$, todas las integrales se anulan excepto cuando $n=k$, adem'as $\|\psi_{k}(x)\|_{\rho}=1$, donde $\|\cdot\|_{\rho}$ es la norma inducida por el \emph{producto interno modificado}, as'i podemos despejar $\gamma_{k}$ para obtener
+\[
+    \gamma_{n}=\frac{1}{\lambda_{n}}\int_{a}^{b}\overline{\psi_{k}(\xi)}f(x)\,d\xi=\frac{1}{\lambda_{n}}\braket{\psi_{k}|f}.
+\]
+Por lo tanto expresamos la solucion como (podemos meter la serie a la intregral por convergencia uniforme como ya vimos)
+\begin{equation}\label{Green1}
+  \psi(x)=\int_{a}^{b}\left(\sum_{n=0}^{\infty}\frac{1}{\lambda_{n}}\overline{\psi_{n}(\xi)}\psi(x)\right)f(\xi)\,d\xi.
+\end{equation}
+Esto implica que podemos expresar a la funci'on de Green como
+\begin{equation}\label{Green2}
+  G(x,\xi)=\sum_{n=0}^{\infty}\frac{1}{\lambda_{n}}\overline{\psi_{n}(\xi)}\psi_{n}(x).
+\end{equation}
+Esto es porque la ecuaci'on \ref{Green1} implica que la serie anterior define un inegral tipo Fredholm $\hat{T}$ tal que $\hat{T}=\mathcal{L}^{-1}$ y por unicidad del operador inverso, la ecuaci'on \ref{Green2} es v'alida \emph{casi donde quiera}.
+
+\obs Podemos generalizar el caso anterior cuando tenemos una ecuacion del tipo
+\begin{equation}\label{eq-ord2}
+  \mathcal{L}[\phi](x)-\mu\rho(x)\phi(x)=f(x)
+\end{equation}
+Donde $\mathcal{L}$ es un operador diferencial lineal ordinario de orden dos hermitiano (Strum-Liouville) con valores propios $\{\lambda_{n}\}_{n\in\nat}$ y funciones propias $\{\psi_{n}\}_{n\in\nat}$, entonces representamos a $f$ como su \emph{serie de Fourier generalizada}
+\begin{equation}\label{fuc-ev}  f(x)=\sum_{n=0}^{\infty}\braket{\psi_{n}|f}_{\rho}\psi_{n}=\int_{a}^{b}f(\xi)\rho(\xi)\left(\sum_{n=0}^{\infty}\overline{\psi_{n}(\xi)}\psi_{n}(x)\right)\,d\xi
+\end{equation}
+Ahora como esta ecuación es válida para cuaquier función y para todo $x\in[a,b]$ sin embargo eso implica que la expresión
+\begin{equation}\label{dirac-delta0}
+  \rho(\xi)\left(\sum_{n=0}^{\infty}\overline{\psi_{n}(\xi)}\psi_{n}(x)\right)
+\end{equation}
+es una función que al multiplicar por cualquier $f$ e integrar, obtenemos su valor $f(x)$ es decir la expresión \ref{dirac-delta0}, en términos de funcionales lineales, es un representante del funcional evaluación en un punto, es decir $f\mapsto f(x)$. Veremos luego que es \emph{imposible} considerando \emph{funciones tradicionales}, lo que sucede aqui es que la expresión \ref{dirac-delta0} es una \emph{función} generalizada y de hecho es la conocida como la \emph{delta de Dirac} $\delta(\xi-x)$ la cual es una ``función'' cuyos valores son $0$ en todos los puntos, excepto en $\{x=\xi\}$ donde toma el valor ``infinito'' y esto es lo que permite que la ecuación \ref{fuc-ev} sea válida para toda $f$ y $x$. Más aún esto implica la siguiente simetía (la cual veremos tanbién posteriormente que relaciona a la fución de Green con la delta de Dirac)
+\[
+  \rho(\xi)\left(\sum_{n=0}^{\infty}\overline{\psi_{n}(\xi)}\psi_{n}(x)\right)=\delta(\xi-x)=\delta(x-\xi)=  \rho(x)\left(\sum_{n=0}^{\infty}\overline{\psi_{n}(\xi)}\psi_{n}(x)\right).
+\]
+El hecho de que el operador $\mathcal{L}$ sea herminiano permite la simtería en términos del conjugado en la ecuación anterior. Entonces usando esto en \ref{fuc-ev} obtenemos
+
+\begin{equation}
+  f(x)=\int_{a}^{b}f(\xi)\rho(\xi)\left(\sum_{n=0}^{\infty}\overline{\psi_{n}(\xi)}\psi_{n}(x)\right)\,d\xi=\rho(x)\sum_{n=0}^{\infty}\braket{\psi_{n}|f}\psi_{n}(x)
+\end{equation}
+Entonces si expresamos a $\phi$ como su series de Fourier generalizada $\phi=\sum_{n\in\nat}c_{n}\psi_{n}$, entonces si sustituimos en la ecuación original \ref{eq-ord2}, para obtener
+\begin{equation}
+\rho(x)\sum_{n=0}^{\infty}(\lambda_{n}-\mu)c_{n}\psi_{n}(x)=\rho(x)\sum_{n=0}^{\infty}\braket{\psi_{n}|f}\psi_{n}(x).
+\end{equation}
+Lo cual implica que
+\[
+  c_{n}=\frac{\braket{\psi_{n}|f}}{\lambda_{n}-\mu},
+\]
+entonces
+\[ \phi(x)=\sum_{n=0}^{\infty}c_{n}\psi_{n}(x)=\sum_{n=0}^{\infty}\frac{\braket{\psi_{n}|f}}{\lambda_{n}-\mu}\psi_{n}(x)=
+  \int_{a}^{b}\left(\sum_{n=0}^{\infty}\frac{\overline{\psi_{n}(\xi)}\psi_{n}(x)}{\lambda_{n}-\mu}\right)f(\xi)\,d\xi.
+\]
+Por lo tanto, esto implica que
+\[
+  G(x,\xi)=\sum_{n=0}^{\infty}\frac{\overline{\psi_{n}(\xi)}\psi_{n}(x)}{\lambda_{n}-\mu}
+\]
+Cuando el espectro es continua se generaliza a
+\[
+  G(x,\xi)=\int_{0}^{\infty}\frac{\overline{\psi_{\nu}(\xi)}\psi_{\nu}(x)}{\lambda_{\nu}-\mu}\,d\sigma(\nu),
+\]
+donde $\sigma$ es la \emph{medida espectral.}
+
+\eje Encuentre la función de Green para el siguiente operador con condiciones de frontera
+\[
+  y''+\frac{1}{4}y=f(x)\quad y(0)=y(\pi)=0.
+\]
+Primero hacemos su \emph{descomposicion espectral}
+\[
+  \psi''+\left(\frac{1}{4}-\lambda\right)\psi=0\quad \psi(0)=\psi(\pi)=0,
+\]
+entonces
+\[
+  \psi(x)=A\sin\left(\sqrt{\frac{1}{4}-\lambda}\right)x+B\cos\left(\sqrt{\frac{1}{4}-\lambda}\right)x.
+\]
+    Ahora, las condiciones de frontera implican que
+\[
+  \psi_{n}(x)=\sqrt{\frac{2}{\pi}}\sin(nx)\quad\lambda_{n}=\frac{1}{4}-n^{2}\quad n\in\nat.
+\]
+Los cuales sabemos que son las soluciones \emph{ortonormales}, entonces la fuinción de Green se calcula facilmente como
+\[
+  G(x,\xi)=\frac{2}{\pi}\sum_{n=0}^{\infty}\frac{\sin(nx)\sin(n\xi)}{\frac{1}{4}-n^{2}}.
+\]
+\exe Calcule las soluciones al problema anterior si
+\begin{itemize}
+  \item $f(x)=\sin(2x)$
+  \item $f(x)=x/2$
+\end{itemize}
+
+\section{La Ecuación de Laplace}
+
+
+
+
+
+
+
+
+
+\section{La Ecuación de Calor}
+
+
+
+
+
+
+
+
+
+
+
+
+
+\section{La ecuación de Onda}
+\subsection{Método de Frobenius}
 \noindent Cuando se tiene una ecuación diferencial de la forma
 \[
   \ddot{w}+p(z)\dot{w}+q(z)w=0,
@@ -130,7 +262,7 @@ Se procede a derivar y a sustituir en la ecuación diferencial y de ahí se extr
 \]
 Procedemos a proponer una solución en series de potencias $w(t)=\sum_{n=0}^{\infty}a_{n}t^{n+r}$. Sustituyendo las derivadas en nuestra ecuación, multiplicando antes por $t^{2}$, obtenemos
 \begin{align*}
-  t^{2}\ddot{w}+t^{2}p(t)\dot{w}+t^{2}q(t)w
+  &t^{2}\ddot{w}+t^{2}p(t)\dot{w}+t^{2}q(t)w\\
   &=\sum_{n=0}^{\infty}(n+r)(n+r-1)a_{n}t^{n+r}+p(t)\sum_{n=0}^{\infty}(n+r)a_{n}t^{n+r+1}+q(t)\sum_{n=0}^{\infty}a_{n}t^{n+r+2}\\
   &=\sum_{n=0}^{\infty}(n+r)(n+r-1)a_{n}t^{n+r}+\hat{p}(t)\sum_{n=0}^{\infty}(n+r)a_{n}t^{n+r}+\hat{q}(t)\sum_{n=0}^{\infty}a_{n}t^{n+r}\\
   &=\sum_{n=0}^{\infty}\left[(n+r)(n+r-1)+\hat{p}(t)(n+r)+\hat{q}(t)\right]a_{n}t^{n+r}.
@@ -204,7 +336,7 @@ satisface
 %---------- Sección ---------%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Funciones de Bessel de primer tipo}
+\subsection{Funciones de Bessel de primer tipo}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %-------- Definición --------%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -333,7 +465,7 @@ Para trabajar con estas expresiones, es conveniente que las series~\eqref{eq1.6}
 %---------- Sección ---------%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Funciones de Bessel de segundo y tercer tipo}
+\subsection{Funciones de Bessel de segundo y tercer tipo}
 \noindent Vimos que $J_{\nu}(z)$ y $J_{-\nu}(z)$ son linealmente independientes cuando $\nu$ no es un entero. Ahora buscamos una solución a la ecuación de Bessel independiente de $J_{\nu}$ cuando $\nu$ sea un entero.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %-------- Definición --------%
@@ -397,7 +529,7 @@ En algunas ocasiones, es interesante expresar soluciones de la ecuación de Bess
 %---------- Sección ---------%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Propiedades de las funciones de Bessel}
+\subsection{Propiedades de las funciones de Bessel}
 \noindent En seguida enunciaremos algunas propiedades de las funciones de Bessel.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %-------- Proposición -------%
